@@ -13,7 +13,7 @@ const slides = [
     image: "/hook/hook.png",
   },
   {
-   number: "02",
+    number: "02",
     type: "problem",
     title: "People see you.",
     subtitle: "But don't remember you.",
@@ -31,7 +31,7 @@ const slides = [
     image: "/hook/hook2.png",
   },
   {
-   number: "04",
+    number: "04",
     type: "problem",
     title: "You post content.",
     subtitle: "But nothing really happens.",
@@ -40,7 +40,7 @@ const slides = [
     image: "/hook/hook3.png",
   },
   {
-   number: "05",
+    number: "05",
     type: "problem",
     title: "You spend on ads.",
     subtitle: "But the numbers don't make sense.",
@@ -66,21 +66,27 @@ export default function HookSection() {
       "(prefers-reduced-motion: reduce)"
     );
 
-    const update = () => {
+    const updateMotionPreference = () => {
       setReducedMotion(media.matches);
     };
 
-    update();
+    updateMotionPreference();
 
-    media.addEventListener("change", update);
+    media.addEventListener(
+      "change",
+      updateMotionPreference
+    );
 
     return () => {
-      media.removeEventListener("change", update);
+      media.removeEventListener(
+        "change",
+        updateMotionPreference
+      );
     };
   }, []);
 
   /* =========================================================
-     SCROLL
+     SCROLL ENGINE
   ========================================================= */
 
   useEffect(() => {
@@ -93,21 +99,37 @@ export default function HookSection() {
     const update = () => {
       const rect = section.getBoundingClientRect();
 
-      const scrollable =
-        section.offsetHeight - window.innerHeight;
+      const sectionHeight = section.offsetHeight;
+      const viewportHeight = window.innerHeight;
 
-      if (scrollable <= 0) return;
+      const scrollDistance = Math.max(
+        1,
+        sectionHeight - viewportHeight
+      );
 
       const distance = Math.max(
         0,
-        Math.min(-rect.top, scrollable)
+        Math.min(
+          -rect.top,
+          scrollDistance
+        )
       );
 
-      const value = distance / scrollable;
+      const value = Math.max(
+        0,
+        Math.min(
+          1,
+          distance / scrollDistance
+        )
+      );
 
       setProgress(value);
 
-      const introEnd = 0.14;
+      /* =====================================================
+         SLIDE TIMING
+      ====================================================== */
+
+      const introEnd = 0.12;
       const finalStart = 0.88;
 
       let nextIndex = 0;
@@ -123,7 +145,10 @@ export default function HookSection() {
 
         nextIndex = Math.min(
           4,
-          1 + Math.floor(problemProgress * 4)
+          1 +
+            Math.floor(
+              problemProgress * 4
+            )
         );
       }
 
@@ -132,35 +157,67 @@ export default function HookSection() {
       frame = 0;
     };
 
-    const onScroll = () => {
+    const requestUpdate = () => {
       if (frame) return;
 
-      frame = requestAnimationFrame(update);
+      frame =
+        requestAnimationFrame(update);
     };
 
-    update();
+    requestUpdate();
 
     window.addEventListener(
       "scroll",
-      onScroll,
-      { passive: true }
+      requestUpdate,
+      {
+        passive: true,
+      }
     );
 
     window.addEventListener(
       "resize",
-      onScroll
+      requestUpdate
     );
+
+    window.addEventListener(
+      "orientationchange",
+      requestUpdate
+    );
+
+    window.addEventListener(
+      "load",
+      requestUpdate
+    );
+
+    const resizeObserver =
+      new ResizeObserver(() => {
+        requestUpdate();
+      });
+
+    resizeObserver.observe(section);
 
     return () => {
       window.removeEventListener(
         "scroll",
-        onScroll
+        requestUpdate
       );
 
       window.removeEventListener(
         "resize",
-        onScroll
+        requestUpdate
       );
+
+      window.removeEventListener(
+        "orientationchange",
+        requestUpdate
+      );
+
+      window.removeEventListener(
+        "load",
+        requestUpdate
+      );
+
+      resizeObserver.disconnect();
 
       if (frame) {
         cancelAnimationFrame(frame);
@@ -169,6 +226,7 @@ export default function HookSection() {
   }, []);
 
   const isIntro = activeIndex === 0;
+
   const isFinal = progress >= 0.88;
 
   return (
@@ -178,27 +236,30 @@ export default function HookSection() {
       className="
         relative
         z-0
-        h-[620vh]
-        bg-white
         isolate
+        min-h-[620vh]
+     bg-white
       "
     >
       {/* =====================================================
-          STICKY VIEWPORT
+          STICKY SCREEN
       ====================================================== */}
 
       <div
         className="
           sticky
           top-0
-          h-screen
+          h-[100dvh]
+          min-h-0
           w-full
           overflow-hidden
           bg-white
+          md:h-[100svh]
+          md:min-h-[600px]
         "
       >
         {/* ===================================================
-            SOFT BACKGROUND
+            BACKGROUND
         ==================================================== */}
 
         <div
@@ -209,66 +270,144 @@ export default function HookSection() {
             overflow-hidden
           "
         >
+          {/* Top right circle */}
+
           <div
             className="
               absolute
-              -right-[12vw]
-              top-[12vh]
-              h-[46vw]
-              w-[46vw]
-              max-h-[700px]
-              max-w-[700px]
+              -right-[34vw]
+              top-[5vh]
+              h-[76vw]
+              w-[76vw]
               rounded-full
-              bg-[#D6E3F2]
+              bg-[#6285AD]/10
+              sm:-right-[30vw]
+              sm:h-[70vw]
+              sm:w-[70vw]
+              md:-right-[12vw]
+              md:top-[12vh]
+              md:h-[46vw]
+              md:w-[46vw]
+              md:max-h-[700px]
+              md:max-w-[700px]
+              md:bg-[#6285AD]/15
+            "
+          />
+
+          {/* Bottom left circle */}
+
+          <div
+            className="
+              absolute
+              -left-[35vw]
+              bottom-[-18vw]
+              h-[68vw]
+              w-[68vw]
+              rounded-full
+              bg-[#C6A77A]/10
+              md:-left-[12vw]
+              md:bottom-[-18vw]
+              md:h-[32vw]
+              md:w-[32vw]
+              md:max-h-[480px]
+              md:max-w-[480px]
+            "
+          />
+
+          {/* Center subtle glow */}
+
+          <div
+            className="
+              absolute
+              left-1/2
+              top-1/2
+              h-[80vw]
+              w-[80vw]
+              -translate-x-1/2
+              -translate-y-1/2
+              rounded-full
+              bg-[#6285AD]/[0.025]
+              md:hidden
             "
           />
         </div>
 
         {/* ===================================================
-            TOP META
+            TOP PROGRESS
         ==================================================== */}
 
         <header
           className="
             absolute
-            left-6
-            right-6
+            left-5
+            right-5
             top-5
             z-40
             flex
-            items-center
-            justify-between
+            items-start
+            justify-end
+            sm:left-6
+            sm:right-6
+            sm:top-6
             md:left-[6vw]
             md:right-[6vw]
             md:top-7
           "
         >
-          
-            
-
-          
-
-           
-
-            
-      
+          {/* Desktop progress */}
 
           <div
             className="
               hidden
-              items-center
-              gap-3
-              md:flex
+              h-[2px]
+              w-28
+              overflow-hidden
+              rounded-full
+              bg-[#0B2A52]/10
+              md:block
             "
           >
-           
+            <div
+              className="
+                h-full
+                rounded-full
+                bg-[#0B2A52]
+                transition-[width]
+                duration-300
+              "
+              style={{
+                width: `${progress * 100}%`,
+              }}
+            />
+          </div>
 
-           
+          {/* Mobile progress */}
+
+          <div
+            className="
+              flex
+              w-[120px]
+              flex-col
+              gap-1.5
+              sm:w-[125px]
+              md:hidden
+            "
+          >
+            <div
+              className="
+                h-[2px]
+                w-full
+                overflow-hidden
+                rounded-full
+                bg-[#0B2A52]/10
+              "
+            >
               <div
                 className="
                   h-full
+                  rounded-full
                   bg-[#0B2A52]
-                  transition-all
+                  transition-[width]
                   duration-300
                 "
                 style={{
@@ -276,7 +415,50 @@ export default function HookSection() {
                 }}
               />
             </div>
-          
+
+            <span
+              className="
+                self-end
+                text-[7px]
+                uppercase
+                tracking-[0.18em]
+                text-[#344054]/45
+              "
+            >
+              {String(
+                activeIndex + 1
+              ).padStart(2, "0")}{" "}
+              / 05
+            </span>
+
+            {/* Small menu lines */}
+
+            <div
+              className="
+                mt-0.5
+                flex
+                flex-col
+                items-end
+                gap-[6px]
+              "
+            >
+              <span
+                className="
+                  h-[2px]
+                  w-8
+                  bg-[#0B2A52]
+                "
+              />
+
+              <span
+                className="
+                  h-[2px]
+                  w-8
+                  bg-[#0B2A52]
+                "
+              />
+            </div>
+          </div>
         </header>
 
         {/* ===================================================
@@ -288,10 +470,12 @@ export default function HookSection() {
             absolute
             inset-0
             mx-auto
+            w-full
             max-w-[1900px]
-            px-6
-            pb-20
-            pt-24
+            px-5
+            pt-20
+            sm:px-6
+            sm:pt-24
             md:px-[6vw]
             md:pb-24
             md:pt-24
@@ -306,9 +490,7 @@ export default function HookSection() {
             "
           >
             {/* =================================================
-                LEFT SIDE
-                IMPORTANT:
-                NO absolute positioning for intro.
+                LEFT CONTENT
             ================================================== */}
 
             <div
@@ -317,12 +499,16 @@ export default function HookSection() {
                 flex
                 h-full
                 min-h-0
-                items-center
+                items-start
+                pt-[10.5vh]
+                sm:pt-[11vh]
+                md:items-center
+                md:pt-0
                 md:pr-8
               "
             >
               {/* =================================================
-                  INTRO — NORMAL FLEX POSITION
+                  INTRO
               ================================================== */}
 
               <div
@@ -331,110 +517,111 @@ export default function HookSection() {
                   max-w-[820px]
                 "
                 style={{
-                  opacity: isIntro ? 1 : 0,
+                  opacity:
+                    isIntro
+                      ? 1
+                      : 0,
 
-                  transform: isIntro
-                    ? "translateY(0)"
-                    : "translateY(-35px)",
+                  transform:
+                    isIntro
+                      ? "translateY(0)"
+                      : "translateY(-35px)",
 
-                  filter: isIntro
-                    ? "blur(0)"
-                    : "blur(6px)",
+                  filter:
+                    isIntro
+                      ? "blur(0)"
+                      : "blur(6px)",
 
-                  pointerEvents: isIntro
-                    ? "auto"
-                    : "none",
+                  pointerEvents:
+                    isIntro
+                      ? "auto"
+                      : "none",
 
-                  transition: reducedMotion
-                    ? "none"
-                    : "opacity 650ms ease, transform 850ms cubic-bezier(.22,1,.36,1), filter 650ms ease",
+                  transition:
+                    reducedMotion
+                      ? "none"
+                      : "opacity 650ms ease, transform 850ms cubic-bezier(.22,1,.36,1), filter 650ms ease",
                 }}
               >
-                {/* Small intro word */}
+                {/* So */}
 
-                <div
-                  className="
-                    mb-2
-                    font-[var(--font-editorial)]
-                    text-3xl
-                    leading-none
-                    text-[#5cafeb]
-                    sm:text-4xl
-                    md:mb-3
-                    md:text-5xl
-                    lg:text-6xl
-                  "
-                >
-                  So…
-                </div>
+              <div
+  className="
+    mb-2
+    font-[var(--font-editorial)]
+    text-[clamp(1.6rem,6vw,3rem)]
+    leading-none
+    text-[#C6A77A]
+    sm:mb-3
+    sm:text-4xl
+    md:text-5xl
+  "
+>
+  So…
+</div>
 
-                {/* Main heading */}
+{/* Heading */}
 
-                <h2
-                  className="
-                    max-w-[760px]
-                    font-[var(--font-editorial)]
-                    text-[clamp(3rem,5vw,5.8rem)]
-                    font-normal
-                    leading-[0.9]
-                    tracking-[-0.055em]
-                    text-[#101a36]
-                  "
-                >
-                  Why isn't your
-                  <br />
-                  brand growing?
-                </h2>
+<h2
+  className="
+    max-w-[700px]
+    font-[var(--font-editorial)]
+    text-[clamp(2.15rem,7vw,4.5rem)]
+    font-normal
+    leading-[0.92]
+    tracking-[-0.045em]
+    text-[#0B2A52]
+    sm:text-[clamp(2.5rem,6vw,4.5rem)]
+  "
+>
+  Why isn't your
+  <br />
+  brand growing?
+</h2>
 
-                {/* Description */}
+{/* Description */}
 
-                <div
-                  className="
-                    mt-6
-                    flex
-                    items-start
-                    gap-3
-                    md:mt-8
-                    md:gap-4
-                  "
-                >
-                  <span
-                    className="
-                      mt-2.5
-                      h-px
-                      w-10
-                      shrink-0
-                      bg-[#0B2A52]
-                      md:w-14
-                    "
-                  />
+<div
+  className="
+    mt-3
+    flex
+    items-start
+    gap-3
+    sm:mt-5
+    sm:gap-4
+    md:mt-6
+  "
+>
+  <span
+    className="
+      mt-2
+      h-px
+      w-7
+      shrink-0
+      bg-[#C6A77A]
+      sm:w-9
+      md:w-12
+    "
+  />
 
-                  <p
-                    className="
-                      max-w-[430px]
-                      text-xs
-                      leading-5
-                      text-[#69717f]
-                      sm:text-sm
-                      md:text-base
-                      md:leading-6
-                    "
-                  >
-                    You're not alone.
-                    <br />
-                    Here's what most businesses
-                    are struggling with.
-                  </p>
-                </div>
-
-                {/* Scroll CTA */}
-
-                
-
-                 
-                
+  <p
+    className="
+      max-w-[360px]
+      text-[10px]
+      leading-[1.45]
+      text-[#344054]
+      sm:text-xs
+      md:text-sm
+      md:leading-5
+    "
+  >
+    You're not alone.
+    <br />
+    Here's what most businesses
+    are struggling with.
+  </p>
+</div>
               </div>
-
               {/* =================================================
                   PROBLEM SLIDES
               ================================================== */}
@@ -445,141 +632,191 @@ export default function HookSection() {
                   absolute
                   inset-0
                   flex
-                  items-center
+                  items-start
+                  pt-[10.5vh]
+                  sm:pt-[11vh]
+                  md:items-center
+                  md:pt-0
                 "
               >
                 {slides
                   .slice(1)
-                  .map((slide, index) => {
-                    const slideIndex =
-                      index + 1;
+                  .map(
+                    (
+                      slide,
+                      index
+                    ) => {
+                      const slideIndex =
+                        index + 1;
 
-                    const active =
-                      slideIndex ===
-                      activeIndex;
+                      const active =
+                        slideIndex ===
+                        activeIndex;
 
-                    const previous =
-                      slideIndex <
-                      activeIndex;
+                      const previous =
+                        slideIndex <
+                        activeIndex;
 
-                    return (
-                      <div
-                      
-                        className="
-                          absolute
-                          left-0
-                          w-full
-                        "
-                        style={{
-                          opacity: active
-                            ? 1
-                            : 0,
-
-                          transform: active
-                            ? "translateY(0)"
-                            : previous
-                            ? "translateY(-45px)"
-                            : "translateY(45px)",
-
-                          filter: active
-                            ? "blur(0)"
-                            : "blur(6px)",
-
-                          transition:
-                            reducedMotion
-                              ? "none"
-                              : "opacity 600ms ease, transform 800ms cubic-bezier(.22,1,.36,1), filter 600ms ease",
-                        }}
-                      >
-                        {/* Number */}
-
-                      
-                        {/* Title */}
-
-                        <h3
-                          className="
-                            max-w-[780px]
-                            font-[var(--font-new-york)]
-                            text-[clamp(2.6rem,4.2vw,5rem)]
-                            font-normal
-                            leading-[0.92]
-                            tracking-[-0.05em]
-                            text-[#101a36]
-                          "
-                        >
-                          {slide.title}
-                        </h3>
-
-                        {/* Subtitle */}
-
-                        <p
-                          className="
-                            mt-4
-                            font-[var(--font-editorial)]
-                            text-[clamp(1.3rem,2vw,2rem)]
-                            leading-tight
-                            text-[#596272]
-                          "
-                        >
-                          {slide.subtitle}
-                        </p>
-
-                        {/* Description */}
-
-                        <p
-                          className="
-                            mt-5
-                            max-w-[500px]
-                            text-xs
-                            leading-5
-                            text-[#747c88]
-                            sm:text-sm
-                            md:mt-6
-                            md:text-base
-                            md:leading-6
-                          "
-                        >
-                          {slide.description}
-                        </p>
-
-                        {/* Label */}
-
+                      return (
                         <div
+                          key={
+                            `problem-${slide.number}`
+                          }
                           className="
-                            mt-6
-                            flex
-                            items-center
-                            gap-2
+                            absolute
+                            left-0
+                            w-full
                           "
-                        >
-                          <span
-                            className="
-                              h-1.5
-                              w-1.5
-                              rounded-full
-                              bg-[#0B2A52]
-                            "
-                          />
+                          style={{
+                            opacity:
+                              active
+                                ? 1
+                                : 0,
 
-                          <span
+                            transform:
+                              active
+                                ? "translateY(0)"
+                                : previous
+                                ? "translateY(-35px)"
+                                : "translateY(35px)",
+
+                            filter:
+                              active
+                                ? "blur(0)"
+                                : "blur(6px)",
+
+                            transition:
+                              reducedMotion
+                                ? "none"
+                                : "opacity 600ms ease, transform 800ms cubic-bezier(.22,1,.36,1), filter 600ms ease",
+                          }}
+                        >
+                          {/* Number */}
+
+                          <div
                             className="
-                              text-[9px]
-                              uppercase
-                              tracking-[0.2em]
-                              text-[#9ba1aa]
+                              mb-3
+                              flex
+                              items-center
+                              gap-2.5
+                              sm:mb-5
+                              sm:gap-3
                             "
                           >
-                            Reality check
-                          </span>
+                            
+
+                            <span
+                              className="
+                                h-px
+                                w-6
+                                bg-[#C6A77A]/60
+                                sm:w-8
+                                md:w-12
+                              "
+                            />
+                          </div>
+
+                          {/* Title */}
+
+                          <h3
+                            className="
+                              max-w-[780px]
+                              font-[var(--font-new-york)]
+                              text-[clamp(2.2rem,8vw,5rem)]
+                              font-normal
+                              leading-[0.92]
+                              tracking-[-0.05em]
+                              text-[#0B2A52]
+                              sm:text-[clamp(2.8rem,7vw,5rem)]
+                            "
+                          >
+                            {
+                              slide.title
+                            }
+                          </h3>
+
+                          {/* Subtitle */}
+
+                          <p
+                            className="
+                              mt-3
+                              max-w-[500px]
+                              font-[var(--font-editorial)]
+                              text-[clamp(1.2rem,5vw,2rem)]
+                              leading-[1.05]
+                              text-[#6285AD]
+                              sm:mt-4
+                            "
+                          >
+                            {
+                              slide.subtitle
+                            }
+                          </p>
+
+                          {/* Description */}
+
+                          <p
+                            className="
+                              mt-4
+                              max-w-[440px]
+                              text-[11px]
+                              leading-[1.5]
+                              text-[#344054]/80
+                              sm:mt-5
+                              sm:text-sm
+                              md:mt-6
+                              md:max-w-[500px]
+                              md:text-base
+                              md:leading-6
+                            "
+                          >
+                            {
+                              slide.description
+                            }
+                          </p>
+
+                          {/* Reality Check */}
+
+                          <div
+                            className="
+                              mt-4
+                              flex
+                              items-center
+                              gap-2
+                              sm:mt-6
+                            "
+                          >
+                            <span
+                              className="
+                                h-1.5
+                                w-1.5
+                                shrink-0
+                                rounded-full
+                                bg-[#C6A77A]
+                              "
+                            />
+
+                            <span
+                              className="
+                                text-[8px]
+                                uppercase
+                                tracking-[0.2em]
+                                text-[#344054]/55
+                                sm:text-[9px]
+                              "
+                            >
+                              Reality Check
+                            </span>
+                          </div>
                         </div>
-                      </div>
-                    );
-                  })}
+                      );
+                    }
+                  )}
               </div>
             </div>
 
             {/* =================================================
-                RIGHT SIDE — IMAGE
+                DESKTOP IMAGE
             ================================================== */}
 
             <div
@@ -594,7 +831,10 @@ export default function HookSection() {
               "
             >
               {slides.map(
-                (slide, index) => {
+                (
+                  slide,
+                  index
+                ) => {
                   const active =
                     index ===
                     activeIndex;
@@ -605,7 +845,9 @@ export default function HookSection() {
 
                   return (
                     <div
-                      key={slide.image}
+                      key={
+                        `desktop-${slide.number}`
+                      }
                       className="
                         absolute
                         inset-0
@@ -614,19 +856,22 @@ export default function HookSection() {
                         justify-center
                       "
                       style={{
-                        opacity: active
-                          ? 1
-                          : 0,
+                        opacity:
+                          active
+                            ? 1
+                            : 0,
 
-                        transform: active
-                          ? "translateY(0) scale(1)"
-                          : previous
-                          ? "translateY(-25px) scale(1.03)"
-                          : "translateY(25px) scale(.96)",
+                        transform:
+                          active
+                            ? "translateY(0) scale(1)"
+                            : previous
+                            ? "translateY(-25px) scale(1.03)"
+                            : "translateY(25px) scale(.96)",
 
-                        filter: active
-                          ? "blur(0)"
-                          : "blur(6px)",
+                        filter:
+                          active
+                            ? "blur(0)"
+                            : "blur(6px)",
 
                         transition:
                           reducedMotion
@@ -634,13 +879,6 @@ export default function HookSection() {
                             : "opacity 700ms ease, transform 900ms cubic-bezier(.22,1,.36,1), filter 700ms ease",
                       }}
                     >
-                      {/* 
-                        IMPORTANT:
-                        No card.
-                        No border.
-                        No background.
-                      */}
-
                       <div
                         className="
                           relative
@@ -649,7 +887,6 @@ export default function HookSection() {
                         "
                       >
                         <Image
-                        key={slide.image}
                           src={
                             slide.image
                           }
@@ -661,11 +898,12 @@ export default function HookSection() {
                             index === 0
                           }
                           sizes="
-                            (max-width: 768px) 90vw,
-                            46vw
+                            (min-width: 1280px) 46vw,
+                            (min-width: 768px) 48vw
                           "
                           className="
                             object-contain
+                            object-center
                           "
                         />
                       </div>
@@ -676,69 +914,106 @@ export default function HookSection() {
             </div>
           </div>
 
-          {/* =================================================
+          {/* ===================================================
               MOBILE IMAGE
-          ================================================== */}
+
+              The image is given its own lower zone.
+              This prevents it from covering the text.
+          ==================================================== */}
 
           <div
             className="
               pointer-events-none
               absolute
-              bottom-[8vh]
+              bottom-[7.5vh]
               left-1/2
               z-10
               block
-              h-[24vh]
-              w-[88vw]
+              h-[23vh]
+              max-h-[205px]
+              w-[96vw]
               -translate-x-1/2
+              sm:bottom-[7vh]
+              sm:h-[25vh]
+              sm:max-h-[235px]
+              sm:w-[88vw]
               md:hidden
             "
           >
             {slides.map(
-              (slide, index) => {
+              (
+                slide,
+                index
+              ) => {
                 const active =
                   index ===
                   activeIndex;
 
+                const previous =
+                  index <
+                  activeIndex;
+
                 return (
                   <div
-                    key={slide.image}
+                    key={
+                      `mobile-${slide.number}`
+                    }
                     className="
                       absolute
                       inset-0
+                      flex
+                      items-center
+                      justify-center
                     "
                     style={{
-                      opacity: active
-                        ? 1
-                        : 0,
+                      opacity:
+                        active
+                          ? 1
+                          : 0,
 
-                      transform: active
-                        ? "scale(1)"
-                        : "scale(.94)",
+                      transform:
+                        active
+                          ? "translateY(0) scale(1)"
+                          : previous
+                          ? "translateY(-15px) scale(1.02)"
+                          : "translateY(15px) scale(.96)",
 
-                      filter: active
-                        ? "blur(0)"
-                        : "blur(5px)",
+                      filter:
+                        active
+                          ? "blur(0)"
+                          : "blur(5px)",
 
                       transition:
                         reducedMotion
                           ? "none"
-                          : "opacity 650ms ease, transform 800ms cubic-bezier(.22,1,.36,1), filter 650ms ease",
+                          : "opacity 600ms ease, transform 750ms cubic-bezier(.22,1,.36,1), filter 600ms ease",
                     }}
                   >
-                    <Image
-                      src={
-                        slide.image
-                      }
-                      alt={
-                        slide.title
-                      }
-                      fill
-                      sizes="88vw"
+                    <div
                       className="
-                        object-contain
+                        relative
+                        h-full
+                        w-full
                       "
-                    />
+                    >
+                      <Image
+                        src={
+                          slide.image
+                        }
+                        alt={
+                          slide.title
+                        }
+                        fill
+                        sizes="
+                          (max-width: 480px) 96vw,
+                          (max-width: 640px) 88vw
+                        "
+                        className="
+                          object-contain
+                          object-center
+                        "
+                      />
+                    </div>
                   </div>
                 );
               }
@@ -753,10 +1028,13 @@ export default function HookSection() {
         <div
           className="
             absolute
-            bottom-5
-            left-6
-            right-6
+            bottom-3
+            left-5
+            right-5
             z-50
+            sm:bottom-4
+            sm:left-6
+            sm:right-6
             md:bottom-7
             md:left-[6vw]
             md:right-[6vw]
@@ -769,6 +1047,8 @@ export default function HookSection() {
               justify-between
             "
           >
+            {/* Progress dots */}
+
             <div
               className="
                 flex
@@ -776,7 +1056,10 @@ export default function HookSection() {
               "
             >
               {slides.map(
-                (slide, index) => {
+                (
+                  slide,
+                  index
+                ) => {
                   const active =
                     index ===
                     activeIndex;
@@ -787,28 +1070,51 @@ export default function HookSection() {
 
                   return (
                     <div
-                    
+                      key={
+                        `progress-${slide.number}`
+                      }
                       className="
                         flex
                         items-center
                       "
                     >
-                      
+                      <span
+                        className={`
+                          h-1.5
+                          w-1.5
+                          rounded-full
+                          transition-all
+                          duration-300
+                          sm:h-2
+                          sm:w-2
+                          ${
+                            active
+                              ? "scale-125 bg-[#0B2A52]"
+                              : completed
+                              ? "bg-[#C6A77A]"
+                              : "bg-[#0B2A52]/20"
+                          }
+                        `}
+                      />
 
                       {index <
                         slides.length -
                           1 && (
                         <span
                           className={`
-                            mx-2
+                            mx-1.5
                             h-px
-                            w-4
+                            w-3
+                            transition-colors
+                            duration-300
+                            sm:mx-2
+                            sm:w-5
                             md:mx-3
                             md:w-7
                             ${
                               completed
-                                ? "bg-[#0B2A52]"
-                                : "bg-[#e1e5eb]"
+                                ? "bg-[#C6A77A]"
+                                : "bg-[#0B2A52]/10"
                             }
                           `}
                         />
@@ -819,17 +1125,34 @@ export default function HookSection() {
               )}
             </div>
 
+            {/* Desktop */}
+
             <span
               className="
                 hidden
                 text-[10px]
                 uppercase
                 tracking-[0.18em]
-                text-[#999fa8]
+                text-[#344054]/55
                 md:block
               "
             >
               Keep scrolling ↓
+            </span>
+
+            {/* Mobile */}
+
+            <span
+              className="
+                text-[7px]
+                uppercase
+                tracking-[0.15em]
+                text-[#344054]/40
+                sm:text-[8px]
+                md:hidden
+              "
+            >
+              Scroll
             </span>
           </div>
         </div>
@@ -848,16 +1171,19 @@ export default function HookSection() {
             items-center
             justify-center
             bg-white
+            px-5
+            sm:px-6
           "
           style={{
-            opacity: isFinal
-              ? Math.min(
-                  1,
-                  (progress -
-                    0.88) /
-                    0.07
-                )
-              : 0,
+            opacity:
+              isFinal
+                ? Math.min(
+                    1,
+                    (progress -
+                      0.88) /
+                      0.07
+                  )
+                : 0,
 
             transition:
               reducedMotion
@@ -867,17 +1193,20 @@ export default function HookSection() {
         >
           <div
             className="
-              px-6
+              w-full
+              max-w-[900px]
               text-center
             "
           >
             <p
               className="
-                mb-4
-                text-[9px]
+                mb-3
+                text-[8px]
                 uppercase
                 tracking-[0.25em]
-                text-[#0B2A52]
+                text-[#C6A77A]
+                sm:mb-4
+                sm:text-[9px]
                 md:text-xs
               "
             >
@@ -887,16 +1216,18 @@ export default function HookSection() {
             <h3
               className="
                 font-[var(--font-editorial)]
-                text-[clamp(3rem,6.5vw,7.5rem)]
+                text-[clamp(3rem,14vw,7.5rem)]
                 font-normal
                 leading-[0.88]
                 tracking-[-0.055em]
-                text-[#101a36]
+                text-[#0B2A52]
+                sm:text-[clamp(2.5rem,8vw,5.5rem)]
               "
             >
               That's where
               <br />
-              <span className="text-[#0B2A52]">
+
+              <span className="text-[#6285AD]">
                 we come in.
               </span>
             </h3>
@@ -904,10 +1235,12 @@ export default function HookSection() {
             <div
               className="
                 mx-auto
-                mt-7
+                mt-5
                 h-px
-                w-16
-                bg-[#0B2A52]
+                w-12
+                bg-[#C6A77A]
+                sm:mt-7
+                sm:w-16
               "
             />
           </div>

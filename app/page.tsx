@@ -1,6 +1,8 @@
+import BigIdeaSection from "@/components/BigIdeaSection";
 import Hero from "@/components/Hero";
 import HookSection from "@/components/HookSection";
 import Navbar from "@/components/Navbar";
+import WhatCouldWeDoSection from "@/components/WhatCouldWeDoSection";
 
 export default function Home() {
   return (
@@ -8,6 +10,8 @@ export default function Home() {
       <Navbar />
       <Hero/>
       <HookSection/>
+      <BigIdeaSection/>
+      <WhatCouldWeDoSection/>
 
       
     </main>
