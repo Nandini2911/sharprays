@@ -887,25 +887,16 @@ export default function HookSection() {
                         "
                       >
                         <Image
-                          src={
-                            slide.image
-                          }
-                          alt={
-                            slide.title
-                          }
-                          fill
-                          priority={
-                            index === 0
-                          }
-                          sizes="
-                            (min-width: 1280px) 46vw,
-                            (min-width: 768px) 48vw
-                          "
-                          className="
-                            object-contain
-                            object-center
-                          "
-                        />
+  src={slide.image}
+  alt={slide.title}
+  fill
+  priority={index === 0}
+  sizes="(min-width: 1280px) 46vw, (min-width: 768px) 48vw"
+  className="
+    object-contain
+    object-center
+  "
+/>
                       </div>
                     </div>
                   );
@@ -997,22 +988,15 @@ export default function HookSection() {
                       "
                     >
                       <Image
-                        src={
-                          slide.image
-                        }
-                        alt={
-                          slide.title
-                        }
-                        fill
-                        sizes="
-                          (max-width: 480px) 96vw,
-                          (max-width: 640px) 88vw
-                        "
-                        className="
-                          object-contain
-                          object-center
-                        "
-                      />
+  src={slide.image}
+  alt={slide.title}
+  fill
+  sizes="(max-width: 480px) 96vw, (max-width: 640px) 88vw"
+  className="
+    object-contain
+    object-center
+  "
+/>
                     </div>
                   </div>
                 );

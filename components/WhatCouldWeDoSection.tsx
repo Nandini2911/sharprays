@@ -19,7 +19,6 @@ import {
 const BRAND = "#0B2A52";
 
 const services = [
-
   {
     icon: Megaphone,
     title: "Social Media Marketing",
@@ -38,9 +37,9 @@ const services = [
     icon: Search,
     title: "SEO",
     slug: "/services/seo",
-    image: "/whatwedo/seo.webp",
+    image: "/seo.webp",
     description:
-      "Improve your search engine visibility and attract qualified organic traffic with technical, on-page, local, and keyword-focused SEO.",
+      "Improve your search engine visibility and attract qualified organic traffic with technical, on-page, off-page, local, and keyword-focused SEO.",
     items: [
       "Technical SEO",
       "On-Page SEO",
@@ -99,7 +98,6 @@ const services = [
       "UI / UX Design",
     ],
   },
-  
   {
     icon: Send,
     title: "PR & Digital PR",
@@ -114,7 +112,6 @@ const services = [
       "Reputation Building",
     ],
   },
-  
   {
     icon: Brain,
     title: "AI Marketing",
@@ -129,7 +126,6 @@ const services = [
       "Marketing Automation",
     ],
   },
- 
 ];
 
 /* =========================================================
@@ -137,11 +133,6 @@ const services = [
 ========================================================= */
 
 const accents = [
-  {
-    border: "#2563EB",
-    soft: "#EFF6FF",
-    icon: "#2563EB",
-  },
   {
     border: "#F43F8F",
     soft: "#FFF1F7",
@@ -173,29 +164,14 @@ const accents = [
     icon: "#0F766E",
   },
   {
-    border: "#6D28D9",
-    soft: "#F5F3FF",
-    icon: "#6D28D9",
-  },
-  {
     border: "#DB2777",
     soft: "#FDF2F8",
     icon: "#DB2777",
   },
   {
-    border: "#CA8A04",
-    soft: "#FEFCE8",
-    icon: "#CA8A04",
-  },
-  {
     border: "#2563EB",
     soft: "#EFF6FF",
     icon: "#2563EB",
-  },
-  {
-    border: "#9333EA",
-    soft: "#FAF5FF",
-    icon: "#9333EA",
   },
 ];
 
@@ -232,12 +208,12 @@ export default function ServicesSection() {
 
             <span
               className="text-[11px] font-semibold uppercase tracking-[0.28em] sm:text-xs"
-              style={{ color: "#B79A72"}}
+              style={{ color: "#B79A72" }}
             >
               Our Services
             </span>
 
-            <span className="h-px w-10 bg-bg-[#B79A72]" />
+            <span className="h-px w-10 bg-[#B79A72]" />
           </div>
 
           {/* Heading */}
@@ -248,7 +224,6 @@ export default function ServicesSection() {
           >
             What Could We Do With Your Brand?
             <br />
-
           </h2>
 
           {/* Description */}
@@ -275,7 +250,7 @@ export default function ServicesSection() {
             return (
               <article
                 key={service.slug}
-                className="group relative flex min-h-[540px] flex-col overflow-hidden rounded-[28px] bg-white transition-all duration-500 hover:-translate-y-1"
+                className="group relative flex flex-col overflow-hidden rounded-[28px] bg-white transition-all duration-500 hover:-translate-y-1"
                 style={{
                   border: `1.5px solid ${accent.border}`,
                   boxShadow: `0 12px 40px ${accent.border}10`,
@@ -286,12 +261,12 @@ export default function ServicesSection() {
                 ================================================= */}
 
                 <div
-                  className="relative mx-3 mt-3 flex h-[215px] items-center justify-center overflow-hidden rounded-[22px]"
+                  className="relative mx-3 mt-3 flex h-[215px] shrink-0 items-center justify-center overflow-hidden rounded-[22px]"
                   style={{
                     backgroundColor: accent.soft,
                   }}
                 >
-                  {/* soft decorative circle */}
+                  {/* Soft decorative circle */}
 
                   <div
                     className="absolute -right-12 -top-12 h-36 w-36 rounded-full opacity-60"
@@ -336,12 +311,12 @@ export default function ServicesSection() {
                     CONTENT
                 ================================================= */}
 
-                <div className="flex flex-1 flex-col px-6 pb-5 pt-5 sm:px-7">
+                <div className="px-6 pb-5 pt-5 sm:px-7">
 
                   {/* Title */}
 
                   <h3
-                    className="min-h-[56px] font-[var(--font-new-york)] text-[27px] font-semibold leading-[1.05] tracking-[-0.025em]"
+                    className="font-[var(--font-new-york)] text-[27px] font-semibold leading-[1.05] tracking-[-0.025em]"
                     style={{ color: BRAND }}
                   >
                     {service.title}
@@ -371,7 +346,7 @@ export default function ServicesSection() {
 
                   <Link
                     href={service.slug}
-                    className="mt-auto flex items-center gap-3 pt-5 text-[14px] font-semibold transition-all duration-300"
+                    className="mt-4 flex items-center gap-3 text-[14px] font-semibold transition-all duration-300"
                     style={{ color: accent.border }}
                   >
                     <span>Explore More</span>
@@ -408,45 +383,6 @@ export default function ServicesSection() {
             BOTTOM CTA
         =================================================== */}
 
-        <div
-          className="relative mt-6 overflow-hidden rounded-[28px] px-6 py-7 sm:px-10 sm:py-8 lg:mt-7 lg:px-12"
-          style={{
-            backgroundColor: BRAND,
-          }}
-        >
-          {/* Background decoration */}
-
-          <div className="pointer-events-none absolute -right-20 -top-32 h-72 w-72 rounded-full border border-white/10" />
-
-          <div className="pointer-events-none absolute -bottom-40 left-1/3 h-72 w-72 rounded-full border border-white/10" />
-
-          <div className="relative flex flex-col items-start justify-between gap-7 lg:flex-row lg:items-center">
-
-            <div>
-              <p className="mb-2 text-xs font-semibold uppercase tracking-[0.25em] text-white/60">
-                Ready when you are
-              </p>
-
-              <h3 className="font-[var(--font-new-york)] text-3xl leading-tight tracking-[-0.02em] text-white sm:text-4xl">
-                Let&apos;s turn your marketing
-                <br className="hidden sm:block" />
-                into real growth.
-              </h3>
-            </div>
-
-            <Link
-              href="/contact"
-              className="group flex shrink-0 items-center gap-4 rounded-full bg-white px-6 py-3.5 text-sm font-semibold transition-all duration-300 hover:gap-5"
-              style={{ color: BRAND }}
-            >
-              <span>Start a Conversation</span>
-
-              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#0B2A52] text-white">
-                →
-              </span>
-            </Link>
-          </div>
-        </div>
       </div>
     </section>
   );
