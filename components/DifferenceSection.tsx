@@ -59,93 +59,52 @@ export default function DifferenceSection() {
   return (
     <section
       className="
-        relative
-        overflow-hidden
-        bg-white
-        py-16
-        sm:py-20
-        lg:py-24
+       relative
+    overflow-hidden
+    bg-white
+    pt-16
+    pb-0
+    sm:pt-20
+    lg:pt-24
       "
     >
       {/* =========================================================
-          BACKGROUND
+          PURE WHITE BACKGROUND
       ========================================================= */}
 
-      <div className="pointer-events-none absolute inset-0">
-        {/* Soft top glow */}
-        <div
-          className="
-            absolute
-            left-1/2
-            top-[-240px]
-            h-[500px]
-            w-[800px]
-            -translate-x-1/2
-            rounded-full
-            bg-white
-            blur-3xl
-          "
-        />
-
-        {/* Left atmosphere */}
-        <div
-          className="
-            absolute
-            -left-[280px]
-            top-[35%]
-            h-[450px]
-            w-[450px]
-            rounded-full
-            bg-[#EEF3F8]
-            blur-3xl
-          "
-        />
-
-        {/* Right atmosphere */}
-        <div
-          className="
-            absolute
-            -right-[280px]
-            bottom-[5%]
-            h-[450px]
-            w-[450px]
-            rounded-full
-            bg-[#EEF3F8]
-            blur-3xl
-          "
-        />
-
-        {/* Very subtle grid */}
-        <div
-          className="absolute inset-0 opacity-[0.018]"
-          style={{
-            backgroundImage:
-              "linear-gradient(#0B2A52 1px, transparent 1px), linear-gradient(90deg, #0B2A52 1px, transparent 1px)",
-            backgroundSize: "80px 80px",
-          }}
-        />
-      </div>
+      <div className="pointer-events-none absolute inset-0 z-0 bg-white" />
 
       {/* =========================================================
           MAIN CONTAINER
       ========================================================= */}
 
-      <div className="relative mx-auto max-w-[1500px] px-5 sm:px-8 lg:px-10 xl:px-12">
+      <div
+        className="
+          relative
+          z-10
+          mx-auto
+          max-w-[1500px]
+          px-5
+          sm:px-8
+          lg:px-10
+          xl:px-12
+        "
+      >
         <div
           className="
-            overflow-hidden
+            relative
+            overflow-visible
             rounded-[30px]
             border
-            border-white
-            bg-white/90
+            border-[#E7ECF2]
+            bg-white
             px-5
             py-9
-            shadow-[0_25px_100px_rgba(11,42,82,0.06)]
-            backdrop-blur-xl
+            shadow-[0_20px_70px_rgba(11,42,82,0.035)]
             sm:px-8
             sm:py-11
             lg:px-12
-            lg:py-13
+            lg:py-14
             xl:px-16
           "
         >
@@ -154,16 +113,47 @@ export default function DifferenceSection() {
           ===================================================== */}
 
           <motion.div
-            initial={{ opacity: 0, y: 35 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.25 }}
+            initial={{
+              opacity: 0,
+              y: 25,
+            }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+            }}
+            viewport={{
+              once: true,
+              amount: 0.2,
+            }}
             transition={{
               duration: 0.7,
               ease: [0.22, 1, 0.36, 1],
             }}
-            className="flex items-center justify-center gap-4"
+            className="
+              relative
+              z-30
+              flex
+              items-center
+              justify-center
+              gap-4
+            "
           >
-            <span className="h-px w-10 bg-[#C6A77A] sm:w-12" />
+            <motion.span
+              initial={{
+                width: 0,
+              }}
+              whileInView={{
+                width: 48,
+              }}
+              viewport={{
+                once: true,
+              }}
+              transition={{
+                duration: 0.7,
+                delay: 0.1,
+              }}
+              className="h-px bg-[#C6A77A]"
+            />
 
             <span
               className="
@@ -179,78 +169,140 @@ export default function DifferenceSection() {
               THE DIFFERENCE
             </span>
 
-            <span className="h-px w-10 bg-[#C6A77A] sm:w-12" />
+            <motion.span
+              initial={{
+                width: 0,
+              }}
+              whileInView={{
+                width: 48,
+              }}
+              viewport={{
+                once: true,
+              }}
+              transition={{
+                duration: 0.7,
+                delay: 0.1,
+              }}
+              className="h-px bg-[#C6A77A]"
+            />
           </motion.div>
 
           {/* =====================================================
               HEADLINE
           ===================================================== */}
 
-          <motion.div
-            initial={{ opacity: 0, y: 55 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.25 }}
-            transition={{
-              duration: 0.8,
-              delay: 0.08,
-              ease: [0.22, 1, 0.36, 1],
-            }}
+          <div
             className="
+              relative
+              z-30
               mx-auto
-              mt-7
-              max-w-[1000px]
+              mt-8
+              max-w-[1050px]
               text-center
-              sm:mt-8
+              sm:mt-9
             "
           >
-            <h2
-              className="
-                font-[var(--font-new-york)]
-                text-[clamp(2rem,5vw,5.4rem)]
-                font-medium
-                leading-[0.92]
-                tracking-[-0.055em]
-              "
-              style={{ color: NAVY }}
-            >
-              Pretty Marketing
-            </h2>
+            {/* First line */}
 
-            <h2
-              className="
-                mt-2
-                font-[var(--font-new-york)]
-                text-[clamp(2rem,5vw,5.4rem)]
-                font-medium
-                leading-[0.92]
-                tracking-[-0.055em]
-              "
-              style={{ color: NAVY }}
-            >
-              <span
-                className="italic"
-                style={{ color: GOLD }}
+            <div className="relative overflow-hidden pb-2">
+              <motion.h2
+                initial={{
+                  opacity: 0,
+                  y: 40,
+                }}
+                whileInView={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                viewport={{
+                  once: true,
+                  amount: 0.15,
+                }}
+                transition={{
+                  duration: 0.85,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+                className="
+                  relative
+                  z-30
+                  font-[var(--font-new-york)]
+                  text-[clamp(2.8rem,5vw,5.4rem)]
+                  font-medium
+                  leading-[0.98]
+                  tracking-[-0.06em]
+                  text-[#0B2A52]
+                "
               >
-                Isn&apos;t
-              </span>{" "}
-              Enough.
-            </h2>
-          </motion.div>
+                Pretty Marketing
+              </motion.h2>
+            </div>
+
+            {/* Second line */}
+
+            <div className="relative overflow-hidden pb-2">
+              <motion.h2
+                initial={{
+                  opacity: 0,
+                  y: 40,
+                }}
+                whileInView={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                viewport={{
+                  once: true,
+                  amount: 0.15,
+                }}
+                transition={{
+                  delay: 0.08,
+                  duration: 0.85,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+                className="
+                  relative
+                  z-30
+                  mt-1
+                  font-[var(--font-new-york)]
+                  text-[clamp(2.8rem,5vw,5.4rem)]
+                  font-medium
+                  leading-[0.98]
+                  tracking-[-0.06em]
+                  text-[#0B2A52]
+                "
+              >
+                <span className="italic text-[#C6A77A]">
+                  Isn&apos;t
+                </span>{" "}
+                Enough.
+              </motion.h2>
+            </div>
+          </div>
 
           {/* =====================================================
               DESCRIPTION
           ===================================================== */}
 
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.25 }}
+            initial={{
+              opacity: 0,
+              y: 25,
+            }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+            }}
+            viewport={{
+              once: true,
+              amount: 0.2,
+            }}
             transition={{
               duration: 0.7,
-              delay: 0.16,
+              delay: 0.18,
               ease: [0.22, 1, 0.36, 1],
             }}
             className="
+              relative
+              z-20
               mx-auto
               mt-7
               max-w-[650px]
@@ -265,12 +317,16 @@ export default function DifferenceSection() {
                 sm:text-lg
                 sm:leading-8
               "
-              style={{ color: TEXT }}
+              style={{
+                color: TEXT,
+              }}
             >
               Beautiful content gets{" "}
               <span
                 className="font-semibold"
-                style={{ color: NAVY }}
+                style={{
+                  color: NAVY,
+                }}
               >
                 attention.
               </span>
@@ -284,12 +340,16 @@ export default function DifferenceSection() {
                 sm:text-lg
                 sm:leading-8
               "
-              style={{ color: TEXT }}
+              style={{
+                color: TEXT,
+              }}
             >
               Smart strategy turns attention into{" "}
               <span
                 className="font-semibold"
-                style={{ color: NAVY }}
+                style={{
+                  color: NAVY,
+                }}
               >
                 action.
               </span>
@@ -301,23 +361,19 @@ export default function DifferenceSection() {
           ===================================================== */}
 
           <div className="relative mt-14 sm:mt-18 lg:mt-20">
-
-            {/* ===================================================
-                DESKTOP CONNECTING LINE
-            =================================================== */}
-
-           
-
-            {/* ===================================================
-                MOBILE LINE
-            =================================================== */}
-
-          
             {/* ===================================================
                 CARDS
             =================================================== */}
 
-            <div className="relative grid gap-5 lg:grid-cols-5 lg:gap-4">
+            <div
+              className="
+                relative
+                grid
+                gap-5
+                lg:grid-cols-5
+                lg:gap-4
+              "
+            >
               {steps.map((step, index) => {
                 const Icon = step.icon;
                 const isGrowth = index === 4;
@@ -327,7 +383,7 @@ export default function DifferenceSection() {
                     key={step.title}
                     initial={{
                       opacity: 0,
-                      y: 65,
+                      y: 55,
                     }}
                     whileInView={{
                       opacity: 1,
@@ -351,7 +407,23 @@ export default function DifferenceSection() {
                         ICON
                     ================================================= */}
 
-                    <div
+                    <motion.div
+                      initial={{
+                        opacity: 0,
+                        scale: 0.8,
+                      }}
+                      whileInView={{
+                        opacity: 1,
+                        scale: 1,
+                      }}
+                      viewport={{
+                        once: true,
+                      }}
+                      transition={{
+                        duration: 0.55,
+                        delay: index * 0.1 + 0.15,
+                        ease: [0.22, 1, 0.36, 1],
+                      }}
                       className="
                         absolute
                         left-0
@@ -372,7 +444,7 @@ export default function DifferenceSection() {
                           border
                           border-[#DCE5EF]
                           bg-white
-                          shadow-[0_10px_30px_rgba(11,42,82,0.08)]
+                          shadow-[0_10px_30px_rgba(11,42,82,0.07)]
                           sm:h-[66px]
                           sm:w-[66px]
                         "
@@ -403,13 +475,21 @@ export default function DifferenceSection() {
                           />
                         </div>
                       </div>
-                    </div>
+                    </motion.div>
 
                     {/* =================================================
                         CARD
                     ================================================= */}
 
-                    <div
+                    <motion.div
+                      whileHover={{
+                        y: -6,
+                      }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 300,
+                        damping: 22,
+                      }}
                       className={`
                         relative
                         min-h-[250px]
@@ -419,16 +499,19 @@ export default function DifferenceSection() {
                         px-5
                         pb-6
                         pt-[74px]
+                        transition-shadow
+                        duration-300
                         lg:px-5
                         xl:px-6
                         ${
                           isGrowth
                             ? "border-[#0B2A52] bg-[#0B2A52] shadow-[0_22px_55px_rgba(11,42,82,0.18)]"
-                            : "border-[#E3E9F1] bg-white shadow-[0_10px_30px_rgba(11,42,82,0.045)]"
+                            : "border-[#E3E9F1] bg-white shadow-[0_10px_30px_rgba(11,42,82,0.045)] hover:shadow-[0_18px_45px_rgba(11,42,82,0.09)]"
                         }
                       `}
                     >
                       {/* Top accent */}
+
                       <div
                         className={`
                           absolute
@@ -455,7 +538,7 @@ export default function DifferenceSection() {
                           ${
                             isGrowth
                               ? "text-white/60"
-                              : "text-[#0B2A52]/55"
+                              : "text-[#0B2A52]/50"
                           }
                         `}
                       >
@@ -483,13 +566,16 @@ export default function DifferenceSection() {
                         {step.title}
                       </h3>
 
-                      {/* Detail */}
+                      {/* Gold detail */}
 
                       <div
-                        className="mt-4 h-[2px] w-9 rounded-full"
-                        style={{
-                          backgroundColor: GOLD,
-                        }}
+                        className="
+                          mt-4
+                          h-[2px]
+                          w-9
+                          rounded-full
+                          bg-[#C6A77A]
+                        "
                       />
 
                       {/* Description */}
@@ -508,14 +594,29 @@ export default function DifferenceSection() {
                       >
                         {step.description}
                       </p>
-                    </div>
+                    </motion.div>
 
                     {/* =================================================
                         DESKTOP ARROW
                     ================================================= */}
 
                     {!isGrowth && (
-                      <div
+                      <motion.div
+                        initial={{
+                          opacity: 0,
+                          scale: 0.8,
+                        }}
+                        whileInView={{
+                          opacity: 1,
+                          scale: 1,
+                        }}
+                        viewport={{
+                          once: true,
+                        }}
+                        transition={{
+                          duration: 0.5,
+                          delay: index * 0.1 + 0.3,
+                        }}
                         className="
                           absolute
                           right-[-14px]
@@ -536,9 +637,9 @@ export default function DifferenceSection() {
                         <ArrowRight
                           size={15}
                           strokeWidth={1.8}
-                          style={{ color: NAVY }}
+                          className="text-[#0B2A52]"
                         />
-                      </div>
+                      </motion.div>
                     )}
 
                     {/* =================================================
@@ -567,8 +668,10 @@ export default function DifferenceSection() {
                         <ArrowRight
                           size={13}
                           strokeWidth={1.8}
-                          className="rotate-90"
-                          style={{ color: NAVY }}
+                          className="
+                            rotate-90
+                            text-[#0B2A52]
+                          "
                         />
                       </div>
                     )}
@@ -585,7 +688,7 @@ export default function DifferenceSection() {
           <motion.div
             initial={{
               opacity: 0,
-              y: 50,
+              y: 40,
             }}
             whileInView={{
               opacity: 1,
@@ -601,6 +704,8 @@ export default function DifferenceSection() {
               ease: [0.22, 1, 0.36, 1],
             }}
             className="
+              relative
+              z-10
               mx-auto
               mt-9
               max-w-[1080px]
@@ -617,7 +722,7 @@ export default function DifferenceSection() {
                 bg-white
                 px-5
                 py-4
-                shadow-[0_8px_30px_rgba(11,42,82,0.04)]
+                shadow-[0_8px_30px_rgba(11,42,82,0.035)]
                 sm:px-7
                 sm:py-5
               "
@@ -651,7 +756,7 @@ export default function DifferenceSection() {
                   <Sparkles
                     size={16}
                     strokeWidth={1.7}
-                    style={{ color: NAVY }}
+                    className="text-[#0B2A52]"
                   />
                 </div>
 
@@ -663,34 +768,39 @@ export default function DifferenceSection() {
                     text-base
                     font-semibold
                     tracking-[-0.01em]
+                    text-[#0B2A52]
                     sm:text-lg
                   "
-                  style={{ color: NAVY }}
                 >
                   It&apos;s not just our process.
-                  <span
-                    className="ml-1"
-                    style={{ color: GOLD }}
-                  >
+                  <span className="ml-1 text-[#C6A77A]">
                     It&apos;s our promise.
                   </span>
                 </p>
 
                 {/* Divider */}
 
-                <span className="hidden h-7 w-px bg-[#DCE5EF] sm:block" />
+                <span
+                  className="
+                    hidden
+                    h-7
+                    w-px
+                    bg-[#DCE5EF]
+                    sm:block
+                  "
+                />
 
                 {/* Ending */}
 
                 <p
-                  className="text-sm sm:text-[15px]"
-                  style={{ color: MUTED }}
+                  className="
+                    text-sm
+                    text-[#66758A]
+                    sm:text-[15px]
+                  "
                 >
                   Strategy. Creativity. Data.
-                  <span
-                    className="ml-1 font-semibold"
-                    style={{ color: NAVY }}
-                  >
+                  <span className="ml-1 font-semibold text-[#0B2A52]">
                     That&apos;s how growth happens.
                   </span>
                 </p>

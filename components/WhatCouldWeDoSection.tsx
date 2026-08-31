@@ -219,7 +219,7 @@ export default function ServicesSection() {
           {/* Heading */}
 
           <h2
-            className="font-[var(--font-new-york)] text-4xl font-medium leading-[1.02] tracking-[-0.035em] sm:text-5xl md:text-6xl lg:text-[68px]"
+            className="font-[var(--font-new-york)] text-4xl font-medium leading-[1.02] tracking-[-0.035em] sm:text-4xl md:text-5xl lg:text-[58px]"
             style={{ color: BRAND }}
           >
             What Could We Do With Your Brand?

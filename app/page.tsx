@@ -2,6 +2,7 @@ import BigIdeaSection from "@/components/BigIdeaSection";
 import DifferenceSection from "@/components/DifferenceSection";
 import Hero from "@/components/Hero";
 import HookSection from "@/components/HookSection";
+import HumanSection from "@/components/HumanSection";
 import Navbar from "@/components/Navbar";
 import WhatCouldWeDoSection from "@/components/WhatCouldWeDoSection";
 import YourMethodSection from "@/components/YourMethodSection";
@@ -16,7 +17,7 @@ export default function Home() {
       <WhatCouldWeDoSection/>
       <DifferenceSection/>
       <YourMethodSection/>
-
+      <HumanSection/>
       
     </main>
   );
