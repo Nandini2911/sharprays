@@ -67,28 +67,31 @@ export default function HumanSection() {
       {/* =========================================================
           INTRO
       ========================================================= */}
-      <div className="mx-auto max-w-[1440px] px-6 sm:px-8 lg:px-12">
+      <div className="mx-auto max-w-[1440px] px-1 sm:px-4 lg:px-5">
 
-        <div
-          className="
-            grid
-            min-h-[680px]
-            grid-cols-1
-            items-center
-            gap-10
-            pt-24
-            pb-16
-            lg:grid-cols-[0.92fr_1.08fr]
-            lg:gap-8
-            lg:pt-28
-            lg:pb-20
-          "
-        >
+      <div
+  className="
+    grid
+    grid-cols-1
+    items-center
+    gap-8
+    pt-8
+    pb-12
+    sm:gap-10
+    sm:pt-10
+    sm:pb-16
+    lg:min-h-[680px]
+    lg:grid-cols-[0.92fr_1.08fr]
+    lg:gap-8
+    lg:pt-0
+    lg:pb-20
+  "
+>
 
           {/* =====================================================
               LEFT — CONTENT
           ===================================================== */}
-          <div className="relative z-10 max-w-[650px]">
+          <div className="relative z-10 w-full max-w-[650px] px-3 sm:px-0">
 
             {/* Label */}
             <div className="mb-7 flex items-center gap-3">
@@ -101,9 +104,9 @@ export default function HumanSection() {
 
             {/* Heading */}
             <h2
-              className="
-                font-serif
-                text-[clamp(3.1rem,5.2vw,5.9rem)]
+              className="font-serif
+              text-[clamp(1.8rem,3.2vw,3rem)]
+                
                 font-medium
                 leading-[0.94]
                 tracking-[-0.045em]
@@ -122,13 +125,13 @@ export default function HumanSection() {
 
             {/* Description */}
             <p
-              className="
-                mt-7
+              className="mt-7
+                text-[clamp(1rem,1.15vw,1.125rem)]
                 max-w-[570px]
-                text-[16px]
-                leading-[1.75]
+                
+                leading-[1.65]
                 text-[#0B2A52]/70
-                sm:text-[18px]
+                
               "
             >
               We're building a different kind of digital growth partner—
@@ -139,7 +142,7 @@ export default function HumanSection() {
             {/* ===================================================
                 VALUES
             =================================================== */}
-            <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-3 sm:gap-4">
+            <div className="mt-9 grid grid-cols-1 gap-5 sm:mt-10 sm:grid-cols-3 sm:gap-5">
 
               {values.map((item) => {
                 const Icon = item.icon;
@@ -167,11 +170,11 @@ export default function HumanSection() {
                     </div>
 
                     <div className="sm:mt-3">
-                      <h3 className="text-[14px] font-semibold">
+                      <h3 className="text-[clamp(1.15rem,2vw,1.5rem)] leading-[1.2] font-semibold">
                         {item.title}
                       </h3>
 
-                      <p className="mt-1 max-w-[145px] text-[11px] leading-[1.55] text-[#0B2A52]/55">
+                      <p className="mt-1 max-w-[145px] text-[clamp(0.95rem,1.05vw,1.05rem)] leading-[1.55] text-[#0B2A52]/55">
                         {item.text}
                       </p>
                     </div>
@@ -190,9 +193,10 @@ export default function HumanSection() {
             className="
               relative
               flex
-              min-h-[480px]
+              min-h-0
               items-center
               justify-center
+              sm:min-h-0
               lg:min-h-[620px]
             "
           >
@@ -230,32 +234,31 @@ export default function HumanSection() {
       ========================================================= */}
       <div className="">
 
-        <div className="mx-auto max-w-[1320px] px-1 py-5 sm:px-8 lg:px-1 lg:py-5">
+        <div className="mx-auto max-w-[1320px] px-4 py-2 sm:px-6 sm:py-5 md:px-8 lg:px-8 lg:py-5">
 
           {/* Heading */}
           <div className="mb-12 text-center">
 
-            <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[#C6A77A]">
+            <p className="text-[clamp(1rem,1.15vw,1.125rem)] leading-[1.65]  font-semibold uppercase tracking-[0.22em] ">
               The People Behind The Work
             </p>
 
             <h3
-              className="
-                mt-4
+              className="mt-4 font-serif text-[clamp(1.8rem,3.2vw,3rem)] leading-[0.98]
                 font-serif
-                text-[clamp(2.2rem,4vw,3.8rem)]
+                
                 font-medium
                 leading-[0.98]
                 tracking-[-0.04em]
               "
             >
               The people who{" "}
-              <span className=" text-[#C6A77A]">
+              <span className="italic text-[#C6A77A]">
                 make it happen.
               </span>
             </h3>
 
-            <p className="mx-auto mt-5 max-w-[560px] text-sm leading-7 text-[#0B2A52]/55">
+            <p className="mx-auto mt-5 max-w-[560px] text-[clamp(1rem,1.15vw,1.125rem)] leading-7 text-[#0B2A52]/55">
               Small team. Senior thinking. No unnecessary layers between
               the idea and the work.
             </p>
@@ -281,10 +284,10 @@ export default function HumanSection() {
                 "
               >
 
-                <div className="grid grid-cols-[43%_57%]">
+                <div className="grid grid-cols-1 md:grid-cols-[42%_58%]">
 
                   {/* Image */}
-                  <div className="relative min-h-[300px] overflow-hidden sm:min-h-[350px]">
+                  <div className="relative aspect-[4/5] overflow-hidden sm:aspect-[4/5] md:aspect-auto md:min-h-[350px]">
                     <Image
                       src={person.image}
                       alt={person.name}
@@ -301,7 +304,7 @@ export default function HumanSection() {
 
 
                   {/* Content */}
-                  <div className="flex min-h-[300px] flex-col justify-between p-5 sm:min-h-[350px] sm:p-7">
+                  <div className="flex min-h-0 flex-col justify-between p-5 sm:min-h-[320px] sm:p-6 md:min-h-[350px] md:p-7">
 
                     <div>
 
@@ -310,10 +313,9 @@ export default function HumanSection() {
                       </span>
 
                       <h4
-                        className="
-                          mt-3
+                        className="mt-3 font-serif text-[clamp(1.5rem,2.4vw,2rem)] leading-tight
                           font-serif
-                          text-[22px]
+                          
                           leading-tight
                           tracking-[-0.025em]
                         "
@@ -321,13 +323,13 @@ export default function HumanSection() {
                         {person.name}
                       </h4>
 
-                      <p className="mt-1 text-[12px] font-medium leading-5 text-[#D18F42]">
+                      <p className="mt-1 text-[clamp(0.95rem,1.05vw,1.05rem)] font-medium leading-5 ">
                         {person.role}
                       </p>
 
                       <div className="mt-5 h-[2px] w-8 bg-[#D59A52]" />
 
-                      <p className="mt-5 max-w-[230px] text-[12px] leading-[1.7] text-[#0B2A52]/60">
+                      <p className="mt-5 max-w-[230px] text-[clamp(0.95rem,1.05vw,1.05rem)] leading-[1.7] text-[#0B2A52]/60">
                         {person.description}
                       </p>
 
@@ -377,7 +379,7 @@ export default function HumanSection() {
               className="
                 flex
                 flex-col
-                gap-4
+                gap-3
                 rounded-2xl
                 bg-[#F7F8F9]
                 px-6
@@ -406,7 +408,7 @@ export default function HumanSection() {
               </div>
 
               {/* Main text */}
-              <p className="text-[13px] font-semibold leading-6 sm:text-[14px]">
+              <p className="text-[clamp(1rem,1.15vw,1.125rem)] font-semibold leading-6 ">
                 We work best with teams who value honesty,
                 collaboration and growth.
               </p>
@@ -415,7 +417,7 @@ export default function HumanSection() {
               <span className="hidden h-5 w-px bg-[#0B2A52]/15 md:block" />
 
               {/* Secondary */}
-              <p className="text-[12px] leading-6 text-[#0B2A52]/50">
+              <p className="text-[clamp(1rem,1.15vw,1.125rem)] leading-6 text-[#0B2A52]/50">
                 If that's you, we'll get along just fine.
               </p>
 

@@ -216,27 +216,31 @@ export default function ServicesSection() {
             <span className="h-px w-10 bg-[#B79A72]" />
           </div>
 
-          {/* Heading */}
+        {/* Heading */}
 
-          <h2
-            className="font-[var(--font-new-york)] text-4xl font-medium leading-[1.02] tracking-[-0.035em] sm:text-4xl md:text-5xl lg:text-[58px]"
-            style={{ color: BRAND }}
-          >
-            What Could We Do With Your Brand?
-            <br />
-          </h2>
+<h2
+  className="font-[var(--font-new-york)] text-4xl font-medium leading-[1.02] tracking-[-0.035em] sm:text-4xl md:text-5xl lg:text-[48px]"
+  style={{ color: BRAND }}
+>
+  Digital Marketing Services
+  <br />
+  <span className="text-[#C6A77A]">
+  That Drive Real Growth
+  </span>
+</h2>
 
-          {/* Description */}
+{/* Description */}
 
-          <p
-            className="mx-auto mt-5 max-w-2xl text-base leading-7 sm:mt-6 sm:text-lg sm:leading-8"
-            style={{ color: "#64748B" }}
-          >
-            From strategy to execution, we build the right digital
-            systems to increase visibility, attract the right audience,
-            and turn attention into meaningful business growth.
-          </p>
-        </div>
+<p
+  className="mx-auto mt-5 max-w-3xl text-base leading-7 sm:mt-6 sm:text-lg sm:leading-8"
+  style={{ color: "#64748B" }}
+>
+  SHARPRAYS is a digital marketing agency helping businesses increase
+  online visibility, attract qualified audiences, and turn attention
+  into measurable growth. Our services include SEO, social media
+  marketing, performance marketing, content marketing, web
+  development, digital PR, video and creative, and AI marketing.
+</p>        </div>
 
         {/* ===================================================
             SERVICE GRID

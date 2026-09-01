@@ -563,15 +563,15 @@ export default function HookSection() {
 {/* Heading */}
 
 <h2
-  className="
+  className="text-[clamp(2.5rem,5vw,4.5rem)] leading-[0.98] 
     max-w-[700px]
     font-[var(--font-editorial)]
-    text-[clamp(2.15rem,7vw,4.5rem)]
+    
     font-normal
     leading-[0.92]
     tracking-[-0.045em]
-    text-[#0B2A52]
-    sm:text-[clamp(2.5rem,6vw,4.5rem)]
+    
+    
   "
 >
   Why isn't your
@@ -605,13 +605,13 @@ export default function HookSection() {
   />
 
   <p
-    className="
+    className="text-[clamp(1rem,1.15vw,1.125rem)] leading-[1.65] 
       max-w-[360px]
-      text-[10px]
+      
       leading-[1.45]
-      text-[#344054]
-      sm:text-xs
-      md:text-sm
+      
+      
+      
       md:leading-5
     "
   >
@@ -719,15 +719,15 @@ export default function HookSection() {
                           {/* Title */}
 
                           <h3
-                            className="
+                            className="text-[clamp(1.5rem,2.4vw,2rem)] leading-[1.12] 
                               max-w-[780px]
                               font-[var(--font-new-york)]
-                              text-[clamp(2.2rem,8vw,5rem)]
+                              
                               font-normal
                               leading-[0.92]
                               tracking-[-0.05em]
-                              text-[#0B2A52]
-                              sm:text-[clamp(2.8rem,7vw,5rem)]
+                              
+                              
                             "
                           >
                             {
@@ -738,13 +738,13 @@ export default function HookSection() {
                           {/* Subtitle */}
 
                           <p
-                            className="
+                            className="text-[clamp(1rem,1.15vw,1.125rem)] leading-[1.65] 
                               mt-3
                               max-w-[500px]
                               font-[var(--font-editorial)]
-                              text-[clamp(1.2rem,5vw,2rem)]
+                              
                               leading-[1.05]
-                              text-[#6285AD]
+                              
                               sm:mt-4
                             "
                           >
@@ -756,17 +756,17 @@ export default function HookSection() {
                           {/* Description */}
 
                           <p
-                            className="
+                            className="text-[clamp(1rem,1.15vw,1.125rem)] leading-[1.65] 
                               mt-4
                               max-w-[440px]
-                              text-[11px]
+                              
                               leading-[1.5]
-                              text-[#344054]/80
+                              /80
                               sm:mt-5
-                              sm:text-sm
+                              
                               md:mt-6
                               md:max-w-[500px]
-                              md:text-base
+                              
                               md:leading-6
                             "
                           >
@@ -1183,35 +1183,35 @@ export default function HookSection() {
             "
           >
             <p
-              className="
+              className="text-[clamp(1rem,1.15vw,1.125rem)] leading-[1.65] 
                 mb-3
-                text-[8px]
+                
                 uppercase
                 tracking-[0.25em]
-                text-[#C6A77A]
+                
                 sm:mb-4
-                sm:text-[9px]
-                md:text-xs
+                
+                
               "
             >
               Enough of the problems.
             </p>
 
             <h3
-              className="
+              className="text-[clamp(1.5rem,2.4vw,2rem)] leading-[1.12] 
                 font-[var(--font-editorial)]
-                text-[clamp(3rem,14vw,7.5rem)]
+                
                 font-normal
                 leading-[0.88]
                 tracking-[-0.055em]
-                text-[#0B2A52]
-                sm:text-[clamp(2.5rem,8vw,5.5rem)]
+                
+                
               "
             >
               That's where
               <br />
 
-              <span className="text-[#6285AD]">
+              <span className="text-[#C6A77A]">
                 we come in.
               </span>
             </h3>

@@ -189,7 +189,7 @@ export default function YourMethodSection() {
                 relative
                 z-30
                 font-[var(--font-new-york)]
-                text-[clamp(3.3rem,5vw,5rem)]
+              text-[clamp(1.8rem,3.2vw,3rem)]
                 font-medium
                 leading-[0.98]
                 tracking-[-0.06em]

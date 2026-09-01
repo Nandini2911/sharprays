@@ -139,36 +139,57 @@ export default function Hero() {
               {/* =================================================
                   HEADLINE
               ================================================= */}
+{/* =================================================
+    SEO H1
+================================================= */}
 
-              <h1
-                style={newYorkFont}
-                className="
-                  max-w-[720px]
-                  text-balance
-                  text-[42px]
-                  font-medium
-                  leading-[0.96]
-                  tracking-[-0.045em]
-                  text-[#0B2A52]
-                  sm:text-[44px]
-                  sm:leading-[0.95]
-                  sm:tracking-[-0.05em]
-                  md:text-[56px]
-                  lg:text-[66px]
-                  lg:leading-[0.94]
-                  xl:text-[80px]
-                  2xl:text-[86px]
-                "
-              >
-                Make Your Brand
+<h1
+  className="
+    mb-4
+    text-[14px]
+    font-medium
+    tracking-[-0.01em]
+    text-[#0B2A52]
+    sm:mb-5
+    sm:text-[16px]
+    md:text-[18px]
+  "
+>
+  Digital Marketing Agency for Brands Ready to Grow
+</h1>
 
-                <br />
+{/* =================================================
+    EXISTING HEADLINE
+================================================= */}
 
-                <span className="text-[#C6A77A]">
-                  Impossible to Ignore.
-                </span>
-              </h1>
+<h2
+  style={newYorkFont}
+  className="
+    max-w-[720px]
+    text-balance
+    text-[42px]
+    font-light
+    leading-[0.96]
+    tracking-[-0.045em]
+    text-[#0B2A52]
+    sm:text-[44px]
+    sm:leading-[0.95]
+    sm:tracking-[-0.05em]
+    md:text-[50px]
+    lg:text-[66px]
+    lg:leading-[0.94]
+    xl:text-[75px]
+    2xl:text-[80px]
+  "
+>
+  Make Your Brand
 
+  <br />
+
+  <span className="text-[#C6A77A]">
+    Impossible to Ignore.
+  </span>
+</h2>
               {/* =================================================
                   DESCRIPTION
               ================================================= */}

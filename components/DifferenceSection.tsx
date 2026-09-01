@@ -226,7 +226,7 @@ export default function DifferenceSection() {
                   relative
                   z-30
                   font-[var(--font-new-york)]
-                  text-[clamp(2.8rem,5vw,5.4rem)]
+                 text-[clamp(1.8rem,3.2vw,3rem)]
                   font-medium
                   leading-[0.98]
                   tracking-[-0.06em]
@@ -311,10 +311,10 @@ export default function DifferenceSection() {
             "
           >
             <p
-              className="
-                text-base
+              className="text-[clamp(1rem,1.15vw,1.125rem)] leading-[1.65] 
+                
                 leading-7
-                sm:text-lg
+                
                 sm:leading-8
               "
               style={{
@@ -333,11 +333,11 @@ export default function DifferenceSection() {
             </p>
 
             <p
-              className="
+              className="text-[clamp(1rem,1.15vw,1.125rem)] leading-[1.65] 
                 mt-1
-                text-base
+                
                 leading-7
-                sm:text-lg
+                
                 sm:leading-8
               "
               style={{
@@ -548,18 +548,18 @@ export default function DifferenceSection() {
                       {/* Title */}
 
                       <h3
-                        className={`
+                        className={`text-[clamp(1.5rem,2.4vw,2rem)] leading-[1.12] 
                           mt-3
                           font-[var(--font-new-york)]
-                          text-[23px]
+                          
                           font-semibold
                           leading-[1]
                           tracking-[-0.025em]
-                          xl:text-[25px]
+                          
                           ${
                             isGrowth
                               ? "text-white"
-                              : "text-[#0B2A52]"
+                              : ""
                           }
                         `}
                       >
@@ -581,14 +581,14 @@ export default function DifferenceSection() {
                       {/* Description */}
 
                       <p
-                        className={`
+                        className={`text-[clamp(1rem,1.15vw,1.125rem)] leading-[1.65] 
                           mt-5
-                          text-[14px]
+                          
                           leading-6
                           ${
                             isGrowth
                               ? "text-white/75"
-                              : "text-[#66758A]"
+                              : ""
                           }
                         `}
                       >
@@ -763,13 +763,13 @@ export default function DifferenceSection() {
                 {/* Statement */}
 
                 <p
-                  className="
+                  className="text-[clamp(1rem,1.15vw,1.125rem)] leading-[1.65] 
                     font-[var(--font-new-york)]
-                    text-base
+                    
                     font-semibold
                     tracking-[-0.01em]
-                    text-[#0B2A52]
-                    sm:text-lg
+                    
+                    
                   "
                 >
                   It&apos;s not just our process.
@@ -793,10 +793,10 @@ export default function DifferenceSection() {
                 {/* Ending */}
 
                 <p
-                  className="
-                    text-sm
-                    text-[#66758A]
-                    sm:text-[15px]
+                  className="text-[clamp(1rem,1.15vw,1.125rem)] leading-[1.65] 
+                    
+                    
+                    
                   "
                 >
                   Strategy. Creativity. Data.
