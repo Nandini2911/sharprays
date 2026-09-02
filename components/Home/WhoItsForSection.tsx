@@ -270,26 +270,26 @@ export default function WhoItsForSection() {
             >
               <div>
                 <p
-                  className="text-[clamp(1rem,1.15vw,1.125rem)] leading-[1.65] 
-                    
+                  className="
+                    text-[9px]
                     font-bold
                     uppercase
                     tracking-[0.25em]
-                    
+                    text-[#C6A77A]
                   "
                 >
                   The right fit
                 </p>
 
                 <h3
-                  className="text-[clamp(1.5rem,2.4vw,2rem)] leading-[1.12] 
+                  className="
                     mt-2
                     font-[var(--font-new-york)]
-                    
+                    text-3xl
                     font-semibold
                     tracking-[-0.04em]
-                    
-                    
+                    text-[#0B2A52]
+                    sm:text-4xl
                   "
                 >
                   You&apos;re probably a good fit if...
@@ -373,15 +373,15 @@ export default function WhoItsForSection() {
                   {/* Text */}
 
                   <p
-                    className="text-[clamp(1rem,1.15vw,1.125rem)] leading-[1.65] 
+                    className="
                       max-w-[620px]
-                      
+                      text-[14px]
                       leading-6
-                      
+                      text-[#344054]
                       transition-colors
                       duration-300
-                      group-hover:
-                      
+                      group-hover:text-[#0B2A52]
+                      sm:text-[15px]
                     "
                   >
                     {item}
@@ -500,12 +500,12 @@ export default function WhoItsForSection() {
                 </div>
 
                 <p
-                  className="text-[clamp(1rem,1.15vw,1.125rem)] leading-[1.65] 
-                    
+                  className="
+                    text-[9px]
                     font-bold
                     uppercase
                     tracking-[0.25em]
-                    
+                    text-[#C6A77A]
                   "
                 >
                   And that&apos;s okay
@@ -513,15 +513,15 @@ export default function WhoItsForSection() {
               </div>
 
               <p
-                className="text-[clamp(1rem,1.15vw,1.125rem)] leading-[1.65] 
+                className="
                   mt-12
                   max-w-[390px]
                   font-[var(--font-new-york)]
-                  
+                  text-2xl
                   leading-[1.25]
                   tracking-[-0.03em]
                   text-white
-                  
+                  sm:text-3xl
                 "
               >
                 If you&apos;re looking for someone to simply
@@ -531,17 +531,17 @@ export default function WhoItsForSection() {
               <div className="mt-8 h-px w-12 bg-[#C6A77A]" />
 
               <h3
-                className="text-[clamp(1.5rem,2.4vw,2rem)] leading-[1.12] 
+                className="
                   mt-7
                   max-w-[390px]
                   font-[var(--font-new-york)]
-                  
+                  text-4xl
                   font-medium
                   italic
                   leading-[1]
                   tracking-[-0.045em]
-                  
-                  
+                  text-[#C6A77A]
+                  sm:text-5xl
                 "
               >
                 We&apos;re probably
@@ -602,13 +602,13 @@ export default function WhoItsForSection() {
           "
         >
           <p
-            className="text-[clamp(1rem,1.15vw,1.125rem)] leading-[1.65] 
+            className="
               font-[var(--font-new-york)]
-              
+              text-lg
               leading-7
               tracking-[-0.01em]
-              
-              
+              text-[#0B2A52]
+              sm:text-xl
             "
           >
             The right partnership starts with knowing{" "}

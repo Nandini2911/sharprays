@@ -134,7 +134,7 @@ export default function FinalCTASection() {
               mx-auto
               max-w-[950px]
               font-[var(--font-new-york)]
-              text-[clamp(3.2rem,5vw,5rem)]
+              text-[clamp(3.2rem,7vw,7rem)]
               font-medium
               leading-[0.9]
               tracking-[-0.07em]
@@ -285,11 +285,11 @@ export default function FinalCTASection() {
           <span className="h-px w-6 bg-[#D8DEE6]" />
 
           <p
-            className="text-[clamp(1rem,1.15vw,1.125rem)] leading-[1.65] 
-              
+            className="
+              text-[11px]
               leading-5
-              
-              
+              text-[#98A2B3]
+              sm:text-xs
             "
           >
             No pressure. No sales pitch. Just a conversation

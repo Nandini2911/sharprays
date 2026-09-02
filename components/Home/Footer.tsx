@@ -279,13 +279,13 @@ export default function Footer() {
             {/* Description */}
 
             <p
-              className="text-[clamp(1rem,1.15vw,1.125rem)] leading-[1.65] 
+              className="
                 mt-5
                 max-w-[270px]
-                
+                text-[13px]
                 leading-[1.75]
-                /65
-                
+                text-[#0B2A52]/65
+                sm:text-[14px]
               "
             >
               Digital growth,
@@ -428,13 +428,13 @@ export default function Footer() {
             {/* Description */}
 
             <p
-              className="text-[clamp(1rem,1.15vw,1.125rem)] leading-[1.65] 
+              className="
                 mt-6
                 max-w-[270px]
-                
+                text-[12px]
                 leading-[1.75]
-                /60
-                
+                text-[#0B2A52]/60
+                sm:text-[13px]
               "
             >
               Get insights, ideas, and strategies
@@ -550,7 +550,7 @@ export default function Footer() {
           {/* Center */}
 
           <p
-            className="text-[clamp(1rem,1.15vw,1.125rem)] leading-[1.65] 
+            className="
               order-3
               flex
               items-center
@@ -721,13 +721,13 @@ function FooterHeading({
 }) {
   return (
     <p
-      className="text-[clamp(1rem,1.15vw,1.125rem)] leading-[1.65] 
-        
+      className="
+        text-[11px]
         font-semibold
         uppercase
         tracking-[0.2em]
-        
-        
+        text-[#0B2A52]
+        sm:text-[12px]
       "
     >
       {children}

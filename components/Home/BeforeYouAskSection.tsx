@@ -42,10 +42,9 @@ export default function BeforeYouAskSection() {
         relative
         overflow-hidden
         bg-white
-        pt-20
-        sm:pt-24
-        lg:pt-28
-        pb-0
+        py-20
+        sm:py-24
+        lg:py-28
       "
     >
       <div
@@ -108,18 +107,18 @@ export default function BeforeYouAskSection() {
             </div>
 
             <h2
-              className="text-[clamp(2.5rem,5vw,4.5rem)] leading-[0.98] 
+              className="
                 mt-7
                 max-w-[520px]
                 font-[var(--font-new-york)]
-                
+                text-[clamp(3rem,4vw,4rem)]
                 font-medium
                 leading-[0.9]
                 tracking-[-0.065em]
                 text-[#0B2A52]
               "
             >
-              Before You{"  "}
+              Before You{" "}
               <span className="italic text-[#C6A77A]">
                 Ask...
               </span>
@@ -247,7 +246,24 @@ export default function BeforeYouAskSection() {
                   <div className="flex items-center gap-5">
                     {/* NUMBER */}
 
-                   
+                    <span
+                      className={`
+                        w-7
+                        shrink-0
+                        text-[10px]
+                        font-semibold
+                        tracking-[0.15em]
+                        transition-colors
+                        duration-300
+                        ${
+                          isActive
+                            ? "text-[#C6A77A]"
+                            : "text-[#0B2A52]/30"
+                        }
+                      `}
+                    >
+                      0{index + 1}
+                    </span>
 
                     {/* QUESTION */}
 
@@ -361,7 +377,16 @@ export default function BeforeYouAskSection() {
                   Answer
                 </span>
 
-                
+                <span
+                  className="
+                    text-[10px]
+                    font-semibold
+                    tracking-[0.16em]
+                    text-white/30
+                  "
+                >
+                  0{activeIndex + 1}
+                </span>
               </div>
 
               <div className="mt-12">
@@ -381,15 +406,15 @@ export default function BeforeYouAskSection() {
                   }}
                 >
                   <h3
-                    className="text-[clamp(1.5rem,2.4vw,2rem)] leading-[1.12] 
+                    className="
                       max-w-[440px]
                       font-[var(--font-new-york)]
-                      
+                      text-[28px]
                       font-medium
                       leading-[1.15]
                       tracking-[-0.03em]
                       text-white
-                      
+                      xl:text-[34px]
                     "
                   >
                     {faqs[activeIndex].question}
@@ -398,13 +423,13 @@ export default function BeforeYouAskSection() {
                   <div className="mt-7 h-px w-10 bg-[#C6A77A]" />
 
                   <p
-                    className="text-[clamp(1rem,1.15vw,1.125rem)] leading-[1.65] 
+                    className="
                       mt-7
                       max-w-[440px]
-                      
+                      text-sm
                       leading-7
                       text-white/60
-                      
+                      xl:text-[15px]
                     "
                   >
                     {faqs[activeIndex].answer}
@@ -418,8 +443,8 @@ export default function BeforeYouAskSection() {
             <div className="relative z-10 flex items-end justify-between">
               <div>
                 <p
-                  className="text-[clamp(1rem,1.15vw,1.125rem)] leading-[1.65] 
-                    
+                  className="
+                    text-[9px]
                     uppercase
                     tracking-[0.2em]
                     text-white/30
@@ -429,9 +454,9 @@ export default function BeforeYouAskSection() {
                 </p>
 
                 <p
-                  className="text-[clamp(1rem,1.15vw,1.125rem)] leading-[1.65] 
+                  className="
                     mt-1
-                    
+                    text-[9px]
                     uppercase
                     tracking-[0.2em]
                     text-white/30
@@ -441,6 +466,17 @@ export default function BeforeYouAskSection() {
                 </p>
               </div>
 
+              <span
+                className="
+                  font-[var(--font-new-york)]
+                  text-5xl
+                  italic
+                  leading-none
+                  text-[#C6A77A]/70
+                "
+              >
+                0{activeIndex + 1}
+              </span>
             </div>
           </div>
         </div>
@@ -449,7 +485,7 @@ export default function BeforeYouAskSection() {
             MOBILE ANSWER
         ===================================================== */}
 
-        <div className="mt-4 pb-0 lg:hidden">
+        <div className="mt-4 lg:hidden">
           <motion.div
             key={activeIndex}
             initial={{
@@ -496,10 +532,10 @@ export default function BeforeYouAskSection() {
             </div>
 
             <h3
-              className="text-[clamp(1.5rem,2.4vw,2rem)] leading-[1.12] 
+              className="
                 mt-8
                 font-[var(--font-new-york)]
-                
+                text-2xl
                 font-medium
                 leading-tight
                 tracking-[-0.03em]
@@ -512,9 +548,9 @@ export default function BeforeYouAskSection() {
             <div className="mt-5 h-px w-9 bg-[#C6A77A]" />
 
             <p
-              className="text-[clamp(1rem,1.15vw,1.125rem)] leading-[1.65] 
+              className="
                 mt-5
-                
+                text-sm
                 leading-7
                 text-white/60
               "
