@@ -2,6 +2,9 @@
 
 import AboutHero from "@/components/About/AboutHero";
 import BeginningSection from "@/components/About/BeginningSection";
+import BeliefSection from "@/components/About/BeliefSection";
+import HowWeWorkSection from "@/components/About/HowWeWorkSection";
+import TheWayWeThink from "@/components/About/TheWayWeThink";
 import WhatSharpraysIs from "@/components/About/WhatSharpraysIs";
 import Footer from "@/components/Home/Footer";
 
@@ -14,8 +17,11 @@ export default function About() {
       <Navbar />
       <AboutHero/>
       <BeginningSection/>
-   
+      <BeliefSection/>
       <WhatSharpraysIs/>
+      <HowWeWorkSection/>
+      <TheWayWeThink/>
+
           <Footer/>
       
     </main>

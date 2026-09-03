@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
@@ -34,285 +35,373 @@ const pillars = [
 const ease = [0.22, 1, 0.36, 1] as const;
 
 export default function WhatSharpraysIs() {
+  const [width, setWidth] = useState(1440);
+
+  useEffect(() => {
+    const updateWidth = () => setWidth(window.innerWidth);
+
+    updateWidth();
+    window.addEventListener("resize", updateWidth);
+
+    return () => {
+      window.removeEventListener("resize", updateWidth);
+    };
+  }, []);
+
+  const mobile = width < 600;
+  const tablet = width >= 600 && width < 1024;
+  const smallLaptop = width >= 1024 && width < 1280;
+  const desktop = width >= 1280 && width < 1800;
+  const largeDesktop = width >= 1800 && width < 2560;
+  const ultraWide = width >= 2560;
+
+  const horizontalPadding = mobile
+    ? "20px"
+    : tablet
+    ? "40px"
+    : smallLaptop
+    ? "55px"
+    : desktop
+    ? "70px"
+    : largeDesktop
+    ? "90px"
+    : "120px";
+
+  const sectionPaddingTop = mobile
+    ? "52px"
+    : tablet
+    ? "65px"
+    : smallLaptop
+    ? "72px"
+    : desktop
+    ? "78px"
+    : largeDesktop
+    ? "88px"
+    : "98px";
+
+  const sectionPaddingBottom = mobile
+    ? "45px"
+    : tablet
+    ? "52px"
+    : smallLaptop
+    ? "60px"
+    : desktop
+    ? "68px"
+    : largeDesktop
+    ? "76px"
+    : "84px";
+
+  const pillarTitleSize = mobile
+    ? "26px"
+    : tablet
+    ? "27px"
+    : smallLaptop
+    ? "28px"
+    : desktop
+    ? "30px"
+    : largeDesktop
+    ? "33px"
+    : "36px";
+
+  const descriptionSize = mobile
+    ? "13px"
+    : tablet
+    ? "14px"
+    : smallLaptop
+    ? "14px"
+    : desktop
+    ? "15px"
+    : largeDesktop
+    ? "16px"
+    : "17px";
+
+  const imageHeight = mobile
+    ? "145px"
+    : tablet
+    ? "170px"
+    : smallLaptop
+    ? "175px"
+    : desktop
+    ? "185px"
+    : largeDesktop
+    ? "205px"
+    : "225px";
+
   return (
     <section
       id="what-sharprays-is"
-      className="
-        relative
-        overflow-hidden
-        bg-white
-        text-[#0B2A52]
-        pt-20
-       pb-10
-    sm:pt-24
-    sm:pb-12
-    lg:pt-28
-    lg:pb-14
-    xl:pt-32
-    xl:pb-16
-      "
+      style={{
+        position: "relative",
+        width: "100%",
+        overflow: "hidden",
+        background: "#ffffff",
+        color: "#0B2A52",
+        padding: `${sectionPaddingTop} ${horizontalPadding} ${sectionPaddingBottom}`,
+        boxSizing: "border-box",
+      }}
     >
-      {/* =========================================================
-          SUBTLE BACKGROUND DETAILS
-      ========================================================= */}
+      {/* =========================
+          SUBTLE BACKGROUND DETAIL
+      ========================== */}
 
       <div
         aria-hidden="true"
-        className="
-          pointer-events-none
-          absolute
-          -right-[360px]
-          -top-[280px]
-          h-[760px]
-          w-[760px]
-          rounded-full
-          border
-          border-[#C6A77A]/[0.035]
-        "
+        style={{
+          position: "absolute",
+          right: mobile ? "-260px" : ultraWide ? "-460px" : "-330px",
+          top: mobile ? "-240px" : ultraWide ? "-350px" : "-250px",
+          width: mobile ? "460px" : ultraWide ? "900px" : "700px",
+          height: mobile ? "460px" : ultraWide ? "900px" : "700px",
+          borderRadius: "50%",
+          border: "1px solid rgba(198,167,122,0.035)",
+          pointerEvents: "none",
+        }}
       />
 
       <div
         aria-hidden="true"
-        className="
-          pointer-events-none
-          absolute
-          -bottom-[420px]
-          -left-[300px]
-          h-[700px]
-          w-[700px]
-          rounded-full
-          border
-          border-[#0B2A52]/[0.025]
-        "
+        style={{
+          position: "absolute",
+          left: mobile ? "-280px" : "-330px",
+          bottom: mobile ? "-300px" : "-400px",
+          width: mobile ? "500px" : "680px",
+          height: mobile ? "500px" : "680px",
+          borderRadius: "50%",
+          border: "1px solid rgba(11,42,82,0.025)",
+          pointerEvents: "none",
+        }}
       />
 
-      {/* =========================================================
+      {/* =========================
           MAIN CONTAINER
-      ========================================================= */}
+      ========================== */}
 
       <div
-        className="
-          relative
-          z-10
-          mx-auto
-          max-w-[1380px]
-          px-6
-          sm:px-10
-          lg:px-14
-          xl:px-20
-        "
+        style={{
+          position: "relative",
+          zIndex: 10,
+          width: "100%",
+          maxWidth: ultraWide ? "1650px" : "1380px",
+          margin: "0 auto",
+          boxSizing: "border-box",
+        }}
       >
-        {/* =======================================================
-            CENTERED HEADER
-        ======================================================= */}
+        {/* =========================
+            HEADER
+        ========================== */}
 
-        <div className="relative flex flex-col items-center text-center">
-
-          {/* Section Label */}
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            textAlign: "center",
+          }}
+        >
+          {/* Label */}
 
           <motion.div
-            initial={{
-              opacity: 0,
-              y: 15,
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.4 }}
+            transition={{ duration: 0.65, ease }}
+            style={{
+              marginBottom: mobile ? "18px" : "22px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: mobile ? "10px" : "14px",
             }}
-            whileInView={{
-              opacity: 1,
-              y: 0,
-            }}
-            viewport={{
-              once: true,
-              amount: 0.4,
-            }}
-            transition={{
-              duration: 0.7,
-              ease,
-            }}
-            className="
-              mb-7
-              flex
-              items-center
-              justify-center
-              gap-4
-              sm:mb-8
-            "
           >
             <span
-              className="
-                h-px
-                w-10
-                bg-[#C6A77A]
-                sm:w-12
-              "
+              style={{
+                width: mobile ? "22px" : "38px",
+                height: "1px",
+                background: "#C6A77A",
+                flexShrink: 0,
+              }}
             />
 
             <span
-              className="
-                whitespace-nowrap
-                text-[9px]
-                font-semibold
-                uppercase
-                tracking-[0.24em]
-                text-[#C6A77A]
-                sm:text-[10px]
-              "
+              style={{
+                whiteSpace: "nowrap",
+                fontSize: mobile ? "8px" : "9px",
+                fontWeight: 600,
+                textTransform: "uppercase",
+                letterSpacing: mobile ? "0.17em" : "0.23em",
+                color: "#C6A77A",
+              }}
             >
               What SHARPRAYS Actually Is
             </span>
 
             <span
-              className="
-                h-px
-                w-10
-                bg-[#C6A77A]
-                sm:w-12
-              "
+              style={{
+                width: mobile ? "22px" : "38px",
+                height: "1px",
+                background: "#C6A77A",
+                flexShrink: 0,
+              }}
             />
           </motion.div>
 
-          {/* =====================================================
-              MAIN HEADING
-          ===================================================== */}
+          {/* Heading */}
 
           <motion.h2
-            initial={{
-              opacity: 0,
-              y: 30,
+            initial={{ opacity: 0, y: 22 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.35 }}
+            transition={{ duration: 0.85, ease }}
+            style={{
+              margin: 0,
+              maxWidth: mobile
+                ? "340px"
+                : tablet
+                ? "650px"
+                : largeDesktop
+                ? "1000px"
+                : "900px",
+              fontFamily: "var(--font-new-york)",
+              fontSize: mobile
+                ? "33px"
+                : tablet
+                ? "40px"
+                : width >= 1800
+                ? "53px"
+                : "48px",
+              fontWeight: 500,
+              lineHeight: mobile ? 1 : 0.96,
+              letterSpacing: "-0.055em",
+              color: "#0B2A52",
             }}
-            whileInView={{
-              opacity: 1,
-              y: 0,
-            }}
-            viewport={{
-              once: true,
-              amount: 0.35,
-            }}
-            transition={{
-              duration: 0.95,
-              ease,
-            }}
-            className="
-              mx-auto
-              max-w-[1100px]
-              font-[var(--font-new-york)]
-          text-[clamp(1.8rem,3.2vw,3rem)]
-              font-medium
-              leading-[0.9]
-              tracking-[-0.065em]
-              text-[#0B2A52]
-            "
           >
-            So, What Is{"  "}
-            <span className=" text-[#C6A77A]">
+            So, What Is{" "}
+            <span
+              style={{
+                color: "#C6A77A",
+                fontStyle: "italic",
+              }}
+            >
               SHARPRAYS?
             </span>
           </motion.h2>
 
-          {/* =====================================================
-              DESCRIPTION
-          ===================================================== */}
+          {/* Description */}
 
           <motion.div
-            initial={{
-              opacity: 0,
-              y: 20,
-            }}
-            whileInView={{
-              opacity: 1,
-              y: 0,
-            }}
-            viewport={{
-              once: true,
-              amount: 0.3,
-            }}
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
             transition={{
-              duration: 0.8,
-              delay: 0.12,
+              duration: 0.75,
+              delay: 0.1,
               ease,
             }}
-            className="
-              mx-auto
-              mt-7
-              flex
-              max-w-[900px]
-              items-center
-              justify-center
-              gap-5
-              sm:mt-8
-              sm:gap-6
-            "
+            style={{
+              width: "100%",
+              maxWidth: ultraWide ? "1050px" : "850px",
+              marginTop: mobile ? "18px" : "24px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: mobile ? "0" : "16px",
+            }}
           >
-            {/* Left Gold Line */}
-
             <span
               aria-hidden="true"
-              className="
-                hidden
-                h-[58px]
-                w-px
-                shrink-0
-                bg-[#C6A77A]
-                sm:block
-              "
+              style={{
+                display: mobile ? "none" : "block",
+                width: "1px",
+                height: tablet ? "42px" : "50px",
+                background: "#C6A77A",
+                flexShrink: 0,
+              }}
             />
 
             <p
-              className="
-                max-w-[760px]
-                text-center
-                text-[15px]
-                leading-[1.8]
-                text-[#607087]
-                sm:text-[16px]
-                lg:text-[17px]
-              "
+              style={{
+                maxWidth: mobile
+                  ? "330px"
+                  : tablet
+                  ? "620px"
+                  : "730px",
+                margin: 0,
+                textAlign: "center",
+                fontSize: descriptionSize,
+                lineHeight: mobile ? 1.65 : 1.7,
+                color: "#607087",
+              }}
             >
               We’re a digital growth partner combining strategy,
               creativity, technology and performance to help ambitious
               businesses build something that lasts.
             </p>
 
-            {/* Right Gold Line */}
-
             <span
               aria-hidden="true"
-              className="
-                hidden
-                h-[58px]
-                w-px
-                shrink-0
-                bg-[#C6A77A]
-                sm:block
-              "
+              style={{
+                display: mobile ? "none" : "block",
+                width: "1px",
+                height: tablet ? "42px" : "50px",
+                background: "#C6A77A",
+                flexShrink: 0,
+              }}
             />
           </motion.div>
         </div>
 
-        {/* =======================================================
+        {/* =========================
             PILLARS
-        ======================================================= */}
+        ========================== */}
 
         <div
-          className="
-            mt-14
-            grid
-            grid-cols-1
-            gap-14
-            sm:mt-16
-            sm:grid-cols-2
-            sm:gap-x-10
-            sm:gap-y-16
-            lg:mt-20
-            lg:grid-cols-4
-            lg:gap-7
-            xl:gap-10
-          "
+          style={{
+            marginTop: mobile
+              ? "42px"
+              : tablet
+              ? "50px"
+              : smallLaptop
+              ? "58px"
+              : desktop
+              ? "64px"
+              : largeDesktop
+              ? "72px"
+              : "82px",
+
+            display: "grid",
+
+            gridTemplateColumns:
+              mobile
+                ? "1fr"
+                : tablet
+                ? "repeat(2, minmax(0, 1fr))"
+                : "repeat(4, minmax(0, 1fr))",
+
+            columnGap: mobile
+              ? "0"
+              : tablet
+              ? "28px"
+              : smallLaptop
+              ? "24px"
+              : desktop
+              ? "28px"
+              : largeDesktop
+              ? "36px"
+              : "44px",
+
+            rowGap: mobile
+              ? "42px"
+              : tablet
+              ? "52px"
+              : "0",
+          }}
         >
           {pillars.map((pillar, index) => (
             <motion.article
               key={pillar.number}
               initial={{
                 opacity: 0,
-                y: 35,
+                y: 25,
               }}
               whileInView={{
                 opacity: 1,
@@ -320,210 +409,210 @@ export default function WhatSharpraysIs() {
               }}
               viewport={{
                 once: true,
-                amount: 0.2,
+                amount: 0.18,
               }}
               transition={{
-                duration: 0.8,
-                delay: index * 0.1,
+                duration: 0.7,
+                delay: index * 0.08,
                 ease,
               }}
-              className="group relative min-w-0"
+              style={{
+                position: "relative",
+                minWidth: 0,
+              }}
             >
-              {/* =================================================
-                  NUMBER + LINE
-              ================================================= */}
+              {/* IMAGE */}
 
               <div
-                className="
-                  mb-5
-                  flex
-                  items-center
-                  justify-between
-                "
+                style={{
+                  position: "relative",
+                  width: "100%",
+                  height: imageHeight,
+                  overflow: "hidden",
+                }}
               >
-               
-
-                <span
-                  className="
-                    h-px
-                    w-8
-                    bg-[#0B2A52]/10
-                    transition-all
-                    duration-500
-                    group-hover:w-14
-                    group-hover:bg-[#C6A77A]/60
-                  "
-                />
-              </div>
-
-              {/* =================================================
-                  IMAGE
-              ================================================= */}
-
-              <div
-                className="
-                  relative
-                  h-[190px]
-                  w-full
-                  sm:h-[205px]
-                  lg:h-[185px]
-                  xl:h-[205px]
-                "
-              >
-                {/* Soft glow */}
+                {/* Very subtle glow */}
 
                 <div
                   aria-hidden="true"
-                  className="
-                    absolute
-                    left-1/2
-                    top-1/2
-                    h-[58%]
-                    w-[58%]
-                    -translate-x-1/2
-                    -translate-y-1/2
-                    rounded-full
-                    bg-[#C6A77A]/[0.025]
-                    blur-3xl
-                    transition-all
-                    duration-700
-                    group-hover:h-[72%]
-                    group-hover:w-[72%]
-                  "
+                  style={{
+                    position: "absolute",
+                    left: "50%",
+                    top: "50%",
+                    width: mobile ? "60%" : "55%",
+                    height: mobile ? "60%" : "55%",
+                    transform: "translate(-50%, -50%)",
+                    borderRadius: "50%",
+                    background: "rgba(198,167,122,0.025)",
+                    filter: "blur(30px)",
+                  }}
                 />
 
-                <Image
-                  src={pillar.image}
-                  alt={`${pillar.title} — SHARPRAYS`}
-                  fill
-                  sizes="
-                    (max-width: 640px) 100vw,
-                    (max-width: 1024px) 50vw,
-                    25vw
-                  "
-                  className="
-                    object-contain
-                    transition-transform
-                    duration-700
-                    ease-[cubic-bezier(0.22,1,0.36,1)]
-                    group-hover:scale-[1.055]
-                  "
-                />
+                <motion.div
+                  whileHover={{
+                    scale: 1.045,
+                  }}
+                  transition={{
+                    duration: 0.7,
+                    ease,
+                  }}
+                  style={{
+                    position: "absolute",
+                    inset: 0,
+                  }}
+                >
+                  <Image
+                    src={pillar.image}
+                    alt={`${pillar.title} — SHARPRAYS`}
+                    fill
+                    sizes={
+                      mobile
+                        ? "100vw"
+                        : tablet
+                        ? "50vw"
+                        : ultraWide
+                        ? "20vw"
+                        : "25vw"
+                    }
+                    style={{
+                      objectFit: "contain",
+                    }}
+                  />
+                </motion.div>
 
-                {/* Hover Arrow */}
+                {/* Number */}
 
-                <div
-                  className="
-                    absolute
-                    bottom-0
-                    right-0
-                    flex
-                    h-9
-                    w-9
-                    items-center
-                    justify-center
-                    rounded-full
-                    border
-                    border-[#0B2A52]/10
-                    bg-white
-                    text-[#0B2A52]
-                    transition-all
-                    duration-500
-                    group-hover:border-[#C6A77A]
-                    group-hover:bg-[#C6A77A]
-                    group-hover:text-white
-                  "
+                
+                
+
+
+                {/* Arrow */}
+
+                <motion.div
+                  whileHover={{
+                    y: -2,
+                    x: 2,
+                  }}
+                  style={{
+                    position: "absolute",
+                    right: 0,
+                    bottom: 0,
+                    width: mobile ? "32px" : "34px",
+                    height: mobile ? "32px" : "34px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    borderRadius: "50%",
+                    border: "1px solid rgba(11,42,82,0.10)",
+                    background: "#ffffff",
+                    color: "#0B2A52",
+                  }}
                 >
                   <ArrowUpRight
-                    size={14}
-                    strokeWidth={1.35}
-                    className="
-                      transition-transform
-                      duration-500
-                      group-hover:-translate-y-0.5
-                      group-hover:translate-x-0.5
-                    "
+                    size={mobile ? 12 : 13}
+                    strokeWidth={1.25}
                   />
-                </div>
+                </motion.div>
               </div>
 
-              {/* =================================================
-                  TITLE + DESCRIPTION
-              ================================================= */}
+              {/* CONTENT */}
 
-              <div className="mt-6">
+              <div
+                style={{
+                  marginTop: mobile ? "15px" : "18px",
+                }}
+              >
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "8px",
+                    marginBottom: mobile ? "8px" : "9px",
+                  }}
+                >
+                  
+
+                
+                </div>
+
                 <h3
-                  className="
-                    font-[var(--font-new-york)]
-                    text-[clamp(1.8rem,2.5vw,2.5rem)]
-                    font-medium
-                    leading-none
-                    tracking-[-0.05em]
-                    transition-transform
-                    duration-500
-                    group-hover:translate-x-1
-                  "
+                  style={{
+                    margin: 0,
+                    fontFamily: "var(--font-new-york)",
+                    fontSize: pillarTitleSize,
+                    fontWeight: 500,
+                    lineHeight: 1,
+                    letterSpacing: "-0.045em",
+                    color: "#0B2A52",
+                  }}
                 >
                   {pillar.title}
                 </h3>
 
-                <div className="mt-4 flex items-start gap-3">
+                <div
+                  style={{
+                    marginTop: mobile ? "10px" : "11px",
+                    display: "flex",
+                    alignItems: "flex-start",
+                    gap: "9px",
+                  }}
+                >
                   <span
-                    className="
-                      mt-[10px]
-                      h-px
-                      w-7
-                      shrink-0
-                      bg-[#C6A77A]/60
-                      transition-all
-                      duration-500
-                      group-hover:w-10
-                      group-hover:bg-[#C6A77A]
-                    "
+                    style={{
+                      marginTop: "8px",
+                      width: mobile ? "20px" : "24px",
+                      height: "1px",
+                      flexShrink: 0,
+                      background: "rgba(198,167,122,0.65)",
+                    }}
                   />
 
                   <p
-                    className="
-                      max-w-[220px]
-                      text-[13px]
-                      leading-6
-                      text-[#68778A]
-                      sm:text-[14px]
-                    "
+                    style={{
+                      maxWidth: mobile
+                        ? "280px"
+                        : tablet
+                        ? "235px"
+                        : ultraWide
+                        ? "280px"
+                        : "220px",
+                      margin: 0,
+                      fontSize: mobile ? "13px" : "13px",
+                      lineHeight: 1.65,
+                      color: "#68778A",
+                    }}
                   >
                     {pillar.text}
                   </p>
                 </div>
               </div>
 
-              {/* Bottom Hover Line */}
+              {/* Small hover line */}
 
-              <span
-                aria-hidden="true"
-                className="
-                  absolute
-                  -bottom-4
-                  left-0
-                  h-px
-                  w-0
-                  bg-[#C6A77A]
-                  transition-all
-                  duration-500
-                  group-hover:w-14
-                "
+              <motion.div
+                initial={{ width: 0 }}
+                whileHover={{ width: "100%" }}
+                transition={{ duration: 0.45, ease }}
+                style={{
+                  position: "absolute",
+                  left: 0,
+                  bottom: "-1px",
+                  height: "1px",
+                  background: "#C6A77A",
+                }}
               />
             </motion.article>
           ))}
         </div>
 
-        {/* =======================================================
-            BOTTOM STATEMENT
-        ======================================================= */}
+        {/* =========================
+            CLOSING STATEMENT
+        ========================== */}
 
         <motion.div
           initial={{
             opacity: 0,
-            y: 20,
+            y: 15,
           }}
           whileInView={{
             opacity: 1,
@@ -534,66 +623,90 @@ export default function WhatSharpraysIs() {
             amount: 0.25,
           }}
           transition={{
-            duration: 0.8,
+            duration: 0.7,
             ease,
           }}
-          className="
-            mt-16
-            border-t
-            border-[#0B2A52]/[0.07]
-            pt-8
-            sm:mt-20
-            sm:pt-9
-            lg:mt-24
-          "
+          style={{
+            marginTop: mobile
+              ? "48px"
+              : tablet
+              ? "55px"
+              : smallLaptop
+              ? "62px"
+              : desktop
+              ? "68px"
+              : largeDesktop
+              ? "76px"
+              : "84px",
+            paddingTop: mobile ? "22px" : "26px",
+            borderTop: "1px solid rgba(11,42,82,0.07)",
+          }}
         >
           <div
-            className="
-              flex
-              flex-col
-              gap-6
-              sm:flex-row
-              sm:items-end
-              sm:justify-between
-            "
+            style={{
+              display: "flex",
+              flexDirection: mobile || tablet ? "column" : "row",
+              alignItems: mobile || tablet ? "flex-start" : "flex-end",
+              justifyContent: "space-between",
+              gap: mobile ? "18px" : "25px",
+            }}
           >
             <div>
               <div
-                className="
-                  mb-4
-                  h-[2px]
-                  w-9
-                  bg-[#C6A77A]
-                "
+                style={{
+                  width: mobile ? "28px" : "34px",
+                  height: "1px",
+                  background: "#C6A77A",
+                  marginBottom: mobile ? "12px" : "14px",
+                }}
               />
 
               <p
-                className="
-                  font-[var(--font-new-york)]
-                  text-[clamp(1.5rem,2.4vw,2.3rem)]
-                  font-medium
-                  leading-[1.05]
-                  tracking-[-0.04em]
-                "
+                style={{
+                  margin: 0,
+                  fontFamily: "var(--font-new-york)",
+                  fontSize: mobile
+                    ? "23px"
+                    : tablet
+                    ? "26px"
+                    : smallLaptop
+                    ? "28px"
+                    : desktop
+                    ? "30px"
+                    : largeDesktop
+                    ? "34px"
+                    : "38px",
+                  fontWeight: 500,
+                  lineHeight: 1.08,
+                  letterSpacing: "-0.04em",
+                  color: "#0B2A52",
+                }}
               >
                 Four disciplines.
                 <br />
-                <span className="italic text-[#C6A77A]">
+
+                <span
+                  style={{
+                    color: "#C6A77A",
+                    fontStyle: "italic",
+                  }}
+                >
                   One growth system.
                 </span>
               </p>
             </div>
 
             <p
-              className="
-                text-[9px]
-                font-medium
-                uppercase
-                leading-[1.9]
-                tracking-[0.18em]
-                text-[#0B2A52]/30
-                sm:text-right
-              "
+              style={{
+                margin: 0,
+                fontSize: "8px",
+                fontWeight: 500,
+                textTransform: "uppercase",
+                lineHeight: 1.8,
+                letterSpacing: "0.17em",
+                color: "rgba(11,42,82,0.28)",
+                textAlign: mobile || tablet ? "left" : "right",
+              }}
             >
               Strategy · Creative
               <br />
