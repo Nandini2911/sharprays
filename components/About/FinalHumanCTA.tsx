@@ -1,0 +1,186 @@
+import React from "react";
+
+export default function FinalHumanCTA() {
+  return (
+    <section className="relative w-full overflow-hidden bg-white">
+      <div className="relative mx-auto max-w-[1440px] px-5 py-16 sm:px-8 sm:py-20 lg:px-12 lg:py-24 xl:px-16">
+
+        {/* Section Label */}
+        <div className="mb-12 flex items-center gap-3 sm:mb-16 lg:mb-20">
+          <span className="text-sm font-semibold tracking-[0.18em] text-[#B79A72]">
+            10
+          </span>
+
+          <span className="h-px w-8 bg-[#B79A72]" />
+
+          <span className="text-xs font-semibold tracking-[0.18em] text-[#0B2A52] sm:text-sm">
+            FINAL HUMAN CTA
+          </span>
+        </div>
+
+        {/* Main Content */}
+        <div className="grid items-center gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16 xl:gap-24">
+
+          {/* LEFT CONTENT */}
+          <div className="relative z-10 max-w-[600px]">
+
+            {/* Heading */}
+            <h2 className="text-[48px] font-semibold leading-[0.98] tracking-[-0.045em] text-[#0B2A52] sm:text-[62px] md:text-[72px] lg:text-[78px] xl:text-[88px]">
+              Think We’d
+              <br />
+              Get Along
+              <span className="ml-1 text-[#B79A72]">?</span>
+            </h2>
+
+            {/* Divider */}
+            <div className="mt-7 h-[3px] w-16 bg-[#B79A72] sm:mt-8 sm:w-20" />
+
+            {/* Description */}
+            <p className="mt-7 max-w-[500px] text-base leading-7 text-[#0B2A52]/70 sm:mt-8 sm:text-lg sm:leading-8">
+              We like working with people who care about what they’re
+              building.
+            </p>
+
+            {/* CTA */}
+            <a
+              href="#contact"
+              className="group mt-8 flex w-full max-w-[470px] items-center justify-between rounded-[3px] bg-[#0B2A52] px-6 py-5 text-white transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(11,42,82,0.18)] sm:mt-10 sm:px-7"
+            >
+              <span className="text-sm font-semibold sm:text-base">
+                Start a Conversation
+              </span>
+
+              <span className="flex h-9 w-9 items-center justify-center transition-transform duration-500 group-hover:translate-x-2">
+                <svg
+                  width="28"
+                  height="20"
+                  viewBox="0 0 28 20"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M1 10H25"
+                    stroke="#B79A72"
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                  />
+
+                  <path
+                    d="M18 3L25 10L18 17"
+                    stroke="#B79A72"
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </span>
+            </a>
+
+            {/* No Pitch Deck */}
+            <div className="mt-5 flex items-start gap-3 pl-3 sm:mt-6">
+              <svg
+                width="28"
+                height="28"
+                viewBox="0 0 28 28"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className="mt-1 shrink-0"
+              >
+                <path
+                  d="M24 4C19 5 13 7 10 12C8.5 14.5 8 18 8 21"
+                  stroke="#B79A72"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                />
+
+                <path
+                  d="M8 21L3.5 17.5"
+                  stroke="#B79A72"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                />
+              </svg>
+
+              <p className="pt-1 font-serif text-sm italic text-[#0B2A52]/60 sm:text-base">
+                No pitch deck required.
+              </p>
+            </div>
+          </div>
+
+          {/* RIGHT IMAGE AREA */}
+          <div className="relative flex w-full items-center justify-center lg:justify-end">
+
+            {/* Image Frame */}
+            <div className="relative w-full max-w-[680px]">
+
+              {/* Gold Accent */}
+              <div className="absolute -right-3 -top-3 z-0 h-20 w-20 border-r border-t border-[#B79A72] sm:-right-5 sm:-top-5 sm:h-28 sm:w-28" />
+
+              {/* Navy Accent */}
+              <div className="absolute -bottom-3 -left-3 z-0 h-20 w-20 border-b border-l border-[#0B2A52] sm:-bottom-5 sm:-left-5 sm:h-28 sm:w-28" />
+
+              {/* Image */}
+              <div className="relative z-10 aspect-[4/3] w-full overflow-hidden bg-[#F4F4F2]">
+                <img
+                  src="/about/about_cts.png"
+                  alt="SHARPRAYS team workspace"
+                  className="h-full w-full object-cover transition-transform duration-700 hover:scale-[1.03]"
+                />
+              </div>
+
+              {/* Small Gold Detail */}
+              <div className="absolute -bottom-5 right-6 z-20 flex items-center gap-2 bg-white px-4 py-2 shadow-[0_8px_25px_rgba(11,42,82,0.08)]">
+                <span className="h-2 w-2 rounded-full bg-[#B79A72]" />
+
+                <span className="text-[10px] font-semibold tracking-[0.16em] text-[#0B2A52]">
+                  LET’S BUILD SOMETHING
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Bottom Decorative Waves */}
+      <div className="pointer-events-none absolute -bottom-10 left-[-5%] h-[130px] w-[58%] opacity-50 sm:h-[160px]">
+        <svg
+          viewBox="0 0 800 180"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-full w-full"
+          preserveAspectRatio="none"
+        >
+          <path
+            d="M-20 120C80 70 125 150 225 100C325 50 370 145 470 95C570 45 630 125 820 65"
+            stroke="#B79A72"
+            strokeWidth="1"
+          />
+
+          <path
+            d="M-20 135C80 85 125 165 225 115C325 65 370 160 470 110C570 60 630 140 820 80"
+            stroke="#B79A72"
+            strokeWidth="1"
+            opacity="0.55"
+          />
+
+          <path
+            d="M-20 150C80 100 125 180 225 130C325 80 370 175 470 125C570 75 630 155 820 95"
+            stroke="#0B2A52"
+            strokeWidth="1"
+            opacity="0.18"
+          />
+
+          <circle
+            cx="265"
+            cy="111"
+            r="5"
+            fill="#0B2A52"
+          />
+        </svg>
+      </div>
+
+      {/* Background Circle */}
+      <div className="pointer-events-none absolute -bottom-32 right-[-80px] h-72 w-72 rounded-full border border-[#B79A72]/10 sm:h-96 sm:w-96" />
+    </section>
+  );
+}
