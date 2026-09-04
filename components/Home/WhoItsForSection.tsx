@@ -169,7 +169,7 @@ export default function TheWayWeThink() {
                       />
 
                       {/* image */}
-                      <div className="relative z-10 aspect-[1.25/1] w-full overflow-hidden bg-[#F6F5F2]">
+                      <div className="relative z-10 aspect-[1.25/1] w-full overflow-hidden ">
                         <img
                           src={belief.image}
                           alt={belief.title}
