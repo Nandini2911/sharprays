@@ -2,21 +2,21 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import {
-  Palette,
   Megaphone,
   Search,
   BarChart3,
   Brush,
   Video,
   Code2,
-  MousePointerClick,
   Send,
-  Users,
   Brain,
 } from "lucide-react";
 
 const BRAND = "#0B2A52";
+
+const ease = [0.22, 1, 0.36, 1] as const;
 
 const services = [
   {
@@ -199,11 +199,47 @@ export default function ServicesSection() {
             SECTION HEADER
         =================================================== */}
 
-        <div className="mx-auto mb-9 max-w-4xl text-center sm:mb-10 lg:mb-12">
-
+        <motion.div
+          initial={{
+            opacity: 0,
+            y: 45,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{
+            once: true,
+            amount: 0.25,
+          }}
+          transition={{
+            duration: 0.9,
+            ease,
+          }}
+          className="mx-auto mb-9 max-w-4xl text-center sm:mb-10 lg:mb-12"
+        >
           {/* Label */}
 
-          <div className="mb-5 flex items-center justify-center gap-3">
+          <motion.div
+            initial={{
+              opacity: 0,
+              y: 25,
+            }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+            }}
+            viewport={{
+              once: true,
+              amount: 0.5,
+            }}
+            transition={{
+              duration: 0.7,
+              delay: 0.1,
+              ease,
+            }}
+            className="mb-5 flex items-center justify-center gap-3"
+          >
             <span className="h-px w-10 bg-[#B79A72]" />
 
             <span
@@ -214,33 +250,70 @@ export default function ServicesSection() {
             </span>
 
             <span className="h-px w-10 bg-[#B79A72]" />
-          </div>
+          </motion.div>
 
-        {/* Heading */}
+          {/* Heading */}
 
-<h2
-  className="font-[var(--font-new-york)] text-4xl font-medium leading-[1.02] tracking-[-0.035em] sm:text-4xl md:text-5xl lg:text-[58px]"
-  style={{ color: BRAND }}
->
-  Digital Marketing Services
-  <br />
-  <span className="text-[#C6A77A]">
-  That Drive Real Growth
-  </span>
-</h2>
+          <motion.h2
+            initial={{
+              opacity: 0,
+              y: 45,
+            }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+            }}
+            viewport={{
+              once: true,
+              amount: 0.5,
+            }}
+            transition={{
+              duration: 0.9,
+              delay: 0.15,
+              ease,
+            }}
+            className="font-[var(--font-new-york)] text-4xl font-medium leading-[1.02] tracking-[-0.035em] sm:text-4xl md:text-5xl lg:text-[58px]"
+            style={{ color: BRAND }}
+          >
+            Digital Marketing Services
+            <br />
 
-{/* Description */}
+            <span className="text-[#C6A77A]">
+              That Drive Real Growth
+            </span>
+          </motion.h2>
 
-<p
-  className="mx-auto mt-5 max-w-3xl text-base leading-7 sm:mt-6 sm:text-lg sm:leading-8"
-  style={{ color: "#64748B" }}
->
-  SHARPRAYS is a digital marketing agency helping businesses increase
-  online visibility, attract qualified audiences, and turn attention
-  into measurable growth. Our services include SEO, social media
-  marketing, performance marketing, content marketing, web
-  development, digital PR, video and creative, and AI marketing.
-</p>        </div>
+          {/* Description */}
+
+          <motion.p
+            initial={{
+              opacity: 0,
+              y: 35,
+            }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+            }}
+            viewport={{
+              once: true,
+              amount: 0.5,
+            }}
+            transition={{
+              duration: 0.8,
+              delay: 0.28,
+              ease,
+            }}
+            className="mx-auto mt-5 max-w-3xl text-base leading-7 sm:mt-6 sm:text-lg sm:leading-8"
+            style={{ color: "#64748B" }}
+          >
+            SHARPRAYS is a digital marketing agency helping businesses
+            increase online visibility, attract qualified audiences, and
+            turn attention into measurable growth. Our services include
+            SEO, social media marketing, performance marketing, content
+            marketing, web development, digital PR, video and creative,
+            and AI marketing.
+          </motion.p>
+        </motion.div>
 
         {/* ===================================================
             SERVICE GRID
@@ -252,8 +325,25 @@ export default function ServicesSection() {
             const accent = accents[index % accents.length];
 
             return (
-              <article
+              <motion.article
                 key={service.slug}
+                initial={{
+                  opacity: 0,
+                  y: 65,
+                }}
+                whileInView={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                viewport={{
+                  once: true,
+                  amount: 0.15,
+                }}
+                transition={{
+                  duration: 0.8,
+                  delay: index * 0.08,
+                  ease,
+                }}
                 className="group relative flex flex-col overflow-hidden rounded-[28px] bg-white transition-all duration-500 hover:-translate-y-1"
                 style={{
                   border: `1.5px solid ${accent.border}`,
@@ -264,7 +354,26 @@ export default function ServicesSection() {
                     IMAGE AREA
                 ================================================= */}
 
-                <div
+                <motion.div
+                  initial={{
+                    opacity: 0,
+                    y: 30,
+                    scale: 0.97,
+                  }}
+                  whileInView={{
+                    opacity: 1,
+                    y: 0,
+                    scale: 1,
+                  }}
+                  viewport={{
+                    once: true,
+                    amount: 0.2,
+                  }}
+                  transition={{
+                    duration: 0.75,
+                    delay: index * 0.08 + 0.1,
+                    ease,
+                  }}
                   className="relative mx-3 mt-3 flex h-[215px] shrink-0 items-center justify-center overflow-hidden rounded-[22px]"
                   style={{
                     backgroundColor: accent.soft,
@@ -309,14 +418,32 @@ export default function ServicesSection() {
                   >
                     <Icon size={20} strokeWidth={1.8} />
                   </div>
-                </div>
+                </motion.div>
 
                 {/* =================================================
                     CONTENT
                 ================================================= */}
 
-                <div className="px-6 pb-5 pt-5 sm:px-7">
-
+                <motion.div
+                  initial={{
+                    opacity: 0,
+                    y: 35,
+                  }}
+                  whileInView={{
+                    opacity: 1,
+                    y: 0,
+                  }}
+                  viewport={{
+                    once: true,
+                    amount: 0.15,
+                  }}
+                  transition={{
+                    duration: 0.7,
+                    delay: index * 0.08 + 0.2,
+                    ease,
+                  }}
+                  className="px-6 pb-5 pt-5 sm:px-7"
+                >
                   {/* Title */}
 
                   <h3
@@ -328,11 +455,27 @@ export default function ServicesSection() {
 
                   {/* Accent line */}
 
-                  <div
-                    className="my-4 h-[2px] w-10 rounded-full"
+                  <motion.div
+                    initial={{
+                      scaleX: 0,
+                    }}
+                    whileInView={{
+                      scaleX: 1,
+                    }}
+                    viewport={{
+                      once: true,
+                      amount: 0.2,
+                    }}
+                    transition={{
+                      duration: 0.65,
+                      delay: index * 0.08 + 0.35,
+                      ease,
+                    }}
                     style={{
+                      transformOrigin: "left",
                       backgroundColor: accent.border,
                     }}
+                    className="my-4 h-[2px] w-10 rounded-full"
                   />
 
                   {/* Description */}
@@ -366,7 +509,7 @@ export default function ServicesSection() {
                       </span>
                     </span>
                   </Link>
-                </div>
+                </motion.div>
 
                 {/* =================================================
                     BOTTOM ACCENT
@@ -378,15 +521,10 @@ export default function ServicesSection() {
                     backgroundColor: accent.border,
                   }}
                 />
-              </article>
+              </motion.article>
             );
           })}
         </div>
-
-        {/* ===================================================
-            BOTTOM CTA
-        =================================================== */}
-
       </div>
     </section>
   );

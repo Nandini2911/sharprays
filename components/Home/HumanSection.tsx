@@ -22,42 +22,6 @@ const values = [
   },
 ];
 
-const team = [
-  
-{
-  name: "Ravish Verma",
-  role: "Founder & Growth Strategist",
-  description:
-    "Specializes in SEO, paid media, and content creation, with 5+ years of experience building performance-driven growth strategies.",
-  image: "/Ravish.jpeg",
-},
-
-{
-  name: "Nandini Yadav",
-  role: "Full-Stack Developer & Growth Strategist",
-  description:
-    "Combines full-stack development and growth strategy to build high-performing digital experiences, with 3+ years of experience and 20+ projects delivered.",
-  image: "/Nandini.jpeg",
-},
-
-{
-  name: "Ritika Tiwari",
-  role: "Web Developer",
-  description:
-    "Builds clean, responsive, and user-focused websites, backed by an MCA and 1+ year of hands-on web development experience.",
-  image: "/Ritika.jpeg",
-},
-
-{
-  name: "Amitesh Singh",
-  role: "AI Specialist",
-  description:
-    "Brings 5+ years of experience in AI, turning emerging technologies into practical solutions, smarter workflows, and meaningful business impact.",
-  image: "/Amitesh.jpeg",
-},
-
-];
-
 export default function HumanSection() {
   return (
     <section
@@ -227,153 +191,10 @@ export default function HumanSection() {
           </div>
         </div>
       </div>
-
-
-      {/* =========================================================
-          TEAM
-      ========================================================= */}
-      <div className="">
-
-        <div className="mx-auto max-w-[1320px] px-4 py-2 sm:px-6 sm:py-5 md:px-8 lg:px-8 lg:py-5">
-
-          {/* Heading */}
-          <div className="mb-12 text-center">
-
-            <p className="text-[clamp(1rem,1.15vw,1.125rem)] leading-[1.65]  font-semibold uppercase tracking-[0.22em] ">
-              The People Behind The Work
-            </p>
-
-            <h3
-              className="mt-4 font-serif text-[clamp(1.8rem,3.2vw,3rem)] leading-[0.98]
-                font-serif
-                
-                font-medium
-                leading-[0.98]
-                tracking-[-0.04em]
-              "
-            >
-              The people who{" "}
-              <span className="italic text-[#C6A77A]">
-                make it happen.
-              </span>
-            </h3>
-
-            <p className="mx-auto mt-5 max-w-[560px] text-[clamp(1rem,1.15vw,1.125rem)] leading-7 text-[#0B2A52]/55">
-              Small team. Senior thinking. No unnecessary layers between
-              the idea and the work.
-            </p>
-          </div>
-
-
-          {/* =======================================================
-              TEAM CARDS
-          ======================================================= */}
-          <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
-
-            {team.map((person, index) => (
-              <div
-                key={person.name}
-                className="
-                  group
-                  overflow-hidden
-                  rounded-2xl
-                  bg-[#F7F8F9]
-                  transition-transform
-                  duration-500
-                  hover:-translate-y-1
-                "
-              >
-
-                <div className="grid grid-cols-1 md:grid-cols-[42%_58%]">
-
-                  {/* Image */}
-                  <div className="relative aspect-[4/5] overflow-hidden sm:aspect-[4/5] md:aspect-auto md:min-h-[350px]">
-                    <Image
-                      src={person.image}
-                      alt={person.name}
-                      fill
-                      className="
-                        object-cover
-                        transition-transform
-                        duration-700
-                        group-hover:scale-[1.03]
-                      "
-                      sizes="(max-width: 768px) 43vw, 330px"
-                    />
-                  </div>
-
-
-                  {/* Content */}
-                  <div className="flex min-h-0 flex-col justify-between p-5 sm:min-h-[320px] sm:p-6 md:min-h-[350px] md:p-7">
-
-                    <div>
-
-                      <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#D59A52]">
-                        0{index + 1}
-                      </span>
-
-                      <h4
-                        className="mt-3 font-serif text-[clamp(1.5rem,2.4vw,2rem)] leading-tight
-                          font-serif
-                          
-                          leading-tight
-                          tracking-[-0.025em]
-                        "
-                      >
-                        {person.name}
-                      </h4>
-
-                      <p className="mt-1 text-[clamp(0.95rem,1.05vw,1.05rem)] font-medium leading-5 ">
-                        {person.role}
-                      </p>
-
-                      <div className="mt-5 h-[2px] w-8 bg-[#D59A52]" />
-
-                      <p className="mt-5 max-w-[230px] text-[clamp(0.95rem,1.05vw,1.05rem)] leading-[1.7] text-[#0B2A52]/60">
-                        {person.description}
-                      </p>
-
-                    </div>
-
-
-                    {/* LinkedIn */}
-                    <a
-                      href="#"
-                      aria-label={`${person.name} LinkedIn`}
-                      className="
-                        mt-6
-                        flex
-                        h-8
-                        w-8
-                        items-center
-                        justify-center
-                        rounded-full
-                        border
-                        border-[#D59A52]
-                        text-[12px]
-                        font-bold
-                        text-[#D18F42]
-                        transition-all
-                        duration-300
-                        hover:bg-[#D59A52]
-                        hover:text-white
-                      "
-                    >
-                      in
-                    </a>
-
-                  </div>
-                </div>
-              </div>
-            ))}
-
-          </div>
-
-
-          {/* =======================================================
+      {/* =======================================================
               BOTTOM STATEMENT
           ======================================================= */}
-          <div className="mt-6">
+          <div className="mt-0">
 
             <div
               className="
@@ -432,8 +253,7 @@ export default function HumanSection() {
 
           </div>
 
-        </div>
-      </div>
+      
     </section>
   );
 }

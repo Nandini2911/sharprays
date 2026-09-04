@@ -2,34 +2,6 @@
 
 import { motion } from "framer-motion";
 
-const beliefs = [
-  {
-    number: "01",
-    text: "Don’t create just because you can.",
-    accent: "CREATE",
-  },
-  {
-    number: "02",
-    text: "Don’t chase numbers that don’t matter.",
-    accent: "MEASURE",
-  },
-  {
-    number: "03",
-    text: "Don’t confuse attention with impact.",
-    accent: "IMPACT",
-  },
-  {
-    number: "04",
-    text: "Don’t stop learning because something worked once.",
-    accent: "LEARN",
-  },
-  {
-    number: "05",
-    text: "And never be afraid to ask, “Why?”",
-    accent: "QUESTION",
-  },
-];
-
 export default function TheWayWeThink() {
   return (
     <section className="relative w-full overflow-hidden bg-white text-[#0B2A52]">
@@ -57,17 +29,12 @@ export default function TheWayWeThink() {
             }}
             className="flex items-center gap-3"
           >
-           
-
             <span className="h-px w-9 bg-[#B79A72]" />
 
             <span className="text-[9px] font-semibold uppercase tracking-[0.2em] text-[#B79A72] sm:text-[10px]">
               The Way We Think
             </span>
           </motion.div>
-
-          {/* Intro */}
-          
 
         </div>
 
@@ -87,15 +54,47 @@ export default function TheWayWeThink() {
           }}
           className="mt-10 sm:mt-12 lg:mt-16"
         >
-          <h2 className="max-w-[1100px] text-[clamp(3rem,4vw,4.5rem)]  leading-[0.88] tracking-[-0.055em] text-[#0B2A52]">
+          <h2
+            className="
+              max-w-[1100px]
+              text-[clamp(40px,11vw,54px)]
+              leading-[0.88]
+              tracking-[-0.055em]
+              text-[#0B2A52]
+              sm:text-[clamp(44px,7vw,60px)]
+              md:text-[clamp(48px,5vw,66px)]
+              lg:text-[clamp(56px,4vw,76px)]
+              xl:text-[clamp(64px,3.5vw,84px)]
+              2xl:text-[clamp(70px,3.2vw,92px)]
+            "
+          >
             A Few Things
             <br />
-            We’ll Always
-            <span className="relative ml-2 inline-block text-[#B79A72]">
+            We’ll Always{" "}
+            <span className="relative inline-block text-[#B79A72]">
               Believe.
-              
-              {/* Small underline */}
-              <span className="absolute -bottom-2 left-1 h-[2px] w-[45%] bg-[#B79A72] sm:-bottom-3" />
+
+              {/* Animated underline */}
+              <motion.span
+                initial={{ scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{
+                  duration: 0.9,
+                  delay: 0.4,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+                className="
+                  absolute
+                  -bottom-2
+                  left-1
+                  h-[2px]
+                  w-[45%]
+                  origin-left
+                  bg-[#B79A72]
+                  sm:-bottom-3
+                "
+              />
             </span>
           </h2>
         </motion.div>
@@ -108,6 +107,7 @@ export default function TheWayWeThink() {
         <div className="mt-14 grid grid-cols-1 gap-10 md:mt-20 lg:grid-cols-[280px_1fr] lg:gap-16 xl:mt-24 xl:grid-cols-[320px_1fr]">
 
           {/* IMAGE */}
+
           <motion.div
             initial={{
               opacity: 0,
@@ -149,15 +149,11 @@ export default function TheWayWeThink() {
               </div>
 
             </div>
-
-            {/* Small number */}
-            <div className="absolute -bottom-4 -right-4 flex h-12 w-12 items-center justify-center rounded-full bg-[#B79A72] text-[10px] font-semibold tracking-wider text-white">
-              08
-            </div>
           </motion.div>
 
 
           {/* INTRO STATEMENT */}
+
           <motion.div
             initial={{ opacity: 0, y: 25 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -187,98 +183,6 @@ export default function TheWayWeThink() {
 
             </div>
           </motion.div>
-
-        </div>
-
-
-        {/* =====================================================
-            BELIEFS
-        ===================================================== */}
-
-        <div className="mt-16 border-t border-[#0B2A52]/10 sm:mt-20 lg:mt-28">
-
-          {beliefs.map((belief, index) => (
-            <motion.div
-              key={belief.number}
-              initial={{
-                opacity: 0,
-                y: 35,
-              }}
-              whileInView={{
-                opacity: 1,
-                y: 0,
-              }}
-              viewport={{
-                once: true,
-                amount: 0.2,
-              }}
-              transition={{
-                duration: 0.7,
-                delay: index * 0.06,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-              className="group relative border-b border-[#0B2A52]/10"
-            >
-
-              <div className="grid grid-cols-[52px_1fr] gap-5 py-7 sm:grid-cols-[80px_1fr_100px] sm:items-center sm:gap-8 sm:py-9 lg:grid-cols-[100px_1fr_140px] lg:py-11">
-
-                {/* NUMBER */}
-                <div className="relative flex h-full items-start sm:items-center">
-
-                  <span className="text-[11px] font-medium tracking-[0.12em] text-[#B79A72] sm:text-xs">
-                    {belief.number}
-                  </span>
-
-                  <span className="absolute right-0 top-0 hidden h-full w-px bg-[#0B2A52]/10 sm:block" />
-
-                </div>
-
-
-                {/* STATEMENT */}
-                <div className="relative overflow-hidden">
-
-                  <motion.p
-                    whileHover={{ x: 8 }}
-                    transition={{
-                      duration: 0.35,
-                      ease: [0.22, 1, 0.36, 1],
-                    }}
-                    className="
-                      max-w-[950px]
-                      text-[clamp(1.5rem,3.2vw,3.6rem)]
-                      font-medium
-                      leading-[1.02]
-                      tracking-[-0.04em]
-                      text-[#0B2A52]
-                    "
-                  >
-                    {belief.text}
-                  </motion.p>
-
-                  {/* Gold hover line */}
-                  <motion.div
-                    initial={{ width: 0 }}
-                    whileHover={{ width: "100%" }}
-                    transition={{ duration: 0.45 }}
-                    className="absolute bottom-0 left-0 h-[2px] bg-[#B79A72]"
-                  />
-
-                </div>
-
-
-                {/* KEYWORD */}
-                <div className="hidden justify-end sm:flex">
-
-                  <span className="border border-[#0B2A52]/10 px-3 py-2 text-[8px] font-semibold tracking-[0.18em] text-[#0B2A52]/45 transition-all duration-300 group-hover:border-[#B79A72]/60 group-hover:text-[#B79A72]">
-                    {belief.accent}
-                  </span>
-
-                </div>
-
-              </div>
-
-            </motion.div>
-          ))}
 
         </div>
 

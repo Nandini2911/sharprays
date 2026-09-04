@@ -7,13 +7,11 @@ export default function FinalHumanCTA() {
 
         {/* Section Label */}
         <div className="mb-12 flex items-center gap-3 sm:mb-16 lg:mb-20">
-          <span className="text-sm font-semibold tracking-[0.18em] text-[#B79A72]">
-            10
-          </span>
+         
 
           <span className="h-px w-8 bg-[#B79A72]" />
 
-          <span className="text-xs font-semibold tracking-[0.18em] text-[#0B2A52] sm:text-sm">
+          <span className="text-xs tracking-[0.18em] text-[#B79A72] sm:text-sm">
             FINAL HUMAN CTA
           </span>
         </div>
@@ -25,9 +23,9 @@ export default function FinalHumanCTA() {
           <div className="relative z-10 max-w-[600px]">
 
             {/* Heading */}
-            <h2 className="text-[48px] font-semibold leading-[0.98] tracking-[-0.045em] text-[#0B2A52] sm:text-[62px] md:text-[72px] lg:text-[78px] xl:text-[88px]">
+            <h2 className="text-[48px]  leading-[0.98] tracking-[-0.045em] text-[#0B2A52] sm:text-[38px] md:text-[41px] lg:text-[54px] xl:text-[44px]">
               Think We’d
-              <br />
+        
               Get Along
               <span className="ml-1 text-[#B79A72]">?</span>
             </h2>
@@ -120,9 +118,9 @@ export default function FinalHumanCTA() {
               <div className="absolute -bottom-3 -left-3 z-0 h-20 w-20 border-b border-l border-[#0B2A52] sm:-bottom-5 sm:-left-5 sm:h-28 sm:w-28" />
 
               {/* Image */}
-              <div className="relative z-10 aspect-[4/3] w-full overflow-hidden bg-[#F4F4F2]">
+              <div className="relative z-10w-full overflow-hidden ">
                 <img
-                  src="/about/about_cts.png"
+                  src="/about/about_ct.png"
                   alt="SHARPRAYS team workspace"
                   className="h-full w-full object-cover transition-transform duration-700 hover:scale-[1.03]"
                 />
@@ -142,42 +140,7 @@ export default function FinalHumanCTA() {
       </div>
 
       {/* Bottom Decorative Waves */}
-      <div className="pointer-events-none absolute -bottom-10 left-[-5%] h-[130px] w-[58%] opacity-50 sm:h-[160px]">
-        <svg
-          viewBox="0 0 800 180"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-full w-full"
-          preserveAspectRatio="none"
-        >
-          <path
-            d="M-20 120C80 70 125 150 225 100C325 50 370 145 470 95C570 45 630 125 820 65"
-            stroke="#B79A72"
-            strokeWidth="1"
-          />
-
-          <path
-            d="M-20 135C80 85 125 165 225 115C325 65 370 160 470 110C570 60 630 140 820 80"
-            stroke="#B79A72"
-            strokeWidth="1"
-            opacity="0.55"
-          />
-
-          <path
-            d="M-20 150C80 100 125 180 225 130C325 80 370 175 470 125C570 75 630 155 820 95"
-            stroke="#0B2A52"
-            strokeWidth="1"
-            opacity="0.18"
-          />
-
-          <circle
-            cx="265"
-            cy="111"
-            r="5"
-            fill="#0B2A52"
-          />
-        </svg>
-      </div>
+      
 
       {/* Background Circle */}
       <div className="pointer-events-none absolute -bottom-32 right-[-80px] h-72 w-72 rounded-full border border-[#B79A72]/10 sm:h-96 sm:w-96" />

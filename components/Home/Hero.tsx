@@ -1,9 +1,13 @@
+"use client";
 
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 const newYorkFont = {
   fontFamily: "New York, ui-serif, Georgia, serif",
 };
+
+const ease = [0.22, 1, 0.36, 1] as const;
 
 export default function Hero() {
   return (
@@ -101,7 +105,20 @@ export default function Hero() {
                   EYEBROW
               ================================================= */}
 
-              <div
+              <motion.div
+                initial={{
+                  opacity: 0,
+                  y: 35,
+                }}
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                transition={{
+                  duration: 0.8,
+                  delay: 0.15,
+                  ease,
+                }}
                 className="
                   mb-5
                   flex
@@ -129,72 +146,108 @@ export default function Hero() {
                     md:text-xs
                   "
                 >
-                 Turning Attention Into Growth
-
+                  Turning Attention Into Growth
                 </span>
 
                 <span className="h-px w-6 shrink-0 bg-[#B79A72]/70 sm:w-10" />
-              </div>
+              </motion.div>
 
               {/* =================================================
-                  HEADLINE
+                  SEO H1
               ================================================= */}
-{/* =================================================
-    SEO H1
-================================================= */}
 
-<h1
-  className="
-    mb-4
-    text-[14px]
-    font-medium
-    tracking-[-0.01em]
-    text-[#0B2A52]
-    sm:mb-5
-    sm:text-[16px]
-    md:text-[18px]
-  "
->
-  Digital Marketing Agency for Brands Ready to Grow
-</h1>
+              <motion.h1
+                initial={{
+                  opacity: 0,
+                  y: 45,
+                }}
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                transition={{
+                  duration: 0.9,
+                  delay: 0.3,
+                  ease,
+                }}
+                className="
+                  mb-4
+                  text-[14px]
+                  font-medium
+                  tracking-[-0.01em]
+                  text-[#0B2A52]
+                  sm:mb-5
+                  sm:text-[16px]
+                  md:text-[18px]
+                "
+              >
+                Digital Marketing Agency for Brands Ready to Grow
+              </motion.h1>
 
-{/* =================================================
-    EXISTING HEADLINE
-================================================= */}
+              {/* =================================================
+                  EXISTING HEADLINE
+              ================================================= */}
 
-<h2
-  style={newYorkFont}
-  className="
-    max-w-[720px]
-    text-balance
-    text-[42px]
-    font-light
-    leading-[0.96]
-    tracking-[-0.045em]
-    text-[#0B2A52]
-    sm:text-[44px]
-    sm:leading-[0.95]
-    sm:tracking-[-0.05em]
-    md:text-[50px]
-    lg:text-[66px]
-    lg:leading-[0.94]
-    xl:text-[75px]
-    2xl:text-[80px]
-  "
->
-  Make Your Brand
+              <motion.h2
+                initial={{
+                  opacity: 0,
+                  y: 55,
+                }}
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                transition={{
+                  duration: 1,
+                  delay: 0.42,
+                  ease,
+                }}
+                style={newYorkFont}
+                className="
+                  max-w-[720px]
+                  text-balance
+                  text-[42px]
+                  font-light
+                  leading-[0.96]
+                  tracking-[-0.045em]
+                  text-[#0B2A52]
+                  sm:text-[44px]
+                  sm:leading-[0.95]
+                  sm:tracking-[-0.05em]
+                  md:text-[50px]
+                  lg:text-[66px]
+                  lg:leading-[0.94]
+                  xl:text-[75px]
+                  2xl:text-[80px]
+                "
+              >
+                Make Your Brand
 
-  <br />
+                <br />
 
-  <span className="text-[#C6A77A]">
-    Impossible to Ignore.
-  </span>
-</h2>
+                <span className="text-[#C6A77A]">
+                  Impossible to Ignore.
+                </span>
+              </motion.h2>
+
               {/* =================================================
                   DESCRIPTION
               ================================================= */}
 
-              <p
+              <motion.p
+                initial={{
+                  opacity: 0,
+                  y: 45,
+                }}
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                transition={{
+                  duration: 0.85,
+                  delay: 0.58,
+                  ease,
+                }}
                 style={newYorkFont}
                 className="
                   mt-6
@@ -213,13 +266,26 @@ export default function Hero() {
                 We build search visibility, powerful digital experiences,
                 and performance-driven campaigns that turn attention
                 into measurable business growth.
-              </p>
+              </motion.p>
 
               {/* =================================================
                   CTA BUTTONS
               ================================================= */}
 
-              <div
+              <motion.div
+                initial={{
+                  opacity: 0,
+                  y: 45,
+                }}
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                transition={{
+                  duration: 0.8,
+                  delay: 0.72,
+                  ease,
+                }}
                 className="
                   mt-7
                   flex
@@ -232,9 +298,7 @@ export default function Hero() {
                   lg:mt-9
                 "
               >
-                {/* =================================================
-                    PRIMARY CTA
-                ================================================= */}
+                {/* PRIMARY CTA */}
 
                 <Link
                   href="/contact"
@@ -291,9 +355,7 @@ export default function Hero() {
                   </span>
                 </Link>
 
-                {/* =================================================
-                    SECONDARY CTA
-                ================================================= */}
+                {/* SECONDARY CTA */}
 
                 <Link
                   href="/work"
@@ -341,13 +403,26 @@ export default function Hero() {
                     →
                   </span>
                 </Link>
-              </div>
+              </motion.div>
 
               {/* =================================================
                   TRUST ROW
               ================================================= */}
 
-              <div
+              <motion.div
+                initial={{
+                  opacity: 0,
+                  y: 35,
+                }}
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                transition={{
+                  duration: 0.8,
+                  delay: 0.86,
+                  ease,
+                }}
                 className="
                   mt-8
                   flex
@@ -477,14 +552,29 @@ export default function Hero() {
                 >
                   Strategy · Creative · Performance
                 </span>
-              </div>
+              </motion.div>
             </div>
 
             {/* =================================================
                 RIGHT — VISUAL AREA
             ================================================= */}
 
-            <div
+            <motion.div
+              initial={{
+                opacity: 0,
+                y: 65,
+                scale: 0.97,
+              }}
+              animate={{
+                opacity: 1,
+                y: 0,
+                scale: 1,
+              }}
+              transition={{
+                duration: 1.1,
+                delay: 0.35,
+                ease,
+              }}
               className="
                 relative
                 flex
@@ -503,48 +593,41 @@ export default function Hero() {
             >
               {/* =================================================
                   RIGHT SIDE IMAGE
-                  Put your image at: /hero-right.png
               ================================================= */}
 
-            <div
-              className="
-                relative
-                z-10
-                flex
-                w-full
-                items-center
-                justify-center
-                px-0
-                sm:px-2
-                md:px-4
-                lg:px-0
-              "
-            >
-              <img
-                src="/hero2.png"
-                alt=""
+              <div
                 className="
-                  block
-                  h-auto
+                  relative
+                  z-10
+                  flex
                   w-full
-                  max-w-[430px]
-                  object-contain
-                  object-center
-                  sm:max-w-[520px]
-                  md:max-w-[620px]
-                  lg:max-w-[650px]
-                  xl:max-w-[720px]
-                  2xl:max-w-[780px]
+                  items-center
+                  justify-center
+                  px-0
+                  sm:px-2
+                  md:px-4
+                  lg:px-0
                 "
-              />
-            </div>
-            </div>
-
-              {/* =================================================
-                  FLOATING DOT
-              ================================================= */}
-
-             
+              >
+                <img
+                  src="/hero2.png"
+                  alt=""
+                  className="
+                    block
+                    h-auto
+                    w-full
+                    max-w-[430px]
+                    object-contain
+                    object-center
+                    sm:max-w-[520px]
+                    md:max-w-[620px]
+                    lg:max-w-[650px]
+                    xl:max-w-[720px]
+                    2xl:max-w-[780px]
+                  "
+                />
+              </div>
+            </motion.div>
           </div>
         </div>
       </main>
