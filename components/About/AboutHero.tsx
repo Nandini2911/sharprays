@@ -182,7 +182,7 @@ export default function AboutPage() {
                   : isTablet
                   ? "35px"
                   : "clamp(30px, 3vw, 48px)",
-                height: "2px",
+                height: "1px",
                 flexShrink: 0,
                 background: "#b89a6a",
               }}
@@ -192,7 +192,7 @@ export default function AboutPage() {
               style={{
                 margin: 0,
                 color: "#b89a6a",
-                fontFamily: "Georgia, 'Times New Roman', serif",
+              
                 fontSize: isMobile
                   ? "11px"
                   : isTablet
@@ -202,7 +202,7 @@ export default function AboutPage() {
                   ? "2.5px"
                   : "clamp(2.5px, 0.35vw, 5px)",
                 lineHeight: 1.2,
-                fontWeight: 600,
+           
               }}
             >
               ABOUT SHARPRAYS
