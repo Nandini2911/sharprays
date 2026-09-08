@@ -26,7 +26,7 @@ const journey: JourneyItem[] = [
     small: "GET DISCOVERED",
     description:
       "Your brand enters their world with a visual identity that feels instantly recognizable.",
-    image: "/services/insta/social/social1.png",
+    image: "/services/social/social1.png",
     icon: Eye,
   },
   {
@@ -34,7 +34,7 @@ const journey: JourneyItem[] = [
     small: "EARN ATTENTION",
     description:
       "The right idea creates enough curiosity to interrupt the endless scroll.",
-    image: "/services/insta/social/social2.png",
+    image: "/services/social/social2.png",
     icon: Zap,
   },
   {
@@ -42,7 +42,7 @@ const journey: JourneyItem[] = [
     small: "CREATE RELEVANCE",
     description:
       "Your content starts feeling useful, relatable and worth spending time with.",
-    image: "/services/insta/social/social3.png",
+    image: "/services/social/social3.png",
     icon: Heart,
   },
   {
@@ -50,7 +50,7 @@ const journey: JourneyItem[] = [
     small: "START A CONVERSATION",
     description:
       "People stop being passive viewers and begin responding, sharing and participating.",
-    image: "/services/insta/social/social4.png",
+    image: "/services/social/social4.png",
     icon: MessageCircle,
   },
   {
@@ -58,7 +58,7 @@ const journey: JourneyItem[] = [
     small: "BUILD RECOGNITION",
     description:
       "Consistent ideas, visuals and language make your brand easier to recognize.",
-    image: "/services/insta/social/social5.png",
+    image: "/services/social/social5.png",
     icon: Sparkles,
   },
   {
@@ -66,7 +66,7 @@ const journey: JourneyItem[] = [
     small: "CREATE MOVEMENT",
     description:
       "Attention finally turns into something meaningful — an enquiry, conversation or customer.",
-    image: "/services/insta/social/social6.png",
+    image: "/services/social/social6.png",
     icon: Target,
   },
 ];

@@ -1,11 +1,14 @@
 import Footer from "@/components/Home/Footer";
 
 import Navbar from "@/components/Home/Navbar";
+import ReadyToBeRemembered from "@/components/SocialMediaMarketing/ReadyToBeRemembered";
 import SocialMediaMarketingBigIdea from "@/components/SocialMediaMarketing/SocialMediaMarketingBigIdea";
+import SocialMediaMarketingFAQs from "@/components/SocialMediaMarketing/SocialMediaMarketingFAQs";
+import SocialMediaMarketingFirstConversationToCampaign from "@/components/SocialMediaMarketing/SocialMediaMarketingFirstConversationToCampaign";
 import SocialMediaMarketingHero from "@/components/SocialMediaMarketing/SocialMediaMarketingHero";
 import SocialMediaMarketingProblem from "@/components/SocialMediaMarketing/SocialMediaMarketingProblem";
 import SocialMediaMarketingWhatWeDo from "@/components/SocialMediaMarketing/SocialMediaMarketingWhatWeDo";
-
+import SocialMediaMarketingPlanIncludes from "@/components/SocialMediaMarketing/SocialMediaPlanIncludes";
 
 export default function SocialMediaMarketing() {
   return (
@@ -15,7 +18,10 @@ export default function SocialMediaMarketing() {
       <SocialMediaMarketingProblem/>
       <SocialMediaMarketingBigIdea/>
       <SocialMediaMarketingWhatWeDo/>
-    
+      <SocialMediaMarketingPlanIncludes/>
+      <SocialMediaMarketingFirstConversationToCampaign/>
+      <SocialMediaMarketingFAQs/>
+      <ReadyToBeRemembered/>
 
           <Footer/>
       
