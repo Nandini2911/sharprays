@@ -248,44 +248,45 @@ export default function WhatSharpraysIs() {
           {/* Heading */}
 
           <motion.h2
-            initial={{ opacity: 0, y: 22 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.35 }}
-            transition={{ duration: 0.85, ease }}
-            style={{
-              margin: 0,
-              maxWidth: mobile
-                ? "340px"
-                : tablet
-                ? "650px"
-                : largeDesktop
-                ? "1000px"
-                : "900px",
-              fontFamily: "var(--font-new-york)",
-              fontSize: mobile
-                ? "33px"
-                : tablet
-                ? "40px"
-                : width >= 1800
-                ? "53px"
-                : "48px",
-              fontWeight: 500,
-              lineHeight: mobile ? 1 : 0.96,
-              letterSpacing: "-0.055em",
-              color: "#0B2A52",
-            }}
-          >
-            So, What Is{" "}
-            <span
-              style={{
-                color: "#C6A77A",
-                fontStyle: "italic",
-              }}
-            >
-              SHARPRAYS?
-            </span>
-          </motion.h2>
-
+  initial={{ opacity: 0, y: 22 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true, amount: 0.35 }}
+  transition={{ duration: 0.85, ease }}
+  style={{
+    margin: 0,
+    maxWidth: mobile
+      ? "340px"
+      : tablet
+      ? "650px"
+      : largeDesktop
+      ? "1000px"
+      : "900px",
+    fontFamily: "var(--font-new-york)",
+    fontSize: mobile
+      ? "2.2rem"
+      : tablet
+      ? "2.6rem"
+      : width >= 1800
+      ? "3.35rem"
+      : width >= 1440
+      ? "3.1rem"
+      : "2.95rem",
+    fontWeight: 500,
+    lineHeight: mobile ? 1 : 0.96,
+    letterSpacing: "-0.055em",
+    color: "#0B2A52",
+  }}
+>
+  So, What Is{" "}
+  <span
+    style={{
+      color: "#C6A77A",
+      fontStyle: "italic",
+    }}
+  >
+    SHARPRAYS?
+  </span>
+</motion.h2>
           {/* Description */}
 
           <motion.div

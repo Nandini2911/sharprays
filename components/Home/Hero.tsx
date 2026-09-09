@@ -211,14 +211,7 @@ export default function Hero() {
                   leading-[0.96]
                   tracking-[-0.045em]
                   text-[#0B2A52]
-                  sm:text-[44px]
-                  sm:leading-[0.95]
-                  sm:tracking-[-0.05em]
-                  md:text-[50px]
-                  lg:text-[66px]
-                  lg:leading-[0.94]
-                  xl:text-[75px]
-                  2xl:text-[80px]
+                 sm:text-[2.6rem] md:text-[2.95rem] lg:text-[3.1rem] xl:text-[3.35rem]
                 "
               >
                 Make Your Brand

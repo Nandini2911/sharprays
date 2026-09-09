@@ -272,7 +272,7 @@ export default function ServicesSection() {
               delay: 0.15,
               ease,
             }}
-            className="font-[var(--font-new-york)] text-4xl font-medium leading-[1.02] tracking-[-0.035em] sm:text-4xl md:text-5xl lg:text-[58px]"
+            className="font-[var(--font-new-york)] text-4xl font-medium leading-[1.02] tracking-[-0.035em] sm:text-[2.6rem] md:text-[2.95rem] lg:text-[3.1rem] xl:text-[3.35rem]"
             style={{ color: BRAND }}
           >
             Digital Marketing Services

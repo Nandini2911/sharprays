@@ -6,7 +6,6 @@ import {
   Heart,
   MessageCircle,
   Sparkles,
-  Users,
   Eye,
   Zap,
   Target,
@@ -25,7 +24,7 @@ const journey: JourneyItem[] = [
     title: "SEE",
     small: "GET DISCOVERED",
     description:
-      "Your brand enters their world with a visual identity that feels instantly recognizable.",
+      "Reach the right audience with content and creative direction designed to make your brand easier to notice.",
     image: "/services/social/social1.png",
     icon: Eye,
   },
@@ -33,7 +32,7 @@ const journey: JourneyItem[] = [
     title: "STOP",
     small: "EARN ATTENTION",
     description:
-      "The right idea creates enough curiosity to interrupt the endless scroll.",
+      "Use relevant ideas, strong creative and clear messaging to give people a reason to stop scrolling.",
     image: "/services/social/social2.png",
     icon: Zap,
   },
@@ -41,31 +40,31 @@ const journey: JourneyItem[] = [
     title: "CARE",
     small: "CREATE RELEVANCE",
     description:
-      "Your content starts feeling useful, relatable and worth spending time with.",
+      "Show your audience that your brand understands their interests, challenges or aspirations.",
     image: "/services/social/social3.png",
     icon: Heart,
   },
   {
     title: "ENGAGE",
-    small: "START A CONVERSATION",
+    small: "BUILD CONNECTION",
     description:
-      "People stop being passive viewers and begin responding, sharing and participating.",
+      "Encourage conversations, responses, shares, saves, messages and other meaningful interactions.",
     image: "/services/social/social4.png",
     icon: MessageCircle,
   },
   {
     title: "REMEMBER",
-    small: "BUILD RECOGNITION",
+    small: "BUILD BRAND RECOGNITION",
     description:
-      "Consistent ideas, visuals and language make your brand easier to recognize.",
+      "Create consistency across your ideas, language and visual identity so your brand becomes easier to recognize.",
     image: "/services/social/social5.png",
     icon: Sparkles,
   },
   {
     title: "ACT",
-    small: "CREATE MOVEMENT",
+    small: "SUPPORT BUSINESS ACTION",
     description:
-      "Attention finally turns into something meaningful — an enquiry, conversation or customer.",
+      "Give attention somewhere useful to go — whether that means an enquiry, website visit, conversation, signup or purchase.",
     image: "/services/social/social6.png",
     icon: Target,
   },
@@ -156,35 +155,36 @@ export default function SocialMediaMarketingBigIdea() {
               <span className="h-px w-10 bg-[#B79A72]" />
 
               <span className="text-[9px] tracking-[0.28em] text-[#B79A72] sm:text-[10px]">
-                THE BIG IDEA
+                HOW STRATEGIC SOCIAL MEDIA WORKS
               </span>
             </div>
 
             <p className="mt-6 max-w-[320px] text-[11px] leading-5 text-[#0B2A52]/35">
-              GOOD SOCIAL DOESN&apos;T JUST DELIVER CONTENT.
+              STRONG SOCIAL MEDIA CONTENT SHOULD HELP MOVE
               <br />
-              IT CREATES A REASON TO KEEP PAYING ATTENTION.
+              YOUR AUDIENCE THROUGH A NATURAL JOURNEY.
             </p>
           </div>
 
           {/* RIGHT */}
 
           <div
-            className={`max-w-[760px] lg:ml-auto transition-all delay-150 duration-[1200ms] ${
+            className={`max-w-[760px] transition-all delay-150 duration-[1200ms] lg:ml-auto ${
               visible
                 ? "translate-y-0 opacity-100"
                 : "translate-y-8 opacity-0"
             }`}
           >
             <h2 className="text-[2rem] font-medium leading-[1.12] tracking-[-0.035em] sm:text-[2.4rem] md:text-[2.75rem] lg:text-[3rem]">
-              Social Media Isn&apos;t a{" "}
+              From First Impression to{" "}
               <span className="text-[#B79A72]">
-                Content Calendar.
+                Meaningful Action.
               </span>
             </h2>
 
             <p className="mt-3 text-[1.05rem] font-medium text-[#0B2A52]/65 sm:text-[1.2rem]">
-              It&apos;s a relationship with your audience.
+              Strong social media content should help move your audience
+              through a natural journey.
             </p>
           </div>
         </div>
@@ -216,9 +216,7 @@ export default function SocialMediaMarketingBigIdea() {
                   onMouseEnter={() => setActive(index)}
                   onClick={() => setActive(index)}
                   className={`group relative overflow-hidden rounded-[26px] text-left transition-all duration-700 ${
-                    isActive
-                      ? "flex-[4]"
-                      : "flex-1"
+                    isActive ? "flex-[4]" : "flex-1"
                   }`}
                 >
                   {/* IMAGE */}
@@ -257,9 +255,7 @@ export default function SocialMediaMarketingBigIdea() {
 
                   <div
                     className={`absolute left-5 top-5 transition-all duration-500 ${
-                      isActive
-                        ? "opacity-0"
-                        : "opacity-100"
+                      isActive ? "opacity-0" : "opacity-100"
                     }`}
                   >
                     <span className="flex h-9 w-9 items-center justify-center rounded-full border border-white/30 bg-white/10 text-white backdrop-blur-md">
@@ -269,9 +265,7 @@ export default function SocialMediaMarketingBigIdea() {
 
                   <div
                     className={`absolute bottom-7 left-1/2 -translate-x-1/2 rotate-[-90deg] whitespace-nowrap transition-all duration-500 ${
-                      isActive
-                        ? "opacity-0"
-                        : "opacity-100"
+                      isActive ? "opacity-0" : "opacity-100"
                     }`}
                   >
                     <span className="text-[10px] font-semibold tracking-[0.25em] text-white/80">
@@ -294,10 +288,7 @@ export default function SocialMediaMarketingBigIdea() {
                       <div className="max-w-[520px]">
                         <div className="mb-4 flex items-center gap-3">
                           <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white/15 text-white backdrop-blur-md">
-                            <Icon
-                              size={13}
-                              strokeWidth={1.5}
-                            />
+                            <Icon size={13} strokeWidth={1.5} />
                           </span>
 
                           <span className="text-[8px] font-semibold tracking-[0.24em] text-white/65">
@@ -347,12 +338,7 @@ export default function SocialMediaMarketingBigIdea() {
                     {(() => {
                       const Icon = journey[active].icon;
 
-                      return (
-                        <Icon
-                          size={14}
-                          strokeWidth={1.5}
-                        />
-                      );
+                      return <Icon size={14} strokeWidth={1.5} />;
                     })()}
                   </span>
 
@@ -380,9 +366,7 @@ export default function SocialMediaMarketingBigIdea() {
                   type="button"
                   onClick={() => setActive(index)}
                   className={`relative h-12 overflow-hidden rounded-xl transition-all duration-500 ${
-                    active === index
-                      ? "bg-[#0B2A52]"
-                      : "bg-[#F5F2EC]"
+                    active === index ? "bg-[#0B2A52]" : "bg-[#F5F2EC]"
                   }`}
                 >
                   <span
@@ -405,21 +389,27 @@ export default function SocialMediaMarketingBigIdea() {
         </div>
 
         {/* =======================================================
-            BELOW EXPERIENCE
+            JOURNEY SUMMARY
         ======================================================== */}
 
-        <div className="mt-16 grid items-center gap-8 border-t border-[#0B2A52]/[0.08] pt-8 sm:grid-cols-[1fr_auto]">
+        <div
+          className={`mt-16 grid items-center gap-8 border-t border-[#0B2A52]/[0.08] pt-8 transition-all delay-400 duration-[1200ms] sm:grid-cols-[1fr_auto] ${
+            visible
+              ? "translate-y-0 opacity-100"
+              : "translate-y-6 opacity-0"
+          }`}
+        >
           {/* MESSAGE */}
 
           <div>
             <p className="text-[8px] font-semibold tracking-[0.25em] text-[#B79A72]">
-              THE SHIFT
+              THE AUDIENCE JOURNEY
             </p>
 
             <p className="mt-3 max-w-[680px] text-[13px] leading-6 text-[#0B2A52]/50 sm:text-[14px]">
-              Stop thinking about what you need to post next.
-              Start thinking about what you want your audience to
-              feel, remember and do next.
+              From getting discovered to supporting meaningful business
+              action, every stage gives your audience a reason to move closer
+              to your brand.
             </p>
           </div>
 
@@ -443,25 +433,24 @@ export default function SocialMediaMarketingBigIdea() {
         </div>
 
         {/* =======================================================
-            FINAL STATEMENT
+            FINAL JOURNEY LINE
         ======================================================== */}
 
         <div
-          className={`mx-auto mt-20 max-w-[760px] text-center transition-all delay-500 duration-[1200ms] ${
+          className={`mx-auto mt-20 max-w-[900px] text-center transition-all delay-500 duration-[1200ms] ${
             visible
               ? "translate-y-0 opacity-100"
               : "translate-y-8 opacity-0"
           }`}
         >
           <p className="text-[9px] font-semibold tracking-[0.28em] text-[#B79A72]">
-            THE REAL GOAL
+            SEE · STOP · CARE · ENGAGE · REMEMBER · ACT
           </p>
 
           <h3 className="mt-5 text-[1.55rem] font-medium leading-[1.25] tracking-[-0.025em] text-[#0B2A52] sm:text-[1.8rem]">
-            Don&apos;t create more content.
-            <br />
+            From first impression to{" "}
             <span className="text-[#B79A72]">
-              Create more reasons to remember you.
+              meaningful action.
             </span>
           </h3>
         </div>

@@ -246,18 +246,17 @@ export default function HowWeWork() {
               HOW WE WORK
             </span>
           </div>
-
-         <h2
+<h2
   className="
     max-w-[1000px]
-    text-[clamp(39px,11vw,52px)]
+    text-[2.2rem]
     leading-[1.08]
     tracking-[-0.035em]
     text-[#0B2A52]
-    sm:text-[clamp(44px,7vw,58px)]
-    lg:text-[clamp(45px,4.5vw,58px)]
-    xl:text-[clamp(48px,3.2vw,66px)]
-    2xl:text-[clamp(68px,3.8vw,86px)]
+    sm:text-[2.6rem]
+    md:text-[2.95rem]
+    lg:text-[3.1rem]
+    xl:text-[3.35rem]
   "
 >
   Good Work Happens

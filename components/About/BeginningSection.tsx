@@ -130,35 +130,37 @@ export default function BeginningSection() {
 
           {/* HEADING */}
 
-          <h2
-            style={{
-              margin: 0,
-              maxWidth: desktop ? "680px" : "650px",
-              color: "#0B2A52",
-              fontFamily: "Georgia, 'Times New Roman', serif",
-              fontSize: mobile
-                ? "33px"
-                : tablet
-                ? "41px"
-                : width >= 1800
-                ? "55px"
-                : "49px",
-              lineHeight: 1.08,
-              fontWeight: 500,
-              letterSpacing: mobile ? "-1px" : "-1.8px",
-            }}
-          >
-            It Started With a
-            <br />
-            Simple Question
-            <span
-              style={{
-                color: "#B79A72",
-              }}
-            >
-              .
-            </span>
-          </h2>
+        <h2
+  style={{
+    margin: 0,
+    maxWidth: desktop ? "680px" : "650px",
+    color: "#0B2A52",
+    fontFamily: "Georgia, 'Times New Roman', serif",
+    fontSize: mobile
+      ? "2.2rem"
+      : tablet
+      ? "2.6rem"
+      : width >= 1800
+      ? "3.35rem"
+      : width >= 1440
+      ? "3.1rem"
+      : "2.95rem",
+    lineHeight: 1.08,
+    fontWeight: 500,
+    letterSpacing: mobile ? "-1px" : "-1.8px",
+  }}
+>
+  It Started With a
+  <br />
+  Simple Question
+  <span
+    style={{
+      color: "#B79A72",
+    }}
+  >
+    .
+  </span>
+</h2>
 
           {/* GOLD LINE */}
 

@@ -9,13 +9,17 @@ import SocialMediaMarketingHero from "@/components/SocialMediaMarketing/SocialMe
 import SocialMediaMarketingProblem from "@/components/SocialMediaMarketing/SocialMediaMarketingProblem";
 import SocialMediaMarketingWhatWeDo from "@/components/SocialMediaMarketing/SocialMediaMarketingWhatWeDo";
 import SocialMediaMarketingPlanIncludes from "@/components/SocialMediaMarketing/SocialMediaPlanIncludes";
+import SocialMediaPointOfView from "@/components/SocialMediaMarketing/SocialMediaPointOfView";
+import SocialMediaQuickAnswer from "@/components/SocialMediaMarketing/SocialMediaQuickAnswer";
 
 export default function SocialMediaMarketing() {
   return (
     <main className="min-h-screen">
       <Navbar />
       <SocialMediaMarketingHero/>
+      <SocialMediaQuickAnswer/>
       <SocialMediaMarketingProblem/>
+      <SocialMediaPointOfView/>
       <SocialMediaMarketingBigIdea/>
       <SocialMediaMarketingWhatWeDo/>
       <SocialMediaMarketingPlanIncludes/>

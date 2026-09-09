@@ -2,237 +2,245 @@
 
 import { useEffect, useId, useRef, useState } from "react";
 import {
-  Compass,
+  BarChart3,
   CalendarDays,
+  Check,
+  Compass,
+  MessageCircle,
   PenTool,
   Send,
-  MessageCircle,
-  BarChart3,
-  Plus,
 } from "lucide-react";
 
 const deliverables = [
   {
     number: "01",
-    cardColor: "bg-[#EEF3FA]",
-    borderColor: "border-[#88A7CA]",
-    iconColor: "bg-[#E1EAF6] border-[#C6D6E9] text-[#55779D]",
-    numberColor: "text-[#B9CCE2]",
-    accentColor: "bg-[#88A7CA]",
-    title: "Social media strategy",
+    title: "Social Media Strategy",
     description:
-      "Audience priorities, platform selection, brand voice and content pillars.",
+      "Audience priorities, platform recommendations, brand voice, positioning and content pillars.",
     icon: Compass,
 
-    // ROW 1 — LEFT CARD → FROM LEFT
-    revealFrom: "-translate-x-20 translate-y-0",
-
-    delay: "delay-0",
+    cardColor: "bg-[#EEF4FC]",
+    borderColor: "border-[#6D8FB9]",
+    iconBg: "bg-[#DDE9F7]",
+    iconBorder: "border-[#BCD0E8]",
+    iconColor: "text-[#52759F]",
+    numberColor: "text-[#C7D7E9]",
+    accentColor: "bg-[#6D8FB9]",
+    glowColor: "bg-[#8DB1DD]/20",
   },
+
   {
     number: "02",
-    cardColor: "bg-[#F2EFF9]",
-    borderColor: "border-[#AC94C5]",
-    iconColor: "bg-[#E9E2F5] border-[#D9CCE9] text-[#87709F]",
-    numberColor: "text-[#D1C3E4]",
-    accentColor: "bg-[#AC94C5]",
-    title: "Content calendar",
+    title: "Content Calendar",
     description:
-      "An agreed publishing plan covering themes, formats and approval dates.",
+      "A structured publishing plan covering themes, formats, priorities and approval dates.",
     icon: CalendarDays,
 
-    // ROW 1 — MIDDLE CARD → FROM TOP
-    revealFrom: "translate-x-0 -translate-y-20",
-
-    delay: "delay-75",
+    cardColor: "bg-[#F3EFFB]",
+    borderColor: "border-[#8B70AA]",
+    iconBg: "bg-[#E9E1F5]",
+    iconBorder: "border-[#D5C6E7]",
+    iconColor: "text-[#7D639A]",
+    numberColor: "text-[#D8CBE8]",
+    accentColor: "bg-[#8B70AA]",
+    glowColor: "bg-[#A68BC5]/20",
   },
+
   {
     number: "03",
-    cardColor: "bg-[#FBF0E9]",
-    borderColor: "border-[#CDA382]",
-    iconColor: "bg-[#F6E4D7] border-[#E9CFBB] text-[#A57A58]",
-    numberColor: "text-[#E6CBB6]",
-    accentColor: "bg-[#CDA382]",
-    title: "Content creation",
+    title: "Content Creation",
     description:
-      "Captions, graphics, carousels and agreed short-form video content.",
+      "Agreed social media graphics, captions, carousels, stories and short-form video content.",
     icon: PenTool,
 
-    // ROW 1 — RIGHT CARD → FROM RIGHT
-    revealFrom: "translate-x-20 translate-y-0",
-
-    delay: "delay-100",
+    cardColor: "bg-[#FCF1EA]",
+    borderColor: "border-[#B77B55]",
+    iconBg: "bg-[#F6E3D7]",
+    iconBorder: "border-[#EACBB7]",
+    iconColor: "text-[#A46D4B]",
+    numberColor: "text-[#E9CEBC]",
+    accentColor: "bg-[#B77B55]",
+    glowColor: "bg-[#D69B77]/20",
   },
+
   {
     number: "04",
-    cardColor: "bg-[#EDF5EF]",
-    borderColor: "border-[#8CAF97]",
-    iconColor: "bg-[#DFEDE2] border-[#C6DDCD] text-[#648970]",
-    numberColor: "text-[#BED8C6]",
-    accentColor: "bg-[#8CAF97]",
-    title: "Publishing and management",
+    title: "Publishing & Management",
     description:
-      "Scheduling and management of your selected social media channels.",
+      "Scheduling and management of your selected social media platforms.",
     icon: Send,
 
-    // ROW 2 — LEFT CARD → FROM LEFT
-    revealFrom: "-translate-x-20 translate-y-0",
-
-    delay: "delay-150",
+    cardColor: "bg-[#EDF7F1]",
+    borderColor: "border-[#649070]",
+    iconBg: "bg-[#DCEDE2]",
+    iconBorder: "border-[#BDD9C5]",
+    iconColor: "text-[#557D61]",
+    numberColor: "text-[#C5DDCB]",
+    accentColor: "bg-[#649070]",
+    glowColor: "bg-[#7DA989]/20",
   },
+
   {
     number: "05",
-    cardColor: "bg-[#FAEFF2]",
-    borderColor: "border-[#C698AA]",
-    iconColor: "bg-[#F3E0E7] border-[#E7C9D4] text-[#A57587]",
-    numberColor: "text-[#E4C3CF]",
-    accentColor: "bg-[#C698AA]",
-    title: "Community engagement",
+    title: "Community Engagement",
     description:
-      "Comment and message handling within agreed responsibilities.",
+      "Comment and message management according to the responsibilities agreed for your account.",
     icon: MessageCircle,
 
-    // ROW 2 — MIDDLE CARD → FROM BOTTOM
-    revealFrom: "translate-x-0 translate-y-20",
-
-    delay: "delay-200",
+    cardColor: "bg-[#FCF0F4]",
+    borderColor: "border-[#B46883]",
+    iconBg: "bg-[#F3DFE7]",
+    iconBorder: "border-[#E5C4D0]",
+    iconColor: "text-[#A15C76]",
+    numberColor: "text-[#E7C7D3]",
+    accentColor: "bg-[#B46883]",
+    glowColor: "bg-[#CE88A0]/20",
   },
+
   {
     number: "06",
-    cardColor: "bg-[#FAF6E8]",
-    borderColor: "border-[#C2AE6C]",
-    iconColor: "bg-[#F2EBCF] border-[#E3D6A7] text-[#96844D]",
-    numberColor: "text-[#E1D5A7]",
-    accentColor: "bg-[#C2AE6C]",
-    title: "Performance reporting",
+    title: "Performance Reporting",
     description:
-      "Relevant metrics, content insights and recommended next steps.",
+      "Relevant metrics, content insights, performance observations and recommended next steps.",
     icon: BarChart3,
 
-    // ROW 2 — RIGHT CARD → FROM RIGHT
-    revealFrom: "translate-x-20 translate-y-0",
-
-    delay: "delay-300",
+    cardColor: "bg-[#FBF7E9]",
+    borderColor: "border-[#A18A45]",
+    iconBg: "bg-[#F1E9CC]",
+    iconBorder: "border-[#DED09F]",
+    iconColor: "text-[#8E783A]",
+    numberColor: "text-[#E2D6AA]",
+    accentColor: "bg-[#A18A45]",
+    glowColor: "bg-[#C3AC66]/20",
   },
 ];
 
 export default function SocialMediaPlanIncludes() {
   const id = useId();
+  const sectionRef = useRef<HTMLElement | null>(null);
 
-  const sectionRef = useRef<HTMLElement>(null);
-
-  const [revealed, setRevealed] = useState<string[]>([]);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     const section = sectionRef.current;
 
     if (!section) return;
 
-    const elements = Array.from(
-      section.querySelectorAll<HTMLElement>("[data-plan-reveal]")
-    );
+    if (!("IntersectionObserver" in window)) {
+      setIsVisible(true);
+      return;
+    }
 
-    const showAll = () => {
-      setRevealed(
-        elements.map((element) => element.dataset.planReveal!)
-      );
-    };
-
-    const motion = window.matchMedia(
+    const reduceMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
     );
 
-    if (
-      motion.matches ||
-      !("IntersectionObserver" in window)
-    ) {
-      showAll();
+    if (reduceMotion.matches) {
+      setIsVisible(true);
       return;
     }
 
     const observer = new IntersectionObserver(
-      (entries) => {
-        const entering = entries.filter(
-          (entry) => entry.isIntersecting
-        );
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
 
-        if (!entering.length) return;
-
-        setRevealed((current) =>
-          Array.from(
-            new Set([
-              ...current,
-              ...entering.map(
-                (entry) =>
-                  (entry.target as HTMLElement).dataset
-                    .planReveal!
-              ),
-            ])
-          )
-        );
-
-        entering.forEach((entry) => {
-          observer.unobserve(entry.target);
-        });
+        setIsVisible(true);
+        observer.unobserve(entry.target);
       },
       {
-        threshold: 0.08,
-        rootMargin: "0px 0px -24px 0px",
+        threshold: 0.12,
+        rootMargin: "0px 0px -50px 0px",
       }
     );
 
-    /*
-     * Two frames ensure the hidden position
-     * paints before the reveal animation starts.
-     */
-    let secondFrame = 0;
+    observer.observe(section);
 
-    const firstFrame = requestAnimationFrame(() => {
-      secondFrame = requestAnimationFrame(() => {
-        elements.forEach((element) => {
-          observer.observe(element);
-        });
-      });
-    });
-
-    const onMotionChange = () => {
-      if (motion.matches) {
-        showAll();
-        observer.disconnect();
-      }
-    };
-
-    motion.addEventListener("change", onMotionChange);
-
-    return () => {
-      cancelAnimationFrame(firstFrame);
-      cancelAnimationFrame(secondFrame);
-
-      observer.disconnect();
-
-      motion.removeEventListener(
-        "change",
-        onMotionChange
-      );
-    };
+    return () => observer.disconnect();
   }, []);
 
   return (
     <section
       ref={sectionRef}
+      id="social-media-management-services"
       aria-labelledby={`${id}-heading`}
       className="
+        relative
         overflow-hidden
         bg-white
-        py-16
+        py-20
         text-[#102D4D]
         antialiased
-        sm:py-20
-        lg:py-28
+        sm:py-24
+        lg:py-32
       "
     >
+      {/* =========================================================
+          BACKGROUND DETAILS
+      ========================================================== */}
+
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div
+          className="
+            absolute
+            -left-[240px]
+            top-[140px]
+            h-[520px]
+            w-[520px]
+            rounded-full
+            border
+            border-[#102D4D]/[0.035]
+          "
+        />
+
+        <div
+          className="
+            absolute
+            -left-[150px]
+            top-[230px]
+            h-[340px]
+            w-[340px]
+            rounded-full
+            border
+            border-[#B79A72]/10
+          "
+        />
+
+        <div
+          className="
+            absolute
+            -right-[180px]
+            bottom-[-150px]
+            h-[480px]
+            w-[480px]
+            rounded-full
+            bg-[#DCE8F6]/30
+            blur-[120px]
+          "
+        />
+
+        <div
+          className="
+            absolute
+            left-1/2
+            top-[48%]
+            h-[500px]
+            w-[900px]
+            -translate-x-1/2
+            rounded-full
+            bg-[#F4F6FA]
+            blur-[140px]
+          "
+        />
+      </div>
+
+      {/* =========================================================
+          CONTAINER
+      ========================================================== */}
+
       <div
         className="
+          relative
+          z-10
           mx-auto
           max-w-[1320px]
           px-5
@@ -240,291 +248,380 @@ export default function SocialMediaPlanIncludes() {
           lg:px-12
         "
       >
-        {/* =========================
+        {/* =======================================================
             HEADER
-        ========================== */}
+        ======================================================== */}
 
         <header
-          data-plan-reveal="heading"
           className={`
             mx-auto
-            max-w-[840px]
+            max-w-[900px]
             text-center
-
             transition-all
-            duration-1000
-        
-
-            motion-reduce:translate-y-0
+            duration-[1000ms]
+            ease-[cubic-bezier(0.22,1,0.36,1)]
+            motion-reduce:transform-none
             motion-reduce:opacity-100
             motion-reduce:transition-none
-
             ${
-              revealed.includes("heading")
+              isVisible
                 ? "translate-y-0 opacity-100"
-                : "translate-y-8 opacity-0"
+                : "translate-y-10 opacity-0"
             }
           `}
         >
-          <div
-            className="
-              mb-6
-              inline-flex
-              items-center
-              gap-3
-       
-         
-              px-4
-              py-2
-            "
-          >
-             <span aria-hidden="true" className="h-px w-8 bg-[#B79A72] " />
+          {/* EYEBROW */}
 
-          
+          <div className="flex items-center justify-center gap-3">
+            <span
+              aria-hidden="true"
+              className="h-px w-9 bg-[#B79A72]"
+            />
 
             <span
               className="
-                text-[10px]
-            font-semibold
+                text-[9px]
+                font-semibold
                 uppercase
-                tracking-[0.2em]
+                tracking-[0.26em]
                 text-[#B79A72]
+                sm:text-[10px]
               "
             >
-              Inside your social media plan
+              Social Media Management Services
             </span>
-              <span aria-hidden="true" className="h-px w-8 bg-[#B79A72]" />
+
+            <span
+              aria-hidden="true"
+              className="h-px w-9 bg-[#B79A72]"
+            />
           </div>
+
+          {/* HEADING */}
 
           <h2
             id={`${id}-heading`}
             className="
-              text-[39px]
+              mt-6
+              text-[2.35rem]
               font-medium
               leading-[1.07]
               tracking-[-0.05em]
-
-              sm:text-[2.6rem] md:text-[2.95rem] lg:text-[3.1rem] xl:text-[3.35rem]
+              text-[#102D4D]
+              sm:text-[2.7rem]
+              md:text-[3rem]
+              lg:text-[3.25rem]
+              xl:text-[3.45rem]
             "
           >
-            Social Media Management.
-
-            <span
-              className="
-                mt-1
-                block
-              
-         
-                text-[#B79A72] 
-              "
-            >
-              Clear Deliverables.
+            Clear Deliverables.{" "}
+            <span className="font-normal text-[#B79A72]">
+              Clear Responsibilities.
             </span>
           </h2>
+
+          {/* INTRO */}
 
           <p
             className="
               mx-auto
               mt-6
-              max-w-[520px]
+              max-w-[670px]
               text-[14px]
               leading-7
               text-[#657382]
-
               sm:text-[15px]
             "
           >
-            The thinking. The making. The everyday
-            management.
-            <br className="hidden sm:block" /> A clear
-            plan for every part of your social presence.
+            Your proposal defines exactly what is included in your social media
+            marketing plan.
+          </p>
+
+          <p
+            className="
+              mx-auto
+              mt-2
+              max-w-[620px]
+              text-[12px]
+              leading-6
+              text-[#657382]/75
+              sm:text-[13px]
+            "
+          >
+            Depending on the selected scope, your service may include:
           </p>
         </header>
 
-       
+        {/* =======================================================
+            SMALL TOP DETAIL
+        ======================================================== */}
 
-        {/* =========================
-            CARDS
-        ========================== */}
+        <div
+          className={`
+            mx-auto
+            mt-10
+            flex
+            max-w-[900px]
+            items-center
+            justify-center
+            gap-4
+            transition-all
+            delay-150
+            duration-[900ms]
+            ${
+              isVisible
+                ? "translate-y-0 opacity-100"
+                : "translate-y-6 opacity-0"
+            }
+          `}
+        >
+          <span className="h-px flex-1 bg-[#102D4D]/[0.07]" />
+
+          <span
+            className="
+              text-[8px]
+              font-semibold
+              uppercase
+              tracking-[0.2em]
+              text-[#102D4D]/30
+            "
+          >
+            Six Core Deliverables
+          </span>
+
+          <span className="h-px flex-1 bg-[#102D4D]/[0.07]" />
+        </div>
+
+        {/* =======================================================
+            DELIVERABLE CARDS
+        ======================================================== */}
 
         <ol
           className="
-            mt-7
+            mt-8
             grid
             list-none
-            gap-6
+            gap-5
             p-0
-
             sm:grid-cols-2
-
             lg:grid-cols-3
-            lg:gap-7
+            lg:gap-6
           "
         >
-          {deliverables.map((item) => {
+          {deliverables.map((item, index) => {
             const Icon = item.icon;
-
-            const isVisible = revealed.includes(
-              item.number
-            );
 
             return (
               <li
                 key={item.number}
-                data-plan-reveal={item.number}
                 className={`
                   min-w-0
-
                   transform-gpu
-
                   transition-all
-                  duration-[900ms]
+                  duration-[950ms]
                   ease-[cubic-bezier(0.22,1,0.36,1)]
-
-                  ${item.delay}
-
-                  motion-reduce:translate-x-0
-                  motion-reduce:translate-y-0
+                  motion-reduce:transform-none
                   motion-reduce:opacity-100
                   motion-reduce:transition-none
-
                   ${
                     isVisible
-                      ? "translate-x-0 translate-y-0 opacity-100"
-                      : `${item.revealFrom} opacity-0`
+                      ? "translate-y-0 opacity-100"
+                      : "translate-y-14 opacity-0"
                   }
                 `}
+                style={{
+                  transitionDelay: `${180 + index * 90}ms`,
+                }}
               >
                 <article
                   className={`
                     group
+                    relative
                     h-full
-
-                    rounded-[22px]
-
-                    border-2
+                    rounded-[27px]
+                    border
                     bg-white
-
-                    p-2
-
-                    text-[#102D4D]
-
-                    transition-shadow
+                    p-[7px]
+                    shadow-[0_15px_45px_rgba(16,45,77,0.035)]
+                    transition-all
                     duration-500
-
-                    hover:shadow-[0_12px_30px_-18px_rgba(16,45,77,0.2)]
-
-                    motion-reduce:transition-none
-
+                    hover:-translate-y-2
+                    hover:shadow-[0_25px_65px_rgba(16,45,77,0.10)]
                     ${item.borderColor}
                   `}
                 >
+                  {/* =================================================
+                      INNER COLOR CARD
+                  ================================================== */}
+
                   <div
                     className={`
                       relative
-
                       flex
                       h-full
-                      min-h-[285px]
+                      min-h-[315px]
                       flex-col
-
                       overflow-hidden
-
-                      rounded-[12px]
-
+                      rounded-[20px]
                       p-6
-
-                      sm:min-h-[310px]
                       sm:p-7
-
+                      lg:min-h-[330px]
                       lg:p-8
-
                       ${item.cardColor}
                     `}
                   >
+                    {/* HOVER GLOW */}
+
+                    <div
+                      className={`
+                        pointer-events-none
+                        absolute
+                        -right-16
+                        -top-16
+                        h-[180px]
+                        w-[180px]
+                        rounded-full
+                        opacity-0
+                        blur-[45px]
+                        transition-all
+                        duration-700
+                        group-hover:scale-125
+                        group-hover:opacity-100
+                        ${item.glowColor}
+                      `}
+                    />
+
+                    {/* DECORATIVE CIRCLE */}
+
+                    <div
+                      className="
+                        pointer-events-none
+                        absolute
+                        -right-[70px]
+                        -top-[70px]
+                        h-[180px]
+                        w-[180px]
+                        rounded-full
+                        border
+                        border-white/50
+                        transition-transform
+                        duration-700
+                        group-hover:scale-110
+                      "
+                    />
+
                     {/* TOP */}
 
                     <div
                       className="
+                        relative
+                        z-10
                         flex
                         items-start
                         justify-between
-                        gap-5
+                        gap-4
                       "
                     >
+                      {/* ICON */}
+
                       <span
                         className={`
                           flex
-                          h-11
-                          w-11
+                          h-12
+                          w-12
+                          shrink-0
                           items-center
                           justify-center
-
-                          rounded-xl
+                          rounded-[15px]
                           border
-
-                          transition-colors
+                          shadow-[0_8px_20px_rgba(16,45,77,0.04)]
+                          transition-all
                           duration-500
-
-                          motion-reduce:transition-none
-
+                          group-hover:-rotate-3
+                          group-hover:scale-105
+                          ${item.iconBg}
+                          ${item.iconBorder}
                           ${item.iconColor}
                         `}
                       >
                         <Icon
-                          size={21}
-                          strokeWidth={1.35}
+                          size={20}
+                          strokeWidth={1.4}
                           aria-hidden="true"
                         />
                       </span>
 
+                      {/* BIG NUMBER */}
+
                       <span
                         aria-hidden="true"
                         className={`
-                          -mt-3
-
                           select-none
-
                           font-serif
-                          text-[72px]
+                          text-[58px]
                           font-normal
-                          leading-none
+                          leading-[0.8]
                           tracking-[-0.07em]
-
-                          transition-colors
+                          transition-all
                           duration-500
-
-                          motion-reduce:transition-none
-
+                          group-hover:-translate-y-1
                           ${item.numberColor}
                         `}
                       >
-                    
+                        {item.number}
                       </span>
                     </div>
 
-                    {/* CONTENT */}
+                    {/* =================================================
+                        CONTENT
+                    ================================================== */}
 
                     <div
                       className="
-                        mt-8
+                        relative
+                        z-10
+                        mt-10
                         flex
                         flex-1
                         flex-col
-
-                        sm:mt-9
                       "
                     >
+                      <div className="flex items-center gap-3">
+                        <span
+                          className={`
+                            h-[2px]
+                            w-6
+                            rounded-full
+                            transition-all
+                            duration-500
+                            group-hover:w-10
+                            ${item.accentColor}
+                          `}
+                        />
+
+                        <span
+                          className="
+                            text-[8px]
+                            font-semibold
+                            uppercase
+                            tracking-[0.17em]
+                            text-[#102D4D]/35
+                          "
+                        >
+                          Deliverable {item.number}
+                        </span>
+                      </div>
+
                       <h3
                         className="
-                          max-w-[245px]
-
-                          text-[23px]
+                          mt-4
+                          max-w-[270px]
+                          text-[22px]
                           font-medium
-                          leading-[1.22]
+                          leading-[1.2]
                           tracking-[-0.035em]
-
-                          sm:text-[25px]
+                          text-[#102D4D]
+                          sm:text-[24px]
                         "
                       >
                         {item.title}
@@ -532,44 +629,67 @@ export default function SocialMediaPlanIncludes() {
 
                       <p
                         className="
-                          mt-3
-
+                          mt-4
                           text-[13px]
                           leading-6
                           text-[#526477]
-
-                          transition-colors
-                          duration-500
-
-                          motion-reduce:transition-none
                         "
                       >
                         {item.description}
                       </p>
                     </div>
 
-                    {/* ACCENT LINE */}
+                    {/* BOTTOM */}
 
-                    <span
-                      aria-hidden="true"
-                      className={`
-                        mt-6
+                    <div
+                      className="
+                        relative
+                        z-10
+                        mt-7
+                        flex
+                        items-center
+                        justify-between
+                        border-t
+                        border-[#102D4D]/[0.07]
+                        pt-4
+                      "
+                    >
+                      <span
+                        className="
+                          text-[8px]
+                          font-medium
+                          uppercase
+                          tracking-[0.16em]
+                          text-[#102D4D]/28
+                        "
+                      >
+                        Defined in your scope
+                      </span>
 
-                        h-px
-                        w-8
-
-                        opacity-100
-
-                        transition-[width]
-                        duration-500
-
-                        group-hover:w-16
-
-                        motion-reduce:transition-none
-
-                        ${item.accentColor}
-                      `}
-                    />
+                      <span
+                        className={`
+                          flex
+                          h-7
+                          w-7
+                          items-center
+                          justify-center
+                          rounded-full
+                          border
+                          bg-white/60
+                          transition-transform
+                          duration-500
+                          group-hover:rotate-[-8deg]
+                          ${item.iconBorder}
+                          ${item.iconColor}
+                        `}
+                      >
+                        <Check
+                          size={11}
+                          strokeWidth={2}
+                          aria-hidden="true"
+                        />
+                      </span>
+                    </div>
                   </div>
                 </article>
               </li>
@@ -577,62 +697,96 @@ export default function SocialMediaPlanIncludes() {
           })}
         </ol>
 
-        {/* =========================
-            OPTIONAL PAID ADS
-        ========================== */}
+        {/* =======================================================
+            FINAL PROPOSAL STATEMENT
+        ======================================================== */}
 
-        <aside
-          data-plan-reveal="optional"
-          aria-label="Optional paid advertising"
+        <div
           className={`
-            mt-5
-
-            overflow-hidden
-
-            rounded-[18px]
-
-            border
-            border-[#E4DFD5]
-
-            bg-[#F2EFE8]
-
+            relative
+            mx-auto
+            mt-10
+            max-w-[1100px]
             transition-all
-            duration-700
+            delay-700
+            duration-[1000ms]
             ease-[cubic-bezier(0.22,1,0.36,1)]
-
-            motion-reduce:translate-y-0
-            motion-reduce:opacity-100
-            motion-reduce:transition-none
-
             ${
-              revealed.includes("optional")
+              isVisible
                 ? "translate-y-0 opacity-100"
-                : "translate-y-7 opacity-0"
+                : "translate-y-10 opacity-0"
             }
           `}
         >
+          {/* GLOW */}
+
           <div
             className="
-              grid
-              gap-5
-              p-6
+              pointer-events-none
+              absolute
+              -inset-6
+              rounded-[40px]
+              bg-[#102D4D]/[0.04]
+              blur-[50px]
+            "
+          />
 
-              sm:p-7
-
-              lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)]
-              lg:items-center
-              lg:gap-10
-              lg:px-8
+          <div
+            className="
+              relative
+              overflow-hidden
+              rounded-[26px]
+              bg-[#102D4D]
+              px-6
+              py-7
+              shadow-[0_25px_70px_rgba(16,45,77,0.14)]
+              sm:px-8
+              sm:py-8
+              lg:px-10
             "
           >
+            {/* INNER DETAIL */}
+
             <div
               className="
-                flex
+                pointer-events-none
+                absolute
+                inset-0
+                bg-gradient-to-r
+                from-white/[0.04]
+                via-transparent
+                to-[#B79A72]/10
+              "
+            />
+
+            <div
+              className="
+                pointer-events-none
+                absolute
+                -right-20
+                -top-20
+                h-[220px]
+                w-[220px]
+                rounded-full
+                border
+                border-white/[0.05]
+              "
+            />
+
+            <div
+              className="
+                relative
+                z-10
+                grid
                 items-center
-                gap-4
+                gap-5
+                lg:grid-cols-[auto_1fr]
+                lg:gap-7
               "
             >
-              <span
+              {/* ICON */}
+
+              <div
                 className="
                   flex
                   h-11
@@ -640,21 +794,20 @@ export default function SocialMediaPlanIncludes() {
                   shrink-0
                   items-center
                   justify-center
-
                   rounded-full
-
                   border
-                  border-[#CBB99D]
-
-                  text-[#947448]
+                  border-[#B79A72]/25
+                  bg-[#B79A72]/10
+                  text-[#D4B98D]
                 "
               >
-                <Plus
-                  size={20}
-                  strokeWidth={1.2}
-                  aria-hidden="true"
+                <Check
+                  size={17}
+                  strokeWidth={1.6}
                 />
-              </span>
+              </div>
+
+              {/* CONTENT */}
 
               <div>
                 <p
@@ -662,73 +815,31 @@ export default function SocialMediaPlanIncludes() {
                     text-[8px]
                     font-semibold
                     uppercase
-                    tracking-[0.18em]
-                    text-[#8B6E47]
+                    tracking-[0.21em]
+                    text-[#D4B98D]
                   "
                 >
-                  Optional addition
+                  Your Final Proposal
                 </p>
 
-                <h3
+                <p
                   className="
-                    mt-1
-                    text-[22px]
-                    font-medium
-                    tracking-[-0.035em]
+                    mt-2
+                    max-w-[930px]
+                    text-[13px]
+                    leading-7
+                    text-white/68
+                    sm:text-[14px]
                   "
                 >
-                  Take your reach further.
-                </h3>
+                  Your final proposal confirms selected platforms, monthly
+                  content volume, production requirements, responsibilities,
+                  timelines and commercial scope.
+                </p>
               </div>
             </div>
-
-            <p
-              className="
-                text-[13px]
-                leading-6
-                text-[#617080]
-
-                lg:border-l
-                lg:border-[#D7CDBE]
-                lg:pl-10
-              "
-            >
-              <span
-                className="
-                  font-medium
-                  text-[#102D4D]
-                "
-              >
-                Paid advertising
-              </span>{" "}
-              can be added to your plan. Campaign
-              management, creative production scope and
-              advertising spend are clarified in your
-              proposal.
-            </p>
           </div>
-        </aside>
-
-        {/* =========================
-            BOTTOM NOTE
-        ========================== */}
-
-        <p
-          className="
-            mx-auto
-            mt-6
-            max-w-[720px]
-            text-center
-
-            text-[11px]
-            leading-6
-            text-[#6D7883]
-          "
-        >
-          Your proposal defines the selected channels,
-          content volumes, production scope and
-          responsibilities.
-        </p>
+        </div>
       </div>
     </section>
   );

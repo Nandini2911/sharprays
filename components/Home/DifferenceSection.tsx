@@ -225,12 +225,13 @@ export default function DifferenceSection() {
                 className="
                   relative
                   z-30
-                  font-[var(--font-new-york)]
-                  text-[clamp(2.8rem,5vw,5.4rem)]
+               
+               
                   font-medium
                   leading-[0.98]
                   tracking-[-0.06em]
                   text-[#0B2A52]
+                  sm:text-[2.6rem] md:text-[2.95rem] lg:text-[3.1rem] xl:text-[3.35rem]
                 "
               >
                 Pretty Marketing
@@ -262,15 +263,15 @@ export default function DifferenceSection() {
                   relative
                   z-30
                   mt-1
-                  font-[var(--font-new-york)]
-                  text-[clamp(2.8rem,5vw,5.4rem)]
-                  font-medium
+           
+                sm:text-[2.6rem] md:text-[2.95rem] lg:text-[3.1rem] xl:text-[3.35rem]
+           
                   leading-[0.98]
                   tracking-[-0.06em]
                   text-[#0B2A52]
                 "
               >
-                <span className="italic text-[#C6A77A]">
+                <span className=" text-[#C6A77A]">
                   Isn&apos;t
                 </span>{" "}
                 Enough.

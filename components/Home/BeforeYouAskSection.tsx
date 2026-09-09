@@ -110,12 +110,12 @@ export default function BeforeYouAskSection() {
               className="
                 mt-7
                 max-w-[520px]
-                font-[var(--font-new-york)]
-                text-[clamp(3rem,4vw,4rem)]
-                font-medium
+               
+         
                 leading-[0.9]
                 tracking-[-0.065em]
                 text-[#0B2A52]
+                sm:text-[2.6rem] md:text-[2.95rem] lg:text-[3.1rem] xl:text-[3.35rem]
               "
             >
               Before You{" "}

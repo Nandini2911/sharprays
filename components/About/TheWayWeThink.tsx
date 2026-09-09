@@ -54,49 +54,48 @@ export default function TheWayWeThink() {
           }}
           className="mt-10 sm:mt-12 lg:mt-16"
         >
-          <h2
-            className="
-              max-w-[1100px]
-              text-[clamp(40px,11vw,54px)]
-              leading-[0.88]
-              tracking-[-0.055em]
-              text-[#0B2A52]
-              sm:text-[clamp(44px,7vw,60px)]
-              md:text-[clamp(48px,5vw,66px)]
-              lg:text-[clamp(56px,4vw,76px)]
-              xl:text-[clamp(64px,3.5vw,84px)]
-              2xl:text-[clamp(70px,3.2vw,92px)]
-            "
-          >
-            A Few Things
-            <br />
-            We’ll Always{" "}
-            <span className="relative inline-block text-[#B79A72]">
-              Believe.
+         <h2
+  className="
+    max-w-[1100px]
+    text-[2.2rem]
+    leading-[0.88]
+    tracking-[-0.055em]
+    text-[#0B2A52]
+    sm:text-[2.6rem]
+    md:text-[2.95rem]
+    lg:text-[3.1rem]
+    xl:text-[3.35rem]
+  "
+>
+  A Few Things
+  <br />
+  We’ll Always{" "}
+  <span className="relative inline-block text-[#B79A72]">
+    Believe.
 
-              {/* Animated underline */}
-              <motion.span
-                initial={{ scaleX: 0 }}
-                whileInView={{ scaleX: 1 }}
-                viewport={{ once: true, amount: 0.5 }}
-                transition={{
-                  duration: 0.9,
-                  delay: 0.4,
-                  ease: [0.22, 1, 0.36, 1],
-                }}
-                className="
-                  absolute
-                  -bottom-2
-                  left-1
-                  h-[2px]
-                  w-[45%]
-                  origin-left
-                  bg-[#B79A72]
-                  sm:-bottom-3
-                "
-              />
-            </span>
-          </h2>
+    {/* Animated underline */}
+    <motion.span
+      initial={{ scaleX: 0 }}
+      whileInView={{ scaleX: 1 }}
+      viewport={{ once: true, amount: 0.5 }}
+      transition={{
+        duration: 0.9,
+        delay: 0.4,
+        ease: [0.22, 1, 0.36, 1],
+      }}
+      className="
+        absolute
+        -bottom-2
+        left-1
+        h-[2px]
+        w-[45%]
+        origin-left
+        bg-[#B79A72]
+        sm:-bottom-3
+      "
+    />
+  </span>
+</h2>
         </motion.div>
 
 

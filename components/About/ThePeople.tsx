@@ -108,15 +108,14 @@ export default function ThePeople() {
   className="
     relative
     max-w-[1100px]
-    text-[clamp(39px,11vw,52px)]
+    text-[2.2rem]
     leading-[1.05]
     tracking-[-0.04em]
     text-[#0B2A52]
-    sm:text-[clamp(42px,7vw,58px)]
-    md:text-[clamp(44px,5vw,62px)]
-    lg:text-[clamp(50px,4vw,72px)]
-    xl:text-[clamp(56px,3.5vw,78px)]
-    2xl:text-[clamp(64px,3.2vw,86px)]
+    sm:text-[2.6rem]
+    md:text-[2.95rem]
+    lg:text-[3.1rem]
+    xl:text-[3.35rem]
   "
 >
   The People Behind SHARPRAYS

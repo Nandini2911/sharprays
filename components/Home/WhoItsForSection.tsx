@@ -1,271 +1,1105 @@
 "use client";
 
-import { motion } from "framer-motion";
+import {
+  motion,
+  useMotionValue,
+  useMotionValueEvent,
+  useReducedMotion,
+  useScroll,
+  useSpring,
+  useTransform,
+} from "framer-motion";
+
+import { Sparkles } from "lucide-react";
+import { useRef } from "react";
 
 const beliefs = [
   {
     number: "01",
     title: "Create with intention.",
     text: "Don't create just because you can.",
-    image: "/thewaywethink/intension.png",
-    position: "left",
   },
   {
     number: "02",
     title: "Measure what matters.",
     text: "Don't chase numbers that don't matter.",
-    image: "/thewaywethink/measure.png",
-    position: "right",
   },
   {
     number: "03",
     title: "Look beyond attention.",
     text: "Don't confuse attention with impact.",
-    image: "/thewaywethink/look.png",
-    position: "left",
   },
   {
     number: "04",
     title: "Keep moving.",
     text: "Don't stop learning because something worked once.",
-    image: "/thewaywethink/keep_move.png",
-    position: "right",
   },
   {
     number: "05",
     title: "Stay curious.",
     text: 'Never be afraid to ask, "Why?"',
-    image: "/thewaywethink/stay.png",
-    position: "left",
   },
+];
+
+const positions = [
+  "lg:left-[5%] lg:top-[2%]",
+  "lg:left-[58%] lg:top-[17%]",
+  "lg:left-[25%] lg:top-[38%]",
+  "lg:left-[62%] lg:top-[59%]",
+  "lg:left-[13%] lg:top-[78%]",
 ];
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
 export default function TheWayWeThink() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const desktopPathRef = useRef<SVGPathElement>(null);
+
+  const reduceMotion = useReducedMotion();
+
+  /* =====================================================
+     REAL-TIME SCROLL PROGRESS
+  ====================================================== */
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start 76%", "end 28%"],
+  });
+
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 130,
+    damping: 28,
+    mass: 0.22,
+  });
+
+  const pathProgress = reduceMotion
+    ? scrollYProgress
+    : smoothProgress;
+
+  /* =====================================================
+     DESKTOP TRAVELING DOT
+  ====================================================== */
+
+  const dotX = useMotionValue(140);
+  const dotY = useMotionValue(88);
+
+  useMotionValueEvent(pathProgress, "change", (latest) => {
+    const path = desktopPathRef.current;
+
+    if (!path) return;
+
+    const length = path.getTotalLength();
+
+    const point = path.getPointAtLength(
+      length * Math.min(Math.max(latest, 0), 1)
+    );
+
+    dotX.set(point.x);
+    dotY.set(point.y);
+  });
+
+  /* =====================================================
+     MOBILE TRAVELING DOT
+  ====================================================== */
+
+  const mobileDotY = useTransform(
+    pathProgress,
+    [0, 1],
+    [12, 888]
+  );
+
   return (
     <section
-      id="wb0eha"
-      className="relative w-full overflow-hidden bg-white text-[#0B2A52]"
+      ref={sectionRef}
+      id="the-way-we-think"
+      className="
+        relative
+        overflow-hidden
+        bg-white
+        pb-20
+        pt-14
+        text-[#0B2A52]
+
+        sm:pb-24
+        sm:pt-16
+
+        lg:pb-24
+        lg:pt-16
+      "
     >
       {/* =====================================================
-          HEADER
-      ===================================================== */}
-      <div className="mx-auto w-full max-w-[1200px] px-6 pt-20 sm:px-8 md:px-10 lg:px-14 lg:pt-24">
-        <motion.div
-          initial={{ opacity: 0, y: 18 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.4 }}
-          transition={{ duration: 0.7, ease }}
-          className="flex items-center justify-between border-b border-[#0B2A52]/10 pb-5"
-        >
-          <div className="flex items-center gap-3">
-            <span className="h-[6px] w-[6px] rounded-full bg-[#B79A72]" />
+          LARGE CROPPED BACKGROUND CIRCLES
+      ====================================================== */}
 
-            <span className="text-[9px] font-medium uppercase tracking-[0.28em] text-[#0B2A52]/45 sm:text-[10px]">
+      <div
+        aria-hidden="true"
+        className="
+          pointer-events-none
+          absolute
+          inset-0
+          overflow-hidden
+        "
+      >
+        {/* TOP RIGHT LARGE BLUE CIRCLE */}
+
+        <div
+          className="
+            absolute
+
+            -right-[270px]
+            -top-[330px]
+
+            h-[760px]
+            w-[760px]
+
+            rounded-full
+
+            bg-gradient-to-br
+            from-[#F5F8FB]
+            via-[#EDF3F8]
+            to-[#E4EDF5]
+
+            sm:-right-[250px]
+            sm:-top-[320px]
+
+            lg:-right-[220px]
+            lg:-top-[310px]
+            lg:h-[800px]
+            lg:w-[800px]
+          "
+        />
+
+        {/* TOP RIGHT BLUE GLOW */}
+
+        <div
+          className="
+            absolute
+
+            -right-[100px]
+            -top-[120px]
+
+            h-[450px]
+            w-[450px]
+
+            rounded-full
+
+            bg-[#CFE5F3]/25
+
+            blur-[95px]
+          "
+        />
+
+        {/* BOTTOM LEFT LARGE CREAM CIRCLE */}
+
+        <div
+          className="
+            absolute
+
+            -bottom-[430px]
+            -left-[310px]
+
+            h-[760px]
+            w-[760px]
+
+            rounded-full
+
+            bg-gradient-to-br
+            from-[#FBFAF7]
+            via-[#F7F4EE]
+            to-[#F0EAE1]
+
+            sm:-bottom-[420px]
+            sm:-left-[290px]
+
+            lg:-bottom-[410px]
+            lg:-left-[250px]
+            lg:h-[800px]
+            lg:w-[800px]
+          "
+        />
+
+        {/* BOTTOM LEFT GOLD GLOW */}
+
+        <div
+          className="
+            absolute
+
+            -bottom-[220px]
+            -left-[110px]
+
+            h-[420px]
+            w-[420px]
+
+            rounded-full
+
+            bg-[#B79A72]/[0.05]
+
+            blur-[100px]
+          "
+        />
+
+        {/* =================================================
+            EXISTING SOFT ATMOSPHERE
+        ================================================== */}
+
+        <div
+          className="
+            absolute
+            left-[7%]
+            top-[31%]
+
+            h-[320px]
+            w-[320px]
+
+            rounded-full
+
+            bg-[#DCEFFA]/30
+
+            blur-[140px]
+          "
+        />
+
+        <div
+          className="
+            absolute
+            right-[6%]
+            top-[52%]
+
+            h-[360px]
+            w-[360px]
+
+            rounded-full
+
+            bg-[#D8EDF8]/25
+
+            blur-[150px]
+          "
+        />
+
+        <div
+          className="
+            absolute
+            bottom-[8%]
+            left-[35%]
+
+            h-[280px]
+            w-[440px]
+
+            rounded-full
+
+            bg-[#EEF8FD]/70
+
+            blur-[130px]
+          "
+        />
+
+        {/* LARGE FAINT OUTLINE */}
+
+        <div
+          className="
+            absolute
+
+            right-[-170px]
+            top-[-190px]
+
+            h-[560px]
+            w-[560px]
+
+            rounded-full
+
+            border
+            border-[#0B2A52]/[0.025]
+          "
+        />
+
+        <div
+          className="
+            absolute
+
+            bottom-[-210px]
+            left-[-170px]
+
+            h-[500px]
+            w-[500px]
+
+            rounded-full
+
+            border
+            border-[#B79A72]/[0.06]
+          "
+        />
+      </div>
+
+      {/* =====================================================
+          MAIN CONTAINER
+      ====================================================== */}
+
+      <div
+        className="
+          relative
+          z-10
+
+          mx-auto
+
+          max-w-[1280px]
+
+          px-5
+
+          sm:px-8
+          lg:px-12
+        "
+      >
+        {/* ===================================================
+            HEADER
+        ==================================================== */}
+
+        <motion.div
+          initial={{
+            opacity: 0,
+            y: 24,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{
+            once: true,
+            amount: 0.3,
+          }}
+          transition={{
+            duration: 0.8,
+            ease,
+          }}
+          className="
+            mx-auto
+            max-w-[1040px]
+            text-center
+          "
+        >
+          {/* LABEL */}
+
+          <div
+            className="
+              mx-auto
+              flex
+              w-fit
+              items-center
+              gap-4
+            "
+          >
+            <span
+              className="
+                h-px
+                w-12
+
+                bg-gradient-to-r
+                from-transparent
+                to-[#B79A72]
+              "
+            />
+
+            <span
+              className="
+                text-[9px]
+                font-semibold
+                uppercase
+                tracking-[0.3em]
+                text-[#B79A72]
+                sm:text-[10px]
+              "
+            >
               The Way We Think
             </span>
+
+            <span
+              className="
+                h-px
+                w-12
+
+                bg-gradient-to-l
+                from-transparent
+                to-[#B79A72]
+              "
+            />
           </div>
 
-          <span className="text-[9px] tracking-[0.2em] text-[#B79A72]">
-            08
-          </span>
+          {/* MAIN HEADING */}
+
+          <h2
+            className="
+              mx-auto
+              mt-7
+
+              max-w-[1000px]
+
+              leading-[1.02]
+
+              tracking-[-0.055em]
+
+              text-[#0B2A52]
+
+              sm:text-[2.6rem]
+              md:text-[2.95rem]
+              lg:text-[3.1rem]
+              xl:text-[3.35rem]
+            "
+          >
+            <span className="block pb-1">
+              Five simple beliefs.
+            </span>
+
+            <span
+              className="
+                block
+
+                pb-[0.14em]
+
+                bg-gradient-to-r
+                from-[#9A7D59]
+                via-[#B79A72]
+                to-[#D2B990]
+
+                bg-clip-text
+
+                text-transparent
+              "
+            >
+              One way of thinking.
+            </span>
+          </h2>
+
+          {/* DESCRIPTION */}
+
+          <p
+            className="
+              mx-auto
+              mt-6
+
+              max-w-[660px]
+
+              font-serif
+
+              text-[15px]
+
+              leading-7
+
+              text-[#0B2A52]/50
+
+              sm:text-[17px]
+              sm:leading-8
+            "
+          >
+            Not rules. Not formulas. Just the principles
+            that keep our work thoughtful, intentional
+            and honest.
+          </p>
         </motion.div>
-      </div>
 
-      {/* =====================================================
-          INTRO
-      ===================================================== */}
-      <div className="mx-auto w-full max-w-[1200px] px-6 pb-20 pt-16 sm:px-8 sm:pb-24 sm:pt-20 md:px-10 lg:px-14 lg:pb-28 lg:pt-24">
-        <div className="mx-auto max-w-[900px] text-center">
-          <motion.span
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, ease }}
-            className="text-[8px] font-medium uppercase tracking-[0.3em] text-[#B79A72] sm:text-[9px]"
+        {/* =====================================================
+            EDITORIAL PATH
+        ====================================================== */}
+
+        <div
+          className="
+            relative
+
+            mx-auto
+
+            mt-12
+
+            max-w-[1120px]
+
+            sm:mt-14
+
+            lg:mt-16
+            lg:h-[900px]
+          "
+        >
+          {/* =================================================
+              DESKTOP SVG
+          ================================================== */}
+
+          <svg
+            aria-hidden="true"
+            viewBox="0 0 1120 900"
+            preserveAspectRatio="none"
+            className="
+              pointer-events-none
+
+              absolute
+              inset-0
+              z-0
+
+              hidden
+
+              h-full
+              w-full
+
+              lg:block
+            "
           >
-            Our Principles
-          </motion.span>
+            <defs>
+              {/* BASE PATH */}
 
-          <motion.h2
-            initial={{ opacity: 0, y: 35 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.4 }}
-            transition={{ duration: 0.85, delay: 0.08, ease }}
-            className="mx-auto mt-5 max-w-[750px] text-[clamp(32px,5vw,54px)] font-medium leading-[1.04] tracking-[-0.045em]"
+              <linearGradient
+                id="pathBase"
+                x1="0"
+                y1="0"
+                x2="1"
+                y2="1"
+              >
+                <stop
+                  offset="0%"
+                  stopColor="#B79A72"
+                  stopOpacity="0.15"
+                />
+
+                <stop
+                  offset="45%"
+                  stopColor="#79B4D8"
+                  stopOpacity="0.18"
+                />
+
+                <stop
+                  offset="100%"
+                  stopColor="#0B2A52"
+                  stopOpacity="0.08"
+                />
+              </linearGradient>
+
+              {/* ACTIVE PATH */}
+
+              <linearGradient
+                id="pathActive"
+                x1="0"
+                y1="0"
+                x2="1"
+                y2="1"
+              >
+                <stop
+                  offset="0%"
+                  stopColor="#B79A72"
+                />
+
+                <stop
+                  offset="38%"
+                  stopColor="#73AED3"
+                />
+
+                <stop
+                  offset="72%"
+                  stopColor="#4385B1"
+                />
+
+                <stop
+                  offset="100%"
+                  stopColor="#B79A72"
+                />
+              </linearGradient>
+
+              {/* DOT GLOW */}
+
+              <filter
+                id="dotGlow"
+                x="-100%"
+                y="-100%"
+                width="300%"
+                height="300%"
+              >
+                <feGaussianBlur
+                  stdDeviation="5"
+                  result="blur"
+                />
+
+                <feMerge>
+                  <feMergeNode in="blur" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+            </defs>
+
+            {/* STATIC PATH */}
+
+            <path
+              d="
+                M 140 88
+                C 320 80, 490 140, 735 190
+                C 995 245, 875 345, 520 385
+                C 275 415, 355 505, 810 570
+                C 1020 600, 910 705, 430 755
+                C 300 770, 245 825, 220 860
+              "
+              fill="none"
+              stroke="url(#pathBase)"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+            />
+
+            {/* REAL-TIME ACTIVE PATH */}
+
+            <motion.path
+              ref={desktopPathRef}
+              d="
+                M 140 88
+                C 320 80, 490 140, 735 190
+                C 995 245, 875 345, 520 385
+                C 275 415, 355 505, 810 570
+                C 1020 600, 910 705, 430 755
+                C 300 770, 245 825, 220 860
+              "
+              fill="none"
+              stroke="url(#pathActive)"
+              strokeWidth="2.4"
+              strokeLinecap="round"
+              style={{
+                pathLength: pathProgress,
+              }}
+            />
+
+            {/* MOVING DOT */}
+
+            <motion.circle
+              cx={dotX}
+              cy={dotY}
+              r="15"
+              fill="#72ACD0"
+              opacity="0.09"
+            />
+
+            <motion.circle
+              cx={dotX}
+              cy={dotY}
+              r="6"
+              fill="#FFFFFF"
+              stroke="#B79A72"
+              strokeWidth="2"
+              filter="url(#dotGlow)"
+            />
+
+            <motion.circle
+              cx={dotX}
+              cy={dotY}
+              r="2"
+              fill="#B79A72"
+            />
+          </svg>
+
+          {/* =================================================
+              MOBILE PATH
+          ================================================== */}
+
+          <svg
+            aria-hidden="true"
+            viewBox="0 0 40 900"
+            preserveAspectRatio="none"
+            className="
+              pointer-events-none
+
+              absolute
+
+              bottom-0
+              left-[8px]
+              top-0
+
+              z-0
+
+              h-full
+              w-[40px]
+
+              lg:hidden
+            "
           >
-            A few things we&apos;ll always
-            <br className="hidden sm:block" />{" "}
-            <span className="text-[#0B2A52]/35">believe.</span>
-          </motion.h2>
+            <defs>
+              <linearGradient
+                id="mobilePathActive"
+                x1="0"
+                y1="0"
+                x2="0"
+                y2="1"
+              >
+                <stop
+                  offset="0%"
+                  stopColor="#B79A72"
+                />
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.4 }}
-            transition={{ duration: 0.7, delay: 0.18, ease }}
-            className="mx-auto mt-6 max-w-[430px] text-[11px] leading-[1.75] text-[#0B2A52]/45 sm:text-[12px]"
+                <stop
+                  offset="52%"
+                  stopColor="#65A5CD"
+                />
+
+                <stop
+                  offset="100%"
+                  stopColor="#B79A72"
+                />
+              </linearGradient>
+            </defs>
+
+            {/* FAINT ROAD */}
+
+            <path
+              d="M 20 12 L 20 888"
+              fill="none"
+              stroke="#0B2A52"
+              strokeOpacity="0.09"
+              strokeWidth="1"
+            />
+
+            {/* ACTIVE ROAD */}
+
+            <motion.path
+              d="M 20 12 L 20 888"
+              fill="none"
+              stroke="url(#mobilePathActive)"
+              strokeWidth="2"
+              strokeLinecap="round"
+              style={{
+                pathLength: pathProgress,
+              }}
+            />
+
+            {/* MOVING DOT */}
+
+            <motion.circle
+              cx="20"
+              cy={mobileDotY}
+              r="5.5"
+              fill="white"
+              stroke="#B79A72"
+              strokeWidth="2"
+            />
+          </svg>
+
+          {/* =================================================
+              PRINCIPLES
+          ================================================== */}
+
+          <div
+            className="
+              relative
+              z-10
+
+              space-y-12
+
+              pl-12
+
+              sm:space-y-14
+              sm:pl-14
+
+              lg:h-full
+              lg:space-y-0
+              lg:pl-0
+            "
           >
-            Not rules. Not formulas. Just a few things that keep us honest
-            about the work we create.
-          </motion.p>
-
-          <motion.div
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.3, ease }}
-            style={{ transformOrigin: "center" }}
-            className="mx-auto mt-7 h-px w-10 bg-[#B79A72]"
-          />
-        </div>
-      </div>
-
-      {/* =====================================================
-          BELIEFS
-      ===================================================== */}
-      <div className="mx-auto w-full max-w-[1200px] px-6 sm:px-8 md:px-10 lg:px-14">
-        <div className="border-t border-[#0B2A52]/10">
-          {beliefs.map((belief, index) => {
-            const isImageLeft = belief.position === "left";
-
-            return (
-              <motion.div
+            {beliefs.map((belief, index) => (
+              <motion.article
                 key={belief.number}
-                initial={{ opacity: 0, y: 45 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
+                initial={{
+                  opacity: 0,
+                  y: 34,
+                }}
+                whileInView={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                viewport={{
+                  once: true,
+                  amount: 0.35,
+                }}
                 transition={{
-                  duration: 0.8,
-                  delay: index * 0.08,
+                  duration: 0.65,
                   ease,
                 }}
-                className="group border-b border-[#0B2A52]/10"
+                className={`
+                  group
+                  relative
+                  z-10
+
+                  lg:absolute
+                  lg:w-[390px]
+
+                  ${positions[index]}
+                `}
               >
+                {/* NUMBER + CONNECTOR */}
+
                 <div
-                  className={`grid min-h-[330px] items-center gap-8 py-10 sm:min-h-[390px] sm:gap-12 sm:py-12 lg:min-h-[430px] lg:grid-cols-2 lg:gap-20 lg:py-14 ${
-                    !isImageLeft ? "lg:[&>*:first-child]:order-2" : ""
-                  }`}
+                  className="
+                    flex
+                    items-center
+                    gap-3
+                  "
                 >
-                  {/* =================================================
-                      IMAGE
-                  ================================================= */}
-                  <div
-                    className={`relative flex w-full items-center ${
-                      isImageLeft
-                        ? "justify-start"
-                        : "justify-end lg:justify-start"
-                    }`}
+                  {/* NUMBER */}
+
+                  <span
+                    className="
+                      flex
+                      h-9
+                      w-9
+
+                      shrink-0
+
+                      items-center
+                      justify-center
+
+                      rounded-full
+
+                      border
+                      border-[#B79A72]/40
+
+                      bg-white
+
+                      font-serif
+                      text-[11px]
+
+                      text-[#B79A72]
+
+                      shadow-[0_8px_30px_-22px_rgba(11,42,82,0.25)]
+
+                      transition-all
+                      duration-500
+
+                      group-hover:-translate-y-1
+
+                      group-hover:border-[#4F8DB8]
+
+                      group-hover:shadow-[0_12px_34px_-20px_rgba(66,136,181,0.38)]
+                    "
                   >
-                    <div className="relative w-full max-w-[470px] overflow-hidden">
-                      {/* subtle gold frame */}
-                      <span
-                        className={`absolute ${
-                          isImageLeft
-                            ? "-bottom-2 -right-2"
-                            : "-bottom-2 -left-2"
-                        } z-0 h-full w-full border border-[#B79A72]/30`}
-                      />
+                    {belief.number}
+                  </span>
 
-                      {/* image */}
-                      <div className="relative z-10 aspect-[1.25/1] w-full overflow-hidden ">
-                        <img
-                          src={belief.image}
-                          alt={belief.title}
-                          className="h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.035]"
-                        />
+                  {/* LINE */}
 
-                        {/* subtle overlay */}
-                        <div className="pointer-events-none absolute inset-0 bg-[#0B2A52]/[0.025] transition-opacity duration-500 group-hover:bg-[#0B2A52]/[0.06]" />
-                      </div>
+                  <span
+                    className="
+                      h-px
+                      w-8
 
-                      {/* image number */}
-                      <span
-                        className={`absolute ${
-                          isImageLeft
-                            ? "bottom-3 right-4"
-                            : "bottom-3 left-4"
-                        } z-20 text-[8px] tracking-[0.2em] text-white drop-shadow-md`}
-                      >
-                        {belief.number}
-                      </span>
-                    </div>
-                  </div>
+                      bg-gradient-to-r
+                      from-[#B79A72]
+                      to-[#75B1D5]
 
-                  {/* =================================================
-                      CONTENT
-                  ================================================= */}
-                  <div
-                    className={`flex w-full max-w-[430px] flex-col ${
-                      isImageLeft
-                        ? "lg:justify-self-start"
-                        : "lg:justify-self-end"
-                    }`}
-                  >
-                    {/* number + line */}
-                    <div className="flex items-center gap-3">
-                      <span className="text-[9px] tracking-[0.2em] text-[#B79A72]">
-                        {belief.number}
-                      </span>
+                      transition-[width]
+                      duration-500
 
-                      <span className="h-px w-7 bg-[#B79A72]/50" />
-                    </div>
+                      group-hover:w-14
+                    "
+                  />
 
-                    {/* title */}
-                    <h3 className="mt-5 text-[clamp(25px,3.2vw,38px)] font-medium leading-[1.08] tracking-[-0.04em] transition-transform duration-500 group-hover:translate-x-1">
-                      {belief.title}
-                    </h3>
+                  {/* DOT */}
 
-                    {/* description */}
-                    <p className="mt-4 max-w-[350px] text-[12px] leading-[1.75] text-[#0B2A52]/45 sm:text-[13px]">
-                      {belief.text}
-                    </p>
+                  <span
+                    className="
+                      h-[4px]
+                      w-[4px]
 
-                    {/* small detail */}
-                    <div className="mt-7 flex items-center gap-3">
-                      <span className="h-px w-8 bg-[#0B2A52]/15 transition-all duration-500 group-hover:w-12 group-hover:bg-[#B79A72]" />
+                      rounded-full
 
-                      <span className="text-[8px] uppercase tracking-[0.25em] text-[#0B2A52]/30">
-                        Our principle
-                      </span>
-                    </div>
-                  </div>
+                      bg-[#B79A72]
+                    "
+                  />
                 </div>
-              </motion.div>
-            );
-          })}
+
+                {/* CONTENT */}
+
+                <div className="mt-4 lg:pl-1">
+                  <span
+                    className="
+                      text-[8px]
+                      font-semibold
+                      uppercase
+                      tracking-[0.21em]
+                      text-[#B79A72]
+                    "
+                  >
+                    Principle {belief.number}
+                  </span>
+
+                  <motion.h3
+                    whileHover={
+                      reduceMotion
+                        ? undefined
+                        : {
+                            y: -4,
+                          }
+                    }
+                    transition={{
+                      duration: 0.4,
+                      ease,
+                    }}
+                    className="
+                      mt-2
+
+                      max-w-[390px]
+
+                      text-[27px]
+                      font-medium
+
+                      leading-[1.12]
+
+                      tracking-[-0.04em]
+
+                      text-[#0B2A52]
+
+                      sm:text-[32px]
+
+                      lg:text-[35px]
+                      lg:leading-[1.1]
+                    "
+                  >
+                    {belief.title}
+                  </motion.h3>
+
+                  {/* UNDERLINE */}
+
+                  <span
+                    className="
+                      mt-4
+                      block
+                      h-[2px]
+                      w-9
+
+                      bg-gradient-to-r
+                      from-[#B79A72]
+                      via-[#67A8CF]
+                      to-transparent
+
+                      transition-[width]
+                      duration-500
+
+                      group-hover:w-20
+                    "
+                  />
+
+                  {/* DESCRIPTION */}
+
+                  <p
+                    className="
+                      mt-4
+
+                      max-w-[340px]
+
+                      text-[13px]
+
+                      leading-6
+
+                      text-[#0B2A52]/52
+
+                      transition-all
+                      duration-500
+
+                      group-hover:translate-x-1
+                      group-hover:text-[#0B2A52]/70
+
+                      sm:text-[14px]
+                    "
+                  >
+                    {belief.text}
+                  </p>
+                </div>
+              </motion.article>
+            ))}
+          </div>
         </div>
-      </div>
 
-      {/* =====================================================
-          CLOSING
-      ===================================================== */}
-      <div className="mx-auto w-full max-w-[1200px] px-6 py-24 sm:px-8 sm:py-28 md:px-10 lg:px-14 lg:py-32">
+        {/* =====================================================
+            CLOSING
+        ====================================================== */}
+
         <motion.div
-          initial={{ opacity: 0, y: 35 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.35 }}
-          transition={{ duration: 0.9, ease }}
-          className="mx-auto max-w-[680px] text-center"
-        >
-          <span className="text-[8px] uppercase tracking-[0.28em] text-[#B79A72]">
-            One last thought
-          </span>
+          initial={{
+            opacity: 0,
+            y: 28,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{
+            once: true,
+            amount: 0.3,
+          }}
+          transition={{
+            duration: 0.8,
+            ease,
+          }}
+          className="
+            mx-auto
 
-          <p className="mt-6 text-[clamp(23px,3.2vw,37px)] font-medium leading-[1.15] tracking-[-0.035em]">
-            The best work isn&apos;t about having all the answers.
+            mt-14
+
+            max-w-[850px]
+
+            text-center
+
+            sm:mt-16
+
+            lg:mt-8
+          "
+        >
+          <Sparkles
+            size={14}
+            strokeWidth={1.3}
+            className="
+              mx-auto
+              text-[#B79A72]
+            "
+          />
+
+          <p
+            className="
+              mt-5
+
+              text-[27px]
+              font-medium
+
+              leading-[1.2]
+
+              tracking-[-0.035em]
+
+              text-[#0B2A52]
+
+              sm:text-[34px]
+
+              lg:text-[38px]
+            "
+          >
+            The best work isn&apos;t about having
+            all the answers.
           </p>
 
-          <p className="mt-3 text-[clamp(23px,3.2vw,37px)] font-medium leading-[1.15] tracking-[-0.035em] text-[#0B2A52]/30">
+          <p
+            className="
+              mt-2
+
+              inline-block
+
+              pb-1
+
+              bg-gradient-to-r
+              from-[#9A7D59]
+              via-[#B79A72]
+              to-[#D2B990]
+
+              bg-clip-text
+
+              font-serif
+
+              text-[26px]
+              font-normal
+
+              leading-[1.2]
+
+              text-transparent
+
+              sm:text-[33px]
+
+              lg:text-[37px]
+            "
+          >
             It&apos;s about asking better questions.
           </p>
-
-          <div className="mt-8 flex items-center justify-center gap-2">
-            <span className="h-px w-8 bg-[#B79A72]" />
-            <span className="h-[5px] w-[5px] rounded-full bg-[#B79A72]" />
-            <span className="h-px w-8 bg-[#B79A72]" />
-          </div>
         </motion.div>
       </div>
     </section>

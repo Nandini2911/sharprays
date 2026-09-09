@@ -211,40 +211,42 @@ export default function BeliefSection() {
 
           {/* HEADING */}
 
-          <h2
-            style={{
-              margin: 0,
-              maxWidth: desktop ? "560px" : "650px",
-              color: "#0B2A52",
-              fontFamily: "Georgia, 'Times New Roman', serif",
-              fontSize: mobile
-                ? "33px"
-                : tablet
-                ? "40px"
-                : width >= 1800
-                ? "53px"
-                : "48px",
-              lineHeight: 1.08,
-              fontWeight: 500,
-              letterSpacing: mobile ? "-1px" : "-1.5px",
-            }}
-          >
-            We Believe
-           
-            Marketing
-            <br />
-            Should Mean
-            <br />
+         <h2
+  style={{
+    margin: 0,
+    maxWidth: desktop ? "560px" : "650px",
+    color: "#0B2A52",
+    fontFamily: "Georgia, 'Times New Roman', serif",
+    fontSize: mobile
+      ? "2.2rem"
+      : tablet
+      ? "2.6rem"
+      : width >= 1800
+      ? "3.35rem"
+      : width >= 1440
+      ? "3.1rem"
+      : "2.95rem",
+    lineHeight: 1.08,
+    fontWeight: 500,
+    letterSpacing: mobile ? "-1px" : "-1.5px",
+  }}
+>
+  We Believe
+  
+  Marketing
+ 
+  Should Mean
+ <br/>
 
-            <span
-              style={{
-                color: "#B79A72",
-                position: "relative",
-              }}
-            >
-              Something.
-            </span>
-          </h2>
+  <span
+    style={{
+      color: "#B79A72",
+      position: "relative",
+    }}
+  >
+    Something.
+  </span>
+</h2>
 
           {/* GOLD LINE */}
 

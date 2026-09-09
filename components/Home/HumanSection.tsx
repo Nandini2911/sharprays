@@ -69,9 +69,9 @@ export default function HumanSection() {
             {/* Heading */}
             <h2
               className="font-serif
-              text-[clamp(1.8rem,3.2vw,3rem)]
+           
                 
-                font-medium
+             sm:text-[2.6rem] md:text-[2.95rem] lg:text-[3.1rem] xl:text-[3.35rem]
                 leading-[0.94]
                 tracking-[-0.045em]
               "
@@ -79,7 +79,7 @@ export default function HumanSection() {
               We're Not Here
               <br />
               to Be{" "}
-              <span className="italic text-[#C6A77A]">
+              <span className=" text-[#C6A77A]">
                 Another Agency.
               </span>
             </h2>

@@ -1,201 +1,1265 @@
 "use client";
 
-import { useEffect, useId, useRef, useState } from "react";
-import { ArrowUpRight, Compass, PenTool, MessageCircle, Megaphone, BarChart3 } from "lucide-react";
+import {
+  useEffect,
+  useRef,
+  useState,
+  type CSSProperties,
+  type ElementType,
+} from "react";
 
-const stages = [
+import {
+  ArrowRight,
+  BarChart3,
+  CalendarDays,
+  Check,
+  Compass,
+  MessageCircle,
+  PenTool,
+  Send,
+} from "lucide-react";
+
+import {
+  AnimatePresence,
+  motion,
+  useInView,
+  useReducedMotion,
+} from "framer-motion";
+
+type Service = {
+  number: string;
+  title: string;
+  shortTitle: string;
+  description: string;
+  includeLabel: string;
+  items: string[];
+  footer?: string;
+  icon: ElementType;
+
+  color: string;
+  soft: string;
+  lighter: string;
+  dark: string;
+};
+
+const services: Service[] = [
   {
-    number: "01", title: "Strategy", short: "A clearer direction.",
-    eyebrow: "BUILD THE FOUNDATION", headline: "Every great presence starts with a point of view.",
-    description: "We get to know your audience, sharpen your positioning and build a content direction that gives every post a purpose.",
-    items: ["Audience research", "Brand positioning", "Content pillars"],
-    image: "/services/insta/meeting1.png", icon: Compass,
+    number: "01",
+    title: "Social Media Strategy",
+    shortTitle: "Strategy",
+    description:
+      "We establish the direction behind your social media presence before deciding what needs to be posted.",
+    includeLabel: "This can include:",
+    items: [
+      "Audience priorities",
+      "Platform selection",
+      "Brand positioning",
+      "Social media objectives",
+      "Brand voice",
+      "Content pillars",
+      "Creative direction",
+    ],
+    icon: Compass,
+
+    color: "#6386D8",
+    soft: "#DDE7FF",
+    lighter: "#F2F6FF",
+    dark: "#263E78",
   },
+
   {
-    number: "02", title: "Content", short: "Worth stopping for.",
-    eyebrow: "MAKE THEM STOP", headline: "Creative that earns attention. And feels like you.",
-    description: "From the first frame to the final caption, we create distinctive social content that makes your brand easier to recognise and remember.",
-    items: ["Posts & carousels", "Reels", "Stories & captions"],
-    image: "/services/insta/meeting2.png", icon: PenTool,
+    number: "02",
+    title: "Content Strategy & Planning",
+    shortTitle: "Planning",
+    description:
+      "We turn your social media strategy into a structured content system.",
+    includeLabel: "Your plan can include:",
+    items: [
+      "Content themes",
+      "Publishing priorities",
+      "Content formats",
+      "Campaign ideas",
+      "Content calendars",
+      "Approval schedules",
+    ],
+    icon: CalendarDays,
+
+    color: "#8B74CB",
+    soft: "#E8E1FA",
+    lighter: "#F7F4FD",
+    dark: "#4D397F",
   },
+
   {
-    number: "03", title: "Community", short: "Closer connections.",
-    eyebrow: "BUILD RELATIONSHIPS", headline: "Turn an audience into a conversation.",
-    description: "We help your brand show up, listen and respond with intention—building stronger relationships with the people behind the profiles.",
-    items: ["Comment management", "Conversations", "Audience engagement"],
-    image: "/services/insta/meeting3.png", icon: MessageCircle,
+    number: "03",
+    title: "Social Media Content Creation",
+    shortTitle: "Creation",
+    description:
+      "We create content designed around your brand, audience and agreed strategy.",
+    includeLabel: "Depending on your scope, content may include:",
+    items: [
+      "Social media graphics",
+      "Carousels",
+      "Captions and social copy",
+      "Stories",
+      "Short-form video concepts",
+      "Reels and video content",
+      "Campaign creatives",
+    ],
+    icon: PenTool,
+
+    color: "#D98170",
+    soft: "#F8DED8",
+    lighter: "#FFF5F2",
+    dark: "#854437",
   },
+
   {
-    number: "04", title: "Distribution", short: "The right kind of reach.",
-    eyebrow: "REACH THE RIGHT PEOPLE", headline: "Good ideas deserve to go further.",
-    description: "We bring organic publishing, paid amplification and partnerships together to put your strongest content in front of the right people.",
-    items: ["Organic publishing", "Paid amplification", "Partnerships"],
-    image: "/services/insta/meeting4.png", icon: Megaphone,
+    number: "04",
+    title: "Publishing & Social Media Management",
+    shortTitle: "Management",
+    description:
+      "We help keep your selected social media channels consistent and organized.",
+    includeLabel: "This can include:",
+    items: [
+      "Content scheduling",
+      "Publishing",
+      "Platform management",
+      "Profile coordination",
+      "Publishing quality checks",
+    ],
+    icon: Send,
+
+    color: "#55A99D",
+    soft: "#D9F0EC",
+    lighter: "#F1FAF8",
+    dark: "#286C63",
   },
+
   {
-    number: "05", title: "Optimization", short: "Better with every insight.",
-    eyebrow: "LEARN & GET BETTER", headline: "A stronger next move, backed by insight.",
-    description: "We look beyond the surface numbers, test what matters and use each result to refine your content and improve the next campaign.",
-    items: ["Performance analysis", "Creative testing", "Ongoing refinement"],
-    image: "/services/insta/meeting5.png", icon: BarChart3,
+    number: "05",
+    title: "Community Management",
+    shortTitle: "Community",
+    description:
+      "Social media should create conversation, not simply broadcast information.",
+    includeLabel:
+      "Where included in your scope, community management can cover:",
+    items: [
+      "Comment responses",
+      "Direct message handling",
+      "Audience interaction",
+      "Basic community monitoring",
+      "Escalation of important enquiries",
+    ],
+    icon: MessageCircle,
+
+    color: "#CF7595",
+    soft: "#F4DDE6",
+    lighter: "#FFF5F8",
+    dark: "#7B3D55",
+  },
+
+  {
+    number: "06",
+    title: "Social Media Reporting & Optimization",
+    shortTitle: "Reporting",
+    description:
+      "Performance data helps us understand what your audience is responding to and what should happen next.",
+    includeLabel: "Reporting may cover relevant metrics such as:",
+    items: [
+      "Reach",
+      "Engagement",
+      "Profile activity",
+      "Audience growth",
+      "Content performance",
+      "Website activity",
+      "Enquiries or conversions where measurable",
+    ],
+    footer:
+      "We use those insights to identify patterns, improve content decisions and refine future activity.",
+    icon: BarChart3,
+
+    color: "#C79A4B",
+    soft: "#F4E8CC",
+    lighter: "#FFF9EC",
+    dark: "#76571F",
   },
 ];
 
-export default function SocialMediaMarketingWhatWeDo() {
-  const id = useId();
-  const sectionRef = useRef<HTMLElement>(null);
-  const [activeStage, setActiveStage] = useState(0);
-  const imageRef = useRef<HTMLDivElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
-  const [isImageVisible, setIsImageVisible] = useState(false);
-  const active = stages[activeStage];
+export default function SocialMediaMarketingServices() {
+  const sectionRef = useRef<HTMLElement | null>(null);
+
+  const isVisible = useInView(sectionRef, {
+    once: true,
+    margin: "-100px",
+  });
+
+  const reduceMotion = useReducedMotion();
+
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const active = services[activeIndex];
   const ActiveIcon = active.icon;
 
+  /* ============================================================
+      AUTO CHANGE
+  ============================================================ */
+
   useEffect(() => {
-    const section = sectionRef.current;
-    const panel = imageRef.current;
-    const revealAll = () => {
-      setIsVisible(true);
-      setIsImageVisible(true);
-    };
-    if (!section || !panel || !('IntersectionObserver' in window)) {
-      revealAll();
-      return;
-    }
-    const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
-    if (motion.matches) {
-      revealAll();
-      return;
-    }
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        if (entry.target === section) setIsVisible(true);
-        if (entry.target === panel) setIsImageVisible(true);
-        observer.unobserve(entry.target);
-      });
-    }, { threshold: 0, rootMargin: '0px 0px -48px 0px' });
-    // Paint the starting positions before triggering even on an initial viewport load.
-    let secondFrame = 0;
-    const firstFrame = requestAnimationFrame(() => {
-      secondFrame = requestAnimationFrame(() => {
-        observer.observe(section);
-        observer.observe(panel);
-      });
-    });
-    const onMotionChange = () => {
-      if (motion.matches) {
-        revealAll();
-        observer.disconnect();
-      }
-    };
-    motion.addEventListener('change', onMotionChange);
-    return () => {
-      cancelAnimationFrame(firstFrame);
-      cancelAnimationFrame(secondFrame);
-      observer.disconnect();
-      motion.removeEventListener('change', onMotionChange);
-    };
-  }, []);
+    if (!isVisible || reduceMotion) return;
+
+    const timer = setInterval(() => {
+      setActiveIndex((current) =>
+        current === services.length - 1 ? 0 : current + 1
+      );
+    }, 8000);
+
+    return () => clearInterval(timer);
+  }, [isVisible, reduceMotion]);
+
+  const dynamicStyles = {
+    "--active-color": active.color,
+    "--active-soft": active.soft,
+    "--active-light": active.lighter,
+    "--active-dark": active.dark,
+  } as CSSProperties;
 
   return (
     <section
       ref={sectionRef}
-      aria-labelledby={`${id}-heading`}
-      onFocusCapture={() => { setIsVisible(true); setIsImageVisible(true); }}
-      className="overflow-hidden bg-white py-16 text-[#0B2A52] antialiased sm:py-20 lg:py-24"
+      id="social-media-marketing-services"
+      style={dynamicStyles}
+      className="
+        relative
+        overflow-hidden
+        bg-white
+        py-24
+        text-[#0B2A52]
+        sm:py-28
+        lg:py-32
+      "
     >
-      <div className="mx-auto max-w-[1240px] px-5 sm:px-8 lg:px-12">
-        <header className={`mx-auto max-w-[800px] text-center transition-all duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transform-none motion-reduce:opacity-100 motion-reduce:transition-none ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}>
-          <div className="mb-5 flex items-center justify-center gap-3">
-            <span aria-hidden="true" className="h-px w-8 bg-[#B79A72] " />
-            <span className="text-[10px] font-semibold uppercase tracking-[0.24em] text-[#B79A72] ">Our expertise</span>
-            <span aria-hidden="true" className="h-px w-8 bg-[#B79A72] " />
-          </div>
-          <h2 id={`${id}-heading`} className="text-[40px]  leading-[1.08] tracking-[-0.045em] sm:text-[2.6rem] md:text-[2.95rem] lg:text-[3.1rem] xl:text-[3.35rem]">
-            Built to be seen.<br />
-            <span className="font-serif font-normal  text-[#B79A72] ">Made to matter.</span>
-          </h2>
-          <p className="mx-auto mt-6 max-w-[540px] text-[14px] leading-7 text-[#617080] sm:text-[15px]">
-            A distinctive presence takes more than posting. We bring five disciplines together to make your brand part of the conversation.
-          </p>
-        </header>
+      {/* =========================================================
+          DYNAMIC BACKGROUND
+      ========================================================== */}
 
-        <div className="mt-10 grid items-stretch gap-6 sm:mt-14 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.25fr)] lg:gap-12">
-          <div role="group" aria-label="Explore our social media services" className="grid min-w-0 grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-1 lg:grid-rows-5 lg:gap-0">
-            {stages.map((stage, index) => {
-              const selected = activeStage === index;
-              const delays = ['delay-100', 'delay-150', 'delay-200', 'delay-300', 'delay-500'];
-              return (
-                <div key={stage.number} className={`min-w-0 transition-all duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transform-none motion-reduce:opacity-100 motion-reduce:transition-none ${delays[index]} ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-                  <button
-                    type="button"
-                    aria-pressed={selected}
-                    aria-controls={`${id}-details`}
-                    onPointerEnter={(event) => { if (event.pointerType === 'mouse') setActiveStage(index); }}
-                    onFocus={() => setActiveStage(index)}
-                    onClick={() => setActiveStage(index)}
-                    className={`group relative flex h-full min-h-14 w-full items-center gap-2 rounded-lg border px-3 py-4 text-left transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#AD8B5E] motion-reduce:transition-none sm:gap-3 sm:px-4 lg:min-h-[104px] lg:gap-4 lg:rounded-none lg:border-x-0 lg:border-t-0 lg:px-5 ${selected ? 'border-[#0B2A52] bg-[#0B2A52] text-white' : 'border-[#DEE0DC] bg-transparent text-[#0B2A52] hover:bg-[#F0EEE8]'}`}
-                  >
-                    <span aria-hidden="true" className={`absolute inset-y-0 left-0 w-[3px] rounded-l-lg transition-opacity duration-300 motion-reduce:transition-none lg:rounded-none ${selected ? 'bg-[#C8AC81] opacity-100' : 'opacity-0'}`} />
-                    <span className="flex min-w-0 flex-1 flex-col gap-1.5">
-                      <span className="text-[13px] font-medium tracking-[-0.025em] sm:text-[15px] lg:text-[25px]">{stage.title}</span>
-                      <span className={`hidden text-[12px] leading-5 lg:block ${selected ? 'text-[#CAD4DF]' : 'text-[#617080]'}`}>{stage.short}</span>
-                    </span>
-                    <ArrowUpRight aria-hidden="true" size={20} strokeWidth={1.5} className={`hidden shrink-0 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 motion-reduce:transform-none motion-reduce:transition-none lg:block ${selected ? 'text-[#D7BF9C]' : 'text-[#7A8791]'}`} />
-                  </button>
-                </div>
-              );
-            })}
+      <motion.div
+        animate={{
+          background: `radial-gradient(
+            circle at 50% 55%,
+            ${active.soft} 0%,
+            rgba(255,255,255,0) 56%
+          )`,
+        }}
+        transition={{
+          duration: 0.8,
+          ease: [0.22, 1, 0.36, 1],
+        }}
+        className="
+          pointer-events-none
+          absolute
+          inset-0
+          opacity-60
+        "
+      />
+
+      {/* LARGE BACKGROUND WORD */}
+
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={active.shortTitle}
+          initial={{
+            opacity: 0,
+            y: 30,
+          }}
+          animate={{
+            opacity: 0.035,
+            y: 0,
+          }}
+          exit={{
+            opacity: 0,
+            y: -20,
+          }}
+          transition={{
+            duration: 0.6,
+          }}
+          className="
+            pointer-events-none
+            absolute
+            left-1/2
+            top-[36%]
+            -translate-x-1/2
+            whitespace-nowrap
+            text-[115px]
+            font-semibold
+            uppercase
+            tracking-[-0.07em]
+            text-[#0B2A52]
+            sm:text-[180px]
+            lg:text-[260px]
+          "
+        >
+          {active.shortTitle}
+        </motion.div>
+      </AnimatePresence>
+
+      {/* =========================================================
+          CONTAINER
+      ========================================================== */}
+
+      <div
+        className="
+          relative
+          z-10
+          mx-auto
+          max-w-[1400px]
+          px-5
+          sm:px-8
+          lg:px-12
+          xl:px-16
+        "
+      >
+        {/* =======================================================
+            HEADER
+        ======================================================== */}
+
+        <motion.div
+          initial={{
+            opacity: 0,
+            y: 40,
+          }}
+          animate={
+            isVisible
+              ? {
+                  opacity: 1,
+                  y: 0,
+                }
+              : {}
+          }
+          transition={{
+            duration: 0.9,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+          className="
+            mx-auto
+            max-w-[900px]
+            text-center
+          "
+        >
+          <div
+            className="
+              flex
+              items-center
+              justify-center
+              gap-3
+            "
+          >
+            <motion.span
+              animate={{
+                backgroundColor: active.color,
+              }}
+              transition={{
+                duration: 0.5,
+              }}
+              className="h-px w-9"
+            />
+
+            <motion.span
+              animate={{
+                color: active.color,
+              }}
+              transition={{
+                duration: 0.5,
+              }}
+              className="
+                text-[9px]
+                font-semibold
+                uppercase
+                tracking-[0.27em]
+                sm:text-[10px]
+              "
+            >
+              Our Social Media Marketing Services
+            </motion.span>
+
+            <motion.span
+              animate={{
+                backgroundColor: active.color,
+              }}
+              transition={{
+                duration: 0.5,
+              }}
+              className="h-px w-9"
+            />
           </div>
+
+          <h2
+            className="
+              mt-6
+              text-[2.2rem]
+              font-medium
+              leading-[1.08]
+              tracking-[-0.045em]
+              sm:text-[2.7rem]
+              md:text-[3.1rem]
+              lg:text-[3.5rem]
+            "
+          >
+            Everything Your Social Presence Needs.{" "}
+            <motion.span
+              animate={{
+                color: active.color,
+              }}
+              transition={{
+                duration: 0.5,
+              }}
+              className="font-normal"
+            >
+              Connected.
+            </motion.span>
+          </h2>
+
+          <p
+            className="
+              mx-auto
+              mt-6
+              max-w-[720px]
+              text-[13px]
+              leading-7
+              text-[#0B2A52]/50
+              sm:text-[14px]
+            "
+          >
+            Our social media management services can cover strategy, planning,
+            creative execution, publishing, audience engagement and reporting.
+          </p>
+
+          <p
+            className="
+              mx-auto
+              mt-2
+              max-w-[680px]
+              text-[12px]
+              leading-6
+              text-[#0B2A52]/35
+              sm:text-[13px]
+            "
+          >
+            The final scope depends on your business, platforms, objectives and
+            content requirements.
+          </p>
+        </motion.div>
+
+        {/* =======================================================
+            SERVICE SELECTOR
+        ======================================================== */}
+
+        <motion.div
+          initial={{
+            opacity: 0,
+            y: 50,
+          }}
+          animate={
+            isVisible
+              ? {
+                  opacity: 1,
+                  y: 0,
+                }
+              : {}
+          }
+          transition={{
+            duration: 1,
+            delay: 0.15,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+          className="
+            mt-14
+            grid
+            grid-cols-2
+            gap-2
+            sm:grid-cols-3
+            lg:mt-20
+            lg:grid-cols-6
+          "
+        >
+          {services.map((service, index) => {
+            const Icon = service.icon;
+            const selected = index === activeIndex;
+
+            return (
+              <motion.button
+                key={service.number}
+                type="button"
+                onMouseEnter={() => setActiveIndex(index)}
+                onFocus={() => setActiveIndex(index)}
+                onClick={() => setActiveIndex(index)}
+                whileHover={{
+                  y: -5,
+                }}
+                className="
+                  group
+                  relative
+                  overflow-hidden
+                  rounded-[20px]
+                  border
+                  px-4
+                  py-4
+                  text-left
+                  transition-all
+                  duration-500
+                  sm:px-5
+                  sm:py-5
+                "
+                animate={{
+                  backgroundColor: selected
+                    ? service.color
+                    : service.lighter,
+
+                  borderColor: selected
+                    ? service.color
+                    : `${service.color}30`,
+
+                  boxShadow: selected
+                    ? `0 18px 45px ${service.color}28`
+                    : "0 10px 30px rgba(11,42,82,0.025)",
+                }}
+                transition={{
+                  duration: 0.4,
+                }}
+              >
+                {/* BACKGROUND GLOW */}
+
+                <div
+                  className="
+                    pointer-events-none
+                    absolute
+                    -right-8
+                    -top-8
+                    h-24
+                    w-24
+                    rounded-full
+                    opacity-0
+                    blur-[25px]
+                    transition-opacity
+                    duration-500
+                    group-hover:opacity-100
+                  "
+                  style={{
+                    backgroundColor: service.soft,
+                  }}
+                />
+
+                {/* TOP */}
+
+                <div
+                  className="
+                    relative
+                    z-10
+                    flex
+                    items-center
+                    justify-between
+                  "
+                >
+                  <motion.span
+                    animate={{
+                      color: selected
+                        ? "rgba(255,255,255,.55)"
+                        : `${service.dark}80`,
+                    }}
+                    className="
+                      text-[8px]
+                      font-semibold
+                      tracking-[0.18em]
+                    "
+                  >
+                    {service.number}
+                  </motion.span>
+
+                  <motion.span
+                    animate={{
+                      backgroundColor: selected
+                        ? "rgba(255,255,255,.16)"
+                        : service.soft,
+
+                      color: selected
+                        ? "#ffffff"
+                        : service.dark,
+                    }}
+                    className="
+                      flex
+                      h-8
+                      w-8
+                      items-center
+                      justify-center
+                      rounded-full
+                    "
+                  >
+                    <Icon
+                      size={13}
+                      strokeWidth={1.5}
+                    />
+                  </motion.span>
+                </div>
+
+                {/* TITLE */}
+
+                <motion.p
+                  animate={{
+                    color: selected
+                      ? "#ffffff"
+                      : service.dark,
+                  }}
+                  className="
+                    relative
+                    z-10
+                    mt-5
+                    text-[12px]
+                    font-medium
+                    leading-5
+                    sm:text-[13px]
+                  "
+                >
+                  {service.shortTitle}
+                </motion.p>
+
+                {/* ACTIVE LINE */}
+
+                <motion.div
+                  animate={{
+                    width: selected ? "100%" : "20%",
+                    backgroundColor: selected
+                      ? "rgba(255,255,255,.75)"
+                      : service.color,
+                  }}
+                  transition={{
+                    duration: 0.45,
+                  }}
+                  className="
+                    relative
+                    z-10
+                    mt-4
+                    h-[2px]
+                    rounded-full
+                  "
+                />
+              </motion.button>
+            );
+          })}
+        </motion.div>
+
+        {/* =======================================================
+            ACTIVE SERVICE PANEL
+        ======================================================== */}
+
+        <motion.div
+          animate={{
+            backgroundColor: active.lighter,
+            borderColor: `${active.color}40`,
+            boxShadow: `0 35px 100px ${active.color}18`,
+          }}
+          transition={{
+            duration: 0.65,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+          className="
+            relative
+            mt-5
+            overflow-hidden
+            rounded-[28px]
+            border
+            sm:rounded-[34px]
+            lg:mt-6
+          "
+        >
+          {/* =====================================================
+              DECORATION
+          ====================================================== */}
+
+          <motion.div
+            animate={{
+              backgroundColor: active.soft,
+            }}
+            transition={{
+              duration: 0.6,
+            }}
+            className="
+              pointer-events-none
+              absolute
+              -right-[100px]
+              -top-[100px]
+              h-[340px]
+              w-[340px]
+              rounded-full
+              blur-[75px]
+            "
+          />
+
+          <motion.div
+            animate={{
+              borderColor: `${active.color}25`,
+            }}
+            transition={{
+              duration: 0.6,
+            }}
+            className="
+              pointer-events-none
+              absolute
+              -bottom-[180px]
+              -left-[160px]
+              h-[420px]
+              w-[420px]
+              rounded-full
+              border
+            "
+          />
+
+          <motion.div
+            animate={{
+              borderColor: `${active.color}20`,
+            }}
+            className="
+              pointer-events-none
+              absolute
+              -bottom-[100px]
+              -left-[80px]
+              h-[260px]
+              w-[260px]
+              rounded-full
+              border
+            "
+          />
+
+          {/* =====================================================
+              CONTENT GRID
+          ====================================================== */}
 
           <div
-            ref={imageRef}
-            id={`${id}-details`}
-            role="region"
-            aria-label={`${active.title} service details`}
-            className={`min-w-0 overflow-hidden rounded-xl border border-[#E5E5DF] bg-white shadow-[0_16px_50px_-30px_rgba(11,42,82,0.22)] transition-all delay-200 duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transform-none motion-reduce:opacity-100 motion-reduce:transition-none ${isImageVisible ? 'translate-x-0 opacity-100' : 'translate-x-16 opacity-0 sm:translate-x-24'}`}
+            className="
+              relative
+              z-10
+              grid
+              min-h-[520px]
+              lg:grid-cols-[0.72fr_1.28fr]
+            "
           >
-            <div className="relative aspect-[3/2] overflow-hidden bg-[#0B2A52] sm:aspect-[16/10]">
-              {stages.map((stage, index) => (
-                <img
-                  key={stage.image}
-                  src={stage.image}
-                  alt=""
-                  decoding="async"
-                  aria-hidden="true"
-                  className={`absolute inset-0 h-full w-full object-cover transition-all duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transform-none motion-reduce:transition-none ${index === activeStage ? 'scale-100 opacity-100' : 'scale-105 opacity-0'}`}
-                />
-              ))}
-              <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#061B30]/70 via-transparent to-[#061B30]/10" />
-              <span className="absolute left-5 top-5 inline-flex items-center gap-2 rounded-md bg-white/95 px-3 py-2 text-[11px] font-medium text-[#0B2A52] sm:left-6 sm:top-6">
-                <ActiveIcon size={15} strokeWidth={1.5} aria-hidden="true" />{active.title}
-              </span>
-              <div aria-hidden="true" className="absolute inset-x-5 bottom-5 flex items-end justify-between gap-4 text-white sm:inset-x-6 sm:bottom-6">
-                <span className="text-[9px] font-medium uppercase tracking-[0.18em]">The Sharprays approach</span>
-                <span className="text-[27px] font-light tabular-nums">{active.number}<span className="ml-1 text-[11px] text-white/80">/ 05</span></span>
+            {/* ===================================================
+                LEFT ACTIVE IDENTITY
+            ==================================================== */}
+
+            <div
+              className="
+                relative
+                flex
+                flex-col
+                justify-between
+                border-b
+                border-[#0B2A52]/[0.06]
+                p-6
+                sm:p-8
+                lg:border-b-0
+                lg:border-r
+                lg:p-10
+              "
+            >
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={active.number}
+                  initial={{
+                    opacity: 0,
+                    x: -25,
+                  }}
+                  animate={{
+                    opacity: 1,
+                    x: 0,
+                  }}
+                  exit={{
+                    opacity: 0,
+                    x: 20,
+                  }}
+                  transition={{
+                    duration: 0.4,
+                    ease: [0.22, 1, 0.36, 1],
+                  }}
+                >
+                  {/* ICON */}
+
+                  <motion.div
+                    animate={{
+                      backgroundColor: active.color,
+                      boxShadow: `0 15px 40px ${active.color}35`,
+                    }}
+                    className="
+                      flex
+                      h-14
+                      w-14
+                      items-center
+                      justify-center
+                      rounded-[18px]
+                      text-white
+                    "
+                  >
+                    <ActiveIcon
+                      size={21}
+                      strokeWidth={1.5}
+                    />
+                  </motion.div>
+
+                  {/* NUMBER */}
+
+                  <motion.p
+                    animate={{
+                      color: active.color,
+                    }}
+                    className="
+                      mt-10
+                      text-[10px]
+                      font-semibold
+                      uppercase
+                      tracking-[0.22em]
+                    "
+                  >
+                    Service {active.number}
+                  </motion.p>
+
+                  {/* HEADING */}
+
+                  <h3
+                    className="
+                      mt-4
+                      max-w-[410px]
+                      text-[2rem]
+                      font-medium
+                      leading-[1.1]
+                      tracking-[-0.045em]
+                      text-[#0B2A52]
+                      sm:text-[2.35rem]
+                      lg:text-[2.55rem]
+                    "
+                  >
+                    {active.title}
+                  </h3>
+
+                  <p
+                    className="
+                      mt-5
+                      max-w-[420px]
+                      text-[13px]
+                      leading-7
+                      text-[#0B2A52]/52
+                    "
+                  >
+                    {active.description}
+                  </p>
+                </motion.div>
+              </AnimatePresence>
+
+              {/* PROGRESS */}
+
+              <div className="mt-10">
+                <div
+                  className="
+                    flex
+                    items-center
+                    justify-between
+                  "
+                >
+                  <span
+                    className="
+                      text-[8px]
+                      font-medium
+                      uppercase
+                      tracking-[0.18em]
+                      text-[#0B2A52]/30
+                    "
+                  >
+                    Connected Service
+                  </span>
+
+                  <span
+                    className="
+                      text-[8px]
+                      text-[#0B2A52]/30
+                    "
+                  >
+                    {active.number} / 06
+                  </span>
+                </div>
+
+                <div
+                  className="
+                    mt-3
+                    h-[3px]
+                    overflow-hidden
+                    rounded-full
+                    bg-[#0B2A52]/[0.06]
+                  "
+                >
+                  <motion.div
+                    animate={{
+                      width: `${((activeIndex + 1) / services.length) * 100}%`,
+                      backgroundColor: active.color,
+                    }}
+                    transition={{
+                      duration: 0.6,
+                    }}
+                    className="
+                      h-full
+                      rounded-full
+                    "
+                  />
+                </div>
               </div>
             </div>
 
-            {/* Shared grid track reserves room for every service, preventing jumps. */}
-            <div className="grid p-5 sm:p-7 lg:p-8">
-              {stages.map((stage, index) => (
-                <div key={stage.number} aria-hidden={index !== activeStage} className={`col-start-1 row-start-1 min-w-0 transition-opacity duration-300 motion-reduce:transition-none ${index === activeStage ? 'visible opacity-100' : 'invisible pointer-events-none opacity-0'}`}>
-                  <p className="text-[9px] font-semibold uppercase leading-5 tracking-[0.18em] text-[#B79A72]">{stage.eyebrow}</p>
-                  <h3 className="mt-2 text-[25px] font-medium leading-[1.22] tracking-[-0.035em] sm:text-[29px]">{stage.headline}</h3>
-                  <p className="mt-3 text-[13px] leading-6 text-[#617080]">{stage.description}</p>
-                  <ul aria-label="Included services" className="mt-5 flex list-none flex-wrap gap-x-4 gap-y-2 border-t border-[#E8E8E2] pt-4">
-                    {stage.items.map((item) => (
-                      <li key={item} className="flex items-center gap-2 text-[11px] leading-5 text-[#425569]">
-                        <span aria-hidden="true" className="h-1 w-1 shrink-0 rotate-45 bg-[#B79A72] " />{item}
-                      </li>
+            {/* ===================================================
+                RIGHT CONTENT
+            ==================================================== */}
+
+            <div
+              className="
+                flex
+                flex-col
+                justify-center
+                p-6
+                sm:p-8
+                lg:p-10
+                xl:p-12
+              "
+            >
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={`${active.number}-content`}
+                  initial={{
+                    opacity: 0,
+                    y: 30,
+                  }}
+                  animate={{
+                    opacity: 1,
+                    y: 0,
+                  }}
+                  exit={{
+                    opacity: 0,
+                    y: -20,
+                  }}
+                  transition={{
+                    duration: 0.45,
+                    ease: [0.22, 1, 0.36, 1],
+                  }}
+                >
+                  {/* LABEL */}
+
+                  <div
+                    className="
+                      flex
+                      items-center
+                      gap-3
+                    "
+                  >
+                    <motion.span
+                      animate={{
+                        backgroundColor: active.color,
+                      }}
+                      className="
+                        h-px
+                        w-8
+                      "
+                    />
+
+                    <motion.p
+                      animate={{
+                        color: active.dark,
+                      }}
+                      className="
+                        text-[9px]
+                        font-semibold
+                        uppercase
+                        tracking-[0.2em]
+                      "
+                    >
+                      {active.includeLabel}
+                    </motion.p>
+                  </div>
+
+                  {/* ITEMS */}
+
+                  <div
+                    className="
+                      mt-6
+                      grid
+                      gap-3
+                      sm:grid-cols-2
+                    "
+                  >
+                    {active.items.map((item, index) => (
+                      <motion.div
+                        key={item}
+                        initial={{
+                          opacity: 0,
+                          y: 16,
+                        }}
+                        animate={{
+                          opacity: 1,
+                          y: 0,
+                        }}
+                        transition={{
+                          duration: 0.45,
+                          delay: index * 0.05,
+                        }}
+                        whileHover={{
+                          y: -3,
+                        }}
+                        className="
+                          group
+                          flex
+                          items-center
+                          gap-3
+                          rounded-[16px]
+                          border
+                          bg-white/75
+                          px-4
+                          py-4
+                          shadow-[0_10px_30px_rgba(11,42,82,0.03)]
+                          backdrop-blur-xl
+                          transition-shadow
+                          duration-300
+                          hover:shadow-[0_18px_40px_rgba(11,42,82,0.07)]
+                        "
+                        style={{
+                          borderColor: `${active.color}28`,
+                        }}
+                      >
+                        <motion.span
+                          animate={{
+                            backgroundColor: active.soft,
+                            color: active.dark,
+                          }}
+                          className="
+                            flex
+                            h-7
+                            w-7
+                            shrink-0
+                            items-center
+                            justify-center
+                            rounded-full
+                          "
+                        >
+                          <Check
+                            size={11}
+                            strokeWidth={2}
+                          />
+                        </motion.span>
+
+                        <span
+                          className="
+                            text-[11px]
+                            leading-5
+                            text-[#0B2A52]/62
+                            sm:text-[12px]
+                          "
+                        >
+                          {item}
+                        </span>
+                      </motion.div>
                     ))}
-                  </ul>
-                </div>
-              ))}
+                  </div>
+
+                  {/* REPORTING FOOTER */}
+
+                  {active.footer && (
+                    <motion.div
+                      initial={{
+                        opacity: 0,
+                        y: 15,
+                      }}
+                      animate={{
+                        opacity: 1,
+                        y: 0,
+                      }}
+                      transition={{
+                        delay: 0.3,
+                      }}
+                      className="
+                        mt-6
+                        rounded-[18px]
+                        border
+                        bg-white/60
+                        px-5
+                        py-4
+                      "
+                      style={{
+                        borderColor: `${active.color}30`,
+                      }}
+                    >
+                      <p
+                        className="
+                          text-[12px]
+                          leading-6
+                          text-[#0B2A52]/55
+                        "
+                      >
+                        {active.footer}
+                      </p>
+                    </motion.div>
+                  )}
+
+                  {/* NEXT */}
+
+                  <div
+                    className="
+                      mt-7
+                      flex
+                      items-center
+                      justify-between
+                      border-t
+                      border-[#0B2A52]/[0.06]
+                      pt-6
+                    "
+                  >
+                    <p
+                      className="
+                        text-[8px]
+                        font-medium
+                        uppercase
+                        tracking-[0.18em]
+                        text-[#0B2A52]/28
+                      "
+                    >
+                      Everything works together
+                    </p>
+
+                    <motion.button
+                      type="button"
+                      onClick={() =>
+                        setActiveIndex((current) =>
+                          current === services.length - 1
+                            ? 0
+                            : current + 1
+                        )
+                      }
+                      animate={{
+                        backgroundColor: active.color,
+                        boxShadow: `0 10px 30px ${active.color}35`,
+                      }}
+                      whileHover={{
+                        scale: 1.06,
+                      }}
+                      whileTap={{
+                        scale: 0.96,
+                      }}
+                      className="
+                        group
+                        flex
+                        h-10
+                        w-10
+                        items-center
+                        justify-center
+                        rounded-full
+                        text-white
+                      "
+                    >
+                      <ArrowRight
+                        size={14}
+                        className="
+                          transition-transform
+                          duration-300
+                          group-hover:translate-x-0.5
+                        "
+                      />
+                    </motion.button>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
             </div>
           </div>
-        </div>
+        </motion.div>
+
+        {/* =======================================================
+            BOTTOM CONNECTED FLOW
+        ======================================================== */}
+
+        <motion.div
+          initial={{
+            opacity: 0,
+            y: 25,
+          }}
+          animate={
+            isVisible
+              ? {
+                  opacity: 1,
+                  y: 0,
+                }
+              : {}
+          }
+          transition={{
+            delay: 0.55,
+            duration: 0.8,
+          }}
+          className="
+            mt-8
+            flex
+            flex-wrap
+            items-center
+            justify-center
+            gap-2
+          "
+        >
+          {services.map((service, index) => (
+            <button
+              key={service.number}
+              type="button"
+              onMouseEnter={() => setActiveIndex(index)}
+              onClick={() => setActiveIndex(index)}
+              className="
+                flex
+                items-center
+                gap-2
+                rounded-full
+                border
+                bg-white
+                px-3
+                py-2
+                shadow-[0_8px_25px_rgba(11,42,82,0.025)]
+                transition-all
+                duration-300
+                hover:-translate-y-1
+              "
+              style={{
+                borderColor:
+                  index === activeIndex
+                    ? service.color
+                    : `${service.color}22`,
+              }}
+            >
+              <span
+                className="
+                  h-1.5
+                  w-1.5
+                  rounded-full
+                "
+                style={{
+                  backgroundColor: service.color,
+                }}
+              />
+
+              <span
+                className="
+                  text-[8px]
+                  font-semibold
+                  uppercase
+                  tracking-[0.13em]
+                "
+                style={{
+                  color:
+                    index === activeIndex
+                      ? service.dark
+                      : "#8290A0",
+                }}
+              >
+                {service.shortTitle}
+              </span>
+            </button>
+          ))}
+        </motion.div>
       </div>
     </section>
   );

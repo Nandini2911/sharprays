@@ -213,65 +213,53 @@ export default function AboutPage() {
               MAIN HEADING
           ================================================== */}
 
-          <motion.h1
-            initial={{
-              opacity: 0,
-              y: 55,
-            }}
-            animate={{
-              opacity: 1,
-              y: 0,
-            }}
-            transition={{
-              duration: 1,
-              ease,
-              delay: 0.22,
-            }}
-            style={{
-              margin: 0,
-              color: "#0b2a52",
-              fontFamily: "Georgia, 'Times New Roman', serif",
-              fontSize: isMobile
-                ? "clamp(39px, 11vw, 52px)"
-                : isTablet
-                ? "clamp(44px, 7vw, 58px)"
-                : isSmallLaptop
-                ? "clamp(45px, 4.5vw, 58px)"
-                : isUltraWide
-                ? "86px"
-                : isLargeDesktop
-                ? "clamp(68px, 3.8vw, 86px)"
-                : "clamp(48px, 3.2vw, 66px)",
-              lineHeight: isMobile ? "1.01" : "0.99",
-              fontWeight: 500,
-              letterSpacing: isMobile
-                ? "-2px"
-                : "clamp(-3.5px, -0.22vw, -1.5px)",
-            }}
-          >
-            We Don’t Just
-            <br />
-            Do Marketing.
-            <br />
+        <motion.h1
+  initial={{
+    opacity: 0,
+    y: 55,
+  }}
+  animate={{
+    opacity: 1,
+    y: 0,
+  }}
+  transition={{
+    duration: 1,
+    ease,
+    delay: 0.22,
+  }}
+  className="
+    text-[2.2rem]
+    sm:text-[2.6rem]
+    md:text-[2.95rem]
+    lg:text-[3.1rem]
+    xl:text-[3.35rem]
+  "
+  style={{
+    margin: 0,
+    color: "#0b2a52",
+    fontFamily: "Georgia, 'Times New Roman', serif",
+    lineHeight: isMobile ? "1.01" : "0.99",
+    fontWeight: 500,
+    letterSpacing: isMobile
+      ? "-2px"
+      : "clamp(-3.5px, -0.22vw, -1.5px)",
+  }}
+>
+  We Don’t Just
+  <br />
+  Do Marketing.
+  <br />
 
-            <span
-              style={{
-                color: "#b89a6a",
-              }}
-            >
-              We Build Meaningful
-            </span>
+  <span style={{ color: "#b89a6a" }}>
+    We Build Meaningful
+  </span>
 
-            <br />
+  <br />
 
-            <span
-              style={{
-                color: "#b89a6a",
-              }}
-            >
-              Growth Engines.
-            </span>
-          </motion.h1>
+  <span style={{ color: "#b89a6a" }}>
+    Growth Engines.
+  </span>
+</motion.h1>
 
           {/* =================================================
               DIVIDER

@@ -16,34 +16,38 @@ import {
 const problems = [
   {
     id: "01",
-    title: "You're Posting.",
-    description: "But there's no clear strategy behind it.",
-    metric: "Random",
-    label: "CONTENT DIRECTION",
+    title: "You’re Posting",
+    description:
+      "But there is no clear social media strategy connecting one post to the next.",
+    metric: "No Clear",
+    label: "SOCIAL MEDIA STRATEGY",
     progress: "22%",
   },
   {
     id: "02",
-    title: "You're Getting Views.",
-    description: "But views aren't translating into meaningful engagement.",
-    metric: "12.8K",
-    label: "PEOPLE REACHED",
-    progress: "76%",
+    title: "You’re Getting Views",
+    description:
+      "But that attention disappears without creating stronger brand recognition.",
+    metric: "Views",
+    label: "BRAND RECOGNITION",
+    progress: "42%",
   },
   {
     id: "03",
-    title: "You're Gaining Followers.",
-    description: "But they're not becoming customers.",
-    metric: "2.4%",
-    label: "FOLLOW → CUSTOMER",
+    title: "You’re Gaining Followers",
+    description:
+      "But audience growth is not turning into meaningful engagement or business conversations.",
+    metric: "Followers",
+    label: "MEANINGFUL ENGAGEMENT",
     progress: "34%",
   },
   {
     id: "04",
-    title: "You're Creating Content.",
-    description: "But your brand still doesn't feel recognizable.",
-    metric: "—",
-    label: "BRAND RECALL",
+    title: "You’re Creating Content",
+    description:
+      "But your feed feels busy rather than intentional.",
+    metric: "Busy",
+    label: "CONTENT DIRECTION",
     progress: "28%",
   },
 ];
@@ -146,31 +150,35 @@ export default function SocialMediaMarketingProblem() {
             <span className="h-px w-8 bg-[#B79A72]" />
 
             <span className="text-[9px] font-semibold tracking-[0.28em] text-[#B79A72] sm:text-[10px]">
-               THE PROBLEM
+              THE PROBLEM
             </span>
 
             <span className="h-px w-8 bg-[#B79A72]" />
           </div>
 
           <h2
-            className={`mt-5 text-[2rem] font-medium leading-[1.18] tracking-[-0.035em] sm:text-[2.35rem] md:text-[2.65rem] lg:text-[2.85rem] transition-all duration-[1100ms] ${
+            className={`mt-5 text-[2rem] font-medium leading-[1.18] tracking-[-0.035em] transition-all duration-[1100ms] sm:text-[2.35rem] md:text-[2.65rem] lg:text-[2.85rem] ${
               isVisible
                 ? "translate-y-0 opacity-100"
                 : "translate-y-7 opacity-0"
             }`}
           >
-            Posting Isn&apos;t the Same as{" "}
-            <span className="text-[#B79A72]">Growing.</span>
+            Posting Regularly Is Not the Same as{" "}
+            <span className="text-[#B79A72]">
+              Growing Strategically.
+            </span>
           </h2>
 
           <p
-            className={`mx-auto mt-4 max-w-[500px] text-[13px] leading-6 text-[#0B2A52]/50 sm:text-[14px] sm:leading-7 transition-all delay-150 duration-[1100ms] ${
+            className={`mx-auto mt-4 max-w-[580px] text-[13px] leading-6 text-[#0B2A52]/50 transition-all delay-150 duration-[1100ms] sm:text-[14px] sm:leading-7 ${
               isVisible
                 ? "translate-y-0 opacity-100"
                 : "translate-y-5 opacity-0"
             }`}
           >
-            You can post every day and still feel invisible.
+            Your business can publish content every week and still struggle to
+            build a social media presence that people recognize, trust or act
+            on.
           </p>
         </div>
 
@@ -190,19 +198,22 @@ export default function SocialMediaMarketingProblem() {
                 : "-translate-x-8 opacity-0"
             }`}
           >
-            {/* SMALL LABEL */}
+            {/* CHALLENGE COPY */}
 
             <div className="mb-6">
-              <p className="text-[9px] font-semibold tracking-[0.24em] text-[#B79A72]">
-                DOES THIS SOUND FAMILIAR?
+              <p className="text-[11px] leading-5 text-[#0B2A52]/50">
+                The challenge is rarely just producing more content.
               </p>
 
-              <div className="mt-2 flex items-center gap-2">
-                <span className="h-px w-7 bg-[#0B2A52]/10" />
+              <div className="mt-3 flex items-start gap-2">
+                <span className="mt-2 h-px w-7 shrink-0 bg-[#B79A72]" />
 
-                <p className="text-[11px] leading-5 text-[#0B2A52]/40">
-                  Your social presence can look busy without actually moving
-                  the business forward.
+                <p className="text-[12px] leading-6 text-[#0B2A52]/55">
+                  The challenge is creating the{" "}
+                  <strong className="font-medium text-[#0B2A52]">
+                    right content, for the right audience, with a clear reason
+                    behind it.
+                  </strong>
                 </p>
               </div>
             </div>
@@ -264,7 +275,7 @@ export default function SocialMediaMarketingProblem() {
                       <span
                         className={`block overflow-hidden text-[11px] leading-5 text-[#0B2A52]/45 transition-all duration-500 sm:text-[12px] ${
                           isActive
-                            ? "mt-1 max-h-12 opacity-100"
+                            ? "mt-1 max-h-16 opacity-100"
                             : "max-h-0 opacity-0"
                         }`}
                       >
@@ -316,11 +327,11 @@ export default function SocialMediaMarketingProblem() {
                 <div className="w-[150px]">
                   <div className="mb-2 flex justify-between">
                     <span className="text-[8px] text-[#0B2A52]/30">
-                      CURRENT
+                      ACTIVITY
                     </span>
 
                     <span className="text-[8px] text-[#0B2A52]/30">
-                      POTENTIAL
+                      STRATEGY
                     </span>
                   </div>
 
@@ -344,8 +355,8 @@ export default function SocialMediaMarketingProblem() {
               <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#B79A72]" />
 
               <p className="max-w-[470px] text-[13px] font-medium leading-6 text-[#0B2A52]/60">
-                The problem isn&apos;t always how often you post. It&apos;s
-                what happens after you post.
+                The challenge is creating the right content, for the right
+                audience, with a clear reason behind it.
               </p>
             </div>
           </div>
@@ -371,9 +382,7 @@ export default function SocialMediaMarketingProblem() {
 
             <div className="pointer-events-none absolute h-[350px] w-[350px] rounded-full border border-[#0B2A52]/[0.035] sm:h-[460px] sm:w-[460px]" />
 
-            {/* =================================================
-                TOP STATUS CARD
-            ================================================== */}
+            {/* TOP STATUS CARD */}
 
             <div className="absolute left-1/2 top-2 z-40 -translate-x-1/2 rounded-full border border-white bg-white/95 px-5 py-2.5 shadow-[0_15px_35px_rgba(11,42,82,0.08)] backdrop-blur-xl">
               <div className="flex items-center gap-2 whitespace-nowrap">
@@ -393,14 +402,8 @@ export default function SocialMediaMarketingProblem() {
             ================================================== */}
 
             <div className="relative z-30 w-[280px] sm:w-[330px]">
-              {/* PHONE FRAME */}
-
               <div className="relative rounded-[42px] border-[7px] border-[#0B2A52] bg-[#0B2A52] p-1 shadow-[0_45px_100px_rgba(11,42,82,0.18)]">
-                {/* SIDE BUTTON */}
-
                 <div className="absolute -right-[11px] top-[145px] h-16 w-[5px] rounded-r-full bg-[#0B2A52]" />
-
-                {/* SCREEN */}
 
                 <div className="overflow-hidden rounded-[32px] bg-white">
                   {/* STATUS */}
@@ -426,9 +429,7 @@ export default function SocialMediaMarketingProblem() {
                         yourbrand
                       </span>
 
-                      <span className="text-[8px] text-[#B79A72]">
-                        ✓
-                      </span>
+                      <span className="text-[8px] text-[#B79A72]">✓</span>
                     </div>
 
                     <div className="flex items-center gap-4">
@@ -449,8 +450,6 @@ export default function SocialMediaMarketingProblem() {
 
                   <div className="px-4">
                     <div className="flex items-center gap-4">
-                      {/* PROFILE IMAGE */}
-
                       <div className="relative h-[63px] w-[63px] shrink-0 rounded-full bg-gradient-to-tr from-[#B79A72] via-[#E7D4B4] to-[#0B2A52] p-[2px]">
                         <div className="h-full w-full rounded-full bg-white p-[2px]">
                           <img
@@ -464,8 +463,6 @@ export default function SocialMediaMarketingProblem() {
                           <Plus size={9} />
                         </div>
                       </div>
-
-                      {/* PROFILE STATS */}
 
                       <div className="grid flex-1 grid-cols-3 text-center">
                         <div>
@@ -505,11 +502,11 @@ export default function SocialMediaMarketingProblem() {
                       </p>
 
                       <p className="mt-1 text-[8px] leading-4 text-[#0B2A52]/50">
-                        Digital Marketing Agency
+                        Social Media Marketing
                         <br />
                         Strategy · Content · Community · Growth
                         <br />
-                        Helping brands turn attention into customers.
+                        Building a clearer, more intentional social presence.
                       </p>
                     </div>
 
@@ -599,9 +596,7 @@ export default function SocialMediaMarketingProblem() {
                     </button>
                   </div>
 
-                  {/* =================================================
-                      INSTAGRAM 6 IMAGE GRID
-                  ================================================== */}
+                  {/* IMAGE GRID */}
 
                   {activeTab === "grid" ? (
                     <div className="grid grid-cols-3 gap-[2px] bg-white">
@@ -690,9 +685,7 @@ export default function SocialMediaMarketingProblem() {
                 </div>
               </div>
 
-              {/* =================================================
-                  LEFT FLOATING CARD
-              ================================================== */}
+              {/* LEFT FLOATING CARD */}
 
               <div
                 className={`absolute -left-20 top-[39%] z-40 hidden w-[155px] rounded-2xl border border-[#0B2A52]/[0.06] bg-white p-4 shadow-[0_25px_60px_rgba(11,42,82,0.09)] transition-all duration-700 sm:block ${
@@ -706,10 +699,7 @@ export default function SocialMediaMarketingProblem() {
                     {currentProblem.label}
                   </p>
 
-                  <Sparkles
-                    size={11}
-                    className="text-[#B79A72]"
-                  />
+                  <Sparkles size={11} className="text-[#B79A72]" />
                 </div>
 
                 <p className="mt-2 text-[19px] font-medium text-[#0B2A52]">
@@ -726,9 +716,7 @@ export default function SocialMediaMarketingProblem() {
                 </div>
               </div>
 
-              {/* =================================================
-                  RIGHT FLOATING CARD
-              ================================================== */}
+              {/* RIGHT FLOATING CARD */}
 
               <button
                 type="button"
@@ -756,7 +744,7 @@ export default function SocialMediaMarketingProblem() {
                 </p>
 
                 <p className="mt-1 text-[8px] text-white/40">
-                  meaningful interactions
+                  audience interactions
                 </p>
 
                 <div className="mt-4 flex items-end gap-1">
@@ -802,17 +790,17 @@ export default function SocialMediaMarketingProblem() {
             <span className="h-px w-8 bg-[#0B2A52]/10" />
 
             <span className="text-[8px] font-semibold tracking-[0.22em] text-[#0B2A52]/30">
-              SEE THE DIFFERENCE
+              THE REAL ISSUE?
             </span>
 
             <span className="h-px w-8 bg-[#0B2A52]/10" />
           </div>
 
           <p className="text-[1.25rem] font-medium leading-[1.5] tracking-[-0.02em] text-[#0B2A52] sm:text-[1.45rem]">
-            Good content gets attention.
+            Without strategy, social media becomes an activity.
             <br className="hidden sm:block" />
             <span className="text-[#B79A72]">
-              Strategic content gives it somewhere to go.
+              With strategy, it becomes a brand-building system.
             </span>
           </p>
         </div>
