@@ -22,7 +22,7 @@ const services = [
   },
   {
     label: "SEO",
-    href: "/services/seo",
+    href: "/services/search-engine-optimization",
   },
   {
     label: "Content Marketing",

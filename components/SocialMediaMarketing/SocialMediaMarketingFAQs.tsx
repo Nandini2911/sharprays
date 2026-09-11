@@ -1,129 +1,125 @@
 "use client";
 
+import { useId, useRef, useState } from "react";
 import {
-  useEffect,
-  useId,
-  useRef,
-  useState,
-} from "react";
+  ArrowUpRight,
+  MessageCircleQuestion,
+  Minus,
+  Plus,
+} from "lucide-react";
 
 import {
-  Plus,
-  Minus,
-  MessageCircleQuestion,
-  ArrowUpRight,
-} from "lucide-react";
+  motion,
+  useInView,
+  useReducedMotion,
+} from "framer-motion";
 
 const faqs = [
   {
     number: "01",
-    question:
-      "What is included in your social media management service?",
+    question: "What does a social media marketing agency do?",
     answer:
-      "Your service can include social media strategy, content planning, content creation, publishing, community management and performance reporting. The exact platforms, content volume and responsibilities are confirmed in your proposal before work begins.",
+      "A social media marketing agency helps businesses plan, create, manage and improve their presence across social platforms. Services may include social media strategy, content creation, publishing, community management, paid advertising and performance reporting.",
   },
   {
     number: "02",
-    question:
-      "How much does social media marketing cost?",
+    question: "What is included in social media management?",
     answer:
-      "Pricing depends on the number of platforms, content volume, production requirements and level of ongoing management. Your proposal sets out the agreed scope and cost clearly, so you know exactly what is included.",
+      "Social media management can include strategy, content planning, content creation, scheduling, publishing, community engagement and reporting. The exact deliverables depend on the platforms, content volume and responsibilities included in your plan.",
   },
   {
     number: "03",
-    question:
-      "Which platforms should my business use?",
+    question: "How much does social media marketing cost?",
     answer:
-      "The right platforms depend on your audience, goals, type of business and the kind of content you can realistically maintain. Rather than being everywhere, the focus is on choosing the channels that make the most sense for your brand.",
+      "Social media marketing costs vary depending on the number of platforms, volume and type of content, video production requirements, community management, paid advertising and level of ongoing support. Sharp Rays confirms the final price after defining the required scope.",
   },
   {
     number: "04",
-    question:
-      "Do you create reels, or do we provide footage?",
+    question: "Which social media platform is best for my business?",
     answer:
-      "Short-form video can be included where agreed. Depending on the project, you may provide footage for editing, or production requirements can be discussed as part of the scope. The exact responsibility is clarified before content production starts.",
+      "The best platform depends on your audience, industry and goals. Instagram may suit highly visual brands, while LinkedIn can be more relevant for many B2B businesses. The right strategy focuses on the platforms where your audience and business objectives overlap.",
   },
   {
     number: "05",
-    question:
-      "Is paid advertising included?",
+    question: "Do you create social media content?",
     answer:
-      "Paid advertising is treated as an optional addition unless it is specifically included in your proposal. Campaign management, creative production and advertising spend are clarified separately so there is no confusion between organic management and paid media.",
+      "Yes. Content creation can be included within a Sharp Rays social media management plan. Depending on the agreed scope, this may include graphics, carousels, captions, stories and short-form video content.",
   },
   {
     number: "06",
-    question:
-      "How do you measure progress, and when should we expect it?",
+    question: "Do you create Instagram Reels and short-form videos?",
     answer:
-      "Progress is measured against the objectives agreed at the start, using relevant metrics such as reach, engagement, audience growth, enquiries or other meaningful outcomes. Social media performance develops over time, so reporting focuses on patterns, learning and continuous improvement rather than promising instant results.",
+      "Short-form video can be included depending on your package and production requirements. The proposal clarifies whether Sharp Rays creates the complete video, works with footage supplied by your team or requires separate production.",
+  },
+  {
+    number: "07",
+    question: "Do you manage comments and direct messages?",
+    answer:
+      "Community management can be included in your service. The exact responsibilities, response expectations and escalation process are agreed before management begins.",
+  },
+  {
+    number: "08",
+    question: "Is paid social media advertising included?",
+    answer:
+      "Paid advertising is available as an additional service where required. Campaign management, creative production and advertising spend are defined separately in your proposal.",
+  },
+  {
+    number: "09",
+    question: "How do you measure social media performance?",
+    answer:
+      "The metrics used depend on your objectives. They may include reach, engagement, audience growth, profile activity, website traffic, enquiries, leads or conversions where tracking is available.",
+  },
+  {
+    number: "10",
+    question: "How long does social media marketing take to work?",
+    answer:
+      "There is no universal timeline. Performance depends on factors such as your starting position, industry, audience, content quality, publishing consistency, offer and objectives. We monitor relevant indicators over time rather than promising unrealistic overnight results.",
+  },
+  {
+    number: "11",
+    question: "Can Sharp Rays manage more than one social media platform?",
+    answer:
+      "Yes. Your strategy can cover multiple platforms when they are relevant to your business. The final number of channels and responsibilities is confirmed in your service proposal.",
+  },
+  {
+    number: "12",
+    question: "Do I approve content before it is published?",
+    answer:
+      "Yes. The review and approval process is agreed before work begins so your team knows how and when content will be approved before publishing.",
   },
 ];
 
 export default function SocialMediaMarketingFAQs() {
   const id = useId();
 
-  const sectionRef = useRef<HTMLElement>(null);
+  const sectionRef = useRef<HTMLElement | null>(null);
 
   const [openIndex, setOpenIndex] = useState(0);
 
-  const [visible, setVisible] = useState(false);
+  const isVisible = useInView(sectionRef, {
+    once: true,
+    margin: "-100px",
+  });
 
-  useEffect(() => {
-    const section = sectionRef.current;
-
-    if (!section) return;
-
-    const reducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    );
-
-    if (
-      reducedMotion.matches ||
-      !("IntersectionObserver" in window)
-    ) {
-      setVisible(true);
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry.isIntersecting) return;
-
-        setVisible(true);
-
-        observer.disconnect();
-      },
-      {
-        threshold: 0.08,
-        rootMargin: "0px 0px -40px 0px",
-      }
-    );
-
-    observer.observe(section);
-
-    return () => observer.disconnect();
-  }, []);
+  const reduceMotion = useReducedMotion();
 
   return (
     <section
       ref={sectionRef}
+      id="social-media-marketing-faq"
       aria-labelledby={`${id}-heading`}
       className="
         relative
         overflow-hidden
-
         bg-white
-
-        py-20
-
+        py-24
         text-[#0B2A52]
-
-        sm:py-24
-        lg:py-28
+        sm:py-28
+        lg:py-32
       "
     >
       {/* =====================================================
-          BRAND BACKGROUND ATMOSPHERE
+          BACKGROUND DETAILS
       ====================================================== */}
 
       <div
@@ -135,148 +131,70 @@ export default function SocialMediaMarketingFAQs() {
           overflow-hidden
         "
       >
-        {/* LARGE NAVY GLOW — LEFT */}
-
         <div
           className="
             absolute
-
-            -left-[380px]
-            top-[40px]
-
-            h-[880px]
-            w-[880px]
-
+            -left-[390px]
+            top-[170px]
+            h-[720px]
+            w-[720px]
             rounded-full
-
-            bg-[#0B2A52]/[0.07]
-
-            blur-[210px]
+            border
+            border-[#0B2A52]/[0.035]
           "
         />
 
-        {/* LARGE NAVY GLOW — RIGHT */}
-
         <div
           className="
             absolute
-
-            -right-[360px]
-            top-[260px]
-
-            h-[820px]
-            w-[820px]
-
-            rounded-full
-
-            bg-[#0B2A52]/[0.055]
-
-            blur-[220px]
-          "
-        />
-
-        {/* CENTER NAVY WASH */}
-
-        <div
-          className="
-            absolute
-
-            left-1/2
-            top-[52%]
-
+            -right-[300px]
+            bottom-[80px]
             h-[580px]
-            w-[1050px]
-
-            -translate-x-1/2
-            -translate-y-1/2
-
+            w-[580px]
             rounded-full
-
-            bg-[#0B2A52]/[0.035]
-
-            blur-[180px]
+            border
+            border-[#B79A72]/10
           "
         />
-
-        {/* GOLD GLOW */}
 
         <div
           className="
             absolute
-
-            right-[12%]
-            top-[24%]
-
-            h-[360px]
-            w-[360px]
-
+            left-[5%]
+            top-[42%]
+            h-[260px]
+            w-[260px]
             rounded-full
-
-            bg-[#B79A72]/[0.10]
-
-            blur-[135px]
+            bg-[#0B2A52]/[0.025]
+            blur-[100px]
           "
         />
-
-        {/* SECOND GOLD GLOW */}
 
         <div
           className="
             absolute
-
-            left-[10%]
-            bottom-[4%]
-
-            h-[300px]
-            w-[300px]
-
+            right-[4%]
+            top-[20%]
+            h-[250px]
+            w-[250px]
             rounded-full
-
-            bg-[#B79A72]/[0.06]
-
-            blur-[120px]
+            bg-[#B79A72]/[0.055]
+            blur-[105px]
           "
         />
-
-        {/* WHITE CENTER LIGHT */}
-
-        <div
-          className="
-            absolute
-
-            left-1/2
-            top-[48%]
-
-            h-[450px]
-            w-[780px]
-
-            -translate-x-1/2
-
-            rounded-full
-
-            bg-white/70
-
-            blur-[130px]
-          "
-        />
-
-       
       </div>
 
       {/* =====================================================
-          MAIN CONTAINER
+          CONTAINER
       ====================================================== */}
 
       <div
         className="
           relative
           z-10
-
           mx-auto
-          max-w-[1320px]
-
+          max-w-[1280px]
           px-5
-
           sm:px-8
           lg:px-12
         "
@@ -284,33 +202,35 @@ export default function SocialMediaMarketingFAQs() {
         <div
           className="
             grid
-
-            gap-12
-
+            gap-14
             lg:grid-cols-[0.72fr_1.28fr]
             lg:gap-16
-
             xl:gap-24
           "
         >
           {/* =================================================
-              LEFT SIDE
+              LEFT CONTENT
           ================================================== */}
 
-          <div
-            className={`
-              transition-all
-
-              duration-1000
-
-              ease-[cubic-bezier(0.22,1,0.36,1)]
-
-              ${
-                visible
-                  ? "translate-y-0 opacity-100"
-                  : "translate-y-8 opacity-0"
-              }
-            `}
+          <motion.div
+            initial={{
+              opacity: 0,
+              x: -35,
+              y: 20,
+            }}
+            animate={
+              isVisible
+                ? {
+                    opacity: 1,
+                    x: 0,
+                    y: 0,
+                  }
+                : {}
+            }
+            transition={{
+              duration: reduceMotion ? 0 : 0.9,
+              ease: [0.22, 1, 0.36, 1],
+            }}
           >
             <div
               className="
@@ -318,7 +238,7 @@ export default function SocialMediaMarketingFAQs() {
                 lg:top-28
               "
             >
-              {/* LABEL */}
+              {/* EYEBROW */}
 
               <div
                 className="
@@ -327,28 +247,18 @@ export default function SocialMediaMarketingFAQs() {
                   gap-3
                 "
               >
-                <span
-                  className="
-                    h-px
-                    w-9
-
-                    bg-[#B79A72]
-                  "
-                />
+                <span className="h-px w-9 bg-[#B79A72]" />
 
                 <span
                   className="
                     text-[10px]
                     font-semibold
-
                     uppercase
-
-                    tracking-[0.22em]
-
+                    tracking-[0.24em]
                     text-[#B79A72]
                   "
                 >
-                  FAQs
+                  Frequently Asked Questions
                 </span>
               </div>
 
@@ -358,116 +268,81 @@ export default function SocialMediaMarketingFAQs() {
                 id={`${id}-heading`}
                 className="
                   mt-6
-
-                  max-w-[540px]
-
-                  text-[40px]
+                  max-w-[520px]
+                  text-[2.35rem]
                   font-medium
-
-                  leading-[1.04]
-
+                  leading-[1.06]
                   tracking-[-0.05em]
-
                   text-[#0B2A52]
-
-                  sm:text-[48px]
-                  md:text-[53px]
-
-                  lg:text-[52px]
-
-                  xl:text-[58px]
+                  sm:text-[2.8rem]
+                  md:text-[3.15rem]
+                  lg:text-[3.25rem]
+                  xl:text-[3.55rem]
                 "
               >
-                Questions before
-
+                Questions About{" "}
                 <span
                   className="
-                    mt-1
                     block
-
+                    font-normal
                     text-[#B79A72]
                   "
                 >
-                  we get started?
+                  Social Media Marketing?
                 </span>
               </h2>
 
-              {/* TEXT */}
+              {/* DESCRIPTION */}
 
               <p
                 className="
                   mt-6
-
                   max-w-[430px]
-
                   text-[14px]
                   leading-7
-
-                  text-[#0B2A52]/58
-
+                  text-[#0B2A52]/55
                   sm:text-[15px]
                 "
               >
-                Straightforward answers to the questions
-                businesses usually ask before choosing a
-                social media management partner.
+                Clear answers to the questions businesses commonly ask before
+                choosing a social media marketing partner.
               </p>
 
-              {/* SMALL INFO BLOCK */}
+              {/* SMALL CONTACT BLOCK */}
 
               <div
                 className="
                   mt-9
-
                   inline-flex
-
                   items-center
-
                   gap-4
-
                   rounded-[18px]
-
                   border
-                  border-[#0B2A52]/[0.12]
-
-                  bg-white/65
-
+                  border-[#0B2A52]/10
+                  bg-white
                   p-2
                   pr-5
-
-                  shadow-[0_16px_35px_-28px_rgba(11,42,82,0.28)]
-
-                  backdrop-blur-xl
-
+                  shadow-[0_16px_40px_-30px_rgba(11,42,82,0.24)]
                   transition-all
                   duration-500
-
-                  hover:border-[#B79A72]/60
-                  hover:bg-white
+                  hover:-translate-y-1
+                  hover:border-[#B79A72]/55
                 "
               >
                 <span
                   className="
                     flex
-
-                    h-11
-                    w-11
-
+                    h-12
+                    w-12
                     items-center
                     justify-center
-
                     rounded-[13px]
-
-                    border
-                    border-[#B79A72]/35
-
-                    bg-[#B79A72]/[0.10]
-
+                    bg-[#0B2A52]
                     text-[#B79A72]
                   "
                 >
                   <MessageCircleQuestion
-                    size={18}
+                    size={19}
                     strokeWidth={1.4}
                     aria-hidden="true"
                   />
@@ -476,90 +351,126 @@ export default function SocialMediaMarketingFAQs() {
                 <div>
                   <p
                     className="
-                      text-[8px]
+                      text-[9px]
                       font-semibold
-
                       uppercase
-
                       tracking-[0.18em]
-
                       text-[#B79A72]
                     "
                   >
-                    Still unsure?
+                    Still Have A Question?
                   </p>
 
                   <p
                     className="
                       mt-1
-
-                      text-[12px]
+                      text-[13px]
                       font-medium
-
                       text-[#0B2A52]
                     "
                   >
-                    Ask before you commit.
+                    Talk to Sharp Rays.
+                  </p>
+                </div>
+              </div>
+
+              {/* INDEX */}
+
+              <div
+                className="
+                  mt-12
+                  hidden
+                  items-center
+                  gap-4
+                  lg:flex
+                "
+              >
+                <span
+                  className="
+                    font-serif
+                    text-[44px]
+                    leading-none
+                    text-[#0B2A52]/[0.07]
+                  "
+                >
+                  12
+                </span>
+
+                <div>
+                  <p
+                    className="
+                      text-[9px]
+                      font-semibold
+                      uppercase
+                      tracking-[0.2em]
+                      text-[#B79A72]
+                    "
+                  >
+                    Common Questions
+                  </p>
+
+                  <p
+                    className="
+                      mt-1
+                      text-[11px]
+                      text-[#0B2A52]/38
+                    "
+                  >
+                    Strategy to publishing and reporting
                   </p>
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* =================================================
-              FAQ LIST
+              FAQ ACCORDION
           ================================================== */}
 
-          <div
-            className={`
-              transition-all
-
-              delay-150
-              duration-[1100ms]
-
-              ease-[cubic-bezier(0.22,1,0.36,1)]
-
-              ${
-                visible
-                  ? "translate-y-0 opacity-100"
-                  : "translate-y-10 opacity-0"
-              }
-            `}
+          <motion.div
+            initial={{
+              opacity: 0,
+              x: 35,
+              y: 25,
+            }}
+            animate={
+              isVisible
+                ? {
+                    opacity: 1,
+                    x: 0,
+                    y: 0,
+                  }
+                : {}
+            }
+            transition={{
+              duration: reduceMotion ? 0 : 0.95,
+              delay: reduceMotion ? 0 : 0.12,
+              ease: [0.22, 1, 0.36, 1],
+            }}
           >
             <div
               className="
                 overflow-hidden
-
-                rounded-[26px]
-
+                rounded-[28px]
                 border
-                border-[#0B2A52]/[0.12]
-
-                bg-white/75
-
-                shadow-[0_30px_75px_-55px_rgba(11,42,82,0.34)]
-
-                backdrop-blur-xl
+                border-[#0B2A52]/10
+                bg-white
+                shadow-[0_30px_80px_-58px_rgba(11,42,82,0.30)]
               "
             >
               {faqs.map((faq, index) => {
-                const isOpen =
-                  openIndex === index;
+                const isOpen = openIndex === index;
 
-                const panelId = `${id}-faq-panel-${index}`;
-
-                const buttonId = `${id}-faq-button-${index}`;
+                const panelId = `${id}-panel-${index}`;
+                const buttonId = `${id}-button-${index}`;
 
                 return (
                   <article
                     key={faq.number}
                     className={`
                       group
-
                       relative
-
                       transition-colors
-
                       duration-500
 
                       ${
@@ -570,98 +481,25 @@ export default function SocialMediaMarketingFAQs() {
 
                       ${
                         isOpen
-                          ? "bg-[#0B2A52]/[0.025]"
-                          : "bg-transparent hover:bg-[#0B2A52]/[0.018]"
+                          ? "bg-[#0B2A52]/[0.022]"
+                          : "bg-white hover:bg-[#0B2A52]/[0.012]"
                       }
                     `}
                   >
-                    {/* OPEN NAVY GLOW */}
-
-                    <div
-                      aria-hidden="true"
-                      className={`
-                        pointer-events-none
-
-                        absolute
-
-                        -right-20
-                        -top-20
-
-                        h-48
-                        w-48
-
-                        rounded-full
-
-                        bg-[#0B2A52]/[0.07]
-
-                        blur-[55px]
-
-                        transition-opacity
-
-                        duration-500
-
-                        ${
-                          isOpen
-                            ? "opacity-100"
-                            : "opacity-0"
-                        }
-                      `}
-                    />
-
-                    {/* GOLD GLOW */}
-
-                    <div
-                      aria-hidden="true"
-                      className={`
-                        pointer-events-none
-
-                        absolute
-
-                        right-[12%]
-                        top-1/2
-
-                        h-28
-                        w-28
-
-                        -translate-y-1/2
-
-                        rounded-full
-
-                        bg-[#B79A72]/[0.08]
-
-                        blur-[50px]
-
-                        transition-opacity
-
-                        duration-500
-
-                        ${
-                          isOpen
-                            ? "opacity-100"
-                            : "opacity-0"
-                        }
-                      `}
-                    />
-
-                    {/* ACTIVE LEFT GOLD LINE */}
+                    {/* ACTIVE GOLD LINE */}
 
                     <span
                       aria-hidden="true"
                       className={`
                         absolute
-
                         bottom-5
                         left-0
                         top-5
-
-                        w-[2px]
-
+                        w-[3px]
+                        origin-bottom
                         rounded-full
-
                         bg-[#B79A72]
-
                         transition-all
-
                         duration-500
 
                         ${
@@ -678,35 +516,24 @@ export default function SocialMediaMarketingFAQs() {
                       <button
                         id={buttonId}
                         type="button"
-                        onClick={() =>
-                          setOpenIndex(
-                            isOpen ? -1 : index
-                          )
-                        }
                         aria-expanded={isOpen}
                         aria-controls={panelId}
+                        onClick={() =>
+                          setOpenIndex(isOpen ? -1 : index)
+                        }
                         className="
                           relative
-                          z-10
-
                           flex
                           w-full
-
                           items-start
-
-                          gap-5
-
+                          gap-4
                           px-5
                           py-6
-
                           text-left
-
                           outline-none
-
                           sm:gap-6
                           sm:px-7
                           sm:py-7
-
                           lg:px-8
                         "
                       >
@@ -714,22 +541,18 @@ export default function SocialMediaMarketingFAQs() {
 
                         <span
                           className={`
-                            mt-1
-
+                            mt-[5px]
                             shrink-0
-
-                            text-[9px]
+                            text-[10px]
                             font-semibold
-
                             tracking-[0.16em]
-
                             transition-colors
-                            duration-500
+                            duration-400
 
                             ${
                               isOpen
                                 ? "text-[#B79A72]"
-                                : "text-[#0B2A52]/32"
+                                : "text-[#0B2A52]/30"
                             }
                           `}
                         >
@@ -742,57 +565,44 @@ export default function SocialMediaMarketingFAQs() {
                           className={`
                             min-w-0
                             flex-1
-
-                            text-[18px]
+                            text-[17px]
                             font-medium
-
-                            leading-[1.35]
-
-                            tracking-[-0.025em]
-
+                            leading-[1.4]
+                            tracking-[-0.022em]
                             transition-colors
-
-                            duration-500
-
-                            sm:text-[20px]
-
-                            lg:text-[21px]
+                            duration-400
+                            sm:text-[19px]
+                            lg:text-[20px]
 
                             ${
                               isOpen
                                 ? "text-[#0B2A52]"
-                                : "text-[#0B2A52]/72"
+                                : "text-[#0B2A52]/68"
                             }
                           `}
                         >
                           {faq.question}
                         </span>
 
-                        {/* PLUS / MINUS */}
+                        {/* TOGGLE */}
 
                         <span
                           className={`
                             flex
-                            h-10
-                            w-10
-
+                            h-11
+                            w-11
                             shrink-0
-
                             items-center
                             justify-center
-
                             rounded-full
-
                             border
-
                             transition-all
-
-                            duration-500
+                            duration-400
 
                             ${
                               isOpen
-                                ? "rotate-0 border-[#B79A72]/65 bg-[#B79A72]/[0.12] text-[#B79A72]"
-                                : "border-[#0B2A52]/[0.12] bg-white/60 text-[#0B2A52]/55 group-hover:border-[#B79A72]/50 group-hover:bg-[#B79A72]/[0.07] group-hover:text-[#B79A72]"
+                                ? "border-[#0B2A52] bg-[#0B2A52] text-[#B79A72]"
+                                : "border-[#0B2A52]/12 bg-white text-[#0B2A52]/45 group-hover:border-[#B79A72]/55 group-hover:text-[#B79A72]"
                             }
                           `}
                         >
@@ -821,11 +631,8 @@ export default function SocialMediaMarketingFAQs() {
                       aria-labelledby={buttonId}
                       className={`
                         grid
-
                         transition-all
-
                         duration-500
-
                         ease-[cubic-bezier(0.22,1,0.36,1)]
 
                         ${
@@ -838,41 +645,30 @@ export default function SocialMediaMarketingFAQs() {
                       <div className="overflow-hidden">
                         <div
                           className="
-                            relative
-                            z-10
-
                             px-5
                             pb-7
-
                             sm:px-7
                             sm:pb-8
-
                             lg:px-8
                           "
                         >
                           <div
                             className="
-                              ml-[34px]
-
+                              ml-[30px]
                               border-l
                               border-[#B79A72]/45
-
                               pl-5
-
-                              sm:ml-[42px]
+                              sm:ml-[40px]
                               sm:pl-6
                             "
                           >
                             <p
                               className="
-                                max-w-[650px]
-
-                                text-[13px]
+                                max-w-[680px]
+                                text-[14px]
                                 leading-7
-
                                 text-[#0B2A52]/58
-
-                                sm:text-[14px]
+                                sm:text-[15px]
                               "
                             >
                               {faq.answer}
@@ -886,149 +682,80 @@ export default function SocialMediaMarketingFAQs() {
               })}
             </div>
 
-            {/* =================================================
-                BOTTOM CTA NOTE
-            ================================================== */}
+            {/* BOTTOM QUESTION LINK */}
 
             <div
               className="
                 mt-6
-
                 flex
-
-                flex-col
-
-                gap-4
-
-                sm:flex-row
-                sm:items-center
-                sm:justify-between
+                items-center
+                justify-end
               "
             >
-              <p
-                className="
-                  max-w-[520px]
-
-                  text-[11px]
-                  leading-6
-
-                  text-[#0B2A52]/48
-                "
-              >
-                Your proposal confirms the final scope,
-                responsibilities and commercial details
-                before work begins.
-              </p>
-
-              <button
-                type="button"
+              <a
+                href="/contact"
                 className="
                   group
-
                   inline-flex
-
-                  w-fit
-
                   items-center
-
                   gap-2
-
-                  text-[9px]
+                  text-[10px]
                   font-semibold
-
                   uppercase
-
                   tracking-[0.17em]
-
                   text-[#B79A72]
-
                   transition-colors
-
                   duration-300
-
                   hover:text-[#0B2A52]
                 "
               >
-                Have another question
+                Have another question?
 
                 <ArrowUpRight
-                  size={14}
+                  size={15}
                   strokeWidth={1.4}
                   className="
                     transition-transform
-
                     duration-300
-
                     group-hover:translate-x-1
                     group-hover:-translate-y-1
                   "
                 />
-              </button>
+              </a>
             </div>
-          </div>
+          </motion.div>
         </div>
 
-        {/* ===================================================
-            BOTTOM BRAND DETAIL
-        ==================================================== */}
+        {/* =====================================================
+            BOTTOM DETAIL
+        ====================================================== */}
 
         <div
           className="
             mx-auto
-
-            mt-12
-
+            mt-14
             flex
-
             max-w-[720px]
-
             items-center
-
             gap-4
           "
         >
-          <span
-            className="
-              h-px
-              flex-1
-
-              bg-gradient-to-r
-
-              from-transparent
-
-              to-[#B79A72]/55
-            "
-          />
+          <span className="h-px flex-1 bg-[#B79A72]/40" />
 
           <span
             className="
               shrink-0
-
               text-[8px]
               font-semibold
-
               uppercase
-
-              tracking-[0.18em]
-
-              text-[#0B2A52]/35
+              tracking-[0.19em]
+              text-[#0B2A52]/32
             "
           >
-            Clear answers · Clear expectations
+            Clear Answers · Clear Expectations
           </span>
 
-          <span
-            className="
-              h-px
-              flex-1
-
-              bg-gradient-to-l
-
-              from-transparent
-
-              to-[#B79A72]/55
-            "
-          />
+          <span className="h-px flex-1 bg-[#B79A72]/40" />
         </div>
       </div>
     </section>
