@@ -1,5 +1,6 @@
 "use client";
 
+import type { ReactNode } from "react";
 import type { LucideIcon } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
 import {
@@ -14,6 +15,7 @@ import {
   SearchCheck,
   Settings2,
   Sparkles,
+  Target,
   TrendingUp,
 } from "lucide-react";
 
@@ -136,7 +138,7 @@ export default function SEODeliverablesSection() {
             h-[520px]
             w-[520px]
             rounded-full
-            bg-[#3976B6]/[0.05]
+            bg-[#3976B6]/[0.045]
             blur-[155px]
           "
         />
@@ -149,7 +151,7 @@ export default function SEODeliverablesSection() {
             h-[520px]
             w-[520px]
             rounded-full
-            bg-[#C6A77A]/[0.09]
+            bg-[#C6A77A]/[0.075]
             blur-[155px]
           "
         />
@@ -364,7 +366,7 @@ export default function SEODeliverablesSection() {
         </motion.div>
 
         {/* =====================================================
-            PREMIUM EDITORIAL INDEX
+            DELIVERABLE ROWS
         ====================================================== */}
 
         <div
@@ -384,7 +386,7 @@ export default function SEODeliverablesSection() {
         </div>
 
         {/* =====================================================
-            CONNECTED SCOPE STATEMENT
+            CONNECTED SCOPE
         ====================================================== */}
 
         <motion.div
@@ -412,7 +414,7 @@ export default function SEODeliverablesSection() {
             overflow-hidden
             rounded-[28px]
             border
-            border-[#0B2A52]/13
+            border-[#0B2A52]/[0.12]
             bg-gradient-to-r
             from-[#EAF4FC]
             via-white
@@ -576,7 +578,7 @@ export default function SEODeliverablesSection() {
             </p>
           </div>
 
-          {/* PLAN FLOW */}
+          {/* DESKTOP FLOW */}
 
           <div
             className="
@@ -707,7 +709,7 @@ export default function SEODeliverablesSection() {
         </motion.div>
 
         {/* =====================================================
-            BOTTOM
+            BOTTOM MICROCOPY
         ====================================================== */}
 
         <motion.div
@@ -816,18 +818,16 @@ function DeliverableRow({
       <div
         className="
           grid
-          gap-7
-          py-10
+          gap-8
+          py-11
           sm:py-12
-          lg:grid-cols-[75px_1fr_410px]
+          lg:grid-cols-[75px_minmax(0,1fr)_460px]
           lg:items-center
           lg:gap-12
-          lg:py-14
+          lg:py-16
         "
       >
-        {/* ====================================================
-            NUMBER
-        ==================================================== */}
+        {/* NUMBER */}
 
         <div
           className="
@@ -839,10 +839,11 @@ function DeliverableRow({
         >
           <span
             className="
-              text-[31px]
-              font-medium
+              [font-family:Georgia,'Times_New_Roman',serif]
+              text-[34px]
+              font-normal
               leading-none
-              tracking-[-0.05em]
+              tracking-[-0.04em]
               text-[#C6A77A]
             "
           >
@@ -852,8 +853,8 @@ function DeliverableRow({
           <span
             className="
               hidden
-              mt-4
-              h-8
+              mt-5
+              h-9
               w-px
               bg-[#0B2A52]/15
               lg:block
@@ -861,9 +862,7 @@ function DeliverableRow({
           />
         </div>
 
-        {/* ====================================================
-            COPY
-        ==================================================== */}
+        {/* COPY */}
 
         <div>
           <div
@@ -884,6 +883,7 @@ function DeliverableRow({
                 rounded-full
                 bg-[#EAF4FC]
                 text-[#3976B6]
+                shadow-[0_7px_20px_rgba(57,118,182,0.06)]
                 transition-all
                 duration-300
                 group-hover:bg-[#0B2A52]
@@ -912,12 +912,13 @@ function DeliverableRow({
             className="
               mt-5
               max-w-[560px]
-              text-[22px]
-              font-medium
-              leading-[1.22]
+              [font-family:Georgia,'Times_New_Roman',serif]
+              text-[24px]
+              font-normal
+              leading-[1.18]
               tracking-[-0.027em]
               text-[#0B2A52]
-              sm:text-[24px]
+              sm:text-[27px]
             "
           >
             {item.title}
@@ -929,7 +930,7 @@ function DeliverableRow({
               max-w-[590px]
               text-[14px]
               leading-7
-              text-[#0B2A52]/62
+              text-[#0B2A52]/60
             "
           >
             {item.description}
@@ -937,7 +938,7 @@ function DeliverableRow({
 
           <div
             className="
-              mt-5
+              mt-6
               flex
               items-center
               gap-3
@@ -967,9 +968,7 @@ function DeliverableRow({
           </div>
         </div>
 
-        {/* ====================================================
-            VISUAL
-        ==================================================== */}
+        {/* VISUAL */}
 
         <DeliverableVisual
           index={index}
@@ -977,7 +976,7 @@ function DeliverableRow({
         />
       </div>
 
-      {/* HOVER WASH */}
+      {/* SUBTLE HOVER WASH */}
 
       <div
         className="
@@ -986,9 +985,9 @@ function DeliverableRow({
           inset-0
           -z-10
           bg-gradient-to-r
-          from-[#EAF4FC]/40
+          from-[#EAF4FC]/25
           via-transparent
-          to-[#F7ECD9]/35
+          to-[#F7ECD9]/25
           opacity-0
           transition-opacity
           duration-500
@@ -1000,7 +999,158 @@ function DeliverableRow({
 }
 
 /* ============================================================
-   UNIQUE VISUALS
+   PREMIUM VISUAL SHELL
+============================================================ */
+
+function VisualShell({
+  number,
+  label,
+  icon,
+  children,
+  className = "",
+}: {
+  number: string;
+  label: string;
+  icon: ReactNode;
+  children: ReactNode;
+  className?: string;
+}) {
+  return (
+    <div
+      className={`
+        relative
+        min-h-[225px]
+        overflow-hidden
+        rounded-[28px]
+        border
+        border-[#0B2A52]/[0.11]
+        bg-gradient-to-br
+        from-[#F7FBFF]
+        via-[#FFFFFF]
+        to-[#FBF4E8]
+        px-5
+        py-5
+        shadow-[0_18px_45px_rgba(11,42,82,0.05)]
+        transition-all
+        duration-500
+        group-hover:-translate-y-[2px]
+        group-hover:border-[#0B2A52]/20
+        group-hover:shadow-[0_24px_60px_rgba(11,42,82,0.075)]
+        sm:px-6
+        ${className}
+      `}
+    >
+      {/* atmospheric glows */}
+
+      <div
+        className="
+          pointer-events-none
+          absolute
+          -right-16
+          -top-20
+          h-[190px]
+          w-[190px]
+          rounded-full
+          bg-[#3976B6]/[0.055]
+          blur-[45px]
+        "
+      />
+
+      <div
+        className="
+          pointer-events-none
+          absolute
+          -bottom-20
+          -left-16
+          h-[170px]
+          w-[170px]
+          rounded-full
+          bg-[#C6A77A]/[0.08]
+          blur-[45px]
+        "
+      />
+
+      {/* header */}
+
+      <div
+        className="
+          relative
+          z-10
+          flex
+          items-center
+          justify-between
+          gap-5
+          border-b
+          border-[#0B2A52]/[0.08]
+          pb-4
+        "
+      >
+        <div className="flex items-center gap-3">
+          <div
+            className="
+              flex
+              h-9
+              w-9
+              items-center
+              justify-center
+              rounded-full
+              bg-[#E7F2FC]
+              text-[#3976B6]
+              shadow-[0_5px_14px_rgba(57,118,182,0.08)]
+            "
+          >
+            {icon}
+          </div>
+
+          <div>
+            <span
+              className="
+                block
+                text-[8px]
+                font-semibold
+                tracking-[0.18em]
+                text-[#C6A77A]
+              "
+            >
+              SEO SYSTEM
+            </span>
+
+            <span
+              className="
+                mt-0.5
+                block
+                text-[10px]
+                font-semibold
+                tracking-[0.08em]
+                text-[#0B2A52]/48
+              "
+            >
+              {label}
+            </span>
+          </div>
+        </div>
+
+        <span
+          className="
+            [font-family:Georgia,'Times_New_Roman',serif]
+            text-[26px]
+            leading-none
+            text-[#C6A77A]/60
+          "
+        >
+          {number}
+        </span>
+      </div>
+
+      <div className="relative z-10 pt-5">
+        {children}
+      </div>
+    </div>
+  );
+}
+
+/* ============================================================
+   DELIVERABLE VISUALS
 ============================================================ */
 
 function DeliverableVisual({
@@ -1010,72 +1160,88 @@ function DeliverableVisual({
   index: number;
   reduceMotion: boolean;
 }) {
-  const base =
-    "relative overflow-hidden rounded-[24px] border border-[#0B2A52]/10 bg-gradient-to-br from-[#F3F8FC] via-white to-[#FBF4E8]";
-
   /* ==========================================================
      01 — SEO AUDIT
   ========================================================== */
 
   if (index === 0) {
-    const lines = [88, 71, 82, 60];
+    const checks = [
+      ["Technical", 84],
+      ["Structure", 68],
+      ["Content", 76],
+      ["Visibility", 58],
+    ] as const;
 
     return (
-      <div className={`${base} min-h-[180px] p-6`}>
-        <div className="flex items-center justify-between">
-          <span
-            className="
-              text-[10px]
-              font-semibold
-              tracking-[0.14em]
-              text-[#0B2A52]/45
-            "
-          >
-            SITE REVIEW
-          </span>
-
+      <VisualShell
+        number="01"
+        label="SEO AUDIT"
+        icon={
           <FileSearch
-            size={17}
-            className="text-[#3976B6]"
+            size={14}
+            strokeWidth={1.7}
           />
-        </div>
-
+        }
+      >
         <div
           className="
-            mt-6
             grid
-            grid-cols-[1fr_90px]
-            gap-5
+            grid-cols-[1fr_96px]
             items-center
+            gap-5
           "
         >
-          <div className="space-y-4">
-            {lines.map((width, rowIndex) => (
-              <div
-                key={rowIndex}
-                className="flex items-center gap-3"
-              >
-                <Check
-                  size={12}
-                  className="shrink-0 text-[#C6A77A]"
-                />
+          <div className="space-y-3.5">
+            {checks.map(([label, width], rowIndex) => (
+              <div key={label}>
+                <div
+                  className="
+                    mb-2
+                    flex
+                    items-center
+                    justify-between
+                    gap-3
+                  "
+                >
+                  <span
+                    className="
+                      text-[9px]
+                      font-semibold
+                      tracking-[0.08em]
+                      text-[#0B2A52]/48
+                    "
+                  >
+                    {label}
+                  </span>
+
+                  <Check
+                    size={11}
+                    strokeWidth={2}
+                    className="text-[#C6A77A]"
+                  />
+                </div>
 
                 <div
                   className="
-                    h-2
-                    flex-1
+                    h-[5px]
                     overflow-hidden
                     rounded-full
                     bg-[#0B2A52]/[0.07]
                   "
                 >
                   <motion.div
-                    initial={{ scaleX: 0 }}
-                    whileInView={{ scaleX: width / 100 }}
-                    viewport={{ once: true }}
+                    initial={{
+                      scaleX: 0,
+                    }}
+                    whileInView={{
+                      scaleX: width / 100,
+                    }}
+                    viewport={{
+                      once: true,
+                    }}
                     transition={{
-                      duration: reduceMotion ? 0 : 0.8,
-                      delay: rowIndex * 0.08,
+                      duration: reduceMotion ? 0 : 0.75,
+                      delay: rowIndex * 0.07,
                       ease,
                     }}
                     className="
@@ -1095,369 +1261,177 @@ function DeliverableVisual({
 
           <div
             className="
+              relative
               flex
-              h-[92px]
+              h-[108px]
               items-center
               justify-center
-              rounded-full
+              rounded-[22px]
               border
-              border-[#C6A77A]/30
-              bg-white/70
+              border-[#3976B6]/15
+              bg-[#EAF4FC]/80
             "
           >
-            <Search
-              size={24}
-              strokeWidth={1.45}
-              className="text-[#0B2A52]"
+            <div
+              className="
+                absolute
+                inset-3
+                rounded-[16px]
+                border
+                border-dashed
+                border-[#3976B6]/15
+              "
             />
+
+            <div className="relative z-10 text-center">
+              <Search
+                size={24}
+                strokeWidth={1.45}
+                className="mx-auto text-[#0B2A52]"
+              />
+
+              <span
+                className="
+                  mt-2
+                  block
+                  text-[8px]
+                  font-semibold
+                  tracking-[0.11em]
+                  text-[#3976B6]
+                "
+              >
+                REVIEW
+              </span>
+            </div>
           </div>
         </div>
-      </div>
+      </VisualShell>
     );
   }
 
   /* ==========================================================
-     02 — KEYWORDS
+     02 — KEYWORD & INTENT
   ========================================================== */
 
   if (index === 1) {
+    const stages = [
+      {
+        label: "SEARCH",
+        sub: "What people type",
+        icon: Search,
+      },
+      {
+        label: "INTENT",
+        sub: "What they need",
+        icon: Target,
+      },
+      {
+        label: "PAGE",
+        sub: "Where they land",
+        icon: FileText,
+      },
+    ];
+
     return (
-      <div className={`${base} min-h-[180px] p-6`}>
+      <VisualShell
+        number="02"
+        label="SEARCH INTENT MAP"
+        icon={
+          <SearchCheck
+            size={14}
+            strokeWidth={1.7}
+          />
+        }
+      >
         <div
           className="
             flex
             items-center
             gap-3
-            rounded-full
+            rounded-[15px]
             border
-            border-[#0B2A52]/10
-            bg-white/80
+            border-[#3976B6]/15
+            bg-white/85
             px-4
             py-3
+            shadow-[0_8px_22px_rgba(11,42,82,0.035)]
           "
         >
           <Search
-            size={14}
-            className="text-[#3976B6]"
+            size={13}
+            strokeWidth={1.7}
+            className="shrink-0 text-[#3976B6]"
           />
 
           <span
             className="
-              text-[11px]
-              text-[#0B2A52]/52
-            "
-          >
-            Search opportunity
-          </span>
-        </div>
-
-        <div
-          className="
-            relative
-            mt-7
-            flex
-            items-center
-            justify-between
-          "
-        >
-          <div
-            className="
-              absolute
-              left-[12%]
-              right-[12%]
-              top-[18px]
-              h-px
-              bg-[#0B2A52]/12
-            "
-          />
-
-          {[
-            ["SEARCH", "Query"],
-            ["INTENT", "Meaning"],
-            ["PAGE", "Match"],
-          ].map(([title, text], stepIndex) => (
-            <div
-              key={title}
-              className="
-                relative
-                z-10
-                text-center
-              "
-            >
-              <div
-                className="
-                  mx-auto
-                  h-9
-                  w-9
-                  rounded-full
-                  border-[4px]
-                  border-white
-                  bg-[#0B2A52]
-                  shadow-[0_0_0_1px_rgba(11,42,82,0.12)]
-                "
-              />
-
-              <span
-                className="
-                  mt-3
-                  block
-                  text-[9px]
-                  font-bold
-                  tracking-[0.12em]
-                  text-[#C6A77A]
-                "
-              >
-                {title}
-              </span>
-
-              <span
-                className="
-                  mt-1
-                  block
-                  text-[11px]
-                  text-[#0B2A52]/55
-                "
-              >
-                {text}
-              </span>
-            </div>
-          ))}
-        </div>
-      </div>
-    );
-  }
-
-  /* ==========================================================
-     03 — TECHNICAL
-  ========================================================== */
-
-  if (index === 2) {
-    return (
-      <div
-        className={`
-          ${base}
-          flex
-          min-h-[180px]
-          items-center
-          justify-center
-          p-6
-        `}
-      >
-        <div
-          className="
-            relative
-            flex
-            h-[140px]
-            w-[140px]
-            items-center
-            justify-center
-            rounded-full
-            border
-            border-[#3976B6]/15
-          "
-        >
-          <div
-            className="
-              absolute
-              inset-[18px]
-              rounded-full
-              border
-              border-dashed
-              border-[#C6A77A]/35
-            "
-          />
-
-          <div
-            className="
-              flex
-              h-14
-              w-14
-              items-center
-              justify-center
-              rounded-full
-              bg-[#0B2A52]
-              text-white
-            "
-          >
-            <Settings2 size={20} />
-          </div>
-
-          {[
-            "-top-1 left-1/2 -translate-x-1/2",
-            "right-0 top-1/2 -translate-y-1/2",
-            "-bottom-1 left-1/2 -translate-x-1/2",
-            "left-0 top-1/2 -translate-y-1/2",
-          ].map((position, nodeIndex) => (
-            <span
-              key={position}
-              className={`
-                absolute
-                ${position}
-                flex
-                h-8
-                w-8
-                items-center
-                justify-center
-                rounded-full
-                border
-                border-[#0B2A52]/10
-                bg-white
-                text-[9px]
-                font-bold
-                text-[#C6A77A]
-              `}
-            >
-              {nodeIndex + 1}
-            </span>
-          ))}
-        </div>
-
-        <div
-          className="
-            ml-7
-            space-y-2
-          "
-        >
-          {["Crawl", "Index", "Speed", "Structure"].map((item) => (
-            <div
-              key={item}
-              className="
-                flex
-                items-center
-                gap-2
-              "
-            >
-              <span className="h-1.5 w-1.5 rounded-full bg-[#C6A77A]" />
-
-              <span
-                className="
-                  text-[11px]
-                  font-medium
-                  text-[#0B2A52]/60
-                "
-              >
-                {item}
-              </span>
-            </div>
-          ))}
-        </div>
-      </div>
-    );
-  }
-
-  /* ==========================================================
-     04 — ON PAGE
-  ========================================================== */
-
-  if (index === 3) {
-    return (
-      <div className={`${base} min-h-[180px] p-6`}>
-        <div
-          className="
-            mx-auto
-            max-w-[300px]
-          "
-        >
-          <div className="flex items-center justify-between">
-            <span
-              className="
-                text-[9px]
-                font-semibold
-                tracking-[0.13em]
-                text-[#C6A77A]
-              "
-            >
-              PAGE STRUCTURE
-            </span>
-
-            <FileText
-              size={16}
-              className="text-[#3976B6]"
-            />
-          </div>
-
-          <div className="mt-5">
-            <div className="h-3 w-[62%] rounded-full bg-[#0B2A52]/16" />
-
-            <div className="mt-4 space-y-2.5">
-              <div className="h-2 w-full rounded-full bg-[#3976B6]/10" />
-              <div className="h-2 w-[90%] rounded-full bg-[#3976B6]/10" />
-              <div className="h-2 w-[70%] rounded-full bg-[#3976B6]/10" />
-            </div>
-
-            <div
-              className="
-                mt-6
-                flex
-                flex-wrap
-                gap-2
-              "
-            >
-              {["TITLE", "H1", "CONTENT", "LINKS"].map((item) => (
-                <span
-                  key={item}
-                  className="
-                    rounded-full
-                    border
-                    border-[#C6A77A]/30
-                    bg-white/70
-                    px-3
-                    py-1.5
-                    text-[9px]
-                    font-semibold
-                    text-[#0B2A52]/55
-                  "
-                >
-                  {item}
-                </span>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  /* ==========================================================
-     05 — CONTENT
-  ========================================================== */
-
-  if (index === 4) {
-    return (
-      <div className={`${base} min-h-[180px] p-6`}>
-        <div className="flex items-center justify-between">
-          <span
-            className="
-              text-[9px]
-              font-semibold
-              tracking-[0.14em]
+              truncate
+              text-[10px]
               text-[#0B2A52]/45
             "
           >
-            CONTENT ROADMAP
+            What is the searcher really looking for?
           </span>
 
-          <Sparkles
-            size={16}
-            className="text-[#C6A77A]"
-          />
+          <span
+            className="
+              ml-auto
+              shrink-0
+              rounded-full
+              bg-[#EAF4FC]
+              px-2.5
+              py-1
+              text-[7px]
+              font-bold
+              tracking-[0.1em]
+              text-[#3976B6]
+            "
+          >
+            QUERY
+          </span>
         </div>
 
         <div
           className="
             relative
-            mt-8
-            flex
-            justify-between
+            mt-6
+            grid
+            grid-cols-3
+            gap-3
           "
         >
           <div
             className="
               absolute
-              left-[7%]
-              right-[7%]
-              top-[17px]
+              left-[16%]
+              right-[16%]
+              top-[25px]
+              h-px
+              bg-[#0B2A52]/10
+            "
+          />
+
+          <motion.div
+            initial={{
+              scaleX: 0,
+            }}
+            whileInView={{
+              scaleX: 1,
+            }}
+            viewport={{
+              once: true,
+            }}
+            transition={{
+              duration: reduceMotion ? 0 : 0.9,
+              ease,
+            }}
+            className="
+              absolute
+              left-[16%]
+              right-[16%]
+              top-[25px]
               h-[2px]
+              origin-left
               bg-gradient-to-r
               from-[#3976B6]
               via-[#0B2A52]
@@ -1465,10 +1439,12 @@ function DeliverableVisual({
             "
           />
 
-          {["FIND", "PLAN", "CREATE", "IMPROVE"].map(
-            (label, stepIndex) => (
+          {stages.map((stage, stageIndex) => {
+            const StageIcon = stage.icon;
+
+            return (
               <div
-                key={label}
+                key={stage.label}
                 className="
                   relative
                   z-10
@@ -1476,146 +1452,583 @@ function DeliverableVisual({
                 "
               >
                 <div
-                  className="
+                  className={`
                     mx-auto
                     flex
-                    h-9
-                    w-9
+                    h-[52px]
+                    w-[52px]
                     items-center
                     justify-center
                     rounded-full
-                    border-[4px]
+                    border-[5px]
                     border-white
-                    bg-[#0B2A52]
-                    text-[9px]
-                    font-semibold
-                    text-white
-                    shadow-[0_0_0_1px_rgba(11,42,82,0.12)]
-                  "
+                    shadow-[0_0_0_1px_rgba(11,42,82,0.10),0_8px_20px_rgba(11,42,82,0.06)]
+
+                    ${
+                      stageIndex === 1
+                        ? "bg-[#0B2A52] text-white"
+                        : stageIndex === 2
+                          ? "bg-[#FFF1DC] text-[#A66E32]"
+                          : "bg-[#EAF4FC] text-[#3976B6]"
+                    }
+                  `}
                 >
-                  {stepIndex + 1}
+                  <StageIcon
+                    size={15}
+                    strokeWidth={1.7}
+                  />
                 </div>
 
                 <span
                   className="
                     mt-3
                     block
+                    text-[8px]
+                    font-bold
+                    tracking-[0.13em]
+                    text-[#C6A77A]
+                  "
+                >
+                  {stage.label}
+                </span>
+
+                <span
+                  className="
+                    mx-auto
+                    mt-1
+                    block
+                    max-w-[90px]
                     text-[9px]
-                    font-semibold
-                    tracking-[0.08em]
+                    leading-4
                     text-[#0B2A52]/48
                   "
                 >
-                  {label}
+                  {stage.sub}
                 </span>
               </div>
-            ),
-          )}
+            );
+          })}
         </div>
-      </div>
+      </VisualShell>
     );
   }
 
   /* ==========================================================
-     06 — INTERNAL LINKS
+     03 — TECHNICAL SEO
   ========================================================== */
 
-  if (index === 5) {
+  if (index === 2) {
+    const items = [
+      {
+        label: "CRAWL",
+        icon: Search,
+      },
+      {
+        label: "INDEX",
+        icon: Check,
+      },
+      {
+        label: "SPEED",
+        icon: TrendingUp,
+      },
+      {
+        label: "STRUCTURE",
+        icon: Settings2,
+      },
+    ];
+
     return (
-      <div className={`${base} min-h-[180px]`}>
+      <VisualShell
+        number="03"
+        label="TECHNICAL HEALTH"
+        icon={
+          <Settings2
+            size={14}
+            strokeWidth={1.7}
+          />
+        }
+      >
         <div
           className="
-            absolute
-            left-1/2
-            top-1/2
-            h-px
-            w-[58%]
-            -translate-x-1/2
-            rotate-[12deg]
-            bg-[#C6A77A]/40
-          "
-        />
-
-        <div
-          className="
-            absolute
-            left-1/2
-            top-1/2
-            h-px
-            w-[58%]
-            -translate-x-1/2
-            -rotate-[12deg]
-            bg-[#3976B6]/30
-          "
-        />
-
-        <div
-          className="
-            absolute
-            left-1/2
-            top-1/2
-            flex
-            h-12
-            w-12
-            -translate-x-1/2
-            -translate-y-1/2
-            items-center
-            justify-center
-            rounded-full
-            bg-[#0B2A52]
-            text-white
-            shadow-[0_10px_25px_rgba(11,42,82,0.15)]
+            grid
+            grid-cols-2
+            gap-3
           "
         >
-          <Link2 size={17} />
+          {items.map((item, itemIndex) => {
+            const ItemIcon = item.icon;
+
+            return (
+              <motion.div
+                key={item.label}
+                initial={{
+                  opacity: 0,
+                  y: reduceMotion ? 0 : 8,
+                }}
+                whileInView={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                viewport={{
+                  once: true,
+                }}
+                transition={{
+                  duration: 0.45,
+                  delay: itemIndex * 0.06,
+                  ease,
+                }}
+                className="
+                  flex
+                  items-center
+                  gap-3
+                  rounded-[14px]
+                  border
+                  border-[#3976B6]/12
+                  bg-white/75
+                  px-3.5
+                  py-3
+                "
+              >
+                <div
+                  className="
+                    flex
+                    h-8
+                    w-8
+                    shrink-0
+                    items-center
+                    justify-center
+                    rounded-full
+                    bg-[#0B2A52]
+                    text-white
+                  "
+                >
+                  <ItemIcon
+                    size={11}
+                    strokeWidth={1.8}
+                  />
+                </div>
+
+                <span
+                  className="
+                    text-[8px]
+                    font-semibold
+                    tracking-[0.11em]
+                    text-[#0B2A52]/60
+                  "
+                >
+                  {item.label}
+                </span>
+              </motion.div>
+            );
+          })}
         </div>
 
-        {[
-          "left-[13%] top-[20%]",
-          "right-[13%] top-[20%]",
-          "left-[17%] bottom-[18%]",
-          "right-[17%] bottom-[18%]",
-        ].map((position) => (
+        <div
+          className="
+            mt-4
+            flex
+            items-center
+            gap-3
+          "
+        >
           <div
-            key={position}
-            className={`
-              absolute
-              ${position}
-              flex
-              h-10
-              w-10
-              items-center
-              justify-center
+            className="
+              h-[5px]
+              flex-1
+              overflow-hidden
               rounded-full
-              border
-              border-[#3976B6]/18
-              bg-white
-              shadow-[0_6px_18px_rgba(11,42,82,0.06)]
-            `}
+              bg-[#0B2A52]/[0.07]
+            "
           >
+            <motion.div
+              initial={{
+                scaleX: 0,
+              }}
+              whileInView={{
+                scaleX: 0.88,
+              }}
+              viewport={{
+                once: true,
+              }}
+              transition={{
+                duration: reduceMotion ? 0 : 0.9,
+                ease,
+              }}
+              className="
+                h-full
+                w-full
+                origin-left
+                rounded-full
+                bg-gradient-to-r
+                from-[#3976B6]
+                to-[#C6A77A]
+              "
+            />
+          </div>
+
+          <span
+            className="
+              text-[8px]
+              font-bold
+              tracking-[0.12em]
+              text-[#C6A77A]
+            "
+          >
+            HEALTH
+          </span>
+        </div>
+      </VisualShell>
+    );
+  }
+
+  /* ==========================================================
+     04 — ON-PAGE
+  ========================================================== */
+
+  if (index === 3) {
+    return (
+      <VisualShell
+        number="04"
+        label="PAGE OPTIMIZATION"
+        icon={
+          <FileText
+            size={14}
+            strokeWidth={1.7}
+          />
+        }
+      >
+        <div
+          className="
+            rounded-[17px]
+            border
+            border-[#0B2A52]/10
+            bg-white/80
+            p-4
+            shadow-[0_8px_22px_rgba(11,42,82,0.03)]
+          "
+        >
+          <div className="flex items-center justify-between">
+            <span
+              className="
+                text-[8px]
+                font-semibold
+                tracking-[0.14em]
+                text-[#C6A77A]
+              "
+            >
+              PAGE STRUCTURE
+            </span>
+
             <FileText
               size={13}
               className="text-[#3976B6]"
             />
           </div>
-        ))}
 
-        <span
+          <div className="mt-4">
+            <div
+              className="
+                h-[9px]
+                w-[58%]
+                rounded-full
+                bg-[#0B2A52]/16
+              "
+            />
+
+            <div className="mt-3 space-y-2">
+              <div className="h-[6px] w-full rounded-full bg-[#3976B6]/10" />
+              <div className="h-[6px] w-[91%] rounded-full bg-[#3976B6]/10" />
+              <div className="h-[6px] w-[72%] rounded-full bg-[#3976B6]/10" />
+            </div>
+
+            <div
+              className="
+                mt-5
+                flex
+                flex-wrap
+                gap-2
+              "
+            >
+              {["TITLE", "H1", "CONTENT", "LINKS"].map((label) => (
+                <span
+                  key={label}
+                  className="
+                    rounded-full
+                    border
+                    border-[#C6A77A]/25
+                    bg-[#FFF9EF]
+                    px-3
+                    py-1.5
+                    text-[7px]
+                    font-semibold
+                    tracking-[0.08em]
+                    text-[#0B2A52]/55
+                  "
+                >
+                  {label}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </VisualShell>
+    );
+  }
+
+  /* ==========================================================
+     05 — CONTENT STRATEGY
+  ========================================================== */
+
+  if (index === 4) {
+    return (
+      <VisualShell
+        number="05"
+        label="CONTENT ROADMAP"
+        icon={
+          <Sparkles
+            size={14}
+            strokeWidth={1.7}
+          />
+        }
+      >
+        <div
           className="
-            absolute
-            bottom-4
-            left-1/2
-            -translate-x-1/2
-            whitespace-nowrap
-            text-[9px]
+            relative
+            pt-3
+          "
+        >
+          <div
+            className="
+              absolute
+              left-[10%]
+              right-[10%]
+              top-[30px]
+              h-px
+              bg-[#0B2A52]/10
+            "
+          />
+
+          <motion.div
+            initial={{
+              scaleX: 0,
+            }}
+            whileInView={{
+              scaleX: 1,
+            }}
+            viewport={{
+              once: true,
+            }}
+            transition={{
+              duration: reduceMotion ? 0 : 0.9,
+              ease,
+            }}
+            className="
+              absolute
+              left-[10%]
+              right-[10%]
+              top-[30px]
+              h-[2px]
+              origin-left
+              bg-gradient-to-r
+              from-[#3976B6]
+              via-[#0B2A52]
+              to-[#C6A77A]
+            "
+          />
+
+          <div className="grid grid-cols-4">
+            {["FIND", "PLAN", "CREATE", "IMPROVE"].map(
+              (label, stageIndex) => (
+                <div
+                  key={label}
+                  className="
+                    relative
+                    z-10
+                    text-center
+                  "
+                >
+                  <div
+                    className={`
+                      mx-auto
+                      flex
+                      h-9
+                      w-9
+                      items-center
+                      justify-center
+                      rounded-full
+                      border-[4px]
+                      border-white
+                      text-[9px]
+                      font-semibold
+                      shadow-[0_0_0_1px_rgba(11,42,82,0.10)]
+
+                      ${
+                        stageIndex === 3
+                          ? "bg-[#C6A77A] text-white"
+                          : "bg-[#0B2A52] text-white"
+                      }
+                    `}
+                  >
+                    {stageIndex + 1}
+                  </div>
+
+                  <span
+                    className="
+                      mt-3
+                      block
+                      text-[7px]
+                      font-semibold
+                      tracking-[0.08em]
+                      text-[#0B2A52]/48
+                    "
+                  >
+                    {label}
+                  </span>
+                </div>
+              ),
+            )}
+          </div>
+
+          <p
+            className="
+              mx-auto
+              mt-5
+              max-w-[280px]
+              text-center
+              text-[9px]
+              leading-4
+              text-[#0B2A52]/42
+            "
+          >
+            Turn search opportunity into a prioritized content plan.
+          </p>
+        </div>
+      </VisualShell>
+    );
+  }
+
+  /* ==========================================================
+     06 — INTERNAL LINKING
+  ========================================================== */
+
+  if (index === 5) {
+    return (
+      <VisualShell
+        number="06"
+        label="INTERNAL LINK NETWORK"
+        icon={
+          <Link2
+            size={14}
+            strokeWidth={1.7}
+          />
+        }
+      >
+        <div className="relative h-[126px]">
+          <svg
+            viewBox="0 0 360 126"
+            fill="none"
+            className="
+              absolute
+              inset-0
+              h-full
+              w-full
+            "
+            aria-hidden="true"
+          >
+            <path
+              d="M180 63L66 25"
+              stroke="#3976B6"
+              strokeOpacity="0.28"
+            />
+
+            <path
+              d="M180 63L294 25"
+              stroke="#C6A77A"
+              strokeOpacity="0.34"
+            />
+
+            <path
+              d="M180 63L78 105"
+              stroke="#C6A77A"
+              strokeOpacity="0.34"
+            />
+
+            <path
+              d="M180 63L282 105"
+              stroke="#3976B6"
+              strokeOpacity="0.28"
+            />
+          </svg>
+
+          <div
+            className="
+              absolute
+              left-1/2
+              top-1/2
+              flex
+              h-12
+              w-12
+              -translate-x-1/2
+              -translate-y-1/2
+              items-center
+              justify-center
+              rounded-full
+              bg-[#0B2A52]
+              text-white
+              shadow-[0_10px_24px_rgba(11,42,82,0.15)]
+            "
+          >
+            <Link2
+              size={16}
+              strokeWidth={1.7}
+            />
+          </div>
+
+          {[
+            "left-[10%] top-0",
+            "right-[10%] top-0",
+            "left-[14%] bottom-0",
+            "right-[14%] bottom-0",
+          ].map((position) => (
+            <div
+              key={position}
+              className={`
+                absolute
+                ${position}
+                flex
+                h-10
+                w-10
+                items-center
+                justify-center
+                rounded-full
+                border
+                border-[#3976B6]/15
+                bg-white
+                text-[#3976B6]
+                shadow-[0_7px_18px_rgba(11,42,82,0.05)]
+              `}
+            >
+              <FileText
+                size={12}
+                strokeWidth={1.7}
+              />
+            </div>
+          ))}
+        </div>
+
+        <p
+          className="
+            mt-2
+            text-center
+            text-[8px]
             font-semibold
             tracking-[0.11em]
             text-[#0B2A52]/40
           "
         >
           CONNECT RELATED PAGES
-        </span>
-      </div>
+        </p>
+      </VisualShell>
     );
   }
 
@@ -1625,121 +2038,137 @@ function DeliverableVisual({
 
   if (index === 6) {
     return (
-      <div className={`${base} min-h-[180px]`}>
-        <div
-          className="
-            absolute
-            left-[-5%]
-            top-[36%]
-            h-px
-            w-[115%]
-            rotate-[8deg]
-            bg-[#0B2A52]/[0.08]
-          "
-        />
-
-        <div
-          className="
-            absolute
-            left-[-5%]
-            top-[68%]
-            h-px
-            w-[115%]
-            -rotate-[8deg]
-            bg-[#0B2A52]/[0.08]
-          "
-        />
-
-        <div
-          className="
-            absolute
-            left-[28%]
-            top-[-10%]
-            h-[120%]
-            w-px
-            rotate-[12deg]
-            bg-[#0B2A52]/[0.08]
-          "
-        />
-
-        <div
-          className="
-            absolute
-            right-[28%]
-            top-[-10%]
-            h-[120%]
-            w-px
-            -rotate-[15deg]
-            bg-[#0B2A52]/[0.08]
-          "
-        />
-
-        <motion.div
-          initial={{
-            opacity: 0,
-            y: reduceMotion ? 0 : -12,
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
-          viewport={{
-            once: true,
-          }}
-          transition={{
-            duration: reduceMotion ? 0 : 0.7,
-            ease,
-          }}
-          className="
-            absolute
-            left-1/2
-            top-[42%]
-            flex
-            h-14
-            w-14
-            -translate-x-1/2
-            -translate-y-1/2
-            items-center
-            justify-center
-            rounded-full
-            bg-[#0B2A52]
-            text-white
-            shadow-[0_12px_30px_rgba(11,42,82,0.17)]
-          "
-        >
+      <VisualShell
+        number="07"
+        label="LOCAL SEARCH"
+        icon={
           <MapPin
-            size={20}
-            strokeWidth={1.6}
+            size={14}
+            strokeWidth={1.7}
           />
-        </motion.div>
-
+        }
+      >
         <div
           className="
-            absolute
-            bottom-4
-            left-1/2
-            -translate-x-1/2
-            whitespace-nowrap
-            rounded-full
+            relative
+            h-[128px]
+            overflow-hidden
+            rounded-[17px]
             border
-            border-[#C6A77A]/28
-            bg-white/75
-            px-4
-            py-2
+            border-[#0B2A52]/[0.08]
+            bg-white/65
           "
         >
+          <div
+            className="
+              absolute
+              left-[-10%]
+              top-[30%]
+              h-px
+              w-[120%]
+              rotate-[7deg]
+              bg-[#3976B6]/12
+            "
+          />
+
+          <div
+            className="
+              absolute
+              left-[-10%]
+              top-[69%]
+              h-px
+              w-[120%]
+              -rotate-[7deg]
+              bg-[#C6A77A]/18
+            "
+          />
+
+          <div
+            className="
+              absolute
+              left-[28%]
+              top-[-20%]
+              h-[140%]
+              w-px
+              rotate-[12deg]
+              bg-[#0B2A52]/[0.08]
+            "
+          />
+
+          <div
+            className="
+              absolute
+              right-[26%]
+              top-[-20%]
+              h-[140%]
+              w-px
+              -rotate-[13deg]
+              bg-[#0B2A52]/[0.08]
+            "
+          />
+
+          <motion.div
+            initial={{
+              opacity: 0,
+              scale: reduceMotion ? 1 : 0.86,
+            }}
+            whileInView={{
+              opacity: 1,
+              scale: 1,
+            }}
+            viewport={{
+              once: true,
+            }}
+            transition={{
+              duration: reduceMotion ? 0 : 0.65,
+              ease,
+            }}
+            className="
+              absolute
+              left-1/2
+              top-[44%]
+              flex
+              h-14
+              w-14
+              -translate-x-1/2
+              -translate-y-1/2
+              items-center
+              justify-center
+              rounded-full
+              bg-[#0B2A52]
+              text-white
+              shadow-[0_12px_28px_rgba(11,42,82,0.17)]
+            "
+          >
+            <MapPin
+              size={19}
+              strokeWidth={1.6}
+            />
+          </motion.div>
+
           <span
             className="
-              text-[9px]
+              absolute
+              bottom-3
+              left-1/2
+              -translate-x-1/2
+              whitespace-nowrap
+              rounded-full
+              border
+              border-[#C6A77A]/25
+              bg-[#FFF9F0]/90
+              px-3
+              py-1.5
+              text-[7px]
               font-semibold
               tracking-[0.1em]
               text-[#0B2A52]/48
             "
           >
-            SEARCH WHERE YOU SERVE
+            WHERE YOUR CUSTOMERS SEARCH
           </span>
         </div>
-      </div>
+      </VisualShell>
     );
   }
 
@@ -1747,116 +2176,131 @@ function DeliverableVisual({
      08 — REPORTING
   ========================================================== */
 
-  const bars = [38, 48, 44, 62, 57, 74, 69, 88];
+  const bars = [37, 47, 43, 59, 56, 70, 67, 84];
 
   return (
-    <div
-      className={`
-        ${base}
-        grid
-        min-h-[180px]
-        grid-cols-[1.3fr_0.7fr]
-        gap-4
-        p-6
-      `}
+    <VisualShell
+      number="08"
+      label="PERFORMANCE REPORTING"
+      icon={
+        <BarChart3
+          size={14}
+          strokeWidth={1.7}
+        />
+      }
     >
       <div
         className="
-          flex
-          items-end
-          gap-2
-          border-b
-          border-[#0B2A52]/10
-          pb-2
-        "
-      >
-        {bars.map((height, barIndex) => (
-          <motion.div
-            key={barIndex}
-            initial={{
-              height: 0,
-            }}
-            whileInView={{
-              height: `${height}%`,
-            }}
-            viewport={{
-              once: true,
-            }}
-            transition={{
-              duration: reduceMotion ? 0 : 0.7,
-              delay: barIndex * 0.05,
-              ease,
-            }}
-            className="
-              flex-1
-              rounded-t-[4px]
-              bg-gradient-to-t
-              from-[#3976B6]
-              via-[#0B2A52]
-              to-[#C6A77A]
-            "
-          />
-        ))}
-      </div>
-
-      <div
-        className="
-          flex
-          flex-col
-          justify-center
-          border-l
-          border-[#0B2A52]/10
-          pl-5
+          grid
+          grid-cols-[1.25fr_0.75fr]
+          gap-5
         "
       >
         <div
           className="
             flex
-            h-10
-            w-10
-            items-center
-            justify-center
-            rounded-full
-            bg-[#0B2A52]
-            text-white
+            h-[124px]
+            items-end
+            gap-2
+            rounded-[16px]
+            border
+            border-[#0B2A52]/[0.08]
+            bg-white/72
+            px-4
+            pb-3
+            pt-5
           "
         >
-          <TrendingUp
-            size={15}
-            strokeWidth={1.7}
-          />
+          {bars.map((height, barIndex) => (
+            <motion.div
+              key={barIndex}
+              initial={{
+                height: 0,
+              }}
+              whileInView={{
+                height: `${height}%`,
+              }}
+              viewport={{
+                once: true,
+              }}
+              transition={{
+                duration: reduceMotion ? 0 : 0.65,
+                delay: barIndex * 0.045,
+                ease,
+              }}
+              className="
+                flex-1
+                rounded-t-[3px]
+                bg-gradient-to-t
+                from-[#3976B6]
+                via-[#0B2A52]
+                to-[#C6A77A]
+              "
+            />
+          ))}
         </div>
 
-        <span
+        <div
           className="
-            mt-4
-            text-[9px]
-            font-semibold
-            tracking-[0.13em]
-            text-[#C6A77A]
+            flex
+            flex-col
+            justify-center
+            rounded-[16px]
+            border
+            border-[#C6A77A]/18
+            bg-[#FFF9EF]/80
+            px-4
           "
         >
-          PERFORMANCE
-        </span>
+          <div
+            className="
+              flex
+              h-9
+              w-9
+              items-center
+              justify-center
+              rounded-full
+              bg-[#0B2A52]
+              text-white
+            "
+          >
+            <TrendingUp
+              size={14}
+              strokeWidth={1.7}
+            />
+          </div>
 
-        <p
-          className="
-            mt-2
-            text-[13px]
-            font-medium
-            leading-5
-            text-[#0B2A52]
-          "
-        >
-          Measure what matters.
-        </p>
+          <span
+            className="
+              mt-3
+              text-[7px]
+              font-semibold
+              tracking-[0.13em]
+              text-[#C6A77A]
+            "
+          >
+            INSIGHT
+          </span>
+
+          <p
+            className="
+              mt-1
+              text-[11px]
+              font-medium
+              leading-4
+              text-[#0B2A52]
+            "
+          >
+            Measure what matters.
+          </p>
+        </div>
       </div>
-    </div>
+    </VisualShell>
   );
 }
 
 /* ============================================================
-   PLAN STEP
+   FINAL PLAN STEP
 ============================================================ */
 
 function PlanStep({

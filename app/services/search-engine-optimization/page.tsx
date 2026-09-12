@@ -14,6 +14,8 @@ import SEOBetterApproachSection from "@/components/SerchEngineOptimization/SEOBe
 import SEOPerformanceSection from "@/components/SerchEngineOptimization/SEOPerformanceSection";
 import SEOWhoItsForSection from "@/components/SerchEngineOptimization/SEOWhoItsForSection";
 import WhySharpRaysSection from "@/components/SerchEngineOptimization/WhySharpRaysSection";
+import SEOFAQs from "@/components/SerchEngineOptimization/SEOFAQs";
+import SEOClosingSections from "@/components/SerchEngineOptimization/SEOClosingSections";
 
 export default function SearchEngineOptimization() {
   return (
@@ -32,6 +34,8 @@ export default function SearchEngineOptimization() {
       <SEOPerformanceSection/>
       <SEOWhoItsForSection/>
       <WhySharpRaysSection/>
+      <SEOFAQs/>
+      <SEOClosingSections/>
 
           <Footer/>
       
