@@ -2,193 +2,222 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 import {
-  ArrowDown,
   ArrowRight,
-  Eye,
-  Layers3,
-  Menu,
-  MonitorSmartphone,
+  Check,
+  CircleHelp,
+  Compass,
   MousePointer2,
-  Search,
+  ShieldCheck,
+  Sparkles,
 } from "lucide-react";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
-const problems = [
+const questions = [
   {
     number: "01",
-    icon: Eye,
-    title: "Your Website Looks Professional",
-    text: "But visitors still struggle to understand exactly what you do.",
-    side: "left",
+    question: "Am I in the right place?",
+    position:
+      "lg:absolute lg:left-[4%] lg:top-[15%] xl:left-[6%]",
   },
   {
     number: "02",
-    icon: MousePointer2,
-    title: "People Are Visiting",
-    text: "But too few are taking the next step.",
-    side: "right",
+    question: "Does this business solve my problem?",
+    position:
+      "lg:absolute lg:left-[2%] lg:top-[51%] xl:left-[4%]",
   },
   {
     number: "03",
-    icon: Menu,
-    title: "You Have Strong Services",
-    text: "But important information is buried behind confusing pages or navigation.",
-    side: "left",
+    question: "Can I trust them?",
+    position:
+      "lg:absolute lg:left-[20%] lg:bottom-[7%] xl:left-[23%]",
   },
   {
     number: "04",
-    icon: MonitorSmartphone,
-    title: "The Site Works on Desktop",
-    text: "But the mobile experience feels compromised.",
-    side: "right",
+    question: "What exactly do they offer?",
+    position:
+      "lg:absolute lg:right-[20%] lg:bottom-[7%] xl:right-[23%]",
   },
   {
     number: "05",
-    icon: Search,
-    title: "You Have Content",
-    text: "But search engines and users cannot easily understand how everything connects.",
-    side: "left",
+    question: "Why should I choose them?",
+    position:
+      "lg:absolute lg:right-[2%] lg:top-[51%] xl:right-[4%]",
   },
   {
     number: "06",
-    icon: Layers3,
-    title: "You Keep Adding Features",
-    text: "But the experience becomes more complicated instead of more useful.",
-    side: "right",
+    question: "What should I do next?",
+    position:
+      "lg:absolute lg:right-[4%] lg:top-[15%] xl:right-[6%]",
   },
 ];
 
-export default function WebsiteProblemSection() {
+const principles = [
+  {
+    number: "01",
+    title: "Every page needs a job.",
+  },
+  {
+    number: "02",
+    title: "Every section needs a reason to exist.",
+  },
+  {
+    number: "03",
+    title: "Every interaction should move the visitor forward.",
+  },
+];
+
+export default function WebsitePointOfViewSection() {
   const reduceMotion = useReducedMotion();
+
+  const fadeUp = {
+    hidden: {
+      opacity: 0,
+      y: reduceMotion ? 0 : 20,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.62,
+        ease,
+      },
+    },
+  };
+
+  const stagger = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.08,
+      },
+    },
+  };
 
   return (
     <section
-      id="website-problem"
-      aria-labelledby="website-problem-heading"
+      id="website-point-of-view"
+      aria-labelledby="website-point-of-view-heading"
       className="
         relative
-        isolate
         overflow-hidden
-        bg-[#FCFDFC]
-        py-24
-        sm:py-28
-        lg:py-32
+        bg-white
+        py-16
+        sm:py-20
+        md:py-24
+        lg:py-28
       "
     >
       {/* =====================================================
-          BACKGROUND
+          SOFT BACKGROUND
       ===================================================== */}
 
-      <div className="pointer-events-none absolute inset-0 -z-20 overflow-hidden">
-        {/* Left cream glow */}
+      <div className="pointer-events-none absolute inset-0">
         <div
           className="
             absolute
-            -left-[260px]
-            top-[12%]
+            left-1/2
+            top-[28%]
             h-[520px]
             w-[520px]
-            rounded-full
-            bg-[#F7F0E8]
-            blur-[135px]
-          "
-        />
-
-        {/* Right blue glow */}
-        <div
-          className="
-            absolute
-            -right-[280px]
-            top-[31%]
-            h-[650px]
-            w-[650px]
-            rounded-full
-            bg-[#EAF4FB]
-            blur-[135px]
-          "
-        />
-
-        {/* bottom wash */}
-        <div
-          className="
-            absolute
-            bottom-[-280px]
-            left-1/2
-            h-[430px]
-            w-[900px]
             -translate-x-1/2
-            rounded-[50%]
-            bg-[#EFF6FB]
-            blur-[90px]
+            rounded-full
+            bg-[#F5F8FB]
+            blur-[150px]
+          "
+        />
+
+        <div
+          className="
+            absolute
+            -right-[180px]
+            bottom-[5%]
+            h-[340px]
+            w-[340px]
+            rounded-full
+            bg-[#F7F8FA]
+            blur-[120px]
           "
         />
       </div>
 
       <div
         className="
+          relative
+          z-10
           mx-auto
-          max-w-[1360px]
-          px-6
-          sm:px-8
-          lg:px-10
-          xl:px-14
+          w-full
+          max-w-[1420px]
+          px-5
+          sm:px-7
+          md:px-9
+          lg:px-12
+          xl:px-16
         "
       >
         {/* =====================================================
-            HEADER
+            CENTER INTRO
         ===================================================== */}
 
-        <div className="mx-auto max-w-[1040px] text-center">
+        <motion.div
+          variants={stagger}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{
+            once: true,
+            amount: 0.2,
+          }}
+          className="
+            mx-auto
+            max-w-[1080px]
+            text-center
+          "
+        >
+          {/* EYEBROW */}
+
           <motion.div
-            initial={reduceMotion ? false : { opacity: 0, y: 14 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.7 }}
-            transition={{
-              duration: 0.65,
-              ease,
-            }}
+            variants={fadeUp}
             className="
-              mb-7
+              mb-5
               flex
               items-center
               justify-center
               gap-4
+              sm:mb-6
             "
           >
-            <span className="h-px w-10 bg-[#B79A72]" />
+            <span className="h-px w-8 bg-[#B79A72] sm:w-10" />
 
             <span
               className="
-                text-[0.67rem]
+                text-[0.56rem]
                 font-semibold
                 uppercase
-                tracking-[0.3em]
-                text-[#9C754F]
-                sm:text-[0.71rem]
+                tracking-[0.28em]
+                text-[#987458]
+                sm:text-[0.62rem]
               "
             >
-              The Problem
+              How We Think About Websites
             </span>
 
-            <span className="h-px w-10 bg-[#B79A72]" />
+            <span className="h-px w-8 bg-[#B79A72] sm:w-10" />
           </motion.div>
 
+          {/* HEADING */}
+
           <motion.h2
-            id="website-problem-heading"
-            initial={reduceMotion ? false : { opacity: 0, y: 25 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.5 }}
-            transition={{
-              duration: 0.82,
-              delay: 0.06,
-              ease,
-            }}
+            id="website-point-of-view-heading"
+            variants={fadeUp}
             className="
-              text-[2.35rem]
-              font-medium
-              leading-[1.04]
-              tracking-[-0.045em]
+              mx-auto
+              max-w-[1050px]
+
+              font-serif
+              text-[2.1rem]
+              font-normal
+              leading-[1.05]
+              tracking-[-0.04em]
               text-[#0B2A52]
 
               sm:text-[2.6rem]
@@ -197,522 +226,41 @@ export default function WebsiteProblemSection() {
               xl:text-[3.35rem]
             "
           >
-            A Website Can Look Good and Still{" "}
+            Your Website Should Answer Questions{" "}
             <span
               className="
                 font-serif
                 font-normal
                 italic
-                text-[#B18458]
+                text-[#A97C52]
               "
             >
-              Work Against Your Business.
+              Before It Creates Them.
             </span>
           </motion.h2>
 
-          <motion.div
-            initial={reduceMotion ? false : { opacity: 0, y: 17 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{
-              duration: 0.72,
-              delay: 0.14,
-              ease,
-            }}
+          <motion.p
+            variants={fadeUp}
             className="
               mx-auto
-              mt-8
-              max-w-[820px]
+              mt-6
+              max-w-[780px]
+              font-serif
+              text-[0.94rem]
+              leading-[1.75]
+              text-[#5D7288]
+
+              sm:text-[1rem]
             "
           >
-            <p
-              className="
-                text-[0.98rem]
-                leading-[1.8]
-                text-[#5D7186]
-                sm:text-[1.03rem]
-              "
-            >
-              A polished interface can create a strong first impression.
-            </p>
-
-            <p
-              className="
-                mt-3
-                text-[0.98rem]
-                leading-[1.8]
-                text-[#5D7186]
-                sm:text-[1.03rem]
-              "
-            >
-              But design alone cannot fix confusing navigation, slow pages,
-              unclear messaging or a poor customer journey.
-            </p>
-          </motion.div>
-        </div>
-
-        {/* =====================================================
-            DOES THIS SOUND FAMILIAR
-        ===================================================== */}
-
-        <motion.div
-          initial={reduceMotion ? false : { opacity: 0, y: 18 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{
-            duration: 0.7,
-            delay: 0.15,
-            ease,
-          }}
-          className="
-            mx-auto
-            mt-16
-            flex
-            max-w-[1140px]
-            items-center
-            gap-5
-          "
-        >
-          <span className="h-px flex-1 bg-[#E0E7ED]" />
-
-          <span
-            className="
-              shrink-0
-              text-[0.62rem]
-              font-semibold
-              uppercase
-              tracking-[0.27em]
-              text-[#0B2A52]
-            "
-          >
-            Does This Sound Familiar?
-          </span>
-
-          <span className="h-px flex-1 bg-[#E0E7ED]" />
+            A visitor lands on your website with questions. The strongest
+            digital experiences answer them naturally before uncertainty has a
+            chance to grow.
+          </motion.p>
         </motion.div>
 
         {/* =====================================================
-            FRICTION JOURNEY
-        ===================================================== */}
-
-        <div
-          className="
-            relative
-            mx-auto
-            mt-10
-            max-w-[1140px]
-          "
-        >
-          {/* main frame */}
-          <div
-            className="
-              relative
-              overflow-hidden
-              rounded-[36px]
-              border
-              border-[#D7E3EC]
-              bg-white/80
-              px-5
-              py-8
-              shadow-[0_28px_80px_rgba(11,42,82,0.065)]
-              backdrop-blur-sm
-
-              sm:px-7
-              lg:px-10
-              lg:py-10
-            "
-          >
-            {/* subtle top atmosphere */}
-            <div
-              className="
-                pointer-events-none
-                absolute
-                inset-x-0
-                top-0
-                h-[220px]
-                bg-gradient-to-b
-                from-[#F3F8FC]
-                to-transparent
-              "
-            />
-
-            {/* =================================================
-                JOURNEY HEADER
-            ================================================= */}
-
-            <div
-              className="
-                relative
-                mx-auto
-                mb-6
-                flex
-                max-w-[930px]
-                items-center
-                justify-between
-              "
-            >
-              <span
-                className="
-                  text-[0.55rem]
-                  font-semibold
-                  uppercase
-                  tracking-[0.23em]
-                  text-[#8193A3]
-                "
-              >
-                Visit
-              </span>
-
-              <div
-                className="
-                  mx-4
-                  flex
-                  flex-1
-                  items-center
-                  gap-2
-                "
-              >
-                <span className="h-px flex-1 bg-[#CBD9E4]" />
-
-                <ArrowRight
-                  size={13}
-                  className="text-[#B79A72]"
-                />
-              </div>
-
-              <span
-                className="
-                  text-[0.55rem]
-                  font-semibold
-                  uppercase
-                  tracking-[0.23em]
-                  text-[#8193A3]
-                "
-              >
-                Understand
-              </span>
-
-              <div
-                className="
-                  mx-4
-                  hidden
-                  flex-1
-                  items-center
-                  gap-2
-                  sm:flex
-                "
-              >
-                <span className="h-px flex-1 bg-[#CBD9E4]" />
-
-                <ArrowRight
-                  size={13}
-                  className="text-[#B79A72]"
-                />
-              </div>
-
-              <span
-                className="
-                  hidden
-                  text-[0.55rem]
-                  font-semibold
-                  uppercase
-                  tracking-[0.23em]
-                  text-[#8193A3]
-                  sm:block
-                "
-              >
-                Trust
-              </span>
-
-              <div
-                className="
-                  mx-4
-                  hidden
-                  flex-1
-                  items-center
-                  gap-2
-                  md:flex
-                "
-              >
-                <span className="h-px flex-1 bg-[#CBD9E4]" />
-
-                <ArrowRight
-                  size={13}
-                  className="text-[#B79A72]"
-                />
-              </div>
-
-              <span
-                className="
-                  hidden
-                  text-[0.55rem]
-                  font-semibold
-                  uppercase
-                  tracking-[0.23em]
-                  text-[#8193A3]
-                  md:block
-                "
-              >
-                Action
-              </span>
-            </div>
-
-            {/* =================================================
-                CENTER JOURNEY SPINE
-            ================================================= */}
-
-            <div
-              className="
-                pointer-events-none
-                absolute
-                bottom-[86px]
-                left-1/2
-                top-[105px]
-                hidden
-                w-px
-                -translate-x-1/2
-                bg-gradient-to-b
-                from-[#B79A72]/60
-                via-[#A9C1D7]
-                to-[#0B2A52]/20
-                lg:block
-              "
-            />
-
-            {/* animated journey point */}
-            <motion.div
-              animate={
-                reduceMotion
-                  ? undefined
-                  : {
-                      y: [0, 470, 0],
-                    }
-              }
-              transition={{
-                duration: 10,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-              className="
-                pointer-events-none
-                absolute
-                left-1/2
-                top-[125px]
-                z-20
-                hidden
-                h-3
-                w-3
-                -translate-x-1/2
-                rounded-full
-                border-[3px]
-                border-white
-                bg-[#B79A72]
-                shadow-[0_0_0_5px_rgba(183,154,114,0.12)]
-                lg:block
-              "
-            />
-
-            {/* =================================================
-                PROBLEM ROWS
-            ================================================= */}
-
-            <div className="relative">
-              {problems.map(
-                ({ number, icon: Icon, title, text, side }, index) => (
-                  <motion.div
-                    key={number}
-                    initial={
-                      reduceMotion
-                        ? false
-                        : {
-                            opacity: 0,
-                            x: side === "left" ? -35 : 35,
-                          }
-                    }
-                    whileInView={{
-                      opacity: 1,
-                      x: 0,
-                    }}
-                    viewport={{
-                      once: true,
-                      amount: 0.4,
-                    }}
-                    transition={{
-                      duration: 0.7,
-                      delay: index * 0.06,
-                      ease,
-                    }}
-                    className={`
-                      relative
-                      grid
-                      min-h-[128px]
-                      border-t
-                      border-[#E8EDF1]
-
-                      first:border-t-0
-
-                      lg:grid-cols-2
-
-                      ${
-                        side === "left"
-                          ? ""
-                          : ""
-                      }
-                    `}
-                  >
-                    {/* LEFT SIDE */}
-                    <div
-                      className={`
-                        relative
-                        flex
-                        items-center
-                        py-6
-
-                        lg:pr-14
-
-                        ${
-                          side === "left"
-                            ? "lg:flex"
-                            : "lg:invisible"
-                        }
-                      `}
-                    >
-                      {side === "left" && (
-                        <ProblemContent
-                          number={number}
-                          icon={Icon}
-                          title={title}
-                          text={text}
-                          align="right"
-                        />
-                      )}
-                    </div>
-
-                    {/* center friction marker */}
-                    <div
-                      className="
-                        absolute
-                        left-1/2
-                        top-1/2
-                        z-10
-                        hidden
-                        h-8
-                        w-8
-                        -translate-x-1/2
-                        -translate-y-1/2
-                        items-center
-                        justify-center
-                        rounded-full
-                        border
-                        border-[#C9D9E5]
-                        bg-white
-                        shadow-[0_8px_22px_rgba(11,42,82,0.08)]
-                        lg:flex
-                      "
-                    >
-                      <span
-                        className="
-                          h-1.5
-                          w-1.5
-                          rounded-full
-                          bg-[#B79A72]
-                        "
-                      />
-                    </div>
-
-                    {/* RIGHT SIDE */}
-                    <div
-                      className={`
-                        relative
-                        flex
-                        items-center
-                        py-6
-
-                        lg:pl-14
-
-                        ${
-                          side === "right"
-                            ? "lg:flex"
-                            : "lg:invisible"
-                        }
-                      `}
-                    >
-                      {side === "right" && (
-                        <ProblemContent
-                          number={number}
-                          icon={Icon}
-                          title={title}
-                          text={text}
-                          align="left"
-                        />
-                      )}
-                    </div>
-                  </motion.div>
-                )
-              )}
-            </div>
-
-            {/* =================================================
-                BOTTOM OF JOURNEY
-            ================================================= */}
-
-            <motion.div
-              initial={reduceMotion ? false : { opacity: 0, y: 18 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{
-                duration: 0.7,
-                delay: 0.15,
-                ease,
-              }}
-              className="
-                relative
-                mt-5
-                flex
-                justify-center
-              "
-            >
-              <div
-                className="
-                  flex
-                  items-center
-                  gap-3
-                  rounded-full
-                  border
-                  border-[#D9E4EC]
-                  bg-white
-                  px-5
-                  py-2.5
-                  shadow-[0_10px_28px_rgba(11,42,82,0.06)]
-                "
-              >
-                <span
-                  className="
-                    h-2
-                    w-2
-                    rounded-full
-                    bg-[#B79A72]
-                  "
-                />
-
-                <span
-                  className="
-                    text-[0.57rem]
-                    font-semibold
-                    uppercase
-                    tracking-[0.2em]
-                    text-[#61788F]
-                  "
-                >
-                  Friction grows when clarity disappears
-                </span>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-
-        {/* =====================================================
-            REAL PROBLEM / CONCLUSION
+            DECISION CLARITY VISUAL
         ===================================================== */}
 
         <motion.div
@@ -721,7 +269,7 @@ export default function WebsiteProblemSection() {
               ? false
               : {
                   opacity: 0,
-                  y: 30,
+                  y: 24,
                 }
           }
           whileInView={{
@@ -730,278 +278,919 @@ export default function WebsiteProblemSection() {
           }}
           viewport={{
             once: true,
-            amount: 0.4,
+            amount: 0.12,
           }}
           transition={{
-            duration: 0.8,
+            duration: 0.75,
             ease,
           }}
           className="
+            relative
             mx-auto
-            mt-16
-            max-w-[980px]
-            text-center
+            mt-12
+            max-w-[1240px]
+
+            sm:mt-14
+            lg:mt-16
+            lg:min-h-[610px]
           "
         >
+          {/* =================================================
+              DESKTOP RADIAL LINES
+          ================================================= */}
+
           <div
             className="
-              mb-7
-              flex
-              items-center
-              justify-center
-              gap-4
+              pointer-events-none
+              absolute
+              left-1/2
+              top-1/2
+              hidden
+              h-[430px]
+              w-[430px]
+              -translate-x-1/2
+              -translate-y-1/2
+              rounded-full
+              border
+              border-[#DFE5EA]
+              lg:block
             "
-          >
-            <span className="h-px w-8 bg-[#B79A72]" />
+          />
 
-            <span
-              className="
-                text-[0.62rem]
-                font-semibold
-                uppercase
-                tracking-[0.25em]
-                text-[#9C754F]
-              "
-            >
-              The Real Problem
-            </span>
-
-            <span className="h-px w-8 bg-[#B79A72]" />
-          </div>
-
-          <p
+          <div
             className="
-              text-[1rem]
-              leading-[1.8]
-              text-[#60758A]
-              sm:text-[1.06rem]
+              pointer-events-none
+              absolute
+              left-1/2
+              top-1/2
+              hidden
+              h-[330px]
+              w-[330px]
+              -translate-x-1/2
+              -translate-y-1/2
+              rounded-full
+              border
+              border-dashed
+              border-[#D9E1E7]
+              lg:block
             "
-          >
-            A website should not make people work to understand your business.
-          </p>
+          />
 
-          <motion.h3
-            initial={reduceMotion ? false : { opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{
-              duration: 0.72,
-              delay: 0.12,
-              ease,
-            }}
-            className="
-              mt-5
-              text-[1.85rem]
-              font-medium
-              leading-[1.12]
-              tracking-[-0.04em]
-              text-[#0B2A52]
-              sm:text-[2.15rem]
-              lg:text-[2.5rem]
-            "
-          >
-            The best websites{" "}
-            <span
-              className="
-                relative
-                inline-block
-                font-serif
-                font-normal
-                italic
-                text-[#B18458]
-              "
-            >
-              remove uncertainty.
-
-              <motion.span
-                initial={
-                  reduceMotion
-                    ? false
-                    : {
-                        scaleX: 0,
-                      }
-                }
-                whileInView={{
-                  scaleX: 1,
-                }}
-                viewport={{ once: true }}
-                transition={{
-                  duration: 0.8,
-                  delay: 0.35,
-                  ease,
-                }}
-                className="
-                  absolute
-                  -bottom-2
-                  left-0
-                  h-px
-                  w-full
-                  origin-left
-                  bg-[#B79A72]
-                "
-              />
-            </span>
-          </motion.h3>
-
-          {/* small arrow */}
           <motion.div
             animate={
               reduceMotion
                 ? undefined
                 : {
-                    y: [0, 6, 0],
+                    rotate: 360,
                   }
             }
             transition={{
-              duration: 2.4,
+              duration: 45,
               repeat: Infinity,
-              ease: "easeInOut",
+              ease: "linear",
             }}
             className="
-              mx-auto
-              mt-9
-              flex
-              h-10
-              w-10
-              items-center
-              justify-center
+              pointer-events-none
+              absolute
+              left-1/2
+              top-1/2
+              hidden
+              h-[430px]
+              w-[430px]
+              -translate-x-1/2
+              -translate-y-1/2
               rounded-full
-              border
-              border-[#D3DFE8]
-              text-[#0B2A52]
+              lg:block
             "
           >
-            <ArrowDown size={14} />
+            <span
+              className="
+                absolute
+                left-1/2
+                top-[-5px]
+                h-2.5
+                w-2.5
+                -translate-x-1/2
+                rounded-full
+                bg-[#B79A72]
+              "
+            />
+
+            <span
+              className="
+                absolute
+                bottom-[-4px]
+                left-1/2
+                h-2
+                w-2
+                -translate-x-1/2
+                rounded-full
+                bg-[#0B2A52]
+              "
+            />
           </motion.div>
+
+          {/* =================================================
+              MOBILE / TABLET QUESTIONS GRID
+          ================================================= */}
+
+          <motion.div
+            variants={stagger}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{
+              once: true,
+              amount: 0.08,
+            }}
+            className="
+              grid
+              grid-cols-1
+              gap-3
+
+              sm:grid-cols-2
+              sm:gap-4
+
+              lg:block
+            "
+          >
+            {questions.map(({ number, question, position }) => (
+              <motion.div
+                key={number}
+                variants={fadeUp}
+                whileHover={
+                  reduceMotion
+                    ? undefined
+                    : {
+                        y: -4,
+                      }
+                }
+                className={`
+                  group
+                  relative
+                  z-20
+
+                  flex
+                  min-h-[92px]
+                  items-center
+                  gap-4
+
+                  rounded-[18px]
+
+                  border
+                  border-[#E0E6EB]
+
+                  bg-white
+
+                  px-4
+                  py-4
+
+                  shadow-[0_10px_30px_rgba(11,42,82,0.045)]
+
+                  transition-all
+                  duration-300
+
+                  hover:border-[#CAD4DD]
+                  hover:shadow-[0_16px_38px_rgba(11,42,82,0.075)]
+
+                  sm:px-5
+
+                  lg:w-[250px]
+
+                  xl:w-[275px]
+
+                  ${position}
+                `}
+              >
+                <span
+                  className="
+                    flex
+                    h-9
+                    w-9
+                    shrink-0
+                    items-center
+                    justify-center
+
+                    rounded-full
+
+                    border
+                    border-[#DEE5EB]
+
+                    bg-[#F7F9FB]
+
+                    text-[0.5rem]
+                    font-semibold
+                    text-[#8B9AA8]
+
+                    transition-all
+                    duration-300
+
+                    group-hover:border-[#0B2A52]
+                    group-hover:bg-[#0B2A52]
+                    group-hover:text-white
+                  "
+                >
+                  {number}
+                </span>
+
+                <p
+                  className="
+                    font-serif
+                    text-[0.96rem]
+                    leading-[1.35]
+                    text-[#0B2A52]
+
+                    sm:text-[1rem]
+                  "
+                >
+                  {question}
+                </p>
+
+                <span
+                  className="
+                    absolute
+                    bottom-0
+                    left-1/2
+                    h-px
+                    w-0
+                    -translate-x-1/2
+                    bg-[#B79A72]
+                    transition-all
+                    duration-500
+                    group-hover:w-[55%]
+                  "
+                />
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* =================================================
+              CENTER DECISION HUB
+          ================================================= */}
+
+          <motion.div
+            initial={
+              reduceMotion
+                ? false
+                : {
+                    opacity: 0,
+                    scale: 0.9,
+                  }
+            }
+            whileInView={{
+              opacity: 1,
+              scale: 1,
+            }}
+            viewport={{
+              once: true,
+              amount: 0.5,
+            }}
+            transition={{
+              duration: 0.8,
+              delay: 0.15,
+              ease,
+            }}
+            className="
+              relative
+              z-30
+              mx-auto
+              mt-8
+
+              flex
+              min-h-[300px]
+              max-w-[430px]
+              flex-col
+              items-center
+              justify-center
+
+              overflow-hidden
+
+              rounded-[28px]
+
+              bg-[#0B2A52]
+
+              px-7
+              py-10
+
+              text-center
+
+              shadow-[0_28px_70px_rgba(11,42,82,0.18)]
+
+              sm:min-h-[330px]
+              sm:px-10
+
+              lg:absolute
+              lg:left-1/2
+              lg:top-1/2
+              lg:mt-0
+              lg:h-[300px]
+              lg:w-[300px]
+              lg:min-h-0
+              lg:-translate-x-1/2
+              lg:-translate-y-1/2
+              lg:rounded-full
+              lg:px-8
+              lg:py-8
+            "
+          >
+            {/* inner rings */}
+
+            <div
+              className="
+                pointer-events-none
+                absolute
+                inset-[16px]
+                rounded-[22px]
+                border
+                border-white/[0.08]
+
+                lg:rounded-full
+              "
+            />
+
+            <div
+              className="
+                pointer-events-none
+                absolute
+                inset-[34px]
+                rounded-[18px]
+                border
+                border-white/[0.06]
+
+                lg:rounded-full
+              "
+            />
+
+            <div
+              className="
+                relative
+                z-10
+                flex
+                h-12
+                w-12
+                items-center
+                justify-center
+                rounded-full
+                bg-white/[0.1]
+                text-white
+                backdrop-blur
+              "
+            >
+              <Compass size={21} strokeWidth={1.6} />
+            </div>
+
+            <span
+              className="
+                relative
+                z-10
+                mt-5
+
+                text-[0.52rem]
+                font-semibold
+                uppercase
+                tracking-[0.25em]
+                text-[#D7C3A7]
+              "
+            >
+              Decision Clarity
+            </span>
+
+            <h3
+              className="
+                relative
+                z-10
+                mt-3
+
+                font-serif
+                text-[1.5rem]
+                font-normal
+                leading-[1.12]
+                tracking-[-0.03em]
+                text-white
+
+                sm:text-[1.7rem]
+
+                lg:text-[1.55rem]
+              "
+            >
+              Make the answer feel{" "}
+              <span
+                className="
+                  block
+                  font-serif
+                  italic
+                  text-[#D2B48B]
+                "
+              >
+                obvious.
+              </span>
+            </h3>
+
+            <p
+              className="
+                relative
+                z-10
+                mt-4
+                max-w-[250px]
+                font-serif
+                text-[0.78rem]
+                leading-[1.65]
+                text-white/65
+              "
+            >
+              Clear content, hierarchy, interaction and navigation should work
+              together to reduce uncertainty.
+            </p>
+          </motion.div>
+        </motion.div>
+
+        {/* =====================================================
+            PRINCIPLES
+        ===================================================== */}
+
+        <motion.div
+          variants={stagger}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{
+            once: true,
+            amount: 0.18,
+          }}
+          className="
+            mx-auto
+            mt-12
+            grid
+            max-w-[1150px]
+            grid-cols-1
+            gap-0
+
+            overflow-hidden
+
+            rounded-[22px]
+
+            border
+            border-[#E1E7EC]
+
+            bg-white
+
+            sm:mt-14
+
+            md:grid-cols-3
+
+            lg:mt-16
+          "
+        >
+          {principles.map(({ number, title }, index) => (
+            <motion.div
+              key={number}
+              variants={fadeUp}
+              className={`
+                group
+                relative
+
+                flex
+                items-start
+                gap-4
+
+                px-5
+                py-6
+
+                transition-colors
+                duration-300
+
+                hover:bg-[#FBFCFD]
+
+                sm:px-6
+
+                lg:px-8
+                lg:py-7
+
+                ${
+                  index !== principles.length - 1
+                    ? "border-b border-[#E5E9ED] md:border-b-0 md:border-r"
+                    : ""
+                }
+              `}
+            >
+              <span
+                className="
+                  flex
+                  h-8
+                  w-8
+                  shrink-0
+                  items-center
+                  justify-center
+
+                  rounded-full
+
+                  bg-[#F1F5F8]
+
+                  text-[0.48rem]
+                  font-semibold
+                  text-[#0B2A52]
+
+                  transition-all
+                  duration-300
+
+                  group-hover:bg-[#0B2A52]
+                  group-hover:text-white
+                "
+              >
+                {number}
+              </span>
+
+              <div>
+                <p
+                  className="
+                    text-[0.5rem]
+                    font-semibold
+                    uppercase
+                    tracking-[0.16em]
+                    text-[#A0AAB4]
+                  "
+                >
+                  Principle
+                </p>
+
+                <p
+                  className="
+                    mt-1.5
+                    max-w-[280px]
+
+                    font-serif
+                    text-[1rem]
+                    leading-[1.45]
+                    text-[#0B2A52]
+
+                    sm:text-[1.05rem]
+                  "
+                >
+                  {title}
+                </p>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        {/* =====================================================
+            THE SHIFT
+        ===================================================== */}
+
+        <motion.div
+          initial={
+            reduceMotion
+              ? false
+              : {
+                  opacity: 0,
+                  y: 24,
+                }
+          }
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{
+            once: true,
+            amount: 0.2,
+          }}
+          transition={{
+            duration: 0.75,
+            ease,
+          }}
+          className="
+            relative
+            mx-auto
+            mt-12
+            max-w-[1150px]
+            overflow-hidden
+
+            rounded-[24px]
+
+            border
+            border-[#DDE4EA]
+
+            bg-[#FBFCFD]
+
+            sm:mt-14
+            sm:rounded-[28px]
+
+            lg:mt-16
+          "
+        >
+          {/* top label */}
+
+          <div
+            className="
+              flex
+              items-center
+              justify-center
+              gap-3
+
+              border-b
+              border-[#E3E8ED]
+
+              px-5
+              py-4
+            "
+          >
+            <span className="h-px w-7 bg-[#B79A72]" />
+
+            <span
+              className="
+                text-[0.53rem]
+                font-semibold
+                uppercase
+                tracking-[0.25em]
+                text-[#97745A]
+              "
+            >
+              The Shift
+            </span>
+
+            <span className="h-px w-7 bg-[#B79A72]" />
+          </div>
+
+          <div
+            className="
+              grid
+              lg:grid-cols-[1fr_auto_1fr]
+            "
+          >
+            {/* OLD THINKING */}
+
+            <motion.div
+              initial={
+                reduceMotion
+                  ? false
+                  : {
+                      opacity: 0,
+                      x: -20,
+                    }
+              }
+              whileInView={{
+                opacity: 1,
+                x: 0,
+              }}
+              viewport={{ once: true }}
+              transition={{
+                duration: 0.65,
+                delay: 0.08,
+                ease,
+              }}
+              className="
+                flex
+                min-h-[210px]
+                flex-col
+                justify-center
+                p-6
+
+                sm:p-8
+                lg:p-10
+              "
+            >
+              <p
+                className="
+                  text-[0.52rem]
+                  font-semibold
+                  uppercase
+                  tracking-[0.2em]
+                  text-[#98A4AF]
+                "
+              >
+                Stop asking
+              </p>
+
+              <p
+                className="
+                  mt-4
+                  max-w-[440px]
+
+                  font-serif
+                  text-[1.3rem]
+                  leading-[1.35]
+                  text-[#6B7E91]
+
+                  sm:text-[1.45rem]
+                "
+              >
+                “How can we make the website look more impressive?”
+              </p>
+            </motion.div>
+
+            {/* CENTER */}
+
+            <div
+              className="
+                flex
+                items-center
+                justify-center
+
+                border-y
+                border-[#E1E7EC]
+
+                px-6
+                py-5
+
+                lg:border-x
+                lg:border-y-0
+                lg:px-6
+              "
+            >
+              <motion.div
+                animate={
+                  reduceMotion
+                    ? undefined
+                    : {
+                        x: [0, 5, 0],
+                      }
+                }
+                transition={{
+                  duration: 2.2,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+                className="
+                  flex
+                  h-11
+                  w-11
+                  items-center
+                  justify-center
+
+                  rounded-full
+
+                  bg-[#0B2A52]
+
+                  text-white
+
+                  shadow-[0_10px_24px_rgba(11,42,82,0.16)]
+                "
+              >
+                <ArrowRight size={16} />
+              </motion.div>
+            </div>
+
+            {/* NEW THINKING */}
+
+            <motion.div
+              initial={
+                reduceMotion
+                  ? false
+                  : {
+                      opacity: 0,
+                      x: 20,
+                    }
+              }
+              whileInView={{
+                opacity: 1,
+                x: 0,
+              }}
+              viewport={{ once: true }}
+              transition={{
+                duration: 0.65,
+                delay: 0.15,
+                ease,
+              }}
+              className="
+                relative
+                flex
+                min-h-[210px]
+                flex-col
+                justify-center
+                overflow-hidden
+
+                bg-white
+
+                p-6
+
+                sm:p-8
+                lg:p-10
+              "
+            >
+              <div
+                className="
+                  pointer-events-none
+                  absolute
+                  -right-[80px]
+                  top-1/2
+                  h-[220px]
+                  w-[220px]
+                  -translate-y-1/2
+                  rounded-full
+                  bg-[#F2F6F9]
+                  blur-[65px]
+                "
+              />
+
+              <div className="relative z-10">
+                <div className="flex items-center gap-3">
+                  <span
+                    className="
+                      flex
+                      h-8
+                      w-8
+                      items-center
+                      justify-center
+                      rounded-full
+                      border
+                      border-[#B79A72]
+                      text-[#A97C52]
+                    "
+                  >
+                    <MousePointer2 size={13} />
+                  </span>
+
+                  <span
+                    className="
+                      text-[0.52rem]
+                      font-semibold
+                      uppercase
+                      tracking-[0.2em]
+                      text-[#98745A]
+                    "
+                  >
+                    Start asking
+                  </span>
+                </div>
+
+                <p
+                  className="
+                    mt-4
+                    max-w-[520px]
+
+                    font-serif
+                    text-[1.75rem]
+                    leading-[1.16]
+                    tracking-[-0.035em]
+                    text-[#0B2A52]
+
+                    sm:text-[2rem]
+                    lg:text-[2.15rem]
+                  "
+                >
+                  “How can we make the{" "}
+                  <span
+                    className="
+                      font-serif
+                      italic
+                      text-[#A97C52]
+                    "
+                  >
+                    decision easier?
+                  </span>
+                  ”
+                </p>
+              </div>
+            </motion.div>
+          </div>
+        </motion.div>
+
+        {/* =====================================================
+            FINAL MICRO MESSAGE
+        ===================================================== */}
+
+        <motion.div
+          initial={{
+            opacity: 0,
+            y: reduceMotion ? 0 : 14,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{ once: true }}
+          transition={{
+            duration: 0.6,
+            ease,
+          }}
+          className="
+            mx-auto
+            mt-8
+            flex
+            max-w-[760px]
+            items-center
+            justify-center
+            gap-3
+            text-center
+          "
+        >
+          <ShieldCheck
+            size={16}
+            strokeWidth={1.7}
+            className="shrink-0 text-[#B79A72]"
+          />
+
+          <p
+            className="
+              font-serif
+              text-[0.86rem]
+              leading-6
+              text-[#64788C]
+            "
+          >
+            Strong website design reduces uncertainty and makes the next action
+            feel natural.
+          </p>
         </motion.div>
       </div>
     </section>
-  );
-}
-
-/* =========================================================
-   PROBLEM CONTENT
-========================================================= */
-
-type ProblemContentProps = {
-  number: string;
-  icon: React.ElementType;
-  title: string;
-  text: string;
-  align: "left" | "right";
-};
-
-function ProblemContent({
-  number,
-  icon: Icon,
-  title,
-  text,
-  align,
-}: ProblemContentProps) {
-  return (
-    <div
-      className={`
-        group
-        flex
-        w-full
-        items-start
-        gap-4
-
-        ${
-          align === "right"
-            ? "lg:flex-row-reverse lg:text-right"
-            : ""
-        }
-      `}
-    >
-      {/* Icon */}
-      <span
-        className="
-          flex
-          h-11
-          w-11
-          shrink-0
-          items-center
-          justify-center
-          rounded-[14px]
-          border
-          border-[#DCE6ED]
-          bg-[#F6FAFC]
-          text-[#0B2A52]
-          transition-all
-          duration-300
-
-          group-hover:border-[#B9CDDD]
-          group-hover:bg-white
-          group-hover:shadow-[0_10px_26px_rgba(11,42,82,0.07)]
-        "
-      >
-        <Icon size={17} strokeWidth={1.7} />
-      </span>
-
-      {/* Copy */}
-      <div
-        className={`
-          max-w-[380px]
-
-          ${
-            align === "right"
-              ? "lg:ml-auto"
-              : ""
-          }
-        `}
-      >
-        <div
-          className={`
-            flex
-            items-center
-            gap-3
-
-            ${
-              align === "right"
-                ? "lg:justify-end"
-                : ""
-            }
-          `}
-        >
-          <span
-            className="
-              text-[0.58rem]
-              font-semibold
-              tracking-[0.18em]
-              text-[#B18458]
-            "
-          >
-            {number}
-          </span>
-
-          <span className="h-px w-7 bg-[#D7C3A7]" />
-        </div>
-
-        <h3
-          className="
-            mt-3
-            text-[0.97rem]
-            font-semibold
-            leading-[1.5]
-            text-[#0B2A52]
-            sm:text-[1rem]
-          "
-        >
-          {title}
-        </h3>
-
-        <p
-          className="
-            mt-2
-            text-[0.79rem]
-            leading-[1.7]
-            text-[#718497]
-          "
-        >
-          {text}
-        </p>
-      </div>
-    </div>
   );
 }
