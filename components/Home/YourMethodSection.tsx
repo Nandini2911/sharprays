@@ -12,6 +12,10 @@ import {
   Target,
 } from "lucide-react";
 
+/* =========================================================
+   METHOD STEPS
+========================================================= */
+
 const methodSteps = [
   {
     number: "01",
@@ -45,16 +49,22 @@ const methodSteps = [
   },
 ];
 
+const ease = [0.22, 1, 0.36, 1] as const;
+
 export default function YourMethodSection() {
   return (
     <section
       className="
         relative
+        w-full
         overflow-hidden
         bg-white
-        py-20
-        sm:py-24
-        lg:py-32
+
+        py-16
+        sm:py-20
+        md:py-24
+        lg:py-28
+        xl:py-32
       "
     >
       {/* ======================================================
@@ -66,11 +76,16 @@ export default function YourMethodSection() {
           relative
           z-10
           mx-auto
+          w-full
           max-w-[1450px]
-          px-5
-          sm:px-8
-          lg:px-12
-          xl:px-16
+
+          px-4
+          min-[375px]:px-5
+          sm:px-6
+          md:px-8
+          lg:px-10
+          xl:px-14
+          2xl:px-16
         "
       >
         {/* ====================================================
@@ -88,6 +103,7 @@ export default function YourMethodSection() {
           }}
           viewport={{
             once: true,
+            amount: 0.4,
           }}
           transition={{
             duration: 0.6,
@@ -99,54 +115,54 @@ export default function YourMethodSection() {
             flex
             items-center
             justify-center
-            gap-4
+
+            gap-2.5
+            sm:gap-3
+            md:gap-4
           "
         >
-          <motion.span
-            initial={{
-              width: 0,
-            }}
-            whileInView={{
-              width: 48,
-            }}
-            viewport={{
-              once: true,
-            }}
-            transition={{
-              duration: 0.7,
-              delay: 0.1,
-            }}
-            className="h-px bg-[#C6A77A]"
+          <span
+            className="
+              h-px
+              w-10
+
+              bg-gradient-to-r
+              from-transparent
+              to-[#B79A72]
+            "
           />
 
           <span
             className="
-              text-[11px]
-              font-semibold
+              whitespace-nowrap
+              text-[9px]
+           
               uppercase
-              tracking-[0.32em]
+              tracking-[0.22em]
               text-[#C6A77A]
-              sm:text-xs
+
+              min-[375px]:text-[10px]
+
+              sm:text-[11px]
+              sm:tracking-[0.28em]
+
+              md:text-xs
+              md:tracking-[0.32em]
             "
           >
             Your Method
           </span>
 
-          <motion.span
-            initial={{
-              width: 0,
-            }}
-            whileInView={{
-              width: 48,
-            }}
-            viewport={{
-              once: true,
-            }}
-            transition={{
-              duration: 0.7,
-              delay: 0.1,
-            }}
-            className="h-px bg-[#C6A77A]"
+        
+          <span
+            className="
+              h-px
+              w-10
+
+              bg-gradient-to-l
+              from-transparent
+              to-[#B79A72]
+            "
           />
         </motion.div>
 
@@ -154,89 +170,68 @@ export default function YourMethodSection() {
             MAIN HEADING
         ==================================================== */}
 
-        <div
-          className="
-            relative
-            z-30
-            mx-auto
-            mt-9
-            max-w-[1000px]
-            overflow-visible
-            text-center
-          "
-        >
-          {/* FIRST LINE */}
+       <div
+  className="
+    relative
+    z-30
+    mx-auto
 
-          <div className="relative overflow-hidden pb-2">
-            <motion.h2
-              initial={{
-                opacity: 0,
-                y: 40,
-              }}
-              whileInView={{
-                opacity: 1,
-                y: 0,
-              }}
-              viewport={{
-                once: true,
-                amount: 0.15,
-              }}
-              transition={{
-                duration: 0.85,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-              className="
-                relative
-                z-30
-          
-               sm:text-[2.6rem] md:text-[2.95rem] lg:text-[3.1rem] xl:text-[3.35rem]
-                leading-[0.98]
-                tracking-[-0.06em]
-                text-[#0B2A52]
-              "
-            >
-              We Don&apos;t Guess.
-            </motion.h2>
-          </div>
+    mt-6
+    max-w-[1200px]
 
-          {/* SECOND LINE */}
+    overflow-visible
+    text-center
 
-          <div className="relative overflow-hidden pb-2">
-            <motion.h2
-              initial={{
-                opacity: 0,
-                y: 40,
-              }}
-              whileInView={{
-                opacity: 1,
-                y: 0,
-              }}
-              viewport={{
-                once: true,
-                amount: 0.15,
-              }}
-              transition={{
-                delay: 0.08,
-                duration: 0.85,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-              className="
-                relative
-                z-30
-             
-               sm:text-[2.6rem] md:text-[2.95rem] lg:text-[3.1rem] xl:text-[3.35rem]
-                leading-[0.98]
-                tracking-[-0.06em]
-                text-[#0B2A52]
-              "
-            >
-              <span className=" text-[#C6A77A]">
-                We Find Out.
-              </span>
-            </motion.h2>
-          </div>
-        </div>
+    sm:mt-7
+    md:mt-8
+    lg:mt-9
+  "
+>
+  <div className="relative overflow-hidden pb-1 sm:pb-2">
+    <motion.h2
+      initial={{
+        opacity: 0,
+        y: 40,
+      }}
+      whileInView={{
+        opacity: 1,
+        y: 0,
+      }}
+      viewport={{
+        once: true,
+        amount: 0.15,
+      }}
+      transition={{
+        duration: 0.85,
+        ease,
+      }}
+      className="
+        relative
+        z-30
 
+        font-[var(--font-new-york)]
+
+        text-[2.15rem]
+        font-normal
+        leading-[0.98]
+        tracking-[-0.055em]
+        text-[#0B2A52]
+
+        min-[375px]:text-[2.3rem]
+
+        sm:text-[2.6rem]
+        md:text-[2.95rem]
+        lg:text-[3.1rem]
+        xl:text-[3.35rem]
+      "
+    >
+      We Don&apos;t Guess.{" "}
+      <span className="text-[#B79A72]">
+        We Find Out.
+      </span>
+    </motion.h2>
+  </div>
+</div>
         {/* ====================================================
             DESCRIPTION
         ==================================================== */}
@@ -252,6 +247,7 @@ export default function YourMethodSection() {
           }}
           viewport={{
             once: true,
+            amount: 0.4,
           }}
           transition={{
             delay: 0.25,
@@ -261,17 +257,29 @@ export default function YourMethodSection() {
             relative
             z-20
             mx-auto
-            mt-7
+
+            mt-5
             max-w-[620px]
+
+            px-2
+
             text-center
-            text-base
-            leading-7
+            text-[13px]
+            leading-[1.7]
             text-[#66758A]
-            sm:text-lg
+
+            min-[375px]:text-[14px]
+
+            sm:mt-6
+            sm:text-base
+
+            md:mt-7
+            md:text-lg
+            md:leading-7
           "
         >
-          Every strong decision starts with knowing what&apos;s
-          actually happening.
+          Every strong decision starts with knowing what&apos;s actually
+          happening.
         </motion.p>
 
         {/* ====================================================
@@ -282,19 +290,33 @@ export default function YourMethodSection() {
           className="
             relative
             z-10
-            mt-14
+
+            mt-10
+
             grid
+            grid-cols-1
             items-center
-            gap-12
-            lg:mt-20
-            lg:grid-cols-[0.95fr_1.05fr]
-            lg:gap-16
+
+            gap-10
+
+            sm:mt-12
+            sm:gap-12
+
+            md:mt-14
+
+            lg:mt-16
+            lg:grid-cols-[0.92fr_1.08fr]
+            lg:gap-12
+
+            xl:mt-20
             xl:grid-cols-[1fr_1fr]
-            xl:gap-24
+            xl:gap-20
+
+            2xl:gap-24
           "
         >
           {/* ==================================================
-              LEFT — TRANSPARENT IMAGE
+              LEFT IMAGE
           ================================================== */}
 
           <motion.div
@@ -310,24 +332,35 @@ export default function YourMethodSection() {
             }}
             viewport={{
               once: true,
-              amount: 0.2,
+              amount: 0.15,
             }}
             transition={{
               duration: 1,
-              ease: [0.22, 1, 0.36, 1],
+              ease,
             }}
             className="
               relative
+
               flex
-              min-h-[420px]
+              w-full
+
+              min-h-[280px]
+
               items-center
               justify-center
-              lg:min-h-[620px]
+
+              min-[375px]:min-h-[310px]
+
+              sm:min-h-[360px]
+
+              md:min-h-[420px]
+
+              lg:min-h-[500px]
+
+              xl:min-h-[600px]
             "
           >
-            {/* ==================================================
-                TRANSPARENT IMAGE
-            ================================================== */}
+            {/* IMAGE */}
 
             <motion.img
               src="/whatwedo/YourMethodSection.png"
@@ -343,24 +376,36 @@ export default function YourMethodSection() {
               }}
               transition={{
                 duration: 1.2,
-                ease: [0.22, 1, 0.36, 1],
+                ease,
               }}
               className="
                 relative
                 z-10
+
                 block
                 h-auto
-                max-h-[620px]
                 w-full
-                max-w-[680px]
+
+                max-w-[340px]
+
                 object-contain
                 object-center
+
+                min-[375px]:max-w-[380px]
+
+                sm:max-w-[470px]
+
+                md:max-w-[560px]
+
+                lg:max-h-[540px]
+                lg:max-w-[600px]
+
+                xl:max-h-[620px]
+                xl:max-w-[680px]
               "
             />
 
-            {/* ==================================================
-                SMALL LABEL
-            ================================================== */}
+            {/* SMALL LABEL */}
 
             <motion.div
               initial={{
@@ -380,77 +425,72 @@ export default function YourMethodSection() {
               }}
               className="
                 absolute
+
                 left-0
-                top-6
+                top-1
+
                 z-20
+
                 flex
                 items-center
-                gap-3
-                sm:left-4
+
+                gap-2
+
+                sm:left-2
+                sm:top-3
+                sm:gap-3
+
+                md:left-4
+                md:top-4
+
                 lg:left-0
+                lg:top-6
               "
             >
-              <span className="h-px w-8 bg-[#C6A77A]" />
+              <span
+                className="
+                  h-px
+                  w-5
+                  bg-[#C6A77A]
+
+                  sm:w-7
+                  md:w-8
+                "
+              />
 
               <span
                 className="
-                  text-[9px]
+                  whitespace-nowrap
+
+                  text-[7px]
                   font-semibold
                   uppercase
-                  tracking-[0.2em]
+                  tracking-[0.15em]
                   text-[#66758A]
+
+                  min-[375px]:text-[8px]
+
+                  sm:text-[9px]
+                  sm:tracking-[0.2em]
                 "
               >
                 Start with the truth
               </span>
             </motion.div>
-
-            {/* ==================================================
-                FLOATING LABEL
-            ================================================== */}
-
-            <motion.div
-              initial={{
-                opacity: 0,
-                x: 15,
-              }}
-              whileInView={{
-                opacity: 1,
-                x: 0,
-              }}
-              viewport={{
-                once: true,
-              }}
-              transition={{
-                delay: 0.85,
-                duration: 0.7,
-              }}
-              animate={{
-                y: [0, -7, 0],
-              }}
-              className="
-                absolute
-                bottom-8
-                right-0
-                z-20
-                flex
-                items-center
-                gap-3
-                rounded-xl
-                bg-white
-                px-4
-                py-3
-                shadow-[0_12px_35px_rgba(11,42,82,0.10)]
-                sm:right-3
-              "
-            />
           </motion.div>
 
           {/* ==================================================
               RIGHT — THINKING SYSTEM
           ================================================== */}
 
-          <div className="relative z-10">
+          <div
+            className="
+              relative
+              z-10
+              w-full
+              min-w-0
+            "
+          >
             {/* INTRO */}
 
             <motion.div
@@ -464,19 +504,31 @@ export default function YourMethodSection() {
               }}
               viewport={{
                 once: true,
+                amount: 0.2,
               }}
               transition={{
                 duration: 0.7,
               }}
-              className="mb-9"
+              className="
+                mb-6
+
+                sm:mb-7
+                md:mb-8
+                lg:mb-9
+              "
             >
               <p
                 className="
-                  text-[10px]
+                  text-[8px]
                   font-bold
                   uppercase
-                  tracking-[0.25em]
+                  tracking-[0.2em]
                   text-[#C6A77A]
+
+                  min-[375px]:text-[9px]
+
+                  sm:text-[10px]
+                  sm:tracking-[0.25em]
                 "
               >
                 How we think
@@ -484,14 +536,26 @@ export default function YourMethodSection() {
 
               <h3
                 className="
-                  mt-3
+                  mt-2.5
                   max-w-[540px]
+
                   font-[var(--font-new-york)]
-                  text-3xl
+
+                  text-[1.75rem]
                   leading-[1.05]
                   tracking-[-0.04em]
                   text-[#0B2A52]
-                  sm:text-4xl
+
+                  min-[375px]:text-[1.9rem]
+
+                  sm:mt-3
+                  sm:text-[2.1rem]
+
+                  md:text-4xl
+
+                  lg:text-[2.45rem]
+
+                  xl:text-[2.65rem]
                 "
               >
                 Turn uncertainty
@@ -505,21 +569,33 @@ export default function YourMethodSection() {
             ================================================== */}
 
             <div className="relative">
-              {/* Base line */}
+              {/* BASE LINE */}
 
               <div
                 className="
                   absolute
-                  bottom-7
-                  left-[20px]
-                  top-7
+
+                  bottom-6
+                  left-[17px]
+                  top-6
+
                   w-px
+
                   bg-[#E2E8EF]
-                  sm:left-[24px]
+
+                  min-[375px]:left-[18px]
+
+                  sm:bottom-7
+                  sm:left-[20px]
+                  sm:top-7
+
+                  md:left-[23px]
+
+                  lg:left-[24px]
                 "
               />
 
-              {/* Animated line */}
+              {/* ANIMATED LINE */}
 
               <motion.div
                 initial={{
@@ -538,18 +614,30 @@ export default function YourMethodSection() {
                 }}
                 className="
                   absolute
-                  left-[20px]
-                  top-7
+
+                  left-[17px]
+                  top-6
+
                   z-[1]
+
                   w-px
+
                   bg-[#0B2A52]
-                  sm:left-[24px]
+
+                  min-[375px]:left-[18px]
+
+                  sm:left-[20px]
+                  sm:top-7
+
+                  md:left-[23px]
+
+                  lg:left-[24px]
                 "
               />
 
               {/* STEPS */}
 
-              <div className="relative space-y-1">
+              <div className="relative space-y-0 sm:space-y-1">
                 {methodSteps.map((step, index) => {
                   const Icon = step.icon;
 
@@ -566,22 +654,34 @@ export default function YourMethodSection() {
                       }}
                       viewport={{
                         once: true,
-                        amount: 0.25,
+                        amount: 0.2,
                       }}
                       transition={{
-                        delay: 0.15 + index * 0.12,
+                        delay:
+                          0.15 +
+                          index * 0.12,
                         duration: 0.65,
-                        ease: [0.22, 1, 0.36, 1],
+                        ease,
                       }}
                       className="
                         group
                         relative
+
                         flex
+                        min-w-0
                         items-start
-                        gap-5
-                        py-4
-                        sm:gap-6
-                        sm:py-5
+
+                        gap-3.5
+
+                        py-3.5
+
+                        min-[375px]:gap-4
+
+                        sm:gap-5
+                        sm:py-4
+
+                        md:gap-6
+                        md:py-5
                       "
                     >
                       {/* NODE */}
@@ -598,59 +698,113 @@ export default function YourMethodSection() {
                         className="
                           relative
                           z-10
+
                           flex
-                          h-10
-                          w-10
+
+                          h-[34px]
+                          w-[34px]
+
                           shrink-0
+
                           items-center
                           justify-center
+
                           rounded-full
                           bg-white
-                          sm:h-12
-                          sm:w-12
+
+                          min-[375px]:h-9
+                          min-[375px]:w-9
+
+                          sm:h-10
+                          sm:w-10
+
+                          md:h-12
+                          md:w-12
                         "
                       >
                         <div
                           className="
                             absolute
                             inset-0
+
                             rounded-full
                             border
                             border-[#DCE5EF]
+
                             transition-all
                             duration-300
+
                             group-hover:border-[#C6A77A]
                           "
                         />
 
                         <Icon
-                          size={17}
                           strokeWidth={1.5}
                           className="
                             relative
+
+                            h-[14px]
+                            w-[14px]
+
                             text-[#0B2A52]
+
                             transition-transform
                             duration-300
+
                             group-hover:scale-110
+
+                            sm:h-4
+                            sm:w-4
+
+                            md:h-[17px]
+                            md:w-[17px]
                           "
                         />
                       </motion.div>
 
                       {/* CONTENT */}
 
-                      <div className="min-w-0 flex-1">
-                        <div className="flex items-baseline gap-3">
+                      <div
+                        className="
+                          min-w-0
+                          flex-1
+                          pt-[1px]
+                        "
+                      >
+                        <div
+                          className="
+                            flex
+                            min-w-0
+                            items-baseline
+                            gap-2
+
+                            sm:gap-3
+                          "
+                        >
                           <h4
                             className="
+                              min-w-0
+
+                              break-words
+
                               font-[var(--font-new-york)]
-                              text-xl
+
+                              text-[17px]
                               font-semibold
+                              leading-[1.15]
                               tracking-[-0.025em]
                               text-[#0B2A52]
+
                               transition-transform
                               duration-300
+
                               group-hover:translate-x-1
-                              sm:text-2xl
+
+                              min-[375px]:text-lg
+
+                              sm:text-xl
+
+                              md:text-2xl
                             "
                           >
                             {step.title}
@@ -659,11 +813,23 @@ export default function YourMethodSection() {
 
                         <p
                           className="
-                            mt-1.5
-                            text-sm
-                            leading-6
+                            mt-1
+
+                            max-w-[480px]
+
+                            break-words
+
+                            text-[11px]
+                            leading-[1.55]
                             text-[#66758A]
-                            sm:text-[15px]
+
+                            min-[375px]:text-xs
+
+                            sm:mt-1.5
+                            sm:text-sm
+                            sm:leading-6
+
+                            md:text-[15px]
                           "
                         >
                           {step.description}
@@ -689,26 +855,52 @@ export default function YourMethodSection() {
                               duration: 0.6,
                             }}
                             className="
-                              mt-3
+                              mt-2.5
+
                               flex
                               flex-wrap
                               items-center
-                              gap-x-2
-                              gap-y-1
-                              text-[9px]
+
+                              gap-x-1.5
+                              gap-y-1.5
+
+                              text-[7px]
                               font-semibold
                               uppercase
-                              tracking-[0.13em]
+                              tracking-[0.1em]
                               text-[#0B2A52]
+
+                              min-[375px]:text-[8px]
+
+                              sm:mt-3
+                              sm:gap-x-2
+                              sm:text-[9px]
+                              sm:tracking-[0.13em]
                             "
                           >
                             <span>Strategy</span>
 
-                            <ArrowRight size={10} />
+                            <ArrowRight
+                              className="
+                                h-2
+                                w-2
+
+                                sm:h-[10px]
+                                sm:w-[10px]
+                              "
+                            />
 
                             <span>Creative</span>
 
-                            <ArrowRight size={10} />
+                            <ArrowRight
+                              className="
+                                h-2
+                                w-2
+
+                                sm:h-[10px]
+                                sm:w-[10px]
+                              "
+                            />
 
                             <span>Distribution</span>
                           </motion.div>
@@ -726,7 +918,13 @@ export default function YourMethodSection() {
                           opacity: 1,
                           x: 0,
                         }}
-                        className="hidden pt-2 sm:block"
+                        className="
+                          hidden
+                          shrink-0
+                          pt-2
+
+                          lg:block
+                        "
                       >
                         <ArrowRight
                           size={17}
@@ -757,20 +955,27 @@ export default function YourMethodSection() {
           }}
           viewport={{
             once: true,
-            amount: 0.3,
+            amount: 0.25,
           }}
           transition={{
             duration: 0.8,
           }}
           className="
             relative
-            mt-16
-            pt-10
-            sm:mt-20
-            sm:pt-12
+
+            mt-12
+            pt-8
+
+            sm:mt-14
+            sm:pt-10
+
+            md:mt-16
+
+            lg:mt-20
+            lg:pt-12
           "
         >
-          {/* TOP EDITORIAL LINE */}
+          {/* TOP LINE */}
 
           <div
             className="
@@ -778,7 +983,9 @@ export default function YourMethodSection() {
               left-0
               right-0
               top-0
+
               h-px
+
               bg-[#E2E8EF]
             "
           />
@@ -786,41 +993,75 @@ export default function YourMethodSection() {
           <div
             className="
               grid
+              grid-cols-1
+
               gap-8
+
+              md:gap-10
+
               lg:grid-cols-[0.75fr_1.25fr]
               lg:items-center
-              lg:gap-16
+              lg:gap-12
+
+              xl:gap-16
             "
           >
             {/* STATEMENT */}
 
             <div>
-              <div className="flex items-center gap-3">
+              <div
+                className="
+                  flex
+                  items-center
+
+                  gap-2.5
+
+                  sm:gap-3
+                "
+              >
                 <div
                   className="
                     flex
-                    h-8
-                    w-8
+
+                    h-7
+                    w-7
+
+                    shrink-0
+
                     items-center
                     justify-center
+
                     rounded-full
                     bg-[#0B2A52]
+
+                    sm:h-8
+                    sm:w-8
                   "
                 >
                   <Check
-                    size={14}
+                    className="
+                      h-3
+                      w-3
+
+                      text-white
+
+                      sm:h-[14px]
+                      sm:w-[14px]
+                    "
                     strokeWidth={2}
-                    className="text-white"
                   />
                 </div>
 
                 <span
                   className="
-                    text-[9px]
+                    text-[8px]
                     font-bold
                     uppercase
-                    tracking-[0.22em]
+                    tracking-[0.18em]
                     text-[#C6A77A]
+
+                    sm:text-[9px]
+                    sm:tracking-[0.22em]
                   "
                 >
                   Our principle
@@ -829,13 +1070,24 @@ export default function YourMethodSection() {
 
               <h3
                 className="
-                  mt-4
+                  mt-3
+
                   font-[var(--font-new-york)]
-                  text-4xl
+
+                  text-[2rem]
                   font-medium
+                  leading-[1]
                   tracking-[-0.045em]
                   text-[#0B2A52]
-                  sm:text-5xl
+
+                  min-[375px]:text-[2.2rem]
+
+                  sm:mt-4
+                  sm:text-4xl
+
+                  md:text-[2.7rem]
+
+                  lg:text-5xl
                 "
               >
                 No assumptions.
@@ -844,20 +1096,42 @@ export default function YourMethodSection() {
               <p
                 className="
                   mt-3
-                  max-w-[400px]
-                  text-sm
-                  leading-6
+                  max-w-[430px]
+
+                  text-[12px]
+                  leading-[1.65]
                   text-[#66758A]
+
+                  min-[375px]:text-[13px]
+
+                  sm:text-sm
+                  sm:leading-6
                 "
               >
-                We start with what the data tells us — not what
-                we hope is true.
+                We start with what the data tells us — not what we hope is
+                true.
               </p>
             </div>
 
-            {/* PRINCIPLES */}
+            {/* =================================================
+                PRINCIPLES
+            ================================================= */}
 
-            <div className="grid gap-7 sm:grid-cols-3">
+            <div
+              className="
+                grid
+                grid-cols-1
+
+                gap-6
+
+                min-[480px]:grid-cols-3
+                min-[480px]:gap-4
+
+                sm:gap-6
+
+                lg:gap-7
+              "
+            >
               {/* DATA */}
 
               <motion.div
@@ -869,21 +1143,41 @@ export default function YourMethodSection() {
                   stiffness: 300,
                   damping: 20,
                 }}
+                className="
+                  border-b
+                  border-[#E2E8EF]
+
+                  pb-5
+
+                  min-[480px]:border-b-0
+                  min-[480px]:pb-0
+                "
               >
                 <BarChart3
-                  size={21}
+                  className="
+                    h-5
+                    w-5
+                    text-[#0B2A52]
+
+                    sm:h-[21px]
+                    sm:w-[21px]
+                  "
                   strokeWidth={1.5}
-                  className="text-[#0B2A52]"
                 />
 
                 <p
                   className="
-                    mt-4
-                    text-[9px]
+                    mt-3
+
+                    text-[8px]
                     font-bold
                     uppercase
-                    tracking-[0.2em]
+                    tracking-[0.18em]
                     text-[#C6A77A]
+
+                    sm:mt-4
+                    sm:text-[9px]
+                    sm:tracking-[0.2em]
                   "
                 >
                   Data
@@ -891,12 +1185,17 @@ export default function YourMethodSection() {
 
                 <h4
                   className="
-                    mt-2
+                    mt-1.5
+
                     font-[var(--font-new-york)]
-                    text-lg
+
+                    text-[16px]
                     font-semibold
                     leading-tight
                     text-[#0B2A52]
+
+                    sm:mt-2
+                    sm:text-lg
                   "
                 >
                   Know what is happening.
@@ -914,21 +1213,41 @@ export default function YourMethodSection() {
                   stiffness: 300,
                   damping: 20,
                 }}
+                className="
+                  border-b
+                  border-[#E2E8EF]
+
+                  pb-5
+
+                  min-[480px]:border-b-0
+                  min-[480px]:pb-0
+                "
               >
                 <Lightbulb
-                  size={21}
+                  className="
+                    h-5
+                    w-5
+                    text-[#0B2A52]
+
+                    sm:h-[21px]
+                    sm:w-[21px]
+                  "
                   strokeWidth={1.5}
-                  className="text-[#0B2A52]"
                 />
 
                 <p
                   className="
-                    mt-4
-                    text-[9px]
+                    mt-3
+
+                    text-[8px]
                     font-bold
                     uppercase
-                    tracking-[0.2em]
+                    tracking-[0.18em]
                     text-[#C6A77A]
+
+                    sm:mt-4
+                    sm:text-[9px]
+                    sm:tracking-[0.2em]
                   "
                 >
                   Creativity
@@ -936,12 +1255,17 @@ export default function YourMethodSection() {
 
                 <h4
                   className="
-                    mt-2
+                    mt-1.5
+
                     font-[var(--font-new-york)]
-                    text-lg
+
+                    text-[16px]
                     font-semibold
                     leading-tight
                     text-[#0B2A52]
+
+                    sm:mt-2
+                    sm:text-lg
                   "
                 >
                   Know what could happen.
@@ -961,19 +1285,30 @@ export default function YourMethodSection() {
                 }}
               >
                 <LineChart
-                  size={21}
+                  className="
+                    h-5
+                    w-5
+                    text-[#0B2A52]
+
+                    sm:h-[21px]
+                    sm:w-[21px]
+                  "
                   strokeWidth={1.5}
-                  className="text-[#0B2A52]"
                 />
 
                 <p
                   className="
-                    mt-4
-                    text-[9px]
+                    mt-3
+
+                    text-[8px]
                     font-bold
                     uppercase
-                    tracking-[0.2em]
+                    tracking-[0.18em]
                     text-[#C6A77A]
+
+                    sm:mt-4
+                    sm:text-[9px]
+                    sm:tracking-[0.2em]
                   "
                 >
                   Optimization
@@ -981,12 +1316,17 @@ export default function YourMethodSection() {
 
                 <h4
                   className="
-                    mt-2
+                    mt-1.5
+
                     font-[var(--font-new-york)]
-                    text-lg
+
+                    text-[16px]
                     font-semibold
                     leading-tight
                     text-[#0B2A52]
+
+                    sm:mt-2
+                    sm:text-lg
                   "
                 >
                   Make it happen better.
@@ -1003,9 +1343,11 @@ export default function YourMethodSection() {
         <motion.div
           initial={{
             opacity: 0,
+            y: 10,
           }}
           whileInView={{
             opacity: 1,
+            y: 0,
           }}
           viewport={{
             once: true,
@@ -1015,28 +1357,67 @@ export default function YourMethodSection() {
             duration: 0.8,
           }}
           className="
-            mt-10
+            mt-8
+
             flex
+            w-full
             items-center
             justify-center
-            gap-3
+
+            gap-2
+
+            sm:mt-9
+            sm:gap-3
+
+            lg:mt-10
           "
         >
-          <span className="h-px w-8 bg-[#C6A77A]" />
+          <span
+            className="
+              h-px
+              w-4
+              shrink-0
+              bg-[#C6A77A]
+
+              min-[375px]:w-6
+
+              sm:w-8
+            "
+          />
 
           <p
             className="
+              max-w-[500px]
+
               text-center
-              text-sm
+
+              text-[11px]
               italic
+              leading-[1.5]
               text-[#66758A]
-              sm:text-base
+
+              min-[375px]:text-xs
+
+              sm:text-sm
+
+              md:text-base
             "
           >
             Find the truth. Build the system. Improve what works.
           </p>
 
-          <span className="h-px w-8 bg-[#C6A77A]" />
+          <span
+            className="
+              h-px
+              w-4
+              shrink-0
+              bg-[#C6A77A]
+
+              min-[375px]:w-6
+
+              sm:w-8
+            "
+          />
         </motion.div>
       </div>
     </section>

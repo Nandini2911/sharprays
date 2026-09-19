@@ -1,378 +1,701 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
+import type { LucideIcon } from "lucide-react";
+
 import {
+  ArrowRight,
   Eye,
   Heart,
-  ShieldCheck,
   MousePointer2,
-  TrendingUp,
-  ArrowRight,
+  ShieldCheck,
   Sparkles,
+  TrendingUp,
 } from "lucide-react";
 
 const NAVY = "#0B2A52";
 const GOLD = "#C6A77A";
-const TEXT = "#344054";
-const MUTED = "#66758A";
-const BORDER = "#DCE5EF";
 
-const steps = [
+const ease = [0.22, 1, 0.36, 1] as const;
+
+/* =========================================================
+   TYPES
+========================================================= */
+
+type JourneyStep = {
+  number: string;
+  title: string;
+  description: string;
+  icon: LucideIcon;
+  micro: string;
+};
+
+/* =========================================================
+   DATA
+========================================================= */
+
+const steps: JourneyStep[] = [
   {
     number: "01",
-    title: "ATTENTION",
+    title: "Attention",
     description:
       "We create content that makes people stop scrolling.",
     icon: Eye,
+    micro: "Get noticed",
   },
   {
     number: "02",
-    title: "INTEREST",
+    title: "Interest",
     description:
       "We spark curiosity and keep your audience engaged.",
     icon: Heart,
+    micro: "Create relevance",
   },
   {
     number: "03",
-    title: "TRUST",
+    title: "Trust",
     description:
       "We build credibility through value, consistency and real connection.",
     icon: ShieldCheck,
+    micro: "Build confidence",
   },
   {
     number: "04",
-    title: "ACTION",
+    title: "Action",
     description:
       "We guide your audience to take the right step at the right time.",
     icon: MousePointer2,
+    micro: "Move forward",
   },
   {
     number: "05",
-    title: "GROWTH",
+    title: "Growth",
     description:
       "We turn actions into measurable growth for your business.",
     icon: TrendingUp,
+    micro: "Create impact",
   },
 ];
 
-export default function DifferenceSection() {
+/* =========================================================
+   MOBILE JOURNEY STEP
+========================================================= */
+
+function MobileJourneyStep({
+  step,
+  index,
+  reduceMotion,
+}: {
+  step: JourneyStep;
+  index: number;
+  reduceMotion: boolean;
+}) {
+  const Icon = step.icon;
+  const isGrowth = index === steps.length - 1;
+
   return (
-    <section
+    <motion.div
+      initial={{
+        opacity: 0,
+        x: reduceMotion ? 0 : -18,
+      }}
+      whileInView={{
+        opacity: 1,
+        x: 0,
+      }}
+      viewport={{
+        once: true,
+        amount: 0.35,
+      }}
+      transition={{
+        duration: 0.58,
+        delay: reduceMotion ? 0 : index * 0.07,
+        ease,
+      }}
       className="
-       relative
-    overflow-hidden
-    bg-white
-    pt-16
-    pb-0
-    sm:pt-20
-    lg:pt-24
+        relative
+        grid
+        grid-cols-[54px_1fr]
+        gap-4
+        pb-8
+        last:pb-0
+        sm:grid-cols-[62px_1fr]
+        sm:gap-5
       "
     >
-      {/* =========================================================
-          PURE WHITE BACKGROUND
-      ========================================================= */}
+      {/* ===============================================
+          LEFT TRACK
+      =============================================== */}
 
-      <div className="pointer-events-none absolute inset-0 z-0 bg-white" />
+      <div className="relative flex justify-center">
+        {/* vertical line */}
 
-      {/* =========================================================
+        {index !== steps.length - 1 && (
+          <span
+            className="
+              absolute
+              left-1/2
+              top-[48px]
+              h-[calc(100%-28px)]
+              w-px
+              -translate-x-1/2
+              bg-white
+            "
+          />
+        )}
+
+        {/* node */}
+
+        <motion.div
+          whileHover={
+            reduceMotion
+              ? undefined
+              : {
+                  scale: 1.06,
+                  rotate: 5,
+                }
+          }
+          className={`
+            relative
+            z-10
+            flex
+            h-12
+            w-12
+            items-center
+            justify-center
+            rounded-full
+            border-[5px]
+            border-white
+            shadow-[0_0_0_1px_#D5E0E7,0_8px_20px_rgba(11,42,82,0.06)]
+
+            ${
+              isGrowth
+                ? "bg-[#0B2A52] text-white"
+                : "bg-[#EEF4F8] text-[#0B2A52]"
+            }
+          `}
+        >
+          <Icon
+            size={16}
+            strokeWidth={1.7}
+          />
+        </motion.div>
+      </div>
+
+      {/* ===============================================
+          CONTENT
+      =============================================== */}
+
+      <div
+        className={`
+          relative
+          min-w-0
+          border-b
+          pb-7
+
+          ${
+            isGrowth
+              ? "border-[#C6A77A]/40"
+              : "border-[#E0E8ED]"
+          }
+        `}
+      >
+        <div
+          className="
+            flex
+            flex-wrap
+            items-center
+            gap-x-3
+            gap-y-1
+          "
+        >
+          <span
+            className="
+              text-[0.42rem]
+              font-semibold
+              uppercase
+              tracking-[0.18em]
+              text-[#B08A62]
+            "
+          >
+            {step.number}
+          </span>
+
+          <span className="h-px w-5 bg-[#D4DEE5]" />
+
+          <span
+            className="
+              text-[0.4rem]
+              font-semibold
+              uppercase
+              tracking-[0.16em]
+              text-[#8E9DAA]
+            "
+          >
+            {step.micro}
+          </span>
+        </div>
+
+        <h3
+          className={`
+            mt-2
+            font-[var(--font-new-york)]
+            text-[1.4rem]
+            font-semibold
+            leading-[1.08]
+            tracking-[-0.03em]
+
+            ${
+              isGrowth
+                ? "text-[#0B2A52]"
+                : "text-[#0B2A52]"
+            }
+          `}
+        >
+          {step.title}
+        </h3>
+
+        <p
+          className="
+            mt-2.5
+            max-w-[470px]
+            text-[0.8rem]
+            leading-[1.65]
+            text-[#66758A]
+          "
+        >
+          {step.description}
+        </p>
+
+        {isGrowth && (
+          <div
+            className="
+              mt-4
+              flex
+              items-center
+              gap-2
+            "
+          >
+            <span className="h-[2px] w-7 bg-[#C6A77A]" />
+
+            <span
+              className="
+                text-[0.42rem]
+                font-semibold
+                uppercase
+                tracking-[0.16em]
+                text-[#A17B55]
+              "
+            >
+              The outcome
+            </span>
+          </div>
+        )}
+      </div>
+    </motion.div>
+  );
+}
+
+/* =========================================================
+   MAIN COMPONENT
+========================================================= */
+
+export default function DifferenceSection() {
+  const reduceMotion = Boolean(useReducedMotion());
+
+  const fadeUp = {
+    hidden: {
+      opacity: 0,
+      y: reduceMotion ? 0 : 24,
+    },
+
+    visible: {
+      opacity: 1,
+      y: 0,
+
+      transition: {
+        duration: 0.7,
+        ease,
+      },
+    },
+  };
+
+  const stagger = {
+    hidden: {},
+
+    visible: {
+      transition: {
+        staggerChildren: reduceMotion ? 0 : 0.08,
+      },
+    },
+  };
+
+  return (
+    <section
+      id="difference"
+      className="
+        relative
+        isolate
+        overflow-hidden
+        bg-white
+        py-20
+        sm:py-24
+        md:py-28
+        lg:py-32
+      "
+    >
+      {/* =====================================================
+          BACKGROUND
+      ===================================================== */}
+
+      <div className="pointer-events-none absolute inset-0 -z-20 overflow-hidden">
+        {/* blue glow */}
+
+       
+        {/* left glow */}
+
+        <div
+          className="
+            absolute
+            -left-[260px]
+            top-[42%]
+            h-[440px]
+            w-[440px]
+            rounded-full
+            bg-[#F3F7FA]
+            blur-[120px]
+          "
+        />
+
+        {/* gold glow */}
+
+        <div
+          className="
+            absolute
+            -right-[230px]
+            bottom-[-100px]
+            h-[470px]
+            w-[480px]
+            rounded-full
+            bg-[#FBF5EC]
+            blur-[125px]
+          "
+        />
+      </div>
+
+      {/* =====================================================
           MAIN CONTAINER
-      ========================================================= */}
+      ===================================================== */}
 
       <div
         className="
           relative
           z-10
           mx-auto
-          max-w-[1500px]
+          w-full
+          max-w-[1440px]
           px-5
-          sm:px-8
-          lg:px-10
-          xl:px-12
+          sm:px-7
+          md:px-9
+          lg:px-12
+          xl:px-16
         "
       >
+        {/* =====================================================
+            TOP EDITORIAL HEADER
+        ===================================================== */}
+
         <div
           className="
-            relative
-            overflow-visible
-            rounded-[30px]
-            border
-            border-[#E7ECF2]
-            bg-white
-            px-5
-            py-9
-            shadow-[0_20px_70px_rgba(11,42,82,0.035)]
-            sm:px-8
-            sm:py-11
-            lg:px-12
-            lg:py-14
-            xl:px-16
+            mx-auto
+            grid
+            max-w-[1220px]
+            gap-10
+            lg:grid-cols-[0.88fr_1.12fr]
+            lg:items-end
+            lg:gap-16
           "
         >
-          {/* =====================================================
-              SECTION LABEL
-          ===================================================== */}
+          {/* ===============================================
+              LEFT
+          =============================================== */}
 
           <motion.div
-            initial={{
-              opacity: 0,
-              y: 25,
-            }}
-            whileInView={{
-              opacity: 1,
-              y: 0,
-            }}
+            variants={stagger}
+            initial="hidden"
+            whileInView="visible"
             viewport={{
               once: true,
-              amount: 0.2,
+              amount: 0.3,
             }}
-            transition={{
-              duration: 0.7,
-              ease: [0.22, 1, 0.36, 1],
-            }}
-            className="
-              relative
-              z-30
-              flex
-              items-center
-              justify-center
-              gap-4
-            "
           >
-            <motion.span
-              initial={{
-                width: 0,
-              }}
-              whileInView={{
-                width: 48,
-              }}
-              viewport={{
-                once: true,
-              }}
-              transition={{
-                duration: 0.7,
-                delay: 0.1,
-              }}
-              className="h-px bg-[#C6A77A]"
-            />
-
-            <span
+            <motion.div
+              variants={fadeUp}
               className="
-                font-[var(--font-new-york)]
-                text-[11px]
-                font-semibold
-                uppercase
-                tracking-[0.32em]
-                text-[#C6A77A]
-                sm:text-xs
+                flex
+                items-center
+                gap-4
               "
             >
-              THE DIFFERENCE
-            </span>
+          <span
+            className="
+              h-px
+              w-10
 
-            <motion.span
-              initial={{
-                width: 0,
-              }}
-              whileInView={{
-                width: 48,
-              }}
-              viewport={{
-                once: true,
-              }}
-              transition={{
-                duration: 0.7,
-                delay: 0.1,
-              }}
-              className="h-px bg-[#C6A77A]"
-            />
+              bg-gradient-to-r
+              from-transparent
+              to-[#B79A72]
+            "
+          />
+
+              <span
+                className="
+                  text-[0.55rem]
+                
+                  uppercase
+                  tracking-[0.3em]
+                  text-[#B79A72]
+                  sm:text-[0.61rem]
+                "
+              >
+                The Difference
+              </span>
+            
+          <span
+            className="
+              h-px
+              w-10
+
+              bg-gradient-to-l
+              from-transparent
+              to-[#B79A72]
+            "
+          />
+            </motion.div>
+
+            <motion.h2
+              variants={fadeUp}
+              className="
+                mt-5
+                max-w-[650px]
+                font-[var(--font-new-york)]
+                text-[2.1rem]
+                font-medium
+                leading-[1.02]
+                tracking-[-0.05em]
+                text-[#0B2A52]
+                sm:text-[2.6rem]
+                md:text-[2.95rem]
+                lg:text-[3.1rem]
+                xl:text-[3.35rem]
+              "
+            >
+              Pretty Marketing{" "}
+              <span className="text-[#B79A72]">
+                Isn&apos;t
+              </span>{" "}
+              Enough.
+            </motion.h2>
           </motion.div>
 
-          {/* =====================================================
-              HEADLINE
-          ===================================================== */}
-
-          <div
-            className="
-              relative
-              z-30
-              mx-auto
-              mt-8
-              max-w-[1050px]
-              text-center
-              sm:mt-9
-            "
-          >
-            {/* First line */}
-
-            <div className="relative overflow-hidden pb-2">
-              <motion.h2
-                initial={{
-                  opacity: 0,
-                  y: 40,
-                }}
-                whileInView={{
-                  opacity: 1,
-                  y: 0,
-                }}
-                viewport={{
-                  once: true,
-                  amount: 0.15,
-                }}
-                transition={{
-                  duration: 0.85,
-                  ease: [0.22, 1, 0.36, 1],
-                }}
-                className="
-                  relative
-                  z-30
-               
-               
-                  font-medium
-                  leading-[0.98]
-                  tracking-[-0.06em]
-                  text-[#0B2A52]
-                  sm:text-[2.6rem] md:text-[2.95rem] lg:text-[3.1rem] xl:text-[3.35rem]
-                "
-              >
-                Pretty Marketing
-              </motion.h2>
-            </div>
-
-            {/* Second line */}
-
-            <div className="relative overflow-hidden pb-2">
-              <motion.h2
-                initial={{
-                  opacity: 0,
-                  y: 40,
-                }}
-                whileInView={{
-                  opacity: 1,
-                  y: 0,
-                }}
-                viewport={{
-                  once: true,
-                  amount: 0.15,
-                }}
-                transition={{
-                  delay: 0.08,
-                  duration: 0.85,
-                  ease: [0.22, 1, 0.36, 1],
-                }}
-                className="
-                  relative
-                  z-30
-                  mt-1
-           
-                sm:text-[2.6rem] md:text-[2.95rem] lg:text-[3.1rem] xl:text-[3.35rem]
-           
-                  leading-[0.98]
-                  tracking-[-0.06em]
-                  text-[#0B2A52]
-                "
-              >
-                <span className=" text-[#C6A77A]">
-                  Isn&apos;t
-                </span>{" "}
-                Enough.
-              </motion.h2>
-            </div>
-          </div>
-
-          {/* =====================================================
-              DESCRIPTION
-          ===================================================== */}
+          {/* ===============================================
+              RIGHT
+          =============================================== */}
 
           <motion.div
             initial={{
               opacity: 0,
-              y: 25,
+              x: reduceMotion ? 0 : 28,
             }}
             whileInView={{
               opacity: 1,
-              y: 0,
+              x: 0,
             }}
             viewport={{
               once: true,
-              amount: 0.2,
+              amount: 0.3,
             }}
             transition={{
-              duration: 0.7,
-              delay: 0.18,
-              ease: [0.22, 1, 0.36, 1],
+              duration: 0.75,
+              ease,
             }}
             className="
               relative
-              z-20
-              mx-auto
-              mt-7
-              max-w-[650px]
-              text-center
-              sm:mt-8
+              max-w-[600px]
+              lg:justify-self-end
             "
           >
+            <div
+              className="
+                absolute
+                -left-6
+                top-0
+                hidden
+                h-full
+                w-px
+                bg-[linear-gradient(180deg,#C6A77A,transparent)]
+                lg:block
+              "
+            />
+
             <p
               className="
-                text-base
-                leading-7
-                sm:text-lg
-                sm:leading-8
+                font-[var(--font-new-york)]
+                text-[1.15rem]
+                leading-[1.55]
+                tracking-[-0.02em]
+                text-[#344054]
+                sm:text-[1.28rem]
               "
-              style={{
-                color: TEXT,
-              }}
             >
               Beautiful content gets{" "}
-              <span
-                className="font-semibold"
-                style={{
-                  color: NAVY,
-                }}
-              >
+              <span className="font-semibold text-[#0B2A52]">
                 attention.
               </span>
             </p>
 
             <p
               className="
-                mt-1
-                text-base
-                leading-7
-                sm:text-lg
-                sm:leading-8
+                mt-2
+                font-[var(--font-new-york)]
+                text-[1.15rem]
+                leading-[1.55]
+                tracking-[-0.02em]
+                text-[#344054]
+                sm:text-[1.28rem]
               "
-              style={{
-                color: TEXT,
-              }}
             >
-              Smart strategy turns attention into{" "}
-              <span
-                className="font-semibold"
-                style={{
-                  color: NAVY,
-                }}
-              >
+              Smart strategy turns that attention into{" "}
+              <span className="font-semibold text-[#0B2A52]">
                 action.
               </span>
             </p>
+
+            <div
+              className="
+                mt-5
+                flex
+                items-center
+                gap-3
+              "
+            >
+              
+
+              
+            </div>
+          </motion.div>
+        </div>
+
+        {/* =====================================================
+            DIVIDER
+        ===================================================== */}
+
+       
+        {/* =====================================================
+            DESKTOP JOURNEY
+        ===================================================== */}
+
+        <div
+          className="
+            mx-auto
+            mt-14
+            hidden
+            max-w-[1220px]
+            lg:block
+          "
+        >
+          {/* journey title */}
+
+          <motion.div
+            initial={{
+              opacity: 0,
+              y: reduceMotion ? 0 : 14,
+            }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+            }}
+            viewport={{
+              once: true,
+              amount: 0.5,
+            }}
+            transition={{
+              duration: 0.6,
+              ease,
+            }}
+            className="
+              mb-12
+              flex
+              items-center
+              justify-between
+              gap-5
+            "
+          >
+           
+       
+
+           
           </motion.div>
 
-          {/* =====================================================
-              JOURNEY
-          ===================================================== */}
+          {/* ===============================================
+              TRACK
+          =============================================== */}
 
-          <div className="relative mt-14 sm:mt-18 lg:mt-20">
-            {/* ===================================================
-                CARDS
-            =================================================== */}
+          <div
+            className="
+              relative
+              pb-12
+              pt-4
+            "
+          >
+            {/* base line */}
+
+            <div
+              className="
+                absolute
+                left-[8%]
+                right-[8%]
+                top-[55px]
+                h-px
+                bg-[#D7E2E8]
+              "
+            />
+
+            {/* animated line */}
+
+            <motion.div
+              initial={{
+                scaleX: reduceMotion ? 1 : 0,
+              }}
+              whileInView={{
+                scaleX: 1,
+              }}
+              viewport={{
+                once: true,
+                amount: 0.35,
+              }}
+              transition={{
+                duration: 1.3,
+                ease,
+              }}
+              style={{
+                transformOrigin: "left",
+              }}
+              className="
+                absolute
+                left-[8%]
+                right-[8%]
+                top-[55px]
+                h-[2px]
+                bg-[linear-gradient(90deg,#0B2A52_0%,#6E8BA3_55%,#C6A77A_100%)]
+              "
+            />
 
             <div
               className="
                 relative
                 grid
-                gap-5
-                lg:grid-cols-5
-                lg:gap-4
+                grid-cols-5
               "
             >
               {steps.map((step, index) => {
@@ -381,10 +704,10 @@ export default function DifferenceSection() {
 
                 return (
                   <motion.div
-                    key={step.title}
+                    key={step.number}
                     initial={{
                       opacity: 0,
-                      y: 55,
+                      y: reduceMotion ? 0 : 30,
                     }}
                     whileInView={{
                       opacity: 1,
@@ -392,423 +715,407 @@ export default function DifferenceSection() {
                     }}
                     viewport={{
                       once: true,
-                      amount: 0.18,
+                      amount: 0.3,
                     }}
                     transition={{
-                      duration: 0.7,
-                      delay: index * 0.1,
-                      ease: [0.22, 1, 0.36, 1],
+                      duration: 0.65,
+                      delay: reduceMotion
+                        ? 0
+                        : 0.12 + index * 0.09,
+                      ease,
                     }}
                     className="
+                      group
                       relative
-                      lg:pt-[76px]
+                      px-4
+                      text-center
+                      xl:px-6
                     "
                   >
-                    {/* =================================================
-                        ICON
-                    ================================================= */}
+                    {/* NODE */}
 
                     <motion.div
-                      initial={{
-                        opacity: 0,
-                        scale: 0.8,
-                      }}
-                      whileInView={{
-                        opacity: 1,
-                        scale: 1,
-                      }}
-                      viewport={{
-                        once: true,
-                      }}
-                      transition={{
-                        duration: 0.55,
-                        delay: index * 0.1 + 0.15,
-                        ease: [0.22, 1, 0.36, 1],
-                      }}
-                      className="
-                        absolute
-                        left-0
-                        top-0
-                        z-20
-                        lg:left-1/2
-                        lg:-translate-x-1/2
-                      "
-                    >
-                      <div
-                        className="
-                          flex
-                          h-[62px]
-                          w-[62px]
-                          items-center
-                          justify-center
-                          rounded-full
-                          border
-                          border-[#DCE5EF]
-                          bg-white
-                          shadow-[0_10px_30px_rgba(11,42,82,0.07)]
-                          sm:h-[66px]
-                          sm:w-[66px]
-                        "
-                      >
-                        <div
-                          className="
-                            flex
-                            h-[46px]
-                            w-[46px]
-                            items-center
-                            justify-center
-                            rounded-full
-                          "
-                          style={{
-                            backgroundColor: isGrowth
-                              ? NAVY
-                              : "#EEF3F8",
-                          }}
-                        >
-                          <Icon
-                            size={22}
-                            strokeWidth={1.7}
-                            style={{
-                              color: isGrowth
-                                ? "#FFFFFF"
-                                : NAVY,
-                            }}
-                          />
-                        </div>
-                      </div>
-                    </motion.div>
-
-                    {/* =================================================
-                        CARD
-                    ================================================= */}
-
-                    <motion.div
-                      whileHover={{
-                        y: -6,
-                      }}
-                      transition={{
-                        type: "spring",
-                        stiffness: 300,
-                        damping: 22,
-                      }}
+                      whileHover={
+                        reduceMotion
+                          ? undefined
+                          : {
+                              y: -4,
+                              scale: 1.05,
+                            }
+                      }
                       className={`
                         relative
-                        min-h-[250px]
-                        overflow-hidden
-                        rounded-[22px]
-                        border
-                        px-5
-                        pb-6
-                        pt-[74px]
-                        transition-shadow
-                        duration-300
-                        lg:px-5
-                        xl:px-6
+                        z-10
+                        mx-auto
+                        flex
+                        h-[78px]
+                        w-[78px]
+                        items-center
+                        justify-center
+                        rounded-full
+                        border-[8px]
+                        border-white
+                        shadow-[0_0_0_1px_#D5E0E7,0_12px_30px_rgba(11,42,82,0.07)]
+
                         ${
                           isGrowth
-                            ? "border-[#0B2A52] bg-[#0B2A52] shadow-[0_22px_55px_rgba(11,42,82,0.18)]"
-                            : "border-[#E3E9F1] bg-white shadow-[0_10px_30px_rgba(11,42,82,0.045)] hover:shadow-[0_18px_45px_rgba(11,42,82,0.09)]"
+                            ? "bg-[#0B2A52] text-white"
+                            : "bg-[#EEF4F8] text-[#0B2A52]"
                         }
                       `}
                     >
-                      {/* Top accent */}
-
-                      <div
-                        className={`
-                          absolute
-                          left-0
-                          right-0
-                          top-0
-                          h-[2px]
-                          ${
-                            isGrowth
-                              ? "bg-[#C6A77A]"
-                              : "bg-[#0B2A52]/15"
-                          }
-                        `}
+                      <Icon
+                        size={23}
+                        strokeWidth={1.65}
                       />
 
-                      {/* Number */}
+                      {/* growth ring */}
 
-                      <span
-                        className={`
-                          font-[var(--font-new-york)]
-                          text-[11px]
-                          font-semibold
-                          tracking-[0.28em]
-                          ${
-                            isGrowth
-                              ? "text-white/60"
-                              : "text-[#0B2A52]/50"
+                      {isGrowth && (
+                        <motion.span
+                          animate={
+                            reduceMotion
+                              ? undefined
+                              : {
+                                  scale: [1, 1.12, 1],
+                                  opacity: [0.4, 0, 0.4],
+                                }
                           }
-                        `}
-                      >
-                        {step.number}
-                      </span>
-
-                      {/* Title */}
-
-                      <h3
-                        className={`
-                          mt-3
-                          font-[var(--font-new-york)]
-                          text-[23px]
-                          font-semibold
-                          leading-[1]
-                          tracking-[-0.025em]
-                          xl:text-[25px]
-                          ${
-                            isGrowth
-                              ? "text-white"
-                              : "text-[#0B2A52]"
-                          }
-                        `}
-                      >
-                        {step.title}
-                      </h3>
-
-                      {/* Gold detail */}
-
-                      <div
-                        className="
-                          mt-4
-                          h-[2px]
-                          w-9
-                          rounded-full
-                          bg-[#C6A77A]
-                        "
-                      />
-
-                      {/* Description */}
-
-                      <p
-                        className={`
-                          mt-5
-                          text-[14px]
-                          leading-6
-                          ${
-                            isGrowth
-                              ? "text-white/75"
-                              : "text-[#66758A]"
-                          }
-                        `}
-                      >
-                        {step.description}
-                      </p>
-                    </motion.div>
-
-                    {/* =================================================
-                        DESKTOP ARROW
-                    ================================================= */}
-
-                    {!isGrowth && (
-                      <motion.div
-                        initial={{
-                          opacity: 0,
-                          scale: 0.8,
-                        }}
-                        whileInView={{
-                          opacity: 1,
-                          scale: 1,
-                        }}
-                        viewport={{
-                          once: true,
-                        }}
-                        transition={{
-                          duration: 0.5,
-                          delay: index * 0.1 + 0.3,
-                        }}
-                        className="
-                          absolute
-                          right-[-14px]
-                          top-[205px]
-                          z-30
-                          hidden
-                          h-8
-                          w-8
-                          items-center
-                          justify-center
-                          rounded-full
-                          border
-                          border-[#DCE5EF]
-                          bg-white
-                          lg:flex
-                        "
-                      >
-                        <ArrowRight
-                          size={15}
-                          strokeWidth={1.8}
-                          className="text-[#0B2A52]"
-                        />
-                      </motion.div>
-                    )}
-
-                    {/* =================================================
-                        MOBILE CONNECTOR
-                    ================================================= */}
-
-                    {!isGrowth && (
-                      <div
-                        className="
-                          absolute
-                          bottom-[-14px]
-                          left-[15px]
-                          z-30
-                          flex
-                          h-7
-                          w-7
-                          items-center
-                          justify-center
-                          rounded-full
-                          border
-                          border-[#D8E2ED]
-                          bg-white
-                          lg:hidden
-                        "
-                      >
-                        <ArrowRight
-                          size={13}
-                          strokeWidth={1.8}
+                          transition={{
+                            duration: 2.6,
+                            repeat: Infinity,
+                            ease: "easeInOut",
+                          }}
                           className="
-                            rotate-90
-                            text-[#0B2A52]
+                            absolute
+                            inset-[-10px]
+                            rounded-full
+                            border
+                            border-[#C6A77A]
                           "
                         />
-                      </div>
-                    )}
+                      )}
+                    </motion.div>
+
+                    {/* number */}
+
+                    <span
+                      className="
+                        mt-7
+                        block
+                        text-[0.4rem]
+                        font-semibold
+                        uppercase
+                        tracking-[0.2em]
+                        text-[#B08A62]
+                      "
+                    >
+                      {step.number}
+                    </span>
+
+                    {/* title */}
+
+                    <h3
+                      className="
+                        mt-2
+                        font-[var(--font-new-york)]
+                        text-[1.42rem]
+                        font-semibold
+                        leading-[1]
+                        tracking-[-0.03em]
+                        text-[#0B2A52]
+                        xl:text-[1.55rem]
+                      "
+                    >
+                      {step.title}
+                    </h3>
+
+                    {/* micro */}
+
+                    <span
+                      className="
+                        mt-3
+                        block
+                        text-[0.39rem]
+                        font-semibold
+                        uppercase
+                        tracking-[0.16em]
+                        text-[#8C9CA8]
+                      "
+                    >
+                      {step.micro}
+                    </span>
+
+                    {/* description */}
+
+                    <p
+                      className="
+                        mx-auto
+                        mt-4
+                        max-w-[190px]
+                        text-[0.75rem]
+                        leading-[1.6]
+                        text-[#66758A]
+                      "
+                    >
+                      {step.description}
+                    </p>
+
+                    {/* hover detail */}
+
+                    <span
+                      className="
+                        mx-auto
+                        mt-5
+                        block
+                        h-[2px]
+                        w-0
+                        bg-[#C6A77A]
+                        transition-all
+                        duration-500
+                        group-hover:w-9
+                      "
+                    />
                   </motion.div>
                 );
               })}
             </div>
           </div>
+        </div>
 
-          {/* =====================================================
-              BOTTOM PROMISE
-          ===================================================== */}
+        {/* =====================================================
+            MOBILE + TABLET JOURNEY
+        ===================================================== */}
 
-          <motion.div
-            initial={{
-              opacity: 0,
-              y: 40,
-            }}
-            whileInView={{
-              opacity: 1,
-              y: 0,
-            }}
-            viewport={{
-              once: true,
-              amount: 0.2,
-            }}
-            transition={{
-              duration: 0.7,
-              delay: 0.15,
-              ease: [0.22, 1, 0.36, 1],
-            }}
+        <div
+          className="
+            mx-auto
+            mt-12
+            max-w-[720px]
+            lg:hidden
+          "
+        >
+          <div
             className="
-              relative
-              z-10
-              mx-auto
-              mt-9
-              max-w-[1080px]
-              sm:mt-11
+              mb-8
+              flex
+              items-center
+              gap-4
             "
           >
+            <span
+              className="
+                text-[0.42rem]
+                font-semibold
+                uppercase
+                tracking-[0.18em]
+                text-[#8293A0]
+              "
+            >
+              The Growth Journey
+            </span>
+
+            <span className="h-px flex-1 bg-[#DDE6EC]" />
+
+            <span
+              className="
+                text-[0.42rem]
+                font-semibold
+                uppercase
+                tracking-[0.18em]
+                text-[#A17B55]
+              "
+            >
+              01—05
+            </span>
+          </div>
+
+          <div>
+            {steps.map((step, index) => (
+              <MobileJourneyStep
+                key={step.number}
+                step={step}
+                index={index}
+                reduceMotion={reduceMotion}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* =====================================================
+            FINAL PROMISE
+        ===================================================== */}
+
+        <motion.div
+          initial={{
+            opacity: 0,
+            y: reduceMotion ? 0 : 24,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{
+            once: true,
+            amount: 0.4,
+          }}
+          transition={{
+            duration: 0.72,
+            ease,
+          }}
+          className="
+            mx-auto
+            mt-14
+            max-w-[1050px]
+            sm:mt-16
+            lg:mt-10
+          "
+        >
+          <div
+            className="
+              relative
+              overflow-hidden
+              border-y
+              border-[#D9E3E9]
+              py-8
+              sm:py-9
+            "
+          >
+            {/* background glow */}
+
+            <div
+              className="
+                pointer-events-none
+                absolute
+                left-1/2
+                top-1/2
+                h-[180px]
+                w-[520px]
+                -translate-x-1/2
+                -translate-y-1/2
+                rounded-full
+                bg-[#EEF5FA]
+                blur-[65px]
+              "
+            />
+
             <div
               className="
                 relative
-                overflow-hidden
-                rounded-[18px]
-                border
-                border-[#E0E7EF]
-                bg-white
-                px-5
-                py-4
-                shadow-[0_8px_30px_rgba(11,42,82,0.035)]
-                sm:px-7
-                sm:py-5
+                z-10
+                flex
+                flex-col
+                items-center
+                justify-center
+                gap-5
+                text-center
+                md:flex-row
+                md:text-left
               "
             >
-              <div
+              {/* icon */}
+
+              <motion.div
+                animate={
+                  reduceMotion
+                    ? undefined
+                    : {
+                        rotate: [0, 7, 0],
+                        y: [0, -3, 0],
+                      }
+                }
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
                 className="
                   flex
-                  flex-col
+                  h-11
+                  w-11
+                  shrink-0
                   items-center
                   justify-center
-                  gap-3
-                  text-center
-                  sm:flex-row
-                  sm:gap-5
+                  rounded-full
+                  bg-[#F4EEE5]
+                  text-[#A97C52]
                 "
               >
-                {/* Icon */}
+                <Sparkles
+                  size={16}
+                  strokeWidth={1.7}
+                />
+              </motion.div>
 
-                <div
-                  className="
-                    flex
-                    h-9
-                    w-9
-                    shrink-0
-                    items-center
-                    justify-center
-                    rounded-full
-                    bg-[#EEF3F8]
-                  "
-                >
-                  <Sparkles
-                    size={16}
-                    strokeWidth={1.7}
-                    className="text-[#0B2A52]"
-                  />
-                </div>
+              {/* main statement */}
 
-                {/* Statement */}
-
+              <div>
                 <p
                   className="
                     font-[var(--font-new-york)]
-                    text-base
+                    text-[1.05rem]
                     font-semibold
-                    tracking-[-0.01em]
+                    leading-[1.45]
+                    tracking-[-0.015em]
                     text-[#0B2A52]
-                    sm:text-lg
+                    sm:text-[1.18rem]
                   "
                 >
-                  It&apos;s not just our process.
-                  <span className="ml-1 text-[#C6A77A]">
+                  It&apos;s not just our process.{" "}
+                  <span className="text-[#C6A77A]">
                     It&apos;s our promise.
                   </span>
                 </p>
 
-                {/* Divider */}
-
-                <span
-                  className="
-                    hidden
-                    h-7
-                    w-px
-                    bg-[#DCE5EF]
-                    sm:block
-                  "
-                />
-
-                {/* Ending */}
-
                 <p
                   className="
-                    text-sm
+                    mt-1.5
+                    text-[0.78rem]
+                    leading-[1.6]
                     text-[#66758A]
-                    sm:text-[15px]
                   "
                 >
-                  Strategy. Creativity. Data.
-                  <span className="ml-1 font-semibold text-[#0B2A52]">
+                  Strategy. Creativity. Data.{" "}
+                  <span className="font-semibold text-[#0B2A52]">
                     That&apos;s how growth happens.
                   </span>
                 </p>
               </div>
+
+              {/* desktop arrow */}
+
+              <div
+                className="
+                  hidden
+                  flex-1
+                  items-center
+                  gap-3
+                  md:flex
+                "
+              >
+                <span className="h-px flex-1 bg-[#D8E3E9]" />
+
+                <span
+                  className="
+                    flex
+                    h-8
+                    w-8
+                    items-center
+                    justify-center
+                    rounded-full
+                    bg-[#0B2A52]
+                    text-white
+                  "
+                >
+                  <ArrowRight
+                    size={11}
+                    strokeWidth={1.8}
+                  />
+                </span>
+              </div>
             </div>
-          </motion.div>
-        </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

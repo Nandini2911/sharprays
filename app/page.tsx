@@ -7,6 +7,7 @@ import Hero from "@/components/Home/Hero";
 import HookSection from "@/components/Home/HookSection";
 import HumanSection from "@/components/Home/HumanSection";
 import Navbar from "@/components/Home/Navbar";
+import SharpRaysComparisonSection from "@/components/Home/SharpRaysComparisonSection";
 import WhatCouldWeDoSection from "@/components/Home/WhatCouldWeDoSection";
 import WhoItsForSection from "@/components/Home/WhoItsForSection";
 import YourMethodSection from "@/components/Home/YourMethodSection";
@@ -23,6 +24,7 @@ export default function Home() {
       <DifferenceSection/>
       <YourMethodSection/>
       <HumanSection/>
+      <SharpRaysComparisonSection />
       <WhoItsForSection/>
       <BeforeYouAskSection/>
       <FinalCTASection/>

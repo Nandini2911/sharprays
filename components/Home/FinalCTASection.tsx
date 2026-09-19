@@ -376,239 +376,140 @@ export default function FinalCTASection() {
             PREMIUM COMPACT BLUE GLASS CTA
         ==================================================== */}
 
-        <motion.div
-          initial={{
-            opacity: 0,
-            y: 18,
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
-          viewport={{
-            once: true,
-            amount: 0.3,
-          }}
-          transition={{
-            duration: 0.7,
-            delay: 0.28,
-            ease,
-          }}
-          className="mt-8"
-        >
-          <motion.a
-            href="#contact"
-            whileHover={{
-              y: -3,
-              scale: 1.015,
-            }}
-            whileTap={{
-              scale: 0.98,
-            }}
-            transition={{
-              duration: 0.3,
-              ease,
-            }}
-            className="
-              group
+<motion.div
+  initial={{
+    opacity: 0,
+    y: 18,
+  }}
+  whileInView={{
+    opacity: 1,
+    y: 0,
+  }}
+  viewport={{
+    once: true,
+    amount: 0.3,
+  }}
+  transition={{
+    duration: 0.7,
+    delay: 0.28,
+    ease,
+  }}
+  className="
+    mt-7
+    sm:mt-8
+  "
+>
+  <motion.a
+    href="/contact"
+    whileHover={{
+      y: -2,
+    }}
+    whileTap={{
+      scale: 0.98,
+    }}
+    transition={{
+      duration: 0.3,
+      ease,
+    }}
+    className="
+      group
+      relative
+      inline-flex
 
-              relative
-              isolate
+      min-h-[46px]
 
-              inline-flex
+      items-center
+      justify-center
 
-              items-center
+      overflow-hidden
 
-              gap-3
+      rounded-[16px]
 
-              overflow-hidden
+      border
+      border-[#6285AD]/30
 
-              rounded-full
+      bg-white/80
 
-              border
-              border-[#6FA5CA]/35
+      px-5
+      py-[11px]
 
-              bg-gradient-to-r
-              from-[#F0F8FD]/95
-              via-[#DFEFF9]/95
-              to-[#CBE7F6]/95
+      text-[13px]
+      font-medium
+      tracking-[-0.01em]
 
-              py-2.5
-              pl-5
-              pr-2.5
+      text-[#0B2A52]
 
-              text-[12px]
-              font-semibold
+      shadow-[0_8px_30px_rgba(11,42,82,0.08)]
 
-              tracking-[-0.01em]
+      backdrop-blur-[8px]
 
-              text-[#0B2A52]
+      transition-all
+      duration-300
+      ease-out
 
-              shadow-[0_12px_35px_-22px_rgba(45,116,165,0.45),inset_0_1px_0_rgba(255,255,255,0.95)]
+      hover:border-[#6285AD]/40
+      hover:bg-white
+      hover:shadow-[0_10px_35px_rgba(98,133,173,0.15)]
 
-              backdrop-blur-xl
+      active:translate-y-0
 
-              transition-all
-              duration-500
+      sm:min-h-[48px]
+      sm:px-6
+      sm:py-3
+      sm:text-[14px]
 
-              hover:border-[#4D8CB8]/45
+      md:text-[15px]
+    "
+  >
+    {/* STATIC SOFT INNER BORDER */}
 
-              hover:from-[#E5F3FB]
-              hover:via-[#D4EBF8]
-              hover:to-[#BDDFF2]
+    <span
+      aria-hidden="true"
+      className="
+        pointer-events-none
+        absolute
+        inset-[2px]
 
-              hover:shadow-[0_18px_42px_-24px_rgba(45,116,165,0.5),inset_0_1px_0_rgba(255,255,255,0.95)]
+        rounded-[13px]
 
-              sm:text-[13px]
-            "
-          >
-            {/* INNER BLUE LIGHT */}
+        border
+        border-white/60
+      "
+    />
 
-            <span
-              aria-hidden="true"
-              className="
-                pointer-events-none
+    {/* SUBTLE TOP LIGHT */}
 
-                absolute
-                -bottom-8
-                left-1/2
+    <span
+      aria-hidden="true"
+      className="
+        pointer-events-none
+        absolute
+        inset-x-4
+        top-0
 
-                -z-10
+        h-px
 
-                h-16
-                w-[80%]
+        bg-gradient-to-r
+        from-transparent
+        via-white
+        to-transparent
+      "
+    />
 
-                -translate-x-1/2
+    {/* TEXT */}
 
-                rounded-full
-
-                bg-[#65A9D4]/20
-
-                blur-[22px]
-
-                transition-all
-                duration-500
-
-                group-hover:bg-[#559BC8]/30
-              "
-            />
-
-            {/* IOS-LIKE TOP REFLECTION */}
-
-            <span
-              aria-hidden="true"
-              className="
-                pointer-events-none
-
-                absolute
-                left-[12%]
-                right-[15%]
-                top-[2px]
-
-                h-px
-
-                bg-gradient-to-r
-                from-transparent
-                via-white
-                to-transparent
-
-                opacity-90
-              "
-            />
-
-            {/* MOVING GLASS SHINE */}
-
-            <span
-              aria-hidden="true"
-              className="
-                pointer-events-none
-
-                absolute
-                -left-[45%]
-                top-0
-
-                h-full
-                w-[30%]
-
-                skew-x-[-20deg]
-
-                bg-gradient-to-r
-                from-transparent
-                via-white/75
-                to-transparent
-
-                transition-[left]
-                duration-700
-                ease-[cubic-bezier(0.22,1,0.36,1)]
-
-                group-hover:left-[120%]
-              "
-            />
-
-            {/* TEXT */}
-
-            <span className="relative z-10">
-              Start a Conversation
-            </span>
-
-            {/* ARROW CIRCLE */}
-
-            <span
-              className="
-                relative
-                z-10
-
-                flex
-
-                h-9
-                w-9
-
-                shrink-0
-
-                items-center
-                justify-center
-
-                rounded-full
-
-                border
-                border-[#0B2A52]/10
-
-                bg-gradient-to-br
-                from-[#0B2A52]/[0.06]
-                to-[#4F91BD]/15
-
-                shadow-[inset_0_1px_0_rgba(255,255,255,0.85)]
-
-                backdrop-blur-md
-
-                transition-all
-                duration-500
-
-                group-hover:-translate-y-0.5
-                group-hover:translate-x-0.5
-                group-hover:rotate-45
-
-                group-hover:border-[#0B2A52]/20
-
-                group-hover:bg-[#0B2A52]
-              "
-            >
-              <ArrowUpRight
-                size={14}
-                strokeWidth={1.6}
-                className="
-                  text-[#B79A72]
-
-                  transition-colors
-                  duration-500
-
-                  group-hover:text-white
-                "
-              />
-            </span>
-          </motion.a>
-        </motion.div>
-
+    <span
+      className="
+        relative
+        z-10
+        whitespace-nowrap
+        text-[#0B2A52]
+      "
+    >
+      Start a Conversation
+    </span>
+  </motion.a>
+</motion.div>
         {/* ===================================================
             REASSURANCE
         ==================================================== */}
