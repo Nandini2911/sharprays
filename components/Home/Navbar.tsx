@@ -21,33 +21,27 @@ const services = [
     href: "/services/social-media-marketing",
   },
   {
-    label: "SEO",
+    label: "Search Engine Optimization (SEO)",
     href: "/services/search-engine-optimization",
   },
+ 
   {
-    label: "Content Marketing",
-    href: "/services/content-marketing",
-  },
-  {
-    label: "Performance Marketing",
+    label: "Performance Marketing / Paid Media",
     href: "/services/performance-marketing",
   },
   {
-    label: "Website Development",
+    label: "Website Development & Management",
     href: "/services/website-development",
   },
   {
-    label: "Video and Creative",
+    label: "AI Video & Video Editing",
     href: "/services/video-and-creative",
   },
   {
-    label: "PR and Digital PR",
-    href: "/services/pr-and-digital-pr",
-  },
-  {
-    label: "AI Marketing",
-    href: "/services/ai-marketing",
+    label: "AI Automation",
+    href: "/services/AI-Automation",
   }
+  
 ];
 
 export default function Navbar() {
