@@ -273,15 +273,21 @@ export default function SocialMediaPlanIncludes() {
           {/* EYEBROW */}
 
           <div className="flex items-center justify-center gap-3">
-            <span
-              aria-hidden="true"
-              className="h-px w-9 bg-[#B79A72]"
-            />
+             <span
+            className="
+              h-px
+              w-10
+
+              bg-gradient-to-r
+              from-transparent
+              to-[#B79A72]
+            "
+          />
 
             <span
               className="
                 text-[9px]
-                font-semibold
+              
                 uppercase
                 tracking-[0.26em]
                 text-[#B79A72]
@@ -291,10 +297,16 @@ export default function SocialMediaPlanIncludes() {
               Social Media Management Services
             </span>
 
-            <span
-              aria-hidden="true"
-              className="h-px w-9 bg-[#B79A72]"
-            />
+             <span
+            className="
+              h-px
+              w-10
+
+              bg-gradient-to-l
+              from-transparent
+              to-[#B79A72]
+            "
+          />
           </div>
 
           {/* HEADING */}
@@ -553,23 +565,7 @@ export default function SocialMediaPlanIncludes() {
 
                       {/* BIG NUMBER */}
 
-                      <span
-                        aria-hidden="true"
-                        className={`
-                          select-none
-                          font-serif
-                          text-[58px]
-                          font-normal
-                          leading-[0.8]
-                          tracking-[-0.07em]
-                          transition-all
-                          duration-500
-                          group-hover:-translate-y-1
-                          ${item.numberColor}
-                        `}
-                      >
-                        {item.number}
-                      </span>
+                     
                     </div>
 
                     {/* =================================================
@@ -599,17 +595,7 @@ export default function SocialMediaPlanIncludes() {
                           `}
                         />
 
-                        <span
-                          className="
-                            text-[8px]
-                            font-semibold
-                            uppercase
-                            tracking-[0.17em]
-                            text-[#102D4D]/35
-                          "
-                        >
-                          Deliverable {item.number}
-                        </span>
+                       
                       </div>
 
                       <h3
@@ -649,22 +635,11 @@ export default function SocialMediaPlanIncludes() {
                         flex
                         items-center
                         justify-between
-                        border-t
-                        border-[#102D4D]/[0.07]
+                       
                         pt-4
                       "
                     >
-                      <span
-                        className="
-                          text-[8px]
-                          font-medium
-                          uppercase
-                          tracking-[0.16em]
-                          text-[#102D4D]/28
-                        "
-                      >
-                        Defined in your scope
-                      </span>
+                     
 
                       <span
                         className={`

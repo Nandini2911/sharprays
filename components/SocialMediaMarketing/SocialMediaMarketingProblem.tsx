@@ -1,5 +1,5 @@
 "use client";
-
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import {
   ArrowRight,
@@ -147,13 +147,31 @@ export default function SocialMediaMarketingProblem() {
                 : "translate-y-5 opacity-0"
             }`}
           >
-            <span className="h-px w-8 bg-[#B79A72]" />
+             <span
+            className="
+              h-px
+              w-10
 
-            <span className="text-[9px] font-semibold tracking-[0.28em] text-[#B79A72] sm:text-[10px]">
+              bg-gradient-to-r
+              from-transparent
+              to-[#B79A72]
+            "
+          />
+
+            <span className="text-[9px]  tracking-[0.28em] text-[#B79A72] sm:text-[10px]">
               THE PROBLEM
             </span>
 
-            <span className="h-px w-8 bg-[#B79A72]" />
+           <span
+            className="
+              h-px
+              w-10
+
+              bg-gradient-to-l
+              from-transparent
+              to-[#B79A72]
+            "
+          />
           </div>
 
           <h2
@@ -779,31 +797,272 @@ export default function SocialMediaMarketingProblem() {
             BOTTOM STATEMENT
         ========================================================== */}
 
-        <div
-          className={`mx-auto mt-16 max-w-[780px] text-center transition-all delay-300 duration-[1200ms] ${
-            isVisible
-              ? "translate-y-0 opacity-100"
-              : "translate-y-6 opacity-0"
-          }`}
-        >
-          <div className="mx-auto mb-5 flex items-center justify-center gap-3">
-            <span className="h-px w-8 bg-[#0B2A52]/10" />
+       {/* =========================================================
+    BOTTOM STATEMENT + CTA
+========================================================== */}
 
-            <span className="text-[8px] font-semibold tracking-[0.22em] text-[#0B2A52]/30">
-              THE REAL ISSUE?
-            </span>
+<div
+  className={`
+    mx-auto
+    mt-14
+    max-w-[820px]
+    text-center
 
-            <span className="h-px w-8 bg-[#0B2A52]/10" />
-          </div>
+    transition-all
+    delay-300
+    duration-[1200ms]
 
-          <p className="text-[1.25rem] font-medium leading-[1.5] tracking-[-0.02em] text-[#0B2A52] sm:text-[1.45rem]">
-            Without strategy, social media becomes an activity.
-            <br className="hidden sm:block" />
-            <span className="text-[#B79A72]">
-              With strategy, it becomes a brand-building system.
-            </span>
-          </p>
-        </div>
+    sm:mt-16
+
+    ${
+      isVisible
+        ? "translate-y-0 opacity-100"
+        : "translate-y-6 opacity-0"
+    }
+  `}
+>
+  {/* LABEL */}
+
+  <div
+    className="
+      mx-auto
+      mb-5
+
+      flex
+      items-center
+      justify-center
+      gap-3
+    "
+  >
+    <span
+      className="
+        h-px
+        w-8
+
+        bg-gradient-to-r
+        from-transparent
+        to-[#B79A72]
+      "
+    />
+
+    <span
+      className="
+        text-[8px]
+        font-semibold
+        uppercase
+        tracking-[0.22em]
+        text-[#0B2A52]/30
+      "
+    >
+      THE REAL ISSUE?
+    </span>
+
+    <span
+      className="
+        h-px
+        w-8
+
+        bg-gradient-to-l
+        from-transparent
+        to-[#B79A72]
+      "
+    />
+  </div>
+
+  {/* STATEMENT */}
+
+  <p
+    className="
+      text-[1.2rem]
+      font-medium
+      leading-[1.5]
+      tracking-[-0.02em]
+      text-[#0B2A52]
+
+      sm:text-[1.45rem]
+
+      md:text-[1.55rem]
+    "
+  >
+    Without strategy, social media becomes an activity.
+
+    <br className="hidden sm:block" />
+
+    <span className="text-[#B79A72]">
+      With strategy, it becomes a brand-building system.
+    </span>
+  </p>
+
+  {/* CTA DIVIDER */}
+
+  <div
+    className="
+      mx-auto
+      mt-7
+      h-px
+      w-14
+      bg-[#0B2A52]/10
+
+      sm:mt-8
+    "
+  />
+
+  {/* CTA COPY */}
+
+  <div
+    className="
+      mx-auto
+      mt-6
+      max-w-[600px]
+
+      sm:mt-7
+    "
+  >
+    <p
+      className="
+        font-[var(--font-new-york)]
+
+        text-[1.55rem]
+        font-normal
+        leading-[1.15]
+        tracking-[-0.035em]
+        text-[#0B2A52]
+
+        sm:text-[1.8rem]
+
+        md:text-[2rem]
+      "
+    >
+      Ready to Make Social Media{" "}
+      <span className="text-[#B79A72]">
+        Work for Your Brand?
+      </span>
+    </p>
+
+   
+  </div>
+
+  {/* CTA BUTTON */}
+
+  <div
+    className="
+      mt-6
+      flex
+      justify-center
+
+      sm:mt-7
+    "
+  >
+    <Link
+      href="/contact"
+      className="
+        group
+        relative
+
+        inline-flex
+
+        min-h-[46px]
+
+        items-center
+        justify-center
+
+        overflow-hidden
+
+        rounded-[16px]
+
+        border
+        border-[#6285AD]/30
+
+        bg-white/80
+
+        px-5
+        py-[11px]
+
+        text-[13px]
+        font-medium
+        tracking-[-0.01em]
+
+        text-[#0B2A52]
+
+        shadow-[0_8px_30px_rgba(11,42,82,0.08)]
+
+        backdrop-blur-[8px]
+
+        transition-all
+        duration-300
+        ease-out
+
+        hover:-translate-y-[2px]
+        hover:border-[#6285AD]/40
+        hover:bg-white
+        hover:shadow-[0_12px_38px_rgba(98,133,173,0.16)]
+
+        active:translate-y-0
+        active:scale-[0.98]
+
+        sm:min-h-[48px]
+        sm:px-6
+        sm:py-3
+        sm:text-[14px]
+
+        md:px-7
+        md:text-[15px]
+      "
+    >
+      {/* SOFT INNER BORDER */}
+
+      <span
+        aria-hidden="true"
+        className="
+          pointer-events-none
+          absolute
+          inset-[2px]
+
+          rounded-[13px]
+
+          border
+          border-white/60
+        "
+      />
+
+      {/* TOP LIGHT */}
+
+      <span
+        aria-hidden="true"
+        className="
+          pointer-events-none
+          absolute
+          inset-x-4
+          top-0
+
+          h-px
+
+          bg-gradient-to-r
+          from-transparent
+          via-white
+          to-transparent
+        "
+      />
+
+      {/* TEXT */}
+
+      <span
+        className="
+          relative
+          z-10
+          whitespace-nowrap
+          text-[#0B2A52]
+        "
+      >
+        Build My Social Presence
+      </span>
+    </Link>
+  </div>
+
+  {/* SMALL SUPPORTING TEXT */}
+
+  
+</div>
       </div>
     </section>
   );

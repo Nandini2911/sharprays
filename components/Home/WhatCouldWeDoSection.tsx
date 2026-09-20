@@ -48,7 +48,7 @@ const services = [
 
     title: "Search Engine Optimization (SEO)",
 
-    slug: "/services/seo",
+    slug: "/services/search-engine-optimization",
 
     image: "/seo.webp",
 
@@ -88,7 +88,7 @@ const services = [
 
     title: "Website Development & Management",
 
-    slug: "/services/web-development",
+    slug: "/services/website-development",
 
     image: "/whatwedo/web.png",
 
@@ -108,7 +108,7 @@ const services = [
 
     title: "AI Video & Video Editing",
 
-    slug: "/services/ai-video-and-video-editing",
+    slug: "/services/video-and-creative",
 
     image: "/whatwedo/video-creative.png",
 

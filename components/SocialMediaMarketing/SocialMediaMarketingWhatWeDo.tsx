@@ -1,4 +1,6 @@
+
 "use client";
+import Link from "next/link";
 
 import {
   useEffect,
@@ -354,15 +356,16 @@ export default function SocialMediaMarketingServices() {
               gap-3
             "
           >
-            <motion.span
-              animate={{
-                backgroundColor: active.color,
-              }}
-              transition={{
-                duration: 0.5,
-              }}
-              className="h-px w-9"
-            />
+            <span
+            className="
+              h-px
+              w-10
+
+              bg-gradient-to-r
+              from-transparent
+              to-[#B79A72]
+            "
+          />
 
             <motion.span
               animate={{
@@ -373,7 +376,8 @@ export default function SocialMediaMarketingServices() {
               }}
               className="
                 text-[9px]
-                font-semibold
+          
+          
                 uppercase
                 tracking-[0.27em]
                 sm:text-[10px]
@@ -382,15 +386,16 @@ export default function SocialMediaMarketingServices() {
               Our Social Media Marketing Services
             </motion.span>
 
-            <motion.span
-              animate={{
-                backgroundColor: active.color,
-              }}
-              transition={{
-                duration: 0.5,
-              }}
-              className="h-px w-9"
-            />
+             <span
+            className="
+              h-px
+              w-10
+
+              bg-gradient-to-l
+              from-transparent
+              to-[#B79A72]
+            "
+          />
           </div>
 
           <h2
@@ -560,20 +565,7 @@ export default function SocialMediaMarketingServices() {
                     justify-between
                   "
                 >
-                  <motion.span
-                    animate={{
-                      color: selected
-                        ? "rgba(255,255,255,.55)"
-                        : `${service.dark}80`,
-                    }}
-                    className="
-                      text-[8px]
-                      font-semibold
-                      tracking-[0.18em]
-                    "
-                  >
-                    {service.number}
-                  </motion.span>
+                  
 
                   <motion.span
                     animate={{
@@ -806,21 +798,7 @@ export default function SocialMediaMarketingServices() {
 
                   {/* NUMBER */}
 
-                  <motion.p
-                    animate={{
-                      color: active.color,
-                    }}
-                    className="
-                      mt-10
-                      text-[10px]
-                      font-semibold
-                      uppercase
-                      tracking-[0.22em]
-                    "
-                  >
-                    Service {active.number}
-                  </motion.p>
-
+                 
                   {/* HEADING */}
 
                   <h3
@@ -863,26 +841,8 @@ export default function SocialMediaMarketingServices() {
                     justify-between
                   "
                 >
-                  <span
-                    className="
-                      text-[8px]
-                      font-medium
-                      uppercase
-                      tracking-[0.18em]
-                      text-[#0B2A52]/30
-                    "
-                  >
-                    Connected Service
-                  </span>
-
-                  <span
-                    className="
-                      text-[8px]
-                      text-[#0B2A52]/30
-                    "
-                  >
-                    {active.number} / 06
-                  </span>
+                  
+                 
                 </div>
 
                 <div
@@ -1127,45 +1087,40 @@ export default function SocialMediaMarketingServices() {
                       Everything works together
                     </p>
 
-                    <motion.button
-                      type="button"
-                      onClick={() =>
-                        setActiveIndex((current) =>
-                          current === services.length - 1
-                            ? 0
-                            : current + 1
-                        )
-                      }
-                      animate={{
-                        backgroundColor: active.color,
-                        boxShadow: `0 10px 30px ${active.color}35`,
-                      }}
-                      whileHover={{
-                        scale: 1.06,
-                      }}
-                      whileTap={{
-                        scale: 0.96,
-                      }}
+                    <Link
+                      href="/contact"
+                      aria-label="Contact Sharp Rays"
                       className="
                         group
                         flex
                         h-10
                         w-10
+                        shrink-0
                         items-center
                         justify-center
                         rounded-full
                         text-white
+                        transition-transform
+                        duration-300
+                        hover:scale-[1.06]
+                        active:scale-[0.96]
                       "
+                      style={{
+                        backgroundColor: active.color,
+                        boxShadow: `0 10px 30px ${active.color}35`,
+                      }}
                     >
                       <ArrowRight
                         size={14}
+                        strokeWidth={2}
                         className="
+                          text-white
                           transition-transform
                           duration-300
                           group-hover:translate-x-0.5
                         "
                       />
-                    </motion.button>
+                    </Link>
                   </div>
                 </motion.div>
               </AnimatePresence>

@@ -23,10 +23,11 @@ export default function SocialMediaMarketing() {
       <Navbar />
       <SocialMediaMarketingHero/>
       <SocialMediaQuickAnswer/>
+        <SocialMediaMarketingWhatWeDo/>
       <SocialMediaMarketingProblem/>
       <SocialMediaPointOfView/>
-      <SocialMediaMarketingBigIdea/>
-      <SocialMediaMarketingWhatWeDo/>
+     
+    
       <SocialMediaMarketingPlanIncludes/>
       <PaidSocialMediaAdvertising/>
       <SocialMediaWhoWeWorkWith/>

@@ -186,27 +186,44 @@ export default function BeliefSection() {
             }}
           >
            
+ <span
+            className="
+              h-px
+              w-10
 
-            <span
-              style={{
-                width: mobile ? "22px" : "28px",
-                height: "1px",
-                background: "#B79A72",
-              }}
-            />
+              bg-gradient-to-r
+              from-transparent
+              to-[#B79A72]
+            "
+          />
+             <span
+                
+                  className="
+                    whitespace-nowrap
+                    text-[8px]
+                    font-medium
+                    uppercase
+                    tracking-[0.22em]
+                    text-[#B79A72]
 
-            <span
-              style={{
-                color: "#B79A72",
-                
-                fontSize: mobile ? "12px" : "14px",
-                fontWeight: 500,
-                letterSpacing: mobile ? "2px" : "2.5px",
-                
-              }}
-            >
+                    sm:text-[10px]
+                    sm:tracking-[0.30em]
+
+                    md:text-xs
+                  "
+                >
               THE BELIEF
             </span>
+             <span
+            className="
+              h-px
+              w-10
+
+              bg-gradient-to-l
+              from-transparent
+              to-[#B79A72]
+            "
+          />
           </div>
 
           {/* HEADING */}
@@ -250,19 +267,7 @@ export default function BeliefSection() {
 
           {/* GOLD LINE */}
 
-          <div
-            style={{
-              width: mobile ? "42px" : "50px",
-              height: "2px",
-              background: "#C89432",
-              marginTop: mobile ? "24px" : "28px",
-              transform: visible ? "scaleX(1)" : "scaleX(0)",
-              transformOrigin: "left",
-              transition:
-                "transform 0.8s cubic-bezier(0.22,1,0.36,1) 0.35s",
-            }}
-          />
-
+       
           {/* SUPPORTING TEXT */}
 
           <p

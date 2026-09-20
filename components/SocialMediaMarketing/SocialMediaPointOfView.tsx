@@ -58,112 +58,57 @@ export default function SocialMediaPointOfView() {
       className="
         relative
         overflow-hidden
-        bg-[#F7F9FC]
+         bg-white
         py-24
         text-[#0B2A52]
         sm:py-28
         lg:py-36
       "
     >
-      {/* =========================================================
-          BACKGROUND
-      ========================================================== */}
+        {/* =====================================================
+          BACKGROUND SHAPES
+      ====================================================== */}
 
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        {/* BIG EDITORIAL WORD */}
-
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={
-            isInView
-              ? {
-                  opacity: 1,
-                  y: 0,
-                }
-              : {}
-          }
-          transition={{
-            duration: 1.4,
-            ease: [0.22, 1, 0.36, 1],
-          }}
-          className="
-            absolute
-            left-1/2
-            top-[28%]
-            -translate-x-1/2
-            whitespace-nowrap
-            text-[100px]
-            font-semibold
-            tracking-[-0.07em]
-            text-[#0B2A52]/[0.025]
-            sm:text-[160px]
-            lg:text-[220px]
-            xl:text-[270px]
-          "
-        >
-          REMEMBER
-        </motion.div>
-
-        {/* SOFT LIGHT */}
+        {/* TOP RIGHT CIRCLE */}
 
         <div
           className="
             absolute
-            left-1/2
-            top-[38%]
-            h-[420px]
-            w-[780px]
-            -translate-x-1/2
+            -right-[25vw]
+            -top-[15vw]
+            h-[58vw]
+            w-[58vw]
             rounded-full
-            bg-[#DCE8F6]/45
-            blur-[130px]
+            bg-[#6285AD]/6
+
+            md:-right-[12vw]
+            md:-top-[12vw]
+            md:h-[42vw]
+            md:w-[42vw]
           "
         />
 
-        {/* GOLD GLOW */}
+        {/* BOTTOM LEFT CIRCLE */}
 
         <div
           className="
             absolute
-            -right-[160px]
-            bottom-[-120px]
-            h-[420px]
-            w-[420px]
+            -bottom-[25vw]
+            -left-[25vw]
+            h-[55vw]
+            w-[55vw]
             rounded-full
-            bg-[#B79A72]/[0.07]
-            blur-[100px]
-          "
-        />
+            bg-[#C6A77A]/10
 
-        {/* CIRCLES */}
-
-        <div
-          className="
-            absolute
-            -left-[270px]
-            top-[18%]
-            h-[600px]
-            w-[600px]
-            rounded-full
-            border
-            border-[#0B2A52]/[0.035]
-          "
-        />
-
-        <div
-          className="
-            absolute
-            -left-[180px]
-            top-[26%]
-            h-[420px]
-            w-[420px]
-            rounded-full
-            border
-            border-[#B79A72]/[0.08]
+            md:-bottom-[18vw]
+            md:-left-[12vw]
+            md:h-[38vw]
+            md:w-[38vw]
           "
         />
       </div>
-
+     
       {/* =========================================================
           CONTAINER
       ========================================================== */}
@@ -206,12 +151,21 @@ export default function SocialMediaPointOfView() {
             }}
             className="flex items-center justify-center gap-3"
           >
-            <span className="h-px w-9 bg-[#B79A72]" />
+           <span
+            className="
+              h-px
+              w-10
+
+              bg-gradient-to-r
+              from-transparent
+              to-[#B79A72]
+            "
+          />
 
             <span
               className="
                 text-[9px]
-                font-semibold
+               
                 tracking-[0.28em]
                 text-[#B79A72]
                 sm:text-[10px]
@@ -220,7 +174,16 @@ export default function SocialMediaPointOfView() {
               OUR POINT OF VIEW
             </span>
 
-            <span className="h-px w-9 bg-[#B79A72]" />
+             <span
+            className="
+              h-px
+              w-10
+
+              bg-gradient-to-l
+              from-transparent
+              to-[#B79A72]
+            "
+          />
           </motion.div>
 
           {/* HEADING */}
@@ -440,16 +403,7 @@ export default function SocialMediaPointOfView() {
                     {/* NUMBER */}
 
                     <div className="flex items-center justify-between">
-                      <span
-                        className="
-                          text-[8px]
-                          font-semibold
-                          tracking-[0.2em]
-                          text-[#0B2A52]/28
-                        "
-                      >
-                        {stage.number}
-                      </span>
+                     
 
                       {/* ICON */}
 
