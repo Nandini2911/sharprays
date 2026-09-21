@@ -26,7 +26,6 @@ import {
   TrendingUp,
   UserRoundCheck,
   Users,
-  Workflow,
 } from "lucide-react";
 
 const newYorkFont = {
@@ -120,7 +119,8 @@ const services: Service[] = [
   {
     number: "04",
     title: "CRM Automation",
-    short: "Keep customer information moving without constant manual updates.",
+    short:
+      "Keep customer information moving without constant manual updates.",
     icon: Database,
     tone: "from-[#F2EFFF] to-[#EAE7FB]",
     iconTone: "bg-[#E7E1FF] text-[#5138C7]",
@@ -183,8 +183,10 @@ const services: Service[] = [
       "Prepare suggested responses",
       "Update customer records",
     ],
-    closing: "Automation should shorten the path to a useful answer.",
-    emphasis: "Not make customers fight through another system.",
+    closing:
+      "Automation should shorten the path to a useful answer.",
+    emphasis:
+      "Not make customers fight through another system.",
   },
   {
     number: "07",
@@ -285,7 +287,8 @@ const services: Service[] = [
     iconTone: "bg-[#E8E2FF] text-[#5940BD]",
     intro:
       "Important information is often scattered across documents, messages and internal systems.",
-    listLabel: "AI-assisted knowledge workflows can help employees:",
+    listLabel:
+      "AI-assisted knowledge workflows can help employees:",
     items: [
       "Find approved information",
       "Summarize internal documents",
@@ -300,73 +303,127 @@ const services: Service[] = [
 ];
 
 /* =========================================================
-   MINI CARD VISUAL
+   MINI VISUAL
 ========================================================= */
 
-function MiniVisual({
-  index,
-  tone,
-}: {
-  index: number;
-  tone: string;
-}) {
+function MiniVisual({ index }: { index: number }) {
   if (index === 0) {
     return (
-      <div className="relative mx-auto h-[104px] w-full max-w-[170px]">
-        <div className="absolute left-2 top-10 flex h-[38px] w-[38px] items-center justify-center rounded-[12px] border border-white bg-white/90 text-[#0B2A52] shadow-sm">
-          <Mail size={15} />
-        </div>
+      <div className="relative mx-auto h-[120px] w-full max-w-[180px]">
+        <svg
+          viewBox="0 0 180 120"
+          aria-hidden="true"
+          className="absolute inset-0 h-full w-full"
+        >
+          <path
+            d="M30 65 C55 65 63 30 90 30"
+            fill="none"
+            stroke="#7AA6D4"
+            strokeWidth="1.15"
+          />
 
-        <div className="absolute left-1/2 top-2 flex h-[38px] w-[38px] -translate-x-1/2 items-center justify-center rounded-[12px] border border-white bg-white/90 text-[#0B2A52] shadow-sm">
-          <Mail size={15} />
-        </div>
+          <path
+            d="M90 30 C90 55 90 77 90 99"
+            fill="none"
+            stroke="#7AA6D4"
+            strokeWidth="1.15"
+          />
 
-        <div className="absolute bottom-1 left-1/2 flex h-[38px] w-[38px] -translate-x-1/2 items-center justify-center rounded-[12px] border border-white bg-white/90 text-[#0B2A52] shadow-sm">
+          <path
+            d="M90 30 C117 30 123 65 150 65"
+            fill="none"
+            stroke="#7AA6D4"
+            strokeWidth="1.15"
+          />
+        </svg>
+
+        {[
+          "left-[7px] top-[48px]",
+          "left-1/2 top-[10px] -translate-x-1/2",
+          "right-[7px] top-[48px]",
+        ].map((position, i) => (
+          <div
+            key={i}
+            className={`
+              absolute
+              flex
+              h-[40px]
+              w-[40px]
+              items-center
+              justify-center
+              rounded-[12px]
+              border
+              border-white
+              bg-white/90
+              text-[#0B2A52]
+              shadow-sm
+
+              ${position}
+            `}
+          >
+            <Mail size={15} />
+          </div>
+        ))}
+
+        <div
+          className="
+            absolute
+            bottom-[1px]
+            left-1/2
+            flex
+            h-[40px]
+            w-[40px]
+            -translate-x-1/2
+            items-center
+            justify-center
+            rounded-[12px]
+            border
+            border-white
+            bg-white/90
+            text-[#0B2A52]
+            shadow-sm
+          "
+        >
           <Users size={15} />
         </div>
-
-        <div className="absolute right-2 top-10 flex h-[38px] w-[38px] items-center justify-center rounded-[12px] border border-white bg-white/90 text-[#0B2A52] shadow-sm">
-          <Mail size={15} />
-        </div>
-
-        <svg
-          viewBox="0 0 170 104"
-          className="absolute inset-0 h-full w-full"
-          aria-hidden="true"
-        >
-          <path d="M30 58 C55 58 60 25 85 25" fill="none" stroke="#7AA6D4" />
-          <path d="M85 25 C85 52 85 70 85 88" fill="none" stroke="#7AA6D4" />
-          <path d="M85 25 C110 25 115 58 140 58" fill="none" stroke="#7AA6D4" />
-        </svg>
       </div>
     );
   }
 
   if (index === 1) {
     return (
-      <div className="flex h-[104px] items-end justify-center">
+      <div className="flex h-[120px] items-center justify-center">
         <div
           className="
-            relative
             flex
-            h-[76px]
-            w-[92px]
+            h-[88px]
+            w-[108px]
             flex-col
             items-center
             justify-center
-            rounded-[28px_28px_20px_20px]
+            rounded-[30px_30px_22px_22px]
             border
-            border-white/80
-            bg-white/85
+            border-white
+            bg-white/90
             shadow-[0_12px_25px_rgba(11,42,82,0.09)]
           "
         >
-          <div className="flex h-[34px] w-[58px] items-center justify-center rounded-[17px] bg-[#0B2A52]">
+          <div
+            className="
+              flex
+              h-[38px]
+              w-[66px]
+              items-center
+              justify-center
+              rounded-full
+              bg-[#0B2A52]
+            "
+          >
             <span className="h-[8px] w-[8px] rounded-full bg-[#7FC2F2]" />
-            <span className="ml-4 h-[8px] w-[8px] rounded-full bg-[#7FC2F2]" />
+            <span className="ml-5 h-[8px] w-[8px] rounded-full bg-[#7FC2F2]" />
           </div>
 
-          <div className="mt-2 h-[8px] w-[42px] rounded-full bg-[#E7EBEF]" />
+          <div className="mt-3 h-[8px] w-[48px] rounded-full bg-[#E7EBEF]" />
         </div>
       </div>
     );
@@ -374,62 +431,114 @@ function MiniVisual({
 
   if (index === 2) {
     return (
-      <div className="mx-auto h-[104px] max-w-[170px] rounded-[18px] border border-white bg-white/85 p-3 shadow-sm">
-        {["New Lead", "Qualified", "Assigned"].map((item, i) => (
+      <div
+        className="
+          mx-auto
+          flex
+          h-[120px]
+          max-w-[180px]
+          flex-col
+          justify-center
+          rounded-[20px]
+          border
+          border-white
+          bg-white/90
+          p-4
+          shadow-sm
+        "
+      >
+        {["New Lead", "Qualified", "Assigned"].map(
+          (item, itemIndex) => (
+            <div
+              key={item}
+              className="
+                flex
+                items-center
+                gap-2
+                border-b
+                border-[#0B2A52]/[0.06]
+                py-2
+                last:border-b-0
+              "
+            >
+              <CheckCircle2
+                size={13}
+                className={
+                  itemIndex === 0
+                    ? "text-[#B18458]"
+                    : "text-[#32866A]"
+                }
+              />
+
+              <span
+                style={newYorkFont}
+                className="text-[8px] text-[#0B2A52]"
+              >
+                {item}
+              </span>
+            </div>
+          )
+        )}
+      </div>
+    );
+  }
+
+  if (index === 3 || index === 4) {
+    const items =
+      index === 3
+        ? [
+            "New Lead",
+            "Update Contact",
+            "Move to Pipeline",
+            "Create Task",
+          ]
+        : [
+            "New Lead",
+            "Follow Up",
+            "Meeting",
+            "Proposal",
+          ];
+
+    return (
+      <div
+        className="
+          mx-auto
+          flex
+          h-[120px]
+          max-w-[180px]
+          flex-col
+          justify-center
+          rounded-[20px]
+          border
+          border-white
+          bg-white/90
+          p-4
+          shadow-sm
+        "
+      >
+        {items.map((item, itemIndex) => (
           <div
             key={item}
             className="
               flex
               items-center
               gap-2
-              border-b
-              border-[#0B2A52]/[0.06]
-              py-1.5
-              last:border-b-0
+              py-[5px]
             "
-          >
-            <CheckCircle2
-              size={13}
-              className={i === 0 ? "text-[#B18458]" : "text-[#32866A]"}
-            />
-
-            <span
-              style={newYorkFont}
-              className="text-[8px] text-[#0B2A52]"
-            >
-              {item}
-            </span>
-          </div>
-        ))}
-      </div>
-    );
-  }
-
-  if (index === 3 || index === 4) {
-    return (
-      <div className="mx-auto h-[104px] max-w-[170px] rounded-[18px] border border-white bg-white/85 p-3 shadow-sm">
-        {[
-          "New Lead",
-          index === 3 ? "Update Contact" : "Follow Up",
-          index === 3 ? "Move to Pipeline" : "Meeting",
-          index === 3 ? "Create Task" : "Proposal",
-        ].map((item, i) => (
-          <div
-            key={item}
-            className="flex items-center gap-2 py-1.5"
           >
             <span
               className={`
                 flex
-                h-[16px]
-                w-[16px]
+                h-[17px]
+                w-[17px]
+                shrink-0
                 items-center
                 justify-center
                 rounded-full
                 text-white
 
                 ${
-                  i === 0
+                  itemIndex === 0
                     ? "bg-[#7864DA]"
                     : "bg-[#52A78A]"
                 }
@@ -452,8 +561,27 @@ function MiniVisual({
 
   if (index === 5) {
     return (
-      <div className="mx-auto space-y-2">
-        <div className="rounded-full border border-white bg-white/85 px-3 py-2">
+      <div
+        className="
+          mx-auto
+          flex
+          h-[120px]
+          max-w-[185px]
+          flex-col
+          justify-center
+          gap-2
+        "
+      >
+        <div
+          className="
+            rounded-full
+            border
+            border-white
+            bg-white/90
+            px-4
+            py-2.5
+          "
+        >
           <span
             style={newYorkFont}
             className="text-[8px] text-[#0B2A52]"
@@ -462,12 +590,30 @@ function MiniVisual({
           </span>
         </div>
 
-        <div className="flex items-center gap-3 rounded-[16px] border border-white bg-white/85 p-3">
-          <Bot size={18} className="text-[#0B2A52]" />
+        <div
+          className="
+            flex
+            items-center
+            gap-3
+            rounded-[17px]
+            border
+            border-white
+            bg-white/90
+            p-3
+          "
+        >
+          <Bot
+            size={18}
+            className="shrink-0 text-[#0B2A52]"
+          />
 
           <span
             style={newYorkFont}
-            className="text-[8px] leading-[1.3] text-[#0B2A52]"
+            className="
+              text-[8px]
+              leading-[1.3]
+              text-[#0B2A52]
+            "
           >
             Instant answer from your knowledge base.
           </span>
@@ -478,82 +624,104 @@ function MiniVisual({
 
   if (index === 6) {
     return (
-      <div className="mx-auto h-[104px] max-w-[160px] rounded-[18px] border border-white bg-white/85 p-3">
-        {["Capture", "Segment", "Nurture", "Convert"].map((item, i) => (
-          <div
-            key={item}
-            className="flex items-center gap-2 py-1"
-          >
-            <span
-              className="
-                flex
-                h-[16px]
-                w-[16px]
-                items-center
-                justify-center
-                rounded-full
-                bg-[#E9EFF6]
-                text-[#0B2A52]
-              "
+      <div
+        className="
+          mx-auto
+          flex
+          h-[120px]
+          max-w-[175px]
+          flex-col
+          justify-center
+          rounded-[20px]
+          border
+          border-white
+          bg-white/90
+          p-4
+        "
+      >
+        {["Capture", "Segment", "Nurture", "Convert"].map(
+          (item, itemIndex) => (
+            <div
+              key={item}
+              className="flex items-center gap-2 py-[5px]"
             >
-              {i + 1}
-            </span>
+              <span
+                style={newYorkFont}
+                className="
+                  flex
+                  h-[18px]
+                  w-[18px]
+                  items-center
+                  justify-center
+                  rounded-full
+                  bg-[#E9EFF6]
+                  text-[8px]
+                  text-[#0B2A52]
+                "
+              >
+                {itemIndex + 1}
+              </span>
 
-            <span
-              style={newYorkFont}
-              className="text-[8px] text-[#0B2A52]"
-            >
-              {item}
-            </span>
-          </div>
-        ))}
+              <span
+                style={newYorkFont}
+                className="text-[8px] text-[#0B2A52]"
+              >
+                {item}
+              </span>
+            </div>
+          )
+        )}
       </div>
     );
   }
 
   if (index === 7) {
     return (
-      <div
-        className="
-          mx-auto
-          flex
-          h-[104px]
-          max-w-[155px]
-          items-center
-          justify-center
-          rounded-[24px]
-          border
-          border-white
-          bg-white/80
-          shadow-sm
-        "
-      >
-        <Mail size={34} className="text-[#2869B0]" />
+      <div className="flex h-[120px] items-center justify-center">
+        <div
+          className="
+            flex
+            h-[98px]
+            w-[155px]
+            items-center
+            justify-center
+            rounded-[24px]
+            border
+            border-white
+            bg-white/85
+            shadow-sm
+          "
+        >
+          <Mail
+            size={35}
+            className="text-[#2869B0]"
+          />
+        </div>
       </div>
     );
   }
 
   if (index === 8) {
     return (
-      <div className="relative mx-auto h-[104px] max-w-[170px]">
-        {["PDF", "Invoice", "Form"].map((item, i) => (
+      <div className="relative mx-auto h-[120px] max-w-[180px]">
+        {["PDF", "Invoice", "Form"].map((item, itemIndex) => (
           <div
             key={item}
             className="
               absolute
-              top-[10px]
-              h-[78px]
-              w-[56px]
-              rounded-[12px]
+              top-[14px]
+              h-[86px]
+              w-[60px]
+              rounded-[13px]
               border
               border-white
-              bg-white/85
-              p-2
+              bg-white/90
+              p-2.5
               shadow-sm
             "
             style={{
-              left: `${i * 45 + 8}px`,
-              transform: `rotate(${(i - 1) * 5}deg)`,
+              left: `${itemIndex * 47 + 10}px`,
+              transform: `rotate(${(itemIndex - 1) * 5}deg)`,
             }}
           >
             <span
@@ -563,8 +731,8 @@ function MiniVisual({
               {item}
             </span>
 
-            <div className="mt-4 h-[3px] w-full rounded bg-[#CBD7E3]" />
-            <div className="mt-2 h-[3px] w-[75%] rounded bg-[#DCE5EC]" />
+            <div className="mt-5 h-[3px] w-full rounded bg-[#CBD7E3]" />
+            <div className="mt-2 h-[3px] w-[72%] rounded bg-[#DCE5EC]" />
           </div>
         ))}
       </div>
@@ -573,7 +741,20 @@ function MiniVisual({
 
   if (index === 9) {
     return (
-      <div className="mx-auto h-[104px] max-w-[170px] rounded-[18px] border border-white bg-white/85 p-3">
+      <div
+        className="
+          mx-auto
+          flex
+          h-[120px]
+          max-w-[180px]
+          flex-col
+          rounded-[20px]
+          border
+          border-white
+          bg-white/90
+          p-4
+        "
+      >
         <span
           style={newYorkFont}
           className="text-[8px] text-[#0B2A52]"
@@ -581,11 +762,15 @@ function MiniVisual({
           Weekly Report
         </span>
 
-        <div className="mt-4 flex h-[50px] items-end gap-2">
-          {[20, 35, 28, 48, 40].map((height, i) => (
+        <div className="mt-auto flex h-[65px] items-end justify-center gap-2">
+          {[24, 39, 31, 54, 45].map((height, itemIndex) => (
             <span
-              key={i}
-              className="w-[10px] rounded-t bg-[#5C8FAD]"
+              key={itemIndex}
+              className="
+                w-[11px]
+                rounded-t
+                bg-[#5C8FAD]
+              "
               style={{ height }}
             />
           ))}
@@ -595,9 +780,36 @@ function MiniVisual({
   }
 
   return (
-    <div className="mx-auto h-[104px] max-w-[170px] rounded-[18px] border border-white bg-white/85 p-3">
-      <div className="flex items-center gap-2 rounded-full border border-[#DDE5EC] px-3 py-1.5">
-        <BookOpen size={11} className="text-[#6650C5]" />
+    <div
+      className="
+        mx-auto
+        flex
+        h-[120px]
+        max-w-[180px]
+        flex-col
+        rounded-[20px]
+        border
+        border-white
+        bg-white/90
+        p-4
+      "
+    >
+      <div
+        className="
+          flex
+          items-center
+          gap-2
+          rounded-full
+          border
+          border-[#DDE5EC]
+          px-3
+          py-2
+        "
+      >
+        <BookOpen
+          size={11}
+          className="text-[#6650C5]"
+        />
 
         <span
           style={newYorkFont}
@@ -607,24 +819,27 @@ function MiniVisual({
         </span>
       </div>
 
-      <div className="mt-2 space-y-1.5">
-        {["Policies", "Procedures", "Meeting notes", "Resources"].map(
-          (item) => (
-            <div
-              key={item}
-              className="flex items-center gap-2"
-            >
-              <span className="h-[5px] w-[5px] rounded-full bg-[#806AD6]" />
+      <div className="mt-3 space-y-2">
+        {[
+          "Policies",
+          "Procedures",
+          "Meeting notes",
+          "Resources",
+        ].map((item) => (
+          <div
+            key={item}
+            className="flex items-center gap-2"
+          >
+            <span className="h-[5px] w-[5px] rounded-full bg-[#806AD6]" />
 
-              <span
-                style={newYorkFont}
-                className="text-[7px] text-[#0B2A52]"
-              >
-                {item}
-              </span>
-            </div>
-          )
-        )}
+            <span
+              style={newYorkFont}
+              className="text-[7px] text-[#0B2A52]"
+            >
+              {item}
+            </span>
+          </div>
+        ))}
       </div>
     </div>
   );
@@ -654,7 +869,7 @@ function ServiceCard({
           ? false
           : {
               opacity: 0,
-              y: 28,
+              y: 26,
             }
       }
       whileInView={{
@@ -663,60 +878,79 @@ function ServiceCard({
       }}
       viewport={{
         once: true,
-        amount: 0.2,
+        amount: 0.18,
       }}
       transition={{
         duration: reduceMotion ? 0 : 0.65,
-        delay: reduceMotion ? 0 : Math.min(index * 0.045, 0.25),
+        delay: reduceMotion ? 0 : Math.min(index * 0.045, 0.22),
         ease,
       }}
       whileHover={
         reduceMotion
           ? undefined
           : {
-              y: -6,
+              y: -5,
             }
       }
       className={`
         group
         relative
         flex
-        min-h-[430px]
+        h-[500px]
+        min-w-0
         flex-col
         overflow-hidden
-        rounded-[54px]
+        rounded-[40px]
         border
-        border-white/80
+        border-white/90
         bg-gradient-to-b
-        p-5
-        shadow-[0_15px_38px_rgba(11,42,82,0.055)]
+        px-[18px]
+        pb-[18px]
+        pt-[18px]
+        shadow-[0_14px_36px_rgba(11,42,82,0.055)]
+        transition-shadow
+        duration-300
+
+        hover:shadow-[0_22px_48px_rgba(11,42,82,0.085)]
 
         ${service.tone}
       `}
     >
-      {/* SOFT CURVE */}
+      {/* SOFT LOWER CURVE */}
 
       <div
         className="
           pointer-events-none
           absolute
-          -bottom-[72px]
-          -right-[68px]
-          h-[210px]
-          w-[210px]
+          -bottom-[95px]
+          -right-[80px]
+          h-[235px]
+          w-[235px]
           rounded-full
-          bg-white/32
+          bg-white/35
         "
       />
 
       {/* TOP */}
 
-      <div className="relative z-10 flex items-start justify-between gap-4">
+      <div
+        className="
+          relative
+          z-10
+          flex
+          h-[48px]
+          shrink-0
+          items-start
+          justify-between
+          gap-3
+        "
+      >
         <div
           className={`
             flex
             h-[44px]
             w-[44px]
+            shrink-0
             items-center
             justify-center
             rounded-full
@@ -725,16 +959,16 @@ function ServiceCard({
           `}
         >
           <Icon
-            size={20}
-            strokeWidth={1.55}
+            size={19}
+            strokeWidth={1.5}
           />
         </div>
 
         <span
           style={newYorkFont}
           className="
-            pt-2
-            text-[10px]
+            pt-[8px]
+            text-[9px]
             text-[#B18458]
           "
         >
@@ -744,39 +978,52 @@ function ServiceCard({
 
       {/* TITLE */}
 
-      <h3
-        style={newYorkFont}
+      <div
         className="
           relative
           z-10
-          mt-5
-          min-h-[62px]
-          text-[1.35rem]
-          font-light
-          leading-[1.02]
-          tracking-[-0.045em]
-          text-[#0B2A52]
+          mt-[18px]
+          min-h-[74px]
         "
       >
-        {service.title}
-      </h3>
+        <h3
+          style={newYorkFont}
+          className="
+            text-[1.22rem]
+            font-light
+            leading-[1.02]
+            tracking-[-0.045em]
+            text-[#0B2A52]
+
+            2xl:text-[1.32rem]
+          "
+        >
+          {service.title}
+        </h3>
+      </div>
 
       {/* DESCRIPTION */}
 
-      <p
-        style={newYorkFont}
+      <div
         className="
           relative
           z-10
-          mt-2
-          min-h-[54px]
-          text-[10px]
-          leading-[1.45]
-          text-[#536D85]
+          min-h-[66px]
         "
       >
-        {service.short}
-      </p>
+        <p
+          style={newYorkFont}
+          className="
+            text-[9.5px]
+            leading-[1.5]
+            text-[#536D85]
+
+            2xl:text-[10px]
+          "
+        >
+          {service.short}
+        </p>
+      </div>
 
       {/* LEARN MORE */}
 
@@ -786,18 +1033,26 @@ function ServiceCard({
         className="
           relative
           z-20
-          mt-3
+          mt-[6px]
           flex
+          h-[34px]
           w-fit
+          shrink-0
           items-center
           gap-2
-          text-[8px]
-          uppercase
-          tracking-[0.16em]
           text-[#0B2A52]
         "
       >
-        Learn more
+        <span
+          style={newYorkFont}
+          className="
+            text-[7px]
+            uppercase
+            tracking-[0.18em]
+          "
+        >
+          Learn More
+        </span>
 
         <ArrowRight
           size={12}
@@ -810,21 +1065,260 @@ function ServiceCard({
         />
       </button>
 
-      {/* MINI VISUAL */}
+      {/* VISUAL */}
 
       <div
         className="
           relative
           z-10
           mt-auto
-          pt-5
+          flex
+          h-[158px]
+          shrink-0
+          items-end
+          justify-center
+          pt-[18px]
         "
       >
-        <MiniVisual
-          index={index}
-          tone={service.tone}
-        />
+        <div className="w-full">
+          <MiniVisual index={index} />
+        </div>
       </div>
+    </motion.article>
+  );
+}
+
+/* =========================================================
+   BIGGER PICTURE CARD
+========================================================= */
+
+function BiggerPictureCard({
+  reduceMotion,
+}: {
+  reduceMotion: boolean;
+}) {
+  return (
+    <motion.article
+      initial={
+        reduceMotion
+          ? false
+          : {
+              opacity: 0,
+              y: 26,
+            }
+      }
+      whileInView={{
+        opacity: 1,
+        y: 0,
+      }}
+      viewport={{
+        once: true,
+        amount: 0.18,
+      }}
+      transition={{
+        duration: reduceMotion ? 0 : 0.65,
+        delay: reduceMotion ? 0 : 0.22,
+        ease,
+      }}
+      whileHover={
+        reduceMotion
+          ? undefined
+          : {
+              y: -5,
+            }
+      }
+      className="
+        group
+        relative
+        flex
+        h-[500px]
+        min-w-0
+        flex-col
+        overflow-hidden
+        rounded-[40px]
+        border
+        border-[#173F6B]
+        bg-[#0B2A52]
+        px-[20px]
+        pb-[18px]
+        pt-[18px]
+        text-white
+        shadow-[0_18px_42px_rgba(11,42,82,0.16)]
+      "
+    >
+      <div
+        className="
+          pointer-events-none
+          absolute
+          -bottom-[110px]
+          -right-[100px]
+          h-[270px]
+          w-[270px]
+          rounded-full
+          border
+          border-white/[0.07]
+        "
+      />
+
+      <div
+        className="
+          pointer-events-none
+          absolute
+          -bottom-[46px]
+          -right-[38px]
+          h-[150px]
+          w-[150px]
+          rounded-full
+          border
+          border-white/[0.08]
+        "
+      />
+
+      <div
+        className="
+          relative
+          z-10
+          flex
+          h-[48px]
+          shrink-0
+          items-start
+          justify-between
+        "
+      >
+        <Sparkles
+          size={25}
+          strokeWidth={1.3}
+          className="text-[#9CC8EB]"
+        />
+
+        <span
+          style={newYorkFont}
+          className="
+            pt-[8px]
+            text-[9px]
+            text-white/35
+          "
+        >
+          12
+        </span>
+      </div>
+
+      <div
+        className="
+          relative
+          z-10
+          mt-[18px]
+          min-h-[74px]
+        "
+      >
+        <span
+          style={newYorkFont}
+          className="
+            text-[6px]
+            uppercase
+            leading-[1.6]
+            tracking-[0.32em]
+            text-white/55
+          "
+        >
+          The Bigger Picture
+        </span>
+
+        <span className="mt-4 block h-px w-8 bg-[#C6A77A]" />
+      </div>
+
+      <div
+        className="
+          relative
+          z-10
+          min-h-[132px]
+        "
+      >
+        <h3
+          style={newYorkFont}
+          className="
+            text-[1.65rem]
+            font-light
+            leading-[0.98]
+            tracking-[-0.05em]
+
+            2xl:text-[1.8rem]
+          "
+        >
+          A More
+          <br />
+          Connected
+          <br />
+          Business.
+        </h3>
+      </div>
+
+      <p
+        style={newYorkFont}
+        className="
+          relative
+          z-10
+          text-[9px]
+          leading-[1.5]
+          text-white/60
+        "
+      >
+        Connect systems, information and workflows so work moves
+        with less manual coordination.
+      </p>
+
+      <button
+        type="button"
+        className="
+          relative
+          z-10
+          mt-auto
+          flex
+          h-[48px]
+          shrink-0
+          items-center
+          justify-between
+          rounded-full
+          border
+          border-white/10
+          bg-white/[0.05]
+          p-[6px]
+          pl-4
+        "
+      >
+        <span
+          style={newYorkFont}
+          className="
+            text-[9px]
+            text-white/85
+          "
+        >
+          Let&apos;s Talk
+        </span>
+
+        <span
+          className="
+            flex
+            h-[34px]
+            w-[34px]
+            items-center
+            justify-center
+            rounded-full
+            bg-white
+            text-[#0B2A52]
+          "
+        >
+          <ArrowRight
+            size={14}
+            strokeWidth={1.5}
+            className="
+              transition-transform
+              duration-300
+              group-hover:translate-x-1
+            "
+          />
+        </span>
+      </button>
     </motion.article>
   );
 }
@@ -835,10 +1329,14 @@ function ServiceCard({
 
 export default function AiAutomationServices() {
   const reduceMotion = Boolean(useReducedMotion());
-  const [activeService, setActiveService] = useState<number | null>(null);
+
+  const [activeService, setActiveService] =
+    useState<number | null>(null);
 
   const selected =
-    activeService === null ? null : services[activeService];
+    activeService === null
+      ? null
+      : services[activeService];
 
   return (
     <section
@@ -846,6 +1344,7 @@ export default function AiAutomationServices() {
       aria-labelledby="ai-automation-services-heading"
       className="
         relative
+        scroll-mt-[120px]
         overflow-hidden
         bg-white
         py-24
@@ -854,9 +1353,7 @@ export default function AiAutomationServices() {
         xl:py-36
       "
     >
-      {/* =====================================================
-          SUBTLE BACKGROUND
-      ===================================================== */}
+      {/* BACKGROUND */}
 
       <div
         className="
@@ -892,17 +1389,17 @@ export default function AiAutomationServices() {
           z-10
           mx-auto
           w-full
-          max-w-[1540px]
+          max-w-[1720px]
           px-5
           sm:px-8
           md:px-10
-          lg:px-14
-          xl:px-16
-          2xl:px-20
+          lg:px-10
+          xl:px-8
+          2xl:px-10
         "
       >
         {/* =====================================================
-            TOP INTRO
+            INTRO
         ===================================================== */}
 
         <div
@@ -915,8 +1412,6 @@ export default function AiAutomationServices() {
             lg:gap-14
           "
         >
-          {/* LEFT */}
-
           <motion.div
             initial={
               reduceMotion
@@ -962,7 +1457,6 @@ export default function AiAutomationServices() {
               className="
                 mt-7
                 max-w-[760px]
-
                 text-[2.1rem]
                 font-light
                 leading-[0.96]
@@ -992,12 +1486,10 @@ export default function AiAutomationServices() {
                 sm:text-[16px]
               "
             >
-              AI automation can support different parts of a business depending
-              on where repetitive work, delays or disconnected information
-              exist.
+              AI automation can support different parts of a
+              business depending on where repetitive work, delays
+              or disconnected information exist.
             </p>
-
-            {/* ACTIONS */}
 
             <div
               className="
@@ -1014,7 +1506,10 @@ export default function AiAutomationServices() {
                   document
                     .getElementById("automation-service-grid")
                     ?.scrollIntoView({
-                      behavior: reduceMotion ? "auto" : "smooth",
+                      behavior: reduceMotion
+                        ? "auto"
+                        : "smooth",
+                      block: "start",
                     })
                 }
                 className="
@@ -1051,6 +1546,7 @@ export default function AiAutomationServices() {
                 >
                   <ArrowRight
                     size={17}
+                    strokeWidth={1.5}
                     className="
                       transition-transform
                       duration-300
@@ -1100,9 +1596,7 @@ export default function AiAutomationServices() {
             </div>
           </motion.div>
 
-          {/* =================================================
-              RIGHT EDITORIAL VISUAL
-          ================================================= */}
+          {/* SIMPLE RIGHT VISUAL */}
 
           <motion.div
             initial={
@@ -1110,7 +1604,7 @@ export default function AiAutomationServices() {
                 ? false
                 : {
                     opacity: 0,
-                    x: 25,
+                    x: 24,
                   }
             }
             whileInView={{
@@ -1128,205 +1622,93 @@ export default function AiAutomationServices() {
             className="
               relative
               mx-auto
-              min-h-[390px]
+              flex
+              min-h-[360px]
               w-full
-              max-w-[600px]
+              max-w-[520px]
+              items-center
+              justify-center
             "
           >
-            {/* ARCH */}
+            <div
+              className="
+                absolute
+                h-[330px]
+                w-[330px]
+                rounded-full
+                bg-[#F2F7FB]
+              "
+            />
 
             <div
               className="
                 absolute
-                bottom-0
-                right-0
-                h-[355px]
-                w-[76%]
-                overflow-hidden
-                rounded-t-[190px]
-                bg-[#F4EEE5]
+                h-[260px]
+                w-[260px]
+                rounded-full
+                border
+                border-[#C9DDE8]
               "
-            >
-              <div
-                className="
-                  absolute
-                  bottom-[60px]
-                  left-[30px]
-                  h-[160px]
-                  w-[105px]
-                  rounded-t-[65px]
-                  bg-[#E8DDCC]
-                "
-              />
-
-              {/* TABLE */}
-
-              <div
-                className="
-                  absolute
-                  bottom-[54px]
-                  left-[12%]
-                  right-[6%]
-                  h-[14px]
-                  rounded-full
-                  bg-[#E1D2BD]
-                "
-              />
-
-              {/* LAPTOP */}
-
-              <div
-                className="
-                  absolute
-                  bottom-[68px]
-                  left-[34%]
-                  h-[105px]
-                  w-[175px]
-                  -skew-x-[3deg]
-                  rounded-[8px]
-                  border-[5px]
-                  border-[#3B3F44]
-                  bg-[#202429]
-                  shadow-[0_18px_25px_rgba(11,42,82,0.14)]
-                "
-              />
-
-              {/* PLANT */}
-
-              <div
-                className="
-                  absolute
-                  bottom-[70px]
-                  left-[17%]
-                  h-[72px]
-                  w-[34px]
-                  rounded-[8px_8px_14px_14px]
-                  bg-white
-                "
-              />
-
-              <div
-                className="
-                  absolute
-                  bottom-[135px]
-                  left-[19%]
-                  h-[100px]
-                  w-[3px]
-                  rotate-[-8deg]
-                  bg-[#6F805D]
-                "
-              />
-
-              {/* BOOKS */}
-
-              <div className="absolute bottom-[70px] right-[7%]">
-                {["Automate", "Smarter", "Growth"].map((text, i) => (
-                  <div
-                    key={text}
-                    className="
-                      flex
-                      h-[26px]
-                      w-[112px]
-                      items-center
-                      justify-center
-                      border
-                      border-[#D6CDBF]
-                      bg-white
-                    "
-                    style={{
-                      transform: `translateX(${i * -4}px)`,
-                    }}
-                  >
-                    <span
-                      style={newYorkFont}
-                      className="text-[9px] text-[#473B2E]"
-                    >
-                      {text}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* LEFT TEXT */}
+            />
 
             <div
               className="
-                absolute
-                left-0
-                top-[85px]
-                z-20
+                relative
+                z-10
+                flex
+                h-[180px]
+                w-[180px]
+                flex-col
+                items-center
+                justify-center
+                rounded-full
+                border
+                border-[#C4D9E6]
+                bg-white
+                text-center
+                shadow-[0_20px_50px_rgba(11,42,82,0.07)]
               "
             >
+              <Bot
+                size={28}
+                strokeWidth={1.4}
+                className="text-[#0B2A52]"
+              />
+
               <span
                 style={newYorkFont}
                 className="
-                  block
+                  mt-4
                   text-[7px]
                   uppercase
-                  leading-[1.6]
                   tracking-[0.3em]
+                  text-[#B18458]
+                "
+              >
+                AI Automation
+              </span>
+
+              <span
+                style={newYorkFont}
+                className="
+                  mt-2
+                  text-[1.35rem]
+                  font-light
+                  leading-[1]
                   text-[#0B2A52]
                 "
               >
-                FROM
+                Connect.
                 <br />
-                MANUAL WORK
-                <br />
-                TO MEANINGFUL
-                <br />
-                PROGRESS.
+                Automate.
               </span>
-
-              <span className="mt-4 block h-px w-10 bg-[#C6A77A]" />
-
-              <p
-                style={newYorkFont}
-                className="
-                  mt-8
-                  text-[13px]
-                  leading-[1.35]
-                  text-[#65809A]
-                "
-              >
-                Automate
-                <br />
-                Simplify
-                <br />
-                Scale
-              </p>
             </div>
-
-            {/* HANDWRITTEN NOTE */}
-
-            <p
-              style={newYorkFont}
-              className="
-                absolute
-                right-[15px]
-                top-[75px]
-                z-20
-                rotate-[-7deg]
-                text-right
-                text-[19px]
-                italic
-                leading-[1.15]
-                text-[#0B2A52]
-              "
-            >
-              Less
-              <br />
-              Manual Work.
-              <br />
-              More
-              <br />
-              Possibilities.
-            </p>
           </motion.div>
         </div>
 
         {/* =====================================================
             SERVICE GRID
+            ALWAYS 6 ON XL DESKTOP
         ===================================================== */}
 
         <div
@@ -1334,15 +1716,15 @@ export default function AiAutomationServices() {
           className="
             mt-16
             grid
-            gap-4
+            scroll-mt-[120px]
+            items-stretch
+            gap-[12px]
 
             sm:grid-cols-2
             lg:grid-cols-3
             xl:grid-cols-6
           "
         >
-          {/* FIRST 6 */}
-
           {services.slice(0, 6).map((service, index) => (
             <ServiceCard
               key={service.number}
@@ -1353,153 +1735,31 @@ export default function AiAutomationServices() {
             />
           ))}
 
-          {/* SECOND 5 */}
+          {services.slice(6).map(
+            (service, secondIndex) => {
+              const realIndex = secondIndex + 6;
 
-          {services.slice(6).map((service, secondIndex) => {
-            const realIndex = secondIndex + 6;
-
-            return (
-              <ServiceCard
-                key={service.number}
-                service={service}
-                index={realIndex}
-                reduceMotion={reduceMotion}
-                onOpen={() => setActiveService(realIndex)}
-              />
-            );
-          })}
-
-          {/* =================================================
-              BIGGER PICTURE CTA
-          ================================================= */}
-
-          <motion.article
-            initial={
-              reduceMotion
-                ? false
-                : {
-                    opacity: 0,
-                    y: 28,
+              return (
+                <ServiceCard
+                  key={service.number}
+                  service={service}
+                  index={realIndex}
+                  reduceMotion={reduceMotion}
+                  onOpen={() =>
+                    setActiveService(realIndex)
                   }
-            }
-            whileInView={{
-              opacity: 1,
-              y: 0,
-            }}
-            viewport={{
-              once: true,
-              amount: 0.2,
-            }}
-            transition={{
-              duration: reduceMotion ? 0 : 0.65,
-              delay: reduceMotion ? 0 : 0.2,
-              ease,
-            }}
-            className="
-              relative
-              flex
-              min-h-[430px]
-              flex-col
-              overflow-hidden
-              rounded-[54px]
-              bg-[#0B2A52]
-              p-6
-              text-white
-              shadow-[0_18px_40px_rgba(11,42,82,0.16)]
-            "
-          >
-            <Sparkles
-              size={27}
-              strokeWidth={1.3}
-              className="text-[#9CC8EB]"
-            />
-
-            <span
-              style={newYorkFont}
-              className="
-                mt-8
-                text-[7px]
-                uppercase
-                tracking-[0.33em]
-                text-white/55
-              "
-            >
-              THE BIGGER PICTURE
-            </span>
-
-            <span className="mt-5 h-px w-9 bg-[#C6A77A]" />
-
-            <h3
-              style={newYorkFont}
-              className="
-                mt-5
-                text-[1.75rem]
-                font-light
-                leading-[0.98]
-                tracking-[-0.05em]
-              "
-            >
-              A More
-              <br />
-              Connected
-              <br />
-              Business.
-            </h3>
-
-            <button
-              type="button"
-              className="
-                group
-                mt-auto
-                flex
-                items-center
-                justify-between
-                rounded-full
-                border
-                border-white/10
-                bg-white/[0.05]
-                p-2
-                pl-4
-              "
-            >
-              <span
-                className="
-                  flex
-                  h-[40px]
-                  w-[40px]
-                  items-center
-                  justify-center
-                  rounded-full
-                  bg-white
-                  text-[#0B2A52]
-                "
-              >
-                <ArrowRight
-                  size={16}
-                  className="
-                    transition-transform
-                    duration-300
-                    group-hover:translate-x-1
-                  "
                 />
-              </span>
+              );
+            }
+          )}
 
-              <span
-                style={newYorkFont}
-                className="
-                  pr-4
-                  text-[10px]
-                  text-white/85
-                "
-              >
-                Let&apos;s Talk
-              </span>
-            </button>
-          </motion.article>
+          <BiggerPictureCard
+            reduceMotion={reduceMotion}
+          />
         </div>
 
         {/* =====================================================
-            EXPANDED SERVICE
+            EXPANDED DETAILS
         ===================================================== */}
 
         <AnimatePresence mode="wait">
@@ -1543,8 +1803,6 @@ export default function AiAutomationServices() {
                 lg:p-10
               "
             >
-              {/* LEFT */}
-
               <div>
                 <span
                   style={newYorkFont}
@@ -1633,8 +1891,6 @@ export default function AiAutomationServices() {
                   </span>
                 </div>
               </div>
-
-              {/* RIGHT */}
 
               <div
                 className="
@@ -1744,7 +2000,9 @@ export default function AiAutomationServices() {
 
                 <button
                   type="button"
-                  onClick={() => setActiveService(null)}
+                  onClick={() =>
+                    setActiveService(null)
+                  }
                   className="
                     mt-6
                     flex
@@ -1756,7 +2014,8 @@ export default function AiAutomationServices() {
                     text-[#0B2A52]/55
                   "
                 >
-                  Close details
+                  Close Details
+
                   <ChevronDown
                     size={13}
                     className="rotate-180"
@@ -1768,7 +2027,7 @@ export default function AiAutomationServices() {
         </AnimatePresence>
 
         {/* =====================================================
-            BOTTOM REAL GOAL
+            BOTTOM
         ===================================================== */}
 
         <motion.div
@@ -1796,7 +2055,7 @@ export default function AiAutomationServices() {
             mt-10
             grid
             gap-7
-            rounded-[40px]
+            rounded-[36px]
             border
             border-[#D6E4ED]
             bg-[#F7FAFC]
@@ -1819,7 +2078,7 @@ export default function AiAutomationServices() {
                 text-[#B18458]
               "
             >
-              THE REAL GOAL
+              The Real Goal
             </span>
 
             <h3
@@ -1846,17 +2105,18 @@ export default function AiAutomationServices() {
             style={newYorkFont}
             className="
               max-w-[570px]
-              border-l
-              border-[#0B2A52]/10
-              pl-7
               text-[11px]
               leading-[1.6]
               text-[#536D85]
+
+              lg:border-l
+              lg:border-[#0B2A52]/10
+              lg:pl-7
             "
           >
-            When your systems, information and people work together, your
-            business stays organized and creates more time for the work that
-            actually matters.
+            When your systems, information and people work
+            together, your business stays organized and creates
+            more time for the work that actually matters.
           </p>
 
           <button
@@ -1894,6 +2154,7 @@ export default function AiAutomationServices() {
             >
               <ArrowRight
                 size={15}
+                strokeWidth={1.5}
                 className="
                   transition-transform
                   duration-300
