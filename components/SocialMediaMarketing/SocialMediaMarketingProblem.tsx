@@ -1,6 +1,7 @@
 "use client";
-import Link from "next/link";
+
 import { useEffect, useRef, useState } from "react";
+
 import {
   ArrowRight,
   Heart,
@@ -13,44 +14,55 @@ import {
   Users,
 } from "lucide-react";
 
-const problems = [
+/* ============================================================
+   COMMON PROBLEMS
+============================================================ */
+
+const commonProblems = [
   {
-    id: "01",
-    title: "You’re Posting",
-    description:
-      "But there is no clear social media strategy connecting one post to the next.",
-    metric: "No Clear",
-    label: "SOCIAL MEDIA STRATEGY",
-    progress: "22%",
+    title: "No Connected Strategy",
+    text: "Individual posts may look good, but there is no clear system connecting one piece of content to the next.",
   },
   {
-    id: "02",
-    title: "You’re Getting Views",
-    description:
-      "But that attention disappears without creating stronger brand recognition.",
-    metric: "Views",
-    label: "BRAND RECOGNITION",
-    progress: "42%",
+    title: "Attention Without Recognition",
+    text: "Views can increase while your brand still struggles to become familiar, distinctive or memorable.",
   },
   {
-    id: "03",
-    title: "You’re Gaining Followers",
-    description:
-      "But audience growth is not turning into meaningful engagement or business conversations.",
-    metric: "Followers",
-    label: "MEANINGFUL ENGAGEMENT",
-    progress: "34%",
+    title: "Audience Without Action",
+    text: "Follower growth means less when it does not lead to stronger engagement, enquiries or meaningful business conversations.",
   },
   {
-    id: "04",
-    title: "You’re Creating Content",
-    description:
-      "But your feed feels busy rather than intentional.",
-    metric: "Busy",
-    label: "CONTENT DIRECTION",
-    progress: "28%",
+    title: "Content Without Continuity",
+    text: "Every new post starts from zero when there is no consistent message, creative direction or content system behind it.",
   },
 ];
+
+/* ============================================================
+   POINT OF VIEW
+============================================================ */
+
+const pointOfView = [
+  {
+    title: "Reach",
+    result: "creates visibility.",
+  },
+  {
+    title: "Recognition",
+    result: "creates memory.",
+  },
+  {
+    title: "Relevance",
+    result: "creates interest.",
+  },
+  {
+    title: "Consistency",
+    result: "creates trust.",
+  },
+];
+
+/* ============================================================
+   PHONE HIGHLIGHTS
+============================================================ */
 
 const highlights = [
   {
@@ -75,6 +87,10 @@ const highlights = [
   },
 ];
 
+/* ============================================================
+   POSTS
+============================================================ */
+
 const posts = [
   "/services/insta/insta1.png",
   "/services/insta/insta2.png",
@@ -88,9 +104,14 @@ export default function SocialMediaMarketingProblem() {
   const sectionRef = useRef<HTMLElement | null>(null);
 
   const [isVisible, setIsVisible] = useState(false);
-  const [activeProblem, setActiveProblem] = useState(0);
   const [liked, setLiked] = useState(false);
-  const [activeTab, setActiveTab] = useState<"grid" | "reels">("grid");
+
+  const [activeTab, setActiveTab] =
+    useState<"grid" | "reels">("grid");
+
+  /* ============================================================
+     VIEWPORT ANIMATION
+  ============================================================ */
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -104,7 +125,7 @@ export default function SocialMediaMarketingProblem() {
         }
       },
       {
-        threshold: 0.15,
+        threshold: 0.12,
       }
     );
 
@@ -113,90 +134,286 @@ export default function SocialMediaMarketingProblem() {
     return () => observer.disconnect();
   }, []);
 
-  const currentProblem = problems[activeProblem];
-
   return (
     <section
       ref={sectionRef}
-      className="relative overflow-hidden bg-white text-[#0B2A52]"
+      id="social-media-problem"
+      className="
+        relative
+        overflow-hidden
+        bg-white
+        text-[#0B2A52]
+      "
     >
       {/* =========================================================
-          VERY SUBTLE BACKGROUND
+          BACKGROUND
       ========================================================== */}
 
-      <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute -left-40 top-20 h-[420px] w-[420px] rounded-full bg-[#B79A72]/[0.035] blur-[100px]" />
+      <div
+        aria-hidden="true"
+        className="
+          pointer-events-none
+          absolute
+          inset-0
+          overflow-hidden
+        "
+      >
+        <div
+          className="
+            absolute
+            -left-[180px]
+            top-[12%]
 
-        <div className="absolute -right-40 bottom-0 h-[480px] w-[480px] rounded-full bg-[#0B2A52]/[0.025] blur-[120px]" />
+            h-[420px]
+            w-[420px]
+
+            rounded-full
+
+            bg-[#B79A72]/[0.04]
+
+            blur-[105px]
+
+            sm:h-[520px]
+            sm:w-[520px]
+          "
+        />
+
+        <div
+          className="
+            absolute
+            -right-[220px]
+            top-[42%]
+
+            h-[520px]
+            w-[520px]
+
+            rounded-full
+
+            bg-[#6285AD]/[0.045]
+
+            blur-[120px]
+
+            lg:h-[650px]
+            lg:w-[650px]
+          "
+        />
       </div>
 
       {/* =========================================================
-          MAIN CONTAINER
+          CONTAINER
       ========================================================== */}
 
-      <div className="relative z-10 mx-auto max-w-[1400px] px-5 py-20 sm:px-8 sm:py-24 lg:px-12 lg:py-28 xl:px-16">
+      <div
+        className="
+          relative
+          z-10
+
+          mx-auto
+          max-w-[1400px]
+
+          px-4
+          py-16
+
+          min-[375px]:px-5
+
+          sm:px-8
+          sm:py-20
+
+          md:py-24
+
+          lg:px-12
+          lg:py-28
+
+          xl:px-16
+          xl:py-32
+        "
+      >
         {/* =======================================================
             TOP INTRO
         ======================================================== */}
 
-        <div className="mx-auto max-w-[720px] text-center">
+        <div
+          className="
+            mx-auto
+            max-w-[930px]
+            text-center
+          "
+        >
+          {/* LABEL */}
+
           <div
-            className={`flex items-center justify-center gap-3 transition-all duration-1000 ${
-              isVisible
-                ? "translate-y-0 opacity-100"
-                : "translate-y-5 opacity-0"
-            }`}
+            className={`
+              mx-auto
+
+              flex
+              w-fit
+
+              items-center
+              justify-center
+
+              gap-3
+
+              transition-all
+              duration-1000
+
+              ${
+                isVisible
+                  ? "translate-y-0 opacity-100"
+                  : "translate-y-5 opacity-0"
+              }
+            `}
           >
-             <span
-            className="
-              h-px
-              w-10
+            <span
+              className="
+                block
+                h-px
+                w-8
 
-              bg-gradient-to-r
-              from-transparent
-              to-[#B79A72]
-            "
-          />
+                bg-gradient-to-r
+                from-transparent
+                to-[#B79A72]
 
-            <span className="text-[9px]  tracking-[0.28em] text-[#B79A72] sm:text-[10px]">
+                sm:w-10
+              "
+            />
+
+            <span
+              className="
+                text-[8px]
+                font-medium
+                uppercase
+                tracking-[0.22em]
+
+                text-[#B79A72]
+
+                sm:text-[10px]
+                sm:tracking-[0.28em]
+              "
+            >
               THE PROBLEM
             </span>
 
-           <span
-            className="
-              h-px
-              w-10
+            <span
+              className="
+                block
+                h-px
+                w-8
 
-              bg-gradient-to-l
-              from-transparent
-              to-[#B79A72]
-            "
-          />
+                bg-gradient-to-l
+                from-transparent
+                to-[#B79A72]
+
+                sm:w-10
+              "
+            />
           </div>
 
+          {/* HEADING */}
+
           <h2
-            className={`mt-5 text-[2rem] font-medium leading-[1.18] tracking-[-0.035em] transition-all duration-[1100ms] sm:text-[2.35rem] md:text-[2.65rem] lg:text-[2.85rem] ${
-              isVisible
-                ? "translate-y-0 opacity-100"
-                : "translate-y-7 opacity-0"
-            }`}
+            className={`
+              mx-auto
+
+              mt-5
+              max-w-[950px]
+
+              font-[var(--font-new-york)]
+
+              text-[2.15rem]
+              font-normal
+              leading-[1.03]
+              tracking-[-0.045em]
+
+              text-[#0B2A52]
+
+              transition-all
+              duration-[1100ms]
+
+              min-[375px]:text-[2.3rem]
+
+              sm:mt-6
+              sm:text-[2.6rem]
+
+              md:text-[2.95rem]
+
+              lg:text-[3.1rem]
+
+              xl:text-[3.35rem]
+
+              ${
+                isVisible
+                  ? "translate-y-0 opacity-100"
+                  : "translate-y-7 opacity-0"
+              }
+            `}
           >
-            Posting Regularly Is Not the Same as{" "}
+            Posting More Isn&apos;t the Same as Building a{" "}
             <span className="text-[#B79A72]">
-              Growing Strategically.
+              Stronger Brand.
             </span>
           </h2>
 
+          {/* INTRO */}
+
           <p
-            className={`mx-auto mt-4 max-w-[580px] text-[13px] leading-6 text-[#0B2A52]/50 transition-all delay-150 duration-[1100ms] sm:text-[14px] sm:leading-7 ${
-              isVisible
-                ? "translate-y-0 opacity-100"
-                : "translate-y-5 opacity-0"
-            }`}
+            className={`
+              mx-auto
+
+              mt-5
+              max-w-[700px]
+
+              text-[12px]
+              leading-6
+
+              text-[#0B2A52]/50
+
+              transition-all
+              delay-150
+              duration-[1100ms]
+
+              sm:text-[14px]
+              sm:leading-7
+
+              md:text-[15px]
+
+              ${
+                isVisible
+                  ? "translate-y-0 opacity-100"
+                  : "translate-y-5 opacity-0"
+              }
+            `}
           >
-            Your business can publish content every week and still struggle to
-            build a social media presence that people recognize, trust or act
-            on.
+            Your business can publish every week, gain followers and
+            generate views while still struggling to create a social
+            presence people recognize, understand or remember.
+          </p>
+
+          <p
+            className={`
+              mx-auto
+
+              mt-3
+
+              text-[12px]
+              font-medium
+              leading-6
+
+              text-[#0B2A52]/65
+
+              transition-all
+              delay-200
+              duration-[1100ms]
+
+              sm:text-[13px]
+
+              ${
+                isVisible
+                  ? "translate-y-0 opacity-100"
+                  : "translate-y-4 opacity-0"
+              }
+            `}
+          >
+            The problem is rarely just a lack of content.
           </p>
         </div>
 
@@ -204,212 +421,435 @@ export default function SocialMediaMarketingProblem() {
             MAIN CONTENT
         ======================================================== */}
 
-        <div className="mt-14 grid items-center gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16 xl:mt-16 xl:grid-cols-[0.88fr_1.12fr]">
+        <div
+          className="
+            mt-12
+
+            grid
+            items-center
+
+            gap-12
+
+            sm:mt-14
+
+            lg:mt-16
+            lg:grid-cols-[0.9fr_1.1fr]
+            lg:gap-16
+
+            xl:grid-cols-[0.88fr_1.12fr]
+          "
+        >
           {/* =====================================================
-              LEFT SIDE
+              LEFT — 4 COMMON PROBLEMS
           ====================================================== */}
 
           <div
-            className={`relative z-20 max-w-[580px] transition-all duration-[1300ms] ${
-              isVisible
-                ? "translate-x-0 opacity-100"
-                : "-translate-x-8 opacity-0"
-            }`}
+            className={`
+              relative
+              z-20
+
+              mx-auto
+
+              w-full
+              max-w-[580px]
+
+              transition-all
+              duration-[1300ms]
+
+              lg:mx-0
+
+              ${
+                isVisible
+                  ? "translate-x-0 opacity-100"
+                  : "-translate-x-8 opacity-0"
+              }
+            `}
           >
-            {/* CHALLENGE COPY */}
-
-            <div className="mb-6">
-              <p className="text-[11px] leading-5 text-[#0B2A52]/50">
-                The challenge is rarely just producing more content.
-              </p>
-
-              <div className="mt-3 flex items-start gap-2">
-                <span className="mt-2 h-px w-7 shrink-0 bg-[#B79A72]" />
-
-                <p className="text-[12px] leading-6 text-[#0B2A52]/55">
-                  The challenge is creating the{" "}
-                  <strong className="font-medium text-[#0B2A52]">
-                    right content, for the right audience, with a clear reason
-                    behind it.
-                  </strong>
-                </p>
-              </div>
-            </div>
-
-            {/* =================================================
-                PROBLEM LIST
-            ================================================== */}
-
-            <div className="overflow-hidden rounded-[22px] border border-[#0B2A52]/[0.07] bg-white shadow-[0_20px_60px_rgba(11,42,82,0.045)]">
-              {problems.map((problem, index) => {
-                const isActive = activeProblem === index;
-
-                return (
-                  <button
-                    key={problem.id}
-                    type="button"
-                    onMouseEnter={() => setActiveProblem(index)}
-                    onFocus={() => setActiveProblem(index)}
-                    onClick={() => setActiveProblem(index)}
-                    className={`group relative flex w-full items-center gap-4 border-b border-[#0B2A52]/[0.055] px-5 py-5 text-left transition-all duration-500 last:border-b-0 sm:px-6 ${
-                      isActive
-                        ? "bg-[#FBFAF7]"
-                        : "bg-white hover:bg-[#FCFBF9]"
-                    }`}
-                  >
-                    {/* ACTIVE LINE */}
-
-                    <span
-                      className={`absolute bottom-0 left-0 top-0 w-[3px] origin-center bg-[#B79A72] transition-transform duration-500 ${
-                        isActive ? "scale-y-100" : "scale-y-0"
-                      }`}
-                    />
-
-                    {/* NUMBER */}
-
-                    <span
-                      className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-[9px] font-semibold transition-all duration-500 ${
-                        isActive
-                          ? "bg-[#0B2A52] text-white"
-                          : "bg-[#0B2A52]/[0.045] text-[#0B2A52]/30"
-                      }`}
-                    >
-                      {problem.id}
-                    </span>
-
-                    {/* CONTENT */}
-
-                    <span className="min-w-0 flex-1">
-                      <span
-                        className={`block text-[14px] font-medium transition-colors duration-300 sm:text-[15px] ${
-                          isActive
-                            ? "text-[#0B2A52]"
-                            : "text-[#0B2A52]/55"
-                        }`}
-                      >
-                        {problem.title}
-                      </span>
-
-                      <span
-                        className={`block overflow-hidden text-[11px] leading-5 text-[#0B2A52]/45 transition-all duration-500 sm:text-[12px] ${
-                          isActive
-                            ? "mt-1 max-h-16 opacity-100"
-                            : "max-h-0 opacity-0"
-                        }`}
-                      >
-                        {problem.description}
-                      </span>
-                    </span>
-
-                    {/* ARROW */}
-
-                    <span
-                      className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full transition-all duration-500 ${
-                        isActive
-                          ? "translate-x-0 bg-[#0B2A52] text-white"
-                          : "translate-x-1 bg-[#0B2A52]/[0.035] text-[#0B2A52]/25"
-                      }`}
-                    >
-                      <ArrowRight
-                        size={12}
-                        className="transition-transform duration-300 group-hover:translate-x-0.5"
-                      />
-                    </span>
-                  </button>
-                );
-              })}
-            </div>
-
-            {/* =================================================
-                ACTIVE INSIGHT
-            ================================================== */}
+            {/* SMALL INTRO */}
 
             <div
-              className={`mt-5 rounded-2xl border border-[#B79A72]/15 bg-[#FBFAF7] px-5 py-4 transition-all duration-700 sm:px-6 ${
-                isVisible
-                  ? "translate-y-0 opacity-100"
-                  : "translate-y-5 opacity-0"
-              }`}
+              className="
+                mb-7
+
+                flex
+                items-center
+                gap-3
+              "
             >
-              <div className="flex items-center justify-between gap-5">
-                <div>
-                  <p className="text-[8px] font-semibold tracking-[0.2em] text-[#B79A72]">
-                    {currentProblem.label}
-                  </p>
+              <span
+                className="
+                  h-px
+                  w-8
+                  shrink-0
 
-                  <p className="mt-1 text-[18px] font-medium text-[#0B2A52]">
-                    {currentProblem.metric}
-                  </p>
-                </div>
+                  bg-[#B79A72]
+                "
+              />
 
-                <div className="w-[150px]">
-                  <div className="mb-2 flex justify-between">
-                    <span className="text-[8px] text-[#0B2A52]/30">
-                      ACTIVITY
-                    </span>
+              <p
+                className="
+                  text-[8px]
+                  font-semibold
+                  uppercase
+                  tracking-[0.2em]
 
-                    <span className="text-[8px] text-[#0B2A52]/30">
-                      STRATEGY
-                    </span>
-                  </div>
+                  text-[#B79A72]
 
-                  <div className="h-[3px] overflow-hidden rounded-full bg-[#0B2A52]/[0.07]">
-                    <div
-                      className="h-full rounded-full bg-[#B79A72] transition-all duration-700"
-                      style={{
-                        width: currentProblem.progress,
-                      }}
-                    />
-                  </div>
-                </div>
-              </div>
+                  sm:text-[9px]
+                "
+              >
+                4 COMMON PROBLEMS
+              </p>
             </div>
 
-            {/* =================================================
-                LEFT BOTTOM STATEMENT
-            ================================================== */}
+            {/* PROBLEMS */}
 
-            <div className="mt-7 flex items-start gap-3">
-              <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#B79A72]" />
+            <div
+              className="
+                border-t
+                border-[#0B2A52]/[0.08]
+              "
+            >
+              {commonProblems.map((problem, index) => (
+                <div
+                  key={problem.title}
+                  className={`
+                    group
+                    relative
 
-              <p className="max-w-[470px] text-[13px] font-medium leading-6 text-[#0B2A52]/60">
-                The challenge is creating the right content, for the right
-                audience, with a clear reason behind it.
+                    border-b
+                    border-[#0B2A52]/[0.08]
+
+                    py-5
+
+                    transition-all
+                    duration-500
+
+                    sm:py-6
+
+                    ${
+                      isVisible
+                        ? "translate-y-0 opacity-100"
+                        : "translate-y-5 opacity-0"
+                    }
+                  `}
+                  style={{
+                    transitionDelay: `${220 + index * 90}ms`,
+                  }}
+                >
+                  <div
+                    className="
+                      flex
+                      items-start
+                      gap-4
+                    "
+                  >
+                    {/* DOT */}
+
+                    <span
+                      className="
+                        mt-[9px]
+
+                        h-1.5
+                        w-1.5
+                        shrink-0
+
+                        rounded-full
+
+                        bg-[#B79A72]
+
+                        transition-transform
+                        duration-300
+
+                        group-hover:scale-150
+                      "
+                    />
+
+                    {/* COPY */}
+
+                    <div>
+                      <h3
+                        className="
+                          text-[14px]
+                          font-medium
+                          leading-[1.4]
+
+                          tracking-[-0.015em]
+
+                          text-[#0B2A52]
+
+                          sm:text-[16px]
+                        "
+                      >
+                        {problem.title}
+                      </h3>
+
+                      <p
+                        className="
+                          mt-2
+                          max-w-[490px]
+
+                          text-[11px]
+                          leading-5
+
+                          text-[#0B2A52]/48
+
+                          sm:text-[12px]
+                          sm:leading-6
+
+                          md:text-[13px]
+                        "
+                      >
+                        {problem.text}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* HOVER ACCENT */}
+
+                  <span
+                    className="
+                      absolute
+                      bottom-[-1px]
+                      left-0
+
+                      h-[2px]
+                      w-0
+
+                      bg-[#B79A72]
+
+                      transition-all
+                      duration-500
+
+                      group-hover:w-16
+                    "
+                  />
+                </div>
+              ))}
+            </div>
+
+            {/* SUMMARY */}
+
+            <div
+              className="
+                mt-7
+
+                rounded-[18px]
+
+                border
+                border-[#B79A72]/15
+
+                bg-[#FBFAF7]
+
+                px-5
+                py-4
+
+                sm:px-6
+              "
+            >
+              <p
+                className="
+                  text-[12px]
+                  font-medium
+                  leading-6
+
+                  text-[#0B2A52]/65
+
+                  sm:text-[13px]
+                "
+              >
+                More content only becomes more valuable when every
+                piece contributes to a clearer, more recognizable
+                brand.
               </p>
             </div>
           </div>
 
           {/* =====================================================
-              RIGHT SIDE — INSTAGRAM VISUAL
+              RIGHT SIDE — KEEP PHONE VISUAL
           ====================================================== */}
 
           <div
-            className={`relative flex min-h-[650px] items-center justify-center transition-all duration-[1500ms] ${
-              isVisible
-                ? "translate-x-0 opacity-100"
-                : "translate-x-10 opacity-0"
-            }`}
+            className={`
+              relative
+
+              flex
+
+              min-h-[500px]
+              w-full
+
+              items-center
+              justify-center
+
+              transition-all
+              duration-[1500ms]
+
+              sm:min-h-[610px]
+
+              lg:min-h-[650px]
+
+              ${
+                isVisible
+                  ? "translate-x-0 opacity-100"
+                  : "translate-x-8 opacity-0 lg:translate-x-10"
+              }
+            `}
           >
             {/* SOFT BACKGROUND LIGHT */}
 
-            <div className="pointer-events-none absolute h-[470px] w-[470px] rounded-full bg-[#F7F3EB] blur-[70px] sm:h-[540px] sm:w-[540px]" />
+            <div
+              className="
+                pointer-events-none
+                absolute
+
+                h-[320px]
+                w-[320px]
+
+                rounded-full
+
+                bg-[#F7F3EB]
+
+                blur-[70px]
+
+                min-[375px]:h-[370px]
+                min-[375px]:w-[370px]
+
+                sm:h-[540px]
+                sm:w-[540px]
+              "
+            />
 
             {/* SUBTLE ORBITS */}
 
-            <div className="pointer-events-none absolute h-[430px] w-[430px] rounded-full border border-[#B79A72]/10 sm:h-[570px] sm:w-[570px]" />
+            <div
+              className="
+                pointer-events-none
+                absolute
 
-            <div className="pointer-events-none absolute h-[350px] w-[350px] rounded-full border border-[#0B2A52]/[0.035] sm:h-[460px] sm:w-[460px]" />
+                h-[300px]
+                w-[300px]
+
+                rounded-full
+
+                border
+                border-[#B79A72]/10
+
+                min-[375px]:h-[350px]
+                min-[375px]:w-[350px]
+
+                sm:h-[570px]
+                sm:w-[570px]
+              "
+            />
+
+            <div
+              className="
+                pointer-events-none
+                absolute
+
+                h-[245px]
+                w-[245px]
+
+                rounded-full
+
+                border
+                border-[#0B2A52]/[0.035]
+
+                min-[375px]:h-[290px]
+                min-[375px]:w-[290px]
+
+                sm:h-[460px]
+                sm:w-[460px]
+              "
+            />
 
             {/* TOP STATUS CARD */}
 
-            <div className="absolute left-1/2 top-2 z-40 -translate-x-1/2 rounded-full border border-white bg-white/95 px-5 py-2.5 shadow-[0_15px_35px_rgba(11,42,82,0.08)] backdrop-blur-xl">
-              <div className="flex items-center gap-2 whitespace-nowrap">
-                <span className="relative flex h-1.5 w-1.5">
-                  <span className="absolute inset-0 animate-ping rounded-full bg-[#B79A72]/50" />
-                  <span className="relative h-1.5 w-1.5 rounded-full bg-[#B79A72]" />
+            <div
+              className="
+                absolute
+
+                left-1/2
+                top-2
+                z-40
+
+                -translate-x-1/2
+
+                rounded-full
+
+                border
+                border-white
+
+                bg-white/95
+
+                px-4
+                py-2
+
+                shadow-[0_15px_35px_rgba(11,42,82,0.08)]
+
+                backdrop-blur-xl
+
+                sm:px-5
+                sm:py-2.5
+              "
+            >
+              <div
+                className="
+                  flex
+                  items-center
+                  gap-2
+
+                  whitespace-nowrap
+                "
+              >
+                <span
+                  className="
+                    relative
+                    flex
+                    h-1.5
+                    w-1.5
+                  "
+                >
+                  <span
+                    className="
+                      absolute
+                      inset-0
+
+                      animate-ping
+
+                      rounded-full
+
+                      bg-[#B79A72]/50
+                    "
+                  />
+
+                  <span
+                    className="
+                      relative
+
+                      h-1.5
+                      w-1.5
+
+                      rounded-full
+
+                      bg-[#B79A72]
+                    "
+                  />
                 </span>
 
-                <span className="text-[8px] font-semibold tracking-[0.16em] text-[#0B2A52]/45">
+                <span
+                  className="
+                    text-[7px]
+                    font-semibold
+
+                    tracking-[0.14em]
+
+                    text-[#0B2A52]/45
+
+                    sm:text-[8px]
+                    sm:tracking-[0.16em]
+                  "
+                >
                   SOCIAL PRESENCE IN MOTION
                 </span>
               </div>
@@ -419,38 +859,190 @@ export default function SocialMediaMarketingProblem() {
                 PHONE
             ================================================== */}
 
-            <div className="relative z-30 w-[280px] sm:w-[330px]">
-              <div className="relative rounded-[42px] border-[7px] border-[#0B2A52] bg-[#0B2A52] p-1 shadow-[0_45px_100px_rgba(11,42,82,0.18)]">
-                <div className="absolute -right-[11px] top-[145px] h-16 w-[5px] rounded-r-full bg-[#0B2A52]" />
+            <div
+              className="
+                relative
+                z-30
 
-                <div className="overflow-hidden rounded-[32px] bg-white">
+                w-[250px]
+
+                min-[375px]:w-[280px]
+
+                sm:w-[330px]
+              "
+            >
+              <div
+                className="
+                  relative
+
+                  rounded-[38px]
+
+                  border-[6px]
+                  border-[#0B2A52]
+
+                  bg-[#0B2A52]
+
+                  p-1
+
+                  shadow-[0_45px_100px_rgba(11,42,82,0.18)]
+
+                  sm:rounded-[42px]
+                  sm:border-[7px]
+                "
+              >
+                {/* SIDE BUTTON */}
+
+                <div
+                  className="
+                    absolute
+
+                    -right-[11px]
+                    top-[145px]
+
+                    h-16
+                    w-[5px]
+
+                    rounded-r-full
+
+                    bg-[#0B2A52]
+                  "
+                />
+
+                <div
+                  className="
+                    overflow-hidden
+
+                    rounded-[29px]
+
+                    bg-white
+
+                    sm:rounded-[32px]
+                  "
+                >
                   {/* STATUS */}
 
-                  <div className="relative h-8 bg-white">
-                    <div className="absolute left-1/2 top-1.5 h-5 w-[86px] -translate-x-1/2 rounded-full bg-[#0B2A52]" />
+                  <div
+                    className="
+                      relative
+                      h-8
+                      bg-white
+                    "
+                  >
+                    <div
+                      className="
+                        absolute
+                        left-1/2
+                        top-1.5
 
-                    <span className="absolute left-4 top-2 text-[7px] font-semibold text-[#0B2A52]">
+                        h-5
+                        w-[78px]
+
+                        -translate-x-1/2
+
+                        rounded-full
+
+                        bg-[#0B2A52]
+
+                        sm:w-[86px]
+                      "
+                    />
+
+                    <span
+                      className="
+                        absolute
+                        left-4
+                        top-2
+
+                        text-[7px]
+                        font-semibold
+
+                        text-[#0B2A52]
+                      "
+                    >
                       9:41
                     </span>
 
-                    <div className="absolute right-4 top-2 flex gap-1">
-                      <span className="h-2 w-2 rounded-full bg-[#0B2A52]" />
-                      <span className="h-2 w-3 rounded-full bg-[#0B2A52]/60" />
+                    <div
+                      className="
+                        absolute
+                        right-4
+                        top-2
+
+                        flex
+                        gap-1
+                      "
+                    >
+                      <span
+                        className="
+                          h-2
+                          w-2
+
+                          rounded-full
+
+                          bg-[#0B2A52]
+                        "
+                      />
+
+                      <span
+                        className="
+                          h-2
+                          w-3
+
+                          rounded-full
+
+                          bg-[#0B2A52]/60
+                        "
+                      />
                     </div>
                   </div>
 
                   {/* INSTAGRAM HEADER */}
 
-                  <div className="flex items-center justify-between px-4 pb-3">
-                    <div className="flex items-center gap-1">
-                      <span className="text-[12px] font-semibold text-[#0B2A52]">
+                  <div
+                    className="
+                      flex
+                      items-center
+                      justify-between
+
+                      px-4
+                      pb-3
+                    "
+                  >
+                    <div
+                      className="
+                        flex
+                        items-center
+                        gap-1
+                      "
+                    >
+                      <span
+                        className="
+                          text-[12px]
+                          font-semibold
+
+                          text-[#0B2A52]
+                        "
+                      >
                         yourbrand
                       </span>
 
-                      <span className="text-[8px] text-[#B79A72]">✓</span>
+                      <span
+                        className="
+                          text-[8px]
+                          text-[#B79A72]
+                        "
+                      >
+                        ✓
+                      </span>
                     </div>
 
-                    <div className="flex items-center gap-4">
+                    <div
+                      className="
+                        flex
+                        items-center
+                        gap-4
+                      "
+                    >
                       <Plus
                         size={17}
                         strokeWidth={1.7}
@@ -467,45 +1059,165 @@ export default function SocialMediaMarketingProblem() {
                   {/* PROFILE */}
 
                   <div className="px-4">
-                    <div className="flex items-center gap-4">
-                      <div className="relative h-[63px] w-[63px] shrink-0 rounded-full bg-gradient-to-tr from-[#B79A72] via-[#E7D4B4] to-[#0B2A52] p-[2px]">
-                        <div className="h-full w-full rounded-full bg-white p-[2px]">
+                    <div
+                      className="
+                        flex
+                        items-center
+                        gap-4
+                      "
+                    >
+                      {/* PROFILE IMAGE */}
+
+                      <div
+                        className="
+                          relative
+
+                          h-[58px]
+                          w-[58px]
+                          shrink-0
+
+                          rounded-full
+
+                          bg-gradient-to-tr
+                          from-[#B79A72]
+                          via-[#E7D4B4]
+                          to-[#0B2A52]
+
+                          p-[2px]
+
+                          sm:h-[63px]
+                          sm:w-[63px]
+                        "
+                      >
+                        <div
+                          className="
+                            h-full
+                            w-full
+
+                            rounded-full
+
+                            bg-white
+
+                            p-[2px]
+                          "
+                        >
                           <img
                             src="/services/insta/instadp.png"
                             alt="Brand profile"
-                            className="h-full w-full rounded-full object-cover"
+                            className="
+                              h-full
+                              w-full
+
+                              rounded-full
+
+                              object-cover
+                            "
                           />
                         </div>
 
-                        <div className="absolute bottom-0 right-0 flex h-5 w-5 items-center justify-center rounded-full border-2 border-white bg-[#0B2A52] text-white">
+                        <div
+                          className="
+                            absolute
+                            bottom-0
+                            right-0
+
+                            flex
+                            h-5
+                            w-5
+
+                            items-center
+                            justify-center
+
+                            rounded-full
+
+                            border-2
+                            border-white
+
+                            bg-[#0B2A52]
+
+                            text-white
+                          "
+                        >
                           <Plus size={9} />
                         </div>
                       </div>
 
-                      <div className="grid flex-1 grid-cols-3 text-center">
+                      {/* STATS */}
+
+                      <div
+                        className="
+                          grid
+                          flex-1
+                          grid-cols-3
+
+                          text-center
+                        "
+                      >
                         <div>
-                          <p className="text-[13px] font-semibold text-[#0B2A52]">
+                          <p
+                            className="
+                              text-[12px]
+                              font-semibold
+                              text-[#0B2A52]
+
+                              sm:text-[13px]
+                            "
+                          >
                             48
                           </p>
-                          <p className="text-[7px] text-[#0B2A52]/40">
+
+                          <p
+                            className="
+                              text-[7px]
+                              text-[#0B2A52]/40
+                            "
+                          >
                             posts
                           </p>
                         </div>
 
                         <div>
-                          <p className="text-[13px] font-semibold text-[#0B2A52]">
+                          <p
+                            className="
+                              text-[12px]
+                              font-semibold
+                              text-[#0B2A52]
+
+                              sm:text-[13px]
+                            "
+                          >
                             12.8K
                           </p>
-                          <p className="text-[7px] text-[#0B2A52]/40">
+
+                          <p
+                            className="
+                              text-[7px]
+                              text-[#0B2A52]/40
+                            "
+                          >
                             followers
                           </p>
                         </div>
 
                         <div>
-                          <p className="text-[13px] font-semibold text-[#0B2A52]">
+                          <p
+                            className="
+                              text-[12px]
+                              font-semibold
+                              text-[#0B2A52]
+
+                              sm:text-[13px]
+                            "
+                          >
                             184
                           </p>
-                          <p className="text-[7px] text-[#0B2A52]/40">
+
+                          <p
+                            className="
+                              text-[7px]
+                              text-[#0B2A52]/40
+                            "
+                          >
                             following
                           </p>
                         </div>
@@ -515,51 +1227,180 @@ export default function SocialMediaMarketingProblem() {
                     {/* BIO */}
 
                     <div className="mt-3">
-                      <p className="text-[10px] font-semibold text-[#0B2A52]">
+                      <p
+                        className="
+                          text-[10px]
+                          font-semibold
+
+                          text-[#0B2A52]
+                        "
+                      >
                         Your Brand
                       </p>
 
-                      <p className="mt-1 text-[8px] leading-4 text-[#0B2A52]/50">
+                      <p
+                        className="
+                          mt-1
+
+                          text-[8px]
+                          leading-4
+
+                          text-[#0B2A52]/50
+                        "
+                      >
                         Social Media Marketing
                         <br />
                         Strategy · Content · Community · Growth
                         <br />
-                        Building a clearer, more intentional social presence.
+                        Building a clearer, more intentional social
+                        presence.
                       </p>
                     </div>
 
-                    {/* BUTTONS */}
+                    {/* PROFILE BUTTONS */}
 
-                    <div className="mt-3 flex gap-2">
-                      <button className="flex-1 rounded-lg bg-[#0B2A52] py-2 text-[8px] font-semibold text-white">
+                    <div
+                      className="
+                        mt-3
+                        flex
+                        gap-2
+                      "
+                    >
+                      <button
+                        type="button"
+                        className="
+                          flex-1
+
+                          rounded-lg
+
+                          bg-[#0B2A52]
+
+                          py-2
+
+                          text-[8px]
+                          font-semibold
+                          text-white
+                        "
+                      >
                         Follow
                       </button>
 
-                      <button className="flex-1 rounded-lg bg-[#0B2A52]/[0.05] py-2 text-[8px] font-semibold text-[#0B2A52]">
+                      <button
+                        type="button"
+                        className="
+                          flex-1
+
+                          rounded-lg
+
+                          bg-[#0B2A52]/[0.05]
+
+                          py-2
+
+                          text-[8px]
+                          font-semibold
+
+                          text-[#0B2A52]
+                        "
+                      >
                         Message
                       </button>
 
-                      <button className="flex-1 rounded-lg bg-[#0B2A52]/[0.05] py-2 text-[8px] font-semibold text-[#0B2A52]">
+                      <button
+                        type="button"
+                        className="
+                          flex-1
+
+                          rounded-lg
+
+                          bg-[#0B2A52]/[0.05]
+
+                          py-2
+
+                          text-[8px]
+                          font-semibold
+
+                          text-[#0B2A52]
+                        "
+                      >
                         Email
                       </button>
                     </div>
 
                     {/* HIGHLIGHTS */}
 
-                    <div className="mt-4 flex gap-4 overflow-hidden">
+                    <div
+                      className="
+                        mt-4
+
+                        flex
+                        gap-3
+
+                        overflow-hidden
+
+                        sm:gap-4
+                      "
+                    >
                       {highlights.map((highlight) => (
                         <button
                           key={highlight.label}
                           type="button"
-                          className="group shrink-0 text-center"
+                          className="
+                            group
+                            shrink-0
+
+                            text-center
+                          "
                         >
-                          <div className="flex h-[46px] w-[46px] items-center justify-center rounded-full border border-[#B79A72]/25 bg-[#F8F5EF] transition-all duration-300 group-hover:scale-105 group-hover:border-[#B79A72]/60 group-hover:bg-white">
-                            <span className="text-[#B79A72] transition-transform duration-300 group-hover:scale-110">
+                          <div
+                            className="
+                              flex
+                              h-[42px]
+                              w-[42px]
+
+                              items-center
+                              justify-center
+
+                              rounded-full
+
+                              border
+                              border-[#B79A72]/25
+
+                              bg-[#F8F5EF]
+
+                              transition-all
+                              duration-300
+
+                              group-hover:scale-105
+                              group-hover:border-[#B79A72]/60
+                              group-hover:bg-white
+
+                              sm:h-[46px]
+                              sm:w-[46px]
+                            "
+                          >
+                            <span
+                              className="
+                                text-[#B79A72]
+
+                                transition-transform
+                                duration-300
+
+                                group-hover:scale-110
+                              "
+                            >
                               {highlight.icon}
                             </span>
                           </div>
 
-                          <p className="mt-1.5 text-[7px] text-[#0B2A52]/50">
+                          <p
+                            className="
+                              mt-1.5
+
+                              text-[7px]
+
+                              text-[#0B2A52]/50
+                            "
+                          >
                             {highlight.label}
                           </p>
                         </button>
@@ -569,21 +1410,63 @@ export default function SocialMediaMarketingProblem() {
 
                   {/* TABS */}
 
-                  <div className="mt-4 flex border-b border-[#0B2A52]/8">
+                  <div
+                    className="
+                      mt-4
+
+                      flex
+
+                      border-b
+                      border-[#0B2A52]/8
+                    "
+                  >
                     <button
                       type="button"
                       onClick={() => setActiveTab("grid")}
-                      className="relative flex flex-1 items-center justify-center py-3"
+                      className="
+                        relative
+
+                        flex
+                        flex-1
+
+                        items-center
+                        justify-center
+
+                        py-3
+                      "
                     >
                       {activeTab === "grid" && (
-                        <span className="absolute bottom-0 h-[1.5px] w-12 bg-[#0B2A52]" />
+                        <span
+                          className="
+                            absolute
+                            bottom-0
+
+                            h-[1.5px]
+                            w-12
+
+                            bg-[#0B2A52]
+                          "
+                        />
                       )}
 
-                      <div className="grid grid-cols-3 gap-1">
+                      <div
+                        className="
+                          grid
+                          grid-cols-3
+                          gap-1
+                        "
+                      >
                         {[1, 2, 3, 4, 5, 6].map((item) => (
                           <span
                             key={item}
-                            className="h-1.5 w-1.5 rounded-[1px] bg-[#0B2A52]"
+                            className="
+                              h-1.5
+                              w-1.5
+
+                              rounded-[1px]
+
+                              bg-[#0B2A52]
+                            "
                           />
                         ))}
                       </div>
@@ -592,10 +1475,30 @@ export default function SocialMediaMarketingProblem() {
                     <button
                       type="button"
                       onClick={() => setActiveTab("reels")}
-                      className="relative flex flex-1 items-center justify-center py-3"
+                      className="
+                        relative
+
+                        flex
+                        flex-1
+
+                        items-center
+                        justify-center
+
+                        py-3
+                      "
                     >
                       {activeTab === "reels" && (
-                        <span className="absolute bottom-0 h-[1.5px] w-12 bg-[#0B2A52]" />
+                        <span
+                          className="
+                            absolute
+                            bottom-0
+
+                            h-[1.5px]
+                            w-12
+
+                            bg-[#0B2A52]
+                          "
+                        />
                       )}
 
                       <Play
@@ -605,7 +1508,18 @@ export default function SocialMediaMarketingProblem() {
                       />
                     </button>
 
-                    <button className="flex flex-1 items-center justify-center py-3">
+                    <button
+                      type="button"
+                      className="
+                        flex
+                        flex-1
+
+                        items-center
+                        justify-center
+
+                        py-3
+                      "
+                    >
                       <Sparkles
                         size={12}
                         strokeWidth={1.5}
@@ -614,29 +1528,105 @@ export default function SocialMediaMarketingProblem() {
                     </button>
                   </div>
 
-                  {/* IMAGE GRID */}
+                  {/* =================================================
+                      IMAGE GRID
+                  ================================================== */}
 
                   {activeTab === "grid" ? (
-                    <div className="grid grid-cols-3 gap-[2px] bg-white">
+                    <div
+                      className="
+                        grid
+                        grid-cols-3
+
+                        gap-[2px]
+
+                        bg-white
+                      "
+                    >
                       {posts.map((post, index) => (
                         <button
                           key={post}
                           type="button"
-                          className="group relative aspect-square overflow-hidden bg-[#ECE8E0]"
+                          className="
+                            group
+                            relative
+
+                            aspect-square
+
+                            overflow-hidden
+
+                            bg-[#ECE8E0]
+                          "
                         >
                           <img
                             src={post}
                             alt={`Instagram post ${index + 1}`}
-                            className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                            className="
+                              h-full
+                              w-full
+
+                              object-cover
+
+                              transition-transform
+                              duration-700
+
+                              group-hover:scale-110
+                            "
                           />
 
-                          <div className="absolute inset-0 flex items-center justify-center gap-3 bg-[#0B2A52]/0 opacity-0 transition-all duration-300 group-hover:bg-[#0B2A52]/45 group-hover:opacity-100">
-                            <span className="flex items-center gap-1 text-[7px] font-semibold text-white">
-                              <Heart size={10} fill="currentColor" />
+                          <div
+                            className="
+                              absolute
+                              inset-0
+
+                              flex
+                              items-center
+                              justify-center
+
+                              gap-3
+
+                              bg-[#0B2A52]/0
+
+                              opacity-0
+
+                              transition-all
+                              duration-300
+
+                              group-hover:bg-[#0B2A52]/45
+                              group-hover:opacity-100
+                            "
+                          >
+                            <span
+                              className="
+                                flex
+                                items-center
+                                gap-1
+
+                                text-[7px]
+                                font-semibold
+
+                                text-white
+                              "
+                            >
+                              <Heart
+                                size={10}
+                                fill="currentColor"
+                              />
                               1.2K
                             </span>
 
-                            <span className="flex items-center gap-1 text-[7px] font-semibold text-white">
+                            <span
+                              className="
+                                flex
+                                items-center
+                                gap-1
+
+                                text-[7px]
+                                font-semibold
+
+                                text-white
+                              "
+                            >
                               <MessageCircle size={10} />
                               48
                             </span>
@@ -645,19 +1635,49 @@ export default function SocialMediaMarketingProblem() {
                       ))}
                     </div>
                   ) : (
-                    <div className="grid grid-cols-3 gap-[2px]">
+                    <div
+                      className="
+                        grid
+                        grid-cols-3
+
+                        gap-[2px]
+                      "
+                    >
                       {posts.map((post, index) => (
                         <div
                           key={`reel-${index}`}
-                          className="relative aspect-square overflow-hidden"
+                          className="
+                            relative
+
+                            aspect-square
+
+                            overflow-hidden
+                          "
                         >
                           <img
                             src={post}
                             alt={`Instagram reel ${index + 1}`}
-                            className="h-full w-full object-cover"
+                            className="
+                              h-full
+                              w-full
+
+                              object-cover
+                            "
                           />
 
-                          <div className="absolute right-2 top-2 rounded-full bg-black/40 p-1">
+                          <div
+                            className="
+                              absolute
+                              right-2
+                              top-2
+
+                              rounded-full
+
+                              bg-black/40
+
+                              p-1
+                            "
+                          >
                             <Play
                               size={8}
                               fill="white"
@@ -671,8 +1691,26 @@ export default function SocialMediaMarketingProblem() {
 
                   {/* BOTTOM NAV */}
 
-                  <div className="flex items-center justify-between px-5 py-3">
-                    <div className="h-3 w-3 rounded-[3px] bg-[#0B2A52]" />
+                  <div
+                    className="
+                      flex
+                      items-center
+                      justify-between
+
+                      px-5
+                      py-3
+                    "
+                  >
+                    <div
+                      className="
+                        h-3
+                        w-3
+
+                        rounded-[3px]
+
+                        bg-[#0B2A52]
+                      "
+                    />
 
                     <Heart
                       size={14}
@@ -692,89 +1730,255 @@ export default function SocialMediaMarketingProblem() {
                       className="text-[#0B2A52]/50"
                     />
 
-                    <div className="h-4 w-4 overflow-hidden rounded-full border border-[#0B2A52]/20">
+                    <div
+                      className="
+                        h-4
+                        w-4
+
+                        overflow-hidden
+
+                        rounded-full
+
+                        border
+                        border-[#0B2A52]/20
+                      "
+                    >
                       <img
                         src="/services/insta/instadp.png"
                         alt=""
-                        className="h-full w-full object-cover"
+                        className="
+                          h-full
+                          w-full
+                          object-cover
+                        "
                       />
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* LEFT FLOATING CARD */}
+              {/* =================================================
+                  LEFT FLOATING CARD
+              ================================================== */}
 
               <div
-                className={`absolute -left-20 top-[39%] z-40 hidden w-[155px] rounded-2xl border border-[#0B2A52]/[0.06] bg-white p-4 shadow-[0_25px_60px_rgba(11,42,82,0.09)] transition-all duration-700 sm:block ${
-                  isVisible
-                    ? "translate-x-0 opacity-100"
-                    : "-translate-x-5 opacity-0"
-                }`}
+                className={`
+                  absolute
+
+                  -left-20
+                  top-[39%]
+                  z-40
+
+                  hidden
+                  w-[155px]
+
+                  rounded-2xl
+
+                  border
+                  border-[#0B2A52]/[0.06]
+
+                  bg-white
+
+                  p-4
+
+                  shadow-[0_25px_60px_rgba(11,42,82,0.09)]
+
+                  transition-all
+                  duration-700
+
+                  sm:block
+
+                  ${
+                    isVisible
+                      ? "translate-x-0 opacity-100"
+                      : "-translate-x-5 opacity-0"
+                  }
+                `}
               >
-                <div className="flex items-center justify-between">
-                  <p className="text-[7px] font-semibold tracking-[0.15em] text-[#0B2A52]/35">
-                    {currentProblem.label}
+                <div
+                  className="
+                    flex
+                    items-center
+                    justify-between
+                  "
+                >
+                  <p
+                    className="
+                      text-[7px]
+                      font-semibold
+
+                      tracking-[0.15em]
+
+                      text-[#0B2A52]/35
+                    "
+                  >
+                    BRAND SYSTEM
                   </p>
 
-                  <Sparkles size={11} className="text-[#B79A72]" />
+                  <Sparkles
+                    size={11}
+                    className="text-[#B79A72]"
+                  />
                 </div>
 
-                <p className="mt-2 text-[19px] font-medium text-[#0B2A52]">
-                  {currentProblem.metric}
+                <p
+                  className="
+                    mt-2
+
+                    text-[19px]
+                    font-medium
+
+                    text-[#0B2A52]
+                  "
+                >
+                  Connected
                 </p>
 
-                <div className="mt-3 h-[3px] overflow-hidden rounded-full bg-[#0B2A52]/[0.07]">
+                <div
+                  className="
+                    mt-3
+
+                    h-[3px]
+
+                    overflow-hidden
+
+                    rounded-full
+
+                    bg-[#0B2A52]/[0.07]
+                  "
+                >
                   <div
-                    className="h-full rounded-full bg-[#B79A72] transition-all duration-700"
-                    style={{
-                      width: currentProblem.progress,
-                    }}
+                    className="
+                      h-full
+                      w-[68%]
+
+                      rounded-full
+
+                      bg-[#B79A72]
+                    "
                   />
                 </div>
               </div>
 
-              {/* RIGHT FLOATING CARD */}
+              {/* =================================================
+                  RIGHT FLOATING CARD
+              ================================================== */}
 
               <button
                 type="button"
                 onClick={() => setLiked(!liked)}
-                className="absolute -right-16 bottom-[22%] z-40 hidden w-[158px] rounded-2xl bg-[#0B2A52] p-4 text-left shadow-[0_25px_60px_rgba(11,42,82,0.17)] transition-all duration-500 hover:-translate-y-2 sm:block"
+                className="
+                  absolute
+
+                  -right-16
+                  bottom-[22%]
+                  z-40
+
+                  hidden
+                  w-[158px]
+
+                  rounded-2xl
+
+                  bg-[#0B2A52]
+
+                  p-4
+
+                  text-left
+
+                  shadow-[0_25px_60px_rgba(11,42,82,0.17)]
+
+                  transition-all
+                  duration-500
+
+                  hover:-translate-y-2
+
+                  sm:block
+                "
               >
-                <div className="flex items-center justify-between">
-                  <span className="text-[7px] font-semibold tracking-[0.15em] text-white/40">
+                <div
+                  className="
+                    flex
+                    items-center
+                    justify-between
+                  "
+                >
+                  <span
+                    className="
+                      text-[7px]
+                      font-semibold
+
+                      tracking-[0.15em]
+
+                      text-white/40
+                    "
+                  >
                     ENGAGEMENT
                   </span>
 
                   <Heart
                     size={12}
                     fill={liked ? "currentColor" : "none"}
-                    className={`transition-all duration-300 ${
-                      liked
-                        ? "scale-125 text-[#B79A72]"
-                        : "text-white/40"
-                    }`}
+                    className={`
+                      transition-all
+                      duration-300
+
+                      ${
+                        liked
+                          ? "scale-125 text-[#B79A72]"
+                          : "text-white/40"
+                      }
+                    `}
                   />
                 </div>
 
-                <p className="mt-2 text-[20px] font-medium text-white">
+                <p
+                  className="
+                    mt-2
+
+                    text-[20px]
+                    font-medium
+
+                    text-white
+                  "
+                >
                   48.7K
                 </p>
 
-                <p className="mt-1 text-[8px] text-white/40">
+                <p
+                  className="
+                    mt-1
+
+                    text-[8px]
+
+                    text-white/40
+                  "
+                >
                   audience interactions
                 </p>
 
-                <div className="mt-4 flex items-end gap-1">
+                <div
+                  className="
+                    mt-4
+
+                    flex
+                    items-end
+                    gap-1
+                  "
+                >
                   {[20, 28, 24, 38, 33, 49, 43, 66].map(
                     (height, index) => (
                       <span
                         key={index}
-                        className={`flex-1 rounded-sm ${
-                          index === 7
-                            ? "bg-[#B79A72]"
-                            : "bg-white/15"
-                        }`}
+                        className={`
+                          flex-1
+                          rounded-sm
+
+                          ${
+                            index === 7
+                              ? "bg-[#B79A72]"
+                              : "bg-white/15"
+                          }
+                        `}
                         style={{
                           height: `${height * 0.45}px`,
                         }}
@@ -787,282 +1991,337 @@ export default function SocialMediaMarketingProblem() {
 
             {/* DECORATIVE DOTS */}
 
-            <span className="absolute right-[9%] top-[18%] h-2 w-2 animate-pulse rounded-full bg-[#B79A72]" />
+            <span
+              className="
+                absolute
 
-            <span className="absolute bottom-[12%] left-[10%] h-1.5 w-1.5 animate-pulse rounded-full bg-[#B79A72]/70" />
+                right-[9%]
+                top-[18%]
+
+                h-2
+                w-2
+
+                animate-pulse
+
+                rounded-full
+
+                bg-[#B79A72]
+              "
+            />
+
+            <span
+              className="
+                absolute
+
+                bottom-[12%]
+                left-[10%]
+
+                h-1.5
+                w-1.5
+
+                animate-pulse
+
+                rounded-full
+
+                bg-[#B79A72]/70
+              "
+            />
           </div>
         </div>
 
         {/* =========================================================
-            BOTTOM STATEMENT
+            OUR POINT OF VIEW
         ========================================================== */}
 
-       {/* =========================================================
-    BOTTOM STATEMENT + CTA
-========================================================== */}
+        <div
+          className={`
+            mx-auto
 
-<div
-  className={`
-    mx-auto
-    mt-14
-    max-w-[820px]
-    text-center
+            mt-16
+            max-w-[1120px]
 
-    transition-all
-    delay-300
-    duration-[1200ms]
+            transition-all
+            delay-300
+            duration-[1200ms]
 
-    sm:mt-16
+            sm:mt-20
 
-    ${
-      isVisible
-        ? "translate-y-0 opacity-100"
-        : "translate-y-6 opacity-0"
-    }
-  `}
->
-  {/* LABEL */}
+            lg:mt-24
 
-  <div
-    className="
-      mx-auto
-      mb-5
+            ${
+              isVisible
+                ? "translate-y-0 opacity-100"
+                : "translate-y-7 opacity-0"
+            }
+          `}
+        >
+          {/* LABEL */}
 
-      flex
-      items-center
-      justify-center
-      gap-3
-    "
-  >
-    <span
-      className="
-        h-px
-        w-8
+          <div
+            className="
+              mx-auto
 
-        bg-gradient-to-r
-        from-transparent
-        to-[#B79A72]
-      "
-    />
+              flex
+              w-fit
 
-    <span
-      className="
-        text-[8px]
-        font-semibold
-        uppercase
-        tracking-[0.22em]
-        text-[#0B2A52]/30
-      "
-    >
-      THE REAL ISSUE?
-    </span>
+              items-center
+              justify-center
 
-    <span
-      className="
-        h-px
-        w-8
+              gap-3
+            "
+          >
+            <span
+              className="
+                block
+                h-px
+                w-8
 
-        bg-gradient-to-l
-        from-transparent
-        to-[#B79A72]
-      "
-    />
-  </div>
+                bg-gradient-to-r
+                from-transparent
+                to-[#B79A72]
 
-  {/* STATEMENT */}
+                sm:w-10
+              "
+            />
 
-  <p
-    className="
-      text-[1.2rem]
-      font-medium
-      leading-[1.5]
-      tracking-[-0.02em]
-      text-[#0B2A52]
+            <span
+              className="
+                text-[8px]
+                font-medium
+                uppercase
 
-      sm:text-[1.45rem]
+                tracking-[0.22em]
 
-      md:text-[1.55rem]
-    "
-  >
-    Without strategy, social media becomes an activity.
+                text-[#B79A72]
 
-    <br className="hidden sm:block" />
+                sm:text-[10px]
+                sm:tracking-[0.28em]
+              "
+            >
+              OUR POINT OF VIEW
+            </span>
 
-    <span className="text-[#B79A72]">
-      With strategy, it becomes a brand-building system.
-    </span>
-  </p>
+            <span
+              className="
+                block
+                h-px
+                w-8
 
-  {/* CTA DIVIDER */}
+                bg-gradient-to-l
+                from-transparent
+                to-[#B79A72]
 
-  <div
-    className="
-      mx-auto
-      mt-7
-      h-px
-      w-14
-      bg-[#0B2A52]/10
+                sm:w-10
+              "
+            />
+          </div>
 
-      sm:mt-8
-    "
-  />
+          {/* POV INTRO */}
 
-  {/* CTA COPY */}
+          <p
+            className="
+              mx-auto
 
-  <div
-    className="
-      mx-auto
-      mt-6
-      max-w-[600px]
+              mt-5
+              max-w-[620px]
 
-      sm:mt-7
-    "
-  >
-    <p
-      className="
-        font-[var(--font-new-york)]
+              text-center
 
-        text-[1.55rem]
-        font-normal
-        leading-[1.15]
-        tracking-[-0.035em]
-        text-[#0B2A52]
+              text-[12px]
+              leading-6
 
-        sm:text-[1.8rem]
+              text-[#0B2A52]/45
 
-        md:text-[2rem]
-      "
-    >
-      Ready to Make Social Media{" "}
-      <span className="text-[#B79A72]">
-        Work for Your Brand?
-      </span>
-    </p>
+              sm:mt-6
+              sm:text-[13px]
+              sm:leading-7
+            "
+          >
+            Strong social media is not only about being seen. Each
+            interaction should help move your brand toward greater
+            familiarity, relevance and trust.
+          </p>
 
-   
-  </div>
+          {/* =====================================================
+              POV GRID
+          ====================================================== */}
 
-  {/* CTA BUTTON */}
+          <div
+            className="
+              mt-9
 
-  <div
-    className="
-      mt-6
-      flex
-      justify-center
+              grid
 
-      sm:mt-7
-    "
-  >
-    <Link
-      href="/contact"
-      className="
-        group
-        relative
+              border-y
+              border-[#0B2A52]/[0.08]
 
-        inline-flex
+              sm:mt-11
+              sm:grid-cols-2
 
-        min-h-[46px]
+              lg:mt-12
+              lg:grid-cols-4
+            "
+          >
+            {pointOfView.map((item, index) => (
+              <div
+                key={item.title}
+                className={`
+                  group
+                  relative
 
-        items-center
-        justify-center
+                  px-3
+                  py-7
 
-        overflow-hidden
+                  text-center
 
-        rounded-[16px]
+                  sm:px-5
+                  sm:py-8
 
-        border
-        border-[#6285AD]/30
+                  lg:px-6
+                  lg:py-10
 
-        bg-white/80
+                  ${
+                    index < pointOfView.length - 1
+                      ? "border-b border-[#0B2A52]/[0.08] sm:border-b-0"
+                      : ""
+                  }
 
-        px-5
-        py-[11px]
+                  ${
+                    index === 0 || index === 2
+                      ? "sm:border-r sm:border-[#0B2A52]/[0.08]"
+                      : ""
+                  }
 
-        text-[13px]
-        font-medium
-        tracking-[-0.01em]
+                  ${
+                    index < 3
+                      ? "lg:border-r lg:border-[#0B2A52]/[0.08]"
+                      : ""
+                  }
+                `}
+              >
+                {/* TOP DOT */}
 
-        text-[#0B2A52]
+                <span
+                  className="
+                    mx-auto
+                    block
 
-        shadow-[0_8px_30px_rgba(11,42,82,0.08)]
+                    h-1.5
+                    w-1.5
 
-        backdrop-blur-[8px]
+                    rounded-full
 
-        transition-all
-        duration-300
-        ease-out
+                    bg-[#B79A72]
 
-        hover:-translate-y-[2px]
-        hover:border-[#6285AD]/40
-        hover:bg-white
-        hover:shadow-[0_12px_38px_rgba(98,133,173,0.16)]
+                    transition-all
+                    duration-300
 
-        active:translate-y-0
-        active:scale-[0.98]
+                    group-hover:scale-150
+                  "
+                />
 
-        sm:min-h-[48px]
-        sm:px-6
-        sm:py-3
-        sm:text-[14px]
+                {/* TITLE */}
 
-        md:px-7
-        md:text-[15px]
-      "
-    >
-      {/* SOFT INNER BORDER */}
+                <p
+                  className="
+                    mt-4
 
-      <span
-        aria-hidden="true"
-        className="
-          pointer-events-none
-          absolute
-          inset-[2px]
+                    font-[var(--font-new-york)]
 
-          rounded-[13px]
+                    text-[1.3rem]
+                    font-normal
 
-          border
-          border-white/60
-        "
-      />
+                    tracking-[-0.025em]
 
-      {/* TOP LIGHT */}
+                    text-[#0B2A52]
 
-      <span
-        aria-hidden="true"
-        className="
-          pointer-events-none
-          absolute
-          inset-x-4
-          top-0
+                    sm:text-[1.45rem]
 
-          h-px
+                    lg:text-[1.5rem]
+                  "
+                >
+                  {item.title}
+                </p>
 
-          bg-gradient-to-r
-          from-transparent
-          via-white
-          to-transparent
-        "
-      />
+                {/* RESULT */}
 
-      {/* TEXT */}
+                <p
+                  className="
+                    mt-1
 
-      <span
-        className="
-          relative
-          z-10
-          whitespace-nowrap
-          text-[#0B2A52]
-        "
-      >
-        Build My Social Presence
-      </span>
-    </Link>
-  </div>
+                    text-[12px]
+                    font-medium
 
-  {/* SMALL SUPPORTING TEXT */}
+                    text-[#B79A72]
 
-  
-</div>
+                    sm:text-[13px]
+                  "
+                >
+                  {item.result}
+                </p>
+
+                {/* ACCENT */}
+
+                <span
+                  className="
+                    mx-auto
+                    mt-5
+                    block
+
+                    h-px
+                    w-7
+
+                    bg-[#0B2A52]/15
+
+                    transition-all
+                    duration-300
+
+                    group-hover:w-12
+                    group-hover:bg-[#B79A72]/60
+                  "
+                />
+              </div>
+            ))}
+          </div>
+
+          {/* FINAL MESSAGE */}
+
+          <div
+            className="
+              mx-auto
+
+              mt-8
+              max-w-[780px]
+
+              text-center
+
+              sm:mt-10
+            "
+          >
+            <p
+              className="
+                font-[var(--font-new-york)]
+
+                text-[1.35rem]
+                font-normal
+                leading-[1.35]
+
+                tracking-[-0.025em]
+
+                text-[#0B2A52]
+
+                sm:text-[1.55rem]
+
+                md:text-[1.7rem]
+              "
+            >
+              Social media should help your brand become{" "}
+              <span className="text-[#B79A72]">
+                clearer, recognizable and easier to remember.
+              </span>
+            </p>
+          </div>
+        </div>
       </div>
     </section>
   );

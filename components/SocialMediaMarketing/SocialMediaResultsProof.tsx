@@ -1,1335 +1,1150 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
+import { motion, useReducedMotion } from "framer-motion";
 import {
-  ArrowRight,
+  ArrowUpRight,
+  Camera,
   BarChart3,
-  CheckCircle2,
-  Eye,
-  MousePointer2,
-  MessageSquareText,
-  Target,
-  TrendingUp,
 } from "lucide-react";
 
-import {
-  motion,
-  useInView,
-  useReducedMotion,
-} from "framer-motion";
+/* =========================================================
+   FONT
+========================================================= */
 
-const objectives = [
+const newYorkFont = {
+  fontFamily: '"New York", "Bodoni Moda", Georgia, serif',
+};
+
+/* =========================================================
+   TYPES
+========================================================= */
+
+type SocialWork = {
+  id: string;
+  category: string;
+  client: string;
+  description: string;
+  image: string;
+  handle: string;
+  badge?: string;
+
+  insight?: {
+    value: string;
+    label: string;
+  };
+};
+
+/* =========================================================
+   DATA
+========================================================= */
+
+const socialWorks: SocialWork[] = [
   {
-    id: "awareness",
-    number: "01",
-    label: "Brand Awareness",
-    short: "Awareness",
-    metric: "Reach & Recognition",
+    id: "dts",
+    category: "EVENTS & ENTERTAINMENT",
+    client: "DTS World",
     description:
-      "Success may mean reaching more of the right people and building stronger brand recognition.",
-    icon: Eye,
+      "Social media presence built around events, celebrities, weddings, PR and entertainment-led brand communication.",
+    image: "/services/social/dts.png",
+    handle: "@doubletrouble_studio",
+    badge: "Digital agency",
   },
+
   {
-    id: "engagement",
-    number: "02",
-    label: "Engagement",
-    short: "Engagement",
-    metric: "Meaningful Interaction",
+    id: "rnk",
+    category: "AUTOMOTIVE",
+    client: "RNK Rentals",
     description:
-      "Success may mean stronger responses, saves, shares, messages and audience participation.",
-    icon: MessageSquareText,
+      "A consistent social presence created to showcase the brand, rental services and automotive experience.",
+    image: "/services/social/rnk.png",
+    handle: "@rnk_rentacar",
+    badge: "Car Rentals",
   },
+
   {
-    id: "traffic",
-    number: "03",
-    label: "Website Traffic",
-    short: "Traffic",
-    metric: "Qualified Visits",
+    id: "shruti",
+    category: "PERSONAL BRAND",
+    client: "Shruti Chadha",
     description:
-      "Success may mean moving relevant social media attention toward your website.",
-    icon: MousePointer2,
+      "A refined personal-brand presence built through visual consistency, editorial content and social storytelling.",
+    image: "/services/social/shruti.png",
+    handle: "@shrutichadha_",
+    badge: "Personal Branding",
   },
+
   {
-    id: "enquiries",
-    number: "04",
-    label: "Qualified Enquiries",
-    short: "Enquiries",
-    metric: "Business Conversations",
+    id: "butter-chicken",
+    category: "FOOD & RESTAURANT",
+    client: "Butter Chicken Factory",
     description:
-      "Success may mean creating more relevant enquiries and meaningful sales conversations.",
-    icon: Target,
+      "Visual social content created to communicate food, offers and the personality of the restaurant brand.",
+    image: "/services/social/chicken.png",
+    handle: "@butterchickenfactory",
+    badge: "Social Content",
   },
+
   {
-    id: "conversions",
-    number: "05",
-    label: "Campaign Conversions",
-    short: "Conversions",
-    metric: "Measurable Action",
+    id: "brownie",
+    category: "FOOD & PRODUCT",
+    client: "Brownie Point",
     description:
-      "Success may mean campaign actions such as leads, signups, purchases or other agreed conversions.",
-    icon: TrendingUp,
+      "Product-led social content focused on visual appeal, consistency and memorable digital presentation.",
+    image: "/services/social/cake.png",
+    handle: "@browniepointindia",
+    badge: "Product Content",
+  },
+
+  {
+    id: "vow-story",
+    category: "WEDDINGS & EVENTS",
+    client: "Vow Story",
+    description:
+      "A social presence built around weddings, celebrations and unforgettable event moments — capturing the people, details and stories that make every occasion memorable.",
+    image: "/services/social/vow.png",
+    handle: "@vowstory",
+    badge: "Wedding & Events",
   },
 ];
 
 /* =========================================================
-   ADD ONLY REAL / VERIFIED CASE STUDIES HERE
+   MAIN SECTION
 ========================================================= */
 
-const caseStudies: CaseStudy[] = [
-  /*
-  {
-    client: "Real Client Name",
-    challenge: "What was happening before working with Sharp Rays.",
-    strategy: "What Sharp Rays changed and why.",
-    execution: "Content, platform and campaign activity.",
-    result: "Real measurable and verified outcome.",
-    quote: "Real client testimonial.",
-  },
-  */
-];
-
-type CaseStudy = {
-  client: string;
-  challenge: string;
-  strategy: string;
-  execution: string;
-  result: string;
-  quote?: string;
-};
-
-export default function SocialMediaResultsProof() {
-  const sectionRef = useRef<HTMLElement | null>(null);
-
-  const [activeObjective, setActiveObjective] = useState(0);
-
-  const isVisible = useInView(sectionRef, {
-    once: true,
-    margin: "-100px",
-  });
-
+export default function SocialMediaWorkMarquee() {
   const reduceMotion = useReducedMotion();
 
-  const active = objectives[activeObjective];
-  const ActiveIcon = active.icon;
+  const viewportRef = useRef<HTMLDivElement>(null);
+  const firstGroupRef = useRef<HTMLDivElement>(null);
+
+  const pausedRef = useRef(false);
+
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  /* =======================================================
+     RESPONSIVE BREAKPOINT
+  ======================================================= */
+
+  useEffect(() => {
+    const media = window.matchMedia("(min-width: 768px)");
+
+    const updateBreakpoint = () => {
+      setIsDesktop(media.matches);
+    };
+
+    updateBreakpoint();
+
+    media.addEventListener("change", updateBreakpoint);
+
+    return () => {
+      media.removeEventListener("change", updateBreakpoint);
+    };
+  }, []);
+
+  /* =======================================================
+     SHARP AUTO SCROLL
+
+     Important:
+     We are NOT transforming the whole track anymore.
+
+     Native scrollLeft + whole pixel values prevents much
+     of the blurry/rasterized appearance that transforms
+     can create on text and screenshots.
+  ======================================================= */
+
+  useEffect(() => {
+    const viewport = viewportRef.current;
+    const firstGroup = firstGroupRef.current;
+
+    if (!viewport) return;
+
+    viewport.scrollLeft = 0;
+
+    if (!isDesktop || reduceMotion || !firstGroup) {
+      return;
+    }
+
+    let animationFrame = 0;
+    let previousTime = performance.now();
+    let scrollPosition = 0;
+
+    /* slower = cleaner + more premium */
+    const speed = 90;
+
+    const getLoopDistance = () => {
+      const track = firstGroup.parentElement;
+
+      if (!track) {
+        return firstGroup.offsetWidth;
+      }
+
+      const styles = window.getComputedStyle(track);
+
+      const gap =
+        parseFloat(styles.columnGap || styles.gap || "0") || 0;
+
+      return firstGroup.offsetWidth + gap;
+    };
+
+    let loopDistance = getLoopDistance();
+
+    const updateMeasurements = () => {
+      loopDistance = getLoopDistance();
+    };
+
+    window.addEventListener("resize", updateMeasurements);
+
+    const animate = (currentTime: number) => {
+      /*
+       * Prevent giant jumps when browser tab becomes inactive.
+       */
+      const deltaTime = Math.min(
+        (currentTime - previousTime) / 1000,
+        0.04
+      );
+
+      previousTime = currentTime;
+
+      if (!pausedRef.current) {
+        scrollPosition += speed * deltaTime;
+
+        /*
+         * Seamless reset after first group.
+         */
+        if (
+          loopDistance > 0 &&
+          scrollPosition >= loopDistance
+        ) {
+          scrollPosition -= loopDistance;
+        }
+
+        /*
+         * VERY IMPORTANT:
+         * Round to whole pixels.
+         *
+         * Fractional movement is one of the reasons text /
+         * screenshots can look soft during animation.
+         */
+        viewport.scrollLeft = Math.round(scrollPosition);
+      }
+
+      animationFrame =
+        window.requestAnimationFrame(animate);
+    };
+
+    animationFrame =
+      window.requestAnimationFrame(animate);
+
+    return () => {
+      window.cancelAnimationFrame(animationFrame);
+      window.removeEventListener(
+        "resize",
+        updateMeasurements
+      );
+    };
+  }, [isDesktop, reduceMotion]);
+
+  /*
+   * Desktop needs duplicate group for seamless looping.
+   * Mobile only gets one group because it uses manual swipe.
+   */
+  const groupCount =
+    isDesktop && !reduceMotion ? 2 : 1;
 
   return (
     <section
-      ref={sectionRef}
-      id="social-media-results"
+      id="social-media-work"
       className="
         relative
         overflow-hidden
+
         bg-white
-        py-24
+
+        py-20
         text-[#0B2A52]
-        sm:py-28
+
+        sm:py-24
+        md:py-28
         lg:py-32
+        xl:py-36
       "
     >
-      {/* =========================================================
-          BACKGROUND DETAILS
-      ========================================================== */}
+      {/* =====================================================
+          BACKGROUND
+      ===================================================== */}
 
-      <div
-        aria-hidden="true"
-        className="
-          pointer-events-none
-          absolute
-          inset-0
-          overflow-hidden
-        "
-      >
-        <div
-          className="
-            absolute
-            -left-[340px]
-            top-[220px]
-            h-[640px]
-            w-[640px]
-            rounded-full
-            border
-            border-[#0B2A52]/[0.035]
-          "
-        />
 
-        <div
-          className="
-            absolute
-            -right-[260px]
-            bottom-[-180px]
-            h-[520px]
-            w-[520px]
-            rounded-full
-            border
-            border-[#B79A72]/10
-          "
-        />
-      </div>
+
+      {/* =====================================================
+          HEADER
+      ===================================================== */}
 
       <div
         className="
           relative
           z-10
+
           mx-auto
-          max-w-[1280px]
+          w-full
+          max-w-[1450px]
+
           px-5
-          sm:px-8
+          sm:px-7
+          md:px-8
           lg:px-12
+          xl:px-16
         "
       >
-        {/* =======================================================
-            HEADER
-        ======================================================== */}
-
-        <motion.header
-          initial={{ opacity: 0, y: 40 }}
-          animate={
-            isVisible
-              ? {
-                  opacity: 1,
-                  y: 0,
+        <motion.div
+          initial={
+            reduceMotion
+              ? false
+              : {
+                  opacity: 0,
+                  y: 28,
                 }
-              : {}
           }
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{
+            once: true,
+            amount: 0.25,
+          }}
           transition={{
-            duration: reduceMotion ? 0 : 0.9,
+            duration: reduceMotion ? 0 : 0.75,
             ease: [0.22, 1, 0.36, 1],
           }}
           className="
             mx-auto
-            max-w-[940px]
+            max-w-[880px]
             text-center
           "
         >
+          {/* eyebrow */}
+
           <div
             className="
               flex
               items-center
               justify-center
               gap-3
+
+              sm:gap-4
             "
           >
-            <span className="h-px w-9 bg-[#B79A72]" />
+            <span
+              className="
+                h-px
+                w-7
+
+                bg-gradient-to-r
+                from-transparent
+                to-[#B79A72]
+
+                sm:w-10
+              "
+            />
 
             <span
               className="
-                text-[10px]
+                text-[9px]
                 font-semibold
                 uppercase
-                tracking-[0.28em]
+                tracking-[0.3em]
                 text-[#B79A72]
+
+                sm:text-[10px]
+                sm:tracking-[0.36em]
               "
             >
-              Our Work
+              Selected Work
             </span>
 
-            <span className="h-px w-9 bg-[#B79A72]" />
+            <span
+              className="
+                h-px
+                w-7
+
+                bg-gradient-to-l
+                from-transparent
+                to-[#B79A72]
+
+                sm:w-10
+              "
+            />
           </div>
 
+          {/* heading */}
+
           <h2
+            style={newYorkFont}
             className="
               mt-6
-              text-[2.2rem]
+
+              text-[2.25rem]
               font-medium
-              leading-[1.08]
+              leading-[1]
               tracking-[-0.045em]
               text-[#0B2A52]
-              sm:text-[2.65rem]
-              md:text-[3rem]
-              lg:text-[3.35rem]
+
+              sm:text-[2.6rem]
+              md:text-[2.95rem]
+              lg:text-[3.1rem]
+              xl:text-[3.35rem]
             "
           >
-            What Does Successful Social Media Marketing{" "}
-            <span className="font-normal text-[#B79A72]">
-              Look Like?
+            Real Brands.{" "}
+            <span className="text-[#B79A72]">
+              Real Social Work.
             </span>
           </h2>
+
+          {/* description */}
 
           <p
             className="
               mx-auto
-              mt-6
-              max-w-[700px]
-              text-[17px]
-              font-medium
-              leading-7
-              text-[#0B2A52]
-              sm:text-[19px]
-            "
-          >
-            Success depends on the objective.
-          </p>
-        </motion.header>
+              mt-5
+              max-w-[650px]
 
-        {/* =======================================================
-            SUCCESS EXPLANATION
-        ======================================================== */}
-
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={
-            isVisible
-              ? {
-                  opacity: 1,
-                  y: 0,
-                }
-              : {}
-          }
-          transition={{
-            duration: reduceMotion ? 0 : 0.8,
-            delay: 0.15,
-          }}
-          className="
-            mx-auto
-            mt-10
-            max-w-[900px]
-            text-center
-          "
-        >
-          <p
-            className="
               text-[14px]
-              leading-7
-              text-[#0B2A52]/58
-              sm:text-[15px]
-            "
-          >
-            For one business, success may mean stronger brand awareness and
-            engagement.
-          </p>
+              leading-[1.8]
+              text-[#647B98]
 
-          <p
-            className="
-              mt-1
-              text-[14px]
-              leading-7
-              text-[#0B2A52]/58
+              sm:mt-6
               sm:text-[15px]
+
+              lg:text-[16px]
             "
           >
-            For another, it may mean website visits, qualified enquiries or
-            campaign conversions.
+            A selection of social profiles we&apos;ve created,
+            managed and shaped for brands across different
+            industries.
           </p>
         </motion.div>
+      </div>
 
-        {/* =======================================================
-            OBJECTIVE LENS
-        ======================================================== */}
+      {/* =====================================================
+          PORTFOLIO
+      ===================================================== */}
 
-        <motion.div
-          initial={{ opacity: 0, y: 45 }}
-          animate={
-            isVisible
-              ? {
-                  opacity: 1,
-                  y: 0,
-                }
-              : {}
-          }
-          transition={{
-            duration: reduceMotion ? 0 : 0.9,
-            delay: 0.25,
-            ease: [0.22, 1, 0.36, 1],
-          }}
-          className="
-            mx-auto
-            mt-16
-            max-w-[1140px]
-            sm:mt-20
-          "
-        >
-          {/* TOP META */}
-
-          <div className="flex items-center gap-4">
-            <span
-              className="
-                text-[10px]
-                font-semibold
-                uppercase
-                tracking-[0.2em]
-                text-[#B79A72]
-              "
-            >
-              Define Success
-            </span>
-
-            <span className="h-px flex-1 bg-[#0B2A52]/10" />
-
-            <span
-              className="
-                hidden
-                text-[9px]
-                font-medium
-                uppercase
-                tracking-[0.17em]
-                text-[#0B2A52]/30
-                sm:block
-              "
-            >
-              Objective → Metric → Evaluation
-            </span>
-          </div>
-
-          {/* =====================================================
-              DESKTOP
-          ====================================================== */}
-
-          <div
-            className="
-              mt-10
-              hidden
-              grid-cols-[0.78fr_1.22fr]
-              gap-14
-              lg:grid
-            "
-          >
-            {/* OBJECTIVES */}
-
-            <div
-              className="
-                border-t
-                border-[#0B2A52]/10
-              "
-            >
-              {objectives.map((item, index) => {
-                const Icon = item.icon;
-                const selected = activeObjective === index;
-
-                return (
-                  <button
-                    key={item.id}
-                    type="button"
-                    onMouseEnter={() =>
-                      setActiveObjective(index)
-                    }
-                    onFocus={() =>
-                      setActiveObjective(index)
-                    }
-                    onClick={() =>
-                      setActiveObjective(index)
-                    }
-                    className="
-                      group
-                      relative
-                      block
-                      w-full
-                      overflow-hidden
-                      border-b
-                      border-[#0B2A52]/10
-                      text-left
-                      outline-none
-                    "
-                  >
-                    <motion.span
-                      animate={{
-                        scaleY: selected ? 1 : 0,
-                      }}
-                      className="
-                        absolute
-                        bottom-0
-                        left-0
-                        top-0
-                        w-[3px]
-                        origin-bottom
-                        bg-[#B79A72]
-                      "
-                    />
-
-                    <motion.div
-                      animate={{
-                        x: selected ? 8 : 0,
-                      }}
-                      transition={{
-                        duration: 0.3,
-                      }}
-                      className="
-                        relative
-                        flex
-                        min-h-[94px]
-                        items-center
-                        gap-5
-                        py-5
-                        pl-3
-                        pr-2
-                      "
-                    >
-                      <span
-                        className={`
-                          flex
-                          h-11
-                          w-11
-                          shrink-0
-                          items-center
-                          justify-center
-                          rounded-full
-                          border
-                          transition-all
-                          duration-300
-                          ${
-                            selected
-                              ? "border-[#0B2A52] bg-[#0B2A52] text-white"
-                              : "border-[#0B2A52]/15 bg-white text-[#0B2A52]"
-                          }
-                        `}
-                      >
-                        <Icon
-                          size={16}
-                          strokeWidth={1.5}
-                        />
-                      </span>
-
-                      <div className="flex-1">
-                        <span
-                          className="
-                            text-[9px]
-                            font-semibold
-                            tracking-[0.18em]
-                            text-[#B79A72]
-                          "
-                        >
-                          {item.number}
-                        </span>
-
-                        <p
-                          className={`
-                            mt-1
-                            text-[17px]
-                            font-medium
-                            tracking-[-0.018em]
-                            transition-colors
-                            duration-300
-                            ${
-                              selected
-                                ? "text-[#0B2A52]"
-                                : "text-[#0B2A52]/58"
-                            }
-                          `}
-                        >
-                          {item.label}
-                        </p>
-                      </div>
-
-                      <ArrowRight
-                        size={15}
-                        strokeWidth={1.5}
-                        className={`
-                          transition-all
-                          duration-300
-                          ${
-                            selected
-                              ? "translate-x-0 text-[#B79A72] opacity-100"
-                              : "-translate-x-2 text-[#0B2A52]/20 opacity-0"
-                          }
-                        `}
-                      />
-                    </motion.div>
-                  </button>
-                );
-              })}
-            </div>
-
-            {/* ===================================================
-                ACTIVE RESULT LENS
-            ==================================================== */}
-
-            <div
-              className="
-                relative
-                flex
-                min-h-[540px]
-                items-center
-                justify-center
-                overflow-hidden
-                border
-                border-[#0B2A52]/10
-                bg-white
-              "
-            >
-              {/* CROSSHAIR */}
-
-              <span
-                className="
-                  absolute
-                  left-1/2
-                  top-0
-                  h-full
-                  w-px
-                  -translate-x-1/2
-                  bg-[#0B2A52]/[0.045]
-                "
-              />
-
-              <span
-                className="
-                  absolute
-                  left-0
-                  top-1/2
-                  h-px
-                  w-full
-                  -translate-y-1/2
-                  bg-[#0B2A52]/[0.045]
-                "
-              />
-
-              {/* LARGE RINGS */}
-
-              <motion.div
-                animate={
-                  reduceMotion
-                    ? {}
-                    : {
-                        rotate: 360,
-                      }
-                }
-                transition={{
-                  duration: 35,
-                  repeat: Infinity,
-                  ease: "linear",
-                }}
-                className="
-                  absolute
-                  h-[380px]
-                  w-[380px]
-                  rounded-full
-                  border
-                  border-dashed
-                  border-[#B79A72]/25
-                "
-              />
-
-              <div
-                className="
-                  absolute
-                  h-[310px]
-                  w-[310px]
-                  rounded-full
-                  border
-                  border-[#0B2A52]/10
-                "
-              />
-
-              <div
-                className="
-                  absolute
-                  h-[250px]
-                  w-[250px]
-                  rounded-full
-                  border
-                  border-[#0B2A52]/[0.07]
-                "
-              />
-
-              {/* ACTIVE CONTENT */}
-
-              <motion.div
-                key={active.id}
-                initial={{
-                  opacity: 0,
-                  y: 18,
-                  scale: 0.96,
-                }}
-                animate={{
-                  opacity: 1,
-                  y: 0,
-                  scale: 1,
-                }}
-                transition={{
-                  duration: reduceMotion ? 0 : 0.45,
-                }}
-                className="
-                  relative
-                  z-20
-                  flex
-                  max-w-[430px]
-                  flex-col
-                  items-center
-                  px-8
-                  text-center
-                "
-              >
-                <span
-                  className="
-                    flex
-                    h-16
-                    w-16
-                    items-center
-                    justify-center
-                    rounded-full
-                    bg-[#0B2A52]
-                    text-[#B79A72]
-                    shadow-[0_16px_40px_rgba(11,42,82,0.14)]
-                  "
-                >
-                  <ActiveIcon
-                    size={23}
-                    strokeWidth={1.5}
-                  />
-                </span>
-
-                <p
-                  className="
-                    mt-6
-                    text-[10px]
-                    font-semibold
-                    uppercase
-                    tracking-[0.2em]
-                    text-[#B79A72]
-                  "
-                >
-                  {active.label}
-                </p>
-
-                <h3
-                  className="
-                    mt-3
-                    text-[29px]
-                    font-medium
-                    leading-[1.15]
-                    tracking-[-0.035em]
-                    text-[#0B2A52]
-                    xl:text-[32px]
-                  "
-                >
-                  {active.metric}
-                </h3>
-
-                <p
-                  className="
-                    mt-5
-                    text-[14px]
-                    leading-7
-                    text-[#0B2A52]/55
-                    sm:text-[15px]
-                  "
-                >
-                  {active.description}
-                </p>
-
-                <div
-                  className="
-                    mt-7
-                    flex
-                    items-center
-                    gap-3
-                  "
-                >
-                  <span className="h-px w-7 bg-[#B79A72]" />
-
-                  <span
-                    className="
-                      text-[8px]
-                      font-semibold
-                      uppercase
-                      tracking-[0.18em]
-                      text-[#0B2A52]/35
-                    "
-                  >
-                    Measure What Matters
-                  </span>
-
-                  <span className="h-px w-7 bg-[#B79A72]" />
-                </div>
-              </motion.div>
-
-              {/* CORNER LABEL */}
-
-              <div
-                className="
-                  absolute
-                  bottom-5
-                  right-6
-                  text-right
-                "
-              >
-                <p
-                  className="
-                    text-[8px]
-                    font-semibold
-                    uppercase
-                    tracking-[0.17em]
-                    text-[#0B2A52]/25
-                  "
-                >
-                  Success Lens
-                </p>
-
-                <p
-                  className="
-                    mt-1
-                    text-[9px]
-                    font-semibold
-                    text-[#B79A72]
-                  "
-                >
-                  {active.number} / 05
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* =====================================================
-              MOBILE
-          ====================================================== */}
-
-          <div className="mt-8 lg:hidden">
-            <div
-              className="
-                flex
-                gap-2
-                overflow-x-auto
-                pb-3
-              "
-            >
-              {objectives.map((item, index) => {
-                const selected = activeObjective === index;
-
-                return (
-                  <button
-                    key={item.id}
-                    type="button"
-                    onClick={() =>
-                      setActiveObjective(index)
-                    }
-                    className={`
-                      shrink-0
-                      border
-                      px-4
-                      py-3
-                      text-[12px]
-                      font-medium
-                      transition-all
-                      duration-300
-                      ${
-                        selected
-                          ? "border-[#0B2A52] bg-[#0B2A52] text-white"
-                          : "border-[#0B2A52]/10 bg-white text-[#0B2A52]/60"
-                      }
-                    `}
-                  >
-                    {item.short}
-                  </button>
-                );
-              })}
-            </div>
-
-            <motion.div
-              key={active.id}
-              initial={{
+      <motion.div
+        initial={
+          reduceMotion
+            ? false
+            : {
                 opacity: 0,
-                y: 15,
-              }}
-              animate={{
-                opacity: 1,
-                y: 0,
-              }}
-              className="
-                mt-5
-                border
-                border-[#0B2A52]/10
-                p-7
-                text-center
-              "
-            >
-              <span
-                className="
-                  mx-auto
-                  flex
-                  h-14
-                  w-14
-                  items-center
-                  justify-center
-                  rounded-full
-                  bg-[#0B2A52]
-                  text-[#B79A72]
-                "
-              >
-                <ActiveIcon
-                  size={20}
-                  strokeWidth={1.5}
-                />
-              </span>
+                y: 25,
+              }
+        }
+        whileInView={{
+          opacity: 1,
+          y: 0,
+        }}
+        viewport={{
+          once: true,
+          amount: 0.1,
+        }}
+        transition={{
+          duration: reduceMotion ? 0 : 0.7,
+          delay: reduceMotion ? 0 : 0.12,
+          ease: [0.22, 1, 0.36, 1],
+        }}
+        className="
+          relative
+          z-10
 
-              <p
-                className="
-                  mt-5
-                  text-[9px]
-                  font-semibold
-                  uppercase
-                  tracking-[0.2em]
-                  text-[#B79A72]
-                "
-              >
-                {active.label}
-              </p>
+          mt-12
 
-              <h3
-                className="
-                  mt-2
-                  text-[24px]
-                  font-medium
-                  tracking-[-0.03em]
-                "
-              >
-                {active.metric}
-              </h3>
+          sm:mt-14
+          md:mt-16
+          lg:mt-20
+        "
+      >
+        {/* ===================================================
+            PORTFOLIO LABEL
+        =================================================== */}
 
-              <p
-                className="
-                  mt-4
-                  text-[14px]
-                  leading-7
-                  text-[#0B2A52]/55
-                "
-              >
-                {active.description}
-              </p>
-            </motion.div>
-          </div>
-        </motion.div>
-
-        {/* =======================================================
-            MEASUREMENT PHILOSOPHY
-        ======================================================== */}
-
-        <motion.div
-          initial={{ opacity: 0, y: 35 }}
-          animate={
-            isVisible
-              ? {
-                  opacity: 1,
-                  y: 0,
-                }
-              : {}
-          }
-          transition={{
-            duration: reduceMotion ? 0 : 0.85,
-            delay: 0.75,
-          }}
+        <div
           className="
             mx-auto
-            mt-16
-            max-w-[1000px]
-            border-y
-            border-[#0B2A52]/10
-            py-10
-            sm:mt-20
+            mb-6
+
+            flex
+            w-full
+            max-w-[1450px]
+            items-center
+            gap-3
+
+            px-5
+
+            sm:mb-7
+            sm:gap-4
+            sm:px-7
+
+            md:px-8
+
+            lg:mb-8
+            lg:px-12
+
+            xl:px-16
           "
         >
-          <div
+          <span
             className="
-              grid
-              gap-7
-              md:grid-cols-[auto_1fr]
-              md:items-start
+              shrink-0
+
+              text-[8px]
+              font-semibold
+              uppercase
+              tracking-[0.2em]
+              text-[#B79A72]
+
+              sm:text-[9px]
+              sm:tracking-[0.24em]
             "
           >
-            <span
+            Social Media Portfolio
+          </span>
+
+          <span
+            className="
+              h-px
+              flex-1
+              bg-[#0B2A52]/10
+            "
+          />
+
+          {/* mobile label */}
+
+          <span
+            className="
+              shrink-0
+
+              text-[8px]
+              font-medium
+              uppercase
+              tracking-[0.14em]
+              text-[#71879F]
+
+              md:hidden
+            "
+          >
+            Swipe
+          </span>
+
+          {/* desktop label */}
+
+          <span
+            className="
+              hidden
+              shrink-0
+
+              text-[8px]
+              font-medium
+              uppercase
+              tracking-[0.16em]
+              text-[#71879F]
+
+              md:block
+            "
+          >
+            Hover to Pause
+          </span>
+        </div>
+
+        {/* ===================================================
+            VIEWPORT
+        =================================================== */}
+
+        <div className="relative">
+          {/* desktop left fade */}
+
+
+          {/* desktop right fade */}
+
+          
+
+          <div
+            ref={viewportRef}
+            onMouseEnter={() => {
+              pausedRef.current = true;
+            }}
+            onMouseLeave={() => {
+              pausedRef.current = false;
+            }}
+            className="
+              overflow-x-auto
+              overscroll-x-contain
+
+              scroll-smooth
+              [scrollbar-width:none]
+              [&::-webkit-scrollbar]:hidden
+
+              md:overflow-x-hidden
+              md:scroll-auto
+            "
+          >
+            {/* ===============================================
+                TRACK
+
+                No CSS transform / translate3d here.
+            =============================================== */}
+
+            <div
               className="
                 flex
-                h-13
-                w-13
-                shrink-0
-                items-center
-                justify-center
-                bg-[#0B2A52]
-                p-4
-                text-[#B79A72]
+                w-max
+
+                gap-4
+
+                px-5
+                pb-2
+
+                sm:gap-5
+                sm:px-7
+
+                md:gap-6
+                md:px-8
+
+                lg:px-12
+
+                xl:px-16
               "
             >
-              <BarChart3
-                size={19}
-                strokeWidth={1.5}
-              />
-            </span>
+              {Array.from({
+                length: groupCount,
+              }).map((_, groupIndex) => (
+                <div
+                  key={`portfolio-group-${groupIndex}`}
+                  ref={
+                    groupIndex === 0
+                      ? firstGroupRef
+                      : undefined
+                  }
+                  aria-hidden={
+                    groupIndex === 1
+                      ? true
+                      : undefined
+                  }
+                  className="
+                    flex
+                    shrink-0
 
-            <div>
-              <p
-                className="
-                  text-[18px]
-                  font-medium
-                  leading-7
-                  tracking-[-0.02em]
-                  text-[#0B2A52]
-                  sm:text-[21px]
-                "
-              >
-                We avoid measuring every brand against the same vanity metrics.
-              </p>
+                    gap-4
 
-              <p
-                className="
-                  mt-3
-                  max-w-[800px]
-                  text-[14px]
-                  leading-7
-                  text-[#0B2A52]/55
-                  sm:text-[15px]
-                "
-              >
-                We identify the metrics that matter to your objectives and
-                evaluate performance against the agreed strategy.
-              </p>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* =======================================================
-            VERIFIED CASE STUDIES
-        ======================================================== */}
-
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={
-            isVisible
-              ? {
-                  opacity: 1,
-                  y: 0,
-                }
-              : {}
-          }
-          transition={{
-            duration: reduceMotion ? 0 : 0.9,
-            delay: 0.9,
-          }}
-          className="
-            mx-auto
-            mt-20
-            max-w-[1140px]
-            sm:mt-24
-          "
-        >
-          <div
-            className="
-              flex
-              flex-col
-              gap-5
-              border-b
-              border-[#0B2A52]/10
-              pb-7
-              sm:flex-row
-              sm:items-end
-              sm:justify-between
-            "
-          >
-            <div>
-              <p
-                className="
-                  text-[10px]
-                  font-semibold
-                  uppercase
-                  tracking-[0.22em]
-                  text-[#B79A72]
-                "
-              >
-                Verified Proof
-              </p>
-
-              <h3
-                className="
-                  mt-3
-                  text-[28px]
-                  font-medium
-                  tracking-[-0.035em]
-                  text-[#0B2A52]
-                  sm:text-[34px]
-                "
-              >
-                Real work. Real outcomes.
-              </h3>
-            </div>
-
-            <p
-              className="
-                max-w-[430px]
-                text-[13px]
-                leading-6
-                text-[#0B2A52]/45
-                sm:text-right
-                sm:text-[14px]
-              "
-            >
-              Sharp Rays case studies should only be published here when the
-              client, work and results can be verified.
-            </p>
-          </div>
-
-          {/* =====================================================
-              CASE STUDIES AVAILABLE
-          ====================================================== */}
-
-          {caseStudies.length > 0 ? (
-            <div className="divide-y divide-[#0B2A52]/10">
-              {caseStudies.map((study, index) => (
-                <CaseStudyRow
-                  key={`${study.client}-${index}`}
-                  study={study}
-                  index={index}
-                />
+                    sm:gap-5
+                    md:gap-6
+                  "
+                >
+                 {socialWorks.map((work) => (
+  <SocialCard
+    key={`${groupIndex}-${work.id}`}
+    work={work}
+    isClone={groupIndex === 1}
+  />
+))}
+                </div>
               ))}
             </div>
-          ) : (
-            /* ===================================================
-                CLEAN EMPTY STATE
-            ==================================================== */
+          </div>
+        </div>
+      </motion.div>
 
-            <div
-              className="
-                grid
-                min-h-[300px]
-                place-items-center
-                border-b
-                border-[#0B2A52]/10
-                py-16
-                text-center
-              "
-            >
-              <div className="max-w-[570px]">
-                <span
-                  className="
-                    mx-auto
-                    flex
-                    h-14
-                    w-14
-                    items-center
-                    justify-center
-                    rounded-full
-                    border
-                    border-[#B79A72]/40
-                    text-[#B79A72]
-                  "
-                >
-                  <CheckCircle2
-                    size={20}
-                    strokeWidth={1.5}
-                  />
-                </span>
+      {/* =====================================================
+          BOTTOM NOTE
+      ===================================================== */}
 
-                <p
-                  className="
-                    mt-5
-                    text-[18px]
-                    font-medium
-                    tracking-[-0.02em]
-                    text-[#0B2A52]
-                    sm:text-[20px]
-                  "
-                >
-                  Proof should be verified, not invented.
-                </p>
+      <div
+        className="
+          relative
+          z-10
 
-                <p
-                  className="
-                    mx-auto
-                    mt-3
-                    max-w-[500px]
-                    text-[14px]
-                    leading-7
-                    text-[#0B2A52]/48
-                  "
-                >
-                  Add real Sharp Rays case studies here as verified client
-                  outcomes become available.
-                </p>
-              </div>
-            </div>
-          )}
-        </motion.div>
+          mx-auto
+          mt-8
+
+          flex
+          max-w-[1450px]
+          items-center
+          justify-center
+          gap-3
+
+          px-5
+
+          sm:mt-10
+          sm:px-7
+
+          lg:mt-12
+          lg:px-12
+        "
+      >
+        <span
+          className="
+            h-px
+            w-6
+            bg-[#B79A72]
+
+            sm:w-8
+          "
+        />
+
+        <span
+          className="
+            text-center
+
+            text-[8px]
+            font-semibold
+            uppercase
+            tracking-[0.16em]
+            text-[#71879F]
+
+            sm:tracking-[0.2em]
+          "
+        >
+          Selected Social Media Work
+        </span>
+
+        <span
+          className="
+            h-px
+            w-6
+            bg-[#B79A72]
+
+            sm:w-8
+          "
+        />
       </div>
     </section>
   );
 }
 
-/* =============================================================
-   CASE STUDY ROW
-============================================================= */
+/* =========================================================
+   SOCIAL CARD
+========================================================= */
 
-function CaseStudyRow({
-  study,
-  index,
+function SocialCard({
+  work,
+  isClone = false,
 }: {
-  study: CaseStudy;
-  index: number;
+  work: SocialWork;
+  isClone?: boolean;
 }) {
+  const instagramUsername =
+    work.handle.replace("@", "");
+
   return (
     <article
       className="
         group
         relative
-        grid
-        gap-8
-        py-10
-        lg:grid-cols-[0.62fr_1.38fr]
-        lg:gap-14
-        lg:py-14
+
+        w-[82vw]
+        max-w-[330px]
+        shrink-0
+        snap-center
+
+        overflow-hidden
+
+        rounded-[22px]
+
+        border
+        border-[#D9E4EE]
+
+        bg-white
+
+        shadow-[0_10px_30px_rgba(11,42,82,0.055)]
+
+        transition-[border-color,box-shadow,transform]
+        duration-500
+        ease-out
+
+        hover:border-[#B79A72]/45
+        hover:shadow-[0_18px_45px_rgba(11,42,82,0.09)]
+
+        sm:w-[350px]
+        sm:max-w-none
+        sm:rounded-[24px]
+
+        md:w-[360px]
+
+        lg:w-[380px]
+
+        xl:w-[390px]
       "
     >
-      {/* CLIENT / RESULT */}
-
-      <div>
-        <p
-          className="
-            text-[9px]
-            font-semibold
-            uppercase
-            tracking-[0.2em]
-            text-[#B79A72]
-          "
-        >
-          Case Study {String(index + 1).padStart(2, "0")}
-        </p>
-
-        <h4
-          className="
-            mt-3
-            text-[26px]
-            font-medium
-            tracking-[-0.03em]
-            text-[#0B2A52]
-            sm:text-[30px]
-          "
-        >
-          {study.client}
-        </h4>
-
-        <div
-          className="
-            mt-8
-            border-l-[3px]
-            border-[#B79A72]
-            pl-5
-          "
-        >
-          <p
-            className="
-              text-[9px]
-              font-semibold
-              uppercase
-              tracking-[0.18em]
-              text-[#0B2A52]/35
-            "
-          >
-            Verified Result
-          </p>
-
-          <p
-            className="
-              mt-2
-              text-[18px]
-              font-medium
-              leading-7
-              text-[#0B2A52]
-              sm:text-[20px]
-            "
-          >
-            {study.result}
-          </p>
-        </div>
-      </div>
-
-      {/* STORY */}
+      {/* =====================================================
+          IMAGE
+      ===================================================== */}
 
       <div
         className="
-          grid
-          gap-x-8
-          gap-y-7
-          sm:grid-cols-2
+          relative
+
+          h-[310px]
+          overflow-hidden
+
+          bg-[#EDF3F8]
+
+          sm:h-[365px]
+          md:h-[380px]
+          lg:h-[400px]
         "
       >
-        <CaseStudyDetail
-          label="Challenge"
-          value={study.challenge}
+        <Image
+          src={work.image}
+          alt={`${work.client} Instagram profile`}
+          fill
+          quality={95}
+          sizes="
+            (max-width: 639px) 82vw,
+            (max-width: 767px) 350px,
+            (max-width: 1023px) 360px,
+            (max-width: 1279px) 380px,
+            390px
+          "
+          className="
+            object-cover
+            object-top
+
+            transition-transform
+            duration-700
+            ease-[cubic-bezier(0.22,1,0.36,1)]
+
+            md:group-hover:scale-[1.015]
+          "
         />
 
-        <CaseStudyDetail
-          label="Strategy"
-          value={study.strategy}
+        {/* subtle gradient only */}
+
+        <div
+          aria-hidden="true"
+          className="
+            pointer-events-none
+            absolute
+            inset-x-0
+            bottom-0
+
+            h-20
+
+            bg-gradient-to-t
+            from-[#0B2A52]/20
+            to-transparent
+          "
         />
 
-        <CaseStudyDetail
-          label="Execution"
-          value={study.execution}
-        />
+        {/* Instagram tag */}
 
-        {study.quote && (
-          <div>
-            <p
-              className="
-                text-[9px]
-                font-semibold
-                uppercase
-                tracking-[0.18em]
-                text-[#B79A72]
-              "
-            >
-              Client Quote
-            </p>
-
-            <blockquote
-              className="
-                mt-3
-                text-[15px]
-                font-medium
-                italic
-                leading-7
-                text-[#0B2A52]/70
-              "
-            >
-              “{study.quote}”
-            </blockquote>
-          </div>
-        )}
       </div>
 
-      <span
+      {/* =====================================================
+          CONTENT
+      ===================================================== */}
+
+      <div
         className="
+          flex
+          flex-col
+
+          px-5
+          pb-6
+          pt-5
+
+          sm:px-6
+          sm:pb-7
+          sm:pt-6
+
+          lg:px-7
+        "
+      >
+        {/* category + badge */}
+
+        <div
+          className="
+            flex
+            min-w-0
+            items-start
+            justify-between
+            gap-3
+          "
+        >
+          <span
+            className="
+              min-w-0
+              pt-1
+
+              text-[8px]
+              font-semibold
+              uppercase
+              tracking-[0.16em]
+              text-[#7D92A9]
+
+              sm:text-[9px]
+              sm:tracking-[0.18em]
+            "
+          >
+            {work.category}
+          </span>
+
+          {work.insight ? (
+            <span
+              className="
+                flex
+                shrink-0
+                items-center
+                gap-1.5
+
+                rounded-full
+
+                border
+                border-[#D5E3EF]
+
+                bg-[#F1F7FC]
+
+                px-2.5
+                py-1.5
+
+                text-[#0B2A52]
+
+                sm:px-3
+              "
+            >
+              <BarChart3
+                size={11}
+                strokeWidth={1.8}
+                className="text-[#B79A72]"
+              />
+
+              <strong
+                className="
+                  text-[9px]
+                  font-semibold
+                  sm:text-[10px]
+                "
+              >
+                {work.insight.value}
+              </strong>
+
+              <span
+                className="
+                  text-[8px]
+                  font-medium
+                  text-[#68829E]
+
+                  sm:text-[9px]
+                "
+              >
+                {work.insight.label}
+              </span>
+            </span>
+          ) : (
+            <span
+              className="
+                shrink-0
+
+                rounded-full
+
+                border
+                border-[#D8C3A9]/65
+
+                bg-[#F8F2EB]
+
+                px-2.5
+                py-1.5
+
+                text-[8px]
+                font-semibold
+                text-[#9A744D]
+
+                sm:px-3
+                sm:text-[9px]
+              "
+            >
+              {work.badge}
+            </span>
+          )}
+        </div>
+
+        {/* client */}
+
+        <h3
+          style={newYorkFont}
+          className="
+            mt-5
+
+            text-[27px]
+            font-medium
+            leading-[1.05]
+            tracking-[-0.035em]
+            text-[#0B2A52]
+
+            sm:mt-6
+            sm:text-[29px]
+
+            lg:text-[31px]
+          "
+        >
+          {work.client}
+        </h3>
+
+        {/* description */}
+
+        <p
+          className="
+            mt-4
+
+            text-[13px]
+            leading-[1.75]
+            text-[#657C95]
+
+            sm:text-[14px]
+
+            md:min-h-[98px]
+
+            lg:text-[15px]
+            lg:leading-[1.8]
+          "
+        >
+          {work.description}
+        </p>
+
+        {/* divider */}
+
+        <div
+          className="
+            my-5
+            h-px
+            w-full
+
+            bg-[#DCE6EF]
+
+            sm:my-6
+          "
+        />
+
+        {/* footer */}
+
+        <div
+          className="
+            flex
+            items-center
+            justify-between
+            gap-3
+          "
+        >
+          {/* handle */}
+
+          <div
+            className="
+              flex
+              min-w-0
+              items-center
+              gap-2
+            "
+          >
+            <Camera
+              size={13}
+              strokeWidth={1.5}
+              className="
+                shrink-0
+                text-[#B79A72]
+              "
+            />
+
+            <span
+              className="
+                truncate
+
+                text-[9px]
+                font-medium
+                text-[#8194A8]
+
+                sm:text-[10px]
+              "
+            >
+              {work.handle}
+            </span>
+          </div>
+
+          {/* link */}
+
+          <a
+          
+  href={`https://instagram.com/${instagramUsername}`}
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label={`View ${work.client} Instagram profile`}
+  tabIndex={isClone ? -1 : undefined}
+            className="
+              group/link
+
+              flex
+              shrink-0
+              items-center
+              gap-1.5
+
+              text-[11px]
+              font-semibold
+              text-[#0B2A52]
+
+              transition-colors
+              duration-300
+
+              hover:text-[#B58D61]
+
+              sm:gap-2
+              sm:text-[12px]
+
+              lg:text-[13px]
+            "
+          >
+            <span>View Profile</span>
+
+            <ArrowUpRight
+              size={16}
+              strokeWidth={1.7}
+              className="
+                text-[#B79A72]
+
+                transition-transform
+                duration-300
+
+                group-hover/link:translate-x-0.5
+                group-hover/link:-translate-y-0.5
+              "
+            />
+          </a>
+        </div>
+      </div>
+
+      {/* =====================================================
+          GOLD HOVER LINE
+      ===================================================== */}
+
+      <span
+        aria-hidden="true"
+        className="
+          pointer-events-none
+
           absolute
           bottom-0
-          left-0
+          left-1/2
+
           h-[2px]
           w-0
+          -translate-x-1/2
+
           bg-[#B79A72]
+
           transition-all
           duration-500
+          ease-out
+
           group-hover:w-full
         "
       />
     </article>
-  );
-}
-
-function CaseStudyDetail({
-  label,
-  value,
-}: {
-  label: string;
-  value: string;
-}) {
-  return (
-    <div>
-      <p
-        className="
-          text-[9px]
-          font-semibold
-          uppercase
-          tracking-[0.18em]
-          text-[#B79A72]
-        "
-      >
-        {label}
-      </p>
-
-      <p
-        className="
-          mt-3
-          text-[14px]
-          leading-7
-          text-[#0B2A52]/58
-          sm:text-[15px]
-        "
-      >
-        {value}
-      </p>
-    </div>
   );
 }

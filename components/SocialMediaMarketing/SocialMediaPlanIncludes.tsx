@@ -672,149 +672,25 @@ export default function SocialMediaPlanIncludes() {
           })}
         </ol>
 
-        {/* =======================================================
-            FINAL PROPOSAL STATEMENT
-        ======================================================== */}
+     
 
-        <div
-          className={`
-            relative
-            mx-auto
-            mt-10
-            max-w-[1100px]
-            transition-all
-            delay-700
-            duration-[1000ms]
-            ease-[cubic-bezier(0.22,1,0.36,1)]
-            ${
-              isVisible
-                ? "translate-y-0 opacity-100"
-                : "translate-y-10 opacity-0"
-            }
-          `}
-        >
-          {/* GLOW */}
 
-          <div
-            className="
-              pointer-events-none
-              absolute
-              -inset-6
-              rounded-[40px]
-              bg-[#102D4D]/[0.04]
-              blur-[50px]
-            "
-          />
+         
+        
+            
 
-          <div
-            className="
-              relative
-              overflow-hidden
-              rounded-[26px]
-              bg-[#102D4D]
-              px-6
-              py-7
-              shadow-[0_25px_70px_rgba(16,45,77,0.14)]
-              sm:px-8
-              sm:py-8
-              lg:px-10
-            "
-          >
-            {/* INNER DETAIL */}
+            
+           
 
-            <div
-              className="
-                pointer-events-none
-                absolute
-                inset-0
-                bg-gradient-to-r
-                from-white/[0.04]
-                via-transparent
-                to-[#B79A72]/10
-              "
-            />
+           
+          
 
-            <div
-              className="
-                pointer-events-none
-                absolute
-                -right-20
-                -top-20
-                h-[220px]
-                w-[220px]
-                rounded-full
-                border
-                border-white/[0.05]
-              "
-            />
+            
 
-            <div
-              className="
-                relative
-                z-10
-                grid
-                items-center
-                gap-5
-                lg:grid-cols-[auto_1fr]
-                lg:gap-7
-              "
-            >
-              {/* ICON */}
-
-              <div
-                className="
-                  flex
-                  h-11
-                  w-11
-                  shrink-0
-                  items-center
-                  justify-center
-                  rounded-full
-                  border
-                  border-[#B79A72]/25
-                  bg-[#B79A72]/10
-                  text-[#D4B98D]
-                "
-              >
-                <Check
-                  size={17}
-                  strokeWidth={1.6}
-                />
-              </div>
-
-              {/* CONTENT */}
-
-              <div>
-                <p
-                  className="
-                    text-[8px]
-                    font-semibold
-                    uppercase
-                    tracking-[0.21em]
-                    text-[#D4B98D]
-                  "
-                >
-                  Your Final Proposal
-                </p>
-
-                <p
-                  className="
-                    mt-2
-                    max-w-[930px]
-                    text-[13px]
-                    leading-7
-                    text-white/68
-                    sm:text-[14px]
-                  "
-                >
-                  Your final proposal confirms selected platforms, monthly
-                  content volume, production requirements, responsibilities,
-                  timelines and commercial scope.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
+             
+          
+        
+      
       </div>
     </section>
   );

@@ -1,80 +1,61 @@
 "use client";
 
-import Image from "next/image";
-import { useRef, useState } from "react";
-import {
-  ArrowDown,
-  ArrowRight,
-  Check,
-  Sparkles,
-} from "lucide-react";
+import { useRef } from "react";
+import { motion, useInView, useReducedMotion } from "framer-motion";
 
-import {
-  motion,
-  useInView,
-  useReducedMotion,
-} from "framer-motion";
+const newYorkFont = {
+  fontFamily: '"New York", "Bodoni Moda", Georgia, serif',
+};
 
-const questions = [
+const principles = [
   {
     number: "01",
-    text: "Who are we trying to reach?",
-    imageIndex: 0,
+    eyebrow: "Strategy",
+    title: "Strategy Before Posting",
+    description:
+      "Every content decision starts with audience, purpose and objective.",
+    points: ["Audience", "Purpose", "Objective"],
   },
   {
     number: "02",
-    text: "What should they understand about your brand?",
-    imageIndex: 1,
+    eyebrow: "Workflow",
+    title: "One Connected Workflow",
+    description:
+      "Strategy, planning, creative, publishing and reporting stay connected.",
+    points: ["Plan", "Create", "Publish", "Review"],
   },
   {
     number: "03",
-    text: "What makes your business worth paying attention to?",
-    imageIndex: 0,
+    eyebrow: "Clarity",
+    title: "Clear Scope",
+    description:
+      "Deliverables, responsibilities and approval processes are defined before work begins.",
+    points: ["Deliverables", "Ownership", "Approvals"],
   },
   {
     number: "04",
-    text: "What should your brand become known for?",
-    imageIndex: 2,
-  },
-  {
-    number: "05",
-    text: "What action should the audience take next?",
-    imageIndex: 2,
+    eyebrow: "Measurement",
+    title: "Measure Against Objectives",
+    description:
+      "We match reporting to the business objective rather than chasing every available metric.",
+    points: ["Relevant metrics", "Objectives", "Next steps"],
   },
 ];
 
-const photos = [
-  {
-    src: "/services/social/content-strategy.png",
-    alt: "Creative team discussing social media strategy",
-    label: "Audience + Purpose",
-  },
-  {
-    src: "/services/social/strategy-team.png",
-    alt: "Strategist reviewing audience and brand direction",
-    label: "Message + Meaning",
-  },
-  {
-    src: "/services/social/content-system.png",
-    alt: "Creative content arranged into a consistent brand system",
-    label: "Recognition + Action",
-  },
-];
+const ease = [0.22, 1, 0.36, 1] as const;
 
 export default function WhySharpRays() {
   const sectionRef = useRef<HTMLElement | null>(null);
 
-  const [activeQuestion, setActiveQuestion] = useState(0);
-
-  const isVisible = useInView(sectionRef, {
+  const inView = useInView(sectionRef, {
     once: true,
-    margin: "-100px",
+    margin: "-80px 0px",
   });
 
   const reduceMotion = useReducedMotion();
 
-  const activeImage =
-    questions[activeQuestion].imageIndex;
+  const motionDuration = (duration: number) =>
+    reduceMotion ? 0 : duration;
 
   return (
     <section
@@ -84,78 +65,65 @@ export default function WhySharpRays() {
         relative
         overflow-hidden
         bg-white
-        py-24
-        text-[#0B2A52]
-        sm:py-28
+        py-20
+        sm:py-24
+        md:py-28
         lg:py-32
+        xl:py-36
       "
     >
-      {/* =========================================================
-          BACKGROUND
-      ========================================================== */}
-
+      {/* subtle background detail */}
       <div
         aria-hidden="true"
         className="
           pointer-events-none
           absolute
-          inset-0
-          overflow-hidden
+          left-1/2
+          top-0
+          h-[320px]
+          w-[720px]
+          -translate-x-1/2
+          rounded-full
+          bg-[#EAF4FC]/70
+          blur-[120px]
+
+          sm:h-[380px]
+          sm:w-[900px]
+
+          lg:h-[430px]
+          lg:w-[1100px]
         "
-      >
-        <div
-          className="
-            absolute
-            -left-[350px]
-            top-[160px]
-            h-[650px]
-            w-[650px]
-            rounded-full
-            border
-            border-[#0B2A52]/[0.035]
-          "
-        />
-
-        <div
-          className="
-            absolute
-            -right-[300px]
-            bottom-[-230px]
-            h-[560px]
-            w-[560px]
-            rounded-full
-            border
-            border-[#B79A72]/10
-          "
-        />
-      </div>
-
-      {/* =========================================================
-          CONTAINER
-      ========================================================== */}
+      />
 
       <div
         className="
           relative
           z-10
           mx-auto
-          max-w-[1280px]
+          w-full
+          max-w-[1450px]
           px-5
-          sm:px-8
-          lg:px-12
+          sm:px-7
+          md:px-8
+          lg:px-10
+          xl:px-14
+          2xl:px-16
         "
       >
-        {/* =======================================================
-            HEADER
-        ======================================================== */}
-
-        <motion.header
-          initial={{
-            opacity: 0,
-            y: 40,
-          }}
+        {/* =====================================================
+            INTRO
+        ===================================================== */}
+        <motion.div
+          initial={
+            reduceMotion
+              ? false
+              : {
+                  opacity: 0,
+                  y: 28,
+                }
+          }
           animate={
-            isVisible
+            inView
               ? {
                   opacity: 1,
                   y: 0,
@@ -163,71 +131,115 @@ export default function WhySharpRays() {
               : {}
           }
           transition={{
-            duration: reduceMotion ? 0 : 0.9,
-            ease: [0.22, 1, 0.36, 1],
+            duration: motionDuration(0.75),
+            ease,
           }}
           className="
             mx-auto
-            max-w-[980px]
+            max-w-[900px]
             text-center
           "
         >
-          <div
-            className="
-              flex
-              items-center
-              justify-center
-              gap-3
-            "
-          >
-            <span className="h-px w-10 bg-[#B79A72]" />
+          <div className="flex items-center justify-center gap-3 sm:gap-4">
+            <span
+              className="
+                h-px
+                w-7
+                bg-gradient-to-r
+                from-transparent
+                to-[#B79A72]
+                sm:w-10
+              "
+            />
 
             <span
               className="
-                text-[10px]
+                text-[9px]
                 font-semibold
                 uppercase
-                tracking-[0.28em]
+                tracking-[0.3em]
                 text-[#B79A72]
+
+                sm:text-[10px]
+                sm:tracking-[0.36em]
               "
             >
               Why Sharp Rays
             </span>
 
-            <span className="h-px w-10 bg-[#B79A72]" />
+            <span
+              className="
+                h-px
+                w-7
+                bg-gradient-to-l
+                from-transparent
+                to-[#B79A72]
+                sm:w-10
+              "
+            />
           </div>
 
           <h2
+            style={newYorkFont}
             className="
+              mx-auto
               mt-6
-              text-[2.25rem]
+              max-w-[850px]
+
+              text-[2.6rem]
               font-medium
-              leading-[1.07]
+              leading-[1]
               tracking-[-0.045em]
               text-[#0B2A52]
-              sm:text-[2.75rem]
-              md:text-[3.15rem]
-              lg:text-[3.55rem]
+
+              md:text-[2.95rem]
+              lg:text-[3.1rem]
+              xl:text-[3.35rem]
             "
           >
-            We Don&apos;t Start by Asking,{" "}
-            <span className="font-normal text-[#B79A72]">
-              “What Should We Post?”
+            A Clearer Way to{" "}
+            <span className="text-[#B79A72]">
+              Manage Social Media.
             </span>
           </h2>
-        </motion.header>
 
-        {/* =======================================================
-            WRONG QUESTION → BETTER QUESTIONS
-        ======================================================== */}
+          <p
+            className="
+              mx-auto
+              mt-6
+              max-w-[690px]
 
+              text-[14px]
+              leading-[1.8]
+              text-[#647B98]
+
+              sm:mt-7
+              sm:text-[15px]
+
+              lg:text-[16px]
+              lg:leading-[1.85]
+            "
+          >
+            We bring strategy, execution and measurement into one connected
+            way of working — so social media has more structure behind every
+            decision.
+          </p>
+        </motion.div>
+
+        {/* =====================================================
+            SECTION LABEL
+        ===================================================== */}
         <motion.div
-          initial={{
-            opacity: 0,
-            y: 25,
-          }}
+          initial={
+            reduceMotion
+              ? false
+              : {
+                  opacity: 0,
+                  y: 20,
+                }
+          }
           animate={
-            isVisible
+            inView
               ? {
                   opacity: 1,
                   y: 0,
@@ -235,484 +247,111 @@ export default function WhySharpRays() {
               : {}
           }
           transition={{
-            duration: reduceMotion ? 0 : 0.8,
-            delay: 0.15,
+            duration: motionDuration(0.7),
+            delay: reduceMotion ? 0 : 0.1,
+            ease,
           }}
           className="
-            mx-auto
-            mt-12
+            mt-14
             flex
-            max-w-[970px]
             flex-col
-            items-center
+            gap-4
+
+            border-b
+            border-[#D9E5EF]
+            pb-5
+
+            sm:mt-16
+
+            md:mt-20
+            md:flex-row
+            md:items-end
+            md:justify-between
+            md:gap-8
+            md:pb-6
           "
         >
-          <p
-            className="
-              text-[9px]
-              font-semibold
-              uppercase
-              tracking-[0.22em]
-              text-[#0B2A52]/32
-            "
-          >
-            The first question is not
-          </p>
-
-          <div className="relative mt-3">
+          <div>
             <p
               className="
-                text-[19px]
-                font-medium
-                tracking-[-0.02em]
-                text-[#0B2A52]/30
-                sm:text-[22px]
-              "
-            >
-              What should we post?
-            </p>
-
-            <motion.span
-              initial={{
-                scaleX: 0,
-              }}
-              animate={
-                isVisible
-                  ? {
-                      scaleX: 1,
-                    }
-                  : {}
-              }
-              transition={{
-                duration: reduceMotion ? 0 : 0.9,
-                delay: 0.45,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-              className="
-                absolute
-                left-[-4%]
-                top-1/2
-                h-[2px]
-                w-[108%]
-                origin-left
-                -rotate-2
-                bg-[#B79A72]
-              "
-            />
-          </div>
-
-          <motion.div
-            initial={{
-              opacity: 0,
-              y: -10,
-            }}
-            animate={
-              isVisible
-                ? {
-                    opacity: 1,
-                    y: 0,
-                  }
-                : {}
-            }
-            transition={{
-              duration: reduceMotion ? 0 : 0.6,
-              delay: 0.8,
-            }}
-            className="
-              mt-6
-              flex
-              flex-col
-              items-center
-              gap-2
-            "
-          >
-            <span className="h-8 w-px bg-[#B79A72]/50" />
-
-            <span
-              className="
-                flex
-                h-9
-                w-9
-                items-center
-                justify-center
-                rounded-full
-                border
-                border-[#B79A72]/40
-                bg-white
-                text-[#B79A72]
-              "
-            >
-              <ArrowDown
-                size={14}
-                strokeWidth={1.5}
-              />
-            </span>
-
-            <span
-              className="
-                mt-1
                 text-[9px]
                 font-semibold
                 uppercase
-                tracking-[0.2em]
-                text-[#0B2A52]
+                tracking-[0.3em]
+                text-[#6C88A4]
+
+                sm:tracking-[0.34em]
               "
             >
-              We start here
-            </span>
-          </motion.div>
-        </motion.div>
+              The Sharp Rays Difference
+            </p>
 
-        {/* =======================================================
-            STRATEGY TABLE EXPERIENCE
-        ======================================================== */}
+            <p
+              style={newYorkFont}
+              className="
+                mt-2
+                max-w-[540px]
 
-        <div
-          className="
-            relative
-            mx-auto
-            mt-14
-            max-w-[1160px]
-            lg:mt-16
-          "
-        >
-          {/* =====================================================
-              DESKTOP
-          ====================================================== */}
+                text-[20px]
+                font-medium
+                leading-[1.25]
+                tracking-[-0.025em]
+                text-[#0B2A52]
 
-          <div
+                sm:text-[22px]
+                md:text-[23px]
+              "
+            >
+              Four principles behind the way we work.
+            </p>
+          </div>
+
+          <p
             className="
               hidden
-              min-h-[700px]
+              max-w-[320px]
+              text-right
+              text-[11px]
+              font-medium
+              uppercase
+              tracking-[0.16em]
+              text-[#8AA0B6]
+
               lg:block
             "
           >
-            {/* ===================================================
-                PHOTO 01
-            ==================================================== */}
+            Strategy · Workflow · Clarity · Measurement
+          </p>
+        </motion.div>
 
-            <motion.button
-              type="button"
-              onMouseEnter={() => setActiveQuestion(0)}
-              onFocus={() => setActiveQuestion(0)}
-              onClick={() => setActiveQuestion(0)}
-              initial={{
-                opacity: 0,
-                x: -45,
-                rotate: -4,
-              }}
-              animate={
-                isVisible
-                  ? {
-                      opacity: activeImage === 0 ? 1 : 0.48,
-                      x: 0,
-                      rotate: activeImage === 0 ? -2 : -5,
-                      scale: activeImage === 0 ? 1.04 : 0.96,
-                      zIndex: activeImage === 0 ? 30 : 10,
+        {/* =====================================================
+            PRINCIPLES
+        ===================================================== */}
+        <div
+          className="
+            grid
+            grid-cols-1
+
+            border-b
+            border-[#D9E5EF]
+
+            md:grid-cols-2
+            lg:grid-cols-4
+          "
+        >
+          {principles.map((item, index) => (
+            <motion.article
+              key={item.number}
+              initial={
+                reduceMotion
+                  ? false
+                  : {
+                      opacity: 0,
+                      y: 26,
                     }
-                  : {}
               }
-              transition={{
-                duration: reduceMotion ? 0 : 0.55,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-              className="
-                absolute
-                left-[5%]
-                top-[55px]
-                h-[360px]
-                w-[43%]
-                overflow-hidden
-                border-[8px]
-                border-white
-                bg-white
-                shadow-[0_24px_60px_rgba(11,42,82,0.13)]
-                outline-none
-              "
-            >
-              <Image
-                src={photos[0].src}
-                alt={photos[0].alt}
-                fill
-                sizes="520px"
-                className="
-                  object-cover
-                  object-center
-                "
-              />
-
-              <div
-                className="
-                  absolute
-                  bottom-4
-                  left-4
-                  bg-white
-                  px-4
-                  py-2.5
-                "
-              >
-                <p
-                  className="
-                    text-[9px]
-                    font-semibold
-                    uppercase
-                    tracking-[0.18em]
-                    text-[#0B2A52]
-                  "
-                >
-                  {photos[0].label}
-                </p>
-              </div>
-            </motion.button>
-
-            {/* ===================================================
-                PHOTO 02
-            ==================================================== */}
-
-            <motion.button
-              type="button"
-              onMouseEnter={() => setActiveQuestion(1)}
-              onFocus={() => setActiveQuestion(1)}
-              onClick={() => setActiveQuestion(1)}
-              initial={{
-                opacity: 0,
-                y: 45,
-                rotate: 4,
-              }}
               animate={
-                isVisible
-                  ? {
-                      opacity: activeImage === 1 ? 1 : 0.48,
-                      y: 0,
-                      rotate: activeImage === 1 ? 2 : 5,
-                      scale: activeImage === 1 ? 1.04 : 0.96,
-                      zIndex: activeImage === 1 ? 30 : 10,
-                    }
-                  : {}
-              }
-              transition={{
-                duration: reduceMotion ? 0 : 0.55,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-              className="
-                absolute
-                left-[34%]
-                top-[155px]
-                h-[390px]
-                w-[35%]
-                overflow-hidden
-                border-[8px]
-                border-white
-                bg-white
-                shadow-[0_24px_60px_rgba(11,42,82,0.13)]
-                outline-none
-              "
-            >
-              <Image
-                src={photos[1].src}
-                alt={photos[1].alt}
-                fill
-                sizes="420px"
-                className="
-                  object-cover
-                  object-center
-                "
-              />
-
-              <div
-                className="
-                  absolute
-                  bottom-4
-                  left-4
-                  bg-white
-                  px-4
-                  py-2.5
-                "
-              >
-                <p
-                  className="
-                    text-[9px]
-                    font-semibold
-                    uppercase
-                    tracking-[0.18em]
-                    text-[#0B2A52]
-                  "
-                >
-                  {photos[1].label}
-                </p>
-              </div>
-            </motion.button>
-
-            {/* ===================================================
-                PHOTO 03
-            ==================================================== */}
-
-            <motion.button
-              type="button"
-              onMouseEnter={() => setActiveQuestion(3)}
-              onFocus={() => setActiveQuestion(3)}
-              onClick={() => setActiveQuestion(3)}
-              initial={{
-                opacity: 0,
-                x: 45,
-                rotate: -3,
-              }}
-              animate={
-                isVisible
-                  ? {
-                      opacity: activeImage === 2 ? 1 : 0.48,
-                      x: 0,
-                      rotate: activeImage === 2 ? -1 : -4,
-                      scale: activeImage === 2 ? 1.04 : 0.96,
-                      zIndex: activeImage === 2 ? 30 : 10,
-                    }
-                  : {}
-              }
-              transition={{
-                duration: reduceMotion ? 0 : 0.55,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-              className="
-                absolute
-                right-[4%]
-                top-[65px]
-                h-[350px]
-                w-[34%]
-                overflow-hidden
-                border-[8px]
-                border-white
-                bg-white
-                shadow-[0_24px_60px_rgba(11,42,82,0.13)]
-                outline-none
-              "
-            >
-              <Image
-                src={photos[2].src}
-                alt={photos[2].alt}
-                fill
-                sizes="420px"
-                className="
-                  object-cover
-                  object-center
-                "
-              />
-
-              <div
-                className="
-                  absolute
-                  bottom-4
-                  left-4
-                  bg-white
-                  px-4
-                  py-2.5
-                "
-              >
-                <p
-                  className="
-                    text-[9px]
-                    font-semibold
-                    uppercase
-                    tracking-[0.18em]
-                    text-[#0B2A52]
-                  "
-                >
-                  {photos[2].label}
-                </p>
-              </div>
-            </motion.button>
-
-            {/* ===================================================
-                QUESTION 01
-            ==================================================== */}
-
-            <QuestionPrompt
-              question={questions[0]}
-              active={activeQuestion === 0}
-              className="
-                left-0
-                top-[8px]
-              "
-              isVisible={isVisible}
-              reduceMotion={reduceMotion}
-              delay={0.35}
-              onActivate={() => setActiveQuestion(0)}
-            />
-
-            {/* QUESTION 02 */}
-
-            <QuestionPrompt
-              question={questions[1]}
-              active={activeQuestion === 1}
-              className="
-                right-[1%]
-                top-[5px]
-              "
-              isVisible={isVisible}
-              reduceMotion={reduceMotion}
-              delay={0.45}
-              onActivate={() => setActiveQuestion(1)}
-            />
-
-            {/* QUESTION 03 */}
-
-            <QuestionPrompt
-              question={questions[2]}
-              active={activeQuestion === 2}
-              className="
-                left-[2%]
-                bottom-[82px]
-              "
-              isVisible={isVisible}
-              reduceMotion={reduceMotion}
-              delay={0.55}
-              onActivate={() => setActiveQuestion(2)}
-            />
-
-            {/* QUESTION 04 */}
-
-            <QuestionPrompt
-              question={questions[3]}
-              active={activeQuestion === 3}
-              className="
-                left-[39%]
-                bottom-[12px]
-              "
-              isVisible={isVisible}
-              reduceMotion={reduceMotion}
-              delay={0.65}
-              onActivate={() => setActiveQuestion(3)}
-            />
-
-            {/* QUESTION 05 */}
-
-            <QuestionPrompt
-              question={questions[4]}
-              active={activeQuestion === 4}
-              className="
-                right-[1%]
-                bottom-[92px]
-              "
-              isVisible={isVisible}
-              reduceMotion={reduceMotion}
-              delay={0.75}
-              onActivate={() => setActiveQuestion(4)}
-            />
-          </div>
-
-          {/* =====================================================
-              MOBILE / TABLET
-          ====================================================== */}
-
-          <div className="lg:hidden">
-            {/* IMAGE */}
-
-            <motion.div
-              initial={{
-                opacity: 0,
-                y: 30,
-              }}
-              animate={
-                isVisible
+                inView
                   ? {
                       opacity: 1,
                       y: 0,
@@ -720,155 +359,235 @@ export default function WhySharpRays() {
                   : {}
               }
               transition={{
-                duration: reduceMotion ? 0 : 0.8,
+                duration: motionDuration(0.68),
+                delay: reduceMotion ? 0 : 0.16 + index * 0.08,
+                ease,
               }}
-              className="
+              className={`
+                group
                 relative
-                aspect-[4/3]
                 overflow-hidden
-                border-[6px]
-                border-white
-                shadow-[0_20px_55px_rgba(11,42,82,0.12)]
-              "
+
+                border-[#D9E5EF]
+
+                px-0
+                py-8
+
+                sm:py-9
+
+                md:min-h-[390px]
+                md:px-7
+                md:py-9
+
+                lg:min-h-[430px]
+                lg:px-6
+                lg:py-10
+
+                xl:min-h-[450px]
+                xl:px-8
+
+                ${
+                  index > 0
+                    ? "border-t md:border-t-0"
+                    : ""
+                }
+
+                ${
+                  index % 2 !== 0
+                    ? "md:border-l"
+                    : ""
+                }
+
+                ${
+                  index > 0
+                    ? "lg:border-l"
+                    : ""
+                }
+              `}
             >
-              <Image
-                src={photos[activeImage].src}
-                alt={photos[activeImage].alt}
-                fill
-                sizes="100vw"
+              {/* very subtle hover fill */}
+              <div
+                aria-hidden="true"
                 className="
-                  object-cover
-                  object-center
+                  pointer-events-none
+                  absolute
+                  inset-0
+
+                  bg-gradient-to-b
+                  from-[#F7FBFE]
+                  via-[#F4F9FD]
+                  to-[#EEF6FC]
+
+                  opacity-0
+                  transition-opacity
+                  duration-500
+
+                  group-hover:opacity-100
+                "
+              />
+
+              {/* small top accent */}
+              <div
+                aria-hidden="true"
+                className="
+                  absolute
+                  left-0
+                  top-0
+                  h-[2px]
+                  w-0
+                  bg-[#B79A72]
+
+                  transition-all
+                  duration-500
+
+                  group-hover:w-full
                 "
               />
 
               <div
                 className="
-                  absolute
-                  bottom-4
-                  left-4
-                  bg-white
-                  px-4
-                  py-2.5
+                  relative
+                  z-10
+                  flex
+                  h-full
+                  flex-col
                 "
               >
-                <p
-                  className="
-                    text-[8px]
-                    font-semibold
-                    uppercase
-                    tracking-[0.18em]
-                    text-[#0B2A52]
-                  "
-                >
-                  {photos[activeImage].label}
-                </p>
-              </div>
-            </motion.div>
-
-            {/* QUESTIONS */}
-
-            <div
-              className="
-                mt-7
-                border-t
-                border-[#0B2A52]/10
-              "
-            >
-              {questions.map((question, index) => {
-                const active =
-                  activeQuestion === index;
-
-                return (
-                  <button
-                    key={question.number}
-                    type="button"
-                    onClick={() =>
-                      setActiveQuestion(index)
-                    }
+                {/* top */}
+                <div className="flex items-start justify-between gap-5">
+                  <span
                     className="
-                      flex
-                      w-full
-                      items-center
-                      gap-4
-                      border-b
-                      border-[#0B2A52]/10
-                      py-5
-                      text-left
+                      text-[9px]
+                      font-semibold
+                      uppercase
+                      tracking-[0.26em]
+                      text-[#6885A1]
                     "
                   >
-                    <span
-                      className={`
-                        flex
-                        h-11
-                        w-11
-                        shrink-0
-                        items-center
-                        justify-center
-                        rounded-full
-                        border
-                        text-[9px]
-                        font-semibold
-                        transition-all
-                        duration-300
-                        ${
-                          active
-                            ? "border-[#0B2A52] bg-[#0B2A52] text-white"
-                            : "border-[#0B2A52]/15 bg-white text-[#B79A72]"
-                        }
-                      `}
-                    >
-                      {question.number}
-                    </span>
+                    {item.eyebrow}
+                  </span>
 
-                    <p
-                      className={`
-                        flex-1
-                        text-[15px]
-                        font-medium
-                        leading-6
-                        transition-colors
-                        duration-300
-                        sm:text-[17px]
-                        ${
-                          active
-                            ? "text-[#0B2A52]"
-                            : "text-[#0B2A52]/58"
-                        }
-                      `}
-                    >
-                      {question.text}
-                    </p>
+                  <span
+                    style={newYorkFont}
+                    className="
+                      text-[16px]
+                      leading-none
+                      text-[#B79A72]
+                    "
+                  >
+                    {item.number}
+                  </span>
+                </div>
 
-                    {active ? (
-                      <Check
-                        size={16}
-                        className="text-[#B79A72]"
-                      />
-                    ) : (
-                      <ArrowRight
-                        size={15}
-                        className="text-[#0B2A52]/20"
-                      />
-                    )}
-                  </button>
-                );
-              })}
-            </div>
-          </div>
+                {/* content */}
+                <div className="mt-7 sm:mt-8 lg:mt-9">
+                  <h3
+                    style={newYorkFont}
+                    className="
+                      max-w-[260px]
+
+                      text-[24px]
+                      font-medium
+                      leading-[1.08]
+                      tracking-[-0.035em]
+                      text-[#0B2A52]
+
+                      sm:text-[26px]
+                      md:text-[27px]
+                      lg:text-[27px]
+                      xl:text-[29px]
+                    "
+                  >
+                    {item.title}
+                  </h3>
+
+                  <p
+                    className="
+                      mt-4
+                      max-w-[300px]
+
+                      text-[13px]
+                      leading-[1.75]
+                      text-[#667E98]
+
+                      sm:mt-5
+                      sm:text-[14px]
+                    "
+                  >
+                    {item.description}
+                  </p>
+                </div>
+
+                {/* points */}
+                <div
+                  className="
+                    mt-8
+                    border-t
+                    border-[#DCE7F0]
+                    pt-5
+
+                    md:mt-auto
+                  "
+                >
+                  <div
+                    className="
+                      flex
+                      flex-wrap
+                      gap-x-4
+                      gap-y-2.5
+                    "
+                  >
+                    {item.points.map((point) => (
+                      <span
+                        key={point}
+                        className="flex items-center gap-2"
+                      >
+                        <span
+                          className="
+                            h-[4px]
+                            w-[4px]
+                            shrink-0
+                            rounded-full
+                            bg-[#B79A72]
+                          "
+                        />
+
+                        <span
+                          className="
+                            text-[8px]
+                            font-semibold
+                            uppercase
+                            tracking-[0.16em]
+                            text-[#748EA8]
+
+                            sm:text-[9px]
+                          "
+                        >
+                          {point}
+                        </span>
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </motion.article>
+          ))}
         </div>
 
-        {/* =======================================================
-            CONTENT DIRECTION
-        ======================================================== */}
-
+        {/* =====================================================
+            FINAL STATEMENT
+        ===================================================== */}
         <motion.div
-          initial={{
-            opacity: 0,
-            y: 35,
-          }}
+          initial={
+            reduceMotion
+              ? false
+              : {
+                  opacity: 0,
+                  y: 28,
+                }
+          }
           animate={
-            isVisible
+            inView
               ? {
                   opacity: 1,
                   y: 0,
@@ -876,269 +595,76 @@ export default function WhySharpRays() {
               : {}
           }
           transition={{
-            duration: reduceMotion ? 0 : 0.85,
-            delay: 0.8,
+            duration: motionDuration(0.8),
+            delay: reduceMotion ? 0 : 0.5,
+            ease,
           }}
           className="
-            mx-auto
-            mt-14
-            max-w-[900px]
-            text-center
-            lg:mt-10
+            mt-12
+            sm:mt-14
+            lg:mt-16
           "
         >
-          <span
+          <div
             className="
-              mx-auto
               flex
-              h-12
-              w-12
-              items-center
-              justify-center
-              rounded-full
-              border
-              border-[#B79A72]/40
-              text-[#B79A72]
+              flex-col
+              gap-7
+
+              border-l-2
+              border-[#B79A72]
+              pl-5
+
+              sm:pl-7
+
+              md:flex-row
+              md:items-end
+              md:justify-between
+              md:gap-12
+
+              lg:pl-9
             "
           >
-            <Sparkles
-              size={17}
-              strokeWidth={1.5}
-            />
-          </span>
+            <div className="shrink-0">
+              <p
+                className="
+                  text-[9px]
+                  font-semibold
+                  uppercase
+                  tracking-[0.3em]
+                  text-[#748DA5]
+                "
+              >
+                The result
+              </p>
+            </div>
 
-          <p
-            className="
-              mt-5
-              text-[20px]
-              font-medium
-              tracking-[-0.025em]
-              text-[#0B2A52]
-              sm:text-[23px]
-            "
-          >
-            Those answers give your content direction.
-          </p>
+            <p
+              style={newYorkFont}
+              className="
+                max-w-[920px]
 
-          <p
-            className="
-              mx-auto
-              mt-4
-              max-w-[750px]
-              text-[14px]
-              leading-7
-              text-[#0B2A52]/55
-              sm:text-[15px]
-            "
-          >
-            Because a strong social media presence is not created by
-            publishing more for the sake of publishing.
-          </p>
-        </motion.div>
+                text-[26px]
+                font-medium
+                leading-[1.17]
+                tracking-[-0.035em]
+                text-[#0B2A52]
 
-        {/* =======================================================
-            FINAL MESSAGE
-        ======================================================== */}
-
-        <motion.div
-          initial={{
-            opacity: 0,
-            y: 40,
-          }}
-          animate={
-            isVisible
-              ? {
-                  opacity: 1,
-                  y: 0,
-                }
-              : {}
-          }
-          transition={{
-            duration: reduceMotion ? 0 : 0.9,
-            delay: 0.95,
-          }}
-          className="
-            relative
-            mx-auto
-            mt-14
-            max-w-[1080px]
-            border-y
-            border-[#0B2A52]/12
-            py-12
-            text-center
-            sm:mt-16
-            sm:py-14
-          "
-        >
-          <motion.span
-            initial={{
-              scaleX: 0,
-            }}
-            animate={
-              isVisible
-                ? {
-                    scaleX: 1,
-                  }
-                : {}
-            }
-            transition={{
-              duration: reduceMotion ? 0 : 0.9,
-              delay: 1.15,
-            }}
-            className="
-              mx-auto
-              mb-7
-              block
-              h-[3px]
-              w-16
-              origin-center
-              bg-[#B79A72]
-            "
-          />
-
-          <p
-            className="
-              mx-auto
-              max-w-[900px]
-              text-[24px]
-              font-medium
-              leading-[1.4]
-              tracking-[-0.032em]
-              text-[#0B2A52]
-              sm:text-[29px]
-              md:text-[32px]
-              lg:text-[35px]
-            "
-          >
-            It is created by making every piece of content part of{" "}
-            <span className="text-[#B79A72]">
-              something bigger.
-            </span>
-          </p>
+                sm:text-[29px]
+                md:text-[31px]
+                lg:text-[34px]
+                xl:text-[37px]
+              "
+            >
+              Less disconnected activity.{" "}
+              <span className="text-[#B58D61]">
+                More clarity around what gets done, why it matters and what
+                happens next.
+              </span>
+            </p>
+          </div>
         </motion.div>
       </div>
     </section>
-  );
-}
-
-/* =========================================================
-   DESKTOP QUESTION PROMPT
-========================================================== */
-
-type QuestionPromptProps = {
-  question: {
-    number: string;
-    text: string;
-  };
-  active: boolean;
-  className: string;
-  isVisible: boolean;
-  reduceMotion: boolean | null;
-  delay: number;
-  onActivate: () => void;
-};
-
-function QuestionPrompt({
-  question,
-  active,
-  className,
-  isVisible,
-  reduceMotion,
-  delay,
-  onActivate,
-}: QuestionPromptProps) {
-  return (
-    <motion.button
-      type="button"
-      initial={{
-        opacity: 0,
-        y: 20,
-      }}
-      animate={
-        isVisible
-          ? {
-              opacity: 1,
-              y: 0,
-            }
-          : {}
-      }
-      transition={{
-        duration: reduceMotion ? 0 : 0.7,
-        delay,
-      }}
-      onMouseEnter={onActivate}
-      onFocus={onActivate}
-      onClick={onActivate}
-      className={`
-        group
-        absolute
-        z-40
-        max-w-[315px]
-        text-left
-        outline-none
-        ${className}
-      `}
-    >
-      <div
-        className={`
-          relative
-          flex
-          items-center
-          gap-4
-          border
-          px-5
-          py-4
-          shadow-[0_12px_35px_rgba(11,42,82,0.08)]
-          transition-all
-          duration-400
-          ${
-            active
-              ? "border-[#B79A72] bg-white"
-              : "border-[#0B2A52]/10 bg-white/95"
-          }
-        `}
-      >
-        <span
-          className={`
-            flex
-            h-10
-            w-10
-            shrink-0
-            items-center
-            justify-center
-            rounded-full
-            text-[9px]
-            font-semibold
-            transition-all
-            duration-400
-            ${
-              active
-                ? "bg-[#0B2A52] text-white"
-                : "border border-[#0B2A52]/12 text-[#B79A72]"
-            }
-          `}
-        >
-          {question.number}
-        </span>
-
-        <p
-          className={`
-            text-[14px]
-            font-medium
-            leading-6
-            tracking-[-0.015em]
-            transition-colors
-            duration-300
-            ${
-              active
-                ? "text-[#0B2A52]"
-                : "text-[#0B2A52]/62"
-            }
-          `}
-        >
-          {question.text}
-        </p>
-      </div>
-    </motion.button>
   );
 }

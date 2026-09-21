@@ -371,18 +371,20 @@ export default function FirstConversationToCampaign() {
             "
           >
             <span
-              className="
-                h-px
-                w-9
+            className="
+              h-px
+              w-10
 
-                bg-[#B79A72]
-              "
-            />
+              bg-gradient-to-r
+              from-transparent
+              to-[#B79A72]
+            "
+          />
 
             <span
               className="
                 text-[10px]
-                font-semibold
+               
 
                 uppercase
 
@@ -395,13 +397,15 @@ export default function FirstConversationToCampaign() {
             </span>
 
             <span
-              className="
-                h-px
-                w-9
+            className="
+              h-px
+              w-10
 
-                bg-[#B79A72]
-              "
-            />
+              bg-gradient-to-l
+              from-transparent
+              to-[#B79A72]
+            "
+          />
           </div>
 
           {/* HEADING */}
