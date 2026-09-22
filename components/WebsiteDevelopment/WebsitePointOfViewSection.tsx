@@ -1,93 +1,248 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
+import type { LucideIcon } from "lucide-react";
+
 import {
-  ArrowDownRight,
+  ArrowRight,
+  BarChart3,
   Check,
-  Eye,
-  Layers3,
-  Menu,
-  MonitorSmartphone,
-  MousePointer2,
+  FileText,
   Search,
   Settings2,
-  Sparkles,
+  Smartphone,
   Users,
 } from "lucide-react";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
-const problems = [
+/* =========================================================
+   TYPES
+========================================================= */
+
+type ProblemItem = {
+  number: string;
+  title: string;
+  description: string;
+  icon: LucideIcon;
+};
+
+/* =========================================================
+   DATA
+========================================================= */
+
+const leftProblems: ProblemItem[] = [
   {
     number: "01",
-    icon: Eye,
     title: "Your Website Looks Professional",
-    text: "But visitors still struggle to understand exactly what you do.",
-    side: "left",
-  },
-  {
-    number: "02",
+    description:
+      "But visitors still struggle to understand exactly what you do.",
     icon: Users,
-    title: "People Are Visiting",
-    text: "But too few are taking the next step.",
-    side: "right",
   },
   {
     number: "03",
-    icon: Layers3,
     title: "You Have Strong Services",
-    text: "But important information is buried behind confusing pages or navigation.",
-    side: "left",
-  },
-  {
-    number: "04",
-    icon: MonitorSmartphone,
-    title: "The Site Works on Desktop",
-    text: "But the mobile experience feels compromised.",
-    side: "right",
+    description:
+      "But important information is buried behind confusing pages or navigation.",
+    icon: FileText,
   },
   {
     number: "05",
-    icon: Search,
     title: "You Have Content",
-    text: "But search engines and users cannot easily understand how everything connects.",
-    side: "left",
-  },
-  {
-    number: "06",
-    icon: Settings2,
-    title: "You Keep Adding Features",
-    text: "But the experience becomes more complicated instead of more useful.",
-    side: "right",
+    description:
+      "But search engines and users cannot easily understand how everything connects.",
+    icon: Search,
   },
 ];
 
-export default function WebsiteProblemSection() {
-  const reduceMotion = useReducedMotion();
+const rightProblems: ProblemItem[] = [
+  {
+    number: "02",
+    title: "People Are Visiting",
+    description: "But too few are taking the next step.",
+    icon: BarChart3,
+  },
+  {
+    number: "04",
+    title: "The Site Works on Desktop",
+    description: "But the mobile experience feels compromised.",
+    icon: Smartphone,
+  },
+  {
+    number: "06",
+    title: "You Keep Adding Features",
+    description:
+      "But the experience becomes more complicated instead of more useful.",
+    icon: Settings2,
+  },
+];
 
-  const fadeUp = {
-    hidden: {
-      opacity: 0,
-      y: reduceMotion ? 0 : 22,
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.62,
+/* =========================================================
+   PROBLEM COPY
+========================================================= */
+
+function ProblemCopy({
+  item,
+  side,
+  index,
+  reduceMotion,
+}: {
+  item: ProblemItem;
+  side: "left" | "right";
+  index: number;
+  reduceMotion: boolean;
+}) {
+  return (
+    <motion.div
+      initial={
+        reduceMotion
+          ? false
+          : {
+              opacity: 0,
+              x: side === "left" ? -24 : 24,
+            }
+      }
+      whileInView={{
+        opacity: 1,
+        x: 0,
+      }}
+      viewport={{
+        once: true,
+        amount: 0.35,
+      }}
+      transition={{
+        duration: reduceMotion ? 0 : 0.55,
+        delay: reduceMotion ? 0 : index * 0.07,
         ease,
-      },
-    },
-  };
+      }}
+      className={`
+        max-w-[275px]
+        ${side === "right" ? "ml-auto" : "mr-auto"}
+      `}
+    >
+      <div className="flex items-center gap-3">
+        <span
+          className="
+            font-serif
+            text-[0.95rem]
+            text-[#B18458]
+          "
+        >
+          {item.number}
+        </span>
 
-  const stagger = {
-    hidden: {},
-    visible: {
-      transition: {
-        staggerChildren: 0.08,
-      },
-    },
-  };
+        <span className="h-px w-7 bg-[#B79A72]" />
+      </div>
+
+      <h3
+        className="
+          mt-2
+          font-serif
+          text-[1.05rem]
+          font-semibold
+          leading-[1.2]
+          tracking-[-0.025em]
+          text-[#0B2A52]
+        "
+      >
+        {item.title}
+      </h3>
+
+      <p
+        className="
+          mt-2
+          text-[0.76rem]
+          leading-[1.55]
+          text-[#657A8E]
+        "
+      >
+        {item.description}
+      </p>
+    </motion.div>
+  );
+}
+
+/* =========================================================
+   ICON NODE
+========================================================= */
+
+function IconNode({
+  icon: Icon,
+  reduceMotion,
+  delay = 0,
+}: {
+  icon: LucideIcon;
+  reduceMotion: boolean;
+  delay?: number;
+}) {
+  return (
+    <motion.div
+      initial={
+        reduceMotion
+          ? false
+          : {
+              opacity: 0,
+              scale: 0.82,
+            }
+      }
+      whileInView={{
+        opacity: 1,
+        scale: 1,
+      }}
+      viewport={{
+        once: true,
+        amount: 0.4,
+      }}
+      transition={{
+        duration: reduceMotion ? 0 : 0.45,
+        delay: reduceMotion ? 0 : delay,
+        ease,
+      }}
+      whileHover={
+        reduceMotion
+          ? undefined
+          : {
+              y: -3,
+              scale: 1.05,
+            }
+      }
+      className="
+        flex
+        h-[56px]
+        w-[56px]
+        items-center
+        justify-center
+
+        rounded-full
+
+        border
+        border-[#DDE5EA]
+
+        bg-white
+
+        text-[#0B2A52]
+
+        shadow-[0_9px_26px_rgba(11,42,82,0.07)]
+
+        transition-colors
+        duration-300
+
+        hover:border-[#D9C4A5]
+        hover:bg-[#FCF8F2]
+        hover:text-[#B18458]
+      "
+    >
+      <Icon size={22} strokeWidth={1.65} />
+    </motion.div>
+  );
+}
+
+/* =========================================================
+   MAIN COMPONENT
+========================================================= */
+
+export default function WebsiteProblemSection() {
+  const reduceMotion = Boolean(useReducedMotion());
 
   return (
     <section
@@ -95,11 +250,12 @@ export default function WebsiteProblemSection() {
       aria-labelledby="website-problem-heading"
       className="
         relative
+        isolate
         overflow-hidden
         bg-white
-        py-16
-        sm:py-20
-        md:py-24
+
+        py-20
+        sm:py-24
         lg:py-28
       "
     >
@@ -107,30 +263,62 @@ export default function WebsiteProblemSection() {
           BACKGROUND
       ===================================================== */}
 
-      <div className="pointer-events-none absolute inset-0">
+      <div
+        className="
+          pointer-events-none
+          absolute
+          inset-0
+          -z-20
+          overflow-hidden
+        "
+      >
         <div
           className="
             absolute
-            left-1/2
-            top-[22%]
-            h-[520px]
-            w-[860px]
-            -translate-x-1/2
+            -left-[300px]
+            top-[32%]
+
+            h-[540px]
+            w-[540px]
+
             rounded-full
-            bg-[#F5F8FB]
-            blur-[155px]
+
+            border
+            border-[#D3E1EB]/70
           "
         />
 
         <div
           className="
             absolute
-            -right-[180px]
-            bottom-[7%]
-            h-[340px]
-            w-[340px]
+            -right-[320px]
+            bottom-[10%]
+
+            h-[570px]
+            w-[570px]
+
             rounded-full
-            bg-[#F7F9FB]
+
+            border
+            border-[#D9E5ED]/70
+          "
+        />
+
+        <div
+          className="
+            absolute
+            left-1/2
+            top-[48%]
+
+            h-[450px]
+            w-[720px]
+
+            -translate-x-1/2
+
+            rounded-full
+
+            bg-[#B79A72]/[0.025]
+
             blur-[120px]
           "
         />
@@ -140,14 +328,16 @@ export default function WebsiteProblemSection() {
         className="
           relative
           z-10
+
           mx-auto
           w-full
-          max-w-[1420px]
+          max-w-[1360px]
+
           px-5
           sm:px-7
           md:px-9
           lg:px-12
-          xl:px-16
+          xl:px-14
         "
       >
         {/* =====================================================
@@ -155,63 +345,66 @@ export default function WebsiteProblemSection() {
         ===================================================== */}
 
         <motion.div
-          variants={stagger}
-          initial="hidden"
-          whileInView="visible"
+          initial={
+            reduceMotion
+              ? false
+              : {
+                  opacity: 0,
+                  y: 20,
+                }
+          }
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
           viewport={{
             once: true,
-            amount: 0.2,
+            amount: 0.35,
+          }}
+          transition={{
+            duration: reduceMotion ? 0 : 0.72,
+            ease,
           }}
           className="
             mx-auto
-            max-w-[1080px]
+            max-w-[1020px]
             text-center
           "
         >
           {/* LABEL */}
 
-          <motion.div
-            variants={fadeUp}
-            className="
-              mb-5
-              flex
-              items-center
-              justify-center
-              gap-4
-              sm:mb-6
-            "
-          >
-            <span className="h-px w-8 bg-[#B79A72] sm:w-10" />
+          <div className="flex items-center justify-center gap-4">
+            <span className="h-px w-10 bg-[#B79A72]" />
 
             <span
               className="
-                text-[0.56rem]
+                text-[0.58rem]
                 font-semibold
                 uppercase
-                tracking-[0.28em]
-                text-[#98745A]
-                sm:text-[0.62rem]
+                tracking-[0.3em]
+                text-[#0B2A52]
               "
             >
               The Problem
             </span>
 
-            <span className="h-px w-8 bg-[#B79A72] sm:w-10" />
-          </motion.div>
+            <span className="h-px w-10 bg-[#B79A72]" />
+          </div>
 
           {/* HEADING */}
 
-          <motion.h2
+          <h2
             id="website-problem-heading"
-            variants={fadeUp}
             className="
               mx-auto
-              max-w-[1080px]
-              font-serif
-              text-[2.1rem]
-              font-normal
+              mt-6
+              max-w-[1020px]
+
+              text-[2.3rem]
+              font-medium
               leading-[1.04]
-              tracking-[-0.04em]
+              tracking-[-0.045em]
+
               text-[#0B2A52]
 
               sm:text-[2.6rem]
@@ -220,1213 +413,1427 @@ export default function WebsiteProblemSection() {
               xl:text-[3.35rem]
             "
           >
-            A Website Can Look Good and Still{" "}
+            A Website Can Look Good and Still
+            <br className="hidden sm:block" />{" "}
             <span
               className="
                 font-serif
                 font-normal
-                italic
-                text-[#A97C52]
+                text-[#B18458]
               "
             >
               Work Against Your Business.
             </span>
-          </motion.h2>
+          </h2>
 
-          {/* COPY */}
+          {/* DESCRIPTION */}
 
-          <motion.p
-            variants={fadeUp}
+          <p
             className="
               mx-auto
-              mt-6
-              max-w-[730px]
-              font-serif
-              text-[0.95rem]
-              leading-[1.75]
-              text-[#506A82]
-              sm:text-[1rem]
+              mt-5
+              max-w-[700px]
+
+              text-[0.88rem]
+              leading-[1.65]
+
+              text-[#526A80]
+
+              sm:text-[0.94rem]
             "
           >
             A polished interface can create a strong first impression.
-          </motion.p>
+          </p>
 
-          <motion.p
-            variants={fadeUp}
+          <p
             className="
               mx-auto
-              mt-2.5
-              max-w-[900px]
-              font-serif
-              text-[0.9rem]
-              leading-[1.75]
-              text-[#61758A]
-              sm:text-[0.96rem]
-              md:text-[1rem]
+              mt-1.5
+              max-w-[820px]
+
+              text-[0.82rem]
+              leading-[1.65]
+
+              text-[#66798B]
+
+              sm:text-[0.88rem]
             "
           >
             But design alone cannot fix confusing navigation, slow pages,
             unclear messaging or a poor customer journey.
-          </motion.p>
+          </p>
         </motion.div>
 
         {/* =====================================================
-            TRANSITION LABEL
+            SECOND HEADING
         ===================================================== */}
 
         <motion.div
-          initial={{
-            opacity: 0,
-            scaleX: reduceMotion ? 1 : 0.92,
-          }}
-          whileInView={{
-            opacity: 1,
-            scaleX: 1,
-          }}
-          viewport={{ once: true }}
-          transition={{
-            duration: 0.7,
-            ease,
-          }}
-          className="
-            mt-12
-            flex
-            items-center
-            gap-4
-            sm:mt-14
-            sm:gap-6
-            lg:mt-16
-          "
-        >
-          <span className="h-px flex-1 bg-[#DFE5EA]" />
-
-          <span
-            className="
-              shrink-0
-              text-center
-              text-[0.5rem]
-              font-semibold
-              uppercase
-              tracking-[0.25em]
-              text-[#92745C]
-              sm:text-[0.56rem]
-            "
-          >
-            Does This Sound Familiar?
-          </span>
-
-          <span className="h-px flex-1 bg-[#DFE5EA]" />
-        </motion.div>
-
-        {/* =====================================================
-            WEBSITE X-RAY EXPERIENCE
-        ===================================================== */}
-
-        <div
-          className="
-            relative
-            mx-auto
-            mt-10
-            max-w-[1240px]
-            lg:mt-12
-          "
-        >
-          {/* =================================================
-              DESKTOP SIDE PROBLEMS + CENTER VISUAL
-          ================================================= */}
-
-          <div
-            className="
-              grid
-              items-center
-              gap-5
-
-              lg:grid-cols-[0.82fr_1.18fr_0.82fr]
-              lg:gap-6
-
-              xl:grid-cols-[0.85fr_1.3fr_0.85fr]
-              xl:gap-8
-            "
-          >
-            {/* =============================================
-                LEFT PROBLEMS
-            ============================================= */}
-
-            <motion.div
-              variants={stagger}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{
-                once: true,
-                amount: 0.1,
-              }}
-              className="
-                order-2
-                grid
-                gap-3
-
-                sm:grid-cols-2
-
-                lg:order-1
-                lg:grid-cols-1
-                lg:gap-4
-              "
-            >
-              {problems
-                .filter((item) => item.side === "left")
-                .map(({ number, icon: Icon, title, text }) => (
-                  <ProblemItem
-                    key={number}
-                    number={number}
-                    icon={Icon}
-                    title={title}
-                    text={text}
-                    direction="left"
-                    reduceMotion={reduceMotion}
-                    variants={fadeUp}
-                  />
-                ))}
-            </motion.div>
-
-            {/* =============================================
-                CENTER X-RAY VISUAL
-            ============================================= */}
-
-            <motion.div
-              initial={{
-                opacity: 0,
-                y: reduceMotion ? 0 : 24,
-                scale: reduceMotion ? 1 : 0.975,
-              }}
-              whileInView={{
-                opacity: 1,
-                y: 0,
-                scale: 1,
-              }}
-              viewport={{
-                once: true,
-                amount: 0.18,
-              }}
-              transition={{
-                duration: 0.78,
-                ease,
-              }}
-              className="
-                order-1
-                relative
-                mx-auto
-                w-full
-                max-w-[560px]
-
-                lg:order-2
-              "
-            >
-              {/* glow */}
-
-              <div
-                className="
-                  pointer-events-none
-                  absolute
-                  left-1/2
-                  top-1/2
-                  h-[80%]
-                  w-[88%]
-                  -translate-x-1/2
-                  -translate-y-1/2
-                  rounded-full
-                  bg-[#EAF1F6]
-                  blur-[80px]
-                "
-              />
-
-              {/* browser */}
-
-              <div
-                className="
-                  relative
-                  z-10
-                  overflow-hidden
-
-                  rounded-[24px]
-
-                  border
-                  border-[#D8E1E8]
-
-                  bg-white
-
-                  shadow-[0_25px_65px_rgba(11,42,82,0.12)]
-
-                  sm:rounded-[28px]
-                "
-              >
-                {/* browser chrome */}
-
-                <div
-                  className="
-                    flex
-                    h-[46px]
-                    items-center
-                    gap-2
-
-                    border-b
-                    border-[#E5EAEF]
-
-                    bg-[#FBFCFD]
-
-                    px-4
-
-                    sm:h-[52px]
-                    sm:px-5
-                  "
-                >
-                  <div className="flex gap-1.5">
-                    <span className="h-2 w-2 rounded-full bg-[#D5DCE3]" />
-                    <span className="h-2 w-2 rounded-full bg-[#D5DCE3]" />
-                    <span className="h-2 w-2 rounded-full bg-[#B79A72]/65" />
-                  </div>
-
-                  <div
-                    className="
-                      mx-auto
-                      flex
-                      h-7
-                      w-[50%]
-                      items-center
-                      justify-center
-                      rounded-full
-                      border
-                      border-[#E1E7EC]
-                      bg-white
-                    "
-                  >
-                    <span
-                      className="
-                        text-[0.45rem]
-                        font-medium
-                        tracking-[0.08em]
-                        text-[#9AA5AF]
-                      "
-                    >
-                      polished-website.com
-                    </span>
-                  </div>
-
-                  <div className="w-[24px]" />
-                </div>
-
-                {/* =========================================
-                    POLISHED SURFACE
-                ========================================= */}
-
-                <div
-                  className="
-                    relative
-                    overflow-hidden
-                    border-b
-                    border-[#E2E7EC]
-                    bg-white
-                  "
-                >
-                  {/* mock navbar */}
-
-                  <div
-                    className="
-                      flex
-                      items-center
-                      justify-between
-                      border-b
-                      border-[#EDF0F3]
-                      px-4
-                      py-3.5
-                      sm:px-5
-                    "
-                  >
-                    <div className="flex items-center gap-2">
-                      <span
-                        className="
-                          flex
-                          h-7
-                          w-7
-                          items-center
-                          justify-center
-                          rounded-lg
-                          bg-[#0B2A52]
-                          text-white
-                        "
-                      >
-                        <Sparkles size={12} />
-                      </span>
-
-                      <div>
-                        <span className="block h-1.5 w-14 rounded-full bg-[#0B2A52]" />
-                        <span className="mt-1 block h-1 w-9 rounded-full bg-[#DCE3E9]" />
-                      </div>
-                    </div>
-
-                    <div
-                      className="
-                        hidden
-                        items-center
-                        gap-3
-                        sm:flex
-                      "
-                    >
-                      <span className="h-1.5 w-7 rounded-full bg-[#DCE3E9]" />
-                      <span className="h-1.5 w-7 rounded-full bg-[#DCE3E9]" />
-                      <span className="h-1.5 w-7 rounded-full bg-[#DCE3E9]" />
-
-                      <span className="h-6 w-14 rounded-full bg-[#0B2A52]" />
-                    </div>
-
-                    <Menu
-                      size={14}
-                      className="text-[#0B2A52] sm:hidden"
-                    />
-                  </div>
-
-                  {/* site hero */}
-
-                  <div
-                    className="
-                      grid
-                      gap-3
-                      p-4
-                      sm:grid-cols-[1.08fr_0.92fr]
-                      sm:p-5
-                    "
-                  >
-                    {/* copy */}
-
-                    <div
-                      className="
-                        rounded-[15px]
-                        bg-[#0B2A52]
-                        p-5
-                      "
-                    >
-                      <span
-                        className="
-                          text-[0.42rem]
-                          font-semibold
-                          uppercase
-                          tracking-[0.15em]
-                          text-[#D9C6AC]
-                        "
-                      >
-                        Beautiful website
-                      </span>
-
-                      <div className="mt-4">
-                        <span className="block h-2.5 w-[88%] rounded-full bg-white" />
-                        <span className="mt-2 block h-2.5 w-[70%] rounded-full bg-white" />
-                        <span className="mt-2 block h-2.5 w-[48%] rounded-full bg-[#C4A47A]" />
-                      </div>
-
-                      <div className="mt-5 space-y-2">
-                        <span className="block h-1.5 w-[90%] rounded-full bg-white/15" />
-                        <span className="block h-1.5 w-[78%] rounded-full bg-white/15" />
-                        <span className="block h-1.5 w-[63%] rounded-full bg-white/15" />
-                      </div>
-
-                      <div className="mt-5 flex gap-2">
-                        <span className="h-7 w-20 rounded-full bg-white" />
-                        <span className="h-7 w-16 rounded-full border border-white/20" />
-                      </div>
-                    </div>
-
-                    {/* visual */}
-
-                    <div
-                      className="
-                        relative
-                        min-h-[180px]
-                        overflow-hidden
-                        rounded-[15px]
-                        bg-[#EFF4F7]
-                      "
-                    >
-                      <div
-                        className="
-                          absolute
-                          -right-6
-                          -top-7
-                          h-24
-                          w-24
-                          rounded-full
-                          bg-white/70
-                        "
-                      />
-
-                      <div
-                        className="
-                          absolute
-                          left-4
-                          top-4
-                          flex
-                          h-9
-                          w-9
-                          items-center
-                          justify-center
-                          rounded-xl
-                          bg-white
-                          text-[#0B2A52]
-                          shadow-sm
-                        "
-                      >
-                        <Layers3 size={15} />
-                      </div>
-
-                      <div
-                        className="
-                          absolute
-                          bottom-4
-                          left-4
-                          right-4
-                          rounded-xl
-                          bg-white
-                          p-3
-                          shadow-[0_8px_24px_rgba(11,42,82,0.06)]
-                        "
-                      >
-                        <span className="block h-1.5 w-[48%] rounded-full bg-[#0B2A52]/20" />
-                        <span className="mt-2 block h-1.5 w-[82%] rounded-full bg-[#E2E7EC]" />
-
-                        <div
-                          className="
-                            mt-3
-                            h-1.5
-                            overflow-hidden
-                            rounded-full
-                            bg-[#EDF1F4]
-                          "
-                        >
-                          <motion.span
-                            initial={{ width: 0 }}
-                            whileInView={{ width: "88%" }}
-                            viewport={{ once: true }}
-                            transition={{
-                              duration: 1.1,
-                              delay: 0.4,
-                              ease,
-                            }}
-                            className="
-                              block
-                              h-full
-                              rounded-full
-                              bg-[#0B2A52]
-                            "
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* surface label */}
-
-                  <div
-                    className="
-                      absolute
-                      right-3
-                      top-3
-                      hidden
-                      rounded-full
-                      border
-                      border-[#DCE3E9]
-                      bg-white/90
-                      px-3
-                      py-1.5
-                      shadow-sm
-                      backdrop-blur
-                      sm:block
-                    "
-                  >
-                    <span
-                      className="
-                        text-[0.43rem]
-                        font-semibold
-                        uppercase
-                        tracking-[0.12em]
-                        text-[#768697]
-                      "
-                    >
-                      Looks polished
-                    </span>
-                  </div>
-                </div>
-
-                {/* =========================================
-                    X-RAY / FRICTION LAYER
-                ========================================= */}
-
-                <div
-                  className="
-                    relative
-                    overflow-hidden
-                    bg-[#F8FAFB]
-                    px-4
-                    py-5
-                    sm:px-5
-                  "
-                >
-                  {/* header */}
-
-                  <div
-                    className="
-                      flex
-                      items-center
-                      justify-between
-                      gap-4
-                    "
-                  >
-                    <div>
-                      <span
-                        className="
-                          text-[0.45rem]
-                          font-semibold
-                          uppercase
-                          tracking-[0.17em]
-                          text-[#99775E]
-                        "
-                      >
-                        Under the surface
-                      </span>
-
-                      <p
-                        className="
-                          mt-1
-                          font-serif
-                          text-[0.96rem]
-                          text-[#0B2A52]
-                        "
-                      >
-                        Friction the design cannot hide.
-                      </p>
-                    </div>
-
-                    <span
-                      className="
-                        flex
-                        h-8
-                        w-8
-                        items-center
-                        justify-center
-                        rounded-full
-                        bg-[#0B2A52]
-                        text-white
-                      "
-                    >
-                      <ArrowDownRight size={14} />
-                    </span>
-                  </div>
-
-                  {/* signals */}
-
-                  <div
-                    className="
-                      mt-4
-                      grid
-                      grid-cols-3
-                      gap-2
-                    "
-                  >
-                    {[
-                      {
-                        title: "Unclear",
-                        sub: "Message",
-                      },
-                      {
-                        title: "Slow",
-                        sub: "Journey",
-                      },
-                      {
-                        title: "Weak",
-                        sub: "Action",
-                      },
-                    ].map((item) => (
-                      <div
-                        key={item.title}
-                        className="
-                          rounded-[11px]
-                          border
-                          border-[#E0E6EB]
-                          bg-white
-                          px-2
-                          py-3
-                          text-center
-                        "
-                      >
-                        <p
-                          className="
-                            text-[0.54rem]
-                            font-semibold
-                            text-[#0B2A52]
-                          "
-                        >
-                          {item.title}
-                        </p>
-
-                        <p
-                          className="
-                            mt-0.5
-                            text-[0.41rem]
-                            uppercase
-                            tracking-[0.09em]
-                            text-[#8A98A5]
-                          "
-                        >
-                          {item.sub}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              {/* floating x-ray badge */}
-
-              <motion.div
-                animate={
-                  reduceMotion
-                    ? undefined
-                    : {
-                        y: [0, -5, 0],
-                      }
+          initial={
+            reduceMotion
+              ? false
+              : {
+                  opacity: 0,
+                  y: 18,
                 }
-                transition={{
-                  duration: 4.2,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-                className="
-                  absolute
-                  -bottom-4
-                  left-1/2
-                  z-30
-                  hidden
-                  -translate-x-1/2
-
-                  items-center
-                  gap-2
-
-                  rounded-full
-
-                  border
-                  border-[#DCE3E9]
-
-                  bg-white
-
-                  px-4
-                  py-2
-
-                  shadow-[0_10px_28px_rgba(11,42,82,0.08)]
-
-                  sm:flex
-                "
-              >
-                <span className="h-1.5 w-1.5 rounded-full bg-[#B79A72]" />
-
-                <span
-                  className="
-                    text-[0.48rem]
-                    font-semibold
-                    uppercase
-                    tracking-[0.15em]
-                    text-[#6F8090]
-                  "
-                >
-                  Website X-Ray
-                </span>
-              </motion.div>
-            </motion.div>
-
-            {/* =============================================
-                RIGHT PROBLEMS
-            ============================================= */}
-
-            <motion.div
-              variants={stagger}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{
-                once: true,
-                amount: 0.1,
-              }}
-              className="
-                order-3
-                grid
-                gap-3
-
-                sm:grid-cols-2
-
-                lg:grid-cols-1
-                lg:gap-4
-              "
-            >
-              {problems
-                .filter((item) => item.side === "right")
-                .map(({ number, icon: Icon, title, text }) => (
-                  <ProblemItem
-                    key={number}
-                    number={number}
-                    icon={Icon}
-                    title={title}
-                    text={text}
-                    direction="right"
-                    reduceMotion={reduceMotion}
-                    variants={fadeUp}
-                  />
-                ))}
-            </motion.div>
-          </div>
-        </div>
-
-        {/* =====================================================
-            REAL PROBLEM
-        ===================================================== */}
-
-        <motion.div
-          initial={{
-            opacity: 0,
-            y: reduceMotion ? 0 : 24,
-          }}
+          }
           whileInView={{
             opacity: 1,
             y: 0,
           }}
           viewport={{
             once: true,
-            amount: 0.2,
+            amount: 0.4,
           }}
           transition={{
-            duration: 0.72,
+            duration: reduceMotion ? 0 : 0.65,
+            ease,
+          }}
+          className="
+            mx-auto
+            mt-11
+            max-w-[850px]
+            text-center
+
+            sm:mt-12
+          "
+        >
+          <div className="flex items-center justify-center gap-4">
+            <span className="h-px w-8 bg-[#B79A72]" />
+
+            <span
+              className="
+                text-[0.52rem]
+                font-semibold
+                uppercase
+                tracking-[0.27em]
+                text-[#0B2A52]
+              "
+            >
+              Does This Sound Familiar?
+            </span>
+
+            <span className="h-px w-8 bg-[#B79A72]" />
+          </div>
+
+          <h3
+            className="
+              mt-5
+
+              font-serif
+              text-[1.8rem]
+              font-normal
+              leading-[1.12]
+              tracking-[-0.035em]
+
+              text-[#0B2A52]
+
+              sm:text-[2rem]
+              lg:text-[2.2rem]
+            "
+          >
+            Where good-looking websites start losing people.
+          </h3>
+        </motion.div>
+
+        {/* =====================================================
+            DESKTOP JOURNEY
+        ===================================================== */}
+
+        <div
+          className="
+            relative
+
+            mx-auto
+            mt-10
+
+            hidden
+
+            min-h-[500px]
+            max-w-[1060px]
+
+            lg:block
+          "
+        >
+          {/* =================================================
+              SIDE MICROCOPY
+          ================================================= */}
+
+          <motion.p
+            initial={
+              reduceMotion
+                ? false
+                : {
+                    opacity: 0,
+                    x: -15,
+                  }
+            }
+            whileInView={{
+              opacity: 1,
+              x: 0,
+            }}
+            viewport={{ once: true }}
+            transition={{
+              duration: reduceMotion ? 0 : 0.55,
+              delay: 0.1,
+              ease,
+            }}
+            className="
+              absolute
+              -left-[70px]
+              top-[18px]
+
+              -rotate-[4deg]
+
+              font-serif
+              text-[0.95rem]
+              italic
+              leading-[1.15]
+
+              text-[#8AA5BD]
+            "
+          >
+            Looks great
+            <br />
+            at first...
+          </motion.p>
+
+          <motion.p
+            initial={
+              reduceMotion
+                ? false
+                : {
+                    opacity: 0,
+                    x: 15,
+                  }
+            }
+            whileInView={{
+              opacity: 1,
+              x: 0,
+            }}
+            viewport={{ once: true }}
+            transition={{
+              duration: reduceMotion ? 0 : 0.55,
+              delay: 0.5,
+              ease,
+            }}
+            className="
+              absolute
+              -right-[95px]
+              bottom-[25px]
+
+              rotate-[3deg]
+
+              text-right
+
+              font-serif
+              text-[0.95rem]
+              italic
+              leading-[1.15]
+
+              text-[#8AA5BD]
+            "
+          >
+            ...but something
+            <br />
+            feels off.
+          </motion.p>
+
+          {/* =================================================
+              LEFT PROBLEMS
+          ================================================= */}
+
+          <div
+            className="
+              absolute
+              left-0
+              top-[58px]
+
+              space-y-[66px]
+            "
+          >
+            {leftProblems.map((item, index) => (
+              <ProblemCopy
+                key={item.number}
+                item={item}
+                side="left"
+                index={index}
+                reduceMotion={reduceMotion}
+              />
+            ))}
+          </div>
+
+          {/* =================================================
+              RIGHT PROBLEMS
+          ================================================= */}
+
+          <div
+            className="
+              absolute
+              right-0
+              top-[100px]
+
+              space-y-[66px]
+            "
+          >
+            {rightProblems.map((item, index) => (
+              <ProblemCopy
+                key={item.number}
+                item={item}
+                side="right"
+                index={index}
+                reduceMotion={reduceMotion}
+              />
+            ))}
+          </div>
+
+          {/* =================================================
+              CENTER PATH
+          ================================================= */}
+
+          <div
+            className="
+              absolute
+              left-1/2
+              top-0
+
+              h-[500px]
+              w-[360px]
+
+              -translate-x-1/2
+            "
+          >
+            {/* PATH */}
+
+            <svg
+              viewBox="0 0 360 500"
+              fill="none"
+              className="
+                pointer-events-none
+                absolute
+                inset-0
+                h-full
+                w-full
+              "
+              aria-hidden="true"
+            >
+              {/* BASE */}
+
+              <path
+                d="
+                  M 185 30
+                  C 112 38, 115 75, 150 83
+                  C 190 92, 240 92, 245 130
+                  C 250 168, 130 150, 132 194
+                  C 135 232, 245 230, 245 268
+                  C 245 304, 132 292, 132 342
+                  C 132 377, 230 380, 235 410
+                  C 240 440, 155 433, 155 468
+                "
+                stroke="#D0DCE5"
+                strokeWidth="1.3"
+                strokeLinecap="round"
+              />
+
+              {/* ANIMATED PATH */}
+
+              <motion.path
+                d="
+                  M 185 30
+                  C 112 38, 115 75, 150 83
+                  C 190 92, 240 92, 245 130
+                  C 250 168, 130 150, 132 194
+                  C 135 232, 245 230, 245 268
+                  C 245 304, 132 292, 132 342
+                  C 132 377, 230 380, 235 410
+                  C 240 440, 155 433, 155 468
+                "
+                stroke="#7198B7"
+                strokeWidth="1.25"
+                strokeLinecap="round"
+                initial={
+                  reduceMotion
+                    ? false
+                    : {
+                        pathLength: 0,
+                        opacity: 0,
+                      }
+                }
+                whileInView={{
+                  pathLength: 1,
+                  opacity: 0.72,
+                }}
+                viewport={{
+                  once: true,
+                  amount: 0.35,
+                }}
+                transition={{
+                  duration: reduceMotion ? 0 : 1.35,
+                  ease,
+                }}
+              />
+
+              {/* DOTS */}
+
+              {[
+                [185, 30],
+                [150, 83],
+                [245, 130],
+                [132, 194],
+                [245, 268],
+                [132, 342],
+                [155, 468],
+              ].map(([cx, cy], index) => (
+                <g key={index}>
+                  <circle
+                    cx={cx}
+                    cy={cy}
+                    r="11"
+                    fill={
+                      index === 6
+                        ? "rgba(183,154,114,0.12)"
+                        : "rgba(98,142,179,0.10)"
+                    }
+                  />
+
+                  <circle
+                    cx={cx}
+                    cy={cy}
+                    r="4"
+                    fill={
+                      index === 6
+                        ? "#B79A72"
+                        : "#356E9E"
+                    }
+                  />
+                </g>
+              ))}
+            </svg>
+
+            {/* =================================================
+                ICONS
+            ================================================= */}
+
+            <div className="absolute left-[16px] top-[48px]">
+              <IconNode
+                icon={Users}
+                reduceMotion={reduceMotion}
+                delay={0.12}
+              />
+            </div>
+
+            <div className="absolute right-[6px] top-[94px]">
+              <IconNode
+                icon={BarChart3}
+                reduceMotion={reduceMotion}
+                delay={0.18}
+              />
+            </div>
+
+            <div className="absolute left-[15px] top-[178px]">
+              <IconNode
+                icon={FileText}
+                reduceMotion={reduceMotion}
+                delay={0.24}
+              />
+            </div>
+
+            <div className="absolute right-[7px] top-[232px]">
+              <IconNode
+                icon={Smartphone}
+                reduceMotion={reduceMotion}
+                delay={0.3}
+              />
+            </div>
+
+            <div className="absolute left-[15px] top-[318px]">
+              <IconNode
+                icon={Search}
+                reduceMotion={reduceMotion}
+                delay={0.36}
+              />
+            </div>
+
+            <div className="absolute right-[5px] top-[375px]">
+              <IconNode
+                icon={Settings2}
+                reduceMotion={reduceMotion}
+                delay={0.42}
+              />
+            </div>
+
+            {/* =================================================
+                JOURNEY LABELS
+            ================================================= */}
+
+            <motion.div
+              initial={
+                reduceMotion
+                  ? false
+                  : {
+                      opacity: 0,
+                      y: 8,
+                    }
+              }
+              whileInView={{
+                opacity: 1,
+                y: 0,
+              }}
+              viewport={{ once: true }}
+              transition={{
+                duration: reduceMotion ? 0 : 0.4,
+                delay: 0.25,
+                ease,
+              }}
+              className="
+                absolute
+                left-[185px]
+                top-[15px]
+              "
+            >
+              <span
+                className="
+                  text-[0.47rem]
+                  font-semibold
+                  uppercase
+                  tracking-[0.12em]
+                  text-[#356E9E]
+                "
+              >
+                Visit
+              </span>
+
+              <p
+                className="
+                  mt-0.5
+                  text-[0.58rem]
+                  text-[#71879A]
+                "
+              >
+                High expectations
+              </p>
+            </motion.div>
+
+            <div
+              className="
+                absolute
+                left-[130px]
+                top-[92px]
+
+                text-center
+              "
+            >
+              <span
+                className="
+                  text-[0.44rem]
+                  font-semibold
+                  uppercase
+                  leading-[1.4]
+                  tracking-[0.14em]
+                  text-[#678198]
+                "
+              >
+                Confusion
+                <br />
+                sets in
+              </span>
+            </div>
+
+            <div
+              className="
+                absolute
+                left-[190px]
+                top-[188px]
+
+                text-center
+              "
+            >
+              <span
+                className="
+                  text-[0.44rem]
+                  font-semibold
+                  uppercase
+                  leading-[1.4]
+                  tracking-[0.14em]
+                  text-[#678198]
+                "
+              >
+                Lost
+                <br />
+                attention
+              </span>
+            </div>
+
+            <div
+              className="
+                absolute
+                left-[165px]
+                top-[323px]
+
+                text-center
+              "
+            >
+              <span
+                className="
+                  text-[0.44rem]
+                  font-semibold
+                  uppercase
+                  leading-[1.4]
+                  tracking-[0.14em]
+                  text-[#678198]
+                "
+              >
+                Unclear
+                <br />
+                next step
+              </span>
+            </div>
+
+            <motion.div
+              initial={
+                reduceMotion
+                  ? false
+                  : {
+                      opacity: 0,
+                      y: 8,
+                    }
+              }
+              whileInView={{
+                opacity: 1,
+                y: 0,
+              }}
+              viewport={{ once: true }}
+              transition={{
+                duration: reduceMotion ? 0 : 0.45,
+                delay: 0.65,
+                ease,
+              }}
+              className="
+                absolute
+                left-[175px]
+                bottom-[8px]
+              "
+            >
+              <span
+                className="
+                  text-[0.47rem]
+                  font-semibold
+                  uppercase
+                  tracking-[0.12em]
+                  text-[#B18458]
+                "
+              >
+                People Leave
+              </span>
+
+              <p
+                className="
+                  mt-0.5
+                  text-[0.58rem]
+                  text-[#788B9A]
+                "
+              >
+                Unmet potential
+              </p>
+            </motion.div>
+          </div>
+        </div>
+
+        {/* =====================================================
+            MOBILE / TABLET
+        ===================================================== */}
+
+        <div
+          className="
+            mx-auto
+            mt-10
+            max-w-[760px]
+
+            lg:hidden
+          "
+        >
+          <div className="relative">
+            {/* LINE */}
+
+            <div
+              className="
+                pointer-events-none
+                absolute
+                bottom-8
+                left-[25px]
+                top-8
+
+                w-px
+
+                bg-gradient-to-b
+                from-[#356E9E]
+                via-[#D3DDE5]
+                to-[#B79A72]
+              "
+            />
+
+            <div className="space-y-6">
+              {[...leftProblems, ...rightProblems]
+                .sort(
+                  (a, b) =>
+                    Number(a.number) -
+                    Number(b.number),
+                )
+                .map((item, index) => {
+                  const Icon = item.icon;
+
+                  return (
+                    <motion.div
+                      key={item.number}
+                      initial={
+                        reduceMotion
+                          ? false
+                          : {
+                              opacity: 0,
+                              x: -18,
+                            }
+                      }
+                      whileInView={{
+                        opacity: 1,
+                        x: 0,
+                      }}
+                      viewport={{
+                        once: true,
+                        amount: 0.3,
+                      }}
+                      transition={{
+                        duration: reduceMotion ? 0 : 0.5,
+                        delay: reduceMotion
+                          ? 0
+                          : index * 0.05,
+                        ease,
+                      }}
+                      className="
+                        relative
+                        flex
+                        gap-5
+                      "
+                    >
+                      {/* ICON */}
+
+                      <span
+                        className="
+                          relative
+                          z-10
+
+                          flex
+                          h-[50px]
+                          w-[50px]
+                          shrink-0
+                          items-center
+                          justify-center
+
+                          rounded-full
+
+                          border
+                          border-[#DDE5EA]
+
+                          bg-white
+
+                          text-[#0B2A52]
+
+                          shadow-[0_7px_20px_rgba(11,42,82,0.06)]
+                        "
+                      >
+                        <Icon
+                          size={18}
+                          strokeWidth={1.7}
+                        />
+                      </span>
+
+                      {/* COPY */}
+
+                      <div
+                        className="
+                          flex-1
+
+                          border-b
+                          border-[#E3E6E8]
+
+                          pb-5
+                        "
+                      >
+                        <div className="flex items-center gap-3">
+                          <span
+                            className="
+                              font-serif
+                              text-[0.9rem]
+
+                              text-[#B18458]
+                            "
+                          >
+                            {item.number}
+                          </span>
+
+                          <span className="h-px w-6 bg-[#B79A72]" />
+                        </div>
+
+                        <h3
+                          className="
+                            mt-2
+
+                            font-serif
+                            text-[1rem]
+                            font-semibold
+                            leading-[1.3]
+
+                            text-[#0B2A52]
+                          "
+                        >
+                          {item.title}
+                        </h3>
+
+                        <p
+                          className="
+                            mt-2
+
+                            text-[0.78rem]
+                            leading-[1.6]
+
+                            text-[#687C8E]
+                          "
+                        >
+                          {item.description}
+                        </p>
+                      </div>
+                    </motion.div>
+                  );
+                })}
+            </div>
+          </div>
+        </div>
+
+        {/* =====================================================
+            REAL PROBLEM — DYNAMIC SLIDE SECTION
+        ===================================================== */}
+
+        <motion.div
+          initial={
+            reduceMotion
+              ? false
+              : {
+                  opacity: 0,
+                  x: 110,
+                }
+          }
+          whileInView={{
+            opacity: 1,
+            x: 0,
+          }}
+          viewport={{
+            once: true,
+            amount: 0.28,
+          }}
+          transition={{
+            duration: reduceMotion ? 0 : 0.58,
             ease,
           }}
           className="
             relative
+
             mx-auto
             mt-14
             max-w-[1160px]
+
             overflow-hidden
 
-            rounded-[24px]
+            border-y
+            border-[#DDD8D1]
 
-            border
-            border-[#DEE5EA]
+            bg-white
 
-            bg-[#FAFBFC]
+            py-10
 
-            px-5
-            py-8
-
-            sm:mt-16
-            sm:px-8
-            sm:py-9
-
-            lg:grid
-            lg:grid-cols-[0.8fr_1.2fr]
-            lg:items-center
-            lg:gap-10
-            lg:px-10
-            lg:py-10
+            sm:py-12
           "
         >
-          {/* subtle glow */}
+          {/* =================================================
+              BACKGROUND FLOW
+          ================================================= */}
 
           <div
             className="
               pointer-events-none
               absolute
-              -right-[100px]
-              top-1/2
-              h-[300px]
-              w-[300px]
-              -translate-y-1/2
-              rounded-full
-              bg-[#F1F5F8]
-              blur-[85px]
+              inset-0
+              overflow-hidden
             "
-          />
+          >
+            {/* GOLD SWEEP */}
 
-          {/* LEFT LABEL */}
-
-          <div className="relative z-10">
-            <div className="flex items-center gap-3">
-              <span
-                className="
-                  flex
-                  h-9
-                  w-9
-                  items-center
-                  justify-center
-
-                  rounded-full
-
-                  bg-white
-
-                  text-[#0B2A52]
-
-                  shadow-[0_5px_18px_rgba(11,42,82,0.06)]
-                "
-              >
-                <MousePointer2 size={16} strokeWidth={1.7} />
-              </span>
-
-              <span
-                className="
-                  text-[0.54rem]
-                  font-semibold
-                  uppercase
-                  tracking-[0.24em]
-                  text-[#92745C]
-                "
-              >
-                The Real Problem
-              </span>
-            </div>
-
-            <p
+            <motion.div
+              initial={
+                reduceMotion
+                  ? false
+                  : {
+                      x: "100%",
+                    }
+              }
+              whileInView={{
+                x: "-18%",
+              }}
+              viewport={{ once: true }}
+              transition={{
+                duration: reduceMotion ? 0 : 0.85,
+                delay: 0.08,
+                ease,
+              }}
               className="
-                mt-5
-                max-w-[390px]
+                absolute
+                right-[-20%]
+                top-1/2
 
-                font-serif
-                text-[0.96rem]
-                leading-[1.7]
-                text-[#60758A]
+                h-[190px]
+                w-[58%]
 
-                sm:text-[1rem]
+                -translate-y-1/2
+                -skew-x-[18deg]
+
+                bg-[#B79A72]/[0.055]
               "
-            >
-              A website should not make people work to understand your
-              business.
-            </p>
-          </div>
+            />
 
-          {/* RIGHT STATEMENT */}
+            {/* NAVY LINE */}
+
+            <motion.div
+              initial={
+                reduceMotion
+                  ? false
+                  : {
+                      scaleX: 0,
+                    }
+              }
+              whileInView={{
+                scaleX: 1,
+              }}
+              viewport={{ once: true }}
+              transition={{
+                duration: reduceMotion ? 0 : 0.7,
+                delay: 0.18,
+                ease,
+              }}
+              style={{
+                transformOrigin: "right",
+              }}
+              className="
+                absolute
+                right-0
+                top-[28%]
+
+                h-px
+                w-[35%]
+
+                bg-[#0B2A52]/15
+              "
+            />
+
+            {/* GOLD THIN LINE */}
+
+            <motion.div
+              initial={
+                reduceMotion
+                  ? false
+                  : {
+                      width: 0,
+                    }
+              }
+              whileInView={{
+                width: "24%",
+              }}
+              viewport={{ once: true }}
+              transition={{
+                duration: reduceMotion ? 0 : 0.65,
+                delay: 0.25,
+                ease,
+              }}
+              className="
+                absolute
+                bottom-[23%]
+                right-[4%]
+
+                h-px
+
+                bg-[#B79A72]/50
+              "
+            />
+          </div>
 
           <div
             className="
               relative
               z-10
 
-              mt-7
-              border-t
-              border-[#DEE5EA]
-              pt-7
+              grid
+              gap-9
 
-              lg:mt-0
-              lg:border-l
-              lg:border-t-0
-              lg:pl-10
-              lg:pt-0
+              px-1
+
+              sm:px-2
+
+              lg:grid-cols-[0.78fr_1.35fr]
+              lg:items-center
+              lg:gap-14
             "
           >
-            <p
+            {/* =================================================
+                LEFT
+            ================================================= */}
+
+            <motion.div
+              initial={
+                reduceMotion
+                  ? false
+                  : {
+                      opacity: 0,
+                      x: 55,
+                    }
+              }
+              whileInView={{
+                opacity: 1,
+                x: 0,
+              }}
+              viewport={{ once: true }}
+              transition={{
+                duration: reduceMotion ? 0 : 0.5,
+                delay: 0.08,
+                ease,
+              }}
               className="
-                max-w-[680px]
+                relative
 
-                font-serif
-                text-[1.85rem]
-                font-normal
-                leading-[1.12]
-                tracking-[-0.035em]
-                text-[#0B2A52]
-
-                sm:text-[2.1rem]
-                md:text-[2.3rem]
-                lg:text-[2.45rem]
+                lg:border-r
+                lg:border-[#DDD8D1]
+                lg:pr-12
               "
             >
-              The best websites{" "}
-              <span
-                className="
-                  font-serif
-                  italic
-                  text-[#A97C52]
-                "
-              >
-                remove uncertainty.
-              </span>
-            </p>
+              {/* LABEL */}
 
-            <div
-              className="
-                mt-6
-                flex
-                flex-wrap
-                gap-x-5
-                gap-y-3
-              "
-            >
-              {["Understand", "Trust", "Move Forward"].map((item) => (
-                <div
-                  key={item}
+              <div className="flex items-center gap-4">
+                <span
                   className="
-                    flex
-                    items-center
-                    gap-2
+                    h-px
+                    w-9
+
+                    bg-[#B79A72]
+                  "
+                />
+
+                <span
+                  className="
+                    text-[0.54rem]
+                    font-semibold
+                    uppercase
+                    tracking-[0.28em]
+
+                    text-[#A07850]
                   "
                 >
-                  <span
+                  The Real Problem
+                </span>
+              </div>
+
+              {/* COPY */}
+
+              <p
+                className="
+                  mt-5
+                  max-w-[390px]
+
+                  font-serif
+                  text-[1.28rem]
+                  leading-[1.35]
+                  tracking-[-0.02em]
+
+                  text-[#0B2A52]
+
+                  sm:text-[1.4rem]
+                "
+              >
+                A website should not make people work to understand your
+                business.
+              </p>
+
+              {/* LINE */}
+
+              <motion.span
+                initial={
+                  reduceMotion
+                    ? false
+                    : {
+                        width: 0,
+                      }
+                }
+                whileInView={{
+                  width: 44,
+                }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: reduceMotion ? 0 : 0.45,
+                  delay: 0.35,
+                  ease,
+                }}
+                className="
+                  mt-6
+                  block
+
+                  h-[2px]
+
+                  bg-[#B79A72]
+                "
+              />
+            </motion.div>
+
+            {/* =================================================
+                RIGHT
+            ================================================= */}
+
+            <div>
+              {/* MAIN STATEMENT */}
+
+              <motion.p
+                initial={
+                  reduceMotion
+                    ? false
+                    : {
+                        opacity: 0,
+                        x: 80,
+                      }
+                }
+                whileInView={{
+                  opacity: 1,
+                  x: 0,
+                }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: reduceMotion ? 0 : 0.52,
+                  delay: 0.14,
+                  ease,
+                }}
+                className="
+                  max-w-[700px]
+
+                  font-serif
+                  text-[2rem]
+                  leading-[1.04]
+                  tracking-[-0.04em]
+
+                  text-[#0B2A52]
+
+                  sm:text-[2.25rem]
+                  lg:text-[2.5rem]
+                "
+              >
+                The best websites{" "}
+                <span
+                  className="
+                    font-normal
+                    italic
+
+                    text-[#B18458]
+                  "
+                >
+                  remove uncertainty.
+                </span>
+              </motion.p>
+
+              {/* ===============================================
+                  FLOW
+              =============================================== */}
+
+              <div
+                className="
+                  mt-7
+
+                  flex
+                  flex-wrap
+                  items-center
+
+                  gap-x-3
+                  gap-y-3
+                "
+              >
+                {[
+                  "Understand",
+                  "Navigate",
+                  "Trust",
+                  "Act",
+                ].map((item, index) => (
+                  <motion.div
+                    key={item}
+                    initial={
+                      reduceMotion
+                        ? false
+                        : {
+                            opacity: 0,
+                            x: 45,
+                          }
+                    }
+                    whileInView={{
+                      opacity: 1,
+                      x: 0,
+                    }}
+                    viewport={{ once: true }}
+                    transition={{
+                      duration: reduceMotion ? 0 : 0.42,
+                      delay: reduceMotion
+                        ? 0
+                        : 0.22 + index * 0.075,
+                      ease,
+                    }}
                     className="
                       flex
-                      h-5
-                      w-5
                       items-center
-                      justify-center
-
-                      rounded-full
-
-                      bg-[#EDF3F7]
-
-                      text-[#0B2A52]
+                      gap-3
                     "
                   >
-                    <Check size={10} strokeWidth={2.2} />
-                  </span>
+                    {/* PILL */}
 
-                  <span
-                    className="
-                      text-[0.58rem]
-                      font-semibold
-                      uppercase
-                      tracking-[0.15em]
-                      text-[#6B7E91]
-                    "
-                  >
-                    {item}
-                  </span>
-                </div>
-              ))}
+                    <div
+                      className="
+                        group
+
+                        flex
+                        items-center
+                        gap-2.5
+
+                        rounded-full
+
+                        border
+                        border-[#DDD8D1]
+
+                        bg-white
+
+                        px-4
+                        py-2.5
+
+                        shadow-[0_5px_18px_rgba(11,42,82,0.03)]
+
+                        transition-all
+                        duration-300
+
+                        hover:border-[#D0B58F]
+                        hover:bg-[#FCF8F2]
+                      "
+                    >
+                      <span
+                        className="
+                          flex
+                          h-5
+                          w-5
+                          items-center
+                          justify-center
+
+                          rounded-full
+
+                          border
+                          border-[#DCC8AA]
+
+                          bg-[#FCF8F2]
+
+                          text-[#B18458]
+                        "
+                      >
+                        <Check
+                          size={9}
+                          strokeWidth={2.2}
+                        />
+                      </span>
+
+                      <span
+                        className="
+                          text-[0.52rem]
+                          font-semibold
+                          uppercase
+                          tracking-[0.17em]
+
+                          text-[#5E7388]
+                        "
+                      >
+                        {item}
+                      </span>
+                    </div>
+
+                    {/* ARROW */}
+
+                    {index !== 3 && (
+                      <motion.span
+                        initial={
+                          reduceMotion
+                            ? false
+                            : {
+                                opacity: 0,
+                                x: -6,
+                              }
+                        }
+                        whileInView={{
+                          opacity: 1,
+                          x: 0,
+                        }}
+                        viewport={{ once: true }}
+                        transition={{
+                          duration: reduceMotion ? 0 : 0.3,
+                          delay:
+                            0.4 + index * 0.07,
+                          ease,
+                        }}
+                        className="
+                          hidden
+
+                          text-[#B79A72]
+
+                          sm:inline-flex
+                        "
+                      >
+                        →
+                      </motion.span>
+                    )}
+                  </motion.div>
+                ))}
+              </div>
+
+              {/* ===============================================
+                  SUPPORTING LINE
+              =============================================== */}
+
+              <motion.div
+                initial={
+                  reduceMotion
+                    ? false
+                    : {
+                        opacity: 0,
+                        x: 55,
+                      }
+                }
+                whileInView={{
+                  opacity: 1,
+                  x: 0,
+                }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: reduceMotion ? 0 : 0.48,
+                  delay: 0.55,
+                  ease,
+                }}
+                className="
+                  mt-7
+
+                  flex
+                  items-center
+                  gap-4
+                "
+              >
+                <span
+                  className="
+                    h-px
+                    w-10
+
+                    bg-[#B79A72]
+                  "
+                />
+
+                <p
+                  className="
+                    text-[0.52rem]
+                    font-semibold
+                    uppercase
+                    tracking-[0.22em]
+
+                    text-[#7A8997]
+                  "
+                >
+                  Less friction · More clarity · Better action
+                </p>
+              </motion.div>
             </div>
           </div>
+
+          {/* =================================================
+              RIGHT MOTION ACCENT
+          ================================================= */}
+
+          <motion.div
+            initial={
+              reduceMotion
+                ? false
+                : {
+                    x: 100,
+                    opacity: 0,
+                  }
+            }
+            whileInView={{
+              x: 0,
+              opacity: 1,
+            }}
+            viewport={{ once: true }}
+            transition={{
+              duration: reduceMotion ? 0 : 0.45,
+              delay: 0.28,
+              ease,
+            }}
+            className="
+              pointer-events-none
+
+              absolute
+              right-0
+              top-1/2
+
+              hidden
+
+              -translate-y-1/2
+
+              xl:block
+            "
+          >
+            <div
+              className="
+                flex
+                items-center
+                gap-3
+              "
+            >
+              <span
+                className="
+                  h-px
+                  w-10
+
+                  bg-[#B79A72]
+                "
+              />
+
+              <span
+                className="
+                  flex
+                  h-10
+                  w-10
+                  items-center
+                  justify-center
+
+                  rounded-full
+
+                  border
+                  border-[#DDC9AB]
+
+                  bg-white
+
+                  text-[#B18458]
+
+                  shadow-[0_7px_20px_rgba(11,42,82,0.05)]
+                "
+              >
+                <ArrowRight
+                  size={16}
+                  strokeWidth={1.7}
+                />
+              </span>
+            </div>
+          </motion.div>
         </motion.div>
       </div>
     </section>
-  );
-}
-
-/* =========================================================
-   PROBLEM ITEM
-========================================================= */
-
-function ProblemItem({
-  number,
-  icon: Icon,
-  title,
-  text,
-  direction,
-  reduceMotion,
-  variants,
-}: {
-  number: string;
-  icon: React.ElementType;
-  title: string;
-  text: string;
-  direction: "left" | "right";
-  reduceMotion: boolean | null;
-  variants: any;
-}) {
-  return (
-    <motion.article
-      variants={variants}
-      whileHover={
-        reduceMotion
-          ? undefined
-          : {
-              y: -3,
-            }
-      }
-      className="
-        group
-        relative
-
-        min-h-[150px]
-
-        overflow-hidden
-
-        rounded-[18px]
-
-        border
-        border-[#E0E6EB]
-
-        bg-white
-
-        px-4
-        py-4
-
-        shadow-[0_8px_25px_rgba(11,42,82,0.035)]
-
-        transition-all
-        duration-300
-
-        hover:border-[#CBD5DE]
-        hover:shadow-[0_14px_34px_rgba(11,42,82,0.065)]
-
-        sm:px-5
-        sm:py-5
-
-        lg:min-h-[165px]
-      "
-    >
-      {/* top */}
-
-      <div
-        className={`
-          flex
-          items-start
-          gap-3
-
-          ${
-            direction === "right"
-              ? "lg:flex-row"
-              : "lg:flex-row-reverse lg:text-right"
-          }
-        `}
-      >
-        {/* icon */}
-
-        <span
-          className="
-            flex
-            h-9
-            w-9
-            shrink-0
-            items-center
-            justify-center
-
-            rounded-[11px]
-
-            bg-[#F1F5F8]
-
-            text-[#0B2A52]
-
-            transition-all
-            duration-300
-
-            group-hover:bg-[#0B2A52]
-            group-hover:text-white
-          "
-        >
-          <Icon size={16} strokeWidth={1.7} />
-        </span>
-
-        {/* number */}
-
-        <div
-          className={`
-            flex-1
-
-            ${
-              direction === "left"
-                ? "lg:flex lg:justify-end"
-                : ""
-            }
-          `}
-        >
-          <span
-            className="
-              text-[0.49rem]
-              font-semibold
-              tracking-[0.17em]
-              text-[#A2ADB7]
-            "
-          >
-            {number}
-          </span>
-        </div>
-      </div>
-
-      {/* content */}
-
-      <div
-        className={`
-          mt-4
-
-          ${
-            direction === "left"
-              ? "lg:text-right"
-              : ""
-          }
-        `}
-      >
-        <h3
-          className="
-            font-serif
-            text-[1rem]
-            font-normal
-            leading-[1.3]
-            text-[#0B2A52]
-
-            sm:text-[1.06rem]
-          "
-        >
-          {title}
-        </h3>
-
-        <p
-          className="
-            mt-2
-
-            font-serif
-            text-[0.76rem]
-            leading-[1.6]
-            text-[#718396]
-
-            sm:text-[0.8rem]
-          "
-        >
-          {text}
-        </p>
-      </div>
-
-      {/* connector desktop */}
-
-      <span
-        className={`
-          pointer-events-none
-          absolute
-          top-1/2
-          hidden
-          h-px
-          w-6
-          -translate-y-1/2
-          bg-[#D7E0E7]
-
-          lg:block
-
-          ${
-            direction === "left"
-              ? "-right-6"
-              : "-left-6"
-          }
-        `}
-      />
-
-      {/* hover detail */}
-
-      <span
-        className={`
-          absolute
-          bottom-0
-
-          h-[2px]
-          w-0
-
-          bg-[#B79A72]
-
-          transition-all
-          duration-500
-
-          group-hover:w-[52px]
-
-          ${
-            direction === "left"
-              ? "right-0"
-              : "left-0"
-          }
-        `}
-      />
-    </motion.article>
   );
 }

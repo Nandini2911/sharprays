@@ -107,25 +107,44 @@ export default function BeginningSection() {
             }}
           >
             <span
-              style={{
-                width: mobile ? "32px" : "42px",
-                height: "2px",
-                background: "#B79A72",
-                display: "block",
-                flexShrink: 0,
-              }}
-            />
+            className="
+              h-px
+              w-10
+
+              bg-gradient-to-r
+              from-transparent
+              to-[#B79A72]
+            "
+          />
 
             <span
-              style={{
-                color: "#B79A72",
-                fontSize: mobile ? "11px" : tablet ? "12px" : "13px",
-                letterSpacing: mobile ? "3px" : "4px",
-                fontWeight: 600,
-              }}
-            >
+                  
+                  className="
+                    whitespace-nowrap
+                    text-[8px]
+                  
+                    uppercase
+                    tracking-[0.22em]
+                    text-[#B79A72]
+
+                    sm:text-[10px]
+                    sm:tracking-[0.30em]
+
+                    md:text-xs
+                  "
+                >
               THE BEGINNING
             </span>
+             <span
+            className="
+              h-px
+              w-10
+
+              bg-gradient-to-l
+              from-transparent
+              to-[#B79A72]
+            "
+          />
           </div>
 
           {/* HEADING */}
@@ -153,26 +172,12 @@ export default function BeginningSection() {
   It Started With a
   <br />
   Simple Question
-  <span
-    style={{
-      color: "#B79A72",
-    }}
-  >
-    .
-  </span>
+  
 </h2>
 
           {/* GOLD LINE */}
 
-          <div
-            style={{
-              width: mobile ? "42px" : "50px",
-              height: "3px",
-              background: "#B79A72",
-              marginTop: mobile ? "22px" : "26px",
-              marginBottom: mobile ? "24px" : "28px",
-            }}
-          />
+        
 
           {/* QUOTE */}
 

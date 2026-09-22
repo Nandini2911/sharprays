@@ -128,21 +128,46 @@ export default function SocialMediaQuickAnswer() {
           `}
         >
           <div className="flex items-center gap-3">
-            <span className="h-px w-8 bg-[#B79A72]" />
+            <span
+            className="
+              h-px
+              w-10
+
+              bg-gradient-to-r
+              from-transparent
+              to-[#B79A72]
+            "
+          />
 
             <span
-              className="
-                text-[9px]
-                font-semibold
-                tracking-[0.28em]
-                text-[#B79A72]
-                sm:text-[10px]
-              "
-            >
+                 
+                  className="
+                    whitespace-nowrap
+                    text-[8px]
+                  
+                    uppercase
+                    tracking-[0.22em]
+                    text-[#B79A72]
+
+                    sm:text-[10px]
+                    sm:tracking-[0.30em]
+
+                    md:text-xs
+                  "
+                >
               QUICK ANSWER
             </span>
 
-            <span className="h-px w-8 bg-[#B79A72]" />
+            <span
+            className="
+              h-px
+              w-10
+
+              bg-gradient-to-l
+              from-transparent
+              to-[#B79A72]
+            "
+          />
           </div>
 
          
@@ -340,33 +365,7 @@ export default function SocialMediaQuickAnswer() {
             BOTTOM DETAIL
         ====================================================== */}
 
-        <div
-          className={`
-            mt-9
-            flex
-            justify-center
-            transition-all
-            delay-500
-            duration-[1000ms]
-            ${
-              isVisible
-                ? "translate-y-0 opacity-100"
-                : "translate-y-6 opacity-0"
-            }
-          `}
-        >
-          <p
-            className="
-              text-center
-              text-[8px]
-              font-medium
-              tracking-[0.2em]
-              text-[#0B2A52]/30
-            "
-          >
-            STRATEGY · CREATIVE · CONSISTENCY · PERFORMANCE
-          </p>
-        </div>
+        
       </div>
     </section>
   );

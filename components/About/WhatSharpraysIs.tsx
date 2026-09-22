@@ -214,35 +214,44 @@ export default function WhatSharpraysIs() {
             }}
           >
             <span
-              style={{
-                width: mobile ? "22px" : "38px",
-                height: "1px",
-                background: "#C6A77A",
-                flexShrink: 0,
-              }}
-            />
+            className="
+              h-px
+              w-10
 
-            <span
-              style={{
-                whiteSpace: "nowrap",
-                fontSize: mobile ? "8px" : "9px",
-                fontWeight: 600,
-                textTransform: "uppercase",
-                letterSpacing: mobile ? "0.17em" : "0.23em",
-                color: "#C6A77A",
-              }}
-            >
+              bg-gradient-to-r
+              from-transparent
+              to-[#B79A72]
+            "
+          />
+             <span
+              
+                  className="
+                    whitespace-nowrap
+                    text-[8px]
+                  
+                    uppercase
+                    tracking-[0.22em]
+                    text-[#B79A72]
+
+                    sm:text-[10px]
+                    sm:tracking-[0.30em]
+
+                    md:text-xs
+                  "
+                >
               What SHARPRAYS Actually Is
             </span>
 
             <span
-              style={{
-                width: mobile ? "22px" : "38px",
-                height: "1px",
-                background: "#C6A77A",
-                flexShrink: 0,
-              }}
-            />
+            className="
+              h-px
+              w-10
+
+              bg-gradient-to-l
+              from-transparent
+              to-[#B79A72]
+            "
+          />
           </motion.div>
 
           {/* Heading */}

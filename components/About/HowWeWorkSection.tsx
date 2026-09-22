@@ -228,23 +228,43 @@ export default function HowWeWork() {
         >
           <div className="mb-5 flex items-center gap-3 sm:mb-6">
             <span
-              className="h-px w-8 origin-left bg-[#B79A72] transition-transform duration-[900ms] ease-out"
-              style={{
-                transform: isVisible ? "scaleX(1)" : "scaleX(0)",
-              }}
-            />
+            className="
+              h-px
+              w-10
 
-            <span
-              className="text-xs tracking-[0.18em] text-[#B79A72] transition-all duration-[900ms] delay-150 ease-out sm:text-sm"
-              style={{
-                opacity: isVisible ? 1 : 0,
-                transform: isVisible
-                  ? "translateX(0px)"
-                  : "translateX(-15px)",
-              }}
-            >
+              bg-gradient-to-r
+              from-transparent
+              to-[#B79A72]
+            "
+          />
+             <span
+                 
+                  className="
+                    whitespace-nowrap
+                    text-[8px]
+                 
+                    uppercase
+                    tracking-[0.22em]
+                    text-[#B79A72]
+
+                    sm:text-[10px]
+                    sm:tracking-[0.30em]
+
+                    md:text-xs
+                  "
+                >
               HOW WE WORK
             </span>
+             <span
+            className="
+              h-px
+              w-10
+
+              bg-gradient-to-l
+              from-transparent
+              to-[#B79A72]
+            "
+          />
           </div>
 <h2
   className="
@@ -265,26 +285,7 @@ export default function HowWeWork() {
   <span className="relative inline-block">
     When People Think Together.
 
-    <span
-      className="
-        absolute
-        -bottom-3
-        left-0
-        h-[3px]
-        w-16
-        origin-left
-        bg-[#B79A72]
-        transition-transform
-        duration-[1000ms]
-        delay-300
-        ease-[cubic-bezier(0.22,1,0.36,1)]
-        sm:-bottom-4
-        sm:w-20
-      "
-      style={{
-        transform: isVisible ? "scaleX(1)" : "scaleX(0)",
-      }}
-    />
+  
   </span>
 </h2>
         </div>

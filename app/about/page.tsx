@@ -22,7 +22,7 @@ export default function About() {
       <BeliefSection/>
       <WhatSharpraysIs/>
       <HowWeWorkSection/>
-      <ThePeople/>
+     
       <TheWayWeThink/>
       <FinalHumanCTA/>
 

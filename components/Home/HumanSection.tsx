@@ -1,8 +1,12 @@
 "use client";
 
-import React from "react";
 import Image from "next/image";
-import { Users, Zap, Target, ArrowRight } from "lucide-react";
+import {
+  ArrowRight,
+  Target,
+  Users,
+  Zap,
+} from "lucide-react";
 
 const values = [
   {
@@ -26,234 +30,528 @@ export default function HumanSection() {
   return (
     <section
       id="human"
-      className="w-full overflow-hidden bg-white text-[#0B2A52]"
+      className="
+        w-full
+        overflow-hidden
+        bg-white
+        text-[#0B2A52]
+      "
     >
       {/* =========================================================
-          INTRO
+          MAIN SECTION
       ========================================================= */}
-      <div className="mx-auto max-w-[1440px] px-1 sm:px-4 lg:px-5">
 
       <div
-  className="
-    grid
-    grid-cols-1
-    items-center
-    gap-8
-    pt-8
-    pb-12
-    sm:gap-10
-    sm:pt-10
-    sm:pb-16
-    lg:min-h-[680px]
-    lg:grid-cols-[0.92fr_1.08fr]
-    lg:gap-8
-    lg:pt-0
-    lg:pb-20
-  "
->
+        className="
+          mx-auto
+          w-full
+          max-w-[1440px]
 
+          px-4
+          sm:px-6
+          md:px-8
+          lg:px-10
+          xl:px-12
+          2xl:px-14
+        "
+      >
+        <div
+          className="
+            grid
+            grid-cols-1
+            items-center
+
+            gap-9
+            py-12
+
+            sm:gap-10
+            sm:py-14
+
+            md:gap-12
+            md:py-16
+
+            lg:min-h-[650px]
+            lg:grid-cols-[0.92fr_1.08fr]
+            lg:gap-8
+            lg:py-16
+
+            xl:min-h-[680px]
+            xl:gap-12
+            xl:py-20
+
+            2xl:min-h-[720px]
+          "
+        >
           {/* =====================================================
-              LEFT — CONTENT
+              LEFT CONTENT
           ===================================================== */}
-          <div className="relative z-10 w-full max-w-[650px] px-3 sm:px-0">
 
-            {/* Label */}
-            <div className="mb-7 flex items-center gap-3">
-              <span className="h-[2px] w-10 bg-[#C6A77A]" />
+          <div
+            className="
+              relative
+              z-10
+              w-full
+              max-w-[650px]
 
-              <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#0B2A52]/80">
-                The Human Section
-              </span>
-            </div>
+              lg:pr-4
+              xl:pr-6
+            "
+          >
+            {/* LABEL */}
 
-            {/* Heading */}
-            <h2
-              className="font-serif
-           
-                
-             sm:text-[2.6rem] md:text-[2.95rem] lg:text-[3.1rem] xl:text-[3.35rem]
-                leading-[0.94]
-                tracking-[-0.045em]
+            <div
+              className="
+                mb-5
+                flex
+                items-center
+                gap-2.5
+
+                sm:mb-6
+                sm:gap-3
+
+                lg:mb-7
               "
             >
-              We're Not Here
+               <span
+            className="
+              h-px
+              w-10
+
+              bg-gradient-to-r
+              from-transparent
+              to-[#B79A72]
+            "
+          />
+
+              <span
+                className="
+                  whitespace-nowrap
+                  text-[9px]
+               
+                  uppercase
+                  tracking-[0.16em]
+                  text-[#B79A72]
+
+                  sm:text-[11px]
+                  sm:tracking-[0.2em]
+                "
+              >
+                The Human Section
+              </span>
+              
+          <span
+            className="
+              h-px
+              w-10
+
+              bg-gradient-to-l
+              from-transparent
+              to-[#B79A72]
+            "
+          />
+            </div>
+
+            {/* =====================================================
+                HEADING
+            ===================================================== */}
+
+            <h2
+              className="
+                font-[var(--font-new-york)]
+
+                text-[2.15rem]
+                font-normal
+                leading-[0.96]
+                tracking-[-0.045em]
+
+                sm:text-[2.6rem]
+                md:text-[2.95rem]
+                lg:text-[3.1rem]
+                xl:text-[3.35rem]
+              "
+            >
+              We&apos;re Not Here
               <br />
               to Be{" "}
-              <span className=" text-[#C6A77A]">
+              <span className="text-[#B79A72]">
                 Another Agency.
               </span>
             </h2>
 
-            {/* Divider */}
-            <div className="mt-8 h-[3px] w-14 bg-[#C6A77A]" />
+            {/* DIVIDER */}
 
-            {/* Description */}
+            
+
+            {/* =====================================================
+                DESCRIPTION
+            ===================================================== */}
+
             <p
-              className="mt-7
-                text-[clamp(1rem,1.15vw,1.125rem)]
+              className="
+                mt-5
                 max-w-[570px]
-                
-                leading-[1.65]
+
+                text-[14px]
+                leading-[1.7]
                 text-[#0B2A52]/70
-                
+
+                sm:mt-6
+                sm:text-[15px]
+
+                md:text-base
+
+                lg:mt-7
+                lg:text-[17px]
+
+                xl:text-[18px]
               "
             >
-              We're building a different kind of digital growth partner—
-              small enough to care, sharp enough to move fast, and obsessed
-              with making the work matter.
+              We&apos;re building a different kind of digital growth
+              partner—small enough to care, sharp enough to move fast, and
+              obsessed with making the work matter.
             </p>
 
-            {/* ===================================================
+            {/* =====================================================
                 VALUES
-            =================================================== */}
-            <div className="mt-9 grid grid-cols-1 gap-5 sm:mt-10 sm:grid-cols-3 sm:gap-5">
+            ===================================================== */}
 
+            <div
+              className="
+                mt-7
+                grid
+                grid-cols-1
+                gap-5
+
+                sm:mt-8
+                sm:grid-cols-3
+                sm:gap-4
+
+                md:gap-5
+
+                lg:mt-9
+
+                xl:mt-10
+              "
+            >
               {values.map((item) => {
                 const Icon = item.icon;
 
                 return (
                   <div
                     key={item.title}
-                    className="flex items-start gap-3 sm:block"
+                    className="
+                      flex
+                      min-w-0
+                      items-start
+                      gap-3
+
+                      sm:block
+                    "
                   >
-                    {/* Icon */}
+                    {/* ICON */}
+
                     <div
                       className="
                         flex
-                        h-10
-                        w-10
+                        h-9
+                        w-9
                         shrink-0
                         items-center
                         justify-center
                         rounded-full
+
                         bg-[#F3F6F9]
                         text-[#0B2A52]
+
+                        sm:h-10
+                        sm:w-10
                       "
                     >
-                      <Icon size={18} strokeWidth={1.7} />
+                      <Icon
+                        className="
+                          h-4
+                          w-4
+
+                          sm:h-[18px]
+                          sm:w-[18px]
+                        "
+                        strokeWidth={1.7}
+                      />
                     </div>
 
-                    <div className="sm:mt-3">
-                      <h3 className="text-[clamp(1.15rem,2vw,1.5rem)] leading-[1.2] font-semibold">
+                    {/* TEXT */}
+
+                    <div
+                      className="
+                        min-w-0
+
+                        sm:mt-3
+                      "
+                    >
+                      <h3
+                        className="
+                          font-[var(--font-new-york)]
+
+                          text-[18px]
+                          font-semibold
+                          leading-[1.2]
+
+                          sm:text-[19px]
+                          md:text-xl
+                          lg:text-[21px]
+                          xl:text-[22px]
+                        "
+                      >
                         {item.title}
                       </h3>
 
-                      <p className="mt-1 max-w-[145px] text-[clamp(0.95rem,1.05vw,1.05rem)] leading-[1.55] text-[#0B2A52]/55">
+                      <p
+                        className="
+                          mt-1
+                          max-w-[190px]
+
+                          text-[12px]
+                          leading-[1.55]
+                          text-[#0B2A52]/55
+
+                          sm:max-w-[160px]
+                          sm:text-[12px]
+
+                          md:text-[13px]
+
+                          lg:text-[14px]
+                        "
+                      >
                         {item.text}
                       </p>
                     </div>
                   </div>
                 );
               })}
-
             </div>
           </div>
 
-
           {/* =====================================================
-              RIGHT — IMAGE
+              RIGHT IMAGE
           ===================================================== */}
+
           <div
             className="
               relative
               flex
-              min-h-0
+              w-full
               items-center
               justify-center
-              sm:min-h-0
-              lg:min-h-[620px]
+
+              lg:min-h-[520px]
+              lg:justify-end
+
+              xl:min-h-[620px]
             "
           >
-            {/* Image area */}
             <div
               className="
                 relative
-                h-[480px]
                 w-full
-                max-w-[700px]
-                sm:h-[550px]
-                lg:h-[620px]
+
+                h-[270px]
+                max-w-[360px]
+
+                sm:h-[390px]
+                sm:max-w-[530px]
+
+                md:h-[470px]
+                md:max-w-[620px]
+
+                lg:h-[520px]
+                lg:max-w-[620px]
+
+                xl:h-[600px]
+                xl:max-w-[680px]
+
+                2xl:h-[640px]
+                2xl:max-w-[720px]
               "
             >
               <Image
                 src="/about.png"
                 alt="Our team working together"
                 fill
-                priority
+                sizes="(max-width: 639px) 92vw, (max-width: 767px) 85vw, (max-width: 1023px) 75vw, (max-width: 1279px) 48vw, 680px"
                 className="
                   object-contain
                   object-center
                   lg:object-right
                 "
-                sizes="(max-width: 1024px) 100vw, 55vw"
               />
             </div>
           </div>
         </div>
       </div>
-      {/* =======================================================
-              BOTTOM STATEMENT
-          ======================================================= */}
-          <div className="mt-0">
 
-            <div
+      {/* =========================================================
+          BOTTOM STATEMENT
+      ========================================================= */}
+
+      <div
+        className="
+          mx-auto
+          w-full
+          max-w-[1440px]
+
+          px-4
+          pb-12
+
+          sm:px-6
+          sm:pb-14
+
+          md:px-8
+          md:pb-16
+
+          lg:px-10
+          lg:pb-20
+
+          xl:px-12
+
+          2xl:px-14
+        "
+      >
+        <div
+          className="
+            relative
+            flex
+            flex-col
+            gap-4
+
+            rounded-[18px]
+
+            bg-[#F7F8F9]
+
+            px-5
+            py-5
+
+            sm:rounded-[20px]
+            sm:px-6
+            sm:py-6
+
+            md:flex-row
+            md:items-center
+            md:gap-5
+            md:px-7
+
+            lg:px-8
+            lg:py-6
+
+            xl:gap-6
+          "
+        >
+          {/* ICON */}
+
+          <div
+            className="
+              flex
+              h-9
+              w-9
+              shrink-0
+              items-center
+              justify-center
+              rounded-full
+
+              bg-[#0B2A52]
+              text-white
+
+              sm:h-10
+              sm:w-10
+            "
+          >
+            <Users
               className="
-                flex
-                flex-col
-                gap-3
-                rounded-2xl
-                bg-[#F7F8F9]
-                px-6
-                py-5
-                sm:px-8
-                md:flex-row
-                md:items-center
+                h-4
+                w-4
+
+                sm:h-[17px]
+                sm:w-[17px]
               "
-            >
-
-              {/* Icon */}
-              <div
-                className="
-                  flex
-                  h-10
-                  w-10
-                  shrink-0
-                  items-center
-                  justify-center
-                  rounded-full
-                  bg-[#0B2A52]
-                  text-white
-                "
-              >
-                <Users size={17} strokeWidth={1.6} />
-              </div>
-
-              {/* Main text */}
-              <p className="text-[clamp(1rem,1.15vw,1.125rem)] font-semibold leading-6 ">
-                We work best with teams who value honesty,
-                collaboration and growth.
-              </p>
-
-              {/* Divider */}
-              <span className="hidden h-5 w-px bg-[#0B2A52]/15 md:block" />
-
-              {/* Secondary */}
-              <p className="text-[clamp(1rem,1.15vw,1.125rem)] leading-6 text-[#0B2A52]/50">
-                If that's you, we'll get along just fine.
-              </p>
-
-              {/* Arrow */}
-              <ArrowRight
-                size={18}
-                strokeWidth={1.5}
-                className="hidden text-[#D59A52] md:ml-auto md:block"
-              />
-
-            </div>
-
+              strokeWidth={1.6}
+            />
           </div>
 
-      
+          {/* PRIMARY TEXT */}
+
+          <p
+            className="
+              max-w-[520px]
+
+              text-[14px]
+              font-semibold
+              leading-[1.6]
+
+              sm:text-[15px]
+
+              md:text-base
+
+              lg:text-[17px]
+
+              xl:text-[18px]
+            "
+          >
+            We work best with teams who value honesty, collaboration and
+            growth.
+          </p>
+
+          {/* DIVIDER */}
+
+          <span
+            className="
+              hidden
+              h-8
+              w-px
+              shrink-0
+              bg-[#0B2A52]/15
+
+              md:block
+            "
+          />
+
+          {/* SECONDARY TEXT */}
+
+          <p
+            className="
+              max-w-[430px]
+
+              text-[13px]
+              leading-[1.6]
+              text-[#0B2A52]/50
+
+              sm:text-[14px]
+
+              md:text-[15px]
+
+              lg:text-base
+
+              xl:text-[17px]
+            "
+          >
+            If that&apos;s you, we&apos;ll get along just fine.
+          </p>
+
+          {/* ARROW */}
+
+          <ArrowRight
+            className="
+              hidden
+              h-[18px]
+              w-[18px]
+              shrink-0
+              text-[#D59A52]
+
+              md:ml-auto
+              md:block
+            "
+            strokeWidth={1.5}
+          />
+        </div>
+      </div>
     </section>
   );
 }

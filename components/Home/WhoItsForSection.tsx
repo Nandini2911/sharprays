@@ -1,362 +1,182 @@
 "use client";
 
+import { motion, useReducedMotion } from "framer-motion";
 import {
-  motion,
-  useMotionValue,
-  useMotionValueEvent,
-  useReducedMotion,
-  useScroll,
-  useSpring,
-  useTransform,
-} from "framer-motion";
+  BarChart3,
+  Eye,
+  Lightbulb,
+  Target,
+  TrendingUp,
+} from "lucide-react";
 
-import { Sparkles } from "lucide-react";
-import { useRef } from "react";
+const NAVY = "#0B2A52";
+const GOLD = "#C6A77A";
+
+const ease = [0.22, 1, 0.36, 1] as const;
 
 const beliefs = [
   {
     number: "01",
+    label: "Principle 01",
     title: "Create with intention.",
-    text: "Don't create just because you can.",
+    description: "Don’t create just because you can.",
+    icon: Target,
   },
   {
     number: "02",
+    label: "Principle 02",
     title: "Measure what matters.",
-    text: "Don't chase numbers that don't matter.",
+    description: "Don’t chase numbers that don’t matter.",
+    icon: BarChart3,
   },
   {
     number: "03",
+    label: "Principle 03",
     title: "Look beyond attention.",
-    text: "Don't confuse attention with impact.",
+    description: "Don’t confuse attention with impact.",
+    icon: Eye,
   },
   {
     number: "04",
+    label: "Principle 04",
     title: "Keep moving.",
-    text: "Don't stop learning because something worked once.",
+    description: "Don’t stop learning because something worked once.",
+    icon: TrendingUp,
   },
   {
     number: "05",
+    label: "Principle 05",
     title: "Stay curious.",
-    text: 'Never be afraid to ask, "Why?"',
+    description: 'Never be afraid to ask, “Why?”',
+    icon: Lightbulb,
   },
 ];
 
-const positions = [
-  "lg:left-[5%] lg:top-[2%]",
-  "lg:left-[58%] lg:top-[17%]",
-  "lg:left-[25%] lg:top-[38%]",
-  "lg:left-[62%] lg:top-[59%]",
-  "lg:left-[13%] lg:top-[78%]",
-];
-
-const ease = [0.22, 1, 0.36, 1] as const;
-
 export default function TheWayWeThink() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const desktopPathRef = useRef<SVGPathElement>(null);
-
-  const reduceMotion = useReducedMotion();
-
-  /* =====================================================
-     REAL-TIME SCROLL PROGRESS
-  ====================================================== */
-
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start 76%", "end 28%"],
-  });
-
-  const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 130,
-    damping: 28,
-    mass: 0.22,
-  });
-
-  const pathProgress = reduceMotion
-    ? scrollYProgress
-    : smoothProgress;
-
-  /* =====================================================
-     DESKTOP TRAVELING DOT
-  ====================================================== */
-
-  const dotX = useMotionValue(140);
-  const dotY = useMotionValue(88);
-
-  useMotionValueEvent(pathProgress, "change", (latest) => {
-    const path = desktopPathRef.current;
-
-    if (!path) return;
-
-    const length = path.getTotalLength();
-
-    const point = path.getPointAtLength(
-      length * Math.min(Math.max(latest, 0), 1)
-    );
-
-    dotX.set(point.x);
-    dotY.set(point.y);
-  });
-
-  /* =====================================================
-     MOBILE TRAVELING DOT
-  ====================================================== */
-
-  const mobileDotY = useTransform(
-    pathProgress,
-    [0, 1],
-    [12, 888]
-  );
+  const reduceMotion = Boolean(useReducedMotion());
 
   return (
     <section
-      ref={sectionRef}
       id="the-way-we-think"
       className="
         relative
+        isolate
         overflow-hidden
         bg-white
-        pb-20
-        pt-14
-        text-[#0B2A52]
-
-        sm:pb-24
-        sm:pt-16
-
-        lg:pb-24
-        lg:pt-16
+        py-20
+        sm:py-24
+        md:py-28
+        lg:py-32
       "
     >
       {/* =====================================================
-          LARGE CROPPED BACKGROUND CIRCLES
-      ====================================================== */}
+          BACKGROUND DESIGN
+      ===================================================== */}
 
-      <div
-        aria-hidden="true"
-        className="
-          pointer-events-none
-          absolute
-          inset-0
-          overflow-hidden
-        "
-      >
-        {/* TOP RIGHT LARGE BLUE CIRCLE */}
+      <div className="pointer-events-none absolute inset-0 -z-20 overflow-hidden">
+        {/* TOP RIGHT SOFT SHAPE */}
 
         <div
           className="
             absolute
-
-            -right-[270px]
-            -top-[330px]
-
-            h-[760px]
-            w-[760px]
-
+            -right-[200px]
+            -top-[300px]
+            h-[520px]
+            w-[520px]
             rounded-full
-
-            bg-gradient-to-br
-            from-[#F5F8FB]
-            via-[#EDF3F8]
-            to-[#E4EDF5]
-
-            sm:-right-[250px]
-            sm:-top-[320px]
-
-            lg:-right-[220px]
-            lg:-top-[310px]
-            lg:h-[800px]
-            lg:w-[800px]
+            bg-[#EEF5FB]
+            sm:-right-[180px]
+            sm:-top-[260px]
+            md:h-[690px]
+            md:w-[690px]
+            lg:-right-[250px]
           "
         />
 
-        {/* TOP RIGHT BLUE GLOW */}
+        
+
+        {/* LEFT MID SHAPE */}
 
         <div
           className="
             absolute
-
-            -right-[100px]
-            -top-[120px]
-
-            h-[450px]
-            w-[450px]
-
+            -left-[320px]
+            top-[260px]
+            h-[640px]
+            w-[640px]
             rounded-full
-
-            bg-[#CFE5F3]/25
-
-            blur-[95px]
+            bg-[#C6A77A]/20
+            sm:-left-[280px]
+            md:-left-[250px]
           "
         />
 
-        {/* BOTTOM LEFT LARGE CREAM CIRCLE */}
+       
+
+        {/* BOTTOM LEFT */}
+
+       
+
+        
+        {/* BOTTOM RIGHT */}
 
         <div
           className="
             absolute
-
-            -bottom-[430px]
-            -left-[310px]
-
-            h-[760px]
-            w-[760px]
-
+            -bottom-[390px]
+            -right-[340px]
+            h-[720px]
+            w-[720px]
             rounded-full
-
-            bg-gradient-to-br
-            from-[#FBFAF7]
-            via-[#F7F4EE]
-            to-[#F0EAE1]
-
-            sm:-bottom-[420px]
-            sm:-left-[290px]
-
-            lg:-bottom-[410px]
-            lg:-left-[250px]
-            lg:h-[800px]
-            lg:w-[800px]
+            bg-[#EFF5FA]
           "
         />
 
-        {/* BOTTOM LEFT GOLD GLOW */}
+        
+
+        {/* CENTER SOFT GLOW */}
 
         <div
           className="
             absolute
-
-            -bottom-[220px]
-            -left-[110px]
-
-            h-[420px]
-            w-[420px]
-
-            rounded-full
-
-            bg-[#B79A72]/[0.05]
-
-            blur-[100px]
-          "
-        />
-
-        {/* =================================================
-            EXISTING SOFT ATMOSPHERE
-        ================================================== */}
-
-        <div
-          className="
-            absolute
-            left-[7%]
-            top-[31%]
-
-            h-[320px]
-            w-[320px]
-
-            rounded-full
-
-            bg-[#DCEFFA]/30
-
-            blur-[140px]
-          "
-        />
-
-        <div
-          className="
-            absolute
-            right-[6%]
-            top-[52%]
-
-            h-[360px]
-            w-[360px]
-
-            rounded-full
-
-            bg-[#D8EDF8]/25
-
-            blur-[150px]
-          "
-        />
-
-        <div
-          className="
-            absolute
-            bottom-[8%]
-            left-[35%]
-
-            h-[280px]
-            w-[440px]
-
-            rounded-full
-
-            bg-[#EEF8FD]/70
-
-            blur-[130px]
-          "
-        />
-
-        {/* LARGE FAINT OUTLINE */}
-
-        <div
-          className="
-            absolute
-
-            right-[-170px]
-            top-[-190px]
-
-            h-[560px]
-            w-[560px]
-
-            rounded-full
-
-            border
-            border-[#0B2A52]/[0.025]
-          "
-        />
-
-        <div
-          className="
-            absolute
-
-            bottom-[-210px]
-            left-[-170px]
-
+            left-1/2
+            top-[48%]
             h-[500px]
-            w-[500px]
-
+            w-[900px]
+            -translate-x-1/2
             rounded-full
-
-            border
-            border-[#B79A72]/[0.06]
+            bg-[#F6FAFD]
+            blur-[120px]
           "
         />
       </div>
 
       {/* =====================================================
           MAIN CONTAINER
-      ====================================================== */}
+      ===================================================== */}
 
       <div
         className="
           relative
           z-10
-
           mx-auto
-
-          max-w-[1280px]
-
+          w-full
+          max-w-[1540px]
           px-5
-
-          sm:px-8
+          sm:px-7
+          md:px-9
           lg:px-12
+          xl:px-14
         "
       >
-        {/* ===================================================
+        {/* =====================================================
             HEADER
-        ==================================================== */}
+        ===================================================== */}
 
         <motion.div
           initial={{
             opacity: 0,
-            y: 24,
+            y: reduceMotion ? 0 : 28,
           }}
           whileInView={{
             opacity: 1,
@@ -364,7 +184,7 @@ export default function TheWayWeThink() {
           }}
           viewport={{
             once: true,
-            amount: 0.3,
+            amount: 0.35,
           }}
           transition={{
             duration: 0.8,
@@ -372,7 +192,7 @@ export default function TheWayWeThink() {
           }}
           className="
             mx-auto
-            max-w-[1040px]
+            max-w-[1050px]
             text-center
           "
         >
@@ -380,62 +200,79 @@ export default function TheWayWeThink() {
 
           <div
             className="
-              mx-auto
               flex
-              w-fit
               items-center
+              justify-center
               gap-4
             "
           >
+          <span
+            className="
+              h-px
+              w-10
+
+              bg-gradient-to-r
+              from-transparent
+              to-[#B79A72]
+            "
+          />
             <span
               className="
-                h-px
-                w-12
-
-                bg-gradient-to-r
-                from-transparent
-                to-[#B79A72]
-              "
-            />
-
-            <span
-              className="
-                text-[9px]
-                font-semibold
+                text-[0.58rem]
+                
                 uppercase
-                tracking-[0.3em]
+                tracking-[0.34em]
                 text-[#B79A72]
-                sm:text-[10px]
+                sm:text-[0.64rem]
               "
             >
               The Way We Think
             </span>
 
-            <span
-              className="
-                h-px
-                w-12
+          <span
+            className="
+              h-px
+              w-10
 
-                bg-gradient-to-l
-                from-transparent
-                to-[#B79A72]
-              "
-            />
+              bg-gradient-to-l
+              from-transparent
+              to-[#B79A72]
+            "
+          />
           </div>
 
-          {/* MAIN HEADING */}
 
-          <h2
+         
+
+          {/* HEADING */}
+
+          <motion.h2
+            initial={{
+              opacity: 0,
+              y: reduceMotion ? 0 : 32,
+            }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+            }}
+            viewport={{
+              once: true,
+              amount: 0.35,
+            }}
+            transition={{
+              duration: 0.85,
+              delay: reduceMotion ? 0 : 0.08,
+              ease,
+            }}
             className="
               mx-auto
-              mt-7
-
+              mt-8
               max-w-[1000px]
-
+              font-[var(--font-new-york)]
+              text-[2.1rem]
+              font-medium
               leading-[1.02]
-
-              tracking-[-0.055em]
-
+              tracking-[-0.05em]
               text-[#0B2A52]
 
               sm:text-[2.6rem]
@@ -444,358 +281,83 @@ export default function TheWayWeThink() {
               xl:text-[3.35rem]
             "
           >
-            <span className="block pb-1">
-              Five simple beliefs.
-            </span>
+            Five simple beliefs.
+            <br />
 
-            <span
-              className="
-                block
-
-                pb-[0.14em]
-
-                bg-gradient-to-r
-                from-[#9A7D59]
-                via-[#B79A72]
-                to-[#D2B990]
-
-                bg-clip-text
-
-                text-transparent
-              "
-            >
+            <span className="text-[#B79A72]">
               One way of thinking.
             </span>
-          </h2>
+          </motion.h2>
 
           {/* DESCRIPTION */}
 
-          <p
+          <motion.p
+            initial={{
+              opacity: 0,
+              y: reduceMotion ? 0 : 18,
+            }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+            }}
+            viewport={{
+              once: true,
+              amount: 0.4,
+            }}
+            transition={{
+              duration: 0.7,
+              delay: reduceMotion ? 0 : 0.18,
+              ease,
+            }}
             className="
               mx-auto
               mt-6
+              max-w-[720px]
+              text-[0.93rem]
+              leading-[1.7]
+              text-[#64748B]
 
-              max-w-[660px]
-
-              font-serif
-
-              text-[15px]
-
-              leading-7
-
-              text-[#0B2A52]/50
-
-              sm:text-[17px]
-              sm:leading-8
+              sm:text-[1rem]
+              md:text-[1.05rem]
             "
           >
-            Not rules. Not formulas. Just the principles
-            that keep our work thoughtful, intentional
-            and honest.
-          </p>
+            Not rules. Not formulas. Just the principles that keep our work
+            thoughtful, intentional and honest.
+          </motion.p>
         </motion.div>
 
         {/* =====================================================
-            EDITORIAL PATH
-        ====================================================== */}
+            PRINCIPLES
+        ===================================================== */}
 
         <div
           className="
-            relative
-
             mx-auto
+            mt-14
+            grid
+            max-w-[1420px]
+            grid-cols-1
+            gap-4
 
-            mt-12
-
-            max-w-[1120px]
-
-            sm:mt-14
+            sm:grid-cols-2
+            sm:gap-5
 
             lg:mt-16
-            lg:h-[900px]
+            lg:grid-cols-5
+            lg:gap-4
+
+            xl:gap-5
           "
         >
-          {/* =================================================
-              DESKTOP SVG
-          ================================================== */}
+          {beliefs.map((belief, index) => {
+            const Icon = belief.icon;
 
-          <svg
-            aria-hidden="true"
-            viewBox="0 0 1120 900"
-            preserveAspectRatio="none"
-            className="
-              pointer-events-none
-
-              absolute
-              inset-0
-              z-0
-
-              hidden
-
-              h-full
-              w-full
-
-              lg:block
-            "
-          >
-            <defs>
-              {/* BASE PATH */}
-
-              <linearGradient
-                id="pathBase"
-                x1="0"
-                y1="0"
-                x2="1"
-                y2="1"
-              >
-                <stop
-                  offset="0%"
-                  stopColor="#B79A72"
-                  stopOpacity="0.15"
-                />
-
-                <stop
-                  offset="45%"
-                  stopColor="#79B4D8"
-                  stopOpacity="0.18"
-                />
-
-                <stop
-                  offset="100%"
-                  stopColor="#0B2A52"
-                  stopOpacity="0.08"
-                />
-              </linearGradient>
-
-              {/* ACTIVE PATH */}
-
-              <linearGradient
-                id="pathActive"
-                x1="0"
-                y1="0"
-                x2="1"
-                y2="1"
-              >
-                <stop
-                  offset="0%"
-                  stopColor="#B79A72"
-                />
-
-                <stop
-                  offset="38%"
-                  stopColor="#73AED3"
-                />
-
-                <stop
-                  offset="72%"
-                  stopColor="#4385B1"
-                />
-
-                <stop
-                  offset="100%"
-                  stopColor="#B79A72"
-                />
-              </linearGradient>
-
-              {/* DOT GLOW */}
-
-              <filter
-                id="dotGlow"
-                x="-100%"
-                y="-100%"
-                width="300%"
-                height="300%"
-              >
-                <feGaussianBlur
-                  stdDeviation="5"
-                  result="blur"
-                />
-
-                <feMerge>
-                  <feMergeNode in="blur" />
-                  <feMergeNode in="SourceGraphic" />
-                </feMerge>
-              </filter>
-            </defs>
-
-            {/* STATIC PATH */}
-
-            <path
-              d="
-                M 140 88
-                C 320 80, 490 140, 735 190
-                C 995 245, 875 345, 520 385
-                C 275 415, 355 505, 810 570
-                C 1020 600, 910 705, 430 755
-                C 300 770, 245 825, 220 860
-              "
-              fill="none"
-              stroke="url(#pathBase)"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-            />
-
-            {/* REAL-TIME ACTIVE PATH */}
-
-            <motion.path
-              ref={desktopPathRef}
-              d="
-                M 140 88
-                C 320 80, 490 140, 735 190
-                C 995 245, 875 345, 520 385
-                C 275 415, 355 505, 810 570
-                C 1020 600, 910 705, 430 755
-                C 300 770, 245 825, 220 860
-              "
-              fill="none"
-              stroke="url(#pathActive)"
-              strokeWidth="2.4"
-              strokeLinecap="round"
-              style={{
-                pathLength: pathProgress,
-              }}
-            />
-
-            {/* MOVING DOT */}
-
-            <motion.circle
-              cx={dotX}
-              cy={dotY}
-              r="15"
-              fill="#72ACD0"
-              opacity="0.09"
-            />
-
-            <motion.circle
-              cx={dotX}
-              cy={dotY}
-              r="6"
-              fill="#FFFFFF"
-              stroke="#B79A72"
-              strokeWidth="2"
-              filter="url(#dotGlow)"
-            />
-
-            <motion.circle
-              cx={dotX}
-              cy={dotY}
-              r="2"
-              fill="#B79A72"
-            />
-          </svg>
-
-          {/* =================================================
-              MOBILE PATH
-          ================================================== */}
-
-          <svg
-            aria-hidden="true"
-            viewBox="0 0 40 900"
-            preserveAspectRatio="none"
-            className="
-              pointer-events-none
-
-              absolute
-
-              bottom-0
-              left-[8px]
-              top-0
-
-              z-0
-
-              h-full
-              w-[40px]
-
-              lg:hidden
-            "
-          >
-            <defs>
-              <linearGradient
-                id="mobilePathActive"
-                x1="0"
-                y1="0"
-                x2="0"
-                y2="1"
-              >
-                <stop
-                  offset="0%"
-                  stopColor="#B79A72"
-                />
-
-                <stop
-                  offset="52%"
-                  stopColor="#65A5CD"
-                />
-
-                <stop
-                  offset="100%"
-                  stopColor="#B79A72"
-                />
-              </linearGradient>
-            </defs>
-
-            {/* FAINT ROAD */}
-
-            <path
-              d="M 20 12 L 20 888"
-              fill="none"
-              stroke="#0B2A52"
-              strokeOpacity="0.09"
-              strokeWidth="1"
-            />
-
-            {/* ACTIVE ROAD */}
-
-            <motion.path
-              d="M 20 12 L 20 888"
-              fill="none"
-              stroke="url(#mobilePathActive)"
-              strokeWidth="2"
-              strokeLinecap="round"
-              style={{
-                pathLength: pathProgress,
-              }}
-            />
-
-            {/* MOVING DOT */}
-
-            <motion.circle
-              cx="20"
-              cy={mobileDotY}
-              r="5.5"
-              fill="white"
-              stroke="#B79A72"
-              strokeWidth="2"
-            />
-          </svg>
-
-          {/* =================================================
-              PRINCIPLES
-          ================================================== */}
-
-          <div
-            className="
-              relative
-              z-10
-
-              space-y-12
-
-              pl-12
-
-              sm:space-y-14
-              sm:pl-14
-
-              lg:h-full
-              lg:space-y-0
-              lg:pl-0
-            "
-          >
-            {beliefs.map((belief, index) => (
+            return (
               <motion.article
                 key={belief.number}
                 initial={{
                   opacity: 0,
-                  y: 34,
+                  y: reduceMotion ? 0 : 42,
                 }}
                 whileInView={{
                   opacity: 1,
@@ -803,214 +365,231 @@ export default function TheWayWeThink() {
                 }}
                 viewport={{
                   once: true,
-                  amount: 0.35,
+                  amount: 0.22,
                 }}
                 transition={{
-                  duration: 0.65,
+                  duration: 0.7,
+                  delay: reduceMotion ? 0 : index * 0.08,
                   ease,
                 }}
-                className={`
+                whileHover={
+                  reduceMotion
+                    ? undefined
+                    : {
+                        y: -8,
+                      }
+                }
+                className="
                   group
                   relative
-                  z-10
+                  min-h-[330px]
+                  overflow-hidden
+                  rounded-[22px]
+                  border
+                  border-[#DCE7F0]
+                  bg-white/80
+                  px-6
+                  pb-7
+                  pt-7
+                  backdrop-blur-[8px]
+                  transition-shadow
+                  duration-500
 
-                  lg:absolute
-                  lg:w-[390px]
+                  hover:shadow-[0_24px_60px_rgba(11,42,82,0.10)]
 
-                  ${positions[index]}
-                `}
+                  sm:min-h-[350px]
+
+                  lg:min-h-[370px]
+                  lg:px-5
+
+                  xl:px-6
+                "
               >
-                {/* NUMBER + CONNECTOR */}
+                {/* SOFT HOVER WASH */}
 
                 <div
                   className="
+                    pointer-events-none
+                    absolute
+                    inset-0
+                    bg-[linear-gradient(145deg,#F3F8FC_0%,transparent_55%,#FBF7F1_100%)]
+                    opacity-0
+                    transition-opacity
+                    duration-500
+                    group-hover:opacity-100
+                  "
+                />
+
+                {/* NUMBER */}
+
+               
+
+                {/* ICON */}
+
+                <motion.div
+                  whileHover={
+                    reduceMotion
+                      ? undefined
+                      : {
+                          scale: 1.08,
+                          rotate: 5,
+                        }
+                  }
+                  transition={{
+                    type: "spring",
+                    stiffness: 300,
+                    damping: 20,
+                  }}
+                  className="
+                    relative
+                    z-10
+                    mx-auto
+                    mt-[-8px]
                     flex
+                    h-[82px]
+                    w-[82px]
                     items-center
-                    gap-3
+                    justify-center
+                    rounded-full
+                    bg-[#EAF3FB]
+                    text-[#0B2A52]
+
+                    sm:h-[88px]
+                    sm:w-[88px]
+
+                    lg:h-[82px]
+                    lg:w-[82px]
                   "
                 >
-                  {/* NUMBER */}
+                  <Icon
+                    size={30}
+                    strokeWidth={1.6}
+                  />
 
-                  <span
+                  {/* ICON GLOW */}
+
+                  <div
                     className="
-                      flex
-                      h-9
-                      w-9
-
-                      shrink-0
-
-                      items-center
-                      justify-center
-
+                      pointer-events-none
+                      absolute
+                      inset-2
                       rounded-full
-
-                      border
-                      border-[#B79A72]/40
-
-                      bg-white
-
-                      font-serif
-                      text-[11px]
-
-                      text-[#B79A72]
-
-                      shadow-[0_8px_30px_-22px_rgba(11,42,82,0.25)]
-
-                      transition-all
-                      duration-500
-
-                      group-hover:-translate-y-1
-
-                      group-hover:border-[#4F8DB8]
-
-                      group-hover:shadow-[0_12px_34px_-20px_rgba(66,136,181,0.38)]
-                    "
-                  >
-                    {belief.number}
-                  </span>
-
-                  {/* LINE */}
-
-                  <span
-                    className="
-                      h-px
-                      w-8
-
-                      bg-gradient-to-r
-                      from-[#B79A72]
-                      to-[#75B1D5]
-
-                      transition-[width]
-                      duration-500
-
-                      group-hover:w-14
+                      bg-white/35
                     "
                   />
+                </motion.div>
 
-                  {/* DOT */}
+                {/* LABEL */}
 
-                  <span
-                    className="
-                      h-[4px]
-                      w-[4px]
+                <span
+                  className="
+                    relative
+                    z-10
+                    mt-5
+                    block
+                    text-center
+                    text-[0.5rem]
+                    font-semibold
+                    uppercase
+                    tracking-[0.24em]
+                    text-[#0B2A52]
+                  "
+                >
+                  {belief.label}
+                </span>
 
-                      rounded-full
+                {/* TITLE */}
 
-                      bg-[#B79A72]
-                    "
-                  />
-                </div>
+                <h3
+                  className="
+                    relative
+                    z-10
+                    mx-auto
+                    mt-3
+                    max-w-[220px]
+                    text-center
+                    font-[var(--font-new-york)]
+                    text-[1.45rem]
+                    font-semibold
+                    leading-[1.05]
+                    tracking-[-0.035em]
+                    text-[#0B2A52]
 
-                {/* CONTENT */}
+                    lg:text-[1.35rem]
 
-                <div className="mt-4 lg:pl-1">
-                  <span
-                    className="
-                      text-[8px]
-                      font-semibold
-                      uppercase
-                      tracking-[0.21em]
-                      text-[#B79A72]
-                    "
-                  >
-                    Principle {belief.number}
-                  </span>
+                    xl:text-[1.5rem]
+                  "
+                >
+                  {belief.title}
+                </h3>
 
-                  <motion.h3
-                    whileHover={
-                      reduceMotion
-                        ? undefined
-                        : {
-                            y: -4,
-                          }
-                    }
-                    transition={{
-                      duration: 0.4,
-                      ease,
-                    }}
-                    className="
-                      mt-2
+                {/* DESCRIPTION */}
 
-                      max-w-[390px]
+                <p
+                  className="
+                    relative
+                    z-10
+                    mx-auto
+                    mt-3
+                    max-w-[210px]
+                    text-center
+                    text-[0.78rem]
+                    leading-[1.55]
+                    text-[#64748B]
 
-                      text-[27px]
-                      font-medium
+                    sm:text-[0.82rem]
+                  "
+                >
+                  {belief.description}
+                </p>
 
-                      leading-[1.12]
+                {/* GOLD LINE */}
 
-                      tracking-[-0.04em]
+                <motion.span
+                  initial={{
+                    width: 28,
+                  }}
+                  whileHover={{
+                    width: 52,
+                  }}
+                  transition={{
+                    duration: 0.35,
+                  }}
+                  className="
+                    absolute
+                    bottom-7
+                    left-1/2
+                    h-[2px]
+                    -translate-x-1/2
+                    bg-[#C6A77A]
+                  "
+                />
 
-                      text-[#0B2A52]
+                {/* INNER BORDER HIGHLIGHT */}
 
-                      sm:text-[32px]
-
-                      lg:text-[35px]
-                      lg:leading-[1.1]
-                    "
-                  >
-                    {belief.title}
-                  </motion.h3>
-
-                  {/* UNDERLINE */}
-
-                  <span
-                    className="
-                      mt-4
-                      block
-                      h-[2px]
-                      w-9
-
-                      bg-gradient-to-r
-                      from-[#B79A72]
-                      via-[#67A8CF]
-                      to-transparent
-
-                      transition-[width]
-                      duration-500
-
-                      group-hover:w-20
-                    "
-                  />
-
-                  {/* DESCRIPTION */}
-
-                  <p
-                    className="
-                      mt-4
-
-                      max-w-[340px]
-
-                      text-[13px]
-
-                      leading-6
-
-                      text-[#0B2A52]/52
-
-                      transition-all
-                      duration-500
-
-                      group-hover:translate-x-1
-                      group-hover:text-[#0B2A52]/70
-
-                      sm:text-[14px]
-                    "
-                  >
-                    {belief.text}
-                  </p>
-                </div>
+                <div
+                  className="
+                    pointer-events-none
+                    absolute
+                    inset-[5px]
+                    rounded-[18px]
+                    border
+                    border-white/80
+                  "
+                />
               </motion.article>
-            ))}
-          </div>
+            );
+          })}
         </div>
 
         {/* =====================================================
-            CLOSING
-        ====================================================== */}
+            BOTTOM STATEMENT
+        ===================================================== */}
 
         <motion.div
           initial={{
             opacity: 0,
-            y: 28,
+            y: reduceMotion ? 0 : 25,
           }}
           whileInView={{
             opacity: 1,
@@ -1018,88 +597,192 @@ export default function TheWayWeThink() {
           }}
           viewport={{
             once: true,
-            amount: 0.3,
+            amount: 0.4,
           }}
           transition={{
-            duration: 0.8,
+            duration: 0.75,
             ease,
           }}
           className="
             mx-auto
-
-            mt-14
-
-            max-w-[850px]
-
+            mt-16
+            max-w-[900px]
             text-center
 
-            sm:mt-16
-
-            lg:mt-8
+            sm:mt-20
           "
         >
-          <Sparkles
-            size={14}
-            strokeWidth={1.3}
+          {/* DECORATIVE DIVIDER */}
+
+          <div
             className="
               mx-auto
-              text-[#B79A72]
+              flex
+              max-w-[550px]
+              items-center
+              justify-center
+              gap-5
             "
-          />
+          >
+            <motion.span
+              initial={{
+                scaleX: reduceMotion ? 1 : 0,
+              }}
+              whileInView={{
+                scaleX: 1,
+              }}
+              viewport={{ once: true }}
+              transition={{
+                duration: 0.8,
+                ease,
+              }}
+              style={{
+                transformOrigin: "right",
+              }}
+              className="
+                h-px
+                flex-1
+                bg-[linear-gradient(90deg,transparent,#A9C7E0)]
+              "
+            />
 
-          <p
+            <motion.div
+              animate={
+                reduceMotion
+                  ? undefined
+                  : {
+                      rotate: [0, 10, 0],
+                    }
+              }
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+              className="
+                relative
+                h-6
+                w-6
+              "
+            >
+              <span
+                className="
+                  absolute
+                  left-[6px]
+                  top-[2px]
+                  h-3
+                  w-[2px]
+                  rotate-[38deg]
+                  bg-[#C6A77A]
+                "
+              />
+
+              <span
+                className="
+                  absolute
+                  bottom-[2px]
+                  right-[6px]
+                  h-3
+                  w-[2px]
+                  rotate-[38deg]
+                  bg-[#C6A77A]
+                "
+              />
+            </motion.div>
+
+            <motion.span
+              initial={{
+                scaleX: reduceMotion ? 1 : 0,
+              }}
+              whileInView={{
+                scaleX: 1,
+              }}
+              viewport={{ once: true }}
+              transition={{
+                duration: 0.8,
+                ease,
+              }}
+              style={{
+                transformOrigin: "left",
+              }}
+              className="
+                h-px
+                flex-1
+                bg-[linear-gradient(90deg,#A9C7E0,transparent)]
+              "
+            />
+          </div>
+
+          {/* CLOSING HEADING */}
+
+          <motion.h3
+            initial={{
+              opacity: 0,
+              y: reduceMotion ? 0 : 18,
+            }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+            }}
+            viewport={{ once: true }}
+            transition={{
+              duration: 0.7,
+              delay: reduceMotion ? 0 : 0.1,
+            }}
             className="
-              mt-5
-
-              text-[27px]
-              font-medium
-
-              leading-[1.2]
-
+              mt-7
+              font-[var(--font-new-york)]
+              text-[1.65rem]
+              font-semibold
+              leading-[1.15]
               tracking-[-0.035em]
-
               text-[#0B2A52]
 
-              sm:text-[34px]
-
-              lg:text-[38px]
+              sm:text-[2rem]
+              md:text-[2.2rem]
             "
           >
-            The best work isn&apos;t about having
-            all the answers.
-          </p>
+            The best work isn&apos;t about having all the answers.
+          </motion.h3>
 
-          <p
+          <motion.p
+            initial={{
+              opacity: 0,
+              y: reduceMotion ? 0 : 12,
+            }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+            }}
+            viewport={{ once: true }}
+            transition={{
+              duration: 0.7,
+              delay: reduceMotion ? 0 : 0.18,
+            }}
             className="
-              mt-2
+              mt-3
+              text-[1rem]
+              leading-[1.6]
+              text-[#64748B]
 
-              inline-block
-
-              pb-1
-
-              bg-gradient-to-r
-              from-[#9A7D59]
-              via-[#B79A72]
-              to-[#D2B990]
-
-              bg-clip-text
-
-              font-serif
-
-              text-[26px]
-              font-normal
-
-              leading-[1.2]
-
-              text-transparent
-
-              sm:text-[33px]
-
-              lg:text-[37px]
+              sm:text-[1.15rem]
             "
           >
-            It&apos;s about asking better questions.
-          </p>
+            It&apos;s about asking{" "}
+            <span className="text-[#C6A77A]">
+              better questions.
+            </span>
+          </motion.p>
+
+          <div
+            className="
+              mx-auto
+              mt-7
+              h-px
+              max-w-[520px]
+              bg-[#CADCEB]
+            "
+          />
         </motion.div>
       </div>
     </section>
