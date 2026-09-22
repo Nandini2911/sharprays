@@ -273,15 +273,21 @@ export default function SocialMediaPlanIncludes() {
           {/* EYEBROW */}
 
           <div className="flex items-center justify-center gap-3">
-            <span
-              aria-hidden="true"
-              className="h-px w-9 bg-[#B79A72]"
-            />
+             <span
+            className="
+              h-px
+              w-10
+
+              bg-gradient-to-r
+              from-transparent
+              to-[#B79A72]
+            "
+          />
 
             <span
               className="
                 text-[9px]
-                font-semibold
+              
                 uppercase
                 tracking-[0.26em]
                 text-[#B79A72]
@@ -291,10 +297,16 @@ export default function SocialMediaPlanIncludes() {
               Social Media Management Services
             </span>
 
-            <span
-              aria-hidden="true"
-              className="h-px w-9 bg-[#B79A72]"
-            />
+             <span
+            className="
+              h-px
+              w-10
+
+              bg-gradient-to-l
+              from-transparent
+              to-[#B79A72]
+            "
+          />
           </div>
 
           {/* HEADING */}
@@ -553,23 +565,7 @@ export default function SocialMediaPlanIncludes() {
 
                       {/* BIG NUMBER */}
 
-                      <span
-                        aria-hidden="true"
-                        className={`
-                          select-none
-                          font-serif
-                          text-[58px]
-                          font-normal
-                          leading-[0.8]
-                          tracking-[-0.07em]
-                          transition-all
-                          duration-500
-                          group-hover:-translate-y-1
-                          ${item.numberColor}
-                        `}
-                      >
-                        {item.number}
-                      </span>
+                     
                     </div>
 
                     {/* =================================================
@@ -599,17 +595,7 @@ export default function SocialMediaPlanIncludes() {
                           `}
                         />
 
-                        <span
-                          className="
-                            text-[8px]
-                            font-semibold
-                            uppercase
-                            tracking-[0.17em]
-                            text-[#102D4D]/35
-                          "
-                        >
-                          Deliverable {item.number}
-                        </span>
+                       
                       </div>
 
                       <h3
@@ -649,22 +635,11 @@ export default function SocialMediaPlanIncludes() {
                         flex
                         items-center
                         justify-between
-                        border-t
-                        border-[#102D4D]/[0.07]
+                       
                         pt-4
                       "
                     >
-                      <span
-                        className="
-                          text-[8px]
-                          font-medium
-                          uppercase
-                          tracking-[0.16em]
-                          text-[#102D4D]/28
-                        "
-                      >
-                        Defined in your scope
-                      </span>
+                     
 
                       <span
                         className={`
@@ -697,149 +672,25 @@ export default function SocialMediaPlanIncludes() {
           })}
         </ol>
 
-        {/* =======================================================
-            FINAL PROPOSAL STATEMENT
-        ======================================================== */}
+     
 
-        <div
-          className={`
-            relative
-            mx-auto
-            mt-10
-            max-w-[1100px]
-            transition-all
-            delay-700
-            duration-[1000ms]
-            ease-[cubic-bezier(0.22,1,0.36,1)]
-            ${
-              isVisible
-                ? "translate-y-0 opacity-100"
-                : "translate-y-10 opacity-0"
-            }
-          `}
-        >
-          {/* GLOW */}
 
-          <div
-            className="
-              pointer-events-none
-              absolute
-              -inset-6
-              rounded-[40px]
-              bg-[#102D4D]/[0.04]
-              blur-[50px]
-            "
-          />
+         
+        
+            
 
-          <div
-            className="
-              relative
-              overflow-hidden
-              rounded-[26px]
-              bg-[#102D4D]
-              px-6
-              py-7
-              shadow-[0_25px_70px_rgba(16,45,77,0.14)]
-              sm:px-8
-              sm:py-8
-              lg:px-10
-            "
-          >
-            {/* INNER DETAIL */}
+            
+           
 
-            <div
-              className="
-                pointer-events-none
-                absolute
-                inset-0
-                bg-gradient-to-r
-                from-white/[0.04]
-                via-transparent
-                to-[#B79A72]/10
-              "
-            />
+           
+          
 
-            <div
-              className="
-                pointer-events-none
-                absolute
-                -right-20
-                -top-20
-                h-[220px]
-                w-[220px]
-                rounded-full
-                border
-                border-white/[0.05]
-              "
-            />
+            
 
-            <div
-              className="
-                relative
-                z-10
-                grid
-                items-center
-                gap-5
-                lg:grid-cols-[auto_1fr]
-                lg:gap-7
-              "
-            >
-              {/* ICON */}
-
-              <div
-                className="
-                  flex
-                  h-11
-                  w-11
-                  shrink-0
-                  items-center
-                  justify-center
-                  rounded-full
-                  border
-                  border-[#B79A72]/25
-                  bg-[#B79A72]/10
-                  text-[#D4B98D]
-                "
-              >
-                <Check
-                  size={17}
-                  strokeWidth={1.6}
-                />
-              </div>
-
-              {/* CONTENT */}
-
-              <div>
-                <p
-                  className="
-                    text-[8px]
-                    font-semibold
-                    uppercase
-                    tracking-[0.21em]
-                    text-[#D4B98D]
-                  "
-                >
-                  Your Final Proposal
-                </p>
-
-                <p
-                  className="
-                    mt-2
-                    max-w-[930px]
-                    text-[13px]
-                    leading-7
-                    text-white/68
-                    sm:text-[14px]
-                  "
-                >
-                  Your final proposal confirms selected platforms, monthly
-                  content volume, production requirements, responsibilities,
-                  timelines and commercial scope.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
+             
+          
+        
+      
       </div>
     </section>
   );

@@ -1,69 +1,77 @@
 "use client";
 
+import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import {
   ArrowRight,
-  Check,
   CircleHelp,
-  Compass,
-  MousePointer2,
+  FileText,
+  Layers3,
+  Lightbulb,
   ShieldCheck,
-  Sparkles,
+  Target,
+  TrendingUp,
 } from "lucide-react";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
+/* =========================================================
+   ADD YOUR IMAGE HERE
+========================================================= */
+
+const progressBgImage = "/services/webdev/progress-bg.png";
+
+/* =========================================================
+   DATA
+========================================================= */
+
 const questions = [
+  "Am I in the right place?",
+  "Does this business solve my problem?",
+  "Can I trust them?",
+  "What exactly do they offer?",
+  "Why should I choose them?",
+  "What should I do next?",
+];
+
+const journey = [
   {
-    number: "01",
-    question: "Am I in the right place?",
-    position:
-      "lg:absolute lg:left-[4%] lg:top-[15%] xl:left-[6%]",
+    icon: CircleHelp,
+    label: "Question",
+    text: "A curious visitor arrives with questions.",
   },
   {
-    number: "02",
-    question: "Does this business solve my problem?",
-    position:
-      "lg:absolute lg:left-[2%] lg:top-[51%] xl:left-[4%]",
+    icon: Lightbulb,
+    label: "Clarity",
+    text: "Clear content provides natural answers.",
   },
   {
-    number: "03",
-    question: "Can I trust them?",
-    position:
-      "lg:absolute lg:left-[20%] lg:bottom-[7%] xl:left-[23%]",
+    icon: ShieldCheck,
+    label: "Confidence",
+    text: "Uncertainty fades as trust builds.",
   },
   {
-    number: "04",
-    question: "What exactly do they offer?",
-    position:
-      "lg:absolute lg:right-[20%] lg:bottom-[7%] xl:right-[23%]",
-  },
-  {
-    number: "05",
-    question: "Why should I choose them?",
-    position:
-      "lg:absolute lg:right-[2%] lg:top-[51%] xl:right-[4%]",
-  },
-  {
-    number: "06",
-    question: "What should I do next?",
-    position:
-      "lg:absolute lg:right-[4%] lg:top-[15%] xl:right-[6%]",
+    icon: ArrowRight,
+    label: "Action",
+    text: "The next step feels obvious.",
   },
 ];
 
 const principles = [
   {
-    number: "01",
+    icon: Layers3,
     title: "Every page needs a job.",
+    text: "Each page should serve a clear purpose for the visitor.",
   },
   {
-    number: "02",
+    icon: FileText,
     title: "Every section needs a reason to exist.",
+    text: "Content should earn its place and move the story forward.",
   },
   {
-    number: "03",
+    icon: TrendingUp,
     title: "Every interaction should move the visitor forward.",
+    text: "Reduce friction. Create momentum. Guide them with intention.",
   },
 ];
 
@@ -73,13 +81,43 @@ export default function WebsitePointOfViewSection() {
   const fadeUp = {
     hidden: {
       opacity: 0,
-      y: reduceMotion ? 0 : 20,
+      y: reduceMotion ? 0 : 22,
     },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.62,
+        duration: 0.65,
+        ease,
+      },
+    },
+  };
+
+  const fadeLeft = {
+    hidden: {
+      opacity: 0,
+      x: reduceMotion ? 0 : -28,
+    },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 0.7,
+        ease,
+      },
+    },
+  };
+
+  const fadeRight = {
+    hidden: {
+      opacity: 0,
+      x: reduceMotion ? 0 : 28,
+    },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 0.7,
         ease,
       },
     },
@@ -89,7 +127,7 @@ export default function WebsitePointOfViewSection() {
     hidden: {},
     visible: {
       transition: {
-        staggerChildren: 0.08,
+        staggerChildren: 0.07,
       },
     },
   };
@@ -109,7 +147,7 @@ export default function WebsitePointOfViewSection() {
       "
     >
       {/* =====================================================
-          SOFT BACKGROUND
+          BACKGROUND
       ===================================================== */}
 
       <div className="pointer-events-none absolute inset-0">
@@ -117,13 +155,13 @@ export default function WebsitePointOfViewSection() {
           className="
             absolute
             left-1/2
-            top-[28%]
+            top-[20%]
             h-[520px]
-            w-[520px]
+            w-[900px]
             -translate-x-1/2
             rounded-full
-            bg-[#F5F8FB]
-            blur-[150px]
+            bg-[#F4F8FB]
+            blur-[160px]
           "
         />
 
@@ -131,11 +169,11 @@ export default function WebsitePointOfViewSection() {
           className="
             absolute
             -right-[180px]
-            bottom-[5%]
-            h-[340px]
-            w-[340px]
+            bottom-[2%]
+            h-[320px]
+            w-[320px]
             rounded-full
-            bg-[#F7F8FA]
+            bg-[#F7F9FB]
             blur-[120px]
           "
         />
@@ -156,7 +194,7 @@ export default function WebsitePointOfViewSection() {
         "
       >
         {/* =====================================================
-            CENTER INTRO
+            INTRO
         ===================================================== */}
 
         <motion.div
@@ -173,8 +211,6 @@ export default function WebsitePointOfViewSection() {
             text-center
           "
         >
-          {/* EYEBROW */}
-
           <motion.div
             variants={fadeUp}
             className="
@@ -194,7 +230,7 @@ export default function WebsitePointOfViewSection() {
                 font-semibold
                 uppercase
                 tracking-[0.28em]
-                text-[#987458]
+                text-[#92745C]
                 sm:text-[0.62rem]
               "
             >
@@ -204,19 +240,17 @@ export default function WebsitePointOfViewSection() {
             <span className="h-px w-8 bg-[#B79A72] sm:w-10" />
           </motion.div>
 
-          {/* HEADING */}
-
           <motion.h2
             id="website-point-of-view-heading"
             variants={fadeUp}
             className="
               mx-auto
-              max-w-[1050px]
+              max-w-[1080px]
 
               font-serif
               text-[2.1rem]
               font-normal
-              leading-[1.05]
+              leading-[1.04]
               tracking-[-0.04em]
               text-[#0B2A52]
 
@@ -229,10 +263,13 @@ export default function WebsitePointOfViewSection() {
             Your Website Should Answer Questions{" "}
             <span
               className="
+                block
                 font-serif
                 font-normal
                 italic
                 text-[#A97C52]
+
+                sm:inline
               "
             >
               Before It Creates Them.
@@ -245,6 +282,7 @@ export default function WebsitePointOfViewSection() {
               mx-auto
               mt-6
               max-w-[780px]
+
               font-serif
               text-[0.94rem]
               leading-[1.75]
@@ -260,451 +298,645 @@ export default function WebsitePointOfViewSection() {
         </motion.div>
 
         {/* =====================================================
-            DECISION CLARITY VISUAL
+            MAIN TWO PANEL AREA
         ===================================================== */}
 
-        <motion.div
-          initial={
-            reduceMotion
-              ? false
-              : {
-                  opacity: 0,
-                  y: 24,
-                }
-          }
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
-          viewport={{
-            once: true,
-            amount: 0.12,
-          }}
-          transition={{
-            duration: 0.75,
-            ease,
-          }}
+        <div
           className="
-            relative
             mx-auto
             mt-12
+            grid
             max-w-[1240px]
+            gap-5
 
             sm:mt-14
+
             lg:mt-16
-            lg:min-h-[610px]
+            lg:grid-cols-[0.98fr_1.02fr]
+            lg:gap-6
           "
         >
           {/* =================================================
-              DESKTOP RADIAL LINES
-          ================================================= */}
-
-          <div
-            className="
-              pointer-events-none
-              absolute
-              left-1/2
-              top-1/2
-              hidden
-              h-[430px]
-              w-[430px]
-              -translate-x-1/2
-              -translate-y-1/2
-              rounded-full
-              border
-              border-[#DFE5EA]
-              lg:block
-            "
-          />
-
-          <div
-            className="
-              pointer-events-none
-              absolute
-              left-1/2
-              top-1/2
-              hidden
-              h-[330px]
-              w-[330px]
-              -translate-x-1/2
-              -translate-y-1/2
-              rounded-full
-              border
-              border-dashed
-              border-[#D9E1E7]
-              lg:block
-            "
-          />
-
-          <motion.div
-            animate={
-              reduceMotion
-                ? undefined
-                : {
-                    rotate: 360,
-                  }
-            }
-            transition={{
-              duration: 45,
-              repeat: Infinity,
-              ease: "linear",
-            }}
-            className="
-              pointer-events-none
-              absolute
-              left-1/2
-              top-1/2
-              hidden
-              h-[430px]
-              w-[430px]
-              -translate-x-1/2
-              -translate-y-1/2
-              rounded-full
-              lg:block
-            "
-          >
-            <span
-              className="
-                absolute
-                left-1/2
-                top-[-5px]
-                h-2.5
-                w-2.5
-                -translate-x-1/2
-                rounded-full
-                bg-[#B79A72]
-              "
-            />
-
-            <span
-              className="
-                absolute
-                bottom-[-4px]
-                left-1/2
-                h-2
-                w-2
-                -translate-x-1/2
-                rounded-full
-                bg-[#0B2A52]
-              "
-            />
-          </motion.div>
-
-          {/* =================================================
-              MOBILE / TABLET QUESTIONS GRID
+              LEFT — QUESTIONS
           ================================================= */}
 
           <motion.div
-            variants={stagger}
+            variants={fadeLeft}
             initial="hidden"
             whileInView="visible"
             viewport={{
               once: true,
-              amount: 0.08,
-            }}
-            className="
-              grid
-              grid-cols-1
-              gap-3
-
-              sm:grid-cols-2
-              sm:gap-4
-
-              lg:block
-            "
-          >
-            {questions.map(({ number, question, position }) => (
-              <motion.div
-                key={number}
-                variants={fadeUp}
-                whileHover={
-                  reduceMotion
-                    ? undefined
-                    : {
-                        y: -4,
-                      }
-                }
-                className={`
-                  group
-                  relative
-                  z-20
-
-                  flex
-                  min-h-[92px]
-                  items-center
-                  gap-4
-
-                  rounded-[18px]
-
-                  border
-                  border-[#E0E6EB]
-
-                  bg-white
-
-                  px-4
-                  py-4
-
-                  shadow-[0_10px_30px_rgba(11,42,82,0.045)]
-
-                  transition-all
-                  duration-300
-
-                  hover:border-[#CAD4DD]
-                  hover:shadow-[0_16px_38px_rgba(11,42,82,0.075)]
-
-                  sm:px-5
-
-                  lg:w-[250px]
-
-                  xl:w-[275px]
-
-                  ${position}
-                `}
-              >
-                <span
-                  className="
-                    flex
-                    h-9
-                    w-9
-                    shrink-0
-                    items-center
-                    justify-center
-
-                    rounded-full
-
-                    border
-                    border-[#DEE5EB]
-
-                    bg-[#F7F9FB]
-
-                    text-[0.5rem]
-                    font-semibold
-                    text-[#8B9AA8]
-
-                    transition-all
-                    duration-300
-
-                    group-hover:border-[#0B2A52]
-                    group-hover:bg-[#0B2A52]
-                    group-hover:text-white
-                  "
-                >
-                  {number}
-                </span>
-
-                <p
-                  className="
-                    font-serif
-                    text-[0.96rem]
-                    leading-[1.35]
-                    text-[#0B2A52]
-
-                    sm:text-[1rem]
-                  "
-                >
-                  {question}
-                </p>
-
-                <span
-                  className="
-                    absolute
-                    bottom-0
-                    left-1/2
-                    h-px
-                    w-0
-                    -translate-x-1/2
-                    bg-[#B79A72]
-                    transition-all
-                    duration-500
-                    group-hover:w-[55%]
-                  "
-                />
-              </motion.div>
-            ))}
-          </motion.div>
-
-          {/* =================================================
-              CENTER DECISION HUB
-          ================================================= */}
-
-          <motion.div
-            initial={
-              reduceMotion
-                ? false
-                : {
-                    opacity: 0,
-                    scale: 0.9,
-                  }
-            }
-            whileInView={{
-              opacity: 1,
-              scale: 1,
-            }}
-            viewport={{
-              once: true,
-              amount: 0.5,
-            }}
-            transition={{
-              duration: 0.8,
-              delay: 0.15,
-              ease,
+              amount: 0.15,
             }}
             className="
               relative
-              z-30
-              mx-auto
-              mt-8
-
-              flex
-              min-h-[300px]
-              max-w-[430px]
-              flex-col
-              items-center
-              justify-center
-
               overflow-hidden
 
-              rounded-[28px]
+              rounded-[24px]
 
-              bg-[#0B2A52]
+              border
+              border-[#DCE6EE]
 
-              px-7
-              py-10
+              bg-[#F6FAFD]
 
-              text-center
+              px-5
+              py-7
 
-              shadow-[0_28px_70px_rgba(11,42,82,0.18)]
+              sm:rounded-[28px]
+              sm:px-7
+              sm:py-8
 
-              sm:min-h-[330px]
-              sm:px-10
-
-              lg:absolute
-              lg:left-1/2
-              lg:top-1/2
-              lg:mt-0
-              lg:h-[300px]
-              lg:w-[300px]
-              lg:min-h-0
-              lg:-translate-x-1/2
-              lg:-translate-y-1/2
-              lg:rounded-full
               lg:px-8
-              lg:py-8
+              lg:py-9
             "
           >
-            {/* inner rings */}
-
             <div
               className="
                 pointer-events-none
                 absolute
-                inset-[16px]
-                rounded-[22px]
-                border
-                border-white/[0.08]
-
-                lg:rounded-full
-              "
-            />
-
-            <div
-              className="
-                pointer-events-none
-                absolute
-                inset-[34px]
-                rounded-[18px]
-                border
-                border-white/[0.06]
-
-                lg:rounded-full
-              "
-            />
-
-            <div
-              className="
-                relative
-                z-10
-                flex
-                h-12
-                w-12
-                items-center
-                justify-center
+                -left-[100px]
+                top-[15%]
+                h-[250px]
+                w-[250px]
                 rounded-full
-                bg-white/[0.1]
-                text-white
-                backdrop-blur
+                bg-white
+                blur-[70px]
               "
-            >
-              <Compass size={21} strokeWidth={1.6} />
-            </div>
+            />
 
-            <span
-              className="
-                relative
-                z-10
-                mt-5
+            <div className="relative z-10">
+              {/* LABEL */}
 
-                text-[0.52rem]
-                font-semibold
-                uppercase
-                tracking-[0.25em]
-                text-[#D7C3A7]
-              "
-            >
-              Decision Clarity
-            </span>
+              <div className="flex items-center gap-3">
+                <span className="h-px w-8 bg-[#B79A72]" />
 
-            <h3
-              className="
-                relative
-                z-10
-                mt-3
+                <span
+                  className="
+                    text-[0.5rem]
+                    font-semibold
+                    uppercase
+                    tracking-[0.23em]
+                    text-[#6D8195]
+                  "
+                >
+                  Visitors Arrive With Questions
+                </span>
+              </div>
 
-                font-serif
-                text-[1.5rem]
-                font-normal
-                leading-[1.12]
-                tracking-[-0.03em]
-                text-white
-
-                sm:text-[1.7rem]
-
-                lg:text-[1.55rem]
-              "
-            >
-              Make the answer feel{" "}
-              <span
+              <h3
                 className="
-                  block
+                  mt-5
+
                   font-serif
-                  italic
-                  text-[#D2B48B]
+                  text-[1.75rem]
+                  font-normal
+                  leading-[1.15]
+                  tracking-[-0.035em]
+                  text-[#0B2A52]
+
+                  sm:text-[2rem]
+                  md:text-[2.15rem]
                 "
               >
-                obvious.
-              </span>
-            </h3>
+                Answer them with clarity.
+              </h3>
 
-            <p
+              {/* QUESTIONS */}
+
+              <motion.div
+                variants={stagger}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{
+                  once: true,
+                  amount: 0.1,
+                }}
+                className="
+                  mt-7
+                  space-y-2.5
+                "
+              >
+                {questions.map((question, index) => (
+                  <motion.div
+                    key={question}
+                    variants={fadeUp}
+                    whileHover={
+                      reduceMotion
+                        ? undefined
+                        : {
+                            x: 4,
+                          }
+                    }
+                    className="
+                      group
+
+                      flex
+                      min-h-[56px]
+                      items-center
+                      gap-3
+
+                      rounded-[14px]
+
+                      border
+                      border-[#DCE5EC]
+
+                      bg-white
+
+                      px-3.5
+                      py-3
+
+                      shadow-[0_4px_15px_rgba(11,42,82,0.025)]
+
+                      transition-all
+                      duration-300
+
+                      hover:border-[#C7D3DD]
+                      hover:shadow-[0_7px_20px_rgba(11,42,82,0.055)]
+
+                      sm:min-h-[60px]
+                      sm:px-4
+                    "
+                  >
+                    <span
+                      className="
+                        flex
+                        h-8
+                        w-8
+                        shrink-0
+                        items-center
+                        justify-center
+
+                        rounded-full
+
+                        bg-[#EDF4F9]
+
+                        text-[0.47rem]
+                        font-semibold
+                        text-[#536E87]
+                      "
+                    >
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+
+                    <p
+                      className="
+                        flex-1
+
+                        font-serif
+                        text-[0.86rem]
+                        leading-[1.35]
+                        text-[#0B2A52]
+
+                        sm:text-[0.94rem]
+                      "
+                    >
+                      {question}
+                    </p>
+
+                    <ArrowRight
+                      size={15}
+                      strokeWidth={1.5}
+                      className="
+                        shrink-0
+                        text-[#A97C52]
+
+                        transition-transform
+                        duration-300
+
+                        group-hover:translate-x-1
+                      "
+                    />
+                  </motion.div>
+                ))}
+              </motion.div>
+            </div>
+          </motion.div>
+
+          {/* =================================================
+              RIGHT — IMAGE BACKGROUND PANEL
+          ================================================= */}
+
+          <motion.div
+            variants={fadeRight}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{
+              once: true,
+              amount: 0.15,
+            }}
+            className="
+              relative
+              min-h-[600px]
+              overflow-hidden
+
+              rounded-[24px]
+
+              border
+              border-[#DCE6EE]
+
+              bg-[#F4F8FB]
+
+              sm:min-h-[620px]
+              sm:rounded-[28px]
+
+              lg:min-h-full
+            "
+          >
+            {/* ===============================================
+                BACKGROUND IMAGE
+            =============================================== */}
+
+            <Image
+              src={progressBgImage}
+              alt=""
+              fill
+              sizes="
+                (max-width: 1024px) 100vw,
+                50vw
+              "
+              className="
+                object-cover
+                object-center
+              "
+            />
+
+            {/* ===============================================
+                OVERLAY
+                keeps left content readable while allowing
+                image to remain more visible on the right
+            =============================================== */}
+
+            <div
+              className="
+                pointer-events-none
+                absolute
+                inset-0
+
+                bg-gradient-to-r
+
+                from-[#F6FAFD]/95
+                via-[#F6FAFD]/78
+                to-[#F6FAFD]/28
+              "
+            />
+
+            {/* TOP/BOTTOM SOFTENING */}
+
+            <div
+              className="
+                pointer-events-none
+                absolute
+                inset-x-0
+                top-0
+                h-[130px]
+
+                bg-gradient-to-b
+                from-[#F6FAFD]/75
+                to-transparent
+              "
+            />
+
+            <div
+              className="
+                pointer-events-none
+                absolute
+                inset-x-0
+                bottom-0
+                h-[120px]
+
+                bg-gradient-to-t
+                from-[#F6FAFD]/55
+                to-transparent
+              "
+            />
+
+            {/* subtle blue atmosphere */}
+
+            <div
+              className="
+                pointer-events-none
+                absolute
+                -right-[120px]
+                top-[30%]
+
+                h-[320px]
+                w-[320px]
+
+                rounded-full
+
+                bg-[#E8F1F7]/40
+
+                blur-[90px]
+              "
+            />
+
+            {/* ===============================================
+                CONTENT
+            =============================================== */}
+
+            <div
               className="
                 relative
                 z-10
-                mt-4
-                max-w-[250px]
-                font-serif
-                text-[0.78rem]
-                leading-[1.65]
-                text-white/65
+
+                flex
+                min-h-[600px]
+                flex-col
+
+                px-5
+                py-7
+
+                sm:min-h-[620px]
+                sm:px-7
+                sm:py-8
+
+                lg:min-h-full
+                lg:px-8
+                lg:py-9
               "
             >
-              Clear content, hierarchy, interaction and navigation should work
-              together to reduce uncertainty.
-            </p>
+              {/* TOP LABEL */}
+
+              <span
+                className="
+                  text-[0.5rem]
+                  font-semibold
+                  uppercase
+                  tracking-[0.23em]
+                  text-[#607A92]
+                "
+              >
+                From Questions to Real Progress
+              </span>
+
+              {/* JOURNEY + STATEMENT */}
+
+              <div
+                className="
+                  mt-8
+                  grid
+                  flex-1
+                  gap-9
+
+                  md:grid-cols-[0.88fr_1.12fr]
+                  md:items-center
+
+                  lg:grid-cols-[0.9fr_1.1fr]
+                "
+              >
+                {/* ===========================================
+                    JOURNEY TIMELINE
+                =========================================== */}
+
+                <div className="relative">
+                  {/* line */}
+
+                  <div
+                    className="
+                      absolute
+                      bottom-7
+                      left-[23px]
+                      top-7
+
+                      w-px
+
+                      border-l
+                      border-dashed
+                      border-[#9CB0C1]
+                    "
+                  />
+
+                  <motion.div
+                    variants={stagger}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{
+                      once: true,
+                      amount: 0.1,
+                    }}
+                    className="space-y-8"
+                  >
+                    {journey.map(
+                      ({ icon: Icon, label, text }, index) => (
+                        <motion.div
+                          key={label}
+                          variants={fadeUp}
+                          className="
+                            group
+                            relative
+                            flex
+                            gap-4
+                          "
+                        >
+                          {/* NODE */}
+
+                          <div
+                            className="
+                              relative
+                              z-10
+
+                              flex
+                              h-[46px]
+                              w-[46px]
+                              shrink-0
+                              items-center
+                              justify-center
+
+                              rounded-full
+
+                              border
+                              border-[#CCDCE7]
+
+                              bg-[#F3F8FC]/95
+
+                              text-[#0B2A52]
+
+                              shadow-[0_4px_12px_rgba(11,42,82,0.035)]
+
+                              backdrop-blur-sm
+
+                              transition-all
+                              duration-300
+
+                              group-hover:border-[#B79A72]
+                            "
+                          >
+                            {index === journey.length - 1 ? (
+                              <span
+                                className="
+                                  flex
+                                  h-[40px]
+                                  w-[40px]
+                                  items-center
+                                  justify-center
+
+                                  rounded-full
+
+                                  bg-[#B79A72]
+
+                                  text-white
+
+                                  shadow-[0_8px_20px_rgba(183,154,114,0.28)]
+                                "
+                              >
+                                <ArrowRight size={15} />
+                              </span>
+                            ) : (
+                              <Icon
+                                size={18}
+                                strokeWidth={1.6}
+                                className={
+                                  index === 1
+                                    ? "text-[#A97C52]"
+                                    : "text-[#0B2A52]"
+                                }
+                              />
+                            )}
+                          </div>
+
+                          {/* TEXT */}
+
+                          <div className="pt-1">
+                            <span
+                              className="
+                                text-[0.52rem]
+                                font-semibold
+                                uppercase
+                                tracking-[0.16em]
+                                text-[#0B2A52]
+                              "
+                            >
+                              {label}
+                            </span>
+
+                            <p
+                              className="
+                                mt-1
+                                max-w-[190px]
+
+                                font-serif
+                                text-[0.76rem]
+                                leading-[1.55]
+                                text-[#597087]
+                              "
+                            >
+                              {text}
+                            </p>
+                          </div>
+                        </motion.div>
+                      )
+                    )}
+                  </motion.div>
+                </div>
+
+                {/* ===========================================
+                    MAIN RESULT MESSAGE
+                =========================================== */}
+
+                <div
+                  className="
+                    flex
+                    items-center
+
+                    md:justify-end
+                  "
+                >
+                  <motion.div
+                    initial={{
+                      opacity: 0,
+                      x: reduceMotion ? 0 : 20,
+                    }}
+                    whileInView={{
+                      opacity: 1,
+                      x: 0,
+                    }}
+                    viewport={{
+                      once: true,
+                      amount: 0.35,
+                    }}
+                    transition={{
+                      duration: 0.7,
+                      delay: 0.2,
+                      ease,
+                    }}
+                    className="
+                      max-w-[300px]
+
+                      border-l
+                      border-[#8EA6BA]
+
+                      bg-white/25
+
+                      pl-5
+
+                      backdrop-blur-[1px]
+
+                      sm:pl-6
+                    "
+                  >
+                    <h3
+                      className="
+                        font-serif
+                        text-[1.75rem]
+                        font-normal
+                        leading-[1.06]
+                        tracking-[-0.04em]
+                        text-[#0B2A52]
+
+                        sm:text-[2rem]
+                        lg:text-[2.15rem]
+                      "
+                    >
+                      Make the next step feel{" "}
+                      <span
+                        className="
+                          block
+
+                          font-serif
+                          italic
+                          text-[#A97C52]
+                        "
+                      >
+                        obvious.
+                      </span>
+                    </h3>
+
+                    <span
+                      className="
+                        mt-4
+                        block
+                        h-px
+                        w-9
+                        bg-[#B79A72]
+                      "
+                    />
+
+                    <p
+                      className="
+                        mt-4
+
+                        max-w-[280px]
+
+                        font-serif
+                        text-[0.8rem]
+                        leading-[1.65]
+                        text-[#587086]
+
+                        sm:text-[0.84rem]
+                      "
+                    >
+                      Clear content, hierarchy and purposeful design turn
+                      questions into progress.
+                    </p>
+                  </motion.div>
+                </div>
+              </div>
+            </div>
           </motion.div>
-        </motion.div>
+        </div>
 
         {/* =====================================================
-            PRINCIPLES
+            OUR PRINCIPLES
         ===================================================== */}
 
         <motion.div
@@ -713,122 +945,161 @@ export default function WebsitePointOfViewSection() {
           whileInView="visible"
           viewport={{
             once: true,
-            amount: 0.18,
+            amount: 0.15,
           }}
           className="
             mx-auto
-            mt-12
-            grid
-            max-w-[1150px]
-            grid-cols-1
-            gap-0
+            mt-10
+            max-w-[1240px]
 
-            overflow-hidden
-
-            rounded-[22px]
-
-            border
-            border-[#E1E7EC]
-
-            bg-white
-
-            sm:mt-14
-
-            md:grid-cols-3
-
-            lg:mt-16
+            sm:mt-12
           "
         >
-          {principles.map(({ number, title }, index) => (
-            <motion.div
-              key={number}
-              variants={fadeUp}
-              className={`
-                group
-                relative
+          <motion.div
+            variants={fadeUp}
+            className="
+              mb-6
+              flex
+              items-center
+              justify-center
+              gap-3
+            "
+          >
+            <span className="h-px w-12 bg-[#B79A72]" />
 
-                flex
-                items-start
-                gap-4
-
-                px-5
-                py-6
-
-                transition-colors
-                duration-300
-
-                hover:bg-[#FBFCFD]
-
-                sm:px-6
-
-                lg:px-8
-                lg:py-7
-
-                ${
-                  index !== principles.length - 1
-                    ? "border-b border-[#E5E9ED] md:border-b-0 md:border-r"
-                    : ""
-                }
-              `}
+            <span
+              className="
+                text-[0.52rem]
+                font-semibold
+                uppercase
+                tracking-[0.25em]
+                text-[#667C91]
+              "
             >
-              <span
+              Our Principles
+            </span>
+
+            <span className="h-px w-12 bg-[#B79A72]" />
+          </motion.div>
+
+          <div
+            className="
+              grid
+              grid-cols-1
+              gap-3.5
+
+              md:grid-cols-3
+              md:gap-4
+            "
+          >
+            {principles.map(({ icon: Icon, title, text }) => (
+              <motion.article
+                key={title}
+                variants={fadeUp}
+                whileHover={
+                  reduceMotion
+                    ? undefined
+                    : {
+                        y: -4,
+                      }
+                }
                 className="
-                  flex
-                  h-8
-                  w-8
-                  shrink-0
-                  items-center
-                  justify-center
+                  group
+                  relative
 
-                  rounded-full
+                  min-h-[190px]
 
-                  bg-[#F1F5F8]
+                  overflow-hidden
 
-                  text-[0.48rem]
-                  font-semibold
-                  text-[#0B2A52]
+                  rounded-[19px]
+
+                  border
+                  border-[#DDE6ED]
+
+                  bg-white
+
+                  px-5
+                  py-6
+
+                  shadow-[0_7px_24px_rgba(11,42,82,0.025)]
 
                   transition-all
                   duration-300
 
-                  group-hover:bg-[#0B2A52]
-                  group-hover:text-white
+                  hover:border-[#C9D5DE]
+                  hover:shadow-[0_14px_35px_rgba(11,42,82,0.06)]
+
+                  sm:px-6
+                  sm:py-7
                 "
               >
-                {number}
-              </span>
-
-              <div>
-                <p
+                <div
                   className="
-                    text-[0.5rem]
-                    font-semibold
-                    uppercase
-                    tracking-[0.16em]
-                    text-[#A0AAB4]
-                  "
-                >
-                  Principle
-                </p>
+                    flex
+                    h-12
+                    w-12
+                    items-center
+                    justify-center
 
-                <p
-                  className="
-                    mt-1.5
-                    max-w-[280px]
+                    rounded-full
 
-                    font-serif
-                    text-[1rem]
-                    leading-[1.45]
+                    bg-[#EDF4F9]
+
                     text-[#0B2A52]
 
-                    sm:text-[1.05rem]
+                    transition-all
+                    duration-300
+
+                    group-hover:bg-[#0B2A52]
+                    group-hover:text-white
+                  "
+                >
+                  <Icon size={19} strokeWidth={1.7} />
+                </div>
+
+                <h3
+                  className="
+                    mt-5
+                    max-w-[270px]
+
+                    font-serif
+                    text-[1.12rem]
+                    font-normal
+                    leading-[1.3]
+                    text-[#0B2A52]
+
+                    sm:text-[1.2rem]
                   "
                 >
                   {title}
+                </h3>
+
+                <span
+                  className="
+                    mt-3
+                    block
+                    h-px
+                    w-8
+                    bg-[#B79A72]
+                  "
+                />
+
+                <p
+                  className="
+                    mt-3
+                    max-w-[300px]
+
+                    font-serif
+                    text-[0.78rem]
+                    leading-[1.65]
+                    text-[#6B7E91]
+                  "
+                >
+                  {text}
                 </p>
-              </div>
-            </motion.div>
-          ))}
+              </motion.article>
+            ))}
+          </div>
         </motion.div>
 
         {/* =====================================================
@@ -836,14 +1107,10 @@ export default function WebsitePointOfViewSection() {
         ===================================================== */}
 
         <motion.div
-          initial={
-            reduceMotion
-              ? false
-              : {
-                  opacity: 0,
-                  y: 24,
-                }
-          }
+          initial={{
+            opacity: 0,
+            y: reduceMotion ? 0 : 22,
+          }}
           whileInView={{
             opacity: 1,
             y: 0,
@@ -853,340 +1120,304 @@ export default function WebsitePointOfViewSection() {
             amount: 0.2,
           }}
           transition={{
-            duration: 0.75,
+            duration: 0.72,
             ease,
           }}
           className="
-            relative
             mx-auto
-            mt-12
-            max-w-[1150px]
-            overflow-hidden
+            mt-10
+            max-w-[1240px]
 
-            rounded-[24px]
-
-            border
-            border-[#DDE4EA]
-
-            bg-[#FBFCFD]
-
-            sm:mt-14
-            sm:rounded-[28px]
-
-            lg:mt-16
+            sm:mt-12
           "
         >
-          {/* top label */}
-
           <div
             className="
-              flex
-              items-center
-              justify-center
-              gap-3
+              relative
+              overflow-hidden
 
-              border-b
-              border-[#E3E8ED]
+              rounded-[22px]
+
+              border
+              border-[#DCE6EE]
+
+              bg-[#F7FAFC]
 
               px-5
-              py-4
+              pb-7
+              pt-6
+
+              sm:rounded-[26px]
+              sm:px-8
+              sm:pb-9
+              sm:pt-7
+
+              lg:px-10
             "
           >
-            <span className="h-px w-7 bg-[#B79A72]" />
-
-            <span
-              className="
-                text-[0.53rem]
-                font-semibold
-                uppercase
-                tracking-[0.25em]
-                text-[#97745A]
-              "
-            >
-              The Shift
-            </span>
-
-            <span className="h-px w-7 bg-[#B79A72]" />
-          </div>
-
-          <div
-            className="
-              grid
-              lg:grid-cols-[1fr_auto_1fr]
-            "
-          >
-            {/* OLD THINKING */}
-
-            <motion.div
-              initial={
-                reduceMotion
-                  ? false
-                  : {
-                      opacity: 0,
-                      x: -20,
-                    }
-              }
-              whileInView={{
-                opacity: 1,
-                x: 0,
-              }}
-              viewport={{ once: true }}
-              transition={{
-                duration: 0.65,
-                delay: 0.08,
-                ease,
-              }}
-              className="
-                flex
-                min-h-[210px]
-                flex-col
-                justify-center
-                p-6
-
-                sm:p-8
-                lg:p-10
-              "
-            >
-              <p
-                className="
-                  text-[0.52rem]
-                  font-semibold
-                  uppercase
-                  tracking-[0.2em]
-                  text-[#98A4AF]
-                "
-              >
-                Stop asking
-              </p>
-
-              <p
-                className="
-                  mt-4
-                  max-w-[440px]
-
-                  font-serif
-                  text-[1.3rem]
-                  leading-[1.35]
-                  text-[#6B7E91]
-
-                  sm:text-[1.45rem]
-                "
-              >
-                “How can we make the website look more impressive?”
-              </p>
-            </motion.div>
-
-            {/* CENTER */}
-
             <div
               className="
-                flex
-                items-center
-                justify-center
+                pointer-events-none
+                absolute
+                left-1/2
+                top-1/2
 
-                border-y
-                border-[#E1E7EC]
+                h-[280px]
+                w-[650px]
 
-                px-6
-                py-5
+                -translate-x-1/2
+                -translate-y-1/2
 
-                lg:border-x
-                lg:border-y-0
-                lg:px-6
-              "
-            >
-              <motion.div
-                animate={
-                  reduceMotion
-                    ? undefined
-                    : {
-                        x: [0, 5, 0],
-                      }
-                }
-                transition={{
-                  duration: 2.2,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-                className="
-                  flex
-                  h-11
-                  w-11
-                  items-center
-                  justify-center
-
-                  rounded-full
-
-                  bg-[#0B2A52]
-
-                  text-white
-
-                  shadow-[0_10px_24px_rgba(11,42,82,0.16)]
-                "
-              >
-                <ArrowRight size={16} />
-              </motion.div>
-            </div>
-
-            {/* NEW THINKING */}
-
-            <motion.div
-              initial={
-                reduceMotion
-                  ? false
-                  : {
-                      opacity: 0,
-                      x: 20,
-                    }
-              }
-              whileInView={{
-                opacity: 1,
-                x: 0,
-              }}
-              viewport={{ once: true }}
-              transition={{
-                duration: 0.65,
-                delay: 0.15,
-                ease,
-              }}
-              className="
-                relative
-                flex
-                min-h-[210px]
-                flex-col
-                justify-center
-                overflow-hidden
+                rounded-full
 
                 bg-white
 
-                p-6
-
-                sm:p-8
-                lg:p-10
+                blur-[70px]
               "
-            >
+            />
+
+            <div className="relative z-10">
+              {/* LABEL */}
+
               <div
                 className="
-                  pointer-events-none
-                  absolute
-                  -right-[80px]
-                  top-1/2
-                  h-[220px]
-                  w-[220px]
-                  -translate-y-1/2
-                  rounded-full
-                  bg-[#F2F6F9]
-                  blur-[65px]
+                  flex
+                  items-center
+                  justify-center
+                  gap-3
                 "
-              />
+              >
+                <span className="h-px w-10 bg-[#B79A72]" />
 
-              <div className="relative z-10">
-                <div className="flex items-center gap-3">
+                <span
+                  className="
+                    text-[0.52rem]
+                    font-semibold
+                    uppercase
+                    tracking-[0.25em]
+                    text-[#92745C]
+                  "
+                >
+                  The Shift
+                </span>
+
+                <span className="h-px w-10 bg-[#B79A72]" />
+              </div>
+
+              {/* COMPARISON */}
+
+              <div
+                className="
+                  mt-7
+                  grid
+                  gap-6
+
+                  md:grid-cols-[1fr_80px_1fr]
+                  md:items-center
+                  md:gap-5
+                "
+              >
+                {/* OLD */}
+
+                <motion.div
+                  variants={fadeLeft}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{
+                    once: true,
+                  }}
+                  className="md:pr-4"
+                >
                   <span
                     className="
-                      flex
-                      h-8
-                      w-8
-                      items-center
-                      justify-center
-                      rounded-full
-                      border
-                      border-[#B79A72]
-                      text-[#A97C52]
-                    "
-                  >
-                    <MousePointer2 size={13} />
-                  </span>
-
-                  <span
-                    className="
-                      text-[0.52rem]
+                      text-[0.5rem]
                       font-semibold
                       uppercase
                       tracking-[0.2em]
-                      text-[#98745A]
+                      text-[#718293]
                     "
                   >
-                    Start asking
+                    Stop Asking:
                   </span>
-                </div>
 
-                <p
+                  <p
+                    className="
+                      mt-3
+                      max-w-[470px]
+
+                      font-serif
+                      text-[1.4rem]
+                      leading-[1.15]
+                      tracking-[-0.03em]
+                      text-[#0B2A52]
+
+                      sm:text-[1.6rem]
+                      lg:text-[1.75rem]
+                    "
+                  >
+                    “How can we make the website look more impressive?”
+                  </p>
+                </motion.div>
+
+                {/* CENTER */}
+
+                <div
                   className="
-                    mt-4
-                    max-w-[520px]
+                    flex
+                    items-center
+                    justify-center
 
-                    font-serif
-                    text-[1.75rem]
-                    leading-[1.16]
-                    tracking-[-0.035em]
-                    text-[#0B2A52]
+                    border-y
+                    border-[#D7E0E7]
 
-                    sm:text-[2rem]
-                    lg:text-[2.15rem]
+                    py-4
+
+                    md:h-full
+                    md:border-x
+                    md:border-y-0
+                    md:py-0
                   "
                 >
-                  “How can we make the{" "}
-                  <span
+                  <motion.span
+                    animate={
+                      reduceMotion
+                        ? undefined
+                        : {
+                            x: [0, 4, 0],
+                          }
+                    }
+                    transition={{
+                      duration: 2.2,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
                     className="
-                      font-serif
-                      italic
-                      text-[#A97C52]
+                      flex
+                      h-12
+                      w-12
+                      items-center
+                      justify-center
+
+                      rounded-full
+
+                      bg-[#B79A72]
+
+                      text-white
+
+                      shadow-[0_10px_25px_rgba(183,154,114,0.25)]
                     "
                   >
-                    decision easier?
+                    <ArrowRight size={17} />
+                  </motion.span>
+                </div>
+
+                {/* NEW */}
+
+                <motion.div
+                  variants={fadeRight}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{
+                    once: true,
+                  }}
+                  className="md:pl-4"
+                >
+                  <span
+                    className="
+                      text-[0.5rem]
+                      font-semibold
+                      uppercase
+                      tracking-[0.2em]
+                      text-[#718293]
+                    "
+                  >
+                    Start Asking:
                   </span>
-                  ”
-                </p>
+
+                  <p
+                    className="
+                      mt-3
+                      max-w-[470px]
+
+                      font-serif
+                      text-[1.45rem]
+                      leading-[1.15]
+                      tracking-[-0.03em]
+                      text-[#0B2A52]
+
+                      sm:text-[1.7rem]
+                      lg:text-[1.85rem]
+                    "
+                  >
+                    “How can we make the{" "}
+                    <span
+                      className="
+                        font-serif
+                        italic
+                        text-[#A97C52]
+                      "
+                    >
+                      decision easier?
+                    </span>
+                    ”
+                  </p>
+                </motion.div>
               </div>
-            </motion.div>
+            </div>
           </div>
         </motion.div>
 
         {/* =====================================================
-            FINAL MICRO MESSAGE
+            FINAL MICROCOPY
         ===================================================== */}
 
         <motion.div
           initial={{
             opacity: 0,
-            y: reduceMotion ? 0 : 14,
+            y: reduceMotion ? 0 : 12,
           }}
           whileInView={{
             opacity: 1,
             y: 0,
           }}
-          viewport={{ once: true }}
+          viewport={{
+            once: true,
+          }}
           transition={{
-            duration: 0.6,
+            duration: 0.58,
             ease,
           }}
           className="
             mx-auto
-            mt-8
+            mt-6
+
             flex
-            max-w-[760px]
+            max-w-[780px]
             items-center
             justify-center
             gap-3
+
             text-center
           "
         >
-          <ShieldCheck
-            size={16}
+          <Target
+            size={14}
             strokeWidth={1.7}
-            className="shrink-0 text-[#B79A72]"
+            className="
+              shrink-0
+              text-[#B79A72]
+            "
           />
 
           <p
             className="
               font-serif
-              text-[0.86rem]
+              text-[0.8rem]
               leading-6
               text-[#64788C]
             "
           >
-            Strong website design reduces uncertainty and makes the next action
+            Strong website design reduces uncertainty and makes the next step
             feel natural.
           </p>
         </motion.div>

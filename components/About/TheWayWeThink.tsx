@@ -29,11 +29,45 @@ export default function TheWayWeThink() {
             }}
             className="flex items-center gap-3"
           >
-            <span className="h-px w-9 bg-[#B79A72]" />
+             <span
+            className="
+              h-px
+              w-10
 
-            <span className="text-[9px] font-semibold uppercase tracking-[0.2em] text-[#B79A72] sm:text-[10px]">
+              bg-gradient-to-r
+              from-transparent
+              to-[#B79A72]
+            "
+          />
+
+           <span
+                 
+                  className="
+                    whitespace-nowrap
+                    text-[8px]
+                    font-medium
+                    uppercase
+                    tracking-[0.22em]
+                    text-[#B79A72]
+
+                    sm:text-[10px]
+                    sm:tracking-[0.30em]
+
+                    md:text-xs
+                  "
+                >
               The Way We Think
             </span>
+             <span
+            className="
+              h-px
+              w-10
+
+              bg-gradient-to-l
+              from-transparent
+              to-[#B79A72]
+            "
+          />
           </motion.div>
 
         </div>
@@ -74,26 +108,7 @@ export default function TheWayWeThink() {
     Believe.
 
     {/* Animated underline */}
-    <motion.span
-      initial={{ scaleX: 0 }}
-      whileInView={{ scaleX: 1 }}
-      viewport={{ once: true, amount: 0.5 }}
-      transition={{
-        duration: 0.9,
-        delay: 0.4,
-        ease: [0.22, 1, 0.36, 1],
-      }}
-      className="
-        absolute
-        -bottom-2
-        left-1
-        h-[2px]
-        w-[45%]
-        origin-left
-        bg-[#B79A72]
-        sm:-bottom-3
-      "
-    />
+    
   </span>
 </h2>
         </motion.div>

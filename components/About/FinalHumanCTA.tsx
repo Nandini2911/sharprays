@@ -6,14 +6,33 @@ export default function FinalHumanCTA() {
       <div className="relative mx-auto max-w-[1440px] px-5 py-16 sm:px-8 sm:py-20 lg:px-12 lg:py-24 xl:px-16">
 
         {/* Section Label */}
-        <div className="mb-12 flex items-center gap-3 sm:mb-16 lg:mb-20">
+        <div className="mb-5 flex items-center gap-3 sm:mb-5 lg:mb-5">
          
 
-          <span className="h-px w-8 bg-[#B79A72]" />
+         <span
+            className="
+              h-px
+              w-10
+
+              bg-gradient-to-r
+              from-transparent
+              to-[#B79A72]
+            "
+          />
 
           <span className="text-xs tracking-[0.18em] text-[#B79A72] sm:text-sm">
             FINAL HUMAN CTA
           </span>
+           <span
+            className="
+              h-px
+              w-10
+
+              bg-gradient-to-l
+              from-transparent
+              to-[#B79A72]
+            "
+          />
         </div>
 
         {/* Main Content */}
@@ -40,13 +59,44 @@ export default function FinalHumanCTA() {
             </p>
 
             {/* CTA */}
-            <a
-              href="#contact"
-              className="group mt-8 flex w-full max-w-[470px] items-center justify-between rounded-[3px] bg-[#0B2A52] px-6 py-5 text-white transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(11,42,82,0.18)] sm:mt-10 sm:px-7"
-            >
-              <span className="text-sm font-semibold sm:text-base">
-                Start a Conversation
-              </span>
+           <a
+  href="/contact"
+  className="
+    group
+    mt-8
+    flex
+    w-full
+    max-w-[470px]
+    items-center
+    justify-between
+    rounded-[3px]
+    bg-[#0B2A52]
+    px-6
+    py-5
+    !text-white
+    transition-all
+    duration-500
+
+    hover:-translate-y-1
+    hover:shadow-[0_18px_40px_rgba(11,42,82,0.18)]
+
+    sm:mt-10
+    sm:px-7
+  "
+>
+  <span
+    className="
+      text-sm
+      font-semibold
+      !text-white
+
+      sm:text-base
+    "
+  >
+    Start a Conversation
+  </span>
+
+  
 
               <span className="flex h-9 w-9 items-center justify-center transition-transform duration-500 group-hover:translate-x-2">
                 <svg

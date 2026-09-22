@@ -1,56 +1,107 @@
 "use client";
 
-import { useRef } from "react";
+import { useState } from "react";
+import Link from "next/link";
+import { motion } from "framer-motion";
 import {
-  ArrowRight,
-  BarChart3,
-  Compass,
-  Layers3,
-  MessageCircle,
-  PenTool,
+  ArrowUpRight,
+  CalendarDays,
+  FileText,
+  Paintbrush,
+  Target,
+  UsersRound,
 } from "lucide-react";
 
-import {
-  motion,
-  useInView,
-  useReducedMotion,
-} from "framer-motion";
+const newYorkFont = {
+  fontFamily: '"New York", "Bodoni Moda", Georgia, serif',
+};
 
-const audienceFit = [
-  "Have been posting without a clear strategy.",
-  "Need a more consistent brand presence.",
-  "Do not have the internal resources to manage content regularly.",
-  "Want stronger creative direction.",
-  "Need help planning and managing social media content.",
-  "Want their social presence to support wider marketing and business objectives.",
-  "Need clearer reporting and content insights.",
+const fitItems = [
+  {
+    number: "01",
+    eyebrow: "Strategy",
+    title: "Have no clear social strategy.",
+    shortTitle: "Clearer strategy.",
+    description:
+      "Your team is publishing, but there is no clear system connecting audience, platforms, content themes and business priorities.",
+    insight:
+      "We define what your brand should communicate, who it needs to reach and what role social media should play in the wider business.",
+    icon: FileText,
+  },
+  {
+    number: "02",
+    eyebrow: "Consistency",
+    title: "Struggle to publish consistently.",
+    shortTitle: "A repeatable rhythm.",
+    description:
+      "Content depends on available time, last-minute ideas or whoever happens to be free enough to publish.",
+    insight:
+      "We create a practical rhythm around planning, content production, approvals and publishing so consistency becomes part of the system.",
+    icon: CalendarDays,
+  },
+  {
+    number: "03",
+    eyebrow: "Creative",
+    title: "Need stronger creative direction.",
+    shortTitle: "A recognizable presence.",
+    description:
+      "Your posts may be polished individually, but together they do not create a strong or recognizable brand presence.",
+    insight:
+      "We build clearer creative direction around visual language, formats, messaging and recurring ideas so the brand feels connected.",
+    icon: Paintbrush,
+  },
+  {
+    number: "04",
+    eyebrow: "Management",
+    title: "Lack an internal social media team.",
+    shortTitle: "The right support system.",
+    description:
+      "Content, design, copy and community management are being handled across different people without clear ownership.",
+    insight:
+      "We bring strategy, coordination and ongoing management together so your internal team does not have to carry every moving part.",
+    icon: UsersRound,
+  },
+  {
+    number: "05",
+    eyebrow: "Growth",
+    title: "Want social connected to business objectives.",
+    shortTitle: "Activity with a purpose.",
+    description:
+      "You want social media to support more than visibility and become part of how the business builds awareness, trust and demand.",
+    insight:
+      "We connect social activity to the outcomes that matter to your business instead of treating posting as the objective.",
+    icon: Target,
+  },
 ];
 
-export default function SocialMediaWhoWeWorkWith() {
-  /* =========================================================
-     SEPARATE VIEWPORT TRIGGERS
-  ========================================================= */
+const parent = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.08,
+    },
+  },
+};
 
-  const topRef = useRef<HTMLDivElement | null>(null);
-  const mapRef = useRef<HTMLDivElement | null>(null);
-  const finalRef = useRef<HTMLDivElement | null>(null);
+const reveal = {
+  hidden: {
+    opacity: 0,
+    y: 24,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.65,
+      ease: [0.22, 1, 0.36, 1] as const,
+    },
+  },
+};
 
-  const topVisible = useInView(topRef, {
-    once: true,
-    amount: 0.18,
-  });
+export default function SocialMediaFitSection() {
+  const [active, setActive] = useState(0);
 
-  const mapVisible = useInView(mapRef, {
-    once: true,
-    amount: 0.12,
-  });
-
-  const finalVisible = useInView(finalRef, {
-    once: true,
-    amount: 0.25,
-  });
-
-  const reduceMotion = useReducedMotion();
+  const selected = fitItems[active];
 
   return (
     <section
@@ -60,2461 +111,857 @@ export default function SocialMediaWhoWeWorkWith() {
         overflow-hidden
         bg-white
         py-24
-        text-[#0B2A52]
         sm:py-28
         lg:py-32
+        xl:py-36
       "
     >
-      {/* =========================================================
+      {/* =====================================================
           BACKGROUND
-      ========================================================== */}
+      ===================================================== */}
 
-      <div
-        aria-hidden="true"
-        className="
-          pointer-events-none
-          absolute
-          inset-0
-          overflow-hidden
-        "
-      >
-        <motion.div
-          initial={{
-            opacity: 0,
-            scale: 0.85,
-            x: -70,
-          }}
-          animate={
-            topVisible
-              ? {
-                  opacity: 1,
-                  scale: 1,
-                  x: 0,
-                }
-              : {}
-          }
-          transition={{
-            duration: reduceMotion ? 0 : 1.3,
-            ease: [0.22, 1, 0.36, 1],
-          }}
-          className="
-            absolute
-            -left-[350px]
-            top-[120px]
-            h-[650px]
-            w-[650px]
-            rounded-full
-            border
-            border-[#0B2A52]/[0.035]
-          "
-        />
+     
+     
 
-        <motion.div
-          initial={{
-            opacity: 0,
-            scale: 0.85,
-            x: 70,
-          }}
-          animate={
-            topVisible
-              ? {
-                  opacity: 1,
-                  scale: 1,
-                  x: 0,
-                }
-              : {}
-          }
-          transition={{
-            duration: reduceMotion ? 0 : 1.3,
-            delay: 0.1,
-            ease: [0.22, 1, 0.36, 1],
-          }}
-          className="
-            absolute
-            -right-[260px]
-            bottom-[-220px]
-            h-[520px]
-            w-[520px]
-            rounded-full
-            border
-            border-[#B79A72]/10
-          "
-        />
-      </div>
-
-      {/* =========================================================
-          CONTAINER
-      ========================================================== */}
+      
+     
 
       <div
         className="
           relative
           z-10
           mx-auto
-          max-w-[1280px]
+          max-w-[1450px]
           px-5
           sm:px-8
           lg:px-12
+          xl:px-16
         "
       >
-        {/* =======================================================
-            TOP AREA
-        ======================================================== */}
+        {/* =====================================================
+            INTRO
+        ===================================================== */}
+
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.4 }}
+          variants={parent}
+          className="
+            mx-auto
+            max-w-[1020px]
+            text-center
+          "
+        >
+          <motion.div
+            variants={reveal}
+            className="
+              mb-7
+              flex
+              items-center
+              justify-center
+              gap-4
+            "
+          >
+           <span
+            className="
+              h-px
+              w-10
+
+              bg-gradient-to-r
+              from-transparent
+              to-[#B79A72]
+            "
+          />
+
+            <span
+              className="
+                text-[10px]
+              
+                uppercase
+                tracking-[0.4em]
+                text-[#B79A72]
+                sm:text-[11px]
+              "
+            >
+              Who We Work With
+            </span>
+
+          <span
+            className="
+              h-px
+              w-10
+
+              bg-gradient-to-l
+              from-transparent
+              to-[#B79A72]
+            "
+          />
+          </motion.div>
+
+          <motion.h2
+            variants={reveal}
+            style={newYorkFont}
+            className="
+              text-[2.6rem]
+              font-medium
+              leading-[0.98]
+              tracking-[-0.045em]
+              text-[#0B2A52]
+
+              md:text-[2.95rem]
+              lg:text-[3.1rem]
+              xl:text-[3.35rem]
+            "
+          >
+            Is Social Media Management
+            <br className="hidden sm:block" />
+            <span> Right for </span>
+            <span className="text-[#B79A72]">
+              Your Business?
+            </span>
+          </motion.h2>
+
+          <motion.p
+            variants={reveal}
+            className="
+              mx-auto
+              mt-7
+              max-w-[710px]
+              text-[15px]
+              leading-[1.8]
+              text-[#647B9B]
+              sm:text-[16px]
+            "
+          >
+            Social media management works best when your business needs
+            more than another posting schedule. It needs clearer direction,
+            stronger consistency and a system behind the content.
+          </motion.p>
+        </motion.div>
+
+        {/* =====================================================
+            MAIN EXPERIENCE
+        ===================================================== */}
 
         <div
-          ref={topRef}
           className="
+            mt-16
             grid
-            items-center
-            gap-14
-            lg:grid-cols-[0.95fr_1.05fr]
-            lg:gap-16
+            gap-12
+
+            lg:mt-20
+            lg:grid-cols-[0.9fr_1.1fr]
+            lg:items-stretch
+            lg:gap-14
+
+            xl:grid-cols-[0.86fr_1.14fr]
             xl:gap-20
           "
         >
-          {/* =====================================================
-              LEFT CONTENT
-          ====================================================== */}
+          {/* ===================================================
+              LEFT — INTERACTIVE EDITORIAL PANEL
+          =================================================== */}
 
           <motion.div
-            initial={{
-              opacity: 0,
-              x: -90,
-              y: 25,
-            }}
-            animate={
-              topVisible
-                ? {
-                    opacity: 1,
-                    x: 0,
-                    y: 0,
-                  }
-                : {}
-            }
+            initial={{ opacity: 0, x: -36 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
             transition={{
-              duration: reduceMotion ? 0 : 0.9,
-              ease: [0.22, 1, 0.36, 1],
-            }}
-          >
-            {/* LABEL */}
-
-            <motion.div
-              initial={{
-                opacity: 0,
-                x: -30,
-              }}
-              animate={
-                topVisible
-                  ? {
-                      opacity: 1,
-                      x: 0,
-                    }
-                  : {}
-              }
-              transition={{
-                duration: reduceMotion ? 0 : 0.65,
-                delay: 0.08,
-              }}
-              className="flex items-center gap-3"
-            >
-              <motion.span
-                initial={{
-                  scaleX: 0,
-                }}
-                animate={
-                  topVisible
-                    ? {
-                        scaleX: 1,
-                      }
-                    : {}
-                }
-                transition={{
-                  duration: reduceMotion ? 0 : 0.7,
-                  delay: 0.15,
-                }}
-                className="
-                  h-px
-                  w-9
-                  origin-left
-                  bg-[#B79A72]
-                "
-              />
-
-              <span
-                className="
-                  text-[9px]
-                  font-semibold
-                  uppercase
-                  tracking-[0.28em]
-                  text-[#B79A72]
-                  sm:text-[10px]
-                "
-              >
-                Who We Work With
-              </span>
-            </motion.div>
-
-            {/* HEADING */}
-
-            <motion.h2
-              initial={{
-                opacity: 0,
-                y: 35,
-              }}
-              animate={
-                topVisible
-                  ? {
-                      opacity: 1,
-                      y: 0,
-                    }
-                  : {}
-              }
-              transition={{
-                duration: reduceMotion ? 0 : 0.85,
-                delay: 0.12,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-              className="
-                mt-6
-                max-w-[650px]
-                text-[2.2rem]
-                font-medium
-                leading-[1.08]
-                tracking-[-0.045em]
-                sm:text-[2.65rem]
-                md:text-[3rem]
-                lg:text-[3.35rem]
-              "
-            >
-              Social Media Marketing for Businesses That Want{" "}
-              <motion.span
-                initial={{
-                  opacity: 0,
-                }}
-                animate={
-                  topVisible
-                    ? {
-                        opacity: 1,
-                      }
-                    : {}
-                }
-                transition={{
-                  duration: reduceMotion ? 0 : 0.7,
-                  delay: 0.35,
-                }}
-                className="font-normal text-[#B79A72]"
-              >
-                More Direction.
-              </motion.span>
-            </motion.h2>
-
-            {/* DESCRIPTION */}
-
-            <motion.p
-              initial={{
-                opacity: 0,
-                y: 22,
-              }}
-              animate={
-                topVisible
-                  ? {
-                      opacity: 1,
-                      y: 0,
-                    }
-                  : {}
-              }
-              transition={{
-                duration: reduceMotion ? 0 : 0.7,
-                delay: 0.27,
-              }}
-              className="
-                mt-6
-                max-w-[580px]
-                text-[13px]
-                leading-7
-                text-[#0B2A52]/55
-                sm:text-[14px]
-              "
-            >
-              Our social media management service can be a good fit for
-              businesses that:
-            </motion.p>
-
-            {/* SCATTERED → DIRECTION */}
-
-            <motion.div
-              initial={{
-                opacity: 0,
-                y: 20,
-              }}
-              animate={
-                topVisible
-                  ? {
-                      opacity: 1,
-                      y: 0,
-                    }
-                  : {}
-              }
-              transition={{
-                duration: reduceMotion ? 0 : 0.75,
-                delay: 0.38,
-              }}
-              className="
-                mt-8
-                flex
-                flex-wrap
-                items-center
-                gap-3
-              "
-            >
-              <span
-                className="
-                  text-[8px]
-                  font-semibold
-                  uppercase
-                  tracking-[0.18em]
-                  text-[#0B2A52]/30
-                "
-              >
-                Scattered Activity
-              </span>
-
-              <motion.span
-                initial={{
-                  scaleX: 0,
-                }}
-                animate={
-                  topVisible
-                    ? {
-                        scaleX: 1,
-                      }
-                    : {}
-                }
-                transition={{
-                  duration: reduceMotion ? 0 : 0.45,
-                  delay: 0.5,
-                }}
-                className="
-                  h-px
-                  w-8
-                  origin-left
-                  bg-[#B79A72]
-                "
-              />
-
-              <motion.div
-                animate={
-                  !reduceMotion && topVisible
-                    ? {
-                        x: [0, 4, 0],
-                      }
-                    : {}
-                }
-                transition={{
-                  duration: 1.8,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                  delay: 1.2,
-                }}
-              >
-                <ArrowRight
-                  size={13}
-                  strokeWidth={1.5}
-                  className="text-[#B79A72]"
-                />
-              </motion.div>
-
-              <motion.span
-                initial={{
-                  scaleX: 0,
-                }}
-                animate={
-                  topVisible
-                    ? {
-                        scaleX: 1,
-                      }
-                    : {}
-                }
-                transition={{
-                  duration: reduceMotion ? 0 : 0.45,
-                  delay: 0.58,
-                }}
-                className="
-                  h-px
-                  w-8
-                  origin-left
-                  bg-[#B79A72]
-                "
-              />
-
-              <span
-                className="
-                  text-[8px]
-                  font-semibold
-                  uppercase
-                  tracking-[0.18em]
-                  text-[#0B2A52]
-                "
-              >
-                Clear Direction
-              </span>
-            </motion.div>
-          </motion.div>
-
-          {/* =====================================================
-              RIGHT VISUAL
-          ====================================================== */}
-
-          <motion.div
-            initial={{
-              opacity: 0,
-              x: 100,
-              y: 35,
-              scale: 0.93,
-            }}
-            animate={
-              topVisible
-                ? {
-                    opacity: 1,
-                    x: 0,
-                    y: 0,
-                    scale: 1,
-                  }
-                : {}
-            }
-            transition={{
-              duration: reduceMotion ? 0 : 1,
-              delay: 0.1,
+              duration: 0.8,
               ease: [0.22, 1, 0.36, 1],
             }}
             className="
               relative
-              mx-auto
-              w-full
-              max-w-[580px]
+              overflow-hidden
+              rounded-[30px]
+              border
+              border-[#C8DBEC]/65
+              bg-gradient-to-br
+              from-[#EDF6FF]
+              via-[#F7FBFF]
+              to-white
+
+              p-7
+              shadow-[0_30px_80px_rgba(11,42,82,0.08)]
+
+              sm:p-9
+              lg:min-h-[620px]
+              lg:p-10
+              xl:p-12
             "
           >
+            {/* Decorative top line */}
+
+            <div
+              className="
+                absolute
+                left-0
+                top-0
+                h-[3px]
+                w-[34%]
+                bg-gradient-to-r
+                from-[#0B2A52]
+                via-[#5E86B1]
+                to-transparent
+              "
+            />
+
+            {/* Soft glow */}
+
+            <div
+              className="
+                pointer-events-none
+                absolute
+                -bottom-32
+                -right-28
+                h-[330px]
+                w-[330px]
+                rounded-full
+                bg-[#D9ECFF]
+                blur-[65px]
+              "
+            />
+
+            {/* Large subtle number */}
+
+            
+
             <div
               className="
                 relative
-                min-h-[470px]
-                overflow-hidden
-                rounded-[32px]
-                border
-                border-[#0B2A52]/10
-                bg-white
-                p-6
-                shadow-[0_30px_80px_rgba(11,42,82,0.08)]
-                sm:min-h-[520px]
-                sm:p-8
+                z-10
+                flex
+                h-full
+                flex-col
               "
             >
-              {/* TOP META */}
+              {/* Top metadata */}
 
-              <motion.div
-                initial={{
-                  opacity: 0,
-                  y: -20,
-                }}
-                animate={
-                  topVisible
-                    ? {
-                        opacity: 1,
-                        y: 0,
-                      }
-                    : {}
-                }
-                transition={{
-                  duration: reduceMotion ? 0 : 0.65,
-                  delay: 0.45,
-                }}
+              <div
                 className="
                   flex
                   items-center
                   justify-between
+                  gap-5
                 "
               >
-                <div className="flex items-center gap-2">
-                  <motion.span
-                    animate={
-                      !reduceMotion && topVisible
-                        ? {
-                            scale: [1, 1.5, 1],
-                          }
-                        : {}
-                    }
-                    transition={{
-                      duration: 2,
-                      repeat: Infinity,
-                      delay: 1.3,
-                    }}
-                    className="
-                      h-2
-                      w-2
-                      rounded-full
-                      bg-[#B79A72]
-                    "
-                  />
-
+                <div className="flex items-center gap-3">
                   <span
                     className="
-                      text-[8px]
-                      font-semibold
-                      uppercase
-                      tracking-[0.2em]
-                      text-[#0B2A52]/38
+                      flex
+                      h-11
+                      w-11
+                      items-center
+                      justify-center
+                      rounded-[14px]
+                      border
+                      border-white
+                      bg-white/80
+                      text-[#174C82]
+                      shadow-[0_8px_30px_rgba(11,42,82,0.07)]
                     "
                   >
-                    Brand Direction
+                    <selected.icon
+                      className="h-[19px] w-[19px]"
+                      strokeWidth={1.65}
+                    />
                   </span>
+
+                  <div>
+                    
+
+                    <p
+                      className="
+                        mt-1
+                        text-[11px]
+                        font-semibold
+                        uppercase
+                        tracking-[0.25em]
+                        text-[#345D89]
+                      "
+                    >
+                      {selected.eyebrow}
+                    </p>
+                  </div>
                 </div>
 
-                <span
-                  className="
-                    text-[8px]
-                    font-semibold
-                    tracking-[0.16em]
-                    text-[#B79A72]
-                  "
-                >
-                  01 → 02
-                </span>
-              </motion.div>
+               
 
-              {/* =================================================
-                  SCATTERED CONTENT
-              ================================================== */}
-
-              <div
-                className="
-                  absolute
-                  left-6
-                  top-[115px]
-                  w-[42%]
-                  sm:left-8
-                "
-              >
-                {/* POST 01 */}
-
-                <motion.div
-                  initial={{
-                    opacity: 0,
-                    x: -80,
-                    y: -45,
-                    rotate: -18,
-                    scale: 0.76,
-                  }}
-                  animate={
-                    topVisible
-                      ? {
-                          opacity: 1,
-                          x: 0,
-                          y: 0,
-                          rotate: -8,
-                          scale: 1,
-                        }
-                      : {}
-                  }
-                  transition={{
-                    duration: reduceMotion ? 0 : 0.85,
-                    delay: 0.5,
-                    ease: [0.22, 1, 0.36, 1],
-                  }}
-                  className="
-                    relative
-                    w-[150px]
-                    border
-                    border-[#0B2A52]/12
-                    bg-white
-                    p-3
-                    shadow-[0_12px_28px_rgba(11,42,82,0.07)]
-                    sm:w-[175px]
-                  "
-                >
-                  <motion.div
-                    animate={
-                      !reduceMotion && topVisible
-                        ? {
-                            y: [0, -4, 0],
-                          }
-                        : {}
-                    }
-                    transition={{
-                      duration: 4,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                      delay: 1.5,
-                    }}
-                  >
-                    <div className="flex items-center gap-2">
-                      <span
-                        className="
-                          flex
-                          h-7
-                          w-7
-                          items-center
-                          justify-center
-                          rounded-full
-                          border
-                          border-[#0B2A52]/10
-                        "
-                      >
-                        <PenTool
-                          size={11}
-                          strokeWidth={1.5}
-                        />
-                      </span>
-
-                      <span className="h-[5px] w-14 bg-[#0B2A52]/10" />
-                    </div>
-
-                    <div
-                      className="
-                        mt-3
-                        h-[64px]
-                        border
-                        border-[#0B2A52]/[0.06]
-                      "
-                    />
-
-                    <div className="mt-3 space-y-2">
-                      <span className="block h-[5px] w-full bg-[#0B2A52]/10" />
-                      <span className="block h-[5px] w-[65%] bg-[#0B2A52]/10" />
-                    </div>
-                  </motion.div>
-                </motion.div>
-
-                {/* POST 02 */}
-
-                <motion.div
-                  initial={{
-                    opacity: 0,
-                    x: -65,
-                    y: 40,
-                    rotate: 18,
-                    scale: 0.75,
-                  }}
-                  animate={
-                    topVisible
-                      ? {
-                          opacity: 1,
-                          x: 0,
-                          y: 0,
-                          rotate: 7,
-                          scale: 1,
-                        }
-                      : {}
-                  }
-                  transition={{
-                    duration: reduceMotion ? 0 : 0.85,
-                    delay: 0.67,
-                    ease: [0.22, 1, 0.36, 1],
-                  }}
-                  className="
-                    relative
-                    -mt-5
-                    ml-14
-                    w-[145px]
-                    border
-                    border-[#B79A72]/35
-                    bg-white
-                    p-3
-                    shadow-[0_12px_28px_rgba(11,42,82,0.07)]
-                    sm:w-[170px]
-                  "
-                >
-                  <motion.div
-                    animate={
-                      !reduceMotion && topVisible
-                        ? {
-                            y: [0, 5, 0],
-                            x: [0, 2, 0],
-                          }
-                        : {}
-                    }
-                    transition={{
-                      duration: 4.7,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                      delay: 1.7,
-                    }}
-                  >
-                    <div className="flex items-center gap-2">
-                      <MessageCircle
-                        size={13}
-                        strokeWidth={1.5}
-                        className="text-[#B79A72]"
-                      />
-
-                      <span className="h-[5px] w-16 bg-[#0B2A52]/10" />
-                    </div>
-
-                    <div className="mt-3 space-y-2">
-                      <span className="block h-[5px] w-full bg-[#0B2A52]/10" />
-                      <span className="block h-[5px] w-[78%] bg-[#0B2A52]/10" />
-                      <span className="block h-[5px] w-[48%] bg-[#0B2A52]/10" />
-                    </div>
-                  </motion.div>
-                </motion.div>
-
-                {/* POST 03 */}
-
-                <motion.div
-                  initial={{
-                    opacity: 0,
-                    x: -50,
-                    y: 75,
-                    rotate: -16,
-                    scale: 0.72,
-                  }}
-                  animate={
-                    topVisible
-                      ? {
-                          opacity: 1,
-                          x: 0,
-                          y: 0,
-                          rotate: -4,
-                          scale: 1,
-                        }
-                      : {}
-                  }
-                  transition={{
-                    duration: reduceMotion ? 0 : 0.85,
-                    delay: 0.82,
-                    ease: [0.22, 1, 0.36, 1],
-                  }}
-                  className="
-                    relative
-                    -mt-2
-                    ml-2
-                    w-[135px]
-                    border
-                    border-[#0B2A52]/10
-                    bg-white
-                    p-3
-                    shadow-[0_12px_28px_rgba(11,42,82,0.06)]
-                    sm:w-[155px]
-                  "
-                >
-                  <BarChart3
-                    size={14}
-                    strokeWidth={1.5}
-                    className="text-[#0B2A52]"
-                  />
-
-                  <div
-                    className="
-                      mt-4
-                      flex
-                      items-end
-                      gap-2
-                    "
-                  >
-                    <motion.span
-                      initial={{
-                        height: 0,
-                      }}
-                      animate={
-                        topVisible
-                          ? {
-                              height: 20,
-                            }
-                          : {}
-                      }
-                      transition={{
-                        delay: 0.95,
-                        duration: 0.4,
-                      }}
-                      className="w-3 bg-[#0B2A52]/10"
-                    />
-
-                    <motion.span
-                      initial={{
-                        height: 0,
-                      }}
-                      animate={
-                        topVisible
-                          ? {
-                              height: 36,
-                            }
-                          : {}
-                      }
-                      transition={{
-                        delay: 1.05,
-                        duration: 0.4,
-                      }}
-                      className="w-3 bg-[#B79A72]"
-                    />
-
-                    <motion.span
-                      initial={{
-                        height: 0,
-                      }}
-                      animate={
-                        topVisible
-                          ? {
-                              height: 24,
-                            }
-                          : {}
-                      }
-                      transition={{
-                        delay: 1.15,
-                        duration: 0.4,
-                      }}
-                      className="w-3 bg-[#0B2A52]/15"
-                    />
-
-                    <motion.span
-                      initial={{
-                        height: 0,
-                      }}
-                      animate={
-                        topVisible
-                          ? {
-                              height: 44,
-                            }
-                          : {}
-                      }
-                      transition={{
-                        delay: 1.25,
-                        duration: 0.4,
-                      }}
-                      className="w-3 bg-[#0B2A52]"
-                    />
-                  </div>
-                </motion.div>
               </div>
 
-              {/* =================================================
-                  DIRECTION ARROW
-              ================================================== */}
-
-              <div
-                className="
-                  absolute
-                  left-[46%]
-                  top-1/2
-                  z-20
-                  -translate-x-1/2
-                  -translate-y-1/2
-                "
-              >
-                <motion.div
-                  initial={{
-                    scale: 0,
-                    opacity: 0,
-                    rotate: -90,
-                  }}
-                  animate={
-                    topVisible
-                      ? {
-                          scale: 1,
-                          opacity: 1,
-                          rotate: 0,
-                        }
-                      : {}
-                  }
-                  transition={{
-                    duration: reduceMotion ? 0 : 0.7,
-                    delay: 0.98,
-                    type: reduceMotion ? undefined : "spring",
-                    stiffness: 180,
-                    damping: 16,
-                  }}
-                  className="
-                    relative
-                    flex
-                    h-12
-                    w-12
-                    items-center
-                    justify-center
-                    rounded-full
-                    bg-[#B79A72]
-                    text-white
-                    shadow-[0_12px_28px_rgba(183,154,114,0.25)]
-                  "
-                >
-                  <motion.div
-                    animate={
-                      !reduceMotion && topVisible
-                        ? {
-                            x: [0, 4, 0],
-                          }
-                        : {}
-                    }
-                    transition={{
-                      duration: 1.5,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                      delay: 1.5,
-                    }}
-                  >
-                    <ArrowRight
-                      size={17}
-                      strokeWidth={1.6}
-                    />
-                  </motion.div>
-                </motion.div>
-
-                {!reduceMotion && topVisible && (
-                  <>
-                    <motion.span
-                      animate={{
-                        scale: [1, 1.55],
-                        opacity: [0.3, 0],
-                      }}
-                      transition={{
-                        duration: 2,
-                        repeat: Infinity,
-                      }}
-                      className="
-                        absolute
-                        inset-0
-                        rounded-full
-                        border
-                        border-[#B79A72]
-                      "
-                    />
-
-                    <motion.span
-                      animate={{
-                        scale: [1, 1.9],
-                        opacity: [0.18, 0],
-                      }}
-                      transition={{
-                        duration: 2,
-                        repeat: Infinity,
-                        delay: 0.35,
-                      }}
-                      className="
-                        absolute
-                        inset-0
-                        rounded-full
-                        border
-                        border-[#B79A72]/60
-                      "
-                    />
-                  </>
-                )}
-              </div>
-
-              {/* =================================================
-                  ORGANIZED BRAND
-              ================================================== */}
+              {/* Main statement */}
 
               <motion.div
+                key={`${selected.number}-content`}
                 initial={{
                   opacity: 0,
-                  x: 100,
-                  scale: 0.9,
+                  y: 12,
                 }}
-                animate={
-                  topVisible
-                    ? {
-                        opacity: 1,
-                        x: 0,
-                        scale: 1,
-                      }
-                    : {}
-                }
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                }}
                 transition={{
-                  duration: reduceMotion ? 0 : 0.95,
-                  delay: 1.08,
+                  duration: 0.4,
                   ease: [0.22, 1, 0.36, 1],
                 }}
                 className="
-                  absolute
-                  bottom-[60px]
-                  right-6
-                  top-[95px]
-                  w-[45%]
-                  sm:right-8
+                  mt-16
+                  sm:mt-20
+                  lg:mt-auto
+                  lg:mb-auto
                 "
               >
-                <motion.div
-                  animate={
-                    !reduceMotion && topVisible
-                      ? {
-                          y: [0, -4, 0],
-                        }
-                      : {}
-                  }
-                  transition={{
-                    duration: 6,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                    delay: 1.8,
-                  }}
+                <span
                   className="
-                    flex
-                    h-full
-                    flex-col
-                    overflow-hidden
-                    border
-                    border-[#0B2A52]
-                    bg-[#0B2A52]
-                    p-5
-                    text-white
-                    shadow-[0_25px_60px_rgba(11,42,82,0.18)]
+                    mb-6
+                    block
+                    h-[2px]
+                    w-12
+                    bg-[#B78F61]
+                  "
+                />
+
+                <h3
+                  style={newYorkFont}
+                  className="
+                    max-w-[430px]
+                    text-[36px]
+                    font-medium
+                    leading-[1]
+                    tracking-[-0.045em]
+                    text-[#0B2A52]
+
+                    sm:text-[42px]
+                    lg:text-[45px]
+                    xl:text-[49px]
                   "
                 >
-                  <div
+                  {selected.shortTitle}
+                </h3>
+
+                <p
+                  className="
+                    mt-6
+                    max-w-[450px]
+                    text-[14px]
+                    leading-[1.85]
+                    text-[#657B98]
+                    sm:text-[15px]
+                  "
+                >
+                  {selected.insight}
+                </p>
+              </motion.div>
+
+              {/* Bottom philosophy */}
+
+              <div
+                className="
+                  mt-12
+                  border-t
+                  border-[#BFD2E5]/65
+                  pt-6
+                  lg:mt-auto
+                "
+              >
+                <div
+                  className="
+                    flex
+                    items-start
+                    justify-between
+                    gap-7
+                  "
+                >
+                  <p
                     className="
-                      flex
-                      items-center
-                      justify-between
+                      max-w-[310px]
+                      text-[10px]
+                      font-semibold
+                      uppercase
+                      leading-[1.8]
+                      tracking-[0.25em]
+                      text-[#476A91]
                     "
                   >
-                    <motion.span
-                      initial={{
-                        scale: 0,
-                        rotate: -70,
-                      }}
-                      animate={
-                        topVisible
-                          ? {
-                              scale: 1,
-                              rotate: 0,
-                            }
-                          : {}
-                      }
-                      transition={{
-                        duration: reduceMotion ? 0 : 0.65,
-                        delay: 1.35,
-                      }}
-                      className="
-                        flex
-                        h-10
-                        w-10
-                        items-center
-                        justify-center
-                        rounded-full
-                        border
-                        border-white/15
-                      "
-                    >
-                      <Compass
-                        size={16}
-                        strokeWidth={1.5}
-                        className="text-[#B79A72]"
-                      />
-                    </motion.span>
+                    Strategy · Content · Community · Growth
+                  </p>
+
+                  <span
+                    className="
+                      mt-1
+                      h-2
+                      w-2
+                      shrink-0
+                      rounded-full
+                      bg-[#B79061]
+                    "
+                  />
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* ===================================================
+              RIGHT — DIAGNOSTIC LIST
+          =================================================== */}
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.15 }}
+            variants={parent}
+            className="
+              flex
+              flex-col
+              justify-center
+            "
+          >
+            <motion.div
+              variants={reveal}
+              className="
+                mb-5
+                flex
+                items-center
+                justify-between
+                gap-5
+              "
+            >
+              <p
+                className="
+                  text-[10px]
+                  font-semibold
+                  uppercase
+                  tracking-[0.34em]
+                  text-[#164D87]
+                  sm:text-[11px]
+                "
+              >
+                Does this sound familiar?
+              </p>
+
+             
+            </motion.div>
+
+            <div className="border-t border-[#C8D9EA]">
+              {fitItems.map((item, index) => {
+                const Icon = item.icon;
+                const isActive = index === active;
+
+                return (
+                  <motion.button
+                    key={item.number}
+                    variants={reveal}
+                    type="button"
+                    onClick={() => setActive(index)}
+                    className="
+                      group
+                      relative
+                      block
+                      w-full
+                      overflow-hidden
+                      border-b
+                      border-[#D2DFEB]
+                      text-left
+                    "
+                  >
+                    {/* Active wash */}
 
                     <span
+                      className={`
+                        pointer-events-none
+                        absolute
+                        inset-0
+                        origin-left
+                        bg-gradient-to-r
+                        from-[#EDF6FF]
+                        via-[#F7FBFF]
+                        to-transparent
+                        transition-transform
+                        duration-500
+                        ease-out
+
+                        ${
+                          isActive
+                            ? "scale-x-100"
+                            : "scale-x-0 group-hover:scale-x-100"
+                        }
+                      `}
+                    />
+
+                    {/* Accent rail */}
+
+                    <span
+                      className={`
+                        absolute
+                        left-0
+                        top-1/2
+                        h-[55%]
+                        w-[2px]
+                        -translate-y-1/2
+                        rounded-full
+                        bg-[#B79061]
+                        transition-all
+                        duration-300
+
+                        ${
+                          isActive
+                            ? "opacity-100"
+                            : "opacity-0 group-hover:opacity-60"
+                        }
+                      `}
+                    />
+
+                    <div
                       className="
-                        text-[7px]
-                        font-semibold
-                        tracking-[0.18em]
-                        text-[#B79A72]
+                        relative
+                        z-10
+                        grid
+                        grid-cols-[44px_1fr_auto]
+                        items-center
+                        gap-4
+                        py-5
+                        pl-4
+                        pr-1
+
+                        sm:grid-cols-[54px_1fr_auto]
+                        sm:gap-5
+                        sm:py-[22px]
+                        sm:pl-5
                       "
                     >
-                      DIRECTION
-                    </span>
-                  </div>
+                      {/* Number */}
 
-                  <div className="my-auto">
-                    <motion.p
-                      initial={{
-                        opacity: 0,
-                        y: 12,
-                      }}
-                      animate={
-                        topVisible
-                          ? {
-                              opacity: 1,
-                              y: 0,
-                            }
-                          : {}
-                      }
-                      transition={{
-                        delay: 1.4,
-                      }}
-                      className="
-                        text-[7px]
-                        font-semibold
-                        uppercase
-                        tracking-[0.18em]
-                        text-white/40
-                      "
-                    >
-                      Organized Social Presence
-                    </motion.p>
+                      <span
+                        style={newYorkFont}
+                        className={`
+                          text-[17px]
+                          transition-colors
+                          duration-300
 
-                    <motion.p
-                      initial={{
-                        opacity: 0,
-                        y: 22,
-                      }}
-                      animate={
-                        topVisible
-                          ? {
-                              opacity: 1,
-                              y: 0,
-                            }
-                          : {}
-                      }
-                      transition={{
-                        duration: reduceMotion ? 0 : 0.7,
-                        delay: 1.48,
-                      }}
-                      className="
-                        mt-3
-                        text-[20px]
-                        font-medium
-                        leading-[1.12]
-                        tracking-[-0.035em]
-                        sm:text-[24px]
-                      "
-                    >
-                      Clear.
-                      <br />
-                      Consistent.
-                      <br />
-
-                      <span className="text-[#B79A72]">
-                        Intentional.
-                      </span>
-                    </motion.p>
-                  </div>
-
-                  <div className="space-y-2">
-                    {[
-                      {
-                        icon: Compass,
-                        text: "Strategy",
-                      },
-                      {
-                        icon: Layers3,
-                        text: "Consistency",
-                      },
-                      {
-                        icon: BarChart3,
-                        text: "Insights",
-                      },
-                    ].map((item, index) => {
-                      const Icon = item.icon;
-
-                      return (
-                        <motion.div
-                          key={item.text}
-                          initial={{
-                            opacity: 0,
-                            x: 20,
-                          }}
-                          animate={
-                            topVisible
-                              ? {
-                                  opacity: 1,
-                                  x: 0,
-                                }
-                              : {}
+                          ${
+                            isActive
+                              ? "text-[#B58B5C]"
+                              : "text-[#94A9BF]"
                           }
-                          transition={{
-                            duration: reduceMotion ? 0 : 0.5,
-                            delay: 1.58 + index * 0.09,
-                          }}
+                        `}
+                      >
+                        {item.number}
+                      </span>
+
+                      {/* Main content */}
+
+                      <div className="min-w-0">
+                        <div
                           className="
+                            mb-1.5
                             flex
                             items-center
-                            gap-2
-                            border-t
-                            border-white/10
-                            pt-2
+                            gap-2.5
                           "
                         >
                           <Icon
-                            size={10}
-                            strokeWidth={1.5}
-                            className="text-[#B79A72]"
+                            className={`
+                              h-[14px]
+                              w-[14px]
+                              transition-colors
+                              duration-300
+
+                              ${
+                                isActive
+                                  ? "text-[#164D87]"
+                                  : "text-[#91A8BF]"
+                              }
+                            `}
+                            strokeWidth={1.7}
                           />
 
                           <span
                             className="
                               text-[8px]
-                              tracking-[0.14em]
-                              text-white/55
+                              font-semibold
+                              uppercase
+                              tracking-[0.3em]
+                              text-[#7893AF]
                             "
                           >
-                            {item.text}
+                            {item.eyebrow}
                           </span>
-                        </motion.div>
-                      );
-                    })}
-                  </div>
-                </motion.div>
-              </motion.div>
-            </div>
-          </motion.div>
-        </div>
+                        </div>
 
-        {/* =======================================================
-            BRAND FIT DIRECTION MAP
-        ======================================================== */}
+                        <h4
+                          style={newYorkFont}
+                          className={`
+                            text-[18px]
+                            leading-[1.35]
+                            tracking-[-0.02em]
+                            transition-colors
+                            duration-300
 
-        <motion.div
-          ref={mapRef}
-          initial={{
-            opacity: 0,
-            y: 70,
-            scale: 0.98,
-          }}
-          animate={
-            mapVisible
-              ? {
-                  opacity: 1,
-                  y: 0,
-                  scale: 1,
-                }
-              : {}
-          }
-          transition={{
-            duration: reduceMotion ? 0 : 0.95,
-            ease: [0.22, 1, 0.36, 1],
-          }}
-          className="
-            mx-auto
-            mt-16
-            max-w-[1180px]
-            sm:mt-20
-          "
-        >
-          {/* MAP TITLE */}
+                            sm:text-[20px]
+                            lg:text-[21px]
 
-          <motion.div
-            initial={{
-              opacity: 0,
-              y: 18,
-            }}
-            animate={
-              mapVisible
-                ? {
-                    opacity: 1,
-                    y: 0,
-                  }
-                : {}
-            }
-            transition={{
-              duration: reduceMotion ? 0 : 0.65,
-              delay: 0.05,
-            }}
-            className="flex items-center gap-4"
-          >
-            <span
-              className="
-                text-[10px]
-                font-semibold
-                uppercase
-                tracking-[0.22em]
-                text-[#B79A72]
-                sm:text-[11px]
-              "
-            >
-              A Good Fit If
-            </span>
-
-            <motion.span
-              initial={{
-                scaleX: 0,
-              }}
-              animate={
-                mapVisible
-                  ? {
-                      scaleX: 1,
-                    }
-                  : {}
-              }
-              transition={{
-                duration: reduceMotion ? 0 : 0.85,
-                delay: 0.12,
-              }}
-              className="
-                h-px
-                flex-1
-                origin-left
-                bg-[#0B2A52]/10
-              "
-            />
-
-            <span
-              className="
-                hidden
-                text-[9px]
-                font-medium
-                uppercase
-                tracking-[0.18em]
-                text-[#0B2A52]/30
-                sm:block
-              "
-            >
-              07 Brand Signals
-            </span>
-          </motion.div>
-
-          {/* =====================================================
-              DESKTOP MAP
-          ====================================================== */}
-
-          <div
-            className="
-              relative
-              mt-12
-              hidden
-              min-h-[590px]
-              grid-cols-[1fr_220px_1fr]
-              items-center
-              gap-5
-              lg:grid
-            "
-          >
-            {/* CENTER LINE */}
-
-            <motion.span
-              initial={{
-                scaleY: 0,
-              }}
-              animate={
-                mapVisible
-                  ? {
-                      scaleY: 1,
-                    }
-                  : {}
-              }
-              transition={{
-                duration: reduceMotion ? 0 : 1.25,
-                delay: 0.2,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-              className="
-                absolute
-                left-1/2
-                top-[28px]
-                h-[530px]
-                w-px
-                -translate-x-1/2
-                origin-top
-                bg-[#0B2A52]/10
-              "
-            />
-
-            {/* ===================================================
-                LEFT SIGNALS
-            ==================================================== */}
-
-            <div className="space-y-14">
-              {audienceFit.slice(0, 3).map((item, index) => (
-                <motion.div
-                  key={item}
-                  initial={{
-                    opacity: 0,
-                    x: -110,
-                    y: 18,
-                  }}
-                  animate={
-                    mapVisible
-                      ? {
-                          opacity: 1,
-                          x: 0,
-                          y: 0,
-                        }
-                      : {}
-                  }
-                  transition={{
-                    duration: reduceMotion ? 0 : 0.8,
-                    delay: reduceMotion
-                      ? 0
-                      : 0.18 + index * 0.12,
-                    ease: [0.22, 1, 0.36, 1],
-                  }}
-                  className="
-                    group
-                    relative
-                    flex
-                    min-h-[112px]
-                    items-center
-                  "
-                >
-                  <div
-                    className="
-                      flex
-                      w-full
-                      items-center
-                      justify-end
-                      gap-6
-                      border-b
-                      border-[#0B2A52]/10
-                      py-6
-                      transition-all
-                      duration-500
-                      group-hover:border-[#B79A72]/60
-                    "
-                  >
-                    <div className="text-right">
-                      <span
-                        className="
-                          text-[10px]
-                          font-semibold
-                          tracking-[0.18em]
-                          text-[#B79A72]
-                        "
-                      >
-                        {String(index + 1).padStart(2, "0")}
-                      </span>
-
-                      <p
-                        className="
-                          mt-3
-                          ml-auto
-                          max-w-[420px]
-                          text-[16px]
-                          font-medium
-                          leading-7
-                          tracking-[-0.015em]
-                          text-[#0B2A52]/70
-                          transition-all
-                          duration-400
-                          group-hover:-translate-x-1
-                          group-hover:text-[#0B2A52]
-                          xl:text-[17px]
-                        "
-                      >
-                        {item}
-                      </p>
-                    </div>
-
-                    {/* NODE */}
-
-                    <motion.span
-                      initial={{
-                        scale: 0,
-                        opacity: 0,
-                      }}
-                      animate={
-                        mapVisible
-                          ? {
-                              scale: 1,
-                              opacity: 1,
+                            ${
+                              isActive
+                                ? "text-[#0B2A52]"
+                                : "text-[#365474]"
                             }
-                          : {}
-                      }
-                      transition={{
-                        duration: reduceMotion ? 0 : 0.55,
-                        delay: reduceMotion
-                          ? 0
-                          : 0.3 + index * 0.12,
-                      }}
-                      className="
-                        relative
-                        z-20
-                        flex
-                        h-12
-                        w-12
-                        shrink-0
-                        items-center
-                        justify-center
-                        rounded-full
-                        border
-                        border-[#0B2A52]/15
-                        bg-white
-                        shadow-[0_7px_20px_rgba(11,42,82,0.035)]
-                        transition-all
-                        duration-400
-                        group-hover:border-[#B79A72]
-                        group-hover:shadow-[0_10px_25px_rgba(183,154,114,0.12)]
-                      "
-                    >
-                      <span
-                        className="
-                          h-[6px]
-                          w-[6px]
-                          rounded-full
-                          bg-[#0B2A52]
-                          transition-all
-                          duration-400
-                          group-hover:scale-150
-                          group-hover:bg-[#B79A72]
-                        "
-                      />
-                    </motion.span>
-                  </div>
+                          `}
+                        >
+                          {item.title}
+                        </h4>
 
-                  {/* CONNECTOR */}
+                        {/* Description appears only for active */}
 
-                  <motion.span
-                    initial={{
-                      scaleX: 0,
-                    }}
-                    animate={
-                      mapVisible
-                        ? {
-                            scaleX: 1,
-                          }
-                        : {}
-                    }
-                    transition={{
-                      duration: reduceMotion ? 0 : 0.7,
-                      delay: reduceMotion
-                        ? 0
-                        : 0.42 + index * 0.12,
-                    }}
-                    className="
-                      absolute
-                      -right-[110px]
-                      top-1/2
-                      h-px
-                      w-[110px]
-                      origin-left
-                      bg-[#0B2A52]/12
-                      transition-colors
-                      duration-400
-                      group-hover:bg-[#B79A72]
-                    "
-                  />
-                </motion.div>
-              ))}
-            </div>
+                        <div
+                          className={`
+                            grid
+                            transition-all
+                            duration-500
 
-            {/* ===================================================
-                CENTER BRAND DIRECTION
-            ==================================================== */}
-
-            <div
-              className="
-                relative
-                z-20
-                flex
-                h-full
-                items-center
-                justify-center
-              "
-            >
-              {/* OUTER RING */}
-
-              <motion.div
-                initial={{
-                  opacity: 0,
-                  scale: 0.55,
-                }}
-                animate={
-                  mapVisible
-                    ? {
-                        opacity: 1,
-                        scale: 1,
-                      }
-                    : {}
-                }
-                transition={{
-                  duration: reduceMotion ? 0 : 0.8,
-                  delay: 0.43,
-                }}
-                className="
-                  absolute
-                  h-[195px]
-                  w-[195px]
-                  rounded-full
-                  border
-                  border-[#0B2A52]/10
-                  bg-white
-                "
-              />
-
-              {/* SECOND RING */}
-
-              <motion.div
-                initial={{
-                  opacity: 0,
-                  scale: 0.55,
-                }}
-                animate={
-                  mapVisible
-                    ? {
-                        opacity: 1,
-                        scale: 1,
-                      }
-                    : {}
-                }
-                transition={{
-                  duration: reduceMotion ? 0 : 0.8,
-                  delay: 0.5,
-                }}
-                className="
-                  absolute
-                  h-[166px]
-                  w-[166px]
-                  rounded-full
-                  border
-                  border-[#0B2A52]/[0.06]
-                "
-              />
-
-              {/* ROTATING GOLD RING */}
-
-              <motion.div
-                initial={{
-                  opacity: 0,
-                  scale: 0.65,
-                }}
-                animate={
-                  mapVisible
-                    ? {
-                        opacity: 1,
-                        scale: 1,
-                        rotate: reduceMotion ? 0 : 360,
-                      }
-                    : {}
-                }
-                transition={{
-                  opacity: {
-                    duration: reduceMotion ? 0 : 0.55,
-                    delay: 0.55,
-                  },
-                  scale: {
-                    duration: reduceMotion ? 0 : 0.75,
-                    delay: 0.55,
-                  },
-                  rotate: {
-                    duration: 30,
-                    repeat: Infinity,
-                    ease: "linear",
-                  },
-                }}
-                className="
-                  absolute
-                  h-[148px]
-                  w-[148px]
-                  rounded-full
-                  border
-                  border-dashed
-                  border-[#B79A72]/40
-                "
-              />
-
-              {/* CENTER */}
-
-              <motion.div
-                initial={{
-                  opacity: 0,
-                  scale: 0.45,
-                  rotate: -25,
-                }}
-                animate={
-                  mapVisible
-                    ? {
-                        opacity: 1,
-                        scale: 1,
-                        rotate: 0,
-                      }
-                    : {}
-                }
-                transition={{
-                  duration: reduceMotion ? 0 : 0.75,
-                  delay: 0.62,
-                  type: reduceMotion ? undefined : "spring",
-                  stiffness: 150,
-                  damping: 16,
-                }}
-                whileHover={
-                  reduceMotion
-                    ? undefined
-                    : {
-                        scale: 1.05,
-                      }
-                }
-                className="
-                  relative
-                  z-30
-                  flex
-                  h-[125px]
-                  w-[125px]
-                  flex-col
-                  items-center
-                  justify-center
-                  rounded-full
-                  bg-[#0B2A52]
-                  text-center
-                  shadow-[0_20px_50px_rgba(11,42,82,0.16)]
-                "
-              >
-                <motion.div
-                  animate={
-                    !reduceMotion && mapVisible
-                      ? {
-                          rotate: [0, 7, -7, 0],
-                        }
-                      : {}
-                  }
-                  transition={{
-                    duration: 5,
-                    repeat: Infinity,
-                    delay: 1.3,
-                  }}
-                >
-                  <Compass
-                    size={24}
-                    strokeWidth={1.4}
-                    className="text-[#B79A72]"
-                  />
-                </motion.div>
-
-                <span
-                  className="
-                    mt-3
-                    text-[9px]
-                    font-semibold
-                    uppercase
-                    tracking-[0.18em]
-                    text-white
-                  "
-                >
-                  Brand
-                </span>
-
-                <span
-                  className="
-                    mt-1
-                    text-[8px]
-                    uppercase
-                    tracking-[0.16em]
-                    text-white/55
-                  "
-                >
-                  Direction
-                </span>
-              </motion.div>
-
-              {/* WHERE YOU ARE */}
-
-              <motion.div
-                initial={{
-                  opacity: 0,
-                  x: -30,
-                }}
-                animate={
-                  mapVisible
-                    ? {
-                        opacity: 1,
-                        x: 0,
-                      }
-                    : {}
-                }
-                transition={{
-                  duration: reduceMotion ? 0 : 0.6,
-                  delay: 0.78,
-                }}
-                className="
-                  absolute
-                  left-[-42px]
-                  top-[74px]
-                  flex
-                  -translate-x-full
-                  items-center
-                  gap-3
-                  bg-white
-                  py-1
-                  pl-2
-                "
-              >
-                <span
-                  className="
-                    whitespace-nowrap
-                    text-[8px]
-                    font-semibold
-                    uppercase
-                    tracking-[0.2em]
-                    text-[#B79A72]
-                  "
-                >
-                  Where You Are
-                </span>
-
-                <motion.span
-                  initial={{
-                    scaleX: 0,
-                  }}
-                  animate={
-                    mapVisible
-                      ? {
-                          scaleX: 1,
-                        }
-                      : {}
-                  }
-                  transition={{
-                    duration: reduceMotion ? 0 : 0.55,
-                    delay: 0.88,
-                  }}
-                  className="
-                    h-px
-                    w-12
-                    origin-left
-                    bg-[#B79A72]/30
-                  "
-                />
-              </motion.div>
-
-              {/* WHERE YOU WANT TO GO */}
-
-              <motion.div
-                initial={{
-                  opacity: 0,
-                  x: 30,
-                }}
-                animate={
-                  mapVisible
-                    ? {
-                        opacity: 1,
-                        x: 0,
-                      }
-                    : {}
-                }
-                transition={{
-                  duration: reduceMotion ? 0 : 0.6,
-                  delay: 0.85,
-                }}
-                className="
-                  absolute
-                  bottom-[72px]
-                  right-[-40px]
-                  flex
-                  translate-x-full
-                  items-center
-                  gap-3
-                  bg-white
-                  py-1
-                  pr-2
-                "
-              >
-                <motion.span
-                  initial={{
-                    scaleX: 0,
-                  }}
-                  animate={
-                    mapVisible
-                      ? {
-                          scaleX: 1,
-                        }
-                      : {}
-                  }
-                  transition={{
-                    duration: reduceMotion ? 0 : 0.55,
-                    delay: 0.95,
-                  }}
-                  className="
-                    h-px
-                    w-12
-                    origin-right
-                    bg-[#0B2A52]/15
-                  "
-                />
-
-                <span
-                  className="
-                    whitespace-nowrap
-                    text-[8px]
-                    font-semibold
-                    uppercase
-                    tracking-[0.19em]
-                    text-[#0B2A52]
-                  "
-                >
-                  Where You Want To Go
-                </span>
-              </motion.div>
-            </div>
-
-            {/* ===================================================
-                RIGHT SIGNALS
-            ==================================================== */}
-
-            <div className="space-y-7">
-              {audienceFit.slice(3).map((item, index) => {
-                const actualIndex = index + 3;
-
-                return (
-                  <motion.div
-                    key={item}
-                    initial={{
-                      opacity: 0,
-                      x: 110,
-                      y: 18,
-                    }}
-                    animate={
-                      mapVisible
-                        ? {
-                            opacity: 1,
-                            x: 0,
-                            y: 0,
-                          }
-                        : {}
-                    }
-                    transition={{
-                      duration: reduceMotion ? 0 : 0.8,
-                      delay: reduceMotion
-                        ? 0
-                        : 0.22 + index * 0.1,
-                      ease: [0.22, 1, 0.36, 1],
-                    }}
-                    className="
-                      group
-                      relative
-                      flex
-                      min-h-[105px]
-                      items-center
-                    "
-                  >
-                    {/* CONNECTOR */}
-
-                    <motion.span
-                      initial={{
-                        scaleX: 0,
-                      }}
-                      animate={
-                        mapVisible
-                          ? {
-                              scaleX: 1,
+                            ${
+                              isActive
+                                ? "grid-rows-[1fr] opacity-100"
+                                : "grid-rows-[0fr] opacity-0"
                             }
-                          : {}
-                      }
-                      transition={{
-                        duration: reduceMotion ? 0 : 0.7,
-                        delay: reduceMotion
-                          ? 0
-                          : 0.46 + index * 0.1,
-                      }}
-                      className="
-                        absolute
-                        -left-[110px]
-                        top-1/2
-                        h-px
-                        w-[110px]
-                        origin-right
-                        bg-[#0B2A52]/12
-                        transition-colors
-                        duration-400
-                        group-hover:bg-[#B79A72]
-                      "
-                    />
+                          `}
+                        >
+                          <div className="overflow-hidden">
+                            <p
+                              className="
+                                max-w-[580px]
+                                pt-3
+                                text-[13px]
+                                leading-[1.75]
+                                text-[#7187A2]
+                                sm:text-[14px]
+                              "
+                            >
+                              {item.description}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
 
-                    <div
-                      className="
-                        flex
-                        w-full
-                        items-center
-                        gap-6
-                        border-b
-                        border-[#0B2A52]/10
-                        py-6
-                        transition-all
-                        duration-500
-                        group-hover:border-[#B79A72]/60
-                      "
-                    >
-                      {/* NODE */}
+                      {/* Action */}
 
-                      <motion.span
-                        initial={{
-                          scale: 0,
-                          opacity: 0,
-                        }}
-                        animate={
-                          mapVisible
-                            ? {
-                                scale: 1,
-                                opacity: 1,
-                              }
-                            : {}
-                        }
-                        transition={{
-                          duration: reduceMotion ? 0 : 0.55,
-                          delay: reduceMotion
-                            ? 0
-                            : 0.32 + index * 0.1,
-                        }}
-                        className="
-                          relative
-                          z-20
+                      <span
+                        className={`
                           flex
-                          h-12
-                          w-12
+                          h-9
+                          w-9
                           shrink-0
                           items-center
                           justify-center
                           rounded-full
                           border
-                          border-[#0B2A52]/15
-                          bg-white
-                          shadow-[0_7px_20px_rgba(11,42,82,0.035)]
                           transition-all
-                          duration-400
-                          group-hover:border-[#B79A72]
-                          group-hover:shadow-[0_10px_25px_rgba(183,154,114,0.12)]
-                        "
+                          duration-300
+
+                          ${
+                            isActive
+                              ? `
+                                rotate-45
+                                border-[#678BAF]/35
+                                bg-white
+                                text-[#0B2A52]
+                                shadow-[0_6px_18px_rgba(11,42,82,0.06)]
+                              `
+                              : `
+                                border-transparent
+                                text-[#8CA5BE]
+                                group-hover:border-[#AFC5D9]/60
+                                group-hover:bg-white
+                                group-hover:text-[#0B2A52]
+                              `
+                          }
+                        `}
                       >
-                        <span
-                          className="
-                            h-[6px]
-                            w-[6px]
-                            rounded-full
-                            bg-[#0B2A52]
-                            transition-all
-                            duration-400
-                            group-hover:scale-150
-                            group-hover:bg-[#B79A72]
-                          "
+                        <ArrowUpRight
+                          className="h-4 w-4"
+                          strokeWidth={1.6}
                         />
-                      </motion.span>
-
-                      <div>
-                        <span
-                          className="
-                            text-[10px]
-                            font-semibold
-                            tracking-[0.18em]
-                            text-[#B79A72]
-                          "
-                        >
-                          {String(actualIndex + 1).padStart(2, "0")}
-                        </span>
-
-                        <p
-                          className="
-                            mt-3
-                            max-w-[430px]
-                            text-[16px]
-                            font-medium
-                            leading-7
-                            tracking-[-0.015em]
-                            text-[#0B2A52]/70
-                            transition-all
-                            duration-400
-                            group-hover:translate-x-1
-                            group-hover:text-[#0B2A52]
-                            xl:text-[17px]
-                          "
-                        >
-                          {item}
-                        </p>
-                      </div>
+                      </span>
                     </div>
-                  </motion.div>
+                  </motion.button>
                 );
               })}
             </div>
-          </div>
+          </motion.div>
+        </div>
 
-          {/* =====================================================
-              MOBILE / TABLET
-          ====================================================== */}
-
-          <div className="relative mt-9 lg:hidden">
-            {/* VERTICAL LINE */}
-
-            <motion.span
-              initial={{
-                scaleY: 0,
-              }}
-              animate={
-                mapVisible
-                  ? {
-                      scaleY: 1,
-                    }
-                  : {}
-              }
-              transition={{
-                duration: reduceMotion ? 0 : 1.2,
-                delay: 0.15,
-              }}
-              className="
-                absolute
-                bottom-7
-                left-[23px]
-                top-7
-                w-px
-                origin-top
-                bg-[#0B2A52]/10
-              "
-            />
-
-            <div className="space-y-2">
-              {audienceFit.map((item, index) => (
-                <motion.div
-                  key={item}
-                  initial={{
-                    opacity: 0,
-                    x: index % 2 === 0 ? -35 : 35,
-                    y: 18,
-                  }}
-                  animate={
-                    mapVisible
-                      ? {
-                          opacity: 1,
-                          x: 0,
-                          y: 0,
-                        }
-                      : {}
-                  }
-                  transition={{
-                    duration: reduceMotion ? 0 : 0.7,
-                    delay: reduceMotion
-                      ? 0
-                      : 0.18 + index * 0.08,
-                    ease: [0.22, 1, 0.36, 1],
-                  }}
-                  className="
-                    group
-                    relative
-                    flex
-                    items-center
-                    gap-5
-                  "
-                >
-                  {/* NODE */}
-
-                  <motion.span
-                    initial={{
-                      scale: 0,
-                      opacity: 0,
-                    }}
-                    animate={
-                      mapVisible
-                        ? {
-                            scale: 1,
-                            opacity: 1,
-                          }
-                        : {}
-                    }
-                    transition={{
-                      duration: reduceMotion ? 0 : 0.5,
-                      delay: reduceMotion
-                        ? 0
-                        : 0.25 + index * 0.08,
-                    }}
-                    className="
-                      relative
-                      z-10
-                      flex
-                      h-[47px]
-                      w-[47px]
-                      shrink-0
-                      items-center
-                      justify-center
-                      rounded-full
-                      border
-                      border-[#0B2A52]/15
-                      bg-white
-                      text-[9px]
-                      font-semibold
-                      text-[#B79A72]
-                      shadow-[0_5px_15px_rgba(11,42,82,0.03)]
-                      transition-all
-                      duration-400
-                      group-hover:border-[#0B2A52]
-                      group-hover:bg-[#0B2A52]
-                    "
-                  >
-                    {String(index + 1).padStart(2, "0")}
-                  </motion.span>
-
-                  {/* TEXT */}
-
-                  <div
-                    className="
-                      flex
-                      min-h-[88px]
-                      flex-1
-                      items-center
-                      border-b
-                      border-[#0B2A52]/10
-                      py-5
-                      transition-colors
-                      duration-400
-                      group-hover:border-[#B79A72]/60
-                    "
-                  >
-                    <p
-                      className="
-                        text-[14px]
-                        font-medium
-                        leading-6
-                        text-[#0B2A52]/68
-                        transition-colors
-                        duration-300
-                        group-hover:text-[#0B2A52]
-                        sm:text-[15px]
-                        sm:leading-7
-                      "
-                    >
-                      {item}
-                    </p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-
-            {/* MOBILE DIRECTION */}
-
-            <motion.div
-              initial={{
-                opacity: 0,
-                y: 30,
-                scale: 0.7,
-                rotate: -15,
-              }}
-              animate={
-                mapVisible
-                  ? {
-                      opacity: 1,
-                      y: 0,
-                      scale: 1,
-                      rotate: 0,
-                    }
-                  : {}
-              }
-              transition={{
-                duration: reduceMotion ? 0 : 0.7,
-                delay: 0.78,
-                type: reduceMotion ? undefined : "spring",
-              }}
-              className="
-                relative
-                z-20
-                mx-auto
-                mt-10
-                flex
-                w-fit
-                items-center
-                gap-4
-                bg-white
-                px-5
-              "
-            >
-              <span
-                className="
-                  flex
-                  h-12
-                  w-12
-                  items-center
-                  justify-center
-                  rounded-full
-                  bg-[#0B2A52]
-                  text-[#B79A72]
-                "
-              >
-                <Compass
-                  size={18}
-                  strokeWidth={1.5}
-                />
-              </span>
-
-              <div>
-                <p
-                  className="
-                    text-[9px]
-                    font-semibold
-                    uppercase
-                    tracking-[0.18em]
-                    text-[#B79A72]
-                  "
-                >
-                  Brand Direction
-                </p>
-
-                <p
-                  className="
-                    mt-1
-                    text-[12px]
-                    font-medium
-                    text-[#0B2A52]
-                  "
-                >
-                  From activity to intention.
-                </p>
-              </div>
-            </motion.div>
-          </div>
-        </motion.div>
-
-        {/* =======================================================
-            FINAL STATEMENT
-        ======================================================== */}
+        {/* =====================================================
+            CONCLUSION + CTA
+        ===================================================== */}
 
         <motion.div
-          ref={finalRef}
           initial={{
             opacity: 0,
-            y: 70,
-            scale: 0.98,
+            y: 30,
           }}
-          animate={
-            finalVisible
-              ? {
-                  opacity: 1,
-                  y: 0,
-                  scale: 1,
-                }
-              : {}
-          }
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{
+            once: true,
+            amount: 0.4,
+          }}
           transition={{
-            duration: reduceMotion ? 0 : 0.9,
+            duration: 0.75,
             ease: [0.22, 1, 0.36, 1],
           }}
           className="
-            relative
-            mx-auto
             mt-16
-            max-w-[1000px]
-            border-y
-            border-[#0B2A52]/12
-            py-9
+            border-t
+            border-[#D6E3EF]
+            pt-10
+
             sm:mt-20
-            sm:py-10
+            sm:pt-12
+
+            lg:flex
+            lg:items-end
+            lg:justify-between
+            lg:gap-12
           "
         >
-          <div
-            className="
-              grid
-              gap-5
-              sm:grid-cols-[auto_1fr]
-              sm:gap-7
-            "
-          >
-            {/* ICON */}
+          {/* Closing statement */}
 
-            <motion.span
-              initial={{
-                opacity: 0,
-                x: -40,
-                scale: 0.7,
-                rotate: -30,
-              }}
-              animate={
-                finalVisible
-                  ? {
-                      opacity: 1,
-                      x: 0,
-                      scale: 1,
-                      rotate: 0,
-                    }
-                  : {}
-              }
-              transition={{
-                duration: reduceMotion ? 0 : 0.65,
-                delay: 0.08,
-                type: reduceMotion ? undefined : "spring",
-                stiffness: 170,
-                damping: 15,
-              }}
+          <div className="max-w-[720px]">
+            <p
               className="
-                flex
-                h-12
-                w-12
-                items-center
-                justify-center
-                bg-[#0B2A52]
-                text-white
+                mb-4
+                text-[9px]
+                font-semibold
+                uppercase
+                tracking-[0.37em]
+                text-[#A0784F]
               "
             >
-              <motion.div
-                animate={
-                  !reduceMotion && finalVisible
-                    ? {
-                        rotate: [0, 8, -8, 0],
-                      }
-                    : {}
-                }
-                transition={{
-                  duration: 5,
-                  repeat: Infinity,
-                  delay: 0.8,
-                }}
-              >
-                <Compass
-                  size={18}
-                  strokeWidth={1.5}
-                />
-              </motion.div>
-            </motion.span>
+              The principle
+            </p>
 
-            {/* CONTENT */}
+            <h3
+              style={newYorkFont}
+              className="
+                text-[30px]
+                font-medium
+                leading-[1.08]
+                tracking-[-0.035em]
+                text-[#0B2A52]
 
-            <motion.div
-              initial={{
-                opacity: 0,
-                x: 45,
-              }}
-              animate={
-                finalVisible
-                  ? {
-                      opacity: 1,
-                      x: 0,
-                    }
-                  : {}
-              }
-              transition={{
-                duration: reduceMotion ? 0 : 0.7,
-                delay: 0.12,
-                ease: [0.22, 1, 0.36, 1],
-              }}
+                sm:text-[36px]
+                lg:text-[39px]
+              "
             >
-              <p
-                className="
-                  text-[8px]
-                  font-semibold
-                  uppercase
-                  tracking-[0.2em]
-                  text-[#B79A72]
-                "
-              >
-                Start With Direction
-              </p>
-
-              <p
-                className="
-                  mt-3
-                  max-w-[800px]
-                  text-[14px]
-                  leading-7
-                  text-[#0B2A52]/65
-                  sm:text-[15px]
-                "
-              >
-                Whether you are developing your social presence from the
-                beginning or improving an existing one, the first step is
-                understanding where your brand is now and where you want it
-                to go.
-              </p>
-            </motion.div>
+              You do not need more random activity.
+              <span className="text-[#B58B5C]">
+                {" "}
+                You need clearer direction.
+              </span>
+            </h3>
           </div>
 
-          {/* BOTTOM LINE */}
+          {/* CTA */}
 
-          <motion.span
-            initial={{
-              scaleX: 0,
-              opacity: 0,
-            }}
-            animate={
-              finalVisible
-                ? {
-                    scaleX: 1,
-                    opacity: 1,
-                  }
-                : {}
-            }
-            transition={{
-              duration: reduceMotion ? 0 : 0.9,
-              delay: 0.28,
-              ease: [0.22, 1, 0.36, 1],
-            }}
+          <div
             className="
-              absolute
-              bottom-0
-              left-1/2
-              h-[2px]
-              w-[150px]
-              origin-center
-              -translate-x-1/2
-              bg-[#B79A72]
+              mt-8
+              shrink-0
+              lg:mt-0
             "
-          />
+          >
+            <Link
+              href="/contact"
+              style={newYorkFont}
+              className="
+                group
+                relative
+                inline-flex
+                min-h-[46px]
+                items-center
+                justify-center
+                overflow-hidden
+
+                rounded-[16px]
+
+                border
+                border-[#6285AD]/30
+
+                bg-white/80
+
+                px-5
+                py-[11px]
+
+                text-[13px]
+                font-medium
+                tracking-[-0.01em]
+                text-[#0B2A52]
+
+                shadow-[0_8px_30px_rgba(11,42,82,0.08)]
+
+                backdrop-blur-[8px]
+
+                transition-all
+                duration-300
+                ease-out
+
+                hover:-translate-y-[2px]
+                hover:border-[#6285AD]/40
+                hover:bg-white
+                hover:shadow-[0_10px_35px_rgba(98,133,173,0.15)]
+
+                active:translate-y-0
+
+                sm:min-h-[48px]
+                sm:px-6
+                sm:py-3
+                sm:text-[14px]
+
+                md:text-[15px]
+              "
+            >
+              {/* STATIC SOFT BORDER */}
+              <span
+                className="
+                  pointer-events-none
+                  absolute
+                  inset-[2px]
+                  rounded-[13px]
+                  border
+                  border-white/60
+                "
+              />
+
+              {/* VERY SUBTLE INNER LIGHT */}
+              <span
+                className="
+                  pointer-events-none
+                  absolute
+                  inset-x-4
+                  top-0
+                  h-px
+                  bg-gradient-to-r
+                  from-transparent
+                  via-white
+                  to-transparent
+                "
+              />
+
+              <span
+                className="
+                  relative
+                  z-10
+                  whitespace-nowrap
+                  text-[#0B2A52]
+                "
+              >
+                Talk About My Social Media
+              </span>
+            </Link>
+          </div>
         </motion.div>
       </div>
     </section>

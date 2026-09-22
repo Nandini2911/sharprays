@@ -1,58 +1,21 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
 export default function AboutPage() {
-  const [screen, setScreen] = useState({
-    mobile: false,
-    tablet: false,
-    smallLaptop: false,
-    largeDesktop: false,
-    ultraWide: false,
-  });
-
-  useEffect(() => {
-    const updateScreen = () => {
-      const width = window.innerWidth;
-
-      setScreen({
-        mobile: width < 600,
-        tablet: width >= 600 && width < 1024,
-        smallLaptop: width >= 1024 && width < 1280,
-        largeDesktop: width >= 1800 && width < 3000,
-        ultraWide: width >= 3000,
-      });
-    };
-
-    updateScreen();
-
-    window.addEventListener("resize", updateScreen);
-
-    return () => {
-      window.removeEventListener("resize", updateScreen);
-    };
-  }, []);
-
-  const isMobile = screen.mobile;
-  const isTablet = screen.tablet;
-  const isSmallLaptop = screen.smallLaptop;
-  const isLargeDesktop = screen.largeDesktop;
-  const isUltraWide = screen.ultraWide;
-
   return (
     <main
-      style={{
-        position: "relative",
-        width: "100%",
-        minHeight: isMobile || isTablet ? "auto" : "100svh",
-        overflow: "hidden",
-        background: "#ffffff",
-        isolation: "isolate",
-      }}
+      className="
+        relative
+        isolate
+        w-full
+        overflow-hidden
+        bg-white
+
+        lg:min-h-[100svh]
+      "
     >
       {/* =====================================================
           FULL BACKGROUND IMAGE
@@ -61,20 +24,39 @@ export default function AboutPage() {
       <img
         src="/about/about_hero.png"
         alt=""
-        style={{
-          position: "absolute",
-          inset: 0,
-          width: "100%",
-          height: "100%",
-          objectFit: "cover",
-          objectPosition: isMobile
-            ? "60% center"
-            : isTablet
-            ? "58% center"
-            : "center center",
-          zIndex: -3,
-          display: "block",
-        }}
+        aria-hidden="true"
+        className="
+          pointer-events-none
+          absolute
+          inset-0
+          -z-30
+
+          h-full
+          w-full
+
+          object-cover
+
+          object-[60%_center]
+
+          sm:object-[58%_center]
+
+          lg:object-center
+        "
+      />
+
+      {/* =====================================================
+          VERY LIGHT OVERLAY
+      ====================================================== */}
+
+      <div
+        aria-hidden="true"
+        className="
+          pointer-events-none
+          absolute
+          inset-0
+          -z-20
+          bg-white/[0.02]
+        "
       />
 
       {/* =====================================================
@@ -82,65 +64,65 @@ export default function AboutPage() {
       ====================================================== */}
 
       <section
-        style={{
-          position: "relative",
-          zIndex: 2,
-          width: "100%",
-          maxWidth: isUltraWide
-            ? "2300px"
-            : isLargeDesktop
-            ? "2000px"
-            : "1800px",
-          minHeight: isMobile || isTablet ? "auto" : "100svh",
-          margin: "0 auto",
-          display: isMobile || isTablet ? "flex" : "grid",
-          flexDirection: isMobile || isTablet ? "column" : undefined,
-          gridTemplateColumns: isUltraWide
-            ? "0.9fr 1.1fr"
-            : isLargeDesktop
-            ? "0.9fr 1.1fr"
-            : isSmallLaptop
-            ? "0.98fr 1.02fr"
-            : "0.95fr 1.05fr",
-          alignItems: isMobile || isTablet ? "flex-start" : "center",
-          padding: isMobile
-            ? "75px 22px 0"
-            : isTablet
-            ? "80px 6% 35px"
-            : isSmallLaptop
-            ? "60px 5% 50px"
-            : isUltraWide
-            ? "100px 100px 80px"
-            : isLargeDesktop
-            ? "90px 7% 70px"
-            : "clamp(70px, 7vw, 125px) clamp(30px, 6.5vw, 110px) clamp(50px, 5vw, 90px)",
-          boxSizing: "border-box",
-        }}
+        className="
+          relative
+          z-10
+
+          mx-auto
+
+          grid
+          w-full
+          max-w-[1800px]
+          grid-cols-1
+          items-center
+
+          gap-6
+
+          px-4
+          pb-0
+          pt-[90px]
+
+          min-[375px]:px-5
+
+          sm:gap-8
+          sm:px-6
+          sm:pt-[105px]
+
+          md:px-8
+          md:pt-[115px]
+
+          lg:min-h-[100svh]
+          lg:grid-cols-[0.95fr_1.05fr]
+          lg:gap-4
+          lg:px-[5vw]
+          lg:pb-12
+          lg:pt-[120px]
+
+          xl:grid-cols-[0.92fr_1.08fr]
+          xl:gap-6
+          xl:px-[6vw]
+          xl:pb-16
+          xl:pt-[130px]
+
+          2xl:max-w-[2000px]
+          2xl:px-[7vw]
+        "
       >
         {/* ===================================================
             LEFT CONTENT
         ==================================================== */}
 
         <div
-          style={{
-            position: "relative",
-            zIndex: 10,
-            width: "100%",
-            maxWidth: isUltraWide
-              ? "820px"
-              : isLargeDesktop
-              ? "800px"
-              : isTablet
-              ? "620px"
-              : "760px",
-            paddingTop:
-              isMobile || isTablet
-                ? "0"
-                : isSmallLaptop
-                ? "15px"
-                : "clamp(10px, 3vw, 50px)",
-            boxSizing: "border-box",
-          }}
+          className="
+            relative
+            z-20
+
+            w-full
+            max-w-[760px]
+
+            lg:pb-8
+            xl:pb-10
+          "
         >
           {/* =================================================
               EYEBROW
@@ -160,106 +142,128 @@ export default function AboutPage() {
               ease,
               delay: 0.1,
             }}
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: isMobile
-                ? "11px"
-                : isTablet
-                ? "13px"
-                : "clamp(13px, 1.4vw, 22px)",
-              marginBottom: isMobile
-                ? "22px"
-                : isTablet
-                ? "22px"
-                : "clamp(22px, 2.2vw, 34px)",
-            }}
+            className="
+              mb-5
+
+              flex
+              w-fit
+              max-w-full
+              items-center
+
+              gap-2.5
+
+              sm:mb-6
+              sm:gap-3
+
+              md:mb-7
+
+              lg:mb-8
+              lg:gap-4
+            "
           >
             <span
-              style={{
-                width: isMobile
-                  ? "30px"
-                  : isTablet
-                  ? "35px"
-                  : "clamp(30px, 3vw, 48px)",
-                height: "1px",
-                flexShrink: 0,
-                background: "#b89a6a",
-              }}
-            />
+            className="
+              h-px
+              w-10
+
+              bg-gradient-to-r
+              from-transparent
+              to-[#B79A72]
+            "
+          />
 
             <p
-              style={{
-                margin: 0,
-                color: "#b89a6a",
-              
-                fontSize: isMobile
-                  ? "11px"
-                  : isTablet
-                  ? "12px"
-                  : "clamp(11px, 0.75vw, 15px)",
-                letterSpacing: isMobile
-                  ? "2.5px"
-                  : "clamp(2.5px, 0.35vw, 5px)",
-                lineHeight: 1.2,
-           
-              }}
+              className="
+                m-0
+                whitespace-nowrap
+
+                text-[9px]
+                font-medium
+                uppercase
+                leading-none
+                tracking-[0.2em]
+                text-[#B79A72]
+
+                min-[375px]:text-[10px]
+
+                sm:text-[11px]
+                sm:tracking-[0.23em]
+
+                md:text-[12px]
+
+                xl:text-[13px]
+              "
             >
-              ABOUT SHARPRAYS
+              About SharpRays
             </p>
+
+             <span
+            className="
+              h-px
+              w-10
+
+              bg-gradient-to-l
+              from-transparent
+              to-[#B79A72]
+            "
+          />
           </motion.div>
 
           {/* =================================================
               MAIN HEADING
           ================================================== */}
 
-        <motion.h1
-  initial={{
-    opacity: 0,
-    y: 55,
-  }}
-  animate={{
-    opacity: 1,
-    y: 0,
-  }}
-  transition={{
-    duration: 1,
-    ease,
-    delay: 0.22,
-  }}
-  className="
-    text-[2.2rem]
-    sm:text-[2.6rem]
-    md:text-[2.95rem]
-    lg:text-[3.1rem]
-    xl:text-[3.35rem]
-  "
-  style={{
-    margin: 0,
-    color: "#0b2a52",
-    fontFamily: "Georgia, 'Times New Roman', serif",
-    lineHeight: isMobile ? "1.01" : "0.99",
-    fontWeight: 500,
-    letterSpacing: isMobile
-      ? "-2px"
-      : "clamp(-3.5px, -0.22vw, -1.5px)",
-  }}
->
-  We Don’t Just
-  <br />
-  Do Marketing.
-  <br />
+          <motion.h1
+            initial={{
+              opacity: 0,
+              y: 55,
+            }}
+            animate={{
+              opacity: 1,
+              y: 0,
+            }}
+            transition={{
+              duration: 1,
+              ease,
+              delay: 0.22,
+            }}
+            className="
+              max-w-[820px]
 
-  <span style={{ color: "#b89a6a" }}>
-    We Build Meaningful
-  </span>
+              font-[var(--font-new-york)]
 
-  <br />
+              text-[2.15rem]
+              font-medium
+              leading-[0.98]
+              tracking-[-0.045em]
+              text-[#0B2A52]
 
-  <span style={{ color: "#b89a6a" }}>
-    Growth Engines.
-  </span>
-</motion.h1>
+              min-[375px]:text-[2.3rem]
+
+              sm:text-[2.6rem]
+
+              md:text-[2.95rem]
+
+              lg:text-[3.1rem]
+
+              xl:text-[3.35rem]
+            "
+          >
+            We Don&apos;t Just
+            <br />
+            Do Marketing.
+            <br />
+
+            <span className="text-[#B89A6A]">
+              We Build Meaningful
+            </span>
+
+            <br />
+
+            <span className="text-[#B89A6A]">
+              Growth Engines.
+            </span>
+          </motion.h1>
 
           {/* =================================================
               DIVIDER
@@ -281,22 +285,26 @@ export default function AboutPage() {
               ease,
               delay: 0.48,
             }}
-            style={{
-              width: isMobile
-                ? "32px"
-                : isTablet
-                ? "36px"
-                : "clamp(32px, 3vw, 46px)",
-              height: "2px",
-              marginTop: isMobile
-                ? "23px"
-                : "clamp(22px, 2vw, 31px)",
-              marginBottom: isMobile
-                ? "17px"
-                : "clamp(17px, 1.7vw, 24px)",
-              background: "#0b2a52",
-              transformOrigin: "left center",
-            }}
+            className="
+              mb-4
+              mt-5
+
+              h-[2px]
+              w-8
+
+              origin-left
+              bg-[#0B2A52]
+
+              sm:mb-5
+              sm:mt-6
+              sm:w-9
+
+              md:w-10
+
+              lg:mb-6
+              lg:mt-7
+              lg:w-12
+            "
           />
 
           {/* =================================================
@@ -317,32 +325,31 @@ export default function AboutPage() {
               ease,
               delay: 0.56,
             }}
-            style={{
-              width: "100%",
-              maxWidth: isUltraWide
-                ? "620px"
-                : isTablet
-                ? "520px"
-                : isSmallLaptop
-                ? "480px"
-                : "560px",
-              margin: 0,
-              color: "#35445a",
-              fontFamily: "Arial, Helvetica, sans-serif",
-              fontSize: isMobile
-                ? "14px"
-                : isTablet
-                ? "14px"
-                : isUltraWide
-                ? "18px"
-                : "clamp(14px, 0.95vw, 17px)",
-              lineHeight: isMobile ? "1.6" : "1.65",
-            }}
+            className="
+              max-w-[560px]
+
+              text-[13px]
+              leading-[1.65]
+              text-[#35445A]
+
+              min-[375px]:text-[14px]
+
+              sm:text-[15px]
+
+              md:max-w-[540px]
+              md:text-[16px]
+
+              lg:max-w-[500px]
+
+              xl:max-w-[560px]
+              xl:text-[17px]
+
+              2xl:text-[18px]
+            "
           >
-            SHARPRAYS is a digital growth company built
-            for brands that want more than activity, more
-            than attention, and more than another agency
-            on their vendor list.
+            SHARPRAYS is a digital growth company built for brands that want
+            more than activity, more than attention, and more than another
+            agency on their vendor list.
           </motion.p>
 
           {/* =================================================
@@ -363,21 +370,24 @@ export default function AboutPage() {
               ease,
               delay: 0.68,
             }}
-            style={{
-              display: "flex",
-              flexDirection: isMobile ? "column" : "row",
-              alignItems: isMobile ? "stretch" : "center",
-              flexWrap: isMobile ? "nowrap" : "wrap",
-              gap: isMobile
-                ? "10px"
-                : "clamp(10px, 1vw, 17px)",
-              width: isMobile ? "100%" : "auto",
-              marginTop: isMobile
-                ? "24px"
-                : "clamp(24px, 2.4vw, 34px)",
-            }}
+            className="
+              mt-6
+
+              flex
+              flex-wrap
+              items-center
+
+              gap-3
+
+              sm:mt-7
+              sm:gap-4
+
+              lg:mt-8
+            "
           >
-            {/* PRIMARY BUTTON */}
+            {/* =================================================
+                PRIMARY BUTTON
+            ================================================== */}
 
             <motion.a
               href="#people"
@@ -389,43 +399,114 @@ export default function AboutPage() {
               }}
               transition={{
                 duration: 0.25,
+                ease,
               }}
-              style={{
-                width: isMobile
-                  ? "100%"
-                  : isTablet
-                  ? "185px"
-                  : isSmallLaptop
-                  ? "195px"
-                  : "clamp(190px, 13vw, 220px)",
-                minHeight: isMobile ? "52px" : "54px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
-                gap: "20px",
-                padding: "0 clamp(18px, 1.5vw, 25px)",
-                borderRadius: "999px",
-                background: "#0b2a52",
-                color: "#ffffff",
-                textDecoration: "none",
-                fontFamily: "Arial, Helvetica, sans-serif",
-                fontSize: "clamp(13px, 0.82vw, 15px)",
-                fontWeight: 600,
-                boxSizing: "border-box",
-              }}
-            >
-              <span>Meet the People</span>
+              className="
+                group
+                relative
 
-              <ArrowRight
-                size={19}
-                color="#c5a873"
-                style={{
-                  flexShrink: 0,
-                }}
+                inline-flex
+
+                min-h-[44px]
+
+                items-center
+                justify-center
+
+                overflow-hidden
+
+                rounded-[16px]
+
+                border
+                border-[#6285AD]/30
+
+                bg-white/80
+
+                px-5
+                py-[10px]
+
+                text-[12px]
+                font-medium
+                tracking-[-0.01em]
+
+                text-[#0B2A52]
+
+                shadow-[0_8px_30px_rgba(11,42,82,0.08)]
+
+                backdrop-blur-[8px]
+
+                transition-all
+                duration-300
+                ease-out
+
+                hover:border-[#6285AD]/40
+                hover:bg-white
+                hover:shadow-[0_10px_35px_rgba(98,133,173,0.15)]
+
+                active:translate-y-0
+
+                min-[375px]:min-h-[46px]
+                min-[375px]:px-5
+                min-[375px]:py-[11px]
+                min-[375px]:text-[13px]
+
+                sm:min-h-[48px]
+                sm:px-6
+                sm:py-3
+                sm:text-[14px]
+
+                md:text-[15px]
+              "
+            >
+              {/* STATIC INNER BORDER */}
+
+              <span
+                aria-hidden="true"
+                className="
+                  pointer-events-none
+                  absolute
+                  inset-[2px]
+
+                  rounded-[13px]
+
+                  border
+                  border-white/60
+                "
               />
+
+              {/* TOP LIGHT */}
+
+              <span
+                aria-hidden="true"
+                className="
+                  pointer-events-none
+                  absolute
+                  inset-x-4
+                  top-0
+
+                  h-px
+
+                  bg-gradient-to-r
+                  from-transparent
+                  via-white
+                  to-transparent
+                "
+              />
+
+              <span
+                className="
+                  relative
+                  z-10
+                  whitespace-nowrap
+                  text-[#0B2A52]
+                "
+              >
+                Meet the People
+              </span>
             </motion.a>
 
-            {/* SECONDARY BUTTON */}
+            {/* =================================================
+                SECONDARY BUTTON
+            ================================================== */}
 
             <motion.a
               href="#approach"
@@ -437,43 +518,109 @@ export default function AboutPage() {
               }}
               transition={{
                 duration: 0.25,
+                ease,
               }}
-              style={{
-                width: isMobile
-                  ? "100%"
-                  : isTablet
-                  ? "170px"
-                  : isSmallLaptop
-                  ? "180px"
-                  : "clamp(175px, 12vw, 200px)",
-                minHeight: isMobile ? "52px" : "54px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
-                gap: "20px",
-                padding: "0 clamp(18px, 1.5vw, 25px)",
-                borderRadius: "999px",
-                border: "1px solid rgba(58,76,99,0.55)",
-                background: "rgba(255,255,255,0.38)",
-                color: "#0b2a52",
-                textDecoration: "none",
-                fontFamily: "Arial, Helvetica, sans-serif",
-                fontSize: "clamp(13px, 0.82vw, 15px)",
-                fontWeight: 600,
-                boxSizing: "border-box",
-                backdropFilter: "blur(5px)",
-                WebkitBackdropFilter: "blur(5px)",
-              }}
-            >
-              <span>Our Approach</span>
+              className="
+                group
+                relative
 
-              <ArrowRight
-                size={19}
-                color="#b89a6a"
-                style={{
-                  flexShrink: 0,
-                }}
+                inline-flex
+
+                min-h-[44px]
+
+                items-center
+                justify-center
+
+                overflow-hidden
+
+                rounded-[16px]
+
+                border
+                border-[#6285AD]/30
+
+                bg-white/80
+
+                px-5
+                py-[10px]
+
+                text-[12px]
+                font-medium
+                tracking-[-0.01em]
+
+                text-[#0B2A52]
+
+                shadow-[0_8px_30px_rgba(11,42,82,0.08)]
+
+                backdrop-blur-[8px]
+
+                transition-all
+                duration-300
+                ease-out
+
+                hover:border-[#6285AD]/40
+                hover:bg-white
+                hover:shadow-[0_10px_35px_rgba(98,133,173,0.15)]
+
+                active:translate-y-0
+
+                min-[375px]:min-h-[46px]
+                min-[375px]:px-5
+                min-[375px]:py-[11px]
+                min-[375px]:text-[13px]
+
+                sm:min-h-[48px]
+                sm:px-6
+                sm:py-3
+                sm:text-[14px]
+
+                md:text-[15px]
+              "
+            >
+              {/* STATIC INNER BORDER */}
+
+              <span
+                aria-hidden="true"
+                className="
+                  pointer-events-none
+                  absolute
+                  inset-[2px]
+
+                  rounded-[13px]
+
+                  border
+                  border-white/60
+                "
               />
+
+              {/* TOP LIGHT */}
+
+              <span
+                aria-hidden="true"
+                className="
+                  pointer-events-none
+                  absolute
+                  inset-x-4
+                  top-0
+
+                  h-px
+
+                  bg-gradient-to-r
+                  from-transparent
+                  via-white
+                  to-transparent
+                "
+              />
+
+              <span
+                className="
+                  relative
+                  z-10
+                  whitespace-nowrap
+                  text-[#0B2A52]
+                "
+              >
+                Our Approach
+              </span>
             </motion.a>
           </motion.div>
         </div>
@@ -496,46 +643,31 @@ export default function AboutPage() {
             ease,
             delay: 0.3,
           }}
-          style={{
-            position: "relative",
+          className="
+            pointer-events-none
+            relative
+            z-10
 
-            width: isMobile
-              ? "calc(100% + 44px)"
-              : isTablet
-              ? "100%"
-              : "100%",
+            flex
+            w-full
+            items-end
+            justify-center
 
-            height: isMobile
-              ? "390px"
-              : isTablet
-              ? "470px"
-              : isSmallLaptop
-              ? "600px"
-              : isUltraWide
-              ? "850px"
-              : isLargeDesktop
-              ? "820px"
-              : "min(76vh, 760px)",
+            h-[300px]
 
-            marginLeft: isMobile ? "-22px" : "0",
+            min-[375px]:h-[340px]
 
-            marginTop: isMobile
-              ? "8px"
-              : isTablet
-              ? "-10px"
-              : "0",
+            sm:h-[420px]
 
-            display: "flex",
-            alignItems: "flex-end",
-            justifyContent:
-              isMobile || isTablet
-                ? "center"
-                : "flex-end",
+            md:h-[500px]
 
-            pointerEvents: "none",
-            zIndex: 4,
-            flexShrink: 0,
-          }}
+            lg:h-[580px]
+            lg:justify-end
+
+            xl:h-[min(72vh,720px)]
+
+            2xl:h-[min(75vh,800px)]
+          "
         >
           <motion.img
             src="/about/about_right.png"
@@ -551,17 +683,20 @@ export default function AboutPage() {
               delay: 0.3,
               ease,
             }}
-            style={{
-              display: "block",
-              width: "100%",
-              height: "100%",
-              objectFit: "contain",
-              objectPosition:
-                isMobile || isTablet
-                  ? "center bottom"
-                  : "right bottom",
-              transformOrigin: "right bottom",
-            }}
+            className="
+              block
+
+              h-full
+              w-full
+
+              origin-bottom
+
+              object-contain
+              object-bottom
+
+              lg:origin-bottom-right
+              lg:object-right-bottom
+            "
           />
         </motion.div>
       </section>
