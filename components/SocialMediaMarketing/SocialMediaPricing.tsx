@@ -4,9 +4,9 @@ import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import {
   Check,
-  Sparkles,
-  SlidersHorizontal,
   Info,
+  SlidersHorizontal,
+  Sparkles,
 } from "lucide-react";
 
 /* =========================================================
@@ -35,17 +35,15 @@ const plans = [
       "Monthly content calendar",
       "Up to 12 content pieces per month",
       "Static posts and carousels",
-      "Caption writing",
-      "Basic creative direction",
       "Publishing and scheduling",
       "2 edited short-form videos / Reels",
-      "Basic community monitoring",
       "Monthly performance report",
     ],
     bestFor:
       "Startups and small businesses that want to move from inconsistent posting to a clearer social media system.",
     cta: "Start With Basic",
   },
+
   {
     name: "Pro",
     tagline: "Turn Content Into a Connected Growth System.",
@@ -54,15 +52,11 @@ const plans = [
     price: "₹29,999",
     highlighted: true,
     inclusions: [
-      "Everything in Basic",
       "Up to 2 social media platforms",
       "Up to 20 content pieces per month",
       "4–6 edited short-form videos / Reels",
       "Static posts, carousels and stories",
-      "Content pillar development",
-      "Platform-specific content planning",
       "Enhanced creative direction",
-      "Publishing and scheduling",
       "Community engagement",
       "Monthly optimization recommendations",
       "Performance and growth reporting",
@@ -72,6 +66,7 @@ const plans = [
       "Growing businesses that want social media to play a more consistent role in brand awareness, engagement and business growth.",
     cta: "Choose Pro",
   },
+
   {
     name: "Premium",
     tagline: "Build a Complete Social Media Engine.",
@@ -80,19 +75,15 @@ const plans = [
     price: "₹49,999",
     highlighted: false,
     inclusions: [
-      "Everything in Pro",
       "Up to 3 social media platforms",
       "Up to 30 content pieces per month",
       "8–10 edited short-form videos / Reels",
       "Campaign and launch content",
       "Advanced creative direction",
-      "Platform-specific content variations",
       "Active community management",
       "Monthly campaign planning",
       "Competitor and content opportunity review",
       "Detailed performance analysis",
-      "Regular strategy calls",
-      "Priority support",
     ],
     bestFor:
       "Brands that need a more complete social media function without building a full internal content and management team.",
@@ -100,35 +91,32 @@ const plans = [
   },
 ];
 
-const pricingFactors = [
-  "Number of social media platforms",
+const quoteFactors = [
+  "Number of platforms",
   "Monthly content volume",
-  "Video editing requirements",
+  "Reels and video requirements",
   "Creative complexity",
-  "Community management requirements",
+  "Community management",
   "Campaign frequency",
   "Approval workflow",
   "Reporting requirements",
 ];
 
-const exclusions = [
-  "Paid advertising spend",
+const separatelyQuoted = [
+  "Advertising spend",
   "Paid media management",
   "Influencer fees",
-  "Professional photography",
-  "Professional video shoots",
-  "Models, locations or production crews",
+  "Professional shoots",
+  "Models or production crews",
   "Travel expenses",
-  "Stock or licensed media",
-  "Third-party tools or subscriptions",
-  "Advanced animation or production-heavy video",
+  "Licensed media",
+  "Third-party tools",
 ];
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
 /* =========================================================
    REUSABLE BUTTON
-   SAME STYLE FOR EVERY CTA
 ========================================================= */
 
 function GlassButton({
@@ -145,10 +133,8 @@ function GlassButton({
       className="
         group
         relative
-
         inline-flex
         min-h-[46px]
-
         items-center
         justify-center
         overflow-hidden
@@ -191,7 +177,7 @@ function GlassButton({
         md:text-[15px]
       "
     >
-      {/* SOFT INNER BORDER */}
+      {/* INNER BORDER */}
 
       <span
         aria-hidden="true"
@@ -207,7 +193,7 @@ function GlassButton({
         "
       />
 
-      {/* INNER TOP LIGHT */}
+      {/* TOP LIGHT */}
 
       <span
         aria-hidden="true"
@@ -243,7 +229,7 @@ function GlassButton({
 }
 
 /* =========================================================
-   SECTION
+   MAIN SECTION
 ========================================================= */
 
 export default function SocialMediaPricing() {
@@ -266,7 +252,7 @@ export default function SocialMediaPricing() {
       "
     >
       {/* =====================================================
-          BACKGROUND DETAILS
+          BACKGROUND
       ===================================================== */}
 
       <div
@@ -286,6 +272,7 @@ export default function SocialMediaPricing() {
 
             h-[400px]
             w-[700px]
+
             -translate-x-1/2
 
             rounded-full
@@ -310,6 +297,7 @@ export default function SocialMediaPricing() {
             w-[600px]
 
             rounded-full
+
             border
             border-[#B79A72]/10
 
@@ -369,7 +357,7 @@ export default function SocialMediaPricing() {
             text-center
           "
         >
-          {/* eyebrow */}
+          {/* EYEBROW */}
 
           <div
             className="
@@ -423,7 +411,7 @@ export default function SocialMediaPricing() {
             />
           </div>
 
-          {/* heading */}
+          {/* HEADING */}
 
           <h2
             style={newYorkFont}
@@ -449,7 +437,7 @@ export default function SocialMediaPricing() {
             </span>
           </h2>
 
-          {/* description */}
+          {/* DESCRIPTION */}
 
           <p
             className="
@@ -555,7 +543,6 @@ export default function SocialMediaPricing() {
                       shadow-[0_10px_34px_rgba(11,42,82,0.05)]
 
                       hover:-translate-y-1
-
                       hover:border-[#B79A72]/40
 
                       hover:shadow-[0_16px_45px_rgba(11,42,82,0.08)]
@@ -563,7 +550,7 @@ export default function SocialMediaPricing() {
                 }
               `}
             >
-              {/* top accent */}
+              {/* TOP ACCENT */}
 
               <div
                 aria-hidden="true"
@@ -579,7 +566,7 @@ export default function SocialMediaPricing() {
                 `}
               />
 
-              {/* Most Popular */}
+              {/* MOST POPULAR */}
 
               {plan.highlighted && (
                 <div
@@ -628,7 +615,7 @@ export default function SocialMediaPricing() {
                 </div>
               )}
 
-              {/* content */}
+              {/* CONTENT */}
 
               <div
                 className="
@@ -642,7 +629,7 @@ export default function SocialMediaPricing() {
                   xl:p-7
                 "
               >
-                {/* name */}
+                {/* PLAN */}
 
                 <p
                   className="
@@ -656,7 +643,7 @@ export default function SocialMediaPricing() {
                   {plan.name}
                 </p>
 
-                {/* title */}
+                {/* TITLE */}
 
                 <h3
                   style={newYorkFont}
@@ -678,7 +665,7 @@ export default function SocialMediaPricing() {
                   {plan.tagline}
                 </h3>
 
-                {/* description */}
+                {/* DESCRIPTION */}
 
                 <p
                   className="
@@ -694,7 +681,7 @@ export default function SocialMediaPricing() {
                   {plan.description}
                 </p>
 
-                {/* price */}
+                {/* PRICE */}
 
                 <div
                   className="
@@ -760,7 +747,7 @@ export default function SocialMediaPricing() {
                   </div>
                 </div>
 
-                {/* What's Included */}
+                {/* INCLUDED */}
 
                 <div className="mt-5">
                   <p
@@ -783,7 +770,7 @@ export default function SocialMediaPricing() {
                       sm:space-y-3
                     "
                   >
-                    {plan.inclusions.map((item, itemIndex) => (
+                    {plan.inclusions.map((item) => (
                       <div
                         key={item}
                         className="
@@ -800,6 +787,7 @@ export default function SocialMediaPricing() {
                             h-[17px]
                             w-[17px]
                             shrink-0
+
                             items-center
                             justify-center
 
@@ -819,19 +807,13 @@ export default function SocialMediaPricing() {
                         </span>
 
                         <span
-                          className={`
+                          className="
                             text-[12.5px]
                             leading-[1.5]
+                            text-[#617991]
 
                             sm:text-[13px]
-
-                            ${
-                              itemIndex === 0 &&
-                              item.startsWith("Everything")
-                                ? "font-semibold text-[#0B2A52]"
-                                : "text-[#617991]"
-                            }
-                          `}
+                          "
                         >
                           {item}
                         </span>
@@ -840,7 +822,7 @@ export default function SocialMediaPricing() {
                   </div>
                 </div>
 
-                {/* best for */}
+                {/* BEST FOR */}
 
                 <div
                   className="
@@ -943,7 +925,7 @@ export default function SocialMediaPricing() {
             lg:p-8
           "
         >
-          {/* decoration */}
+          {/* DECORATION */}
 
           <div
             aria-hidden="true"
@@ -979,7 +961,7 @@ export default function SocialMediaPricing() {
               lg:gap-10
             "
           >
-            {/* copy */}
+            {/* COPY */}
 
             <div className="max-w-[760px]">
               <div className="flex items-center gap-2">
@@ -1041,7 +1023,7 @@ export default function SocialMediaPricing() {
               </p>
             </div>
 
-            {/* button */}
+            {/* CTA */}
 
             <div className="shrink-0">
               <GlassButton
@@ -1053,283 +1035,7 @@ export default function SocialMediaPricing() {
         </motion.div>
 
         {/* =====================================================
-            PRICING DETAILS
-        ===================================================== */}
-
-        <div
-          className="
-            mx-auto
-            mt-12
-
-            grid
-            w-full
-            max-w-[1180px]
-
-            gap-8
-
-            border-y
-            border-[#DCE6EF]
-
-            py-9
-
-            sm:mt-14
-            sm:py-10
-
-            lg:mt-16
-            lg:grid-cols-2
-            lg:gap-12
-            lg:py-12
-          "
-        >
-          {/* =================================================
-              PRICING FACTORS
-          ================================================= */}
-
-          <div>
-            <div
-              className="
-                flex
-                items-start
-                gap-3
-              "
-            >
-              <span
-                className="
-                  flex
-                  h-9
-                  w-9
-                  shrink-0
-                  items-center
-                  justify-center
-
-                  rounded-full
-
-                  bg-[#EDF5FB]
-
-                  text-[#0B2A52]
-                "
-              >
-                <SlidersHorizontal
-                  size={16}
-                  strokeWidth={1.6}
-                />
-              </span>
-
-              <div>
-                <p
-                  className="
-                    text-[8px]
-                    font-bold
-                    uppercase
-                    tracking-[0.2em]
-                    text-[#B79A72]
-
-                    sm:text-[9px]
-                  "
-                >
-                  Pricing Variables
-                </p>
-
-                <h3
-                  style={newYorkFont}
-                  className="
-                    mt-1
-
-                    text-[21px]
-                    font-medium
-                    leading-[1.2]
-                    tracking-[-0.025em]
-                    text-[#0B2A52]
-
-                    sm:text-[23px]
-                  "
-                >
-                  What Can Affect Pricing?
-                </h3>
-              </div>
-            </div>
-
-            <div
-              className="
-                mt-6
-
-                grid
-                gap-x-5
-                gap-y-2.5
-
-                sm:grid-cols-2
-              "
-            >
-              {pricingFactors.map((item) => (
-                <div
-                  key={item}
-                  className="
-                    flex
-                    items-start
-                    gap-3
-                  "
-                >
-                  <span
-                    className="
-                      mt-[7px]
-
-                      h-[5px]
-                      w-[5px]
-                      shrink-0
-
-                      rounded-full
-                      bg-[#B79A72]
-                    "
-                  />
-
-                  <span
-                    className="
-                      text-[12.5px]
-                      leading-[1.6]
-                      text-[#687F96]
-
-                      sm:text-[13px]
-                    "
-                  >
-                    {item}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* =================================================
-              EXCLUSIONS
-          ================================================= */}
-
-          <div
-            className="
-              border-t
-              border-[#DCE6EF]
-
-              pt-8
-
-              lg:border-l
-              lg:border-t-0
-              lg:pl-12
-              lg:pt-0
-            "
-          >
-            <div
-              className="
-                flex
-                items-start
-                gap-3
-              "
-            >
-              <span
-                className="
-                  flex
-                  h-9
-                  w-9
-                  shrink-0
-                  items-center
-                  justify-center
-
-                  rounded-full
-
-                  bg-[#FAF4ED]
-
-                  text-[#B18455]
-                "
-              >
-                <Info
-                  size={16}
-                  strokeWidth={1.7}
-                />
-              </span>
-
-              <div>
-                <p
-                  className="
-                    text-[8px]
-                    font-bold
-                    uppercase
-                    tracking-[0.2em]
-                    text-[#B79A72]
-
-                    sm:text-[9px]
-                  "
-                >
-                  Quoted Separately
-                </p>
-
-                <h3
-                  style={newYorkFont}
-                  className="
-                    mt-1
-
-                    text-[21px]
-                    font-medium
-                    leading-[1.2]
-                    tracking-[-0.025em]
-                    text-[#0B2A52]
-
-                    sm:text-[23px]
-                  "
-                >
-                  Not Included Unless Agreed Separately
-                </h3>
-              </div>
-            </div>
-
-            <div
-              className="
-                mt-6
-
-                grid
-                gap-x-5
-                gap-y-2.5
-
-                sm:grid-cols-2
-              "
-            >
-              {exclusions.map((item) => (
-                <div
-                  key={item}
-                  className="
-                    flex
-                    items-start
-                    gap-3
-                  "
-                >
-                  <span
-                    className="
-                      mt-[7px]
-
-                      h-[5px]
-                      w-[5px]
-                      shrink-0
-
-                      rounded-full
-                      bg-[#B79A72]
-                    "
-                  />
-
-                  <span
-                    className="
-                      text-[12.5px]
-                      leading-[1.6]
-                      text-[#687F96]
-
-                      sm:text-[13px]
-                    "
-                  >
-                    {item}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* =====================================================
-            FINAL STATEMENT
+            COMPACT PRICING + SCOPE NOTE
         ===================================================== */}
 
         <motion.div
@@ -1338,7 +1044,7 @@ export default function SocialMediaPricing() {
               ? false
               : {
                   opacity: 0,
-                  y: 26,
+                  y: 28,
                 }
           }
           whileInView={{
@@ -1347,160 +1053,508 @@ export default function SocialMediaPricing() {
           }}
           viewport={{
             once: true,
-            amount: 0.25,
+            amount: 0.2,
           }}
           transition={{
             duration: reduceMotion ? 0 : 0.75,
             ease,
           }}
           className="
+            relative
+
             mx-auto
-            mt-14
-            max-w-[850px]
+            mt-10
 
-            text-center
+            w-full
+            max-w-[1180px]
 
-            sm:mt-16
-            lg:mt-20
+            overflow-hidden
+
+            rounded-[22px]
+
+            border
+            border-[#D8E4EE]
+
+            bg-white
+
+            shadow-[0_12px_40px_rgba(11,42,82,0.055)]
+
+            sm:mt-12
+            sm:rounded-[24px]
+
+            lg:mt-14
           "
         >
-          <p
+          {/* BACKGROUND */}
+
+          <div
+            aria-hidden="true"
             className="
-              text-[9px]
-              font-bold
-              uppercase
-              tracking-[0.28em]
-              text-[#B79A72]
-            "
-          >
-            Clear Scope. Clear Pricing.
-          </p>
+              pointer-events-none
+              absolute
+              inset-0
 
-          <h3
-            style={newYorkFont}
+              bg-[linear-gradient(110deg,#F5FAFE_0%,#FFFFFF_50%,#FFF9F3_100%)]
+            "
+          />
+
+          {/* DECORATIVE CIRCLE */}
+
+          <div
+            aria-hidden="true"
             className="
-              mt-5
+              pointer-events-none
+              absolute
+              -right-[110px]
+              -top-[120px]
 
-              text-[29px]
-              font-medium
-              leading-[1.1]
-              tracking-[-0.04em]
-              text-[#0B2A52]
+              h-[280px]
+              w-[280px]
 
-              sm:text-[33px]
-              lg:text-[37px]
+              rounded-full
+
+              border
+              border-[#B79A72]/15
             "
-          >
-            Know What You&apos;re Paying For{" "}
-            <span className="text-[#B79A72]">
-              Before We Start.
-            </span>
-          </h3>
-
-          <p
-            className="
-              mx-auto
-              mt-5
-              max-w-[700px]
-
-              text-[13px]
-              leading-[1.8]
-              text-[#657C95]
-
-              sm:text-[14px]
-            "
-          >
-            Every Sharp Rays proposal clearly defines the platforms,
-            deliverables, responsibilities, approval process and agreed scope
-            before work begins.
-          </p>
-
-          {/* benefits */}
+          />
 
           <div
             className="
-              mt-5
+              relative
+              z-10
 
-              flex
-              flex-wrap
-              items-center
-              justify-center
+              p-5
 
-              gap-x-5
-              gap-y-2
-
-              text-[9px]
-              font-semibold
-              uppercase
-              tracking-[0.13em]
-              text-[#7C90A6]
-
-              sm:text-[10px]
+              sm:p-7
+              md:p-8
+              lg:p-9
             "
           >
-            <span>No unnecessary activity.</span>
+            {/* ===============================================
+                TOP
+            =============================================== */}
 
-            <span
-              aria-hidden="true"
+            <div
               className="
-                hidden
+                flex
+                flex-col
+                gap-5
 
-                h-1
-                w-1
-
-                rounded-full
-                bg-[#B79A72]
-
-                sm:block
+                md:flex-row
+                md:items-start
+                md:justify-between
+                md:gap-10
               "
-            />
+            >
+              <div className="max-w-[720px]">
+                {/* LABEL */}
 
-            <span>No unclear deliverables.</span>
+                <div
+                  className="
+                    flex
+                    items-center
+                    gap-2.5
+                  "
+                >
+                  <span
+                    className="
+                      flex
+                      h-9
+                      w-9
+                      shrink-0
+
+                      items-center
+                      justify-center
+
+                      rounded-full
+
+                      bg-[#EDF5FB]
+
+                      text-[#0B2A52]
+                    "
+                  >
+                    <Info
+                      size={15}
+                      strokeWidth={1.7}
+                    />
+                  </span>
+
+                  <span
+                    className="
+                      text-[8px]
+                      font-bold
+                      uppercase
+                      tracking-[0.22em]
+                      text-[#B79A72]
+
+                      sm:text-[9px]
+                    "
+                  >
+                    Pricing & Scope
+                  </span>
+                </div>
+
+                {/* HEADING */}
+
+                <h3
+                  style={newYorkFont}
+                  className="
+                    mt-4
+                    max-w-[700px]
+
+                    text-[25px]
+                    font-medium
+                    leading-[1.1]
+                    tracking-[-0.035em]
+                    text-[#0B2A52]
+
+                    sm:text-[29px]
+                    md:text-[31px]
+                  "
+                >
+                  Clear Scope Before the First Post Goes Live.
+                </h3>
+
+                {/* DESCRIPTION */}
+
+                <p
+                  className="
+                    mt-4
+                    max-w-[700px]
+
+                    text-[13px]
+                    leading-[1.75]
+                    text-[#657C95]
+
+                    sm:text-[14px]
+                  "
+                >
+                  Our packages are starting points. Final pricing is confirmed
+                  after we understand your platforms, monthly content volume,
+                  video requirements, community management needs and the level
+                  of ongoing support your business requires.
+                </p>
+              </div>
+
+              {/* CTA */}
+
+              <div className="shrink-0">
+                <GlassButton
+                  href="/contact"
+                  label="Talk About My Social Media"
+                />
+              </div>
+            </div>
+
+            {/* ===============================================
+                PRICING DETAILS
+            =============================================== */}
+
+            <div
+              className="
+                mt-7
+
+                grid
+                gap-7
+
+                border-t
+                border-[#DCE6EF]
+
+                pt-7
+
+                md:grid-cols-2
+                md:gap-10
+
+                lg:mt-8
+                lg:gap-14
+                lg:pt-8
+              "
+            >
+              {/* WHAT CHANGES PRICE */}
+
+              <div>
+                <p
+                  className="
+                    text-[8px]
+                    font-bold
+                    uppercase
+                    tracking-[0.2em]
+                    text-[#B79A72]
+
+                    sm:text-[9px]
+                  "
+                >
+                  What Can Change Your Quote
+                </p>
+
+                <div
+                  className="
+                    mt-4
+
+                    grid
+                    gap-x-5
+                    gap-y-2.5
+
+                    sm:grid-cols-2
+                  "
+                >
+                  {quoteFactors.map((item) => (
+                    <div
+                      key={item}
+                      className="
+                        flex
+                        items-start
+                        gap-2.5
+                      "
+                    >
+                      <span
+                        className="
+                          mt-[7px]
+
+                          h-[5px]
+                          w-[5px]
+                          shrink-0
+
+                          rounded-full
+
+                          bg-[#B79A72]
+                        "
+                      />
+
+                      <span
+                        className="
+                          text-[12px]
+                          leading-[1.6]
+                          text-[#687F96]
+
+                          sm:text-[12.5px]
+                        "
+                      >
+                        {item}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* QUOTED SEPARATELY */}
+
+              <div
+                className="
+                  border-t
+                  border-[#DCE6EF]
+
+                  pt-7
+
+                  md:border-l
+                  md:border-t-0
+                  md:pl-10
+                  md:pt-0
+
+                  lg:pl-14
+                "
+              >
+                <p
+                  className="
+                    text-[8px]
+                    font-bold
+                    uppercase
+                    tracking-[0.2em]
+                    text-[#B79A72]
+
+                    sm:text-[9px]
+                  "
+                >
+                  Usually Quoted Separately
+                </p>
+
+                <div
+                  className="
+                    mt-4
+
+                    grid
+                    gap-x-5
+                    gap-y-2.5
+
+                    sm:grid-cols-2
+                  "
+                >
+                  {separatelyQuoted.map((item) => (
+                    <div
+                      key={item}
+                      className="
+                        flex
+                        items-start
+                        gap-2.5
+                      "
+                    >
+                      <span
+                        className="
+                          mt-[7px]
+
+                          h-[5px]
+                          w-[5px]
+                          shrink-0
+
+                          rounded-full
+
+                          bg-[#B79A72]
+                        "
+                      />
+
+                      <span
+                        className="
+                          text-[12px]
+                          leading-[1.6]
+                          text-[#687F96]
+
+                          sm:text-[12.5px]
+                        "
+                      >
+                        {item}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* ===============================================
+                FINAL SCOPE
+            =============================================== */}
+
+            <div
+              className="
+                mt-7
+
+                flex
+                flex-col
+                gap-3
+
+                border-t
+                border-[#DCE6EF]
+
+                pt-6
+
+                sm:flex-row
+                sm:items-center
+                sm:justify-between
+                sm:gap-6
+              "
+            >
+              <p
+                className="
+                  max-w-[820px]
+
+                  text-[12px]
+                  leading-[1.7]
+                  text-[#657C95]
+
+                  sm:text-[13px]
+                "
+              >
+                Before work begins, your Sharp Rays proposal confirms the
+                platforms, deliverables, responsibilities, approval process,
+                exclusions and monthly investment — so both sides know exactly
+                what is included.
+              </p>
+
+              <p
+                className="
+                  shrink-0
+
+                  text-[8px]
+                  font-bold
+                  uppercase
+                  tracking-[0.18em]
+                  text-[#0B2A52]
+
+                  sm:text-right
+                "
+              >
+                Clear Scope. No Guesswork.
+              </p>
+            </div>
           </div>
+        </motion.div>
 
-          <p
+        {/* =====================================================
+            END NOTE
+        ===================================================== */}
+
+        <motion.div
+          initial={
+            reduceMotion
+              ? false
+              : {
+                  opacity: 0,
+                  y: 15,
+                }
+          }
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{
+            once: true,
+          }}
+          transition={{
+            duration: reduceMotion ? 0 : 0.65,
+            delay: reduceMotion ? 0 : 0.1,
+            ease,
+          }}
+          className="
+            mx-auto
+            mt-8
+
+            flex
+            max-w-[650px]
+            items-center
+            gap-3
+
+            sm:mt-10
+          "
+        >
+          <span
             className="
-              mx-auto
-              mt-5
-              max-w-[650px]
+              h-px
+              flex-1
 
-              text-[13px]
-              font-medium
-              leading-[1.7]
-              text-[#0B2A52]
-
-              sm:text-[14px]
+              bg-gradient-to-r
+              from-transparent
+              to-[#B79A72]/45
             "
-          >
-            Just the level of social media support your business actually
-            needs.
-          </p>
+          />
 
-          {/* final button */}
-
-          <div className="mt-7">
-            <GlassButton
-              href="/contact"
-              label="Talk About My Social Media"
-            />
-          </div>
-
-          <p
+          <span
             className="
-              mt-6
+              shrink-0
+
+              text-center
 
               text-[8px]
               font-semibold
               uppercase
-              tracking-[0.2em]
+              tracking-[0.18em]
               text-[#8295A8]
 
               sm:text-[9px]
-              sm:tracking-[0.27em]
+              sm:tracking-[0.24em]
             "
           >
             Strategy · Content · Community · Growth
-          </p>
+          </span>
+
+          <span
+            className="
+              h-px
+              flex-1
+
+              bg-gradient-to-l
+              from-transparent
+              to-[#B79A72]/45
+            "
+          />
         </motion.div>
       </div>
     </section>

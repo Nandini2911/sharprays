@@ -233,20 +233,38 @@ export default function SEOPerformanceSection() {
             {/* EYEBROW */}
 
             <div className="flex items-center gap-4">
-              <span className="h-px w-8 bg-[#C6A77A]" />
+          <span
+            className="
+              h-px
+              w-10
+
+              bg-gradient-to-r
+              from-transparent
+              to-[#B79A72]
+            "
+          />
 
               <span
                 className="
                   text-[10px]
-                  font-semibold
+               
                   tracking-[0.28em]
-                  text-[#9A6A35]
+                  text-[#B79A72]
                 "
               >
                 MARKETING ROI
               </span>
 
-              <span className="h-px w-8 bg-[#C6A77A]" />
+             <span
+            className="
+              h-px
+              w-10
+
+              bg-gradient-to-l
+              from-transparent
+              to-[#B79A72]
+            "
+          />
             </div>
 
             {/* HEADING */}
@@ -269,7 +287,7 @@ export default function SEOPerformanceSection() {
                 className="
                   mt-1
                   block
-                  text-[#B27642]
+                  text-[#B79A72]
                 "
               >
                 Business Impact
@@ -380,18 +398,7 @@ export default function SEOPerformanceSection() {
             lg:mt-10
           "
         >
-          <span
-            className="
-              [font-family:Georgia,'Times_New_Roman',serif]
-              text-[58px]
-              font-normal
-              leading-none
-              text-[#D6B787]
-              sm:text-[66px]
-            "
-          >
-            03
-          </span>
+      
 
           <span
             className="
@@ -848,22 +855,7 @@ function FocusCard({
         "
       >
         <div>
-          <span
-            className={`
-              [font-family:Georgia,'Times_New_Roman',serif]
-              text-[52px]
-              font-normal
-              leading-none
-
-              ${
-                isBlue
-                  ? "text-[#4C78AC]"
-                  : "text-[#B6793B]"
-              }
-            `}
-          >
-            {area.number}
-          </span>
+          
 
           <span
             className="

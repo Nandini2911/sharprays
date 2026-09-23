@@ -42,7 +42,7 @@ const steps: ProcessStep[] = [
     description:
       "We discuss your services, audience, website, competitors, objectives and current search performance.",
     icon: UsersRound,
-    image: "/services/seo-process-discover.png",
+    image: "/services/seo/seo1.png",
     imageAlt: "Discover, define and grow SEO planning visual",
     tone: "blue",
   },
@@ -53,7 +53,7 @@ const steps: ProcessStep[] = [
     description:
       "We review the website to identify technical, content and search visibility opportunities.",
     icon: FileSearch,
-    image: "/services/seo-process-audit.png",
+    image: "/services/seo/seo2.png",
     imageAlt: "SEO audit visual showing find, fix and grow",
     tone: "cream",
   },
@@ -64,7 +64,7 @@ const steps: ProcessStep[] = [
     description:
       "Recommendations are prioritized according to potential impact, business relevance and implementation requirements.",
     icon: Settings2,
-    image: "/services/seo-process-prioritize.png",
+    image: "/services/seo/seo3.png",
     imageAlt: "Plan, optimize and execute SEO strategy visual",
     tone: "blue",
   },
@@ -75,7 +75,7 @@ const steps: ProcessStep[] = [
     description:
       "Agreed technical, on-page, content and structural improvements are implemented or provided to the responsible team.",
     icon: ListChecks,
-    image: "/services/seo-process-optimize.png",
+    image: "/services/seo/seo4.png",
     imageAlt: "SEO strategy optimization checklist",
     tone: "cream",
   },
@@ -86,7 +86,7 @@ const steps: ProcessStep[] = [
     description:
       "We monitor relevant organic search indicators and identify further opportunities.",
     icon: BarChart3,
-    image: "/services/seo-process-measure.png",
+    image: "/services/seo/seo5.png",
     imageAlt: "Growing organic search visibility chart",
     tone: "blue",
   },
@@ -99,7 +99,7 @@ const steps: ProcessStep[] = [
     extra:
       "Insights from real performance guide the next priorities.",
     icon: RefreshCw,
-    image: "/services/seo-process-improve.png",
+    image: "/services/seo/seo6.png",
     imageAlt: "Better rankings and brighter opportunities visual",
     tone: "blue",
   },
@@ -118,7 +118,7 @@ export default function SEOProcessSection() {
       className="
         relative
         overflow-hidden
-        bg-[#FCFCFA]
+        bg-white
         py-24
         text-[#0B2A52]
         sm:py-28
@@ -175,134 +175,8 @@ export default function SEOProcessSection() {
         <div className="relative">
           {/* LEFT EDITORIAL NOTE */}
 
-          <motion.div
-            initial={{
-              opacity: 0,
-              x: reduceMotion ? 0 : -16,
-            }}
-            whileInView={{
-              opacity: 1,
-              x: 0,
-            }}
-            viewport={{
-              once: true,
-            }}
-            transition={{
-              duration: 0.75,
-              ease,
-            }}
-            className="
-              absolute
-              left-0
-              top-4
-              hidden
-              xl:block
-            "
-          >
-            <span
-              className="
-                block
-                text-[9px]
-                font-semibold
-                leading-[2.1]
-                tracking-[0.30em]
-                text-[#3976B6]/70
-              "
-            >
-              DATA
-              <br />
-              INSIGHTS
-              <br />
-              REAL
-              <br />
-              GROWTH
-            </span>
 
-            <span
-              className="
-                mt-4
-                block
-                h-px
-                w-7
-                bg-[#C6A77A]
-              "
-            />
-          </motion.div>
-
-          {/* RIGHT HANDWRITTEN NOTE */}
-
-          <motion.div
-            initial={{
-              opacity: 0,
-              x: reduceMotion ? 0 : 18,
-            }}
-            whileInView={{
-              opacity: 1,
-              x: 0,
-            }}
-            viewport={{
-              once: true,
-            }}
-            transition={{
-              duration: 0.8,
-              delay: 0.1,
-              ease,
-            }}
-            className="
-              absolute
-              right-1
-              top-1
-              hidden
-              rotate-[-5deg]
-              text-right
-              xl:block
-            "
-          >
-            <span
-              className="
-                [font-family:cursive]
-                text-[20px]
-                italic
-                leading-[1.35]
-                text-[#B67A3D]
-              "
-            >
-              Strategy
-              <br />
-              Today
-              <br />
-              Better Rankings
-              <br />
-              Tomorrow
-            </span>
-
-            <svg
-              viewBox="0 0 110 65"
-              className="
-                -ml-16
-                mt-1
-                h-[65px]
-                w-[110px]
-              "
-              fill="none"
-              aria-hidden="true"
-            >
-              <path
-                d="M105 5C92 24 72 45 21 52"
-                stroke="#B67A3D"
-                strokeWidth="1.4"
-                strokeLinecap="round"
-              />
-
-              <path
-                d="M27 46L20 52L28 57"
-                stroke="#B67A3D"
-                strokeWidth="1.4"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </motion.div>
+       
 
           {/* MAIN CENTER */}
 
@@ -330,20 +204,38 @@ export default function SEOProcessSection() {
             "
           >
             <div className="flex items-center justify-center gap-4">
-              <span className="h-px w-9 bg-[#C6A77A]" />
+         <span
+            className="
+              h-px
+              w-10
+
+              bg-gradient-to-r
+              from-transparent
+              to-[#B79A72]
+            "
+          />
 
               <span
                 className="
                   text-[10px]
-                  font-semibold
+              
                   tracking-[0.26em]
-                  text-[#A87846]
+                  text-[#B79A72]
                 "
               >
                 YOUR EXPERIENCE
               </span>
 
-              <span className="h-px w-9 bg-[#C6A77A]" />
+             <span
+            className="
+              h-px
+              w-10
+
+              bg-gradient-to-l
+              from-transparent
+              to-[#B79A72]
+            "
+          />
             </div>
 
             <h2
@@ -365,7 +257,7 @@ export default function SEOProcessSection() {
                 className="
                   mt-1
                   block
-                  text-[#BD8953]
+                  text-[#B79A72]
                 "
               >
                 Ongoing Improvement.
@@ -454,32 +346,9 @@ export default function SEOProcessSection() {
           </div>
 
           <div className="flex items-end gap-4">
-            <span
-              className="
-                [font-family:Georgia,'Times_New_Roman',serif]
-                text-[62px]
-                font-normal
-                leading-none
-                text-[#E2CBAE]
-              "
-            >
-              06
-            </span>
+            
 
-            <span
-              className="
-                pb-1
-                text-[9px]
-                font-semibold
-                leading-5
-                tracking-[0.16em]
-                text-[#0B2A52]/52
-              "
-            >
-              CONNECTED
-              <br />
-              STAGES
-            </span>
+           
           </div>
         </motion.div>
 
@@ -1119,17 +988,7 @@ function ProcessCopy({
 
       <div className="pt-1">
         <div className="flex items-end gap-3">
-          <span
-            className="
-              [font-family:Georgia,'Times_New_Roman',serif]
-              text-[42px]
-              font-normal
-              leading-none
-              text-[#E1C8AA]
-            "
-          >
-            {step.number}
-          </span>
+        
         </div>
 
         <span

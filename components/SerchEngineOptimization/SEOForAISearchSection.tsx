@@ -1,15 +1,9 @@
 "use client";
 
-import Image from "next/image";
 import type { LucideIcon } from "lucide-react";
-import { motion, useReducedMotion } from "framer-motion";
 import {
-  ArrowRight,
   BadgeCheck,
-  Bot,
   Building2,
-  Check,
-  CircleDot,
   FileText,
   Globe2,
   Link2,
@@ -17,167 +11,94 @@ import {
   Network,
   ScanText,
   Search,
-  ShieldCheck,
   Sparkles,
 } from "lucide-react";
 
+import {
+  motion,
+  useReducedMotion,
+} from "framer-motion";
+
+/* =========================================================
+   FONT
+========================================================= */
+
+const newYorkFont = {
+  fontFamily: '"New York", "Bodoni Moda", Georgia, serif',
+};
+
+/* =========================================================
+   ANIMATION
+========================================================= */
+
 const ease = [0.22, 1, 0.36, 1] as const;
 
-/* ============================================================
+/* =========================================================
    TYPES
-============================================================ */
-
-type SearchSurface = {
-  number: string;
-  label: string;
-  title: string;
-  icon: LucideIcon;
-};
-
-type Quality = {
-  number: string;
-  title: string;
-  text: string;
-  icon: LucideIcon;
-};
+========================================================= */
 
 type FocusItem = {
   number: string;
-  text: string;
+  title: string;
   icon: LucideIcon;
 };
 
-/* ============================================================
-   SEARCH SURFACES
-============================================================ */
-
-const searchSurfaces: SearchSurface[] = [
-  {
-    number: "01",
-    label: "GOOGLE SEARCH",
-    title: "Traditional Search",
-    icon: Search,
-  },
-  {
-    number: "02",
-    label: "AI OVERVIEWS",
-    title: "AI-Assisted Discovery",
-    icon: Sparkles,
-  },
-  {
-    number: "03",
-    label: "GENERATIVE DISCOVERY",
-    title: "Conversational Search",
-    icon: Bot,
-  },
-];
-
-/* ============================================================
-   SOURCE QUALITIES
-============================================================ */
-
-const qualities: Quality[] = [
-  {
-    number: "01",
-    title: "CLEAR",
-    text: "Clear enough to understand.",
-    icon: FileText,
-  },
-  {
-    number: "02",
-    title: "SPECIFIC",
-    text: "Specific enough to be useful.",
-    icon: CircleDot,
-  },
-  {
-    number: "03",
-    title: "STRUCTURED",
-    text: "Structured enough to navigate.",
-    icon: Network,
-  },
-  {
-    number: "04",
-    title: "ORIGINAL",
-    text: "Original enough to add something meaningful.",
-    icon: Sparkles,
-  },
-  {
-    number: "05",
-    title: "CREDIBLE",
-    text: "Credible enough to trust.",
-    icon: ShieldCheck,
-  },
-  {
-    number: "06",
-    title: "ACCESSIBLE",
-    text: "Technically accessible enough to discover.",
-    icon: Search,
-  },
-];
-
-/* ============================================================
-   AI SEARCH FOCUS
-============================================================ */
+/* =========================================================
+   DATA
+========================================================= */
 
 const focusItems: FocusItem[] = [
   {
     number: "01",
-    text: "Clear entity and business information",
+    title: "Clear business/entity information",
     icon: Building2,
   },
   {
     number: "02",
-    text: "Strong topical relationships",
-    icon: Network,
-  },
-  {
-    number: "03",
-    text: "Direct answers to important questions",
+    title: "Direct answers to useful questions",
     icon: MessageSquareText,
   },
   {
+    number: "03",
+    title: "Strong topical relationships",
+    icon: Network,
+  },
+  {
     number: "04",
-    text: "Expert-led service content",
+    title: "Original expert-led content",
     icon: BadgeCheck,
   },
   {
     number: "05",
-    text: "Original insights",
-    icon: Sparkles,
-  },
-  {
-    number: "06",
-    text: "Useful supporting evidence",
-    icon: ShieldCheck,
-  },
-  {
-    number: "07",
-    text: "Logical internal linking",
+    title: "Logical internal linking",
     icon: Link2,
   },
   {
-    number: "08",
-    text: "Crawlable text content",
+    number: "06",
+    title: "Crawlable text",
     icon: ScanText,
   },
   {
-    number: "09",
-    text: "Structured business information",
+    number: "07",
+    title: "Structured business information",
     icon: FileText,
   },
   {
-    number: "10",
-    text: "Consistent brand information across the web",
+    number: "08",
+    title: "Consistent brand information",
     icon: Globe2,
   },
 ];
 
-/* ============================================================
+/* =========================================================
    MAIN SECTION
-============================================================ */
+========================================================= */
 
 export default function SEOForAISearchSection() {
   const reduceMotion = useReducedMotion();
+
+  const leftItems = focusItems.slice(0, 4);
+  const rightItems = focusItems.slice(4);
 
   return (
     <section
@@ -185,85 +106,47 @@ export default function SEOForAISearchSection() {
       className="
         relative
         overflow-hidden
-        bg-gradient-to-b
-        from-white
-        via-[#FAFCFF]
-        to-[#FBF9F5]
-        py-24
+
+        bg-white
+
+        py-20
         text-[#0B2A52]
-        sm:py-28
-        lg:py-36
+
+        sm:py-24
+        md:py-28
+        lg:py-32
+        xl:py-36
       "
     >
+     
       {/* =====================================================
-          BACKGROUND
-      ====================================================== */}
-
-      <div className="pointer-events-none absolute inset-0">
-        <div
-          className="
-            absolute
-            -left-52
-            top-[7%]
-            h-[520px]
-            w-[520px]
-            rounded-full
-            bg-[#3976B6]/[0.055]
-            blur-[150px]
-          "
-        />
-
-        <div
-          className="
-            absolute
-            -right-52
-            top-[40%]
-            h-[520px]
-            w-[520px]
-            rounded-full
-            bg-[#C6A77A]/[0.10]
-            blur-[150px]
-          "
-        />
-
-        <div
-          className="
-            absolute
-            bottom-[4%]
-            left-1/2
-            h-[420px]
-            w-[720px]
-            -translate-x-1/2
-            rounded-full
-            bg-[#3976B6]/[0.03]
-            blur-[160px]
-          "
-        />
-      </div>
-
-      {/* =====================================================
-          MAIN CONTAINER
-      ====================================================== */}
+          CONTAINER
+      ===================================================== */}
 
       <div
         className="
           relative
           z-10
+
           mx-auto
-          max-w-[1380px]
+          w-full
+          max-w-[1320px]
+
           px-5
-          sm:px-8
+          sm:px-7
+          md:px-8
           lg:px-12
+          xl:px-14
         "
       >
         {/* =====================================================
             HEADER
-        ====================================================== */}
+        ===================================================== */}
 
         <motion.div
           initial={{
             opacity: 0,
-            y: reduceMotion ? 0 : 24,
+            y: reduceMotion ? 0 : 28,
           }}
           whileInView={{
             opacity: 1,
@@ -271,135 +154,147 @@ export default function SEOForAISearchSection() {
           }}
           viewport={{
             once: true,
-            amount: 0.25,
+            amount: 0.2,
           }}
           transition={{
-            duration: 0.9,
+            duration: reduceMotion ? 0 : 0.8,
             ease,
           }}
           className="
             mx-auto
-            max-w-[1000px]
+            max-w-[960px]
+
             text-center
           "
         >
-          <div className="flex items-center justify-center gap-3">
-            <span className="h-px w-9 bg-[#C6A77A]" />
+          {/* EYEBROW */}
+
+          <div
+            className="
+              flex
+              items-center
+              justify-center
+              gap-3
+
+              sm:gap-4
+            "
+          >
+            <span
+              className="
+                h-px
+                w-7
+
+                bg-gradient-to-r
+                from-transparent
+                to-[#C6A77A]
+
+                sm:w-10
+              "
+            />
 
             <span
               className="
-                text-[10px]
-                font-semibold
-                tracking-[0.25em]
+                text-[9px]
+              
+                uppercase
+                tracking-[0.26em]
                 text-[#C6A77A]
+
+                sm:text-[10px]
+                sm:tracking-[0.34em]
               "
             >
-              SEARCH IS EVOLVING
+              Search Is Evolving
             </span>
 
-            <span className="h-px w-9 bg-[#C6A77A]" />
+            <span
+              className="
+                h-px
+                w-7
+
+                bg-gradient-to-l
+                from-transparent
+                to-[#B79A72]
+
+                sm:w-10
+              "
+            />
           </div>
 
+          {/* HEADING */}
+
           <h2
+            style={newYorkFont}
             className="
+              mx-auto
               mt-6
-              text-[2.2rem]
+              max-w-[930px]
+
+              text-[2.6rem]
               font-medium
-              leading-[1.08]
-              tracking-[-0.035em]
+              leading-[1]
+              tracking-[-0.045em]
               text-[#0B2A52]
-              sm:text-[2.6rem]
+
               md:text-[2.95rem]
               lg:text-[3.1rem]
               xl:text-[3.35rem]
             "
           >
             SEO for Google Search, AI Overviews and{" "}
-            <span className="text-[#C6A77A]">
+            <span className="text-[#B79A72]">
               Generative Discovery.
             </span>
           </h2>
 
+          {/* COPY */}
+
           <p
             className="
               mx-auto
-              mt-7
-              max-w-[830px]
-              text-[14px]
-              leading-7
-              text-[#0B2A52]/65
-              sm:text-[15px]
+              mt-6
+              max-w-[780px]
+
+              text-[13px]
+              leading-[1.8]
+              text-[#61758D]
+
+              sm:text-[14px]
+              md:text-[15px]
             "
           >
             People increasingly discover information through traditional
-            search results, AI Overviews, conversational search and other
-            AI-assisted experiences.
+            results and AI-assisted search experiences.
           </p>
 
-          {/* FORMAT STATEMENT */}
-
-          <div
+          <p
             className="
               mx-auto
-              mt-7
-              flex
-              max-w-[650px]
-              items-center
-              gap-5
+              mt-2
+              max-w-[830px]
+
+              text-[13px]
+              leading-[1.8]
+              text-[#61758D]
+
+              sm:text-[14px]
+              md:text-[15px]
             "
           >
-            <span
-              className="
-                h-px
-                flex-1
-                bg-gradient-to-r
-                from-transparent
-                to-[#0B2A52]/15
-              "
-            />
-
-            <div className="text-center">
-              <p
-                className="
-                  text-[13px]
-                  font-semibold
-                  text-[#0B2A52]
-                "
-              >
-                The format is changing.
-              </p>
-
-              <p
-                className="
-                  mt-1
-                  text-[12px]
-                  text-[#0B2A52]/55
-                "
-              >
-                The fundamentals of being a useful source are not.
-              </p>
-            </div>
-
-            <span
-              className="
-                h-px
-                flex-1
-                bg-gradient-to-l
-                from-transparent
-                to-[#0B2A52]/15
-              "
-            />
-          </div>
+            The format is changing, but the foundation remains similar:
+            useful information, clear site structure, crawlable content,
+            credible evidence and strong topic relationships.
+          </p>
         </motion.div>
 
         {/* =====================================================
-            MODERN SEARCH LANDSCAPE
-        ====================================================== */}
+            SECTION LABEL
+        ===================================================== */}
 
         <motion.div
           initial={{
             opacity: 0,
-            y: reduceMotion ? 0 : 28,
+            y: reduceMotion ? 0 : 16,
           }}
           whileInView={{
             opacity: 1,
@@ -407,566 +302,642 @@ export default function SEOForAISearchSection() {
           }}
           viewport={{
             once: true,
-            amount: 0.14,
           }}
           transition={{
-            duration: 0.9,
-            delay: 0.1,
+            duration: reduceMotion ? 0 : 0.7,
+            delay: reduceMotion ? 0 : 0.08,
             ease,
           }}
           className="
             mx-auto
-            mt-16
-            max-w-[1180px]
-            sm:mt-20
+            mt-12
+
+            flex
+            max-w-[1160px]
+
+            items-center
+            gap-4
+
+            sm:mt-14
+            lg:mt-18
           "
         >
-          {/* TOP BAR */}
-
-          <div
+          <span
             className="
-              flex
-              items-center
-              justify-between
-              border-b
-              border-[#0B2A52]/15
-              pb-5
+              text-[8px]
+              font-semibold
+              uppercase
+              tracking-[0.22em]
+              text-[#C6A77A]
+
+              sm:text-[9px]
             "
           >
-            <div className="flex items-center gap-3">
-              <span
-                className="
-                  h-2
-                  w-2
-                  rounded-full
-                  bg-[#C6A77A]
-                  shadow-[0_0_12px_rgba(198,167,122,0.5)]
-                "
-              />
+            Our Focus
+          </span>
 
-              <span
-                className="
-                  text-[10px]
-                  font-semibold
-                  tracking-[0.19em]
-                  text-[#0B2A52]/52
-                "
-              >
-                MODERN SEARCH LANDSCAPE
-              </span>
-            </div>
+          <span
+            className="
+              h-px
+              flex-1
 
-            <span
-              className="
-                hidden
-                text-[9px]
-                font-semibold
-                tracking-[0.15em]
-                text-[#0B2A52]/35
-                sm:block
-              "
-            >
-              DIFFERENT SURFACES · ONE STRONG SOURCE
-            </span>
-          </div>
+              bg-[#0B2A52]/10
+            "
+          />
 
-          {/* SEARCH SURFACES */}
+          <span
+            className="
+              hidden
 
-          <div className="grid md:grid-cols-3">
-            {searchSurfaces.map((item, index) => (
-              <SearchSurfaceBlock
+              text-[8px]
+              font-medium
+              uppercase
+              tracking-[0.16em]
+              text-[#0B2A52]/30
+
+              sm:block
+            "
+          >
+            One SEO Foundation
+          </span>
+        </motion.div>
+
+        {/* =====================================================
+            DESKTOP CONNECTED LAYOUT
+        ===================================================== */}
+
+        <div
+          className="
+            relative
+
+            mx-auto
+            mt-8
+
+            hidden
+            max-w-[1160px]
+
+            lg:grid
+            lg:grid-cols-[1fr_260px_1fr]
+            lg:items-center
+            lg:gap-8
+
+            xl:grid-cols-[1fr_290px_1fr]
+            xl:gap-10
+          "
+        >
+          {/* =================================================
+              LEFT FOCUS
+          ================================================= */}
+
+          <div className="space-y-2">
+            {leftItems.map((item, index) => (
+              <FocusRow
                 key={item.number}
                 item={item}
                 index={index}
+                side="left"
                 reduceMotion={!!reduceMotion}
               />
             ))}
           </div>
 
-          {/* CONNECTOR */}
+          {/* =================================================
+              CENTER CORE
+          ================================================= */}
 
-          <div
+          <motion.div
+            initial={{
+              opacity: 0,
+              scale: reduceMotion ? 1 : 0.86,
+            }}
+            whileInView={{
+              opacity: 1,
+              scale: 1,
+            }}
+            viewport={{
+              once: true,
+              amount: 0.3,
+            }}
+            transition={{
+              duration: reduceMotion ? 0 : 0.9,
+              delay: reduceMotion ? 0 : 0.12,
+              ease,
+            }}
             className="
               relative
-              mx-auto
-              hidden
-              h-[92px]
-              max-w-[850px]
-              md:block
+
+              flex
+              items-center
+              justify-center
             "
           >
-            <motion.span
-              initial={{
-                scaleY: 0,
-              }}
-              whileInView={{
-                scaleY: 1,
-              }}
-              viewport={{
-                once: true,
-              }}
-              transition={{
-                duration: 0.6,
-                delay: 0.12,
-                ease,
-              }}
-              className="
-                absolute
-                left-[16.66%]
-                top-0
-                h-[40px]
-                w-px
-                origin-top
-                bg-[#3976B6]/35
-              "
-            />
-
-            <motion.span
-              initial={{
-                scaleY: 0,
-              }}
-              whileInView={{
-                scaleY: 1,
-              }}
-              viewport={{
-                once: true,
-              }}
-              transition={{
-                duration: 0.6,
-                delay: 0.18,
-                ease,
-              }}
-              className="
-                absolute
-                left-1/2
-                top-0
-                h-[65px]
-                w-px
-                -translate-x-1/2
-                origin-top
-                bg-[#C6A77A]/70
-              "
-            />
-
-            <motion.span
-              initial={{
-                scaleY: 0,
-              }}
-              whileInView={{
-                scaleY: 1,
-              }}
-              viewport={{
-                once: true,
-              }}
-              transition={{
-                duration: 0.6,
-                delay: 0.24,
-                ease,
-              }}
-              className="
-                absolute
-                right-[16.66%]
-                top-0
-                h-[40px]
-                w-px
-                origin-top
-                bg-[#0B2A52]/30
-              "
-            />
-
-            <motion.span
-              initial={{
-                scaleX: 0,
-              }}
-              whileInView={{
-                scaleX: 1,
-              }}
-              viewport={{
-                once: true,
-              }}
-              transition={{
-                duration: 0.9,
-                delay: 0.28,
-                ease,
-              }}
-              className="
-                absolute
-                left-[16.66%]
-                right-[16.66%]
-                top-[39px]
-                h-px
-                origin-center
-                bg-gradient-to-r
-                from-[#3976B6]/35
-                via-[#C6A77A]/65
-                to-[#0B2A52]/30
-              "
-            />
-          </div>
-
-          {/* ONE IMAGE SOURCE VISUAL */}
-
-          <WebsiteSourceVisual
-            reduceMotion={!!reduceMotion}
-          />
-        </motion.div>
-
-        {/* =====================================================
-            SIX SOURCE QUALITIES
-        ====================================================== */}
-
-        <motion.div
-          initial={{
-            opacity: 0,
-            y: reduceMotion ? 0 : 28,
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
-          viewport={{
-            once: true,
-            amount: 0.12,
-          }}
-          transition={{
-            duration: 0.9,
-            ease,
-          }}
-          className="
-            mx-auto
-            mt-24
-            max-w-[1180px]
-            lg:mt-28
-          "
-        >
-          {/* HEADER */}
-
-          <div
-            className="
-              grid
-              gap-8
-              border-b
-              border-[#0B2A52]/15
-              pb-8
-              lg:grid-cols-[1fr_0.85fr]
-              lg:items-end
-            "
-          >
-            <div>
-              <div className="flex items-center gap-3">
-                <span className="h-px w-9 bg-[#C6A77A]" />
-
-                <span
-                  className="
-                    text-[10px]
-                    font-semibold
-                    tracking-[0.22em]
-                    text-[#C6A77A]
-                  "
-                >
-                  WHAT MAKES A SOURCE USEFUL?
-                </span>
-              </div>
-
-              <h3
-                className="
-                  mt-4
-                  max-w-[700px]
-                  text-[29px]
-                  font-medium
-                  leading-[1.15]
-                  tracking-[-0.032em]
-                  text-[#0B2A52]
-                  sm:text-[34px]
-                "
-              >
-                Six qualities that make content easier to understand,
-                trust and discover.
-              </h3>
-            </div>
-
-            <p
-              className="
-                max-w-[500px]
-                text-[14px]
-                leading-7
-                text-[#0B2A52]/62
-                lg:justify-self-end
-              "
-            >
-              Our approach focuses on creating content that is clear,
-              specific, structured, original, credible and technically
-              accessible.
-            </p>
-          </div>
-
-          {/* ===================================================
-              DESKTOP QUALITY PATH
-          =================================================== */}
-
-          <div
-            className="
-              relative
-              mt-16
-              hidden
-              lg:block
-            "
-          >
-            {/* SOURCE LABEL */}
+            {/* OUTER ORBIT */}
 
             <motion.div
-              initial={{
-                opacity: 0,
-                y: reduceMotion ? 0 : 12,
-              }}
-              whileInView={{
-                opacity: 1,
-                y: 0,
-              }}
-              viewport={{
-                once: true,
-              }}
+              animate={
+                reduceMotion
+                  ? undefined
+                  : {
+                      rotate: 360,
+                    }
+              }
               transition={{
-                duration: 0.7,
-                ease,
+                duration: 30,
+                repeat: Infinity,
+                ease: "linear",
               }}
               className="
-                mx-auto
-                mb-10
-                flex
-                w-fit
-                items-center
-                gap-4
+                pointer-events-none
+
+                absolute
+
+                h-[270px]
+                w-[270px]
+
                 rounded-full
+
                 border
-                border-[#0B2A52]/12
-                bg-white
-                px-5
-                py-3
-                shadow-[0_10px_30px_rgba(11,42,82,0.05)]
+                border-dashed
+                border-[#C6A77A]/25
+
+                xl:h-[300px]
+                xl:w-[300px]
               "
             >
+              <span
+                className="
+                  absolute
+                  left-1/2
+                  top-[-4px]
+
+                  h-2
+                  w-2
+
+                  -translate-x-1/2
+
+                  rounded-full
+
+                  bg-[#C6A77A]
+                "
+              />
+            </motion.div>
+
+            {/* INNER ORBIT */}
+
+            <div
+              className="
+                pointer-events-none
+
+                absolute
+
+                h-[225px]
+                w-[225px]
+
+                rounded-full
+
+                border
+                border-[#0B2A52]/[0.07]
+
+                xl:h-[250px]
+                xl:w-[250px]
+              "
+            />
+
+            {/* CORE */}
+
+            <div
+              className="
+                relative
+                z-10
+
+                flex
+                h-[180px]
+                w-[180px]
+
+                flex-col
+                items-center
+                justify-center
+
+                rounded-full
+
+                border
+                border-[#D6E2EC]
+
+                bg-white
+
+                p-6
+
+                text-center
+
+                shadow-[0_25px_65px_rgba(11,42,82,0.10)]
+
+                xl:h-[200px]
+                xl:w-[200px]
+              "
+            >
+              {/* INNER RING */}
+
               <div
+                aria-hidden="true"
+                className="
+                  pointer-events-none
+
+                  absolute
+                  inset-[7px]
+
+                  rounded-full
+
+                  border
+                  border-[#C6A77A]/30
+                "
+              />
+
+              <motion.div
+                animate={
+                  reduceMotion
+                    ? undefined
+                    : {
+                        scale: [1, 1.08, 1],
+                      }
+                }
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
                 className="
                   flex
                   h-10
                   w-10
+
                   items-center
                   justify-center
+
                   rounded-full
-                  bg-[#0B2A52]
-                  text-white
+
+                  bg-[#EDF5FB]
+
+                  text-[#0B2A52]
                 "
               >
-                <Globe2
-                  size={16}
-                  strokeWidth={1.6}
+                <Search
+                  size={17}
+                  strokeWidth={1.7}
                 />
-              </div>
+              </motion.div>
 
-              <div>
-                <p
-                  className="
-                    text-[9px]
-                    font-bold
-                    tracking-[0.17em]
-                    text-[#C6A77A]
-                  "
-                >
-                  ONE STRONG SOURCE
-                </p>
+              <span
+                className="
+                  mt-4
 
-                <p
-                  className="
-                    mt-1
-                    text-[13px]
-                    font-medium
-                    text-[#0B2A52]
-                  "
-                >
-                  Six qualities working together
-                </p>
-              </div>
-            </motion.div>
+                  text-[7px]
+                  font-semibold
+                  uppercase
+                  tracking-[0.22em]
+                  text-[#C6A77A]
+                "
+              >
+                One Foundation
+              </span>
 
-            {/* BASE LINE */}
+              <p
+                style={newYorkFont}
+                className="
+                  mt-2
 
-            <div
-              className="
-                absolute
-                left-[7%]
-                right-[7%]
-                top-[111px]
-                h-px
-                bg-[#0B2A52]/12
-              "
-            />
+                  text-[20px]
+                  font-medium
+                  leading-[1.05]
+                  tracking-[-0.03em]
+                  text-[#0B2A52]
 
-            {/* ACTIVE LINE */}
+                  xl:text-[22px]
+                "
+              >
+                Strong SEO
+              </p>
 
-            <motion.div
-              initial={{
-                scaleX: 0,
-              }}
-              whileInView={{
-                scaleX: 1,
-              }}
-              viewport={{
-                once: true,
-              }}
-              transition={{
-                duration: 1.4,
-                delay: 0.15,
-                ease,
-              }}
-              className="
-                absolute
-                left-[7%]
-                right-[7%]
-                top-[111px]
-                h-[2px]
-                origin-left
-                bg-gradient-to-r
-                from-[#3976B6]
-                via-[#0B2A52]
-                to-[#C6A77A]
-              "
-            />
+              <p
+                className="
+                  mt-2
 
-            {/* QUALITY POINTS */}
+                  max-w-[130px]
 
-            <div
-              className="
-                relative
-                grid
-                grid-cols-6
-                gap-5
-              "
-            >
-              {qualities.map((item, index) => (
-                <QualityPoint
-                  key={item.number}
-                  item={item}
-                  index={index}
-                  reduceMotion={!!reduceMotion}
-                />
-              ))}
+                  text-[9px]
+                  leading-[1.55]
+                  text-[#70859B]
+                "
+              >
+                Useful, clear and discoverable information.
+              </p>
             </div>
+          </motion.div>
 
-            {/* OUTCOME */}
+          {/* =================================================
+              RIGHT FOCUS
+          ================================================= */}
 
-            <motion.div
-              initial={{
-                opacity: 0,
-                y: reduceMotion ? 0 : 18,
-              }}
-              whileInView={{
-                opacity: 1,
-                y: 0,
-              }}
-              viewport={{
-                once: true,
-              }}
-              transition={{
-                duration: 0.8,
-                delay: 0.35,
-                ease,
-              }}
-              className="
-                mx-auto
-                mt-14
-                grid
-                max-w-[900px]
-                grid-cols-3
-                overflow-hidden
-                rounded-[22px]
-                border
-                border-[#0B2A52]/14
-                bg-gradient-to-r
-                from-[#EAF4FC]
-                via-white
-                to-[#F6E9D5]
-                shadow-[0_16px_45px_rgba(11,42,82,0.05)]
-              "
-            >
-              {[
-                ["01", "UNDERSTAND"],
-                ["02", "TRUST"],
-                ["03", "DISCOVER"],
-              ].map(([number, label], index) => (
-                <div
-                  key={label}
-                  className={`
-                    flex
-                    items-center
-                    justify-center
-                    gap-3
-                    px-5
-                    py-5
-
-                    ${
-                      index < 2
-                        ? "border-r border-[#0B2A52]/10"
-                        : ""
-                    }
-                  `}
-                >
-                  <span
-                    className="
-                      text-[10px]
-                      font-bold
-                      text-[#C6A77A]
-                    "
-                  >
-                    {number}
-                  </span>
-
-                  <span
-                    className="
-                      text-[11px]
-                      font-semibold
-                      tracking-[0.16em]
-                      text-[#0B2A52]/65
-                    "
-                  >
-                    {label}
-                  </span>
-                </div>
-              ))}
-            </motion.div>
+          <div className="space-y-2">
+            {rightItems.map((item, index) => (
+              <FocusRow
+                key={item.number}
+                item={item}
+                index={index}
+                side="right"
+                reduceMotion={!!reduceMotion}
+              />
+            ))}
           </div>
 
-          {/* MOBILE QUALITY PATH */}
+          {/* =================================================
+              CONNECTING LINES
+          ================================================= */}
 
           <div
+            aria-hidden="true"
             className="
-              mt-10
-              lg:hidden
+              pointer-events-none
+
+              absolute
+              left-[40.5%]
+              right-[40.5%]
+              top-1/2
+
+              -translate-y-1/2
             "
           >
             <div
               className="
-                relative
-                border-l
-                border-[#C6A77A]/40
-                pl-7
+                h-px
+                w-full
+
+                bg-gradient-to-r
+                from-[#0B2A52]/10
+                via-[#C6A77A]/55
+                to-[#0B2A52]/10
               "
-            >
-              {qualities.map((item, index) => (
-                <MobileQuality
-                  key={item.number}
-                  item={item}
-                  index={index}
-                  reduceMotion={!!reduceMotion}
-                />
-              ))}
-            </div>
+            />
           </div>
-        </motion.div>
+        </div>
 
         {/* =====================================================
-            EXPLANATION
-        ====================================================== */}
+            MOBILE + TABLET
+        ===================================================== */}
+
+        <div
+          className="
+            mx-auto
+            mt-7
+            max-w-[760px]
+
+            lg:hidden
+          "
+        >
+          {/* CORE */}
+
+          <motion.div
+            initial={{
+              opacity: 0,
+              scale: reduceMotion ? 1 : 0.9,
+            }}
+            whileInView={{
+              opacity: 1,
+              scale: 1,
+            }}
+            viewport={{
+              once: true,
+            }}
+            transition={{
+              duration: reduceMotion ? 0 : 0.75,
+              ease,
+            }}
+            className="
+              relative
+
+              mx-auto
+
+              flex
+              h-[145px]
+              w-[145px]
+
+              flex-col
+              items-center
+              justify-center
+
+              rounded-full
+
+              border
+              border-[#C6A77A]/35
+
+              bg-white
+
+              text-center
+
+              shadow-[0_18px_48px_rgba(11,42,82,0.08)]
+
+              sm:h-[160px]
+              sm:w-[160px]
+            "
+          >
+            <div
+              aria-hidden="true"
+              className="
+                pointer-events-none
+
+                absolute
+                inset-[6px]
+
+                rounded-full
+
+                border
+                border-[#0B2A52]/[0.07]
+              "
+            />
+
+            <span
+              className="
+                flex
+                h-9
+                w-9
+
+                items-center
+                justify-center
+
+                rounded-full
+
+                bg-[#EDF5FB]
+
+                text-[#0B2A52]
+              "
+            >
+              <Search
+                size={15}
+                strokeWidth={1.7}
+              />
+            </span>
+
+            <span
+              className="
+                mt-3
+
+                text-[7px]
+                font-semibold
+                uppercase
+                tracking-[0.19em]
+                text-[#C6A77A]
+              "
+            >
+              One Foundation
+            </span>
+
+            <p
+              style={newYorkFont}
+              className="
+                mt-1
+
+                text-[17px]
+                font-medium
+                text-[#0B2A52]
+              "
+            >
+              Strong SEO
+            </p>
+          </motion.div>
+
+          {/* CONNECTOR */}
+
+          <div
+            className="
+              mx-auto
+
+              h-9
+              w-px
+
+              bg-gradient-to-b
+              from-[#C6A77A]
+              to-[#0B2A52]/10
+            "
+          />
+
+          {/* ITEMS */}
+
+          <div
+            className="
+              grid
+              grid-cols-1
+
+              gap-2
+
+              sm:grid-cols-2
+              sm:gap-3
+            "
+          >
+            {focusItems.map((item, index) => {
+              const Icon = item.icon;
+
+              return (
+                <motion.div
+                  key={item.number}
+                  initial={{
+                    opacity: 0,
+                    y: reduceMotion ? 0 : 18,
+                  }}
+                  whileInView={{
+                    opacity: 1,
+                    y: 0,
+                  }}
+                  viewport={{
+                    once: true,
+                    amount: 0.15,
+                  }}
+                  transition={{
+                    duration: reduceMotion ? 0 : 0.55,
+                    delay: reduceMotion ? 0 : index * 0.04,
+                    ease,
+                  }}
+                  className="
+                    group
+
+                    flex
+                    min-h-[74px]
+
+                    items-center
+                    gap-3
+
+                    border-b
+                    border-[#0B2A52]/10
+
+                    py-4
+
+                    sm:min-h-[88px]
+                    sm:px-4
+                    sm:py-5
+                  "
+                >
+                  <span
+                    className="
+                      flex
+                      h-9
+                      w-9
+                      shrink-0
+
+                      items-center
+                      justify-center
+
+                      rounded-[11px]
+
+                      border
+                      border-[#D9E4ED]
+
+                      bg-white
+
+                      text-[#0B2A52]
+
+                      shadow-[0_5px_16px_rgba(11,42,82,0.04)]
+                    "
+                  >
+                    <Icon
+                      size={15}
+                      strokeWidth={1.6}
+                    />
+                  </span>
+
+                  <div className="min-w-0">
+                    <span
+                      className="
+                        text-[7px]
+                        font-semibold
+                        tracking-[0.17em]
+                        text-[#C6A77A]
+                      "
+                    >
+                      {item.number}
+                    </span>
+
+                    <p
+                      className="
+                        mt-1
+
+                        text-[12.5px]
+                        font-medium
+                        leading-[1.45]
+                        text-[#0B2A52]
+
+                        sm:text-[13px]
+                      "
+                    >
+                      {item.title}
+                    </p>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* =====================================================
+            FOUNDATION NOTE
+        ===================================================== */}
 
         <motion.div
           initial={{
@@ -979,78 +950,95 @@ export default function SEOForAISearchSection() {
           }}
           viewport={{
             once: true,
-            amount: 0.3,
+            amount: 0.25,
           }}
           transition={{
-            duration: 0.85,
+            duration: reduceMotion ? 0 : 0.75,
             ease,
           }}
           className="
-            relative
             mx-auto
-            mt-16
-            max-w-[1060px]
-            overflow-hidden
-            rounded-[28px]
-            border
-            border-[#0B2A52]/15
-            bg-gradient-to-r
-            from-[#E8F3FC]
-            via-white
-            to-[#F5E7D1]
-            px-7
-            py-8
-            shadow-[0_18px_50px_rgba(11,42,82,0.055)]
-            sm:px-10
+            mt-10
+            max-w-[900px]
+
+            text-center
+
+            sm:mt-12
+            lg:mt-14
           "
         >
-          <div
+          <p
             className="
-              grid
-              gap-6
-              sm:grid-cols-[auto_1fr]
-              sm:items-center
+              mx-auto
+              max-w-[760px]
+
+              text-[13px]
+              leading-[1.8]
+              text-[#61758D]
+
+              sm:text-[14px]
             "
           >
-            <div
-              className="
-                flex
-                h-12
-                w-12
-                shrink-0
-                items-center
-                justify-center
-                rounded-full
-                bg-[#0B2A52]
-                text-white
-                shadow-[0_9px_25px_rgba(11,42,82,0.15)]
-              "
-            >
-              <Sparkles
-                size={17}
-                strokeWidth={1.6}
-              />
-            </div>
+            We strengthen the underlying website first so its expertise,
+            services and information are easier to understand wherever search
+            happens.
+          </p>
 
-            <p
+          <div
+            className="
+              mx-auto
+              mt-5
+
+              flex
+              max-w-[520px]
+
+              items-center
+              gap-3
+            "
+          >
+            <span
               className="
-                text-[13px]
-                leading-7
-                text-[#0B2A52]/68
-                sm:text-[14px]
+                h-px
+                flex-1
+
+                bg-gradient-to-r
+                from-transparent
+                to-[#C6A77A]/50
+              "
+            />
+
+            <span
+              className="
+                shrink-0
+
+                text-[7px]
+                font-semibold
+                uppercase
+                tracking-[0.16em]
+                text-[#0B2A52]/35
+
+                sm:text-[8px]
               "
             >
-              Instead of creating separate content purely for algorithms or
-              AI systems, we strengthen the underlying website so its
-              expertise, services and information are easier to understand
-              across modern search experiences.
-            </p>
+              One Website · Multiple Discovery Surfaces
+            </span>
+
+            <span
+              className="
+                h-px
+                flex-1
+
+                bg-gradient-to-l
+                from-transparent
+                to-[#C6A77A]/50
+              "
+            />
           </div>
         </motion.div>
 
         {/* =====================================================
-            TEN AI SEARCH SIGNALS
-        ====================================================== */}
+            PRINCIPLE
+        ===================================================== */}
 
         <motion.div
           initial={{
@@ -1063,1037 +1051,111 @@ export default function SEOForAISearchSection() {
           }}
           viewport={{
             once: true,
-            amount: 0.1,
+            amount: 0.2,
           }}
           transition={{
-            duration: 0.9,
-            ease,
-          }}
-          className="
-            mx-auto
-            mt-24
-            max-w-[1180px]
-            lg:mt-28
-          "
-        >
-          {/* HEADER */}
-
-          <div
-            className="
-              grid
-              gap-8
-              border-b
-              border-[#0B2A52]/15
-              pb-9
-              lg:grid-cols-[1fr_auto]
-              lg:items-end
-            "
-          >
-            <div>
-              <div className="flex items-center gap-3">
-                <span className="h-px w-9 bg-[#C6A77A]" />
-
-                <span
-                  className="
-                    text-[10px]
-                    font-semibold
-                    tracking-[0.22em]
-                    text-[#C6A77A]
-                  "
-                >
-                  OUR FOCUS IN AI SEARCH
-                </span>
-              </div>
-
-              <h3
-                className="
-                  mt-4
-                  max-w-[760px]
-                  text-[29px]
-                  font-medium
-                  leading-[1.15]
-                  tracking-[-0.032em]
-                  text-[#0B2A52]
-                  sm:text-[34px]
-                "
-              >
-                Ten connected signals behind modern search visibility.
-              </h3>
-            </div>
-
-            <div className="flex items-center gap-4">
-              <div
-                className="
-                  flex
-                  h-14
-                  w-14
-                  items-center
-                  justify-center
-                  rounded-full
-                  border
-                  border-[#C6A77A]/50
-                  bg-[#F8F1E6]
-                "
-              >
-                <span
-                  className="
-                    text-[20px]
-                    font-medium
-                    text-[#0B2A52]
-                  "
-                >
-                  10
-                </span>
-              </div>
-
-              <div>
-                <p
-                  className="
-                    text-[10px]
-                    font-semibold
-                    tracking-[0.16em]
-                    text-[#0B2A52]
-                  "
-                >
-                  SEARCH READINESS
-                </p>
-
-                <p
-                  className="
-                    mt-1
-                    text-[10px]
-                    text-[#0B2A52]/45
-                  "
-                >
-                  Connected website signals
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* ===================================================
-              DESKTOP SIGNAL MAP
-          =================================================== */}
-
-          <div
-            className="
-              relative
-              mx-auto
-              mt-14
-              hidden
-              max-w-[1100px]
-              lg:block
-            "
-          >
-            {/* CENTRAL TRACK */}
-
-            <div
-              className="
-                absolute
-                bottom-[30px]
-                left-1/2
-                top-[30px]
-                w-px
-                -translate-x-1/2
-                bg-[#0B2A52]/12
-              "
-            />
-
-            <motion.div
-              initial={{
-                scaleY: 0,
-              }}
-              whileInView={{
-                scaleY: 1,
-              }}
-              viewport={{
-                once: true,
-                amount: 0.15,
-              }}
-              transition={{
-                duration: 1.5,
-                ease,
-              }}
-              className="
-                absolute
-                bottom-[30px]
-                left-1/2
-                top-[30px]
-                w-[2px]
-                -translate-x-1/2
-                origin-top
-                bg-gradient-to-b
-                from-[#3976B6]
-                via-[#0B2A52]
-                to-[#C6A77A]
-              "
-            />
-
-            {/* WEBSITE CORE */}
-
-            <motion.div
-              initial={{
-                opacity: 0,
-                scale: reduceMotion ? 1 : 0.92,
-              }}
-              whileInView={{
-                opacity: 1,
-                scale: 1,
-              }}
-              viewport={{
-                once: true,
-              }}
-              transition={{
-                duration: 0.7,
-                ease,
-              }}
-              className="
-                relative
-                z-20
-                mx-auto
-                mb-8
-                flex
-                w-fit
-                items-center
-                gap-4
-                rounded-full
-                border
-                border-[#0B2A52]/14
-                bg-white
-                px-6
-                py-4
-                shadow-[0_12px_35px_rgba(11,42,82,0.07)]
-              "
-            >
-              <div
-                className="
-                  flex
-                  h-11
-                  w-11
-                  items-center
-                  justify-center
-                  rounded-full
-                  bg-[#0B2A52]
-                  text-white
-                "
-              >
-                <Globe2
-                  size={17}
-                  strokeWidth={1.6}
-                />
-              </div>
-
-              <div>
-                <p
-                  className="
-                    text-[10px]
-                    font-bold
-                    tracking-[0.18em]
-                    text-[#C6A77A]
-                  "
-                >
-                  YOUR WEBSITE
-                </p>
-
-                <p
-                  className="
-                    mt-1
-                    text-[15px]
-                    font-medium
-                    text-[#0B2A52]
-                  "
-                >
-                  The connected source
-                </p>
-              </div>
-            </motion.div>
-
-            {/* SIGNAL PAIRS */}
-
-            <div className="relative z-10">
-              {Array.from({ length: 5 }).map((_, rowIndex) => {
-                const left = focusItems[rowIndex * 2];
-                const right = focusItems[rowIndex * 2 + 1];
-
-                return (
-                  <SignalPair
-                    key={rowIndex}
-                    left={left}
-                    right={right}
-                    rowIndex={rowIndex}
-                    reduceMotion={!!reduceMotion}
-                  />
-                );
-              })}
-            </div>
-
-            {/* RESULT */}
-
-            <motion.div
-              initial={{
-                opacity: 0,
-                y: reduceMotion ? 0 : 16,
-              }}
-              whileInView={{
-                opacity: 1,
-                y: 0,
-              }}
-              viewport={{
-                once: true,
-              }}
-              transition={{
-                duration: 0.75,
-                delay: 0.3,
-                ease,
-              }}
-              className="
-                relative
-                z-20
-                mx-auto
-                mt-8
-                flex
-                w-fit
-                items-center
-                gap-4
-                rounded-full
-                border
-                border-[#C6A77A]/40
-                bg-[#FCF7EF]
-                px-6
-                py-4
-              "
-            >
-              <Sparkles
-                size={16}
-                strokeWidth={1.6}
-                className="text-[#C6A77A]"
-              />
-
-              <span
-                className="
-                  text-[12px]
-                  font-semibold
-                  tracking-[0.08em]
-                  text-[#0B2A52]
-                "
-              >
-                CLEAR · CONNECTED · DISCOVERABLE
-              </span>
-            </motion.div>
-          </div>
-
-          {/* MOBILE SIGNAL MAP */}
-
-          <div className="mt-10 lg:hidden">
-            <div
-              className="
-                mb-7
-                flex
-                items-center
-                gap-4
-                rounded-[20px]
-                border
-                border-[#0B2A52]/14
-                bg-gradient-to-r
-                from-[#EAF4FC]
-                to-[#F8EFDF]
-                p-5
-              "
-            >
-              <div
-                className="
-                  flex
-                  h-11
-                  w-11
-                  items-center
-                  justify-center
-                  rounded-full
-                  bg-[#0B2A52]
-                  text-white
-                "
-              >
-                <Globe2 size={17} />
-              </div>
-
-              <div>
-                <p
-                  className="
-                    text-[10px]
-                    font-bold
-                    tracking-[0.16em]
-                    text-[#C6A77A]
-                  "
-                >
-                  YOUR WEBSITE
-                </p>
-
-                <p
-                  className="
-                    mt-1
-                    text-[14px]
-                    font-medium
-                  "
-                >
-                  One connected signal system.
-                </p>
-              </div>
-            </div>
-
-            <div
-              className="
-                relative
-                border-l
-                border-[#C6A77A]/40
-                pl-6
-              "
-            >
-              {focusItems.map((item, index) => (
-                <MobileSignal
-                  key={item.number}
-                  item={item}
-                  index={index}
-                  reduceMotion={!!reduceMotion}
-                />
-              ))}
-            </div>
-          </div>
-        </motion.div>
-
-        {/* =====================================================
-            FINAL PRINCIPLE
-        ====================================================== */}
-
-        <motion.div
-          initial={{
-            opacity: 0,
-            y: reduceMotion ? 0 : 30,
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
-          viewport={{
-            once: true,
-            amount: 0.22,
-          }}
-          transition={{
-            duration: 0.9,
+            duration: reduceMotion ? 0 : 0.8,
             ease,
           }}
           className="
             relative
+
             mx-auto
-            mt-24
-            max-w-[1120px]
-            lg:mt-28
+            mt-12
+
+            max-w-[1160px]
+
+            overflow-hidden
+
+            rounded-[22px]
+
+            border
+            border-[#D5E1EB]
+
+            bg-[linear-gradient(110deg,#EDF6FC_0%,#FFFFFF_52%,#FFF7EB_100%)]
+
+            shadow-[0_18px_55px_rgba(11,42,82,0.06)]
+
+            sm:mt-14
+            sm:rounded-[26px]
+
+            lg:mt-16
           "
         >
+          {/* DECORATION */}
+
+          <div
+            aria-hidden="true"
+            className="
+              pointer-events-none
+
+              absolute
+              -left-[130px]
+              top-1/2
+
+              h-[290px]
+              w-[290px]
+
+              -translate-y-1/2
+
+              rounded-full
+
+              border
+              border-[#0B2A52]/[0.05]
+            "
+          />
+
+          <div
+            aria-hidden="true"
+            className="
+              pointer-events-none
+
+              absolute
+              -right-[110px]
+              top-1/2
+
+              h-[280px]
+              w-[280px]
+
+              -translate-y-1/2
+
+              rounded-full
+
+              border
+              border-[#C6A77A]/15
+            "
+          />
+
+          {/* CONTENT */}
+
           <div
             className="
               relative
-              overflow-hidden
-              rounded-[36px]
-              border
-              border-[#0B2A52]/15
-              bg-gradient-to-r
-              from-[#E7F2FB]
-              via-white
-              to-[#F3E0BE]
-              shadow-[0_28px_75px_rgba(11,42,82,0.08)]
+              z-10
+
+              grid
+
+              gap-6
+
+              px-5
+              py-7
+
+              sm:px-7
+              sm:py-8
+
+              md:grid-cols-[auto_1fr]
+              md:items-center
+              md:gap-8
+              md:px-9
+
+              lg:px-11
+              lg:py-9
             "
           >
-            {/* DECOR */}
+            {/* LABEL */}
 
             <div
               className="
-                pointer-events-none
-                absolute
-                -left-32
-                top-1/2
-                h-[340px]
-                w-[340px]
-                -translate-y-1/2
-                rounded-full
-                border
-                border-[#3976B6]/10
-              "
-            />
-
-            <div
-              className="
-                pointer-events-none
-                absolute
-                -right-28
-                top-1/2
-                h-[320px]
-                w-[320px]
-                -translate-y-1/2
-                rounded-full
-                border
-                border-[#C6A77A]/15
-              "
-            />
-
-            <div
-              className="
-                relative
-                z-10
-                grid
-                lg:grid-cols-[1fr_110px_1fr]
-              "
-            >
-              {/* ALGORITHM-FIRST */}
-
-              <div
-                className="
-                  flex
-                  min-h-[300px]
-                  flex-col
-                  items-center
-                  justify-center
-                  px-7
-                  py-12
-                  text-center
-                "
-              >
-                <div
-                  className="
-                    flex
-                    h-12
-                    w-12
-                    items-center
-                    justify-center
-                    rounded-full
-                    border
-                    border-[#3976B6]/20
-                    bg-white/80
-                    text-[#3976B6]
-                  "
-                >
-                  <Bot
-                    size={18}
-                    strokeWidth={1.6}
-                  />
-                </div>
-
-                <p
-                  className="
-                    mt-5
-                    text-[10px]
-                    font-semibold
-                    tracking-[0.18em]
-                    text-[#0B2A52]/42
-                  "
-                >
-                  ALGORITHM-FIRST
-                </p>
-
-                <h3
-                  className="
-                    mt-4
-                    text-[28px]
-                    font-medium
-                    leading-[1.14]
-                    tracking-[-0.03em]
-                    text-[#0B2A52]
-                    sm:text-[33px]
-                  "
-                >
-                  Don&apos;t Write
-                  <br />
-                  for AI.
-                </h3>
-
-                <p
-                  className="
-                    mt-5
-                    max-w-[310px]
-                    text-[13px]
-                    leading-6
-                    text-[#0B2A52]/55
-                  "
-                >
-                  Avoid building content around individual algorithms or
-                  changing interfaces.
-                </p>
-              </div>
-
-              {/* TRANSITION */}
-
-              <div
-                className="
-                  flex
-                  items-center
-                  justify-center
-                  border-y
-                  border-[#0B2A52]/10
-                  py-7
-                  lg:border-x
-                  lg:border-y-0
-                  lg:py-0
-                "
-              >
-                <motion.div
-                  animate={
-                    reduceMotion
-                      ? undefined
-                      : {
-                          x: [0, 6, 0],
-                        }
-                  }
-                  transition={{
-                    duration: 2.4,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                  className="
-                    flex
-                    h-12
-                    w-12
-                    items-center
-                    justify-center
-                    rounded-full
-                    bg-[#0B2A52]
-                    text-white
-                    shadow-[0_9px_25px_rgba(11,42,82,0.16)]
-                  "
-                >
-                  <ArrowRight
-                    size={18}
-                    strokeWidth={1.7}
-                    className="rotate-90 lg:rotate-0"
-                  />
-                </motion.div>
-              </div>
-
-              {/* SOURCE-FIRST */}
-
-              <div
-                className="
-                  flex
-                  min-h-[300px]
-                  flex-col
-                  items-center
-                  justify-center
-                  px-7
-                  py-12
-                  text-center
-                "
-              >
-                <div
-                  className="
-                    flex
-                    h-12
-                    w-12
-                    items-center
-                    justify-center
-                    rounded-full
-                    bg-[#C6A77A]
-                    text-white
-                    shadow-[0_10px_28px_rgba(198,167,122,0.28)]
-                  "
-                >
-                  <Globe2
-                    size={18}
-                    strokeWidth={1.6}
-                  />
-                </div>
-
-                <p
-                  className="
-                    mt-5
-                    text-[10px]
-                    font-semibold
-                    tracking-[0.18em]
-                    text-[#C6A77A]
-                  "
-                >
-                  SOURCE-FIRST
-                </p>
-
-                <h3
-                  className="
-                    mt-4
-                    text-[28px]
-                    font-medium
-                    leading-[1.14]
-                    tracking-[-0.03em]
-                    text-[#C6A77A]
-                    sm:text-[33px]
-                  "
-                >
-                  Become a Source
-                  <br />
-                  Worth Using.
-                </h3>
-
-                <p
-                  className="
-                    mt-5
-                    max-w-[320px]
-                    text-[13px]
-                    leading-6
-                    text-[#0B2A52]/58
-                  "
-                >
-                  Build useful information that people, search engines and
-                  modern AI experiences can understand.
-                </p>
-              </div>
-            </div>
-
-            {/* FOOTER */}
-
-            <div
-              className="
-                relative
-                z-10
-                flex
-                flex-col
-                gap-4
-                border-t
-                border-[#0B2A52]/10
-                bg-white/45
-                px-7
-                py-5
-                sm:flex-row
-                sm:items-center
-                sm:justify-between
-              "
-            >
-              <div className="flex items-center gap-3">
-                <div
-                  className="
-                    flex
-                    h-8
-                    w-8
-                    items-center
-                    justify-center
-                    rounded-full
-                    bg-[#0B2A52]
-                    text-white
-                  "
-                >
-                  <Check
-                    size={13}
-                    strokeWidth={1.8}
-                  />
-                </div>
-
-                <span
-                  className="
-                    text-[10px]
-                    font-semibold
-                    tracking-[0.20em]
-                    text-[#C6A77A]
-                  "
-                >
-                  THE PRINCIPLE
-                </span>
-              </div>
-
-              <span
-                className="
-                  text-[9px]
-                  font-semibold
-                  tracking-[0.15em]
-                  text-[#0B2A52]/40
-                "
-              >
-                CLEAR · USEFUL · CREDIBLE · DISCOVERABLE
-              </span>
-            </div>
-          </div>
-        </motion.div>
-      </div>
-    </section>
-  );
-}
-
-/* ============================================================
-   SEARCH SURFACE BLOCK
-============================================================ */
-
-function SearchSurfaceBlock({
-  item,
-  index,
-  reduceMotion,
-}: {
-  item: SearchSurface;
-  index: number;
-  reduceMotion: boolean;
-}) {
-  const Icon = item.icon;
-
-  return (
-    <motion.div
-      initial={{
-        opacity: 0,
-        y: reduceMotion ? 0 : 16,
-      }}
-      whileInView={{
-        opacity: 1,
-        y: 0,
-      }}
-      viewport={{
-        once: true,
-        amount: 0.4,
-      }}
-      transition={{
-        duration: 0.65,
-        delay: index * 0.08,
-        ease,
-      }}
-      className={`
-        group
-        relative
-        py-9
-
-        ${
-          index < 2
-            ? "border-b border-[#0B2A52]/10 md:border-b-0 md:border-r"
-            : ""
-        }
-
-        ${
-          index === 0
-            ? "md:pr-8"
-            : index === 1
-              ? "md:px-8"
-              : "md:pl-8"
-        }
-      `}
-    >
-      <div className="flex items-center gap-4">
-        <div
-          className={`
-            flex
-            h-12
-            w-12
-            shrink-0
-            items-center
-            justify-center
-            rounded-full
-            text-white
-            shadow-[0_8px_24px_rgba(11,42,82,0.12)]
-
-            ${
-              index === 1
-                ? "bg-[#C6A77A]"
-                : index === 2
-                  ? "bg-[#0B2A52]"
-                  : "bg-[#3976B6]"
-            }
-          `}
-        >
-          <Icon
-            size={17}
-            strokeWidth={1.65}
-          />
-        </div>
-
-        <div>
-          <p
-            className="
-              text-[10px]
-              font-bold
-              tracking-[0.15em]
-              text-[#C6A77A]
-            "
-          >
-            {item.number} · {item.label}
-          </p>
-
-          <p
-            className="
-              mt-2
-              text-[16px]
-              font-medium
-              text-[#0B2A52]
-              sm:text-[17px]
-            "
-          >
-            {item.title}
-          </p>
-        </div>
-      </div>
-    </motion.div>
-  );
-}
-
-/* ============================================================
-   WEBSITE SOURCE VISUAL
-   ONE IMAGE ONLY
-============================================================ */
-
-function WebsiteSourceVisual({
-  reduceMotion,
-}: {
-  reduceMotion: boolean;
-}) {
-  return (
-    <motion.div
-      initial={{
-        opacity: 0,
-        y: reduceMotion ? 0 : 18,
-        scale: reduceMotion ? 1 : 0.98,
-      }}
-      whileInView={{
-        opacity: 1,
-        y: 0,
-        scale: 1,
-      }}
-      viewport={{
-        once: true,
-        amount: 0.25,
-      }}
-      transition={{
-        duration: 0.85,
-        delay: 0.2,
-        ease,
-      }}
-      className="
-        relative
-        mx-auto
-        max-w-[940px]
-      "
-    >
-      <div
-        className="
-          overflow-hidden
-          rounded-[32px]
-          border
-          border-[#0B2A52]/15
-          bg-white/85
-          shadow-[0_26px_70px_rgba(11,42,82,0.075)]
-        "
-      >
-        {/* ===================================================
-            TOP BAR
-        =================================================== */}
-
-        <div
-          className="
-            flex
-            items-center
-            justify-between
-            border-b
-            border-[#0B2A52]/10
-            bg-gradient-to-r
-            from-[#EAF4FC]
-            via-white
-            to-[#F8EFDF]
-            px-6
-            py-4
-          "
-        >
-          <div className="flex items-center gap-2">
-            <span className="h-2 w-2 rounded-full bg-[#3976B6]" />
-            <span className="h-2 w-2 rounded-full bg-[#C6A77A]" />
-            <span className="h-2 w-2 rounded-full bg-[#0B2A52]/20" />
-          </div>
-
-          <span
-            className="
-              text-[9px]
-              font-semibold
-              tracking-[0.16em]
-              text-[#0B2A52]/45
-            "
-          >
-            YOUR WEBSITE · THE SOURCE
-          </span>
-        </div>
-
-        {/* ===================================================
-            BODY
-        =================================================== */}
-
-        <div
-          className="
-            grid
-            lg:grid-cols-[0.9fr_1.1fr]
-          "
-        >
-          {/* LEFT CONTENT */}
-
-          <div
-            className="
-              flex
-              flex-col
-              justify-center
-              px-7
-              py-11
-              sm:px-10
-              lg:px-12
-              lg:py-14
-            "
-          >
-            <div
-              className="
-                flex
-                h-12
-                w-12
-                items-center
-                justify-center
-                rounded-full
-                bg-[#0B2A52]
-                text-white
-                shadow-[0_10px_28px_rgba(11,42,82,0.16)]
-              "
-            >
-              <Globe2
-                size={18}
-                strokeWidth={1.6}
-              />
-            </div>
-
-            <p
-              className="
-                mt-6
-                text-[10px]
-                font-bold
-                tracking-[0.18em]
-                text-[#C6A77A]
-              "
-            >
-              ONE STRONG SOURCE
-            </p>
-
-            <h3
-              className="
-                mt-3
-                text-[27px]
-                font-medium
-                leading-[1.15]
-                tracking-[-0.03em]
-                text-[#0B2A52]
-                sm:text-[30px]
-              "
-            >
-              Useful information,
-              <br />
-              wherever search happens.
-            </h3>
-
-            <p
-              className="
-                mt-5
-                max-w-[350px]
-                text-[13px]
-                leading-7
-                text-[#0B2A52]/62
-                sm:text-[14px]
-              "
-            >
-              Strengthen the website first, then make that information easier
-              to discover across Google Search, AI Overviews and generative
-              search experiences.
-            </p>
-
-            <div
-              className="
-                mt-7
                 flex
                 items-center
                 gap-3
@@ -2101,594 +1163,116 @@ function WebsiteSourceVisual({
             >
               <span
                 className="
-                  h-[2px]
-                  w-8
-                  bg-[#C6A77A]
-                "
-              />
+                  flex
+                  h-10
+                  w-10
+                  shrink-0
 
-              <span
-                className="
-                  text-[9px]
-                  font-semibold
-                  tracking-[0.14em]
-                  text-[#0B2A52]/42
-                "
-              >
-                ONE WEBSITE · MULTIPLE DISCOVERY SURFACES
-              </span>
-            </div>
-          </div>
+                  items-center
+                  justify-center
 
-          {/* =================================================
-              SINGLE IMAGE
-          ================================================= */}
+                  rounded-full
 
-          <div
-            className="
-              relative
-              flex
-              min-h-[380px]
-              items-center
-              justify-center
-              overflow-hidden
-              border-t
-              border-[#0B2A52]/10
-              bg-gradient-to-br
-              from-[#EEF6FD]
-              via-white
-              to-[#F8EEDC]
-              p-7
-              sm:p-9
-              lg:border-l
-              lg:border-t-0
-            "
-          >
-            {/* BLUE GLOW */}
+                  bg-[#0B2A52]
 
-            <div
-              className="
-                pointer-events-none
-                absolute
-                left-[5%]
-                top-[12%]
-                h-[220px]
-                w-[220px]
-                rounded-full
-                bg-[#3976B6]/10
-                blur-[70px]
-              "
-            />
+                  text-white
 
-            {/* GOLD GLOW */}
-
-            <div
-              className="
-                pointer-events-none
-                bottom-[5%]
-                right-[2%]
-                absolute
-                h-[200px]
-                w-[200px]
-                rounded-full
-                bg-[#C6A77A]/15
-                blur-[70px]
-              "
-            />
-
-            {/* BACKGROUND CIRCLE */}
-
-            <div
-              className="
-                pointer-events-none
-                absolute
-                left-1/2
-                top-1/2
-                h-[300px]
-                w-[300px]
-                -translate-x-1/2
-                -translate-y-1/2
-                rounded-full
-                border
-                border-[#0B2A52]/[0.06]
-              "
-            />
-
-            <div
-              className="
-                pointer-events-none
-                absolute
-                left-1/2
-                top-1/2
-                h-[220px]
-                w-[220px]
-                -translate-x-1/2
-                -translate-y-1/2
-                rounded-full
-                border
-                border-[#C6A77A]/12
-              "
-            />
-
-            {/* IMAGE */}
-
-            <motion.div
-              initial={{
-                opacity: 0,
-                y: reduceMotion ? 0 : 18,
-                scale: reduceMotion ? 1 : 0.96,
-              }}
-              whileInView={{
-                opacity: 1,
-                y: 0,
-                scale: 1,
-              }}
-              viewport={{
-                once: true,
-                amount: 0.3,
-              }}
-              transition={{
-                duration: 0.9,
-                delay: 0.18,
-                ease,
-              }}
-              animate={
-                reduceMotion
-                  ? undefined
-                  : {
-                      y: [0, -5, 0],
-                    }
-              }
-              className="
-                relative
-                z-10
-                w-full
-                max-w-[470px]
-              "
-            >
-              <Image
-                src="/services/seo/ai-overview.png"
-                alt="SEO for Google Search, AI Overviews and generative discovery"
-                width={800}
-                height={620}
-                className="
-                  h-auto
-                  w-full
-                  object-contain
-                  drop-shadow-[0_24px_38px_rgba(11,42,82,0.14)]
-                "
-              />
-            </motion.div>
-
-            {/* IMAGE LABEL */}
-
-            <div
-              className="
-                absolute
-                bottom-5
-                left-1/2
-                z-20
-                -translate-x-1/2
-                whitespace-nowrap
-                rounded-full
-                border
-                border-[#0B2A52]/10
-                bg-white/80
-                px-4
-                py-2
-                backdrop-blur-lg
-              "
-            >
-              <span
-                className="
-                  text-[9px]
-                  font-semibold
-                  tracking-[0.13em]
-                  text-[#0B2A52]/48
+                  shadow-[0_8px_24px_rgba(11,42,82,0.15)]
                 "
               >
-                SEARCH · AI OVERVIEWS · GENERATIVE DISCOVERY
+                <Sparkles
+                  size={15}
+                  strokeWidth={1.6}
+                />
               </span>
+
+              <div>
+                <p
+                  className="
+                    text-[8px]
+                    font-semibold
+                    uppercase
+                    tracking-[0.22em]
+                    text-[#C6A77A]
+
+                    sm:text-[9px]
+                  "
+                >
+                  The Principle
+                </p>
+
+                <p
+                  className="
+                    mt-1
+
+                    text-[9px]
+                    text-[#0B2A52]/38
+                  "
+                >
+                  Source-first SEO
+                </p>
+              </div>
             </div>
+
+            {/* MESSAGE */}
+
+            <h3
+              style={newYorkFont}
+              className="
+                text-[25px]
+                font-medium
+                leading-[1.1]
+                tracking-[-0.035em]
+                text-[#0B2A52]
+
+                sm:text-[28px]
+
+                md:text-right
+                md:text-[30px]
+
+                lg:text-[33px]
+              "
+            >
+              Don&apos;t Write for AI.{" "}
+              <span className="text-[#C6A77A]">
+                Become a Source Worth Using.
+              </span>
+            </h3>
           </div>
-        </div>
-
-        {/* BOTTOM MESSAGE */}
-
-        <div
-          className="
-            border-t
-            border-[#0B2A52]/10
-            bg-gradient-to-r
-            from-[#EAF4FC]
-            via-white
-            to-[#F8EEDC]
-            px-6
-            py-5
-            text-center
-          "
-        >
-          <p
-            className="
-              text-[12px]
-              font-medium
-              leading-6
-              text-[#0B2A52]/68
-              sm:text-[13px]
-            "
-          >
-            The format is changing. The fundamentals of being a useful source
-            are not.
-          </p>
-        </div>
+        </motion.div>
       </div>
-    </motion.div>
+    </section>
   );
 }
 
-/* ============================================================
-   QUALITY POINT
-============================================================ */
+/* =========================================================
+   DESKTOP FOCUS ROW
+========================================================= */
 
-function QualityPoint({
+function FocusRow({
   item,
   index,
-  reduceMotion,
-}: {
-  item: Quality;
-  index: number;
-  reduceMotion: boolean;
-}) {
-  const Icon = item.icon;
-
-  return (
-    <motion.div
-      initial={{
-        opacity: 0,
-        y: reduceMotion ? 0 : 18,
-      }}
-      whileInView={{
-        opacity: 1,
-        y: 0,
-      }}
-      viewport={{
-        once: true,
-        amount: 0.3,
-      }}
-      transition={{
-        duration: 0.6,
-        delay: index * 0.07,
-        ease,
-      }}
-      className="
-        group
-        relative
-        pt-[72px]
-        text-center
-      "
-    >
-      <div
-        className="
-          absolute
-          left-1/2
-          top-[46px]
-          z-10
-          flex
-          h-[54px]
-          w-[54px]
-          -translate-x-1/2
-          items-center
-          justify-center
-          rounded-full
-          border-[4px]
-          border-white
-          bg-[#EAF4FC]
-          text-[#3976B6]
-          shadow-[0_0_0_1px_rgba(11,42,82,0.11),0_8px_22px_rgba(11,42,82,0.08)]
-          transition-all
-          duration-300
-          group-hover:bg-[#0B2A52]
-          group-hover:text-white
-        "
-      >
-        <Icon
-          size={17}
-          strokeWidth={1.6}
-        />
-      </div>
-
-      <span
-        className="
-          mt-9
-          block
-          text-[10px]
-          font-bold
-          tracking-[0.16em]
-          text-[#C6A77A]
-        "
-      >
-        {item.number}
-      </span>
-
-      <h4
-        className="
-          mt-2
-          text-[12px]
-          font-bold
-          tracking-[0.13em]
-          text-[#0B2A52]
-        "
-      >
-        {item.title}
-      </h4>
-
-      <p
-        className="
-          mx-auto
-          mt-3
-          max-w-[170px]
-          text-[13px]
-          leading-6
-          text-[#0B2A52]/65
-        "
-      >
-        {item.text}
-      </p>
-    </motion.div>
-  );
-}
-
-/* ============================================================
-   MOBILE QUALITY
-============================================================ */
-
-function MobileQuality({
-  item,
-  index,
-  reduceMotion,
-}: {
-  item: Quality;
-  index: number;
-  reduceMotion: boolean;
-}) {
-  const Icon = item.icon;
-
-  return (
-    <motion.div
-      initial={{
-        opacity: 0,
-        x: reduceMotion ? 0 : 14,
-      }}
-      whileInView={{
-        opacity: 1,
-        x: 0,
-      }}
-      viewport={{
-        once: true,
-        amount: 0.35,
-      }}
-      transition={{
-        duration: 0.5,
-        delay: index * 0.04,
-        ease,
-      }}
-      className="
-        relative
-        flex
-        gap-4
-        border-b
-        border-[#0B2A52]/10
-        py-5
-      "
-    >
-      <span
-        className="
-          absolute
-          -left-[31px]
-          top-[31px]
-          h-2
-          w-2
-          rounded-full
-          bg-[#C6A77A]
-        "
-      />
-
-      <div
-        className="
-          flex
-          h-10
-          w-10
-          shrink-0
-          items-center
-          justify-center
-          rounded-full
-          bg-[#EAF4FC]
-          text-[#3976B6]
-        "
-      >
-        <Icon
-          size={15}
-          strokeWidth={1.6}
-        />
-      </div>
-
-      <div>
-        <div className="flex items-center gap-3">
-          <span
-            className="
-              text-[10px]
-              font-bold
-              text-[#C6A77A]
-            "
-          >
-            {item.number}
-          </span>
-
-          <h4
-            className="
-              text-[11px]
-              font-bold
-              tracking-[0.13em]
-              text-[#0B2A52]
-            "
-          >
-            {item.title}
-          </h4>
-        </div>
-
-        <p
-          className="
-            mt-2
-            text-[14px]
-            leading-6
-            text-[#0B2A52]/65
-          "
-        >
-          {item.text}
-        </p>
-      </div>
-    </motion.div>
-  );
-}
-
-/* ============================================================
-   SIGNAL PAIR
-============================================================ */
-
-function SignalPair({
-  left,
-  right,
-  rowIndex,
-  reduceMotion,
-}: {
-  left: FocusItem;
-  right: FocusItem;
-  rowIndex: number;
-  reduceMotion: boolean;
-}) {
-  return (
-    <div
-      className="
-        relative
-        grid
-        grid-cols-[1fr_100px_1fr]
-        items-center
-        py-5
-      "
-    >
-      <SignalNode
-        item={left}
-        side="left"
-        delay={rowIndex * 0.07}
-        reduceMotion={reduceMotion}
-      />
-
-      <div
-        className="
-          relative
-          flex
-          items-center
-          justify-center
-        "
-      >
-        <span
-          className="
-            absolute
-            left-0
-            right-1/2
-            h-px
-            bg-[#0B2A52]/12
-          "
-        />
-
-        <span
-          className="
-            absolute
-            left-1/2
-            right-0
-            h-px
-            bg-[#0B2A52]/12
-          "
-        />
-
-        <motion.span
-          initial={{
-            scale: 0,
-          }}
-          whileInView={{
-            scale: 1,
-          }}
-          viewport={{
-            once: true,
-          }}
-          transition={{
-            duration: 0.45,
-            delay: rowIndex * 0.07 + 0.14,
-            ease,
-          }}
-          className="
-            relative
-            z-20
-            flex
-            h-9
-            w-9
-            items-center
-            justify-center
-            rounded-full
-            border-[5px]
-            border-white
-            bg-[#C6A77A]
-            shadow-[0_0_0_1px_rgba(11,42,82,0.12)]
-          "
-        >
-          <span
-            className="
-              h-1.5
-              w-1.5
-              rounded-full
-              bg-white
-            "
-          />
-        </motion.span>
-      </div>
-
-      <SignalNode
-        item={right}
-        side="right"
-        delay={rowIndex * 0.07 + 0.04}
-        reduceMotion={reduceMotion}
-      />
-    </div>
-  );
-}
-
-/* ============================================================
-   SIGNAL NODE
-============================================================ */
-
-function SignalNode({
-  item,
   side,
-  delay,
   reduceMotion,
 }: {
   item: FocusItem;
+  index: number;
   side: "left" | "right";
-  delay: number;
   reduceMotion: boolean;
 }) {
   const Icon = item.icon;
+
+  const isLeft = side === "left";
 
   return (
     <motion.div
       initial={{
         opacity: 0,
-        x:
-          reduceMotion
-            ? 0
-            : side === "left"
-              ? -18
-              : 18,
+        x: reduceMotion
+          ? 0
+          : isLeft
+            ? -28
+            : 28,
       }}
       whileInView={{
         opacity: 1,
@@ -2696,207 +1280,203 @@ function SignalNode({
       }}
       viewport={{
         once: true,
-        amount: 0.35,
+        amount: 0.2,
       }}
       transition={{
-        duration: 0.55,
-        delay,
+        duration: reduceMotion ? 0 : 0.65,
+        delay: reduceMotion ? 0 : index * 0.07,
         ease,
       }}
       className={`
         group
+        relative
+
         flex
-        min-h-[84px]
+        min-h-[82px]
+
         items-center
-        gap-4
+
         border-b
         border-[#0B2A52]/10
+
         py-4
 
-        ${
-          side === "left"
-            ? "justify-end pr-5 text-right"
-            : "pl-5"
-        }
+        ${isLeft ? "justify-end" : "justify-start"}
       `}
     >
-      {side === "right" && (
-        <div
-          className="
-            flex
-            h-10
-            w-10
-            shrink-0
-            items-center
-            justify-center
-            rounded-full
-            bg-[#EAF4FC]
-            text-[#3976B6]
-            transition-all
-            duration-300
-            group-hover:bg-[#0B2A52]
-            group-hover:text-white
-          "
-        >
-          <Icon
-            size={15}
-            strokeWidth={1.6}
+      {/* LEFT SIDE */}
+
+      {isLeft && (
+        <>
+          <div className="min-w-0 text-right">
+            <span
+              className="
+                text-[7px]
+                font-semibold
+                tracking-[0.18em]
+                text-[#C6A77A]
+              "
+            >
+              {item.number}
+            </span>
+
+            <p
+              className="
+                mt-1
+
+                text-[13px]
+                font-medium
+                leading-[1.45]
+                text-[#0B2A52]
+
+                xl:text-[14px]
+              "
+            >
+              {item.title}
+            </p>
+          </div>
+
+          <div
+            className="
+              mx-4
+
+              h-px
+              w-8
+              shrink-0
+
+              bg-[#0B2A52]/12
+
+              transition-all
+              duration-400
+
+              group-hover:w-12
+              group-hover:bg-[#C6A77A]
+            "
           />
-        </div>
+
+          <span
+            className="
+              flex
+              h-10
+              w-10
+              shrink-0
+
+              items-center
+              justify-center
+
+              rounded-[12px]
+
+              border
+              border-[#D8E3EC]
+
+              bg-white
+
+              text-[#0B2A52]/65
+
+              shadow-[0_5px_18px_rgba(11,42,82,0.04)]
+
+              transition-all
+              duration-300
+
+              group-hover:border-[#C6A77A]/45
+              group-hover:bg-[#FFF9F1]
+              group-hover:text-[#C6A77A]
+            "
+          >
+            <Icon
+              size={16}
+              strokeWidth={1.6}
+            />
+          </span>
+        </>
       )}
 
-      <div>
-        <span
-          className="
-            text-[10px]
-            font-bold
-            text-[#C6A77A]
-          "
-        >
-          {item.number}
-        </span>
+      {/* RIGHT SIDE */}
 
-        <p
-          className="
-            mt-1
-            text-[14px]
-            font-medium
-            leading-6
-            text-[#0B2A52]/68
-            transition-colors
-            duration-300
-            group-hover:text-[#0B2A52]
-          "
-        >
-          {item.text}
-        </p>
-      </div>
+      {!isLeft && (
+        <>
+          <span
+            className="
+              flex
+              h-10
+              w-10
+              shrink-0
 
-      {side === "left" && (
-        <div
-          className="
-            flex
-            h-10
-            w-10
-            shrink-0
-            items-center
-            justify-center
-            rounded-full
-            bg-[#EAF4FC]
-            text-[#3976B6]
-            transition-all
-            duration-300
-            group-hover:bg-[#0B2A52]
-            group-hover:text-white
-          "
-        >
-          <Icon
-            size={15}
-            strokeWidth={1.6}
+              items-center
+              justify-center
+
+              rounded-[12px]
+
+              border
+              border-[#D8E3EC]
+
+              bg-white
+
+              text-[#0B2A52]/65
+
+              shadow-[0_5px_18px_rgba(11,42,82,0.04)]
+
+              transition-all
+              duration-300
+
+              group-hover:border-[#C6A77A]/45
+              group-hover:bg-[#FFF9F1]
+              group-hover:text-[#C6A77A]
+            "
+          >
+            <Icon
+              size={16}
+              strokeWidth={1.6}
+            />
+          </span>
+
+          <div
+            className="
+              mx-4
+
+              h-px
+              w-8
+              shrink-0
+
+              bg-[#0B2A52]/12
+
+              transition-all
+              duration-400
+
+              group-hover:w-12
+              group-hover:bg-[#C6A77A]
+            "
           />
-        </div>
+
+          <div className="min-w-0">
+            <span
+              className="
+                text-[7px]
+                font-semibold
+                tracking-[0.18em]
+                text-[#C6A77A]
+              "
+            >
+              {item.number}
+            </span>
+
+            <p
+              className="
+                mt-1
+
+                text-[13px]
+                font-medium
+                leading-[1.45]
+                text-[#0B2A52]
+
+                xl:text-[14px]
+              "
+            >
+              {item.title}
+            </p>
+          </div>
+        </>
       )}
-    </motion.div>
-  );
-}
-
-/* ============================================================
-   MOBILE SIGNAL
-============================================================ */
-
-function MobileSignal({
-  item,
-  index,
-  reduceMotion,
-}: {
-  item: FocusItem;
-  index: number;
-  reduceMotion: boolean;
-}) {
-  const Icon = item.icon;
-
-  return (
-    <motion.div
-      initial={{
-        opacity: 0,
-        x: reduceMotion ? 0 : 12,
-      }}
-      whileInView={{
-        opacity: 1,
-        x: 0,
-      }}
-      viewport={{
-        once: true,
-        amount: 0.35,
-      }}
-      transition={{
-        duration: 0.45,
-        delay: Math.min(index * 0.03, 0.18),
-        ease,
-      }}
-      className="
-        relative
-        flex
-        gap-4
-        border-b
-        border-[#0B2A52]/10
-        py-5
-      "
-    >
-      <span
-        className="
-          absolute
-          -left-[27px]
-          top-[31px]
-          h-2
-          w-2
-          rounded-full
-          bg-[#C6A77A]
-        "
-      />
-
-      <div
-        className="
-          flex
-          h-10
-          w-10
-          shrink-0
-          items-center
-          justify-center
-          rounded-full
-          bg-[#EAF4FC]
-          text-[#3976B6]
-        "
-      >
-        <Icon
-          size={15}
-          strokeWidth={1.6}
-        />
-      </div>
-
-      <div>
-        <span
-          className="
-            text-[10px]
-            font-bold
-            text-[#C6A77A]
-          "
-        >
-          {item.number}
-        </span>
-
-        <p
-          className="
-            mt-1
-            text-[14px]
-            font-medium
-            leading-6
-            text-[#0B2A52]/68
-          "
-        >
-          {item.text}
-        </p>
-      </div>
     </motion.div>
   );
 }

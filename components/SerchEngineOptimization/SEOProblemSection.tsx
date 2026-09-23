@@ -1,16 +1,35 @@
 "use client";
 
 import Image from "next/image";
+import { type ElementType } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import {
-  ArrowRight,
+  BriefcaseBusiness,
   FileText,
   Globe2,
   MousePointer2,
+  MousePointerClick,
+  Search,
   SearchCheck,
 } from "lucide-react";
 
+/* =========================================================
+   FONT
+========================================================= */
+
+const newYorkFont = {
+  fontFamily: '"New York", "Bodoni Moda", Georgia, serif',
+};
+
+/* =========================================================
+   ANIMATION
+========================================================= */
+
 const ease = [0.22, 1, 0.36, 1] as const;
+
+/* =========================================================
+   PROBLEM DATA
+========================================================= */
 
 const problems = [
   {
@@ -43,6 +62,48 @@ const problems = [
   },
 ];
 
+/* =========================================================
+   POV CONNECTIONS
+========================================================= */
+
+type Connection = {
+  number: string;
+  label: string;
+  title: string;
+  icon: ElementType;
+};
+
+const connections: Connection[] = [
+  {
+    number: "01",
+    label: "AUDIENCE SEARCHES",
+    title: "What your audience searches.",
+    icon: Search,
+  },
+  {
+    number: "02",
+    label: "BUSINESS OFFERS",
+    title: "What your business offers.",
+    icon: BriefcaseBusiness,
+  },
+  {
+    number: "03",
+    label: "WEBSITE COMMUNICATES",
+    title: "What your website communicates.",
+    icon: Globe2,
+  },
+  {
+    number: "04",
+    label: "NEXT ACTION",
+    title: "What action should happen next.",
+    icon: MousePointerClick,
+  },
+];
+
+/* =========================================================
+   MAIN SECTION
+========================================================= */
+
 export default function SEOProblemSection() {
   const reduceMotion = useReducedMotion();
 
@@ -57,7 +118,7 @@ export default function SEOProblemSection() {
       y: 0,
 
       transition: {
-        duration: 0.85,
+        duration: reduceMotion ? 0 : 0.8,
         ease,
       },
     },
@@ -69,92 +130,43 @@ export default function SEOProblemSection() {
       className="
         relative
         overflow-hidden
-        bg-[#FAFBFC]
-        py-24
+
+        bg-white
+
+      
         text-[#0B2A52]
-        sm:py-28
-        lg:py-36
+
+        sm:py-12
+        md:py-14
+        lg:py-16
+        xl:py-18
       "
     >
-      {/* =========================================================
-          BACKGROUND
-      ========================================================== */}
+      
 
-      <div
-        className="
-          pointer-events-none
-          absolute
-          -left-[230px]
-          top-[25%]
-          h-[480px]
-          w-[480px]
-          rounded-full
-          border
-          border-[#0B2A52]/[0.045]
-        "
-      />
-
-      <div
-        className="
-          pointer-events-none
-          absolute
-          -left-[150px]
-          top-[31%]
-          h-[320px]
-          w-[320px]
-          rounded-full
-          border
-          border-[#C6A77A]/10
-        "
-      />
-
-      <div
-        className="
-          pointer-events-none
-          absolute
-          -right-[180px]
-          bottom-[4%]
-          h-[420px]
-          w-[420px]
-          rounded-full
-          border
-          border-[#C6A77A]/12
-        "
-      />
-
-      <div
-        className="
-          pointer-events-none
-          absolute
-          left-1/2
-          top-[42%]
-          h-[520px]
-          w-[780px]
-          -translate-x-1/2
-          rounded-full
-          bg-[#0B2A52]/[0.035]
-          blur-[140px]
-        "
-      />
-
-      {/* =========================================================
+      {/* =====================================================
           CONTAINER
-      ========================================================== */}
+      ===================================================== */}
 
       <div
         className="
           relative
           z-10
+
           mx-auto
+          w-full
           max-w-[1320px]
+
           px-5
-          sm:px-8
+          sm:px-7
+          md:px-8
           lg:px-12
+          xl:px-14
         "
       >
-        {/* =======================================================
-            SECTION HEADING
-        ======================================================== */}
+        {/* =====================================================
+            PROBLEM HEADER
+        ===================================================== */}
 
         <motion.div
           initial="hidden"
@@ -164,14 +176,17 @@ export default function SEOProblemSection() {
             amount: 0.25,
           }}
           transition={{
-            staggerChildren: 0.1,
+            staggerChildren: 0.09,
           }}
           className="
             mx-auto
             max-w-[900px]
+
             text-center
           "
         >
+          {/* LABEL */}
+
           <motion.div
             variants={fadeUp}
             className="
@@ -181,59 +196,89 @@ export default function SEOProblemSection() {
               gap-3
             "
           >
-            <span className="h-px w-9 bg-[#C6A77A]" />
+           <span
+            className="
+              h-px
+              w-10
+
+              bg-gradient-to-r
+              from-transparent
+              to-[#B79A72]
+            "
+          />
 
             <span
               className="
                 text-[9px]
-                font-semibold
+              
+                uppercase
                 tracking-[0.28em]
-                text-[#C6A77A]
+                text-[#B79A72]
+
                 sm:text-[10px]
               "
             >
-              THE PROBLEM
+              The Problem
             </span>
 
-            <span className="h-px w-9 bg-[#C6A77A]" />
+            <span
+            className="
+              h-px
+              w-10
+
+              bg-gradient-to-l
+              from-transparent
+              to-[#B79A72]
+            "
+          />
           </motion.div>
 
-          {/* LOCKED HEADING SIZE */}
+          {/* HEADING */}
 
           <motion.h2
             variants={fadeUp}
+            style={newYorkFont}
             className="
+              mx-auto
               mt-6
-              text-[2.2rem]
-              font-medium
-              leading-[1.08]
-              tracking-[-0.035em]
+              max-w-[900px]
+
+              text-[2.6rem]
+             
+              leading-[1]
+              tracking-[-0.045em]
               text-[#0B2A52]
-              sm:text-[2.6rem]
+
               md:text-[2.95rem]
               lg:text-[3.1rem]
               xl:text-[3.35rem]
             "
           >
-            Having a Website Doesn’t Mean
-            <br className="hidden sm:block" />
-            {" "}People Can Find It.
+            Having a Website Doesn&apos;t Mean{" "}
+            <span className="text-[#B79A72]">
+              People Can Find It.
+            </span>
           </motion.h2>
+
+          {/* COPY */}
 
           <motion.p
             variants={fadeUp}
             className="
               mx-auto
               mt-6
-              max-w-[690px]
+              max-w-[700px]
+
               text-[13px]
-              leading-7
+              leading-[1.8]
               text-[#0B2A52]/60
-              sm:text-sm
+
+              sm:text-[14px]
+              lg:text-[15px]
             "
           >
             Your website can look polished, explain your services clearly and
-            still struggle to generate organic traffic.
+            still struggle to generate meaningful organic visibility.
           </motion.p>
 
           <motion.p
@@ -241,12 +286,14 @@ export default function SEOProblemSection() {
             className="
               mx-auto
               mt-2
-              max-w-[690px]
+              max-w-[700px]
+
               text-[13px]
               font-medium
-              leading-7
+              leading-[1.8]
               text-[#0B2A52]
-              sm:text-sm
+
+              sm:text-[14px]
             "
           >
             Because being online and being discoverable are two different
@@ -254,30 +301,41 @@ export default function SEOProblemSection() {
           </motion.p>
         </motion.div>
 
-        {/* =======================================================
-            MAIN VISUAL STORY
-        ======================================================== */}
+        {/* =====================================================
+            PROBLEM CONTENT
+        ===================================================== */}
 
         <div
           className="
-            mt-14
+            mt-12
+
             grid
+            grid-cols-1
+
             items-center
+
             gap-10
+
+            sm:mt-14
+
+            md:gap-12
+
             lg:mt-20
-            lg:grid-cols-[1.02fr_0.98fr]
-            lg:gap-12
+            lg:grid-cols-[0.92fr_1.08fr]
+            lg:gap-14
+
+            xl:gap-20
           "
         >
-          {/* =====================================================
-              LEFT VISUAL
-          ====================================================== */}
+          {/* =================================================
+              VISUAL
+          ================================================= */}
 
           <motion.div
             initial={{
               opacity: 0,
-              x: reduceMotion ? 0 : -45,
-              scale: reduceMotion ? 1 : 0.96,
+              x: reduceMotion ? 0 : -40,
+              scale: reduceMotion ? 1 : 0.97,
             }}
             whileInView={{
               opacity: 1,
@@ -286,28 +344,39 @@ export default function SEOProblemSection() {
             }}
             viewport={{
               once: true,
-              amount: 0.25,
+              amount: 0.2,
             }}
             transition={{
-              duration: 1,
+              duration: reduceMotion ? 0 : 0.95,
               ease,
             }}
             className="
               relative
+
+              mx-auto
+
               flex
-              min-h-[430px]
+              min-h-[300px]
+              w-full
+              max-w-[650px]
+
               items-center
               justify-center
-              sm:min-h-[500px]
-              lg:min-h-[570px]
+
+              sm:min-h-[400px]
+
+              md:min-h-[450px]
+
+              lg:min-h-[520px]
+              lg:max-w-none
             "
           >
-            {/* BIG BACK CIRCLE */}
+            {/* BACK CIRCLE */}
 
             <motion.div
               initial={{
                 opacity: 0,
-                scale: 0.8,
+                scale: reduceMotion ? 1 : 0.82,
               }}
               whileInView={{
                 opacity: 1,
@@ -317,22 +386,31 @@ export default function SEOProblemSection() {
                 once: true,
               }}
               transition={{
-                duration: 1.3,
+                duration: reduceMotion ? 0 : 1.2,
                 delay: 0.15,
                 ease,
               }}
               className="
                 pointer-events-none
+
                 absolute
-                h-[360px]
-                w-[360px]
+
+                h-[270px]
+                w-[270px]
+
                 rounded-full
+
                 border
                 border-[#0B2A52]/[0.07]
-                sm:h-[430px]
-                sm:w-[430px]
-                lg:h-[480px]
-                lg:w-[480px]
+
+                sm:h-[350px]
+                sm:w-[350px]
+
+                md:h-[400px]
+                md:w-[400px]
+
+                lg:h-[450px]
+                lg:w-[450px]
               "
             />
 
@@ -341,8 +419,8 @@ export default function SEOProblemSection() {
             <motion.div
               initial={{
                 opacity: 0,
-                scale: 0.85,
-                rotate: -15,
+                scale: reduceMotion ? 1 : 0.85,
+                rotate: reduceMotion ? 0 : -15,
               }}
               whileInView={{
                 opacity: 1,
@@ -353,45 +431,59 @@ export default function SEOProblemSection() {
                 once: true,
               }}
               transition={{
-                duration: 1.4,
+                duration: reduceMotion ? 0 : 1.3,
                 delay: 0.25,
                 ease,
               }}
               className="
                 pointer-events-none
+
                 absolute
-                h-[285px]
-                w-[285px]
+
+                h-[220px]
+                w-[220px]
+
                 rounded-full
+
                 border
                 border-dashed
                 border-[#C6A77A]/25
-                sm:h-[350px]
-                sm:w-[350px]
-                lg:h-[390px]
-                lg:w-[390px]
+
+                sm:h-[290px]
+                sm:w-[290px]
+
+                md:h-[330px]
+                md:w-[330px]
+
+                lg:h-[370px]
+                lg:w-[370px]
               "
             />
 
-            {/* BACK GLOW */}
+            {/* GLOW */}
 
             <div
+              aria-hidden="true"
               className="
                 pointer-events-none
+
                 absolute
-                h-[330px]
-                w-[330px]
+
+                h-[260px]
+                w-[260px]
+
                 rounded-full
+
                 bg-[#C6A77A]/10
+
                 blur-[90px]
-                sm:h-[400px]
-                sm:w-[400px]
+
+                sm:h-[340px]
+                sm:w-[340px]
               "
             />
 
-            {/* ===================================================
-                MAIN SEO PROBLEM IMAGE
-            =================================================== */}
+            {/* IMAGE */}
 
             <motion.div
               animate={
@@ -409,9 +501,13 @@ export default function SEOProblemSection() {
               className="
                 relative
                 z-10
+
                 w-full
-                max-w-[540px]
-                sm:max-w-[600px]
+                max-w-[440px]
+
+                sm:max-w-[520px]
+
+                lg:max-w-[560px]
               "
             >
               <Image
@@ -419,23 +515,28 @@ export default function SEOProblemSection() {
                 alt="Website search visibility and SEO discoverability illustration"
                 width={800}
                 height={700}
+                sizes="
+                  (max-width: 639px) 90vw,
+                  (max-width: 1023px) 70vw,
+                  48vw
+                "
                 className="
                   h-auto
                   w-full
+
                   object-contain
-                  drop-shadow-[0_30px_55px_rgba(11,42,82,0.10)]
+
+                  drop-shadow-[0_25px_50px_rgba(11,42,82,0.09)]
                 "
               />
             </motion.div>
 
-            {/* ===================================================
-                FLOATING LABEL - WEBSITE
-            =================================================== */}
+            {/* WEBSITE LABEL */}
 
             <motion.div
               initial={{
                 opacity: 0,
-                x: reduceMotion ? 0 : -25,
+                x: reduceMotion ? 0 : -20,
               }}
               whileInView={{
                 opacity: 1,
@@ -445,61 +546,75 @@ export default function SEOProblemSection() {
                 once: true,
               }}
               transition={{
-                duration: 0.8,
-                delay: 0.7,
+                duration: reduceMotion ? 0 : 0.75,
+                delay: 0.65,
                 ease,
               }}
               className="
                 absolute
-                left-[2%]
-                top-[18%]
+                left-[1%]
+                top-[14%]
                 z-20
+
                 hidden
-                rounded-2xl
+
+                rounded-[14px]
+
                 border
                 border-[#0B2A52]/10
+
                 bg-white/90
-                px-4
-                py-3
-                shadow-[0_12px_35px_rgba(11,42,82,0.08)]
+
+                px-3.5
+                py-2.5
+
+                shadow-[0_10px_30px_rgba(11,42,82,0.07)]
+
                 backdrop-blur-xl
+
                 sm:block
               "
             >
-              <div className="flex items-center gap-3">
-                <div
+              <div className="flex items-center gap-2.5">
+                <span
                   className="
                     flex
                     h-8
                     w-8
+
                     items-center
                     justify-center
+
                     rounded-lg
-                    bg-[#0B2A52]/[0.07]
+
+                    bg-[#0B2A52]/[0.06]
+
+                    text-[#0B2A52]
                   "
                 >
                   <Globe2
                     size={14}
                     strokeWidth={1.6}
-                    className="text-[#0B2A52]"
                   />
-                </div>
+                </span>
 
                 <div>
                   <p
                     className="
                       text-[7px]
                       font-semibold
-                      tracking-[0.17em]
+                      uppercase
+                      tracking-[0.16em]
                       text-[#0B2A52]/35
                     "
                   >
-                    ONLINE
+                    Online
                   </p>
 
                   <p
                     className="
                       mt-0.5
+
                       text-[10px]
                       font-medium
                       text-[#0B2A52]
@@ -511,14 +626,12 @@ export default function SEOProblemSection() {
               </div>
             </motion.div>
 
-            {/* ===================================================
-                FLOATING LABEL - DISCOVERABILITY
-            =================================================== */}
+            {/* DISCOVERABILITY LABEL */}
 
             <motion.div
               initial={{
                 opacity: 0,
-                x: reduceMotion ? 0 : 25,
+                x: reduceMotion ? 0 : 20,
               }}
               whileInView={{
                 opacity: 1,
@@ -528,31 +641,40 @@ export default function SEOProblemSection() {
                 once: true,
               }}
               transition={{
-                duration: 0.8,
-                delay: 0.9,
+                duration: reduceMotion ? 0 : 0.75,
+                delay: 0.82,
                 ease,
               }}
               className="
                 absolute
-                bottom-[18%]
-                right-[1%]
+                bottom-[13%]
+                right-[0%]
                 z-20
+
                 hidden
-                rounded-2xl
+
+                rounded-[14px]
+
                 border
                 border-[#C6A77A]/30
+
                 bg-white/90
-                px-4
-                py-3
-                shadow-[0_12px_35px_rgba(11,42,82,0.08)]
+
+                px-3.5
+                py-2.5
+
+                shadow-[0_10px_30px_rgba(11,42,82,0.07)]
+
                 backdrop-blur-xl
+
                 sm:block
               "
             >
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2.5">
                 <span
                   className="
                     relative
+
                     flex
                     h-2
                     w-2
@@ -564,7 +686,7 @@ export default function SEOProblemSection() {
                         ? undefined
                         : {
                             scale: [1, 1.8, 1],
-                            opacity: [0.4, 0, 0.4],
+                            opacity: [0.5, 0, 0.5],
                           }
                     }
                     transition={{
@@ -573,9 +695,10 @@ export default function SEOProblemSection() {
                     }}
                     className="
                       absolute
-                      h-full
-                      w-full
+                      inset-0
+
                       rounded-full
+
                       bg-[#C6A77A]
                     "
                   />
@@ -583,9 +706,12 @@ export default function SEOProblemSection() {
                   <span
                     className="
                       relative
+
                       h-2
                       w-2
+
                       rounded-full
+
                       bg-[#C6A77A]
                     "
                   />
@@ -596,16 +722,18 @@ export default function SEOProblemSection() {
                     className="
                       text-[7px]
                       font-semibold
-                      tracking-[0.17em]
+                      uppercase
+                      tracking-[0.16em]
                       text-[#C6A77A]
                     "
                   >
-                    THE GAP
+                    The Gap
                   </p>
 
                   <p
                     className="
                       mt-0.5
+
                       text-[10px]
                       font-medium
                       text-[#0B2A52]
@@ -618,20 +746,26 @@ export default function SEOProblemSection() {
             </motion.div>
           </motion.div>
 
-          {/* =====================================================
-              RIGHT PROBLEM LIST
-          ====================================================== */}
+          {/* =================================================
+              4 PROBLEMS
+          ================================================= */}
 
           <div className="relative">
+            {/* VERTICAL LINE */}
+
             <div
+              aria-hidden="true"
               className="
                 absolute
-                bottom-7
+                bottom-6
                 left-[17px]
-                top-7
+                top-6
+
                 hidden
                 w-px
+
                 bg-[#0B2A52]/10
+
                 sm:block
               "
             />
@@ -648,27 +782,31 @@ export default function SEOProblemSection() {
                 amount: 0.3,
               }}
               transition={{
-                duration: 1.5,
-                delay: 0.25,
+                duration: reduceMotion ? 0 : 1.3,
+                delay: 0.2,
                 ease,
               }}
               className="
                 absolute
-                bottom-7
+                bottom-6
                 left-[17px]
-                top-7
+                top-6
+
                 hidden
                 w-px
+
                 origin-top
+
                 bg-gradient-to-b
                 from-[#C6A77A]
                 via-[#0B2A52]/20
                 to-transparent
+
                 sm:block
               "
             />
 
-            <div className="space-y-2">
+            <div className="space-y-1">
               {problems.map((problem, index) => {
                 const Icon = problem.icon;
 
@@ -677,7 +815,7 @@ export default function SEOProblemSection() {
                     key={problem.number}
                     initial={{
                       opacity: 0,
-                      x: reduceMotion ? 0 : 38,
+                      x: reduceMotion ? 0 : 30,
                     }}
                     whileInView={{
                       opacity: 1,
@@ -685,54 +823,72 @@ export default function SEOProblemSection() {
                     }}
                     viewport={{
                       once: true,
-                      amount: 0.35,
+                      amount: 0.25,
                     }}
                     transition={{
-                      duration: 0.75,
-                      delay: index * 0.12,
+                      duration: reduceMotion ? 0 : 0.68,
+                      delay: reduceMotion ? 0 : index * 0.08,
                       ease,
                     }}
                     className="
                       group
                       relative
+
                       flex
-                      gap-5
-                      rounded-[20px]
+                      gap-4
+
+                      rounded-[18px]
+
                       border
                       border-transparent
+
                       px-2
-                      py-5
+                      py-4
+
                       transition-all
-                      duration-500
+                      duration-400
+
                       hover:border-[#0B2A52]/[0.07]
                       hover:bg-white
-                      hover:px-4
-                      hover:shadow-[0_15px_45px_rgba(11,42,82,0.055)]
+                      hover:shadow-[0_12px_35px_rgba(11,42,82,0.05)]
+
+                      sm:gap-5
                       sm:pl-0
+                      sm:py-5
                     "
                   >
-                    {/* NODE */}
+                    {/* ICON */}
 
                     <div
                       className="
                         relative
                         z-10
+
                         hidden
+
                         h-9
                         w-9
                         shrink-0
+
                         items-center
                         justify-center
+
                         rounded-full
+
                         border
                         border-[#0B2A52]/10
+
                         bg-[#FAFBFC]
+
                         text-[#0B2A52]/45
+
                         transition-all
                         duration-300
+
                         group-hover:border-[#C6A77A]/45
                         group-hover:bg-[#C6A77A]/[0.08]
                         group-hover:text-[#C6A77A]
+
                         sm:flex
                       "
                     >
@@ -742,61 +898,59 @@ export default function SEOProblemSection() {
                       />
                     </div>
 
-                    <div className="flex-1">
-                      {/* NUMBER */}
+                    {/* COPY */}
 
-                      <span
-                        className="
-                          text-[8px]
-                          font-semibold
-                          tracking-[0.18em]
-                          text-[#C6A77A]
-                        "
-                      >
-                        {problem.number}
-                      </span>
-
-                      {/* TITLE */}
+                    <div className="min-w-0 flex-1">
+                   
+                   
 
                       <h3
+                        style={newYorkFont}
                         className="
                           mt-1.5
-                          text-[16px]
+
+                          text-[18px]
                           font-medium
-                          leading-6
+                          leading-[1.25]
+                          tracking-[-0.02em]
                           text-[#0B2A52]
-                          sm:text-[17px]
+
+                          sm:text-[19px]
+                          lg:text-[20px]
                         "
                       >
                         {problem.title}
                       </h3>
 
-                      {/* DESCRIPTION */}
-
                       <p
                         className="
                           mt-2
-                          max-w-[470px]
-                          text-[12px]
-                          leading-6
+                          max-w-[500px]
+
+                          text-[12.5px]
+                          leading-[1.7]
                           text-[#0B2A52]/55
+
                           sm:text-[13px]
                         "
                       >
                         {problem.description}
                       </p>
 
-                      {/* ACCENT LINE */}
-
-                      <div
+                      <span
                         className="
                           mt-4
+                          block
+
                           h-px
                           w-8
+
                           bg-[#0B2A52]/10
+
                           transition-all
                           duration-500
-                          group-hover:w-16
+
+                          group-hover:w-14
                           group-hover:bg-[#C6A77A]
                         "
                       />
@@ -808,14 +962,14 @@ export default function SEOProblemSection() {
           </div>
         </div>
 
-        {/* =======================================================
-            REAL PROBLEM
-        ======================================================== */}
+        {/* =====================================================
+            POV DIVIDER
+        ===================================================== */}
 
         <motion.div
           initial={{
             opacity: 0,
-            y: reduceMotion ? 0 : 35,
+            y: reduceMotion ? 0 : 26,
           }}
           whileInView={{
             opacity: 1,
@@ -823,142 +977,469 @@ export default function SEOProblemSection() {
           }}
           viewport={{
             once: true,
-            amount: 0.3,
+            amount: 0.25,
           }}
           transition={{
-            duration: 0.9,
+            duration: reduceMotion ? 0 : 0.8,
             ease,
           }}
           className="
-            relative
             mx-auto
+
             mt-14
-            max-w-[1120px]
-            overflow-hidden
-            rounded-[30px]
-            bg-[#0B2A52]
-            px-6
-            py-9
-            text-white
-            shadow-[0_25px_70px_rgba(11,42,82,0.15)]
-            sm:px-9
-            sm:py-10
+
+            max-w-[1180px]
+
+            border-t
+            border-[#0B2A52]/10
+
+            pt-12
+
+            sm:mt-16
+            sm:pt-14
+
             lg:mt-20
-            lg:px-12
+            lg:pt-16
           "
         >
-          {/* DECORATIVE CIRCLES */}
+          {/* =================================================
+              POV INTRO
+          ================================================= */}
 
           <div
             className="
-              pointer-events-none
-              absolute
-              -right-20
-              -top-20
-              h-64
-              w-64
-              rounded-full
-              border
-              border-white/[0.06]
-            "
-          />
-
-          <div
-            className="
-              pointer-events-none
-              absolute
-              -right-5
-              -top-5
-              h-40
-              w-40
-              rounded-full
-              border
-              border-[#C6A77A]/20
-            "
-          />
-
-          <div
-            className="
-              relative
-              z-10
               grid
-              items-center
-              gap-7
-              lg:grid-cols-[190px_1fr]
+              grid-cols-1
+              gap-6
+
+              lg:grid-cols-[0.75fr_1.25fr]
+              lg:items-end
+              lg:gap-12
             "
           >
-            {/* LABEL */}
-
             <div>
-              <span
-                className="
-                  text-[9px]
-                  font-semibold
-                  tracking-[0.25em]
-                  text-[#C6A77A]
-                "
-              >
-                THE REAL PROBLEM
-              </span>
-
               <div
                 className="
-                  mt-4
-                  h-px
-                  w-12
-                  bg-[#C6A77A]
-                "
-              />
-            </div>
-
-            {/* CONTENT */}
-
-            <div>
-              <p
-                className="
-                  text-[13px]
-                  leading-7
-                  text-white/60
-                  sm:text-sm
-                "
-              >
-                SEO is not about ranking for as many keywords as possible.
-              </p>
-
-              <div
-                className="
-                  mt-3
                   flex
-                  items-start
-                  gap-4
+                  items-center
+                  gap-3
                 "
               >
-                <ArrowRight
-                  size={17}
-                  strokeWidth={1.7}
+                <span
                   className="
-                    mt-[5px]
-                    shrink-0
-                    text-[#C6A77A]
+                    h-px
+                    w-8
+
+                    bg-[#C6A77A]
                   "
                 />
 
-                <p
+                <span
                   className="
-                    max-w-[730px]
-                    text-[16px]
-                    font-medium
-                    leading-7
-                    text-white
-                    sm:text-[18px]
+                    text-[9px]
+                    font-semibold
+                    uppercase
+                    tracking-[0.24em]
+                    text-[#C6A77A]
                   "
                 >
-                  It is about becoming visible for the searches that matter to
-                  your business.
+                  Our Point of View
+                </span>
+              </div>
+
+              <h3
+                style={newYorkFont}
+                className="
+                  mt-5
+
+                  max-w-[500px]
+
+                  text-[28px]
+                  font-medium
+                  leading-[1.1]
+                  tracking-[-0.035em]
+                  text-[#0B2A52]
+
+                  sm:text-[32px]
+
+                  lg:text-[35px]
+                "
+              >
+                Rankings Create Visibility.{" "}
+                <span className="text-[#C6A77A]">
+                  Relevance Creates Value.
+                </span>
+              </h3>
+            </div>
+
+            {/* POV COPY */}
+
+            <div
+              className="
+                relative
+
+                max-w-[650px]
+
+                lg:ml-auto
+              "
+            >
+              <span
+                aria-hidden="true"
+                className="
+                  absolute
+                  bottom-0
+                  left-0
+                  top-0
+
+                  w-[2px]
+
+                  rounded-full
+
+                  bg-[#C6A77A]
+                "
+              />
+
+              <div className="pl-5 sm:pl-6">
+                <p
+                  className="
+                    text-[14px]
+                    leading-[1.8]
+                    text-[#0B2A52]/60
+
+                    sm:text-[15px]
+                  "
+                >
+                  Rankings create visibility.
+                </p>
+
+                <p
+                  className="
+                    mt-1
+
+                    text-[15px]
+                    font-medium
+                    leading-[1.8]
+                    text-[#0B2A52]
+
+                    sm:text-[16px]
+                  "
+                >
+                  Relevance connects that visibility with business value.
                 </p>
               </div>
             </div>
           </div>
+
+          {/* =================================================
+              CONNECTION LABEL
+          ================================================= */}
+
+          <div
+            className="
+              mt-9
+
+              flex
+              items-center
+              gap-3
+
+              sm:mt-10
+            "
+          >
+            <span
+              className="
+                text-[8px]
+                font-semibold
+                uppercase
+                tracking-[0.19em]
+                text-[#0B2A52]/40
+
+                sm:text-[9px]
+              "
+            >
+              The right SEO strategy connects four things
+            </span>
+
+            <span
+              className="
+                h-px
+                flex-1
+
+                bg-[#0B2A52]/10
+              "
+            />
+          </div>
+
+          {/* =================================================
+              4 CONNECTIONS
+          ================================================= */}
+
+          <div
+            className="
+              mt-6
+
+              grid
+              grid-cols-1
+
+              gap-3
+
+              sm:grid-cols-2
+              sm:gap-4
+
+              lg:grid-cols-4
+              lg:gap-5
+            "
+          >
+            {connections.map((item, index) => {
+              const Icon = item.icon;
+
+              return (
+                <motion.article
+                  key={item.number}
+                  initial={{
+                    opacity: 0,
+                    y: reduceMotion ? 0 : 24,
+                  }}
+                  whileInView={{
+                    opacity: 1,
+                    y: 0,
+                  }}
+                  viewport={{
+                    once: true,
+                    amount: 0.2,
+                  }}
+                  transition={{
+                    duration: reduceMotion ? 0 : 0.65,
+                    delay: reduceMotion ? 0 : index * 0.07,
+                    ease,
+                  }}
+                  whileHover={
+                    reduceMotion
+                      ? undefined
+                      : {
+                          y: -4,
+                        }
+                  }
+                  className="
+                    group
+
+                    relative
+
+                    overflow-hidden
+
+                    rounded-[18px]
+
+                    border
+                    border-[#D8E2EC]
+
+                    bg-white
+
+                    p-5
+
+                    shadow-[0_8px_28px_rgba(11,42,82,0.035)]
+
+                    transition-[border-color,box-shadow]
+                    duration-400
+
+                    hover:border-[#C6A77A]/50
+                    hover:shadow-[0_15px_38px_rgba(11,42,82,0.07)]
+
+                    sm:p-6
+                  "
+                >
+                  {/* TOP */}
+
+                  <div
+                    className="
+                      flex
+                      items-center
+                      justify-between
+                      gap-4
+                    "
+                  >
+                    <span
+                      className="
+                        flex
+                        h-9
+                        w-9
+                        shrink-0
+
+                        items-center
+                        justify-center
+
+                        rounded-[11px]
+
+                        bg-[#EFF4F8]
+
+                        text-[#0B2A52]
+
+                        transition-all
+                        duration-300
+
+                        group-hover:bg-[#0B2A52]
+                        group-hover:text-white
+                      "
+                    >
+                      <Icon
+                        size={15}
+                        strokeWidth={1.6}
+                      />
+                    </span>
+
+                    
+                  </div>
+
+                  {/* TITLE */}
+
+                  <h4
+                    style={newYorkFont}
+                    className="
+                      mt-6
+
+                      text-[19px]
+                      font-medium
+                      leading-[1.25]
+                      tracking-[-0.025em]
+                      text-[#0B2A52]
+
+                      sm:text-[20px]
+                    "
+                  >
+                    {item.title}
+                  </h4>
+
+                  {/* LABEL */}
+
+                  <div
+                    className="
+                      mt-6
+
+                      flex
+                      items-center
+                      gap-2.5
+                    "
+                  >
+                    <span
+                      className="
+                        h-px
+                        w-6
+
+                        bg-[#C6A77A]
+
+                        transition-all
+                        duration-400
+
+                        group-hover:w-9
+                      "
+                    />
+
+                    <span
+                      className="
+                        text-[7px]
+                        font-semibold
+                        uppercase
+                        tracking-[0.17em]
+                        text-[#0B2A52]/38
+                      "
+                    >
+                      {item.label}
+                    </span>
+                  </div>
+
+                  {/* BOTTOM ACCENT */}
+
+                  <span
+                    aria-hidden="true"
+                    className="
+                      absolute
+                      bottom-0
+                      left-1/2
+
+                      h-[2px]
+                      w-0
+
+                      -translate-x-1/2
+
+                      bg-[#C6A77A]
+
+                      transition-all
+                      duration-500
+
+                      group-hover:w-[70%]
+                    "
+                  />
+                </motion.article>
+              );
+            })}
+          </div>
+
+          {/* =================================================
+              CLOSING LINE
+          ================================================= */}
+
+          <motion.div
+            initial={{
+              opacity: 0,
+              y: reduceMotion ? 0 : 18,
+            }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+            }}
+            viewport={{
+              once: true,
+            }}
+            transition={{
+              duration: reduceMotion ? 0 : 0.7,
+              delay: reduceMotion ? 0 : 0.15,
+              ease,
+            }}
+            className="
+              mt-8
+
+              flex
+              flex-col
+              gap-2
+
+              border-t
+              border-[#0B2A52]/10
+
+              pt-6
+
+              sm:flex-row
+              sm:items-center
+              sm:justify-between
+              sm:gap-6
+            "
+          >
+            <p
+              className="
+                max-w-[800px]
+
+                text-[13px]
+                leading-[1.75]
+                text-[#0B2A52]/55
+
+                sm:text-[14px]
+              "
+            >
+              When those four pieces align, organic search becomes more than
+              a traffic channel.
+            </p>
+
+            <p
+              className="
+                shrink-0
+
+                text-[9px]
+                font-semibold
+                uppercase
+                tracking-[0.16em]
+                text-[#C6A77A]
+              "
+            >
+              Search With Purpose
+            </p>
+          </motion.div>
         </motion.div>
       </div>
     </section>
