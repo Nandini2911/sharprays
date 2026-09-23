@@ -75,62 +75,10 @@ export default function SEOExplainedSection() {
           BACKGROUND DECORATION
       ========================================================== */}
 
-      <div
-        className="
-          pointer-events-none
-          absolute
-          -left-[180px]
-          top-[25%]
-          h-[420px]
-          w-[420px]
-          rounded-full
-          border
-          border-[#0B2A52]/[0.045]
-        "
-      />
+     
 
-      <div
-        className="
-          pointer-events-none
-          absolute
-          -left-[120px]
-          top-[31%]
-          h-[300px]
-          w-[300px]
-          rounded-full
-          border
-          border-[#C6A77A]/10
-        "
-      />
-
-      <div
-        className="
-          pointer-events-none
-          absolute
-          right-[-150px]
-          top-[10%]
-          h-[420px]
-          w-[420px]
-          rounded-full
-          bg-[#0B2A52]/[0.035]
-          blur-[100px]
-        "
-      />
-
-      <div
-        className="
-          pointer-events-none
-          absolute
-          bottom-[-180px]
-          left-[35%]
-          h-[360px]
-          w-[500px]
-          rounded-full
-          bg-[#C6A77A]/[0.07]
-          blur-[110px]
-        "
-      />
-
+      
+    
       {/* =========================================================
           CONTAINER
       ========================================================== */}
@@ -156,21 +104,38 @@ export default function SEOExplainedSection() {
             variants={fadeUp}
             className="flex items-center justify-center gap-3"
           >
-            <span className="h-px w-9 bg-[#C6A77A]" />
+            <span
+            className="
+              h-px
+              w-10
+
+              bg-gradient-to-r
+              from-transparent
+              to-[#B79A72]
+            "
+          />
 
             <span
               className="
                 text-[9px]
-                font-semibold
+             
                 tracking-[0.28em]
-                text-[#C6A77A]
+                text-[#B79A72]
                 sm:text-[10px]
               "
             >
               SEO EXPLAINED
             </span>
+ <span
+            className="
+              h-px
+              w-10
 
-            <span className="h-px w-9 bg-[#C6A77A]" />
+              bg-gradient-to-l
+              from-transparent
+              to-[#B79A72]
+            "
+          />
           </motion.div>
 
           <motion.h2
@@ -178,7 +143,7 @@ export default function SEOExplainedSection() {
             className="
               mt-6
               text-[2.2rem]
-              font-medium
+           
               leading-[1.08]
               tracking-[-0.035em]
               text-[#0B2A52]
@@ -285,23 +250,6 @@ export default function SEOExplainedSection() {
               "
             >
               {/* LARGE DECORATIVE 01 */}
-
-              <div
-                className="
-                  pointer-events-none
-                  absolute
-                  right-8
-                  top-5
-                  text-[88px]
-                  font-medium
-                  leading-none
-                  tracking-[-0.08em]
-                  text-[#0B2A52]/[0.025]
-                  sm:text-[120px]
-                "
-              >
-                01
-              </div>
 
               {/* QUICK ANSWER INDICATOR */}
 

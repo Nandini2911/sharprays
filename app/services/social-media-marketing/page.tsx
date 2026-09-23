@@ -7,12 +7,10 @@ import SocialMediaMarketingFirstConversationToCampaign from "@/components/Social
 import SocialMediaMarketingHero from "@/components/SocialMediaMarketing/SocialMediaMarketingHero";
 import SocialMediaMarketingProblem from "@/components/SocialMediaMarketing/SocialMediaMarketingProblem";
 import SocialMediaMarketingWhatWeDo from "@/components/SocialMediaMarketing/SocialMediaMarketingWhatWeDo";
-import SocialMediaMarketingPlanIncludes from "@/components/SocialMediaMarketing/SocialMediaPlanIncludes";
 import SocialMediaPlatformStrategy from "@/components/SocialMediaMarketing/SocialMediaPlatformStrategy";
 import SocialMediaPricing from "@/components/SocialMediaMarketing/SocialMediaPricing";
 import SocialMediaQuickAnswer from "@/components/SocialMediaMarketing/SocialMediaQuickAnswer";
 import SocialMediaResultsProof from "@/components/SocialMediaMarketing/SocialMediaResultsProof";
-import SocialMediaWhoWeWorkWith from "@/components/SocialMediaMarketing/SocialMediaWhoWeWorkWith";
 import WhySharpRays from "@/components/SocialMediaMarketing/WhySharpRays";
 
 export default function SocialMediaMarketing() {
@@ -26,9 +24,8 @@ export default function SocialMediaMarketing() {
     
      
     
-      <SocialMediaMarketingPlanIncludes/>
     
-      <SocialMediaWhoWeWorkWith/>
+    
       <SocialMediaPlatformStrategy/>
       <WhySharpRays/>
       <SocialMediaMarketingFirstConversationToCampaign/>

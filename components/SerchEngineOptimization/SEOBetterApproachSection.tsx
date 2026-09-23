@@ -1,13 +1,9 @@
 "use client";
 
 import type { LucideIcon } from "lucide-react";
-import { motion, useReducedMotion } from "framer-motion";
 import {
-  Ban,
-  Bot,
-  FileCog,
+  Copy,
   FileWarning,
-  Gauge,
   MapPinned,
   SearchX,
   ShieldCheck,
@@ -15,92 +11,76 @@ import {
   Trophy,
 } from "lucide-react";
 
+import {
+  motion,
+  useReducedMotion,
+} from "framer-motion";
+
+/* =========================================================
+   FONT
+========================================================= */
+
+const newYorkFont = {
+  fontFamily: '"New York", "Bodoni Moda", Georgia, serif',
+};
+
+/* =========================================================
+   ANIMATION
+========================================================= */
+
 const ease = [0.22, 1, 0.36, 1] as const;
 
-/* ============================================================
+/* =========================================================
    TYPES
-============================================================ */
+========================================================= */
 
-type AvoidItem = {
+type StandardRow = {
   number: string;
-  title: string;
+  avoid: string;
+  build: string;
   icon: LucideIcon;
 };
 
-/* ============================================================
+/* =========================================================
    DATA
-============================================================ */
+========================================================= */
 
-const avoidItems: AvoidItem[] = [
+const standards: StandardRow[] = [
   {
     number: "01",
-    title: "Keyword stuffing.",
+    avoid: "Keyword stuffing",
+    build: "Relevance",
     icon: SearchX,
   },
   {
     number: "02",
-    title: "Hundreds of low-value pages.",
+    avoid: "Mass low-value pages",
+    build: "Technical Quality",
     icon: FileWarning,
   },
   {
     number: "03",
-    title: "Copied competitor content.",
-    icon: FileCog,
+    avoid: "Copied content",
+    build: "Useful Content",
+    icon: Copy,
   },
   {
     number: "04",
-    title: "Artificially repeated location pages.",
+    avoid: "Fake location pages",
+    build: "Clear Expertise",
     icon: MapPinned,
   },
   {
     number: "05",
-    title: "Guaranteed number-one rankings.",
+    avoid: "Guaranteed #1 rankings",
+    build: "Continuous Improvement",
     icon: Trophy,
   },
-  {
-    number: "06",
-    title: "Meaningless traffic targets.",
-    icon: Gauge,
-  },
-  {
-    number: "07",
-    title: "Automated content published without review or purpose.",
-    icon: Bot,
-  },
-  {
-    number: "08",
-    title:
-      "Short-term tactics that put your website at unnecessary risk.",
-    icon: Ban,
-  },
 ];
 
-const principles = [
-  {
-    number: "01",
-    title: "RELEVANCE",
-  },
-  {
-    number: "02",
-    title: "TECHNICAL QUALITY",
-  },
-  {
-    number: "03",
-    title: "USEFUL CONTENT",
-  },
-  {
-    number: "04",
-    title: "CLEAR EXPERTISE",
-  },
-  {
-    number: "05",
-    title: "SUSTAINABLE IMPROVEMENT",
-  },
-];
-
-/* ============================================================
+/* =========================================================
    MAIN SECTION
-============================================================ */
+========================================================= */
 
 export default function SEOBetterApproachSection() {
   const reduceMotion = useReducedMotion();
@@ -112,58 +92,1160 @@ export default function SEOBetterApproachSection() {
         relative
         overflow-hidden
         bg-white
-        py-24
+        py-20
         text-[#0B2A52]
-        sm:py-28
-        lg:py-36
+
+        sm:py-24
+        md:py-28
+        lg:py-32
+        xl:py-36
       "
     >
       {/* =====================================================
           BACKGROUND
-      ====================================================== */}
+      ===================================================== */}
 
-      <div className="pointer-events-none absolute inset-0">
-        <div
-          className="
-            absolute
-            -left-64
-            top-[8%]
-            h-[560px]
-            w-[560px]
-            rounded-full
-            bg-[#3976B6]/[0.05]
-            blur-[160px]
-          "
-        />
+      <div
+        aria-hidden="true"
+        className="
+          pointer-events-none
+          absolute
+          inset-0
+          overflow-hidden
+        "
+      >
+        {/* TOP BLUE LIGHT */}
 
         <div
           className="
             absolute
-            -right-64
-            bottom-[10%]
-            h-[560px]
-            w-[560px]
+            left-1/2
+            top-[-250px]
+
+            h-[480px]
+            w-[760px]
+
+            -translate-x-1/2
+
             rounded-full
-            bg-[#C6A77A]/[0.09]
-            blur-[160px]
+
+            bg-[#EAF4FC]/75
+            blur-[140px]
+
+            sm:w-[920px]
+            lg:w-[1150px]
           "
         />
+
+        {/* LEFT RING */}
+
+        <div
+          className="
+            absolute
+            -left-[360px]
+            top-[32%]
+
+            hidden
+
+            h-[680px]
+            w-[680px]
+
+            rounded-full
+
+            border
+            border-[#0B2A52]/[0.04]
+
+            lg:block
+          "
+        />
+
+        {/* RIGHT RING */}
+
+        <div
+          className="
+            absolute
+            -right-[340px]
+            bottom-[-180px]
+
+            hidden
+
+            h-[660px]
+            w-[660px]
+
+            rounded-full
+
+            border
+            border-[#C6A77A]/12
+
+            lg:block
+          "
+        />
+
+        {/* HUGE BACKGROUND WORD */}
+
+        <div
+          className="
+            absolute
+            left-1/2
+            top-[54%]
+
+            hidden
+
+            -translate-x-1/2
+            -translate-y-1/2
+
+            whitespace-nowrap
+
+            text-[150px]
+            font-semibold
+            uppercase
+            tracking-[-0.07em]
+            text-[#0B2A52]/[0.018]
+
+            lg:block
+            xl:text-[190px]
+          "
+        >
+          STANDARD
+        </div>
       </div>
+
+      {/* =====================================================
+          CONTAINER
+      ===================================================== */}
 
       <div
         className="
           relative
           z-10
+
           mx-auto
-          max-w-[1380px]
+          w-full
+          max-w-[1280px]
+
           px-5
-          sm:px-8
+          sm:px-7
+          md:px-8
           lg:px-12
+          xl:px-14
         "
       >
         {/* =====================================================
             HEADER
-        ====================================================== */}
+        ===================================================== */}
+
+        <motion.div
+          initial={{
+            opacity: 0,
+            y: reduceMotion ? 0 : 30,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{
+            once: true,
+            amount: 0.25,
+          }}
+          transition={{
+            duration: reduceMotion ? 0 : 0.85,
+            ease,
+          }}
+          className="
+            mx-auto
+            max-w-[930px]
+            text-center
+          "
+        >
+          {/* LABEL */}
+
+          <div
+            className="
+              flex
+              items-center
+              justify-center
+              gap-3
+
+              sm:gap-4
+            "
+          >
+            <span
+              className="
+                h-px
+                w-7
+
+                bg-gradient-to-r
+                from-transparent
+                to-[#C6A77A]
+
+                sm:w-10
+              "
+            />
+
+            <span
+              className="
+                text-[9px]
+                font-semibold
+                uppercase
+                tracking-[0.26em]
+                text-[#C6A77A]
+
+                sm:text-[10px]
+                sm:tracking-[0.34em]
+              "
+            >
+              A Better Approach to SEO
+            </span>
+
+            <span
+              className="
+                h-px
+                w-7
+
+                bg-gradient-to-l
+                from-transparent
+                to-[#C6A77A]
+
+                sm:w-10
+              "
+            />
+          </div>
+
+          {/* HEADING */}
+
+          <h2
+            style={newYorkFont}
+            className="
+              mx-auto
+              mt-6
+              max-w-[880px]
+
+              text-[2.6rem]
+              font-medium
+              leading-[1]
+              tracking-[-0.045em]
+              text-[#0B2A52]
+
+              md:text-[2.95rem]
+              lg:text-[3.1rem]
+              xl:text-[3.35rem]
+            "
+          >
+            No Shortcuts Disguised as{" "}
+            <span className="text-[#C6A77A]">
+              Strategy.
+            </span>
+          </h2>
+
+          {/* DESCRIPTION */}
+
+          <p
+            className="
+              mx-auto
+              mt-6
+              max-w-[720px]
+
+              text-[13px]
+              leading-[1.8]
+              text-[#64798F]
+
+              sm:text-[14px]
+              md:text-[15px]
+            "
+          >
+            Sustainable SEO comes from strengthening the fundamentals, not
+            chasing tactics designed to create temporary movement.
+          </p>
+        </motion.div>
+
+        {/* =====================================================
+            MANIFESTO INTRO
+        ===================================================== */}
+
+        <motion.div
+          initial={{
+            opacity: 0,
+            y: reduceMotion ? 0 : 20,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{
+            once: true,
+          }}
+          transition={{
+            duration: reduceMotion ? 0 : 0.75,
+            delay: reduceMotion ? 0 : 0.08,
+            ease,
+          }}
+          className="
+            mx-auto
+            mt-12
+            max-w-[1100px]
+
+            sm:mt-14
+            lg:mt-16
+          "
+        >
+          <div
+            className="
+              grid
+              grid-cols-1
+              gap-4
+
+              border-y
+              border-[#DCE5ED]
+
+              py-5
+
+              sm:grid-cols-2
+              sm:items-center
+              sm:py-6
+            "
+          >
+            <div
+              className="
+                flex
+                items-center
+                gap-3
+              "
+            >
+              <span
+                className="
+                  flex
+                  h-9
+                  w-9
+
+                  items-center
+                  justify-center
+
+                  rounded-full
+
+                  border
+                  border-[#D7E1EA]
+
+                  bg-[#F7FAFC]
+
+                  text-[#657B90]
+                "
+              >
+                <SearchX
+                  size={14}
+                  strokeWidth={1.7}
+                />
+              </span>
+
+              <div>
+                <p
+                  className="
+                    text-[8px]
+                    font-bold
+                    uppercase
+                    tracking-[0.19em]
+                    text-[#C6A77A]
+                  "
+                >
+                  Leave Behind
+                </p>
+
+                <p
+                  style={newYorkFont}
+                  className="
+                    mt-1
+
+                    text-[18px]
+                    font-medium
+                    text-[#0B2A52]
+                  "
+                >
+                  Shortcuts & promises.
+                </p>
+              </div>
+            </div>
+
+            <div
+              className="
+                flex
+                items-center
+                gap-3
+
+                sm:justify-end
+                sm:text-right
+              "
+            >
+              <div className="sm:order-1">
+                <p
+                  className="
+                    text-[8px]
+                    font-bold
+                    uppercase
+                    tracking-[0.19em]
+                    text-[#C6A77A]
+                  "
+                >
+                  Build Instead
+                </p>
+
+                <p
+                  style={newYorkFont}
+                  className="
+                    mt-1
+
+                    text-[18px]
+                    font-medium
+                    text-[#0B2A52]
+                  "
+                >
+                  Strong foundations.
+                </p>
+              </div>
+
+              <span
+                className="
+                  flex
+                  h-9
+                  w-9
+
+                  items-center
+                  justify-center
+
+                  rounded-full
+
+                  bg-[#0B2A52]
+
+                  text-white
+
+                  shadow-[0_8px_24px_rgba(11,42,82,0.14)]
+
+                  sm:order-2
+                "
+              >
+                <ShieldCheck
+                  size={14}
+                  strokeWidth={1.7}
+                />
+              </span>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* =====================================================
+            DESKTOP TRANSFORMATION TIMELINE
+        ===================================================== */}
+
+        <div
+          className="
+            relative
+
+            mx-auto
+            mt-8
+
+            hidden
+            max-w-[1120px]
+
+            lg:block
+          "
+        >
+          {/* MAIN CENTER LINE */}
+
+          <div
+            aria-hidden="true"
+            className="
+              absolute
+              bottom-[38px]
+              left-1/2
+              top-[38px]
+
+              w-px
+
+              -translate-x-1/2
+
+              bg-[#DCE5ED]
+            "
+          />
+
+          {/* ANIMATED CENTER LINE */}
+
+          <motion.div
+            initial={{
+              scaleY: 0,
+            }}
+            whileInView={{
+              scaleY: 1,
+            }}
+            viewport={{
+              once: true,
+              amount: 0.15,
+            }}
+            transition={{
+              duration: reduceMotion ? 0 : 1.4,
+              ease,
+            }}
+            className="
+              absolute
+              bottom-[38px]
+              left-1/2
+              top-[38px]
+
+              w-[2px]
+
+              -translate-x-1/2
+
+              origin-top
+
+              bg-gradient-to-b
+              from-[#0B2A52]
+              via-[#C6A77A]
+              to-[#0B2A52]
+            "
+          />
+
+          {/* ROWS */}
+
+          <div>
+            {standards.map((item, index) => {
+              const Icon = item.icon;
+
+              return (
+                <motion.div
+                  key={item.number}
+                  initial={{
+                    opacity: 0,
+                    y: reduceMotion ? 0 : 24,
+                  }}
+                  whileInView={{
+                    opacity: 1,
+                    y: 0,
+                  }}
+                  viewport={{
+                    once: true,
+                    amount: 0.3,
+                  }}
+                  transition={{
+                    duration: reduceMotion ? 0 : 0.65,
+                    delay: reduceMotion
+                      ? 0
+                      : index * 0.08,
+                    ease,
+                  }}
+                  className="
+                    group
+                    relative
+
+                    grid
+                    min-h-[110px]
+
+                    grid-cols-[1fr_120px_1fr]
+
+                    items-center
+
+                    border-b
+                    border-[#DCE5ED]
+                  "
+                >
+                  {/* =========================================
+                      LEFT — REJECT
+                  ========================================= */}
+
+                  <div
+                    className="
+                      flex
+                      items-center
+                      justify-end
+
+                      gap-4
+
+                      pr-9
+                    "
+                  >
+                    <div className="text-right">
+                      <span
+                        className="
+                          text-[7px]
+                          font-semibold
+                          uppercase
+                          tracking-[0.17em]
+                          text-[#9AA8B5]
+                        "
+                      >
+                        Don&apos;t Build Around
+                      </span>
+
+                      <p
+                        className="
+                          mt-2
+
+                          text-[15px]
+                          font-medium
+                          text-[#64798F]
+
+                          transition-colors
+                          duration-300
+
+                          group-hover:text-[#0B2A52]
+                        "
+                      >
+                        {item.avoid}
+                      </p>
+                    </div>
+
+                    {/* ICON */}
+
+                    <div
+                      className="
+                        relative
+
+                        flex
+                        h-11
+                        w-11
+                        shrink-0
+
+                        items-center
+                        justify-center
+
+                        rounded-full
+
+                        border
+                        border-[#D8E2EB]
+
+                        bg-white
+
+                        text-[#7B8D9E]
+
+                        transition-all
+                        duration-400
+
+                        group-hover:border-[#C6A77A]/50
+                        group-hover:bg-[#FFF8EF]
+                        group-hover:text-[#C6A77A]
+                      "
+                    >
+                      <Icon
+                        size={16}
+                        strokeWidth={1.65}
+                      />
+
+                      <span
+                        aria-hidden="true"
+                        className="
+                          absolute
+
+                          h-px
+                          w-6
+
+                          -rotate-45
+
+                          bg-[#C6A77A]/65
+                        "
+                      />
+                    </div>
+                  </div>
+
+                  {/* =========================================
+                      CENTER NODE
+                  ========================================= */}
+
+                  <div
+                    className="
+                      relative
+                      z-10
+
+                      flex
+                      items-center
+                      justify-center
+                    "
+                  >
+                    {/* LEFT CONNECTOR */}
+
+                    <span
+                      className="
+                        absolute
+                        right-1/2
+
+                        h-px
+                        w-[60px]
+
+                        bg-gradient-to-l
+                        from-[#C6A77A]
+                        to-transparent
+                      "
+                    />
+
+                    {/* RIGHT CONNECTOR */}
+
+                    <span
+                      className="
+                        absolute
+                        left-1/2
+
+                        h-px
+                        w-[60px]
+
+                        bg-gradient-to-r
+                        from-[#C6A77A]
+                        to-transparent
+                      "
+                    />
+
+                    <motion.div
+                      whileHover={
+                        reduceMotion
+                          ? undefined
+                          : {
+                              scale: 1.08,
+                            }
+                      }
+                      className="
+                        relative
+                        z-10
+
+                        flex
+                        h-12
+                        w-12
+
+                        items-center
+                        justify-center
+
+                        rounded-full
+
+                        border
+                        border-[#C6A77A]/45
+
+                        bg-white
+
+                        shadow-[0_8px_24px_rgba(11,42,82,0.08)]
+                      "
+                    >
+                      <span
+                        style={newYorkFont}
+                        className="
+                          text-[14px]
+                          font-medium
+                          text-[#C6A77A]
+                        "
+                      >
+                        {item.number}
+                      </span>
+                    </motion.div>
+                  </div>
+
+                  {/* =========================================
+                      RIGHT — BUILD
+                  ========================================= */}
+
+                  <div
+                    className="
+                      flex
+                      items-center
+
+                      gap-4
+
+                      pl-9
+                    "
+                  >
+                    {/* CHECK */}
+
+                    <div
+                      className="
+                        flex
+                        h-11
+                        w-11
+                        shrink-0
+
+                        items-center
+                        justify-center
+
+                        rounded-full
+
+                        bg-[#EEF5FA]
+
+                        text-[#0B2A52]
+
+                        transition-all
+                        duration-400
+
+                        group-hover:bg-[#0B2A52]
+                        group-hover:text-white
+                      "
+                    >
+                      <Sparkles
+                        size={15}
+                        strokeWidth={1.7}
+                      />
+                    </div>
+
+                    <div>
+                      <span
+                        className="
+                          text-[7px]
+                          font-semibold
+                          uppercase
+                          tracking-[0.17em]
+                          text-[#C6A77A]
+                        "
+                      >
+                        Build Around
+                      </span>
+
+                      <p
+                        style={newYorkFont}
+                        className="
+                          mt-2
+
+                          text-[21px]
+                          font-medium
+                          tracking-[-0.025em]
+                          text-[#0B2A52]
+                        "
+                      >
+                        {item.build}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* ROW HOVER */}
+
+                  <span
+                    aria-hidden="true"
+                    className="
+                      pointer-events-none
+
+                      absolute
+                      inset-x-0
+                      bottom-0
+
+                      h-[2px]
+
+                      scale-x-0
+
+                      bg-gradient-to-r
+                      from-transparent
+                      via-[#C6A77A]
+                      to-transparent
+
+                      transition-transform
+                      duration-500
+
+                      group-hover:scale-x-100
+                    "
+                  />
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* =====================================================
+            MOBILE / TABLET TRANSFORMATION FLOW
+        ===================================================== */}
+
+        <div
+          className="
+            mx-auto
+            mt-8
+            max-w-[720px]
+
+            lg:hidden
+          "
+        >
+          <div
+            className="
+              relative
+
+              border-l
+              border-[#D8E2EB]
+
+              pl-6
+
+              sm:pl-8
+            "
+          >
+            <motion.div
+              initial={{
+                scaleY: 0,
+              }}
+              whileInView={{
+                scaleY: 1,
+              }}
+              viewport={{
+                once: true,
+                amount: 0.15,
+              }}
+              transition={{
+                duration: reduceMotion ? 0 : 1.3,
+                ease,
+              }}
+              className="
+                absolute
+                bottom-0
+                left-[-1px]
+                top-0
+
+                w-[2px]
+
+                origin-top
+
+                bg-gradient-to-b
+                from-[#0B2A52]
+                via-[#C6A77A]
+                to-[#0B2A52]
+              "
+            />
+
+            {standards.map((item, index) => {
+              const Icon = item.icon;
+
+              return (
+                <motion.div
+                  key={item.number}
+                  initial={{
+                    opacity: 0,
+                    x: reduceMotion ? 0 : 20,
+                  }}
+                  whileInView={{
+                    opacity: 1,
+                    x: 0,
+                  }}
+                  viewport={{
+                    once: true,
+                    amount: 0.2,
+                  }}
+                  transition={{
+                    duration: reduceMotion ? 0 : 0.6,
+                    delay: reduceMotion
+                      ? 0
+                      : index * 0.06,
+                    ease,
+                  }}
+                  className="
+                    relative
+
+                    border-b
+                    border-[#DCE5ED]
+
+                    py-6
+
+                    first:pt-2
+                  "
+                >
+                  {/* NODE */}
+
+                  <span
+                    className="
+                      absolute
+                      left-[-31px]
+                      top-7
+
+                      flex
+                      h-3
+                      w-3
+
+                      items-center
+                      justify-center
+
+                      rounded-full
+
+                      border-2
+                      border-white
+
+                      bg-[#C6A77A]
+
+                      shadow-[0_0_0_1px_rgba(198,167,122,0.35)]
+
+                      sm:left-[-39px]
+                    "
+                  />
+
+                  {/* NUMBER */}
+
+                  <span
+                    className="
+                      text-[8px]
+                      font-semibold
+                      tracking-[0.18em]
+                      text-[#C6A77A]
+                    "
+                  >
+                    {item.number}
+                  </span>
+
+                  <div
+                    className="
+                      mt-3
+
+                      grid
+                      grid-cols-1
+
+                      gap-4
+
+                      sm:grid-cols-[1fr_auto_1fr]
+                      sm:items-center
+                    "
+                  >
+                    {/* AVOID */}
+
+                    <div
+                      className="
+                        flex
+                        items-center
+                        gap-3
+                      "
+                    >
+                      <span
+                        className="
+                          relative
+
+                          flex
+                          h-9
+                          w-9
+                          shrink-0
+
+                          items-center
+                          justify-center
+
+                          rounded-[11px]
+
+                          border
+                          border-[#D8E2EB]
+
+                          bg-white
+
+                          text-[#768A9D]
+                        "
+                      >
+                        <Icon
+                          size={14}
+                          strokeWidth={1.6}
+                        />
+
+                        <span
+                          className="
+                            absolute
+
+                            h-px
+                            w-5
+
+                            -rotate-45
+
+                            bg-[#C6A77A]
+                          "
+                        />
+                      </span>
+
+                      <div>
+                        <p
+                          className="
+                            text-[7px]
+                            font-semibold
+                            uppercase
+                            tracking-[0.15em]
+                            text-[#9AA8B5]
+                          "
+                        >
+                          Don&apos;t
+                        </p>
+
+                        <p
+                          className="
+                            mt-1
+
+                            text-[13px]
+                            font-medium
+                            text-[#61778D]
+                          "
+                        >
+                          {item.avoid}
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* TRANSITION */}
+
+                    <div
+                      className="
+                        hidden
+
+                        h-px
+                        w-8
+
+                        bg-gradient-to-r
+                        from-[#0B2A52]/10
+                        to-[#C6A77A]
+
+                        sm:block
+                      "
+                    />
+
+                    {/* BUILD */}
+
+                    <div
+                      className="
+                        flex
+                        items-center
+                        gap-3
+                      "
+                    >
+                      <span
+                        className="
+                          flex
+                          h-9
+                          w-9
+                          shrink-0
+
+                          items-center
+                          justify-center
+
+                          rounded-[11px]
+
+                          bg-[#EEF5FA]
+
+                          text-[#0B2A52]
+                        "
+                      >
+                        <Sparkles
+                          size={13}
+                          strokeWidth={1.7}
+                        />
+                      </span>
+
+                      <div>
+                        <p
+                          className="
+                            text-[7px]
+                            font-semibold
+                            uppercase
+                            tracking-[0.15em]
+                            text-[#C6A77A]
+                          "
+                        >
+                          Build
+                        </p>
+
+                        <p
+                          style={newYorkFont}
+                          className="
+                            mt-1
+
+                            text-[17px]
+                            font-medium
+                            text-[#0B2A52]
+                          "
+                        >
+                          {item.build}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* =====================================================
+            FINAL PRINCIPLE
+        ===================================================== */}
 
         <motion.div
           initial={{
@@ -179,1111 +1261,232 @@ export default function SEOBetterApproachSection() {
             amount: 0.25,
           }}
           transition={{
-            duration: 0.9,
-            ease,
-          }}
-          className="
-            mx-auto
-            max-w-[980px]
-            text-center
-          "
-        >
-          <div className="flex items-center justify-center gap-3">
-            <span className="h-px w-9 bg-[#C6A77A]" />
-
-            <span
-              className="
-                text-[10px]
-                font-semibold
-                tracking-[0.24em]
-                text-[#C6A77A]
-              "
-            >
-              A BETTER APPROACH TO SEO
-            </span>
-
-            <span className="h-px w-9 bg-[#C6A77A]" />
-          </div>
-
-          <h2
-            className="
-              mt-6
-              text-[2.2rem]
-              font-medium
-              leading-[1.08]
-              tracking-[-0.035em]
-              text-[#0B2A52]
-              sm:text-[2.6rem]
-              md:text-[2.95rem]
-              lg:text-[3.1rem]
-              xl:text-[3.35rem]
-            "
-          >
-            No Shortcuts Disguised as{" "}
-            <span className="text-[#C6A77A]">
-              Strategy.
-            </span>
-          </h2>
-
-          <p
-            className="
-              mx-auto
-              mt-7
-              max-w-[820px]
-              text-[14px]
-              leading-7
-              text-[#0B2A52]/64
-              sm:text-[15px]
-            "
-          >
-            SEO is a long-term growth channel, and we would rather build
-            something durable than chase temporary tricks.
-          </p>
-        </motion.div>
-
-        {/* =====================================================
-            EDITORIAL STATEMENT
-        ====================================================== */}
-
-        <motion.div
-          initial={{
-            opacity: 0,
-            y: reduceMotion ? 0 : 28,
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
-          viewport={{
-            once: true,
-            amount: 0.18,
-          }}
-          transition={{
-            duration: 0.9,
-            delay: 0.1,
+            duration: reduceMotion ? 0 : 0.8,
             ease,
           }}
           className="
             relative
+
             mx-auto
-            mt-20
-            max-w-[1180px]
+            mt-12
+
+            max-w-[1040px]
+
             overflow-hidden
-            border-y
-            border-[#0B2A52]/14
-            py-12
-            sm:py-14
-            lg:py-16
+
+            rounded-[24px]
+
+            border
+            border-[#D4E0E9]
+
+            bg-[linear-gradient(110deg,#EFF7FD_0%,#FFFFFF_52%,#FFF8ED_100%)]
+
+            px-5
+            py-7
+
+            shadow-[0_15px_45px_rgba(11,42,82,0.055)]
+
+            sm:mt-14
+            sm:px-7
+            sm:py-8
+
+            md:px-9
+
+            lg:mt-16
+            lg:px-10
           "
         >
-          {/* HUGE BACKGROUND WORD */}
+          {/* DECOR */}
 
-          <span
+          <div
             aria-hidden="true"
             className="
               pointer-events-none
+
               absolute
-              left-1/2
-              top-1/2
-              -translate-x-1/2
-              -translate-y-1/2
-              whitespace-nowrap
-              select-none
-              text-[86px]
-              font-semibold
-              leading-none
-              tracking-[-0.07em]
-              text-[#0B2A52]/[0.025]
-              sm:text-[130px]
-              lg:text-[170px]
+              -right-[100px]
+              -top-[120px]
+
+              h-[260px]
+              w-[260px]
+
+              rounded-full
+
+              border
+              border-[#C6A77A]/15
             "
-          >
-            NO SHORTCUTS
-          </span>
+          />
 
           <div
             className="
               relative
               z-10
-              mx-auto
-              grid
-              max-w-[1000px]
-              gap-10
-              lg:grid-cols-[0.72fr_1.28fr]
-              lg:items-center
+
+              flex
+              flex-col
+              gap-5
+
+              md:flex-row
+              md:items-center
+              md:justify-between
+              md:gap-10
             "
           >
-            {/* VISUAL SYMBOL */}
+            {/* LEFT */}
 
             <div
               className="
                 flex
-                justify-center
-                lg:justify-start
+                items-center
+                gap-3
               "
             >
-              <div
-                className="
-                  relative
-                  flex
-                  h-[190px]
-                  w-[190px]
-                  items-center
-                  justify-center
-                "
-              >
-                <div
-                  className="
-                    absolute
-                    inset-0
-                    rounded-full
-                    border
-                    border-[#3976B6]/12
-                  "
-                />
-
-                <div
-                  className="
-                    absolute
-                    inset-[22px]
-                    rounded-full
-                    border
-                    border-dashed
-                    border-[#C6A77A]/25
-                  "
-                />
-
-                <motion.div
-                  initial={{
-                    scale: reduceMotion ? 1 : 0.88,
-                    opacity: 0,
-                  }}
-                  whileInView={{
-                    scale: 1,
-                    opacity: 1,
-                  }}
-                  viewport={{
-                    once: true,
-                  }}
-                  transition={{
-                    duration: 0.75,
-                    ease,
-                  }}
-                  className="
-                    relative
-                    flex
-                    h-[102px]
-                    w-[102px]
-                    items-center
-                    justify-center
-                    rounded-full
-                    bg-[#0B2A52]
-                    text-white
-                    shadow-[0_18px_45px_rgba(11,42,82,0.18)]
-                  "
-                >
-                  <ShieldCheck
-                    size={34}
-                    strokeWidth={1.35}
-                  />
-
-                  <span
-                    className="
-                      absolute
-                      h-[2px]
-                      w-[132px]
-                      -rotate-45
-                      bg-[#C6A77A]
-                    "
-                  />
-                </motion.div>
-
-                <span
-                  className="
-                    absolute
-                    bottom-[-3px]
-                    rounded-full
-                    border
-                    border-[#0B2A52]/10
-                    bg-white
-                    px-4
-                    py-2
-                    text-[9px]
-                    font-semibold
-                    tracking-[0.15em]
-                    text-[#0B2A52]/48
-                  "
-                >
-                  STRATEGY STANDARD
-                </span>
-              </div>
-            </div>
-
-            {/* STATEMENT */}
-
-            <div>
               <span
                 className="
-                  text-[10px]
-                  font-semibold
-                  tracking-[0.18em]
-                  text-[#C6A77A]
+                  flex
+                  h-10
+                  w-10
+                  shrink-0
+
+                  items-center
+                  justify-center
+
+                  rounded-full
+
+                  bg-[#0B2A52]
+
+                  text-white
                 "
               >
-                THE STANDARD
+                <ShieldCheck
+                  size={15}
+                  strokeWidth={1.7}
+                />
               </span>
 
-              <h3
-                className="
-                  mt-4
-                  max-w-[680px]
-                  text-[28px]
-                  font-medium
-                  leading-[1.18]
-                  tracking-[-0.03em]
-                  text-[#0B2A52]
-                  sm:text-[33px]
-                  lg:text-[36px]
-                "
-              >
-                If a tactic cannot support long-term value, it does not belong
-                in the strategy.
-              </h3>
-
-              <p
-                className="
-                  mt-5
-                  max-w-[650px]
-                  text-[14px]
-                  leading-7
-                  text-[#0B2A52]/60
-                  sm:text-[15px]
-                "
-              >
-                We do not build SEO around volume for the sake of volume,
-                shortcuts for temporary movement or promises that cannot be
-                responsibly controlled.
-              </p>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* =====================================================
-            WHAT WE DON'T DO — OPEN MATRIX
-        ====================================================== */}
-
-        <motion.div
-          initial={{
-            opacity: 0,
-            y: reduceMotion ? 0 : 22,
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
-          viewport={{
-            once: true,
-            amount: 0.15,
-          }}
-          transition={{
-            duration: 0.85,
-            ease,
-          }}
-          className="
-            mx-auto
-            mt-24
-            max-w-[1180px]
-          "
-        >
-          {/* HEADER */}
-
-          <div
-            className="
-              flex
-              flex-col
-              gap-6
-              border-b
-              border-[#0B2A52]/15
-              pb-7
-              sm:flex-row
-              sm:items-end
-              sm:justify-between
-            "
-          >
-            <div>
-              <div className="flex items-center gap-3">
-                <span className="h-px w-8 bg-[#C6A77A]" />
-
-                <span
+              <div>
+                <p
                   className="
-                    text-[10px]
-                    font-semibold
-                    tracking-[0.19em]
+                    text-[8px]
+                    font-bold
+                    uppercase
+                    tracking-[0.2em]
                     text-[#C6A77A]
                   "
                 >
-                  WHAT WE DON&apos;T BUILD AROUND
-                </span>
+                  The Principle
+                </p>
+
+                <p
+                  className="
+                    mt-1
+
+                    text-[10px]
+                    text-[#72869A]
+                  "
+                >
+                  Sustainable search growth.
+                </p>
               </div>
-
-              <h3
-                className="
-                  mt-4
-                  max-w-[700px]
-                  text-[28px]
-                  font-medium
-                  leading-[1.16]
-                  tracking-[-0.03em]
-                  text-[#0B2A52]
-                  sm:text-[32px]
-                "
-              >
-                Eight shortcuts we intentionally leave out.
-              </h3>
             </div>
 
-            <div className="flex items-end gap-3">
-              <span
-                className="
-                  text-[34px]
-                  font-medium
-                  leading-none
-                  tracking-[-0.04em]
-                  text-[#C6A77A]
-                "
-              >
-                08
+            {/* RIGHT */}
+
+            <h3
+              style={newYorkFont}
+              className="
+                max-w-[650px]
+
+                text-[24px]
+                font-medium
+                leading-[1.12]
+                tracking-[-0.035em]
+                text-[#0B2A52]
+
+                sm:text-[27px]
+
+                md:text-right
+                md:text-[29px]
+              "
+            >
+              Build on fundamentals that can{" "}
+              <span className="text-[#C6A77A]">
+                compound over time.
               </span>
-
-              <span
-                className="
-                  pb-1
-                  text-[9px]
-                  font-semibold
-                  leading-4
-                  tracking-[0.13em]
-                  text-[#0B2A52]/36
-                "
-              >
-                SEO
-                <br />
-                GUARDRAILS
-              </span>
-            </div>
-          </div>
-
-          {/* ===================================================
-              OPEN GRID — NOT CARDS
-          =================================================== */}
-
-          <div
-            className="
-              grid
-              md:grid-cols-2
-              lg:grid-cols-4
-            "
-          >
-            {avoidItems.map((item, index) => (
-              <AvoidCell
-                key={item.number}
-                item={item}
-                index={index}
-                reduceMotion={!!reduceMotion}
-              />
-            ))}
+            </h3>
           </div>
         </motion.div>
 
         {/* =====================================================
-            TRANSITION
-        ====================================================== */}
+            MICRO LINE
+        ===================================================== */}
 
         <motion.div
           initial={{
             opacity: 0,
-            scaleX: reduceMotion ? 1 : 0.8,
           }}
           whileInView={{
             opacity: 1,
-            scaleX: 1,
           }}
           viewport={{
             once: true,
           }}
           transition={{
-            duration: 0.85,
-            ease,
+            duration: reduceMotion ? 0 : 0.6,
           }}
           className="
             mx-auto
-            mt-16
+            mt-8
+
             flex
-            max-w-[860px]
+            max-w-[720px]
+
             items-center
-            gap-5
+            gap-3
           "
         >
           <span
             className="
               h-px
               flex-1
+
               bg-gradient-to-r
               from-transparent
-              to-[#0B2A52]/18
+              to-[#C6A77A]/45
             "
           />
 
           <span
             className="
+              shrink-0
+
               text-center
-              text-[10px]
+
+              text-[7px]
               font-semibold
-              tracking-[0.16em]
-              text-[#0B2A52]/38
+              uppercase
+              tracking-[0.15em]
+              text-[#73889D]
+
+              sm:text-[8px]
+              sm:tracking-[0.19em]
             "
           >
-            REMOVE THE SHORTCUTS · STRENGTHEN THE FOUNDATION
+            Relevance · Quality · Content · Expertise · Improvement
           </span>
 
           <span
             className="
               h-px
               flex-1
+
               bg-gradient-to-l
               from-transparent
-              to-[#0B2A52]/18
+              to-[#C6A77A]/45
             "
           />
         </motion.div>
-
-        {/* =====================================================
-            WHAT WE BUILD INSTEAD
-        ====================================================== */}
-
-        <motion.div
-          initial={{
-            opacity: 0,
-            y: reduceMotion ? 0 : 26,
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
-          viewport={{
-            once: true,
-            amount: 0.2,
-          }}
-          transition={{
-            duration: 0.9,
-            ease,
-          }}
-          className="
-            mx-auto
-            mt-16
-            max-w-[1140px]
-          "
-        >
-          {/* INTRO */}
-
-          <div className="text-center">
-            <div className="flex items-center justify-center gap-3">
-              <Sparkles
-                size={14}
-                strokeWidth={1.7}
-                className="text-[#C6A77A]"
-              />
-
-              <span
-                className="
-                  text-[10px]
-                  font-semibold
-                  tracking-[0.2em]
-                  text-[#C6A77A]
-                "
-              >
-                WHAT WE BUILD INSTEAD
-              </span>
-            </div>
-
-            <h3
-              className="
-                mx-auto
-                mt-4
-                max-w-[790px]
-                text-[29px]
-                font-medium
-                leading-[1.16]
-                tracking-[-0.03em]
-                text-[#0B2A52]
-                sm:text-[34px]
-              "
-            >
-              A stronger foundation for sustainable search growth.
-            </h3>
-          </div>
-
-          {/* ===================================================
-              ARCHITECTURAL FOUNDATION VISUAL
-          =================================================== */}
-
-          <div
-            className="
-              relative
-              mt-14
-              pt-16
-            "
-          >
-            {/* TOP RESULT */}
-
-            <motion.div
-              initial={{
-                opacity: 0,
-                y: reduceMotion ? 0 : -10,
-              }}
-              whileInView={{
-                opacity: 1,
-                y: 0,
-              }}
-              viewport={{
-                once: true,
-              }}
-              transition={{
-                duration: 0.7,
-                delay: 0.3,
-                ease,
-              }}
-              className="
-                absolute
-                left-1/2
-                top-0
-                z-20
-                -translate-x-1/2
-              "
-            >
-              <div
-                className="
-                  flex
-                  items-center
-                  gap-3
-                  rounded-full
-                  border
-                  border-[#C6A77A]/35
-                  bg-white
-                  px-5
-                  py-3
-                  shadow-[0_10px_30px_rgba(11,42,82,0.07)]
-                "
-              >
-                <div
-                  className="
-                    flex
-                    h-9
-                    w-9
-                    items-center
-                    justify-center
-                    rounded-full
-                    bg-[#0B2A52]
-                    text-white
-                  "
-                >
-                  <ShieldCheck
-                    size={14}
-                    strokeWidth={1.7}
-                  />
-                </div>
-
-                <div>
-                  <span
-                    className="
-                      block
-                      text-[9px]
-                      font-semibold
-                      tracking-[0.14em]
-                      text-[#C6A77A]
-                    "
-                  >
-                    RESULT
-                  </span>
-
-                  <span
-                    className="
-                      mt-1
-                      block
-                      text-[12px]
-                      font-medium
-                      text-[#0B2A52]
-                    "
-                  >
-                    Durable Search Growth
-                  </span>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* CONNECTOR */}
-
-            <motion.div
-              initial={{
-                scaleY: 0,
-              }}
-              whileInView={{
-                scaleY: 1,
-              }}
-              viewport={{
-                once: true,
-              }}
-              transition={{
-                duration: 0.55,
-                delay: 0.15,
-              }}
-              className="
-                absolute
-                left-1/2
-                top-[52px]
-                h-[58px]
-                w-px
-                -translate-x-1/2
-                origin-top
-                bg-[#C6A77A]/45
-              "
-            />
-
-            {/* FOUNDATION */}
-
-            <div
-              className="
-                relative
-                mt-7
-                overflow-hidden
-                rounded-[30px]
-                border
-                border-[#0B2A52]/14
-                bg-gradient-to-b
-                from-[#F8FBFE]
-                via-white
-                to-[#FAF4EA]
-                px-5
-                pb-6
-                pt-12
-                shadow-[0_24px_65px_rgba(11,42,82,0.055)]
-                sm:px-8
-              "
-            >
-              {/* BACKGROUND ARCH */}
-
-              <div
-                className="
-                  pointer-events-none
-                  absolute
-                  left-1/2
-                  top-[-260px]
-                  h-[500px]
-                  w-[760px]
-                  -translate-x-1/2
-                  rounded-full
-                  border
-                  border-[#3976B6]/[0.07]
-                "
-              />
-
-              <div
-                className="
-                  pointer-events-none
-                  absolute
-                  left-1/2
-                  top-[-210px]
-                  h-[420px]
-                  w-[620px]
-                  -translate-x-1/2
-                  rounded-full
-                  border
-                  border-[#C6A77A]/10
-                "
-              />
-
-              {/* PILLARS */}
-
-              <div
-                className="
-                  relative
-                  z-10
-                  grid
-                  gap-4
-                  sm:grid-cols-2
-                  lg:grid-cols-5
-                "
-              >
-                {principles.map((item, index) => (
-                  <FoundationPillar
-                    key={item.number}
-                    item={item}
-                    index={index}
-                    reduceMotion={!!reduceMotion}
-                  />
-                ))}
-              </div>
-
-              {/* FOUNDATION BASE */}
-
-              <motion.div
-                initial={{
-                  scaleX: 0,
-                }}
-                whileInView={{
-                  scaleX: 1,
-                }}
-                viewport={{
-                  once: true,
-                }}
-                transition={{
-                  duration: 1.1,
-                  delay: 0.18,
-                  ease,
-                }}
-                className="
-                  relative
-                  z-10
-                  mt-5
-                  h-[4px]
-                  origin-left
-                  rounded-full
-                  bg-gradient-to-r
-                  from-[#3976B6]
-                  via-[#0B2A52]
-                  to-[#C6A77A]
-                "
-              />
-            </div>
-          </div>
-
-          {/* ===================================================
-              FINAL COPY
-          =================================================== */}
-
-          <motion.div
-            initial={{
-              opacity: 0,
-              y: reduceMotion ? 0 : 18,
-            }}
-            whileInView={{
-              opacity: 1,
-              y: 0,
-            }}
-            viewport={{
-              once: true,
-              amount: 0.3,
-            }}
-            transition={{
-              duration: 0.8,
-              ease,
-            }}
-            className="
-              mx-auto
-              mt-10
-              max-w-[900px]
-              text-center
-            "
-          >
-            <p
-              className="
-                text-[18px]
-                font-medium
-                leading-8
-                tracking-[-0.015em]
-                text-[#0B2A52]
-                sm:text-[20px]
-              "
-            >
-              Instead, we focus on relevance, technical quality, useful
-              content, clear expertise and sustainable improvement.
-            </p>
-          </motion.div>
-        </motion.div>
       </div>
     </section>
-  );
-}
-
-/* ============================================================
-   AVOID CELL
-============================================================ */
-
-function AvoidCell({
-  item,
-  index,
-  reduceMotion,
-}: {
-  item: AvoidItem;
-  index: number;
-  reduceMotion: boolean;
-}) {
-  const Icon = item.icon;
-
-  const isRightEdge = (index + 1) % 4 === 0;
-  const isBottomRow = index >= 4;
-
-  return (
-    <motion.div
-      initial={{
-        opacity: 0,
-        y: reduceMotion ? 0 : 16,
-      }}
-      whileInView={{
-        opacity: 1,
-        y: 0,
-      }}
-      viewport={{
-        once: true,
-        amount: 0.35,
-      }}
-      transition={{
-        duration: 0.58,
-        delay: Math.min(index * 0.045, 0.22),
-        ease,
-      }}
-      className={`
-        group
-        relative
-        min-h-[205px]
-        px-5
-        py-7
-        sm:px-6
-        lg:px-7
-
-        ${
-          !isRightEdge
-            ? "lg:border-r lg:border-[#0B2A52]/10"
-            : ""
-        }
-
-        ${
-          !isBottomRow
-            ? "border-b border-[#0B2A52]/10"
-            : ""
-        }
-      `}
-    >
-      {/* LARGE NUMBER */}
-
-      <span
-        aria-hidden="true"
-        className="
-          pointer-events-none
-          absolute
-          right-4
-          top-2
-          text-[66px]
-          font-semibold
-          leading-none
-          tracking-[-0.07em]
-          text-[#0B2A52]/[0.025]
-          transition-colors
-          duration-500
-          group-hover:text-[#C6A77A]/[0.08]
-        "
-      >
-        {item.number}
-      </span>
-
-      {/* ICON */}
-
-      <div
-        className="
-          relative
-          flex
-          h-11
-          w-11
-          items-center
-          justify-center
-          rounded-full
-          bg-[#EAF4FC]
-          text-[#3976B6]
-          transition-all
-          duration-300
-          group-hover:bg-[#0B2A52]
-          group-hover:text-white
-        "
-      >
-        <Icon
-          size={16}
-          strokeWidth={1.6}
-        />
-
-        <span
-          className="
-            absolute
-            h-px
-            w-7
-            -rotate-45
-            bg-[#C6A77A]
-          "
-        />
-      </div>
-
-      {/* NUMBER */}
-
-      <span
-        className="
-          mt-6
-          block
-          text-[10px]
-          font-bold
-          tracking-[0.15em]
-          text-[#C6A77A]
-        "
-      >
-        {item.number}
-      </span>
-
-      {/* TEXT */}
-
-      <h4
-        className="
-          mt-3
-          max-w-[230px]
-          text-[16px]
-          font-medium
-          leading-6
-          tracking-[-0.015em]
-          text-[#0B2A52]/68
-          transition-colors
-          duration-300
-          group-hover:text-[#0B2A52]
-          sm:text-[17px]
-        "
-      >
-        {item.title}
-      </h4>
-
-      {/* HOVER SIGNAL */}
-
-      <span
-        className="
-          absolute
-          bottom-0
-          left-0
-          h-[2px]
-          w-0
-          bg-gradient-to-r
-          from-[#3976B6]
-          to-[#C6A77A]
-          transition-all
-          duration-500
-          group-hover:w-[45%]
-        "
-      />
-    </motion.div>
-  );
-}
-
-/* ============================================================
-   FOUNDATION PILLAR
-============================================================ */
-
-function FoundationPillar({
-  item,
-  index,
-  reduceMotion,
-}: {
-  item: {
-    number: string;
-    title: string;
-  };
-  index: number;
-  reduceMotion: boolean;
-}) {
-  return (
-    <motion.div
-      initial={{
-        opacity: 0,
-        y: reduceMotion ? 0 : 20,
-      }}
-      whileInView={{
-        opacity: 1,
-        y: 0,
-      }}
-      viewport={{
-        once: true,
-        amount: 0.35,
-      }}
-      transition={{
-        duration: 0.6,
-        delay: index * 0.07,
-        ease,
-      }}
-      className="
-        group
-        relative
-        min-h-[150px]
-        overflow-hidden
-        rounded-[18px]
-        border
-        border-[#0B2A52]/10
-        bg-white/72
-        px-5
-        py-6
-        text-center
-        transition-all
-        duration-300
-        hover:-translate-y-1
-        hover:border-[#C6A77A]/35
-        hover:shadow-[0_12px_30px_rgba(11,42,82,0.055)]
-      "
-    >
-      <div
-        className="
-          mx-auto
-          flex
-          h-9
-          w-9
-          items-center
-          justify-center
-          rounded-full
-          border
-          border-[#C6A77A]/35
-          bg-[#FCF6EC]
-          text-[10px]
-          font-bold
-          text-[#C6A77A]
-          transition-all
-          duration-300
-          group-hover:bg-[#0B2A52]
-          group-hover:text-white
-        "
-      >
-        {item.number}
-      </div>
-
-      <p
-        className="
-          mt-5
-          text-[10px]
-          font-semibold
-          leading-5
-          tracking-[0.13em]
-          text-[#0B2A52]/62
-        "
-      >
-        {item.title}
-      </p>
-
-      <div
-        className="
-          absolute
-          bottom-0
-          left-1/2
-          h-[3px]
-          w-[46%]
-          -translate-x-1/2
-          rounded-t-full
-          bg-[#C6A77A]
-          opacity-35
-          transition-all
-          duration-300
-          group-hover:w-[75%]
-          group-hover:opacity-100
-        "
-      />
-    </motion.div>
   );
 }

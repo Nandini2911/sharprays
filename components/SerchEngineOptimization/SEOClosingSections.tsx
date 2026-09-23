@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import {
-  ArrowRight,
   Check,
   Search,
   Sparkles,
@@ -13,6 +12,10 @@ import {
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
+const newYorkFont = {
+  fontFamily: '"New York", "Bodoni Moda", Georgia, serif',
+};
+
 /* ============================================================
    COMBINED EXPORT
 ============================================================ */
@@ -20,7 +23,7 @@ const ease = [0.22, 1, 0.36, 1] as const;
 export default function SEOClosingSections() {
   return (
     <>
-      <SEOFinalAnswerSection />
+    
       <SEOFinalCTASection />
     </>
   );
@@ -265,40 +268,92 @@ export function SEOFinalAnswerSection() {
               >
                 <Link
                   href="/contact"
+                  style={newYorkFont}
                   className="
                     group
+                    relative
                     inline-flex
+                    min-h-[46px]
                     items-center
-                    gap-3
-                    rounded-full
-                    bg-gradient-to-r
-                    from-[#0B2A52]
-                    via-[#164A82]
-                    to-[#3976B6]
-                    px-6
-                    py-3.5
-                    text-[11px]
-                    font-semibold
-                    tracking-[0.08em]
-                    text-white
-                    shadow-[0_14px_35px_rgba(11,42,82,0.18)]
+                    justify-center
+                    overflow-hidden
+
+                    rounded-[16px]
+
+                    border
+                    border-[#6285AD]/30
+
+                    bg-white/80
+
+                    px-5
+                    py-[11px]
+
+                    text-[13px]
+                    font-medium
+                    tracking-[-0.01em]
+                    text-[#0B2A52]
+
+                    shadow-[0_8px_30px_rgba(11,42,82,0.08)]
+
+                    backdrop-blur-[8px]
+
                     transition-all
                     duration-300
-                    hover:-translate-y-1
-                    hover:shadow-[0_18px_42px_rgba(11,42,82,0.24)]
+                    ease-out
+
+                    hover:-translate-y-[2px]
+                    hover:border-[#6285AD]/40
+                    hover:bg-white
+                    hover:shadow-[0_10px_35px_rgba(98,133,173,0.15)]
+
+                    active:translate-y-0
+
+                    sm:min-h-[48px]
+                    sm:px-6
+                    sm:py-3
+                    sm:text-[14px]
+
+                    md:text-[15px]
                   "
                 >
-                  Talk to an SEO Specialist
-
-                  <ArrowRight
-                    size={15}
-                    strokeWidth={1.7}
+                  {/* STATIC SOFT BORDER */}
+                  <span
                     className="
-                      transition-transform
-                      duration-300
-                      group-hover:translate-x-1
+                      pointer-events-none
+                      absolute
+                      inset-[2px]
+                      rounded-[13px]
+                      border
+                      border-white/60
                     "
                   />
+
+                  {/* VERY SUBTLE INNER LIGHT */}
+                  <span
+                    className="
+                      pointer-events-none
+                      absolute
+                      inset-x-4
+                      top-0
+                      h-px
+                      bg-gradient-to-r
+                      from-transparent
+                      via-white
+                      to-transparent
+                    "
+                  />
+
+                  {/* TEXT */}
+                  <span
+                    className="
+                      relative
+                      z-10
+                      whitespace-nowrap
+                      text-[#0B2A52]
+                    "
+                  >
+                    Talk to an SEO Specialist
+                  </span>
                 </Link>
               </motion.div>
             </div>
@@ -864,79 +919,91 @@ export function SEOFinalCTASection() {
           >
             <Link
               href="/contact"
+              style={newYorkFont}
               className="
                 group
                 relative
                 inline-flex
+                min-h-[46px]
                 items-center
-                gap-3
+                justify-center
                 overflow-hidden
-                rounded-full
-                bg-gradient-to-r
-                from-[#0B2A52]
-                via-[#185590]
-                to-[#3976B6]
-                px-7
-                py-4
-                text-[11px]
-                font-semibold
-                tracking-[0.08em]
-                text-white
-                shadow-[0_16px_40px_rgba(11,42,82,0.20)]
+
+                rounded-[16px]
+
+                border
+                border-[#6285AD]/30
+
+                bg-white/80
+
+                px-5
+                py-[11px]
+
+                text-[13px]
+                font-medium
+                tracking-[-0.01em]
+                text-[#0B2A52]
+
+                shadow-[0_8px_30px_rgba(11,42,82,0.08)]
+
+                backdrop-blur-[8px]
+
                 transition-all
                 duration-300
-                hover:-translate-y-1
-                hover:shadow-[0_20px_48px_rgba(11,42,82,0.26)]
+                ease-out
+
+                hover:-translate-y-[2px]
+                hover:border-[#6285AD]/40
+                hover:bg-white
+                hover:shadow-[0_10px_35px_rgba(98,133,173,0.15)]
+
+                active:translate-y-0
+
+                sm:min-h-[48px]
+                sm:px-6
+                sm:py-3
+                sm:text-[14px]
+
+                md:text-[15px]
               "
             >
-              {/* button light */}
-
+              {/* STATIC SOFT BORDER */}
               <span
                 className="
                   pointer-events-none
                   absolute
-                  -left-[40%]
-                  top-0
-                  h-full
-                  w-[35%]
-                  -skew-x-12
-                  bg-white/15
-                  transition-all
-                  duration-700
-                  group-hover:left-[120%]
+                  inset-[2px]
+                  rounded-[13px]
+                  border
+                  border-white/60
                 "
               />
 
-              <span className="relative z-10">
-                Improve My Search Visibility
-              </span>
+              {/* VERY SUBTLE INNER LIGHT */}
+              <span
+                className="
+                  pointer-events-none
+                  absolute
+                  inset-x-4
+                  top-0
+                  h-px
+                  bg-gradient-to-r
+                  from-transparent
+                  via-white
+                  to-transparent
+                "
+              />
 
+              {/* TEXT */}
               <span
                 className="
                   relative
                   z-10
-                  flex
-                  h-8
-                  w-8
-                  items-center
-                  justify-center
-                  rounded-full
-                  bg-white/10
-                  transition-all
-                  duration-300
-                  group-hover:bg-white
-                  group-hover:text-[#0B2A52]
+                  whitespace-nowrap
+                  text-[#0B2A52]
                 "
               >
-                <ArrowRight
-                  size={14}
-                  strokeWidth={1.7}
-                  className="
-                    transition-transform
-                    duration-300
-                    group-hover:translate-x-0.5
-                  "
-                />
+                Improve My Search Visibility
               </span>
             </Link>
           </motion.div>

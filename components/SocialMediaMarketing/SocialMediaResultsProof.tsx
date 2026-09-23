@@ -1,12 +1,12 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import {
   ArrowUpRight,
-  Camera,
   BarChart3,
+  Camera,
 } from "lucide-react";
 
 /* =========================================================
@@ -37,7 +37,7 @@ type SocialWork = {
 };
 
 /* =========================================================
-   DATA
+   SHOW ONLY 3 PROJECTS
 ========================================================= */
 
 const socialWorks: SocialWork[] = [
@@ -52,15 +52,15 @@ const socialWorks: SocialWork[] = [
     badge: "Digital agency",
   },
 
-  {
-    id: "rnk",
-    category: "AUTOMOTIVE",
-    client: "RNK Rentals",
+{
+    id: "brownie",
+    category: "FOOD & PRODUCT",
+    client: "Brownie Point",
     description:
-      "A consistent social presence created to showcase the brand, rental services and automotive experience.",
-    image: "/services/social/rnk.png",
-    handle: "@rnk_rentacar",
-    badge: "Car Rentals",
+      "Product-led social content focused on visual appeal, consistency and memorable digital presentation.",
+    image: "/services/social/cake.png",
+    handle: "@browniepointindia",
+    badge: "Product Content",
   },
 
   {
@@ -73,39 +73,6 @@ const socialWorks: SocialWork[] = [
     handle: "@shrutichadha_",
     badge: "Personal Branding",
   },
-
-  {
-    id: "butter-chicken",
-    category: "FOOD & RESTAURANT",
-    client: "Butter Chicken Factory",
-    description:
-      "Visual social content created to communicate food, offers and the personality of the restaurant brand.",
-    image: "/services/social/chicken.png",
-    handle: "@butterchickenfactory",
-    badge: "Social Content",
-  },
-
-  {
-    id: "brownie",
-    category: "FOOD & PRODUCT",
-    client: "Brownie Point",
-    description:
-      "Product-led social content focused on visual appeal, consistency and memorable digital presentation.",
-    image: "/services/social/cake.png",
-    handle: "@browniepointindia",
-    badge: "Product Content",
-  },
-
-  {
-    id: "vow-story",
-    category: "WEDDINGS & EVENTS",
-    client: "Vow Story",
-    description:
-      "A social presence built around weddings, celebrations and unforgettable event moments — capturing the people, details and stories that make every occasion memorable.",
-    image: "/services/social/vow.png",
-    handle: "@vowstory",
-    badge: "Wedding & Events",
-  },
 ];
 
 /* =========================================================
@@ -115,150 +82,12 @@ const socialWorks: SocialWork[] = [
 export default function SocialMediaWorkMarquee() {
   const reduceMotion = useReducedMotion();
 
-  const viewportRef = useRef<HTMLDivElement>(null);
-  const firstGroupRef = useRef<HTMLDivElement>(null);
-
-  const pausedRef = useRef(false);
-
-  const [isDesktop, setIsDesktop] = useState(false);
-
-  /* =======================================================
-     RESPONSIVE BREAKPOINT
-  ======================================================= */
-
-  useEffect(() => {
-    const media = window.matchMedia("(min-width: 768px)");
-
-    const updateBreakpoint = () => {
-      setIsDesktop(media.matches);
-    };
-
-    updateBreakpoint();
-
-    media.addEventListener("change", updateBreakpoint);
-
-    return () => {
-      media.removeEventListener("change", updateBreakpoint);
-    };
-  }, []);
-
-  /* =======================================================
-     SHARP AUTO SCROLL
-
-     Important:
-     We are NOT transforming the whole track anymore.
-
-     Native scrollLeft + whole pixel values prevents much
-     of the blurry/rasterized appearance that transforms
-     can create on text and screenshots.
-  ======================================================= */
-
-  useEffect(() => {
-    const viewport = viewportRef.current;
-    const firstGroup = firstGroupRef.current;
-
-    if (!viewport) return;
-
-    viewport.scrollLeft = 0;
-
-    if (!isDesktop || reduceMotion || !firstGroup) {
-      return;
-    }
-
-    let animationFrame = 0;
-    let previousTime = performance.now();
-    let scrollPosition = 0;
-
-    /* slower = cleaner + more premium */
-    const speed = 90;
-
-    const getLoopDistance = () => {
-      const track = firstGroup.parentElement;
-
-      if (!track) {
-        return firstGroup.offsetWidth;
-      }
-
-      const styles = window.getComputedStyle(track);
-
-      const gap =
-        parseFloat(styles.columnGap || styles.gap || "0") || 0;
-
-      return firstGroup.offsetWidth + gap;
-    };
-
-    let loopDistance = getLoopDistance();
-
-    const updateMeasurements = () => {
-      loopDistance = getLoopDistance();
-    };
-
-    window.addEventListener("resize", updateMeasurements);
-
-    const animate = (currentTime: number) => {
-      /*
-       * Prevent giant jumps when browser tab becomes inactive.
-       */
-      const deltaTime = Math.min(
-        (currentTime - previousTime) / 1000,
-        0.04
-      );
-
-      previousTime = currentTime;
-
-      if (!pausedRef.current) {
-        scrollPosition += speed * deltaTime;
-
-        /*
-         * Seamless reset after first group.
-         */
-        if (
-          loopDistance > 0 &&
-          scrollPosition >= loopDistance
-        ) {
-          scrollPosition -= loopDistance;
-        }
-
-        /*
-         * VERY IMPORTANT:
-         * Round to whole pixels.
-         *
-         * Fractional movement is one of the reasons text /
-         * screenshots can look soft during animation.
-         */
-        viewport.scrollLeft = Math.round(scrollPosition);
-      }
-
-      animationFrame =
-        window.requestAnimationFrame(animate);
-    };
-
-    animationFrame =
-      window.requestAnimationFrame(animate);
-
-    return () => {
-      window.cancelAnimationFrame(animationFrame);
-      window.removeEventListener(
-        "resize",
-        updateMeasurements
-      );
-    };
-  }, [isDesktop, reduceMotion]);
-
-  /*
-   * Desktop needs duplicate group for seamless looping.
-   * Mobile only gets one group because it uses manual swipe.
-   */
-  const groupCount =
-    isDesktop && !reduceMotion ? 2 : 1;
-
   return (
     <section
       id="social-media-work"
       className="
         relative
         overflow-hidden
-
         bg-white
 
         py-20
@@ -271,13 +100,60 @@ export default function SocialMediaWorkMarquee() {
       "
     >
       {/* =====================================================
-          BACKGROUND
+          SUBTLE BACKGROUND
       ===================================================== */}
 
+      <div
+        aria-hidden="true"
+        className="
+          pointer-events-none
+          absolute
+          inset-0
+          overflow-hidden
+        "
+      >
+        <div
+          className="
+            absolute
+            left-1/2
+            top-[-180px]
 
+            h-[360px]
+            w-[700px]
+            -translate-x-1/2
+
+            rounded-full
+
+            bg-[#EDF6FC]/70
+            blur-[120px]
+
+            sm:w-[850px]
+            lg:w-[1050px]
+          "
+        />
+
+        <div
+          className="
+            absolute
+            -right-[260px]
+            top-[48%]
+
+            hidden
+            h-[580px]
+            w-[580px]
+
+            rounded-full
+
+            border
+            border-[#B79A72]/10
+
+            lg:block
+          "
+        />
+      </div>
 
       {/* =====================================================
-          HEADER
+          CONTAINER
       ===================================================== */}
 
       <div
@@ -287,15 +163,19 @@ export default function SocialMediaWorkMarquee() {
 
           mx-auto
           w-full
-          max-w-[1450px]
+          max-w-[1320px]
 
           px-5
           sm:px-7
           md:px-8
           lg:px-12
-          xl:px-16
+          xl:px-14
         "
       >
+        {/* =====================================================
+            HEADER
+        ===================================================== */}
+
         <motion.div
           initial={
             reduceMotion
@@ -323,7 +203,7 @@ export default function SocialMediaWorkMarquee() {
             text-center
           "
         >
-          {/* eyebrow */}
+          {/* EYEBROW */}
 
           <div
             className="
@@ -377,20 +257,19 @@ export default function SocialMediaWorkMarquee() {
             />
           </div>
 
-          {/* heading */}
+          {/* HEADING */}
 
           <h2
             style={newYorkFont}
             className="
               mt-6
 
-              text-[2.25rem]
+              text-[2.6rem]
               font-medium
               leading-[1]
               tracking-[-0.045em]
               text-[#0B2A52]
 
-              sm:text-[2.6rem]
               md:text-[2.95rem]
               lg:text-[3.1rem]
               xl:text-[3.35rem]
@@ -402,7 +281,7 @@ export default function SocialMediaWorkMarquee() {
             </span>
           </h2>
 
-          {/* description */}
+          {/* DESCRIPTION */}
 
           <p
             className="
@@ -425,72 +304,44 @@ export default function SocialMediaWorkMarquee() {
             industries.
           </p>
         </motion.div>
-      </div>
 
-      {/* =====================================================
-          PORTFOLIO
-      ===================================================== */}
-
-      <motion.div
-        initial={
-          reduceMotion
-            ? false
-            : {
-                opacity: 0,
-                y: 25,
-              }
-        }
-        whileInView={{
-          opacity: 1,
-          y: 0,
-        }}
-        viewport={{
-          once: true,
-          amount: 0.1,
-        }}
-        transition={{
-          duration: reduceMotion ? 0 : 0.7,
-          delay: reduceMotion ? 0 : 0.12,
-          ease: [0.22, 1, 0.36, 1],
-        }}
-        className="
-          relative
-          z-10
-
-          mt-12
-
-          sm:mt-14
-          md:mt-16
-          lg:mt-20
-        "
-      >
-        {/* ===================================================
+        {/* =====================================================
             PORTFOLIO LABEL
-        =================================================== */}
+        ===================================================== */}
 
-        <div
+        <motion.div
+          initial={
+            reduceMotion
+              ? false
+              : {
+                  opacity: 0,
+                  y: 20,
+                }
+          }
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{
+            once: true,
+            amount: 0.2,
+          }}
+          transition={{
+            duration: reduceMotion ? 0 : 0.65,
+            delay: reduceMotion ? 0 : 0.1,
+          }}
           className="
-            mx-auto
-            mb-6
-
+            mt-12
             flex
-            w-full
-            max-w-[1450px]
             items-center
             gap-3
 
-            px-5
-
-            sm:mb-7
+            sm:mt-14
             sm:gap-4
-            sm:px-7
 
-            md:px-8
+            md:mt-16
 
-            lg:mb-8
-            lg:px-12
-
-            xl:px-16
+            lg:mt-20
           "
         >
           <span
@@ -518,26 +369,6 @@ export default function SocialMediaWorkMarquee() {
             "
           />
 
-          {/* mobile label */}
-
-          <span
-            className="
-              shrink-0
-
-              text-[8px]
-              font-medium
-              uppercase
-              tracking-[0.14em]
-              text-[#71879F]
-
-              md:hidden
-            "
-          >
-            Swipe
-          </span>
-
-          {/* desktop label */}
-
           <span
             className="
               hidden
@@ -549,173 +380,279 @@ export default function SocialMediaWorkMarquee() {
               tracking-[0.16em]
               text-[#71879F]
 
-              md:block
+              sm:block
             "
           >
-            Hover to Pause
+            Selected Projects
           </span>
-        </div>
+        </motion.div>
 
-        {/* ===================================================
-            VIEWPORT
-        =================================================== */}
+        {/* =====================================================
+            3 WORK CARDS
+        ===================================================== */}
 
-        <div className="relative">
-          {/* desktop left fade */}
-
-
-          {/* desktop right fade */}
-
-          
-
-          <div
-            ref={viewportRef}
-            onMouseEnter={() => {
-              pausedRef.current = true;
-            }}
-            onMouseLeave={() => {
-              pausedRef.current = false;
-            }}
-            className="
-              overflow-x-auto
-              overscroll-x-contain
-
-              scroll-smooth
-              [scrollbar-width:none]
-              [&::-webkit-scrollbar]:hidden
-
-              md:overflow-x-hidden
-              md:scroll-auto
-            "
-          >
-            {/* ===============================================
-                TRACK
-
-                No CSS transform / translate3d here.
-            =============================================== */}
-
-            <div
-              className="
-                flex
-                w-max
-
-                gap-4
-
-                px-5
-                pb-2
-
-                sm:gap-5
-                sm:px-7
-
-                md:gap-6
-                md:px-8
-
-                lg:px-12
-
-                xl:px-16
-              "
-            >
-              {Array.from({
-                length: groupCount,
-              }).map((_, groupIndex) => (
-                <div
-                  key={`portfolio-group-${groupIndex}`}
-                  ref={
-                    groupIndex === 0
-                      ? firstGroupRef
-                      : undefined
-                  }
-                  aria-hidden={
-                    groupIndex === 1
-                      ? true
-                      : undefined
-                  }
-                  className="
-                    flex
-                    shrink-0
-
-                    gap-4
-
-                    sm:gap-5
-                    md:gap-6
-                  "
-                >
-                 {socialWorks.map((work) => (
-  <SocialCard
-    key={`${groupIndex}-${work.id}`}
-    work={work}
-    isClone={groupIndex === 1}
-  />
-))}
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </motion.div>
-
-      {/* =====================================================
-          BOTTOM NOTE
-      ===================================================== */}
-
-      <div
-        className="
-          relative
-          z-10
-
-          mx-auto
-          mt-8
-
-          flex
-          max-w-[1450px]
-          items-center
-          justify-center
-          gap-3
-
-          px-5
-
-          sm:mt-10
-          sm:px-7
-
-          lg:mt-12
-          lg:px-12
-        "
-      >
-        <span
+        <div
           className="
-            h-px
-            w-6
-            bg-[#B79A72]
+            mt-6
 
-            sm:w-8
-          "
-        />
+            grid
+            grid-cols-1
 
-        <span
-          className="
-            text-center
+            gap-5
 
-            text-[8px]
-            font-semibold
-            uppercase
-            tracking-[0.16em]
-            text-[#71879F]
+            sm:mt-7
+            sm:gap-6
 
-            sm:tracking-[0.2em]
+            md:grid-cols-2
+
+            lg:mt-8
+            lg:grid-cols-3
+            lg:gap-6
+
+            xl:gap-7
           "
         >
-          Selected Social Media Work
-        </span>
+          {socialWorks.map((work, index) => (
+            <motion.div
+              key={work.id}
+              initial={
+                reduceMotion
+                  ? false
+                  : {
+                      opacity: 0,
+                      y: 32,
+                    }
+              }
+              whileInView={{
+                opacity: 1,
+                y: 0,
+              }}
+              viewport={{
+                once: true,
+                amount: 0.15,
+              }}
+              transition={{
+                duration: reduceMotion ? 0 : 0.68,
+                delay: reduceMotion
+                  ? 0
+                  : index * 0.08,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+              className={`
+                ${
+                  index === 2
+                    ? "md:col-span-2 md:mx-auto md:w-full md:max-w-[390px] lg:col-span-1 lg:mx-0 lg:max-w-none"
+                    : ""
+                }
+              `}
+            >
+              <SocialCard work={work} />
+            </motion.div>
+          ))}
+        </div>
 
-        <span
+        {/* =====================================================
+            VIEW ALL WORK
+        ===================================================== */}
+
+        <motion.div
+          initial={
+            reduceMotion
+              ? false
+              : {
+                  opacity: 0,
+                  y: 20,
+                }
+          }
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{
+            once: true,
+            amount: 0.3,
+          }}
+          transition={{
+            duration: reduceMotion ? 0 : 0.65,
+            delay: reduceMotion ? 0 : 0.2,
+          }}
           className="
-            h-px
-            w-6
-            bg-[#B79A72]
+            mt-10
+            flex
+            justify-center
 
-            sm:w-8
+            sm:mt-12
+            lg:mt-14
           "
-        />
+        >
+          <Link
+            href="/work"
+            style={newYorkFont}
+            className="
+              group
+              relative
+
+              inline-flex
+              min-h-[46px]
+
+              items-center
+              justify-center
+              overflow-hidden
+
+              rounded-[16px]
+
+              border
+              border-[#6285AD]/30
+
+              bg-white/80
+
+              px-5
+              py-[11px]
+
+              text-[13px]
+              font-medium
+              tracking-[-0.01em]
+              text-[#0B2A52]
+
+              shadow-[0_8px_30px_rgba(11,42,82,0.08)]
+
+              backdrop-blur-[8px]
+
+              transition-all
+              duration-300
+              ease-out
+
+              hover:-translate-y-[2px]
+              hover:border-[#6285AD]/40
+              hover:bg-white
+              hover:shadow-[0_10px_35px_rgba(98,133,173,0.15)]
+
+              active:translate-y-0
+
+              sm:min-h-[48px]
+              sm:px-6
+              sm:py-3
+              sm:text-[14px]
+
+              md:text-[15px]
+            "
+          >
+            {/* INNER BORDER */}
+
+            <span
+              aria-hidden="true"
+              className="
+                pointer-events-none
+                absolute
+                inset-[2px]
+
+                rounded-[13px]
+
+                border
+                border-white/60
+              "
+            />
+
+            {/* TOP LIGHT */}
+
+            <span
+              aria-hidden="true"
+              className="
+                pointer-events-none
+                absolute
+                inset-x-4
+                top-0
+
+                h-px
+
+                bg-gradient-to-r
+                from-transparent
+                via-white
+                to-transparent
+              "
+            />
+
+            {/* CONTENT */}
+
+            <span
+              className="
+                relative
+                z-10
+
+                flex
+                items-center
+                gap-2
+
+                whitespace-nowrap
+              "
+            >
+              View All Work
+
+              <ArrowUpRight
+                size={16}
+                strokeWidth={1.7}
+                className="
+                  text-[#B79A72]
+
+                  transition-transform
+                  duration-300
+
+                  group-hover:translate-x-0.5
+                  group-hover:-translate-y-0.5
+                "
+              />
+            </span>
+          </Link>
+        </motion.div>
+
+        {/* =====================================================
+            BOTTOM DETAIL
+        ===================================================== */}
+
+        <div
+          className="
+            mx-auto
+            mt-9
+
+            flex
+            max-w-[600px]
+            items-center
+            justify-center
+            gap-3
+
+            sm:mt-10
+          "
+        >
+          <span
+            className="
+              h-px
+              flex-1
+              bg-[#B79A72]/35
+            "
+          />
+
+          <span
+            className="
+              shrink-0
+
+              text-[8px]
+              font-semibold
+              uppercase
+              tracking-[0.17em]
+              text-[#71879F]
+            "
+          >
+            Selected Social Media Work
+          </span>
+
+          <span
+            className="
+              h-px
+              flex-1
+              bg-[#B79A72]/35
+            "
+          />
+        </div>
       </div>
     </section>
   );
@@ -727,10 +664,8 @@ export default function SocialMediaWorkMarquee() {
 
 function SocialCard({
   work,
-  isClone = false,
 }: {
   work: SocialWork;
-  isClone?: boolean;
 }) {
   const instagramUsername =
     work.handle.replace("@", "");
@@ -741,10 +676,8 @@ function SocialCard({
         group
         relative
 
-        w-[82vw]
-        max-w-[330px]
-        shrink-0
-        snap-center
+        h-full
+        w-full
 
         overflow-hidden
 
@@ -761,18 +694,11 @@ function SocialCard({
         duration-500
         ease-out
 
+        hover:-translate-y-1
         hover:border-[#B79A72]/45
         hover:shadow-[0_18px_45px_rgba(11,42,82,0.09)]
 
-        sm:w-[350px]
-        sm:max-w-none
         sm:rounded-[24px]
-
-        md:w-[360px]
-
-        lg:w-[380px]
-
-        xl:w-[390px]
       "
     >
       {/* =====================================================
@@ -783,14 +709,15 @@ function SocialCard({
         className="
           relative
 
-          h-[310px]
+          h-[300px]
           overflow-hidden
 
           bg-[#EDF3F8]
 
-          sm:h-[365px]
-          md:h-[380px]
-          lg:h-[400px]
+          sm:h-[340px]
+          md:h-[350px]
+          lg:h-[360px]
+          xl:h-[380px]
         "
       >
         <Image
@@ -799,11 +726,9 @@ function SocialCard({
           fill
           quality={95}
           sizes="
-            (max-width: 639px) 82vw,
-            (max-width: 767px) 350px,
-            (max-width: 1023px) 360px,
-            (max-width: 1279px) 380px,
-            390px
+            (max-width: 767px) 100vw,
+            (max-width: 1023px) 50vw,
+            33vw
           "
           className="
             object-cover
@@ -813,11 +738,11 @@ function SocialCard({
             duration-700
             ease-[cubic-bezier(0.22,1,0.36,1)]
 
-            md:group-hover:scale-[1.015]
+            group-hover:scale-[1.015]
           "
         />
 
-        {/* subtle gradient only */}
+        {/* IMAGE GRADIENT */}
 
         <div
           aria-hidden="true"
@@ -835,8 +760,52 @@ function SocialCard({
           "
         />
 
-        {/* Instagram tag */}
+        {/* INSTAGRAM LABEL */}
 
+        <div
+          className="
+            absolute
+            left-4
+            top-4
+
+            flex
+            items-center
+            gap-2
+
+            rounded-full
+
+            border
+            border-white/80
+
+            bg-white/95
+
+            px-3
+            py-2
+
+            shadow-[0_5px_18px_rgba(11,42,82,0.08)]
+
+            sm:left-5
+            sm:top-5
+          "
+        >
+          <Camera
+            size={13}
+            strokeWidth={1.6}
+            className="text-[#B79A72]"
+          />
+
+          <span
+            className="
+              text-[8px]
+              font-semibold
+              uppercase
+              tracking-[0.14em]
+              text-[#0B2A52]
+            "
+          >
+            Instagram
+          </span>
+        </div>
       </div>
 
       {/* =====================================================
@@ -846,6 +815,7 @@ function SocialCard({
       <div
         className="
           flex
+          h-[calc(100%-300px)]
           flex-col
 
           px-5
@@ -859,7 +829,7 @@ function SocialCard({
           lg:px-7
         "
       >
-        {/* category + badge */}
+        {/* CATEGORY + BADGE */}
 
         <div
           className="
@@ -907,8 +877,6 @@ function SocialCard({
                 py-1.5
 
                 text-[#0B2A52]
-
-                sm:px-3
               "
             >
               <BarChart3
@@ -921,6 +889,7 @@ function SocialCard({
                 className="
                   text-[9px]
                   font-semibold
+
                   sm:text-[10px]
                 "
               >
@@ -967,7 +936,7 @@ function SocialCard({
           )}
         </div>
 
-        {/* client */}
+        {/* CLIENT */}
 
         <h3
           style={newYorkFont}
@@ -983,13 +952,13 @@ function SocialCard({
             sm:mt-6
             sm:text-[29px]
 
-            lg:text-[31px]
+            lg:text-[30px]
           "
         >
           {work.client}
         </h3>
 
-        {/* description */}
+        {/* DESCRIPTION */}
 
         <p
           className="
@@ -1001,20 +970,25 @@ function SocialCard({
 
             sm:text-[14px]
 
-            md:min-h-[98px]
-
-            lg:text-[15px]
+            lg:text-[14px]
             lg:leading-[1.8]
+
+            xl:text-[15px]
           "
         >
           {work.description}
         </p>
 
-        {/* divider */}
+        {/* SPACER */}
+
+        <div className="flex-1" />
+
+        {/* DIVIDER */}
 
         <div
           className="
             my-5
+
             h-px
             w-full
 
@@ -1024,7 +998,7 @@ function SocialCard({
           "
         />
 
-        {/* footer */}
+        {/* FOOTER */}
 
         <div
           className="
@@ -1034,7 +1008,7 @@ function SocialCard({
             gap-3
           "
         >
-          {/* handle */}
+          {/* HANDLE */}
 
           <div
             className="
@@ -1068,15 +1042,13 @@ function SocialCard({
             </span>
           </div>
 
-          {/* link */}
+          {/* PROFILE LINK */}
 
           <a
-          
-  href={`https://instagram.com/${instagramUsername}`}
-  target="_blank"
-  rel="noopener noreferrer"
-  aria-label={`View ${work.client} Instagram profile`}
-  tabIndex={isClone ? -1 : undefined}
+            href={`https://instagram.com/${instagramUsername}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`View ${work.client} Instagram profile`}
             className="
               group/link
 
@@ -1094,10 +1066,7 @@ function SocialCard({
 
               hover:text-[#B58D61]
 
-              sm:gap-2
               sm:text-[12px]
-
-              lg:text-[13px]
             "
           >
             <span>View Profile</span>
@@ -1119,9 +1088,7 @@ function SocialCard({
         </div>
       </div>
 
-      {/* =====================================================
-          GOLD HOVER LINE
-      ===================================================== */}
+      {/* GOLD HOVER LINE */}
 
       <span
         aria-hidden="true"
@@ -1134,6 +1101,7 @@ function SocialCard({
 
           h-[2px]
           w-0
+
           -translate-x-1/2
 
           bg-[#B79A72]

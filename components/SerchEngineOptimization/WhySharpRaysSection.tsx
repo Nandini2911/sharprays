@@ -1,88 +1,86 @@
 "use client";
 
 import type { LucideIcon } from "lucide-react";
-import { motion, useReducedMotion } from "framer-motion";
 import {
-  Bot,
-  Braces,
-  FileText,
-  Search,
-  Sparkles,
+  ClipboardCheck,
+  Network,
+  ShieldCheck,
   Target,
-  UsersRound,
-  Waypoints,
 } from "lucide-react";
+
+import {
+  motion,
+  useReducedMotion,
+} from "framer-motion";
+
+/* =========================================================
+   FONT
+========================================================= */
+
+const newYorkFont = {
+  fontFamily: '"New York", "Bodoni Moda", Georgia, serif',
+};
+
+/* =========================================================
+   ANIMATION
+========================================================= */
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
-/* ============================================================
+/* =========================================================
    TYPES
-============================================================ */
+========================================================= */
 
-type Audience = {
+type Reason = {
   number: string;
+  title: string;
+  description: string;
   label: string;
-  title: string;
   icon: LucideIcon;
 };
 
-type Discipline = {
-  number: string;
-  title: string;
-  icon: LucideIcon;
-};
-
-/* ============================================================
+/* =========================================================
    DATA
-============================================================ */
+========================================================= */
 
-const audiences: Audience[] = [
+const reasons: Reason[] = [
   {
     number: "01",
-    label: "CUSTOMERS",
-    title: "For customers.",
-    icon: UsersRound,
-  },
-  {
-    number: "02",
-    label: "SEARCH",
-    title: "For search engines.",
-    icon: Search,
-  },
-  {
-    number: "03",
-    label: "AI DISCOVERY",
-    title: "And increasingly, for AI-assisted search experiences.",
-    icon: Bot,
-  },
-];
-
-const disciplines: Discipline[] = [
-  {
-    number: "01",
-    title: "Technical SEO",
-    icon: Braces,
-  },
-  {
-    number: "02",
-    title: "Content",
-    icon: FileText,
-  },
-  {
-    number: "03",
-    title: "Search Intent",
+    label: "BUSINESS VALUE",
+    title: "Business Value Before Volume",
+    description:
+      "We prioritize searches and pages that connect with meaningful business opportunities.",
     icon: Target,
   },
   {
+    number: "02",
+    label: "CONNECTED SEO",
+    title: "Technical + Content Together",
+    description:
+      "We do not treat technical fixes and content strategy as separate SEO worlds.",
+    icon: Network,
+  },
+  {
+    number: "03",
+    label: "CLEAR DELIVERY",
+    title: "Clear Scope",
+    description:
+      "Priority pages, deliverables, responsibilities and reporting are agreed before execution.",
+    icon: ClipboardCheck,
+  },
+  {
     number: "04",
-    title: "User Experience",
-    icon: Waypoints,
+    label: "REALISTIC EXPECTATIONS",
+    title: "No Ranking Guarantees",
+    description:
+      "We focus on factors we can influence rather than promising outcomes no SEO agency controls.",
+    icon: ShieldCheck,
   },
 ];
 
-/* ============================================================
+/* =========================================================
    MAIN SECTION
-============================================================ */
+========================================================= */
 
 export default function WhySharpRaysSection() {
   const reduceMotion = useReducedMotion();
@@ -93,334 +91,473 @@ export default function WhySharpRaysSection() {
       className="
         relative
         overflow-hidden
-        bg-[#FCFBF8]
-        py-24
+        bg-white
+        py-20
         text-[#0B2A52]
-        sm:py-28
-        lg:py-36
+
+        sm:py-24
+        md:py-28
+        lg:py-32
+        xl:py-36
       "
     >
       {/* =====================================================
-          BACKGROUND ATMOSPHERE
-      ====================================================== */}
+          BACKGROUND
+      ===================================================== */}
 
-      <div className="pointer-events-none absolute inset-0">
+      <div
+        aria-hidden="true"
+        className="
+          pointer-events-none
+          absolute
+          inset-0
+          overflow-hidden
+        "
+      >
+        {/* BLUE LIGHT */}
+
         <div
           className="
             absolute
-            -left-72
-            top-[10%]
-            h-[600px]
-            w-[600px]
+            -left-[280px]
+            top-[4%]
+
+            h-[560px]
+            w-[560px]
+
             rounded-full
-            bg-[#3976B6]/[0.04]
-            blur-[180px]
+
+            bg-[#EAF4FC]/70
+            blur-[150px]
+          "
+        />
+
+        {/* GOLD LIGHT */}
+
+        <div
+          className="
+            absolute
+            -right-[280px]
+            bottom-[2%]
+
+            h-[540px]
+            w-[540px]
+
+            rounded-full
+
+            bg-[#C6A77A]/[0.08]
+            blur-[150px]
+          "
+        />
+
+        {/* LARGE BACK WORD */}
+
+        <div
+          className="
+            absolute
+            left-[-15px]
+            top-1/2
+
+            hidden
+
+            -translate-y-1/2
+            -rotate-90
+
+            select-none
+            whitespace-nowrap
+
+            text-[100px]
+            font-semibold
+            uppercase
+            tracking-[-0.06em]
+            text-[#0B2A52]/[0.018]
+
+            xl:block
+          "
+        >
+          WHY
+        </div>
+
+        {/* RIGHT ORBIT */}
+
+        <div
+          className="
+            absolute
+            -right-[320px]
+            top-[16%]
+
+            hidden
+
+            h-[640px]
+            w-[640px]
+
+            rounded-full
+
+            border
+            border-[#C6A77A]/10
+
+            lg:block
           "
         />
 
         <div
           className="
             absolute
-            -right-72
-            bottom-[8%]
-            h-[580px]
-            w-[580px]
+            -right-[230px]
+            top-[25%]
+
+            hidden
+
+            h-[460px]
+            w-[460px]
+
             rounded-full
-            bg-[#C6A77A]/[0.07]
-            blur-[180px]
+
+            border
+            border-[#0B2A52]/[0.04]
+
+            lg:block
           "
         />
       </div>
+
+      {/* =====================================================
+          CONTAINER
+      ===================================================== */}
 
       <div
         className="
           relative
           z-10
+
           mx-auto
-          max-w-[1380px]
+          w-full
+          max-w-[1280px]
+
           px-5
-          sm:px-8
+          sm:px-7
+          md:px-8
           lg:px-12
+          xl:px-14
         "
       >
         {/* =====================================================
-            HEADER
-        ====================================================== */}
+            MAIN LAYOUT
+        ===================================================== */}
 
-        <motion.div
-          initial={{
-            opacity: 0,
-            y: reduceMotion ? 0 : 24,
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
-          viewport={{
-            once: true,
-            amount: 0.3,
-          }}
-          transition={{
-            duration: 0.9,
-            ease,
-          }}
+        <div
           className="
-            mx-auto
-            max-w-[980px]
-            text-center
+            grid
+            grid-cols-1
+
+            gap-12
+
+            sm:gap-14
+
+            lg:grid-cols-[0.78fr_1.22fr]
+            lg:items-start
+            lg:gap-16
+
+            xl:grid-cols-[0.72fr_1.28fr]
+            xl:gap-20
           "
         >
-          <div className="flex items-center justify-center gap-4">
-            <span className="h-px w-10 bg-[#C6A77A]" />
+          {/* =================================================
+              LEFT — EDITORIAL INTRO
+          ================================================= */}
 
-            <span
+          <motion.div
+            initial={{
+              opacity: 0,
+              x: reduceMotion ? 0 : -34,
+            }}
+            whileInView={{
+              opacity: 1,
+              x: 0,
+            }}
+            viewport={{
+              once: true,
+              amount: 0.2,
+            }}
+            transition={{
+              duration: reduceMotion ? 0 : 0.85,
+              ease,
+            }}
+            className="
+              relative
+
+              lg:sticky
+              lg:top-28
+            "
+          >
+            {/* EYEBROW */}
+
+            <div
               className="
-                text-[10px]
-                font-semibold
-                tracking-[0.26em]
-                text-[#A87846]
+                flex
+                items-center
+                gap-3
               "
             >
-              WHY SHARP RAYS
-            </span>
-
-            <span className="h-px w-10 bg-[#C6A77A]" />
-          </div>
-
-          <h2
-            className="
-              mt-6
-              text-[2.2rem]
-              font-medium
-              leading-[1.08]
-              tracking-[-0.035em]
-              text-[#0B2A52]
-              sm:text-[2.6rem]
-              md:text-[2.95rem]
-              lg:text-[3.1rem]
-              xl:text-[3.35rem]
-            "
-          >
-            SEO Should Make Your Business{" "}
-            <span className="text-[#C6A77A]">
-              Easier to Understand.
-            </span>
-          </h2>
-        </motion.div>
-
-        {/* =====================================================
-            CLARITY FRAME
-        ====================================================== */}
-
-        <motion.div
-          initial={{
-            opacity: 0,
-            y: reduceMotion ? 0 : 28,
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
-          viewport={{
-            once: true,
-            amount: 0.18,
-          }}
-          transition={{
-            duration: 0.9,
-            delay: 0.08,
-            ease,
-          }}
-          className="
-            relative
-            mx-auto
-            mt-16
-            max-w-[1180px]
-            overflow-hidden
-            rounded-[30px]
-            border
-            border-[#0B2A52]/12
-            bg-white/70
-            shadow-[0_22px_65px_rgba(11,42,82,0.04)]
-            backdrop-blur-sm
-          "
-        >
-          {/* soft glow */}
-
-          <div
-            className="
-              pointer-events-none
-              absolute
-              -left-20
-              top-1/2
-              h-[300px]
-              w-[300px]
-              -translate-y-1/2
-              rounded-full
-              bg-[#3976B6]/[0.06]
-              blur-[90px]
-            "
-          />
-
-          <div
-            className="
-              pointer-events-none
-              absolute
-              -right-20
-              top-1/2
-              h-[300px]
-              w-[300px]
-              -translate-y-1/2
-              rounded-full
-              bg-[#C6A77A]/[0.09]
-              blur-[90px]
-            "
-          />
-
-          {/* top strip */}
-
-          <div
-            className="
-              relative
-              z-10
-              flex
-              flex-col
-              gap-5
-              border-b
-              border-[#0B2A52]/10
-              px-7
-              py-6
-              sm:flex-row
-              sm:items-center
-              sm:justify-between
-              sm:px-9
-            "
-          >
-            <div>
               <span
                 className="
-                  text-[9px]
-                  font-semibold
-                  tracking-[0.21em]
-                  text-[#A87846]
+                  h-px
+                  w-8
+
+                  bg-[#C6A77A]
+
+                  sm:w-10
                 "
-              >
-                ONE BUSINESS · THREE AUDIENCES
-              </span>
-
-              <p
-                className="
-                  mt-2
-                  [font-family:Georgia,'Times_New_Roman',serif]
-                  text-[18px]
-                  text-[#0B2A52]
-                  sm:text-[21px]
-                "
-              >
-                Clarity needs to travel in more than one direction.
-              </p>
-            </div>
-
-            <div className="flex items-end gap-3">
-              <span
-                className="
-                  [font-family:Georgia,'Times_New_Roman',serif]
-                  text-[48px]
-                  leading-none
-                  text-[#DEC7A9]
-                "
-              >
-                03
-              </span>
-
-              <span
-                className="
-                  pb-1
-                  text-[9px]
-                  font-semibold
-                  leading-4
-                  tracking-[0.14em]
-                  text-[#0B2A52]/36
-                "
-              >
-                WAYS TO
-                <br />
-                BE UNDERSTOOD
-              </span>
-            </div>
-          </div>
-
-          {/* audience lanes */}
-
-          <div
-            className="
-              relative
-              z-10
-              grid
-              md:grid-cols-3
-            "
-          >
-            {audiences.map((item, index) => (
-              <AudienceLane
-                key={item.number}
-                item={item}
-                index={index}
-                reduceMotion={!!reduceMotion}
               />
-            ))}
-          </div>
 
-          {/* bottom convergence */}
+              <span
+                className="
+                  text-[9px]
+                  font-semibold
+                  uppercase
+                  tracking-[0.26em]
+                  text-[#C6A77A]
 
-          <div
-            className="
-              relative
-              z-10
-              border-t
-              border-[#0B2A52]/10
-              px-7
-              py-7
-              text-center
-              sm:px-10
-            "
-          >
-            <span
+                  sm:text-[10px]
+                "
+              >
+                Why Sharp Rays
+              </span>
+            </div>
+
+            {/* HEADING */}
+
+            <h2
+              style={newYorkFont}
               className="
-                text-[9px]
-                font-semibold
-                tracking-[0.19em]
-                text-[#C6A77A]
+                mt-6
+                max-w-[560px]
+
+                text-[2.6rem]
+                font-medium
+                leading-[1]
+                tracking-[-0.045em]
+                text-[#0B2A52]
+
+                md:text-[2.95rem]
+                lg:text-[3.1rem]
+                xl:text-[3.35rem]
               "
             >
-              THE COMMON REQUIREMENT
-            </span>
+              A Clearer Way to Build{" "}
+              <span className="text-[#C6A77A]">
+                Search Visibility.
+              </span>
+            </h2>
+
+            {/* COPY */}
 
             <p
               className="
-                mx-auto
-                mt-3
-                max-w-[760px]
-                [font-family:Georgia,'Times_New_Roman',serif]
-                text-[23px]
-                leading-[1.35]
-                tracking-[-0.02em]
-                text-[#0B2A52]
-                sm:text-[27px]
+                mt-6
+                max-w-[500px]
+
+                text-[13px]
+                leading-[1.8]
+                text-[#657B91]
+
+                sm:text-[14px]
+                md:text-[15px]
               "
             >
-              Your business needs to communicate clearly enough to be
-              understood, trusted and useful.
+              Good SEO should be understandable, commercially relevant and
+              clear about what is being done and why.
             </p>
+
+            <p
+              className="
+                mt-3
+                max-w-[500px]
+
+                text-[13px]
+                leading-[1.8]
+                text-[#657B91]
+
+                sm:text-[14px]
+              "
+            >
+              Our approach keeps strategy, execution and expectations connected
+              from the beginning.
+            </p>
+
+            {/* SMALL PRINCIPLE */}
+
+            <div
+              className="
+                mt-8
+                max-w-[450px]
+
+                border-l-2
+                border-[#C6A77A]
+
+                pl-5
+              "
+            >
+              <p
+                className="
+                  text-[8px]
+                  font-bold
+                  uppercase
+                  tracking-[0.2em]
+                  text-[#C6A77A]
+                "
+              >
+                The Difference
+              </p>
+
+              <p
+                style={newYorkFont}
+                className="
+                  mt-2
+
+                  text-[18px]
+                  font-medium
+                  leading-[1.45]
+                  tracking-[-0.02em]
+                  text-[#0B2A52]
+
+                  sm:text-[20px]
+                "
+              >
+                Clear priorities. Connected execution. No unnecessary promises.
+              </p>
+            </div>
+
+            {/* DESKTOP DETAIL */}
+
+            <div
+              className="
+                mt-10
+                hidden
+
+                items-center
+                gap-3
+
+                lg:flex
+              "
+            >
+              <span
+                className="
+                  h-px
+                  w-10
+
+                  bg-[#0B2A52]/10
+                "
+              />
+
+              <span
+                className="
+                  text-[8px]
+                  font-semibold
+                  uppercase
+                  tracking-[0.17em]
+                  text-[#0B2A52]/35
+                "
+              >
+                Strategy · Execution · Accountability
+              </span>
+            </div>
+          </motion.div>
+
+          {/* =================================================
+              RIGHT — DIFFERENTIATOR RAIL
+          ================================================= */}
+
+          <div
+            className="
+              relative
+
+              mx-auto
+              w-full
+              max-w-[720px]
+
+              lg:max-w-none
+            "
+          >
+            {/* BASE LINE */}
+
+            <div
+              aria-hidden="true"
+              className="
+                absolute
+                bottom-7
+                left-[18px]
+                top-7
+
+                hidden
+                w-px
+
+                bg-[#DCE5ED]
+
+                sm:block
+              "
+            />
+
+            {/* ANIMATED LINE */}
+
+            <motion.div
+              initial={{
+                scaleY: 0,
+              }}
+              whileInView={{
+                scaleY: 1,
+              }}
+              viewport={{
+                once: true,
+                amount: 0.15,
+              }}
+              transition={{
+                duration: reduceMotion ? 0 : 1.3,
+                ease,
+              }}
+              className="
+                absolute
+                bottom-7
+                left-[18px]
+                top-7
+
+                hidden
+                w-[2px]
+
+                origin-top
+
+                bg-gradient-to-b
+                from-[#C6A77A]
+                via-[#0B2A52]/25
+                to-transparent
+
+                sm:block
+              "
+            />
+
+            {/* ITEMS */}
+
+            <div>
+              {reasons.map((reason, index) => (
+                <ReasonRow
+                  key={reason.number}
+                  reason={reason}
+                  index={index}
+                  reduceMotion={!!reduceMotion}
+                />
+              ))}
+            </div>
           </div>
-        </motion.div>
+        </div>
 
         {/* =====================================================
-            MORE THAN KEYWORDS
-        ====================================================== */}
+            CLOSING STRIP
+        ===================================================== */}
 
         <motion.div
           initial={{
             opacity: 0,
-            y: reduceMotion ? 0 : 24,
+            y: reduceMotion ? 0 : 22,
           }}
           whileInView={{
             opacity: 1,
@@ -431,476 +568,147 @@ export default function WhySharpRaysSection() {
             amount: 0.25,
           }}
           transition={{
-            duration: 0.85,
-            ease,
-          }}
-          className="
-            mx-auto
-            mt-20
-            grid
-            max-w-[1120px]
-            gap-10
-            border-y
-            border-[#0B2A52]/13
-            py-12
-            lg:grid-cols-[0.72fr_1.28fr]
-            lg:items-center
-            lg:gap-16
-          "
-        >
-          {/* LEFT */}
-
-          <div>
-            <span
-              className="
-                text-[10px]
-                font-semibold
-                tracking-[0.20em]
-                text-[#C6A77A]
-              "
-            >
-              MORE THAN KEYWORDS
-            </span>
-
-            <h3
-              className="
-                mt-4
-                [font-family:Georgia,'Times_New_Roman',serif]
-                text-[34px]
-                font-normal
-                leading-[1.06]
-                tracking-[-0.04em]
-                text-[#0B2A52]
-                sm:text-[41px]
-              "
-            >
-              Understanding comes
-              <span className="block text-[#B98755]">
-                before optimization.
-              </span>
-            </h3>
-
-            <div
-              className="
-                mt-7
-                h-[3px]
-                w-12
-                bg-[#C6A77A]
-              "
-            />
-          </div>
-
-          {/* RIGHT */}
-
-          <div>
-            <p
-              className="
-                [font-family:Georgia,'Times_New_Roman',serif]
-                text-[20px]
-                leading-8
-                tracking-[-0.015em]
-                text-[#0B2A52]
-                sm:text-[22px]
-              "
-            >
-              That requires more than placing keywords on pages.
-            </p>
-
-            <p
-              className="
-                mt-5
-                max-w-[680px]
-                text-[14px]
-                leading-7
-                text-[#0B2A52]/62
-                sm:text-[15px]
-              "
-            >
-              It requires understanding how your services connect, how your
-              audience searches, what questions they need answered and what
-              makes your business genuinely useful.
-            </p>
-          </div>
-        </motion.div>
-
-        {/* =====================================================
-            STRATEGY COMPOSITION
-        ====================================================== */}
-
-        <motion.div
-          initial={{
-            opacity: 0,
-            y: reduceMotion ? 0 : 24,
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
-          viewport={{
-            once: true,
-            amount: 0.2,
-          }}
-          transition={{
-            duration: 0.9,
-            ease,
-          }}
-          className="
-            mx-auto
-            mt-20
-            max-w-[1180px]
-          "
-        >
-          {/* heading */}
-
-          <div
-            className="
-              flex
-              flex-col
-              gap-6
-              border-b
-              border-[#0B2A52]/13
-              pb-7
-              sm:flex-row
-              sm:items-end
-              sm:justify-between
-            "
-          >
-            <div>
-              <div className="flex items-center gap-3">
-                <span className="h-px w-8 bg-[#C6A77A]" />
-
-                <span
-                  className="
-                    text-[10px]
-                    font-semibold
-                    tracking-[0.2em]
-                    text-[#A87846]
-                  "
-                >
-                  THE SHARP RAYS APPROACH
-                </span>
-              </div>
-
-              <h3
-                className="
-                  mt-4
-                  max-w-[720px]
-                  [font-family:Georgia,'Times_New_Roman',serif]
-                  text-[30px]
-                  font-normal
-                  leading-[1.12]
-                  tracking-[-0.03em]
-                  text-[#0B2A52]
-                  sm:text-[36px]
-                "
-              >
-                Four disciplines.
-                <span className="text-[#B98755]">
-                  {" "}One clear strategy.
-                </span>
-              </h3>
-            </div>
-
-            <span
-              className="
-                max-w-[350px]
-                text-[12px]
-                leading-6
-                text-[#0B2A52]/48
-                sm:text-right
-              "
-            >
-              Technical understanding, useful information, search intent and
-              experience working together.
-            </span>
-          </div>
-
-          {/* disciplines */}
-
-          <div
-            className="
-              grid
-              md:grid-cols-2
-              lg:grid-cols-4
-            "
-          >
-            {disciplines.map((item, index) => (
-              <Discipline
-                key={item.number}
-                item={item}
-                index={index}
-                reduceMotion={!!reduceMotion}
-              />
-            ))}
-          </div>
-
-          {/* connection line */}
-
-          <div className="relative mt-1">
-            <div
-              className="
-                h-[3px]
-                w-full
-                bg-[#0B2A52]/[0.07]
-              "
-            />
-
-            <motion.div
-              initial={{
-                scaleX: 0,
-              }}
-              whileInView={{
-                scaleX: 1,
-              }}
-              viewport={{
-                once: true,
-              }}
-              transition={{
-                duration: reduceMotion ? 0 : 1.1,
-                ease,
-              }}
-              className="
-                absolute
-                inset-x-0
-                top-0
-                h-[3px]
-                origin-left
-                bg-gradient-to-r
-                from-[#3976B6]
-                via-[#0B2A52]
-                to-[#C6A77A]
-              "
-            />
-          </div>
-
-          {/* Sharp Rays statement */}
-
-          <div
-            className="
-              relative
-              overflow-hidden
-              bg-gradient-to-r
-              from-[#EDF6FD]/75
-              via-white
-              to-[#FAF0E2]/75
-              px-7
-              py-9
-              sm:px-10
-            "
-          >
-            <div
-              className="
-                pointer-events-none
-                absolute
-                left-1/2
-                top-1/2
-                h-[240px]
-                w-[650px]
-                -translate-x-1/2
-                -translate-y-1/2
-                rounded-full
-                bg-[#3976B6]/[0.035]
-                blur-[65px]
-              "
-            />
-
-            <div
-              className="
-                relative
-                z-10
-                flex
-                flex-col
-                gap-6
-                sm:flex-row
-                sm:items-center
-              "
-            >
-              <div
-                className="
-                  flex
-                  h-12
-                  w-12
-                  shrink-0
-                  items-center
-                  justify-center
-                  rounded-full
-                  bg-[#0B2A52]
-                  text-white
-                  shadow-[0_10px_26px_rgba(11,42,82,0.14)]
-                "
-              >
-                <Sparkles
-                  size={17}
-                  strokeWidth={1.6}
-                />
-              </div>
-
-              <p
-                className="
-                  max-w-[900px]
-                  [font-family:Georgia,'Times_New_Roman',serif]
-                  text-[18px]
-                  leading-8
-                  tracking-[-0.015em]
-                  text-[#0B2A52]
-                  sm:text-[21px]
-                "
-              >
-                At Sharp Rays, we connect technical SEO, content, search
-                intent and user experience around one clear strategy.
-              </p>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* =====================================================
-            FINAL BRAND STATEMENT
-        ====================================================== */}
-
-        <motion.div
-          initial={{
-            opacity: 0,
-            y: reduceMotion ? 0 : 26,
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
-          viewport={{
-            once: true,
-            amount: 0.3,
-          }}
-          transition={{
-            duration: 0.95,
+            duration: reduceMotion ? 0 : 0.8,
             ease,
           }}
           className="
             relative
+
             mx-auto
-            mt-24
+            mt-12
             max-w-[1120px]
+
             overflow-hidden
+
             border-y
-            border-[#0B2A52]/14
-            py-16
-            text-center
-            sm:py-20
+            border-[#DCE5ED]
+
+            py-6
+
+            sm:mt-14
+            sm:py-7
+
+            lg:mt-16
           "
         >
-          {/* large background word */}
+          {/* GOLD LIGHT */}
 
-          <span
+          <div
             aria-hidden="true"
             className="
               pointer-events-none
+
               absolute
-              left-1/2
+              right-[8%]
               top-1/2
-              -translate-x-1/2
+
+              h-[100px]
+              w-[280px]
+
               -translate-y-1/2
-              whitespace-nowrap
-              select-none
-              [font-family:Georgia,'Times_New_Roman',serif]
-              text-[90px]
-              tracking-[-0.07em]
-              text-[#0B2A52]/[0.022]
-              sm:text-[145px]
-              lg:text-[190px]
+
+              rounded-full
+
+              bg-[#C6A77A]/[0.08]
+
+              blur-[55px]
+            "
+          />
+
+          <div
+            className="
+              relative
+              z-10
+
+              flex
+              flex-col
+
+              gap-4
+
+              md:flex-row
+              md:items-center
+              md:justify-between
+              md:gap-10
             "
           >
-            REASON
-          </span>
-
-          <div className="relative z-10">
-            <span
-              className="
-                text-[10px]
-                font-semibold
-                tracking-[0.22em]
-                text-[#C6A77A]
-              "
-            >
-              WHY IT MATTERS
-            </span>
-
-            <p
-              className="
-                mt-7
-                [font-family:Georgia,'Times_New_Roman',serif]
-                text-[18px]
-                text-[#0B2A52]/48
-                sm:text-[20px]
-              "
-            >
-              Not visibility for visibility&apos;s sake.
-            </p>
-
-            <h3
-              className="
-                mx-auto
-                mt-4
-                max-w-[900px]
-                [font-family:Georgia,'Times_New_Roman',serif]
-                text-[39px]
-                font-normal
-                leading-[1.03]
-                tracking-[-0.045em]
-                text-[#0B2A52]
-                sm:text-[50px]
-                lg:text-[58px]
-              "
-            >
-              Visibility with a
-              <span
-                className="
-                  block
-                  italic
-                  text-[#B98755]
-                "
-              >
-                reason behind it.
-              </span>
-            </h3>
-
             <div
               className="
-                mx-auto
-                mt-10
                 flex
-                max-w-[500px]
                 items-center
-                gap-4
+                gap-3
               "
             >
               <span
                 className="
-                  h-px
-                  flex-1
-                  bg-gradient-to-r
-                  from-transparent
-                  to-[#3976B6]/35
-                "
-              />
+                  flex
+                  h-10
+                  w-10
+                  shrink-0
 
-              <span
-                className="
-                  h-2
-                  w-2
+                  items-center
+                  justify-center
+
                   rounded-full
-                  bg-[#C6A77A]
-                "
-              />
 
-              <span
-                className="
-                  h-px
-                  flex-1
-                  bg-gradient-to-l
-                  from-transparent
-                  to-[#C6A77A]/45
+                  bg-[#0B2A52]
+
+                  text-white
                 "
-              />
+              >
+                <ShieldCheck
+                  size={15}
+                  strokeWidth={1.7}
+                />
+              </span>
+
+              <div>
+                <p
+                  className="
+                    text-[8px]
+                    font-bold
+                    uppercase
+                    tracking-[0.2em]
+                    text-[#C6A77A]
+                  "
+                >
+                  How We Work
+                </p>
+
+                <p
+                  className="
+                    mt-1
+
+                    text-[11px]
+                    text-[#6B8095]
+
+                    sm:text-[12px]
+                  "
+                >
+                  Priorities and responsibilities agreed before execution.
+                </p>
+              </div>
             </div>
+
+            <p
+              style={newYorkFont}
+              className="
+                max-w-[590px]
+
+                text-[20px]
+                font-medium
+                leading-[1.3]
+                tracking-[-0.025em]
+                text-[#0B2A52]
+
+                md:text-right
+                md:text-[22px]
+              "
+            >
+              Search visibility should support the business —{" "}
+              <span className="text-[#C6A77A]">
+                not become an activity for its own sake.
+              </span>
+            </p>
           </div>
         </motion.div>
       </div>
@@ -908,256 +716,384 @@ export default function WhySharpRaysSection() {
   );
 }
 
-/* ============================================================
-   AUDIENCE LANE
-============================================================ */
+/* =========================================================
+   REASON ROW
+========================================================= */
 
-function AudienceLane({
-  item,
+function ReasonRow({
+  reason,
   index,
   reduceMotion,
 }: {
-  item: Audience;
+  reason: Reason;
   index: number;
   reduceMotion: boolean;
 }) {
-  const Icon = item.icon;
+  const Icon = reason.icon;
 
   return (
     <motion.article
       initial={{
         opacity: 0,
-        y: reduceMotion ? 0 : 16,
+        x: reduceMotion ? 0 : 32,
       }}
       whileInView={{
         opacity: 1,
-        y: 0,
+        x: 0,
       }}
       viewport={{
         once: true,
-        amount: 0.35,
+        amount: 0.25,
       }}
       transition={{
-        duration: 0.58,
-        delay: index * 0.07,
+        duration: reduceMotion ? 0 : 0.68,
+        delay: reduceMotion ? 0 : index * 0.08,
         ease,
       }}
-      className={`
+      className="
         group
         relative
-        min-h-[245px]
-        px-7
-        py-9
-        sm:px-9
 
-        ${
-          index < audiences.length - 1
-            ? "md:border-r md:border-[#0B2A52]/10"
-            : ""
-        }
-      `}
+        flex
+        gap-4
+
+        border-b
+        border-[#DCE5ED]
+
+        py-6
+
+        first:pt-2
+        last:border-b-0
+        last:pb-2
+
+        sm:gap-6
+        sm:pl-0
+        sm:py-7
+
+        lg:min-h-[150px]
+        lg:items-center
+      "
     >
-      {/* watermark */}
+      {/* =====================================================
+          NODE
+      ===================================================== */}
+
+      <div
+        className="
+          relative
+          z-10
+
+          hidden
+
+          h-9
+          w-9
+          shrink-0
+
+          items-center
+          justify-center
+
+          rounded-full
+
+          border
+          border-[#D5E0E9]
+
+          bg-white
+
+          shadow-[0_5px_18px_rgba(11,42,82,0.05)]
+
+          transition-all
+          duration-300
+
+          group-hover:border-[#C6A77A]
+          group-hover:bg-[#FFF9F1]
+
+          sm:flex
+        "
+      >
+        <span
+          className="
+            h-2
+            w-2
+
+            rounded-full
+
+            bg-[#C6A77A]
+
+            transition-transform
+            duration-300
+
+            group-hover:scale-125
+          "
+        />
+      </div>
+
+      {/* =====================================================
+          MAIN ROW
+      ===================================================== */}
+
+      <div
+        className="
+          grid
+          min-w-0
+          flex-1
+
+          grid-cols-1
+
+          gap-5
+
+          sm:grid-cols-[1fr_auto]
+          sm:items-start
+
+          lg:grid-cols-[1fr_250px]
+          lg:items-center
+          lg:gap-8
+        "
+      >
+        {/* LEFT CONTENT */}
+
+        <div className="min-w-0">
+          {/* TOP */}
+
+          <div
+            className="
+              flex
+              items-center
+              gap-3
+            "
+          >
+            {/* MOBILE ICON */}
+
+            <span
+              className="
+                flex
+                h-9
+                w-9
+                shrink-0
+
+                items-center
+                justify-center
+
+                rounded-[11px]
+
+                bg-[#EEF5FA]
+
+                text-[#0B2A52]
+
+                sm:hidden
+              "
+            >
+              <Icon
+                size={14}
+                strokeWidth={1.7}
+              />
+            </span>
+
+            <span
+              className="
+                text-[8px]
+                font-bold
+                tracking-[0.18em]
+                text-[#C6A77A]
+              "
+            >
+              {reason.number}
+            </span>
+
+            <span
+              className="
+                h-px
+                w-5
+
+                bg-[#C6A77A]/60
+              "
+            />
+
+            <span
+              className="
+                text-[7px]
+                font-semibold
+                uppercase
+                tracking-[0.16em]
+                text-[#7C90A4]
+
+                sm:text-[8px]
+              "
+            >
+              {reason.label}
+            </span>
+          </div>
+
+          {/* TITLE */}
+
+          <h3
+            style={newYorkFont}
+            className="
+              mt-3
+
+              text-[23px]
+              font-medium
+              leading-[1.1]
+              tracking-[-0.03em]
+              text-[#0B2A52]
+
+              sm:text-[25px]
+
+              lg:text-[27px]
+            "
+          >
+            {reason.title}
+          </h3>
+
+          {/* DESCRIPTION */}
+
+          <p
+            className="
+              mt-3
+              max-w-[510px]
+
+              text-[12.5px]
+              leading-[1.7]
+              text-[#657B91]
+
+              sm:text-[13px]
+              lg:text-[14px]
+            "
+          >
+            {reason.description}
+          </p>
+        </div>
+
+        {/* =================================================
+            RIGHT VISUAL SIGNAL
+        ================================================= */}
+
+        <div
+          className="
+            hidden
+            items-center
+            justify-end
+
+            gap-4
+
+            sm:flex
+          "
+        >
+          {/* LINE */}
+
+          <span
+            className="
+              h-px
+              w-8
+
+              bg-[#0B2A52]/10
+
+              transition-all
+              duration-500
+
+              group-hover:w-14
+              group-hover:bg-[#C6A77A]
+            "
+          />
+
+          {/* ICON */}
+
+          <span
+            className="
+              relative
+
+              flex
+              h-12
+              w-12
+              shrink-0
+
+              items-center
+              justify-center
+
+              rounded-[14px]
+
+              border
+              border-[#D8E3EC]
+
+              bg-white
+
+              text-[#0B2A52]
+
+              shadow-[0_7px_22px_rgba(11,42,82,0.045)]
+
+              transition-all
+              duration-400
+
+              group-hover:-translate-y-1
+              group-hover:border-[#C6A77A]/45
+              group-hover:bg-[#0B2A52]
+              group-hover:text-white
+              group-hover:shadow-[0_12px_30px_rgba(11,42,82,0.12)]
+            "
+          >
+            <Icon
+              size={18}
+              strokeWidth={1.55}
+            />
+
+            {/* CORNER DETAIL */}
+
+            <span
+              aria-hidden="true"
+              className="
+                absolute
+                -right-1
+                -top-1
+
+                h-2
+                w-2
+
+                rounded-full
+
+                border-2
+                border-white
+
+                bg-[#C6A77A]
+
+                opacity-0
+
+                transition-opacity
+                duration-300
+
+                group-hover:opacity-100
+              "
+            />
+          </span>
+        </div>
+      </div>
+
+      {/* =====================================================
+          HOVER ACCENT
+      ===================================================== */}
 
       <span
         aria-hidden="true"
         className="
           pointer-events-none
+
           absolute
-          right-4
-          top-0
-          [font-family:Georgia,'Times_New_Roman',serif]
-          text-[86px]
-          leading-none
-          text-[#0B2A52]/[0.025]
-        "
-      >
-        {item.number}
-      </span>
+          bottom-0
+          left-[64px]
 
-      <div
-        className="
-          flex
-          h-12
-          w-12
-          items-center
-          justify-center
-          rounded-full
-          bg-[#EAF4FC]
-          text-[#3976B6]
-          transition-all
-          duration-300
-          group-hover:bg-[#0B2A52]
-          group-hover:text-white
-        "
-      >
-        <Icon
-          size={17}
-          strokeWidth={1.6}
-        />
-      </div>
-
-      <span
-        className="
-          mt-6
-          block
-          text-[9px]
-          font-semibold
-          tracking-[0.18em]
-          text-[#C6A77A]
-        "
-      >
-        {item.label}
-      </span>
-
-      <h3
-        className="
-          mt-3
-          max-w-[290px]
-          [font-family:Georgia,'Times_New_Roman',serif]
-          text-[22px]
-          font-normal
-          leading-[1.25]
-          tracking-[-0.02em]
-          text-[#0B2A52]
-          sm:text-[24px]
-        "
-      >
-        {item.title}
-      </h3>
-
-      <span
-        className="
-          mt-7
-          block
           h-[2px]
-          w-8
-          bg-[#C6A77A]
+          w-0
+
+          bg-gradient-to-r
+          from-[#C6A77A]
+          to-transparent
+
           transition-all
           duration-500
-          group-hover:w-16
+
+          group-hover:w-[45%]
+
+          sm:left-[60px]
         "
       />
     </motion.article>
-  );
-}
-
-/* ============================================================
-   DISCIPLINE
-============================================================ */
-
-function Discipline({
-  item,
-  index,
-  reduceMotion,
-}: {
-  item: Discipline;
-  index: number;
-  reduceMotion: boolean;
-}) {
-  const Icon = item.icon;
-
-  return (
-    <motion.div
-      initial={{
-        opacity: 0,
-        y: reduceMotion ? 0 : 16,
-      }}
-      whileInView={{
-        opacity: 1,
-        y: 0,
-      }}
-      viewport={{
-        once: true,
-        amount: 0.4,
-      }}
-      transition={{
-        duration: 0.55,
-        delay: index * 0.06,
-        ease,
-      }}
-      className={`
-        group
-        relative
-        min-h-[170px]
-        px-6
-        py-8
-        sm:px-7
-
-        ${
-          index < 3
-            ? "lg:border-r lg:border-[#0B2A52]/10"
-            : ""
-        }
-
-        ${
-          index < 2
-            ? "md:border-b md:border-[#0B2A52]/10 lg:border-b-0"
-            : ""
-        }
-      `}
-    >
-      <div className="flex items-center justify-between gap-5">
-        <span
-          className="
-            [font-family:Georgia,'Times_New_Roman',serif]
-            text-[34px]
-            leading-none
-            text-[#DFC8A9]
-          "
-        >
-          {item.number}
-        </span>
-
-        <div
-          className="
-            flex
-            h-10
-            w-10
-            items-center
-            justify-center
-            rounded-full
-            bg-[#EAF4FC]
-            text-[#3976B6]
-            transition-all
-            duration-300
-            group-hover:bg-[#0B2A52]
-            group-hover:text-white
-          "
-        >
-          <Icon
-            size={15}
-            strokeWidth={1.65}
-          />
-        </div>
-      </div>
-
-      <h4
-        className="
-          mt-7
-          [font-family:Georgia,'Times_New_Roman',serif]
-          text-[20px]
-          font-normal
-          tracking-[-0.02em]
-          text-[#0B2A52]
-          sm:text-[22px]
-        "
-      >
-        {item.title}
-      </h4>
-
-      <span
-        className="
-          mt-5
-          block
-          h-[2px]
-          w-7
-          bg-[#C6A77A]
-          transition-all
-          duration-500
-          group-hover:w-12
-        "
-      />
-    </motion.div>
   );
 }
