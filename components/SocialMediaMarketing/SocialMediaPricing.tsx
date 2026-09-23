@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import {
+  ArrowUpRight,
   Check,
   Info,
   SlidersHorizontal,
@@ -17,79 +18,97 @@ const newYorkFont = {
   fontFamily: '"New York", "Bodoni Moda", Georgia, serif',
 };
 
+const ease = [0.22, 1, 0.36, 1] as const;
+
 /* =========================================================
-   DATA
+   PRICING DATA
 ========================================================= */
 
 const plans = [
   {
-    name: "Basic",
+    name: "Starter",
+    price: "₹14,999",
     tagline: "Build a Consistent Social Presence.",
     description:
-      "For startups and small businesses that need a professional, organized and consistent presence on social media.",
-    price: "₹14,999",
+      "For startups and small businesses that need a professional and reliable social media presence.",
     highlighted: false,
     inclusions: [
-      "1 social media platform",
-      "Social media strategy",
-      "Monthly content calendar",
-      "Up to 12 content pieces per month",
-      "Static posts and carousels",
-      "Publishing and scheduling",
-      "2 edited short-form videos / Reels",
-      "Monthly performance report",
+      "1 Social Media Platform",
+      "Social Media Strategy",
+      "Monthly Content Calendar",
+      "Up to 12 Total Content Pieces / Month",
+      "Includes 2 Edited Reels / Short Videos",
+      "Static Posts & Carousels",
+      "Caption Writing",
+      "Publishing & Scheduling",
+      "Basic Profile Optimization",
+      "Monthly Performance Report",
     ],
     bestFor:
-      "Startups and small businesses that want to move from inconsistent posting to a clearer social media system.",
-    cta: "Start With Basic",
+      "Startups, local businesses and smaller brands that want consistent, professional social media without managing everything themselves.",
+    cta: "Start With Starter",
   },
 
   {
-    name: "Pro",
+    name: "Growth",
+    price: "₹29,999",
     tagline: "Turn Content Into a Connected Growth System.",
     description:
-      "For growing brands that need stronger creative, regular short-form content and more active social media management.",
-    price: "₹29,999",
+      "For growing businesses that need stronger creative, more frequent content and active management across their key platforms.",
     highlighted: true,
     inclusions: [
-      "Up to 2 social media platforms",
-      "Up to 20 content pieces per month",
-      "4–6 edited short-form videos / Reels",
-      "Static posts, carousels and stories",
-      "Enhanced creative direction",
-      "Community engagement",
-      "Monthly optimization recommendations",
-      "Performance and growth reporting",
-      "Monthly strategy review",
+      "Up to 2 Social Media Platforms",
+      "Monthly Social Media Strategy",
+      "Monthly Content Calendar",
+      "Up to 20 Total Content Pieces / Month",
+      "Includes 4–6 Edited Reels / Short Videos",
+      "Static Posts, Carousels & Stories",
+      "Caption & Content Copywriting",
+      "Enhanced Creative Direction",
+      "Publishing & Scheduling",
+      "Community Engagement Support",
+      "Monthly Content Optimization",
+      "Performance & Growth Reporting",
+      "Monthly Strategy Review",
     ],
     bestFor:
-      "Growing businesses that want social media to play a more consistent role in brand awareness, engagement and business growth.",
-    cta: "Choose Pro",
+      "Growing brands that want stronger visibility, better engagement and a more consistent social media system.",
+    cta: "Choose Growth",
   },
 
   {
-    name: "Premium",
-    tagline: "Build a Complete Social Media Engine.",
-    description:
-      "For brands that need ongoing strategy, creative execution, publishing, community management and deeper performance optimization.",
+    name: "Scale",
     price: "₹49,999",
+    tagline: "Build a Complete Social Media Growth Engine.",
+    description:
+      "For brands that need broader strategy, higher content volume, campaign support and deeper ongoing social media management.",
     highlighted: false,
     inclusions: [
-      "Up to 3 social media platforms",
-      "Up to 30 content pieces per month",
-      "8–10 edited short-form videos / Reels",
-      "Campaign and launch content",
-      "Advanced creative direction",
-      "Active community management",
-      "Monthly campaign planning",
-      "Competitor and content opportunity review",
-      "Detailed performance analysis",
+      "Up to 3 Social Media Platforms",
+      "Advanced Social Media Strategy",
+      "Monthly Campaign & Content Planning",
+      "Up to 30 Total Content Pieces / Month",
+      "Includes 8–10 Edited Reels / Short Videos",
+      "Static Posts, Carousels, Stories & Campaign Creative",
+      "Caption & Content Copywriting",
+      "Advanced Creative Direction",
+      "Publishing & Scheduling",
+      "Active Community Management",
+      "Campaign & Launch Content",
+      "Competitor & Content Opportunity Review",
+      "Monthly Performance Analysis",
+      "Monthly Growth Strategy Review",
+      "Priority Support",
     ],
     bestFor:
-      "Brands that need a more complete social media function without building a full internal content and management team.",
-    cta: "Choose Premium",
+      "Growing and established brands that need a broader outsourced social media function without building a complete in-house team.",
+    cta: "Choose Scale",
   },
 ];
+
+/* =========================================================
+   SCOPE DATA
+========================================================= */
 
 const quoteFactors = [
   "Number of platforms",
@@ -105,7 +124,7 @@ const quoteFactors = [
 const separatelyQuoted = [
   "Advertising spend",
   "Paid media management",
-  "Influencer fees",
+  "Influencer collaborations",
   "Professional shoots",
   "Models or production crews",
   "Travel expenses",
@@ -113,10 +132,8 @@ const separatelyQuoted = [
   "Third-party tools",
 ];
 
-const ease = [0.22, 1, 0.36, 1] as const;
-
 /* =========================================================
-   REUSABLE BUTTON
+   GENERAL BUTTON
 ========================================================= */
 
 function GlassButton({
@@ -133,18 +150,21 @@ function GlassButton({
       className="
         group
         relative
+
         inline-flex
-        min-h-[46px]
+        min-h-[47px]
+
         items-center
         justify-center
+
         overflow-hidden
 
-        rounded-[16px]
+        rounded-[14px]
 
         border
-        border-[#6285AD]/30
+        border-[#8FB2D3]/50
 
-        bg-white/80
+        bg-[#F3F8FC]
 
         px-5
         py-[11px]
@@ -154,76 +174,145 @@ function GlassButton({
         tracking-[-0.01em]
         text-[#0B2A52]
 
-        shadow-[0_8px_30px_rgba(11,42,82,0.08)]
-
-        backdrop-blur-[8px]
+        shadow-[0_7px_24px_rgba(11,42,82,0.05)]
 
         transition-all
         duration-300
-        ease-out
 
         hover:-translate-y-[2px]
-        hover:border-[#6285AD]/40
-        hover:bg-white
-        hover:shadow-[0_10px_35px_rgba(98,133,173,0.15)]
+        hover:border-[#719CC5]
+        hover:bg-[#EAF4FB]
+        hover:shadow-[0_10px_30px_rgba(83,132,177,0.12)]
 
-        active:translate-y-0
-
-        sm:min-h-[48px]
+        sm:min-h-[49px]
         sm:px-6
-        sm:py-3
         sm:text-[14px]
-
-        md:text-[15px]
       "
     >
-      {/* INNER BORDER */}
+      <span className="relative z-10 whitespace-nowrap">
+        {label}
+      </span>
 
-      <span
-        aria-hidden="true"
-        className="
-          pointer-events-none
-          absolute
-          inset-[2px]
-
-          rounded-[13px]
-
-          border
-          border-white/60
-        "
-      />
-
-      {/* TOP LIGHT */}
-
-      <span
-        aria-hidden="true"
-        className="
-          pointer-events-none
-          absolute
-          inset-x-4
-          top-0
-
-          h-px
-
-          bg-gradient-to-r
-          from-transparent
-          via-white
-          to-transparent
-        "
-      />
-
-      {/* TEXT */}
-
-      <span
+      <ArrowUpRight
+        size={14}
+        strokeWidth={1.5}
         className="
           relative
           z-10
-          whitespace-nowrap
-          text-[#0B2A52]
+          ml-2
+
+          transition-transform
+          duration-300
+
+          group-hover:translate-x-0.5
+          group-hover:-translate-y-0.5
         "
-      >
+      />
+    </Link>
+  );
+}
+
+/* =========================================================
+   PLAN CTA
+========================================================= */
+
+function PlanButton({
+  planName,
+  label,
+}: {
+  planName: string;
+  label: string;
+}) {
+  const isGrowth = planName === "Growth";
+  const isScale = planName === "Scale";
+
+  return (
+    <Link
+      href="/contact"
+      className={`
+        group/button
+
+        flex
+        min-h-[49px]
+        w-full
+
+        items-center
+        justify-center
+        gap-2
+
+        rounded-[13px]
+
+        border
+
+        px-4
+        py-3
+
+        text-[12px]
+        font-semibold
+
+        transition-all
+        duration-300
+
+        ${
+          isGrowth
+            ? `
+              border-[#0B2A52]
+              bg-[#0B2A52]
+              !text-white
+
+              shadow-[0_10px_28px_rgba(11,42,82,0.14)]
+
+              hover:-translate-y-0.5
+              hover:bg-[#123B6A]
+              hover:!text-white
+
+              hover:shadow-[0_14px_32px_rgba(11,42,82,0.18)]
+            `
+            : isScale
+            ? `
+              border-[#C6A77A]/55
+              bg-[#FFF8EE]
+              text-[#0B2A52]
+
+              hover:-translate-y-0.5
+              hover:border-[#B58D61]
+              hover:bg-[#FCF1E2]
+              hover:text-[#8F683E]
+
+              hover:shadow-[0_10px_26px_rgba(181,141,97,0.12)]
+            `
+            : `
+              border-[#8FB2D3]/55
+              bg-[#F2F7FB]
+              text-[#0B2A52]
+
+              hover:-translate-y-0.5
+              hover:border-[#6E9CC6]
+              hover:bg-[#EAF3FA]
+              hover:text-[#245C91]
+
+              hover:shadow-[0_10px_26px_rgba(78,126,171,0.10)]
+            `
+        }
+      `}
+    >
+      <span className={isGrowth ? "!text-white" : ""}>
         {label}
       </span>
+
+      <ArrowUpRight
+        size={14}
+        strokeWidth={1.5}
+        className={`
+          transition-transform
+          duration-300
+
+          group-hover/button:translate-x-0.5
+          group-hover/button:-translate-y-0.5
+
+          ${isGrowth ? "text-white" : ""}
+        `}
+      />
     </Link>
   );
 }
@@ -233,11 +322,12 @@ function GlassButton({
 ========================================================= */
 
 export default function SocialMediaPricing() {
-  const reduceMotion = useReducedMotion();
+  const reduceMotion = Boolean(useReducedMotion());
 
   return (
     <section
       id="social-media-pricing"
+      aria-labelledby="social-media-pricing-heading"
       className="
         relative
         overflow-hidden
@@ -268,38 +358,58 @@ export default function SocialMediaPricing() {
           className="
             absolute
             left-1/2
-            top-[-210px]
+            top-[-230px]
 
-            h-[400px]
-            w-[700px]
+            h-[450px]
+            w-[720px]
 
             -translate-x-1/2
 
             rounded-full
 
-            bg-[#EDF6FC]/70
-            blur-[130px]
+            bg-[#EDF6FC]/75
+            blur-[145px]
 
-            sm:w-[850px]
-            lg:w-[1000px]
+            sm:w-[900px]
+            lg:w-[1100px]
           "
         />
 
         <div
           className="
             absolute
-            -right-[280px]
-            top-[42%]
+            -right-[300px]
+            top-[41%]
 
             hidden
 
-            h-[600px]
-            w-[600px]
+            h-[620px]
+            w-[620px]
 
             rounded-full
 
             border
             border-[#B79A72]/10
+
+            lg:block
+          "
+        />
+
+        <div
+          className="
+            absolute
+            -left-[260px]
+            bottom-[8%]
+
+            hidden
+
+            h-[520px]
+            w-[520px]
+
+            rounded-full
+
+            bg-[#F0F7FC]/60
+            blur-[140px]
 
             lg:block
           "
@@ -331,14 +441,10 @@ export default function SocialMediaPricing() {
         ===================================================== */}
 
         <motion.div
-          initial={
-            reduceMotion
-              ? false
-              : {
-                  opacity: 0,
-                  y: 30,
-                }
-          }
+          initial={{
+            opacity: 0,
+            y: reduceMotion ? 0 : 30,
+          }}
           whileInView={{
             opacity: 1,
             y: 0,
@@ -414,18 +520,20 @@ export default function SocialMediaPricing() {
           {/* HEADING */}
 
           <h2
+            id="social-media-pricing-heading"
             style={newYorkFont}
             className="
               mx-auto
               mt-6
               max-w-[900px]
 
-              text-[2.6rem]
+              text-[2.1rem]
               font-medium
               leading-[1]
               tracking-[-0.045em]
               text-[#0B2A52]
 
+              sm:text-[2.6rem]
               md:text-[2.95rem]
               lg:text-[3.1rem]
               xl:text-[3.35rem]
@@ -453,10 +561,9 @@ export default function SocialMediaPricing() {
               lg:text-[16px]
             "
           >
-            Every business needs a different level of social media support.
-            Our packages provide a clear starting point while leaving room to
-            adapt the final scope around your platforms, content requirements
-            and business objectives.
+            Choose the level of strategy, content and ongoing management your
+            business needs today, with room to scale as your social presence
+            grows.
           </p>
         </motion.div>
 
@@ -471,420 +578,540 @@ export default function SocialMediaPricing() {
 
             grid
             w-full
-            max-w-[1180px]
+            max-w-[1220px]
             grid-cols-1
 
-            gap-4
+            items-stretch
+            gap-5
 
             sm:mt-14
-            sm:gap-5
 
             md:mt-16
+            md:grid-cols-2
 
             lg:mt-20
             lg:grid-cols-3
-            lg:items-start
+
+            xl:gap-6
           "
         >
-          {plans.map((plan, index) => (
-            <motion.article
-              key={plan.name}
-              initial={
-                reduceMotion
-                  ? false
-                  : {
-                      opacity: 0,
-                      y: 34,
-                    }
-              }
-              whileInView={{
-                opacity: 1,
-                y: 0,
-              }}
-              viewport={{
-                once: true,
-                amount: 0.1,
-              }}
-              transition={{
-                duration: reduceMotion ? 0 : 0.7,
-                delay: reduceMotion ? 0 : index * 0.08,
-                ease,
-              }}
-              className={`
-                group
-                relative
-                overflow-hidden
+          {plans.map((plan, index) => {
+            const isGrowth = plan.name === "Growth";
+            const isScale = plan.name === "Scale";
 
-                rounded-[22px]
-                border
-
-                transition-[transform,box-shadow,border-color]
-                duration-500
-                ease-out
-
-                sm:rounded-[24px]
-
-                ${
-                  plan.highlighted
-                    ? `
-                      border-[#B79A72]/65
-
-                      bg-[linear-gradient(180deg,#F4F9FD_0%,#FFFFFF_38%,#FFFFFF_100%)]
-
-                      shadow-[0_18px_50px_rgba(11,42,82,0.09)]
-
-                      lg:-translate-y-3
-                    `
-                    : `
-                      border-[#D8E4EE]
-
-                      bg-white
-
-                      shadow-[0_10px_34px_rgba(11,42,82,0.05)]
-
-                      hover:-translate-y-1
-                      hover:border-[#B79A72]/40
-
-                      hover:shadow-[0_16px_45px_rgba(11,42,82,0.08)]
-                    `
+            return (
+              <motion.article
+                key={plan.name}
+                initial={{
+                  opacity: 0,
+                  y: reduceMotion ? 0 : 34,
+                }}
+                whileInView={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                viewport={{
+                  once: true,
+                  amount: 0.1,
+                }}
+                transition={{
+                  duration: reduceMotion ? 0 : 0.7,
+                  delay: reduceMotion ? 0 : index * 0.08,
+                  ease,
+                }}
+                whileHover={
+                  reduceMotion
+                    ? undefined
+                    : {
+                        y: -4,
+                      }
                 }
-              `}
-            >
-              {/* TOP ACCENT */}
-
-              <div
-                aria-hidden="true"
                 className={`
-                  h-[2px]
-                  w-full
+                  group
+                  relative
 
-                  ${
-                    plan.highlighted
-                      ? "bg-gradient-to-r from-[#0B2A52] via-[#6A9BC5] to-[#B79A72]"
-                      : "bg-gradient-to-r from-transparent via-[#B79A72]/45 to-transparent"
-                  }
-                `}
-              />
-
-              {/* MOST POPULAR */}
-
-              {plan.highlighted && (
-                <div
-                  className="
-                    absolute
-                    right-4
-                    top-4
-
-                    flex
-                    items-center
-                    gap-1.5
-
-                    rounded-full
-
-                    border
-                    border-[#B79A72]/30
-
-                    bg-[#FFF9F2]
-
-                    px-2.5
-                    py-1.5
-
-                    sm:right-5
-                    sm:top-5
-                  "
-                >
-                  <Sparkles
-                    size={11}
-                    strokeWidth={1.8}
-                    className="text-[#B79A72]"
-                  />
-
-                  <span
-                    className="
-                      text-[7px]
-                      font-bold
-                      uppercase
-                      tracking-[0.15em]
-                      text-[#9A7145]
-
-                      sm:text-[8px]
-                    "
-                  >
-                    Most Popular
-                  </span>
-                </div>
-              )}
-
-              {/* CONTENT */}
-
-              <div
-                className="
                   flex
+                  h-full
+                  min-w-0
                   flex-col
 
-                  p-5
+                  overflow-hidden
 
-                  sm:p-6
-                  lg:p-6
-                  xl:p-7
-                "
+                  rounded-[22px]
+
+                  border
+
+                  transition-[transform,box-shadow,border-color]
+                  duration-500
+                  ease-out
+
+                  sm:rounded-[24px]
+
+                  ${
+                    isGrowth
+                      ? `
+                        border-[#6B99C0]/55
+
+                        bg-[linear-gradient(180deg,#F0F7FC_0%,#FFFFFF_34%,#FFFFFF_100%)]
+
+                        shadow-[0_20px_55px_rgba(11,42,82,0.10)]
+                      `
+                      : isScale
+                      ? `
+                        border-[#D8C5A9]/60
+
+                        bg-[linear-gradient(180deg,#FFFDF9_0%,#FFFFFF_36%,#FFFFFF_100%)]
+
+                        shadow-[0_12px_38px_rgba(11,42,82,0.055)]
+
+                        hover:border-[#B79A72]/55
+                        hover:shadow-[0_18px_48px_rgba(11,42,82,0.08)]
+                      `
+                      : `
+                        border-[#D5E3ED]
+
+                        bg-[linear-gradient(180deg,#F8FBFD_0%,#FFFFFF_36%,#FFFFFF_100%)]
+
+                        shadow-[0_12px_38px_rgba(11,42,82,0.055)]
+
+                        hover:border-[#9BBBD2]/60
+                        hover:shadow-[0_18px_48px_rgba(11,42,82,0.08)]
+                      `
+                  }
+
+                  ${
+                    isScale
+                      ? "md:col-span-2 lg:col-span-1"
+                      : ""
+                  }
+                `}
               >
-                {/* PLAN */}
-
-                <p
-                  className="
-                    text-[9px]
-                    font-bold
-                    uppercase
-                    tracking-[0.25em]
-                    text-[#B79A72]
-                  "
-                >
-                  {plan.name}
-                </p>
-
-                {/* TITLE */}
-
-                <h3
-                  style={newYorkFont}
-                  className="
-                    mt-5
-                    max-w-[310px]
-
-                    text-[24px]
-                    font-medium
-                    leading-[1.08]
-                    tracking-[-0.035em]
-                    text-[#0B2A52]
-
-                    sm:text-[25px]
-                    lg:text-[25px]
-                    xl:text-[27px]
-                  "
-                >
-                  {plan.tagline}
-                </h3>
-
-                {/* DESCRIPTION */}
-
-                <p
-                  className="
-                    mt-3.5
-
-                    text-[12.5px]
-                    leading-[1.7]
-                    text-[#657C95]
-
-                    sm:text-[13px]
-                  "
-                >
-                  {plan.description}
-                </p>
-
-                {/* PRICE */}
+                {/* TOP ACCENT */}
 
                 <div
-                  className="
-                    mt-5
+                  aria-hidden="true"
+                  className={`
+                    h-[3px]
+                    w-full
 
-                    border-y
-                    border-[#DCE6EF]
+                    ${
+                      isGrowth
+                        ? "bg-gradient-to-r from-[#0B2A52] via-[#6A9BC5] to-[#B79A72]"
+                        : isScale
+                        ? "bg-gradient-to-r from-transparent via-[#B79A72]/75 to-transparent"
+                        : "bg-gradient-to-r from-transparent via-[#7EA6C8]/65 to-transparent"
+                    }
+                  `}
+                />
 
-                    py-5
-                  "
-                >
-                  <p
-                    className="
-                      text-[8px]
-                      font-semibold
-                      uppercase
-                      tracking-[0.19em]
-                      text-[#8093A8]
-                    "
-                  >
-                    Starting from
-                  </p>
+                {/* MOST POPULAR */}
 
+                {isGrowth && (
                   <div
                     className="
-                      mt-2
+                      absolute
+                      right-4
+                      top-4
+
+                      z-20
 
                       flex
-                      flex-wrap
-                      items-end
+                      items-center
+                      gap-1.5
 
-                      gap-x-2
-                      gap-y-1
+                      rounded-full
+
+                      bg-[#0B2A52]
+
+                      px-3
+                      py-1.5
+
+                      text-white
+
+                      shadow-[0_8px_20px_rgba(11,42,82,0.12)]
+
+                      sm:right-5
+                      sm:top-5
                     "
                   >
-                    <span
-                      style={newYorkFont}
-                      className="
-                        text-[33px]
-                        font-medium
-                        leading-none
-                        tracking-[-0.04em]
-                        text-[#0B2A52]
+                    <Sparkles
+                      size={10}
+                      strokeWidth={1.8}
+                      className="text-white"
+                    />
 
-                        sm:text-[35px]
-                        xl:text-[37px]
+                    <span
+                      className="
+                        text-[7px]
+                        font-bold
+                        uppercase
+                        tracking-[0.14em]
+                        text-white
+
+                        sm:text-[8px]
                       "
                     >
-                      {plan.price}
-                    </span>
-
-                    <span
-                      className="
-                        pb-1
-
-                        text-[11px]
-                        font-medium
-                        text-[#7B90A6]
-                      "
-                    >
-                      / month
+                      Most Popular
                     </span>
                   </div>
-                </div>
+                )}
 
-                {/* INCLUDED */}
-
-                <div className="mt-5">
-                  <p
-                    className="
-                      text-[8px]
-                      font-bold
-                      uppercase
-                      tracking-[0.2em]
-                      text-[#0B2A52]
-                    "
-                  >
-                    What&apos;s Included
-                  </p>
-
-                  <div
-                    className="
-                      mt-4
-                      space-y-2.5
-
-                      sm:space-y-3
-                    "
-                  >
-                    {plan.inclusions.map((item) => (
-                      <div
-                        key={item}
-                        className="
-                          flex
-                          items-start
-                          gap-2.5
-                        "
-                      >
-                        <span
-                          className={`
-                            mt-[1px]
-
-                            flex
-                            h-[17px]
-                            w-[17px]
-                            shrink-0
-
-                            items-center
-                            justify-center
-
-                            rounded-full
-
-                            ${
-                              plan.highlighted
-                                ? "bg-[#E4F1FA] text-[#0B2A52]"
-                                : "bg-[#F6F1EA] text-[#A47A4D]"
-                            }
-                          `}
-                        >
-                          <Check
-                            size={10}
-                            strokeWidth={2}
-                          />
-                        </span>
-
-                        <span
-                          className="
-                            text-[12.5px]
-                            leading-[1.5]
-                            text-[#617991]
-
-                            sm:text-[13px]
-                          "
-                        >
-                          {item}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* BEST FOR */}
+                {/* CARD CONTENT */}
 
                 <div
                   className="
-                    mt-6
+                    flex
+                    h-full
+                    flex-1
+                    flex-col
 
-                    border-t
-                    border-[#DCE6EF]
+                    p-5
 
-                    pt-5
+                    sm:p-6
+                    lg:p-6
+                    xl:p-7
                   "
                 >
+                  {/* PLAN */}
+
                   <p
                     className="
-                      text-[8px]
+                      text-[9px]
                       font-bold
                       uppercase
-                      tracking-[0.19em]
+                      tracking-[0.25em]
                       text-[#B79A72]
                     "
                   >
-                    Best For
+                    {plan.name}
                   </p>
+
+                  {/* TITLE */}
+
+                  <h3
+                    style={newYorkFont}
+                    className="
+                      mt-5
+
+                      min-h-[52px]
+
+                      max-w-[315px]
+
+                      text-[23px]
+                      font-medium
+                      leading-[1.08]
+                      tracking-[-0.035em]
+                      text-[#0B2A52]
+
+                      sm:text-[25px]
+
+                      lg:min-h-[58px]
+                      lg:text-[25px]
+
+                      xl:text-[27px]
+                    "
+                  >
+                    {plan.tagline}
+                  </h3>
+
+                  {/* DESCRIPTION */}
 
                   <p
                     className="
-                      mt-2.5
+                      mt-3.5
 
-                      text-[12px]
-                      leading-[1.65]
-                      text-[#6B8198]
+                      min-h-[78px]
+
+                      text-[12.5px]
+                      leading-[1.7]
+                      text-[#657C95]
+
+                      sm:text-[13px]
+
+                      lg:min-h-[88px]
                     "
                   >
-                    {plan.bestFor}
+                    {plan.description}
                   </p>
-                </div>
 
-                {/* CTA */}
+                  {/* PRICE */}
 
-                <div className="pt-6">
-                  <GlassButton
-                    href="/contact"
-                    label={plan.cta}
-                  />
+                  <div
+                    className="
+                      mt-5
+
+                      border-y
+                      border-[#DCE6EF]
+
+                      py-5
+                    "
+                  >
+                    <p
+                      className="
+                        text-[8px]
+                        font-semibold
+                        uppercase
+                        tracking-[0.19em]
+                        text-[#8093A8]
+                      "
+                    >
+                      Starting From
+                    </p>
+
+                    <div
+                      className="
+                        mt-2
+
+                        flex
+                        flex-wrap
+                        items-end
+
+                        gap-x-2
+                        gap-y-1
+                      "
+                    >
+                      <span
+                        style={newYorkFont}
+                        className="
+                          text-[34px]
+                          font-medium
+                          leading-none
+                          tracking-[-0.04em]
+                          text-[#0B2A52]
+
+                          sm:text-[36px]
+                          xl:text-[38px]
+                        "
+                      >
+                        {plan.price}
+                      </span>
+
+                      <span
+                        className="
+                          pb-1
+
+                          text-[11px]
+                          font-medium
+                          text-[#7B90A6]
+                        "
+                      >
+                        / month
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* INCLUDED */}
+
+                  <div className="mt-5">
+                    <p
+                      className="
+                        text-[8px]
+                        font-bold
+                        uppercase
+                        tracking-[0.2em]
+                        text-[#0B2A52]
+                      "
+                    >
+                      What&apos;s Included
+                    </p>
+
+                    <div
+                      className="
+                        mt-4
+                        space-y-[10px]
+                      "
+                    >
+                      {plan.inclusions.map((item) => (
+                        <div
+                          key={item}
+                          className="
+                            flex
+                            items-start
+                            gap-2.5
+                          "
+                        >
+                          <span
+                            className={`
+                              mt-[1px]
+
+                              flex
+                              h-[18px]
+                              w-[18px]
+                              shrink-0
+
+                              items-center
+                              justify-center
+
+                              rounded-full
+
+                              ${
+                                isGrowth
+                                  ? "bg-[#E3F0F9] text-[#0B2A52]"
+                                  : isScale
+                                  ? "bg-[#F8F0E5] text-[#9D754B]"
+                                  : "bg-[#EAF4FB] text-[#376C9A]"
+                              }
+                            `}
+                          >
+                            <Check
+                              size={10}
+                              strokeWidth={2}
+                            />
+                          </span>
+
+                          <span
+                            className="
+                              text-[12px]
+                              leading-[1.52]
+                              text-[#617991]
+
+                              sm:text-[12.5px]
+                            "
+                          >
+                            {item}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* FLEX SPACE */}
+
+                  <div className="flex-1" />
+
+                  {/* BEST FOR */}
+
+                  <div
+                    className="
+                      mt-7
+
+                      border-t
+                      border-[#DCE6EF]
+
+                      pt-5
+                    "
+                  >
+                    <div
+                      className="
+                        border-l
+                        border-[#B79A72]
+
+                        pl-3
+                      "
+                    >
+                      <p
+                        className="
+                          text-[8px]
+                          font-bold
+                          uppercase
+                          tracking-[0.19em]
+                          text-[#B79A72]
+                        "
+                      >
+                        Best For
+                      </p>
+
+                      <p
+                        className="
+                          mt-2
+
+                          min-h-[62px]
+
+                          text-[11.5px]
+                          leading-[1.65]
+                          text-[#6B8198]
+
+                          sm:text-[12px]
+                        "
+                      >
+                        {plan.bestFor}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* CTA */}
+
+                  <div className="pt-6">
+                    <PlanButton
+                      planName={plan.name}
+                      label={plan.cta}
+                    />
+                  </div>
                 </div>
-              </div>
-            </motion.article>
-          ))}
+              </motion.article>
+            );
+          })}
         </div>
+
+        {/* =====================================================
+            IMPORTANT SCOPE CLARIFICATION
+        ===================================================== */}
+
+        <motion.div
+          initial={{
+            opacity: 0,
+            y: reduceMotion ? 0 : 16,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{
+            once: true,
+            amount: 0.3,
+          }}
+          transition={{
+            duration: reduceMotion ? 0 : 0.65,
+            ease,
+          }}
+          className="
+            mx-auto
+            mt-6
+
+            max-w-[1060px]
+
+            rounded-[14px]
+
+            border
+            border-[#D6E4ED]
+
+            bg-[#F7FBFD]
+
+            px-4
+            py-3.5
+
+            text-center
+
+            sm:px-6
+          "
+        >
+          <p
+            className="
+              text-[10px]
+              leading-[1.75]
+              text-[#617991]
+
+              sm:text-[11px]
+            "
+          >
+            <strong className="font-semibold text-[#0B2A52]">
+              Content quantities include the listed Reels / short-form videos.
+            </strong>{" "}
+            Professional shoots, paid advertising, influencer collaborations,
+            talent, travel and third-party production costs are quoted
+            separately.
+          </p>
+        </motion.div>
 
         {/* =====================================================
             CUSTOM PLAN
         ===================================================== */}
 
         <motion.div
-          initial={
-            reduceMotion
-              ? false
-              : {
-                  opacity: 0,
-                  y: 28,
-                }
-          }
+          initial={{
+            opacity: 0,
+            y: reduceMotion ? 0 : 28,
+          }}
           whileInView={{
             opacity: 1,
             y: 0,
@@ -964,7 +1191,13 @@ export default function SocialMediaPricing() {
             {/* COPY */}
 
             <div className="max-w-[760px]">
-              <div className="flex items-center gap-2">
+              <div
+                className="
+                  flex
+                  items-center
+                  gap-2
+                "
+              >
                 <SlidersHorizontal
                   size={14}
                   strokeWidth={1.6}
@@ -991,7 +1224,9 @@ export default function SocialMediaPricing() {
                 className="
                   mt-3.5
 
-                  text-[26px]
+                  max-w-[720px]
+
+                  text-[25px]
                   font-medium
                   leading-[1.12]
                   tracking-[-0.035em]
@@ -1016,10 +1251,10 @@ export default function SocialMediaPricing() {
                   sm:text-[14px]
                 "
               >
-                Not every business needs the same number of platforms, posts
-                or videos. If your requirements sit between packages, we can
-                build a custom social media marketing plan around what your
-                business actually needs.
+                Not every business needs the same number of platforms, posts or
+                videos. If your requirements sit between packages, we can build
+                a custom social media marketing plan around what your business
+                actually needs.
               </p>
             </div>
 
@@ -1035,18 +1270,14 @@ export default function SocialMediaPricing() {
         </motion.div>
 
         {/* =====================================================
-            COMPACT PRICING + SCOPE NOTE
+            PRICING & SCOPE
         ===================================================== */}
 
         <motion.div
-          initial={
-            reduceMotion
-              ? false
-              : {
-                  opacity: 0,
-                  y: 28,
-                }
-          }
+          initial={{
+            opacity: 0,
+            y: reduceMotion ? 0 : 28,
+          }}
           whileInView={{
             opacity: 1,
             y: 0,
@@ -1130,9 +1361,7 @@ export default function SocialMediaPricing() {
               lg:p-9
             "
           >
-            {/* ===============================================
-                TOP
-            =============================================== */}
+            {/* TOP */}
 
             <div
               className="
@@ -1147,8 +1376,6 @@ export default function SocialMediaPricing() {
               "
             >
               <div className="max-w-[720px]">
-                {/* LABEL */}
-
                 <div
                   className="
                     flex
@@ -1169,7 +1396,6 @@ export default function SocialMediaPricing() {
                       rounded-full
 
                       bg-[#EDF5FB]
-
                       text-[#0B2A52]
                     "
                   >
@@ -1194,8 +1420,6 @@ export default function SocialMediaPricing() {
                   </span>
                 </div>
 
-                {/* HEADING */}
-
                 <h3
                   style={newYorkFont}
                   className="
@@ -1214,8 +1438,6 @@ export default function SocialMediaPricing() {
                 >
                   Clear Scope Before the First Post Goes Live.
                 </h3>
-
-                {/* DESCRIPTION */}
 
                 <p
                   className="
@@ -1236,8 +1458,6 @@ export default function SocialMediaPricing() {
                 </p>
               </div>
 
-              {/* CTA */}
-
               <div className="shrink-0">
                 <GlassButton
                   href="/contact"
@@ -1246,9 +1466,9 @@ export default function SocialMediaPricing() {
               </div>
             </div>
 
-            {/* ===============================================
+            {/* =================================================
                 PRICING DETAILS
-            =============================================== */}
+            ================================================= */}
 
             <div
               className="
@@ -1270,7 +1490,7 @@ export default function SocialMediaPricing() {
                 lg:pt-8
               "
             >
-              {/* WHAT CHANGES PRICE */}
+              {/* WHAT CAN CHANGE */}
 
               <div>
                 <p
@@ -1419,9 +1639,9 @@ export default function SocialMediaPricing() {
               </div>
             </div>
 
-            {/* ===============================================
+            {/* =================================================
                 FINAL SCOPE
-            =============================================== */}
+            ================================================= */}
 
             <div
               className="
@@ -1483,14 +1703,10 @@ export default function SocialMediaPricing() {
         ===================================================== */}
 
         <motion.div
-          initial={
-            reduceMotion
-              ? false
-              : {
-                  opacity: 0,
-                  y: 15,
-                }
-          }
+          initial={{
+            opacity: 0,
+            y: reduceMotion ? 0 : 15,
+          }}
           whileInView={{
             opacity: 1,
             y: 0,
@@ -1535,7 +1751,7 @@ export default function SocialMediaPricing() {
               text-[8px]
               font-semibold
               uppercase
-              tracking-[0.18em]
+              tracking-[0.16em]
               text-[#8295A8]
 
               sm:text-[9px]
