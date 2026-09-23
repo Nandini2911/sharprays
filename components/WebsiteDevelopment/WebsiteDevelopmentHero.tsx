@@ -4,10 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import {
-  ArrowDown,
   ArrowUpRight,
   BarChart3,
-  Check,
   Code2,
   LayoutGrid,
   Menu,
@@ -58,16 +56,20 @@ export default function WebsiteDevelopmentHero() {
         w-full
         overflow-hidden
         bg-white
-        pt-24
         pb-14
-        sm:pt-28
+        pt-24
+
         sm:pb-16
-        md:pt-32
+        sm:pt-28
+
         md:pb-20
-        lg:pt-32
+        md:pt-32
+
         lg:pb-16
-        xl:pt-36
+        lg:pt-32
+
         xl:pb-20
+        xl:pt-36
       "
     >
       {/* =====================================================
@@ -76,7 +78,10 @@ export default function WebsiteDevelopmentHero() {
 
       <div className="pointer-events-none absolute inset-0 -z-20 bg-white" />
 
-      {/* subtle blue glow only behind visual */}
+      {/* =====================================================
+          SUBTLE BLUE GLOW
+      ===================================================== */}
+
       <div
         className="
           pointer-events-none
@@ -90,11 +95,15 @@ export default function WebsiteDevelopmentHero() {
           rounded-full
           bg-[#EEF5FB]/55
           blur-[120px]
+
           lg:block
         "
       />
 
-      {/* subtle warm accent */}
+      {/* =====================================================
+          SUBTLE WARM ACCENT
+      ===================================================== */}
+
       <div
         className="
           pointer-events-none
@@ -108,6 +117,7 @@ export default function WebsiteDevelopmentHero() {
           rounded-full
           bg-[#F8F3EC]/60
           blur-[100px]
+
           xl:block
         "
       />
@@ -125,16 +135,21 @@ export default function WebsiteDevelopmentHero() {
           items-center
           gap-12
           px-4
+
           sm:gap-14
           sm:px-6
+
           md:gap-16
           md:px-8
+
           lg:grid-cols-[0.94fr_1.06fr]
           lg:gap-8
           lg:px-10
+
           xl:grid-cols-[0.92fr_1.08fr]
           xl:gap-12
           xl:px-14
+
           2xl:gap-16
           2xl:px-16
         "
@@ -172,10 +187,13 @@ export default function WebsiteDevelopmentHero() {
             mx-auto
             w-full
             max-w-[720px]
+
             lg:mx-0
           "
         >
-          {/* LABEL */}
+          {/* =================================================
+              LABEL
+          ================================================= */}
 
           <div
             className="
@@ -183,8 +201,10 @@ export default function WebsiteDevelopmentHero() {
               flex
               items-center
               gap-3
+
               sm:mb-7
               sm:gap-4
+
               lg:mb-8
             "
           >
@@ -194,6 +214,7 @@ export default function WebsiteDevelopmentHero() {
                 w-7
                 shrink-0
                 bg-[#B79A72]
+
                 sm:w-9
               "
             />
@@ -206,8 +227,10 @@ export default function WebsiteDevelopmentHero() {
                 leading-5
                 tracking-[0.22em]
                 text-[#9D7650]
+
                 sm:text-[0.65rem]
                 sm:tracking-[0.26em]
+
                 md:text-[0.7rem]
                 md:tracking-[0.3em]
               "
@@ -216,7 +239,9 @@ export default function WebsiteDevelopmentHero() {
             </span>
           </div>
 
-          {/* HEADING */}
+          {/* =================================================
+              HEADING
+          ================================================= */}
 
           <h1
             id="website-development-heading"
@@ -229,8 +254,11 @@ export default function WebsiteDevelopmentHero() {
               text-[#0B2A52]
 
               sm:text-[2.6rem]
+
               md:text-[2.95rem]
+
               lg:text-[3.1rem]
+
               xl:text-[3.35rem]
             "
           >
@@ -249,7 +277,9 @@ export default function WebsiteDevelopmentHero() {
             and Used.
           </h1>
 
-          {/* PARAGRAPH 1 */}
+          {/* =================================================
+              PARAGRAPH 1
+          ================================================= */}
 
           <p
             className="
@@ -258,8 +288,10 @@ export default function WebsiteDevelopmentHero() {
               text-[0.91rem]
               leading-[1.75]
               text-[#536B84]
+
               sm:mt-7
               sm:text-[0.96rem]
+
               md:mt-8
               md:text-[1rem]
             "
@@ -269,7 +301,9 @@ export default function WebsiteDevelopmentHero() {
             into meaningful action.
           </p>
 
-          {/* PARAGRAPH 2 */}
+          {/* =================================================
+              PARAGRAPH 2
+          ================================================= */}
 
           <p
             className="
@@ -278,8 +312,10 @@ export default function WebsiteDevelopmentHero() {
               text-[0.91rem]
               leading-[1.75]
               text-[#536B84]
+
               sm:mt-5
               sm:text-[0.96rem]
+
               md:text-[1rem]
             "
           >
@@ -288,7 +324,9 @@ export default function WebsiteDevelopmentHero() {
             together around one purpose:
           </p>
 
-          {/* STRONG MESSAGE */}
+          {/* =================================================
+              STRONG MESSAGE
+          ================================================= */}
 
           <div
             className="
@@ -297,6 +335,7 @@ export default function WebsiteDevelopmentHero() {
               border-l-[3px]
               border-[#B79A72]
               pl-4
+
               sm:mt-7
               sm:pl-5
             "
@@ -307,7 +346,9 @@ export default function WebsiteDevelopmentHero() {
                 font-semibold
                 leading-[1.6]
                 text-[#0B2A52]
+
                 sm:text-[1rem]
+
                 md:text-[1.04rem]
               "
             >
@@ -327,12 +368,15 @@ export default function WebsiteDevelopmentHero() {
               w-full
               flex-col
               gap-3
+
               sm:mt-9
               sm:w-auto
               sm:flex-row
               sm:flex-wrap
             "
           >
+            {/* PRIMARY CTA */}
+
             <Link
               href="/contact"
               className="
@@ -355,19 +399,21 @@ export default function WebsiteDevelopmentHero() {
                 shadow-[0_13px_30px_rgba(183,154,114,0.24)]
                 transition-all
                 duration-300
+
                 hover:-translate-y-0.5
                 hover:shadow-[0_18px_38px_rgba(183,154,114,0.32)]
-                sm:w-auto
+
                 sm:min-h-[54px]
+                sm:w-auto
                 sm:gap-4
                 sm:px-7
                 sm:text-[0.9rem]
               "
             >
               Build My Website
-
-            
             </Link>
+
+            {/* SECONDARY CTA */}
 
             <Link
               href="#our-approach"
@@ -389,22 +435,24 @@ export default function WebsiteDevelopmentHero() {
                 text-[#0B2A52]
                 transition-all
                 duration-300
+
                 hover:-translate-y-0.5
                 hover:bg-[#F8FAFC]
-                sm:w-auto
+
                 sm:min-h-[54px]
+                sm:w-auto
                 sm:gap-5
                 sm:px-7
                 sm:text-[0.9rem]
               "
             >
               Explore Our Approach
-
-              
             </Link>
           </div>
 
-          {/* SUPPORTING LINE */}
+          {/* =================================================
+              SUPPORTING LINE
+          ================================================= */}
 
           <div
             className="
@@ -420,21 +468,26 @@ export default function WebsiteDevelopmentHero() {
               uppercase
               tracking-[0.2em]
               text-[#637B93]
+
               sm:mt-8
               sm:gap-x-2.5
               sm:text-[0.57rem]
               sm:tracking-[0.25em]
+
               md:text-[0.62rem]
               md:tracking-[0.28em]
             "
           >
             <span>Strategy</span>
+
             <span className="text-[#B79A72]">·</span>
 
             <span>Design</span>
+
             <span className="text-[#B79A72]">·</span>
 
             <span>Develop</span>
+
             <span className="text-[#B79A72]">·</span>
 
             <span>Improve</span>
@@ -473,11 +526,14 @@ export default function WebsiteDevelopmentHero() {
             mx-auto
             w-full
             max-w-[720px]
+
             lg:mx-0
             lg:max-w-none
           "
         >
-          {/* GLOW */}
+          {/* =================================================
+              GLOW
+          ================================================= */}
 
           <div
             className="
@@ -493,8 +549,10 @@ export default function WebsiteDevelopmentHero() {
               rounded-full
               bg-[#EAF2F8]/60
               blur-[65px]
+
               sm:h-[82%]
               sm:w-[82%]
+
               lg:blur-[80px]
             "
           />
@@ -542,7 +600,9 @@ export default function WebsiteDevelopmentHero() {
                 border
                 border-[#E0E6EA]
                 bg-white
+
                 sm:rounded-[18px]
+
                 xl:rounded-[21px]
               "
             >
@@ -560,6 +620,7 @@ export default function WebsiteDevelopmentHero() {
                   border-[#E8ECEF]
                   bg-[#FAFBFB]
                   px-3
+
                   sm:h-[38px]
                   sm:gap-2
                   sm:px-4
@@ -572,6 +633,7 @@ export default function WebsiteDevelopmentHero() {
                     shrink-0
                     rounded-full
                     bg-[#E96F5B]
+
                     sm:h-2
                     sm:w-2
                   "
@@ -584,6 +646,7 @@ export default function WebsiteDevelopmentHero() {
                     shrink-0
                     rounded-full
                     bg-[#F2BB43]
+
                     sm:h-2
                     sm:w-2
                   "
@@ -596,6 +659,7 @@ export default function WebsiteDevelopmentHero() {
                     shrink-0
                     rounded-full
                     bg-[#52B76B]
+
                     sm:h-2
                     sm:w-2
                   "
@@ -614,6 +678,7 @@ export default function WebsiteDevelopmentHero() {
                     border
                     border-[#E0E5E9]
                     bg-white
+
                     sm:h-[23px]
                     sm:w-[42%]
                   "
@@ -624,6 +689,7 @@ export default function WebsiteDevelopmentHero() {
                       px-2
                       text-[5.5px]
                       text-[#96A3AD]
+
                       sm:text-[6.5px]
                     "
                   >
@@ -635,6 +701,7 @@ export default function WebsiteDevelopmentHero() {
                   className="
                     w-[22px]
                     shrink-0
+
                     sm:w-[30px]
                   "
                 />
@@ -654,8 +721,10 @@ export default function WebsiteDevelopmentHero() {
                   border-[#EEF1F3]
                   bg-white
                   px-3
+
                   sm:h-[54px]
                   sm:px-4
+
                   md:h-[58px]
                   md:px-5
                 "
@@ -668,12 +737,17 @@ export default function WebsiteDevelopmentHero() {
                   className="
                     h-auto
                     w-[60px]
+
                     sm:w-[72px]
+
                     md:w-[85px]
                   "
                 />
 
-                {/* mobile menu visual */}
+                {/* =================================================
+                    MOBILE MENU VISUAL
+                ================================================= */}
+
                 <div
                   className="
                     flex
@@ -683,6 +757,7 @@ export default function WebsiteDevelopmentHero() {
                     justify-center
                     rounded-full
                     bg-[#F7F8FA]
+
                     md:hidden
                   "
                 >
@@ -693,14 +768,20 @@ export default function WebsiteDevelopmentHero() {
                   />
                 </div>
 
-                {/* desktop nav visual */}
+                {/* =================================================
+                    DESKTOP NAV VISUAL
+                ================================================= */}
+
                 <div
                   className="
                     hidden
                     items-center
                     gap-3
+
                     md:flex
+
                     lg:gap-4
+
                     xl:gap-5
                   "
                 >
@@ -716,7 +797,16 @@ export default function WebsiteDevelopmentHero() {
                     Services
                   </span>
 
-                  <span className="hidden text-[6px] font-medium text-[#617388] lg:block">
+                  <span
+                    className="
+                      hidden
+                      text-[6px]
+                      font-medium
+                      text-[#617388]
+
+                      lg:block
+                    "
+                  >
                     Work
                   </span>
 
@@ -731,6 +821,7 @@ export default function WebsiteDevelopmentHero() {
                       text-[6px]
                       font-semibold
                       text-white
+
                       xl:px-4
                       xl:py-2
                       xl:text-[6.5px]
@@ -759,9 +850,9 @@ export default function WebsiteDevelopmentHero() {
                   xl:min-h-[255px]
                 "
               >
-                {/* =============================================
+                {/* =================================================
                     LEFT MINI HERO CONTENT
-                ============================================= */}
+                ================================================= */}
 
                 <div
                   className="
@@ -792,6 +883,7 @@ export default function WebsiteDevelopmentHero() {
                       uppercase
                       tracking-[0.2em]
                       text-[#B18458]
+
                       sm:text-[6px]
                       sm:tracking-[0.22em]
                     "
@@ -866,9 +958,12 @@ export default function WebsiteDevelopmentHero() {
                       flex-wrap
                       items-center
                       gap-3
+
                       sm:mt-5
                       sm:gap-4
+
                       md:gap-2.5
+
                       xl:gap-4
                     "
                   >
@@ -885,6 +980,7 @@ export default function WebsiteDevelopmentHero() {
                         text-[6px]
                         font-semibold
                         text-white
+
                         sm:px-4
                         sm:text-[6.5px]
                       "
@@ -903,6 +999,7 @@ export default function WebsiteDevelopmentHero() {
                         text-[6px]
                         font-semibold
                         text-[#0B2A52]
+
                         sm:gap-2
                         sm:text-[6.5px]
                       "
@@ -935,30 +1032,25 @@ export default function WebsiteDevelopmentHero() {
                     xl:min-h-[255px]
                   "
                 >
-                  {/* =========================================
-                      IMAGE NOW COVERS COMPLETE BOX
-                  ========================================= */}
+                  {/* =================================================
+                      IMAGE
+                  ================================================= */}
 
                   <Image
                     src={desktopRightImage}
                     alt="Website visual"
                     fill
                     priority
-                    sizes="
-                      (max-width: 768px) 0px,
-                      (max-width: 1024px) 42vw,
-                      (max-width: 1280px) 36vw,
-                      430px
-                    "
+                    sizes="(max-width: 768px) 0px, (max-width: 1024px) 42vw, (max-width: 1280px) 36vw, 430px"
                     className="
                       object-cover
                       object-center
                     "
                   />
 
-                  {/* =========================================
+                  {/* =================================================
                       LEFT OVERLAY FOR TEXT
-                  ========================================= */}
+                  ================================================= */}
 
                   <div
                     className="
@@ -972,9 +1064,9 @@ export default function WebsiteDevelopmentHero() {
                     "
                   />
 
-                  {/* =========================================
+                  {/* =================================================
                       IDEAS TEXT
-                  ========================================= */}
+                  ================================================= */}
 
                   <div
                     className="
@@ -1042,14 +1134,19 @@ export default function WebsiteDevelopmentHero() {
                   bg-white
                 "
               >
+                {/* FAST */}
+
                 <div
                   className="
                     min-w-0
                     px-2
                     py-2.5
+
                     sm:px-4
                     sm:py-3
+
                     lg:px-5
+
                     xl:px-6
                   "
                 >
@@ -1059,7 +1156,9 @@ export default function WebsiteDevelopmentHero() {
                       text-[0.5rem]
                       font-bold
                       text-[#0B2A52]
+
                       sm:text-[0.56rem]
+
                       xl:text-[0.62rem]
                     "
                   >
@@ -1072,7 +1171,9 @@ export default function WebsiteDevelopmentHero() {
                       truncate
                       text-[0.34rem]
                       text-[#8897A5]
+
                       sm:text-[0.39rem]
+
                       xl:text-[0.43rem]
                     "
                   >
@@ -1080,14 +1181,19 @@ export default function WebsiteDevelopmentHero() {
                   </p>
                 </div>
 
+                {/* RESULTS */}
+
                 <div
                   className="
                     min-w-0
                     px-2
                     py-2.5
+
                     sm:px-4
                     sm:py-3
+
                     lg:px-5
+
                     xl:px-6
                   "
                 >
@@ -1097,7 +1203,9 @@ export default function WebsiteDevelopmentHero() {
                       text-[0.5rem]
                       font-bold
                       text-[#0B2A52]
+
                       sm:text-[0.56rem]
+
                       xl:text-[0.62rem]
                     "
                   >
@@ -1110,7 +1218,9 @@ export default function WebsiteDevelopmentHero() {
                       truncate
                       text-[0.34rem]
                       text-[#8897A5]
+
                       sm:text-[0.39rem]
+
                       xl:text-[0.43rem]
                     "
                   >
@@ -1118,14 +1228,19 @@ export default function WebsiteDevelopmentHero() {
                   </p>
                 </div>
 
+                {/* SEO */}
+
                 <div
                   className="
                     min-w-0
                     px-2
                     py-2.5
+
                     sm:px-4
                     sm:py-3
+
                     lg:px-5
+
                     xl:px-6
                   "
                 >
@@ -1135,7 +1250,9 @@ export default function WebsiteDevelopmentHero() {
                       text-[0.5rem]
                       font-bold
                       text-[#0B2A52]
+
                       sm:text-[0.56rem]
+
                       xl:text-[0.62rem]
                     "
                   >
@@ -1148,7 +1265,9 @@ export default function WebsiteDevelopmentHero() {
                       truncate
                       text-[0.34rem]
                       text-[#8897A5]
+
                       sm:text-[0.39rem]
+
                       xl:text-[0.43rem]
                     "
                   >
@@ -1178,7 +1297,9 @@ export default function WebsiteDevelopmentHero() {
               y: 0,
               x: 0,
             }}
-            viewport={{ once: true }}
+            viewport={{
+              once: true,
+            }}
             transition={{
               duration: 0.65,
               delay: 0.4,
@@ -1217,6 +1338,7 @@ export default function WebsiteDevelopmentHero() {
                 className="
                   shrink-0
                   text-[#B79A72]
+
                   xl:h-[19px]
                   xl:w-[19px]
                 "
@@ -1230,6 +1352,7 @@ export default function WebsiteDevelopmentHero() {
                       text-[0.56rem]
                       font-bold
                       text-[#0B2A52]
+
                       xl:text-[0.61rem]
                     "
                   >
@@ -1243,6 +1366,7 @@ export default function WebsiteDevelopmentHero() {
                       shrink-0
                       rounded-full
                       bg-[#48AF6E]
+
                       xl:h-2
                       xl:w-2
                     "
@@ -1255,6 +1379,7 @@ export default function WebsiteDevelopmentHero() {
                     whitespace-nowrap
                     text-[0.42rem]
                     text-[#8B9AA8]
+
                     xl:text-[0.46rem]
                   "
                 >
@@ -1283,7 +1408,9 @@ export default function WebsiteDevelopmentHero() {
               x: 0,
               y: 0,
             }}
-            viewport={{ once: true }}
+            viewport={{
+              once: true,
+            }}
             transition={{
               duration: 0.75,
               delay: 0.55,
@@ -1291,8 +1418,8 @@ export default function WebsiteDevelopmentHero() {
             }}
             className="
               absolute
-              right-[-1%]
               bottom-[15%]
+              right-[-1%]
               z-40
               hidden
               w-[125px]
@@ -1332,7 +1459,9 @@ export default function WebsiteDevelopmentHero() {
                 xl:pt-4
               "
             >
-              {/* PHONE TOP */}
+              {/* =================================================
+                  PHONE TOP
+              ================================================= */}
 
               <div
                 className="
@@ -1351,7 +1480,9 @@ export default function WebsiteDevelopmentHero() {
                 "
               />
 
-              {/* PHONE NAVBAR */}
+              {/* =================================================
+                  PHONE NAVBAR
+              ================================================= */}
 
               <div
                 className="
@@ -1370,6 +1501,7 @@ export default function WebsiteDevelopmentHero() {
                     h-4
                     w-auto
                     object-contain
+
                     xl:h-5
                   "
                 />
@@ -1377,11 +1509,18 @@ export default function WebsiteDevelopmentHero() {
                 <Menu
                   size={11}
                   strokeWidth={2}
-                  className="text-[#0B2A52] xl:h-3 xl:w-3"
+                  className="
+                    text-[#0B2A52]
+
+                    xl:h-3
+                    xl:w-3
+                  "
                 />
               </div>
 
-              {/* MOBILE CONTENT */}
+              {/* =================================================
+                  MOBILE CONTENT
+              ================================================= */}
 
               <div className="mt-4 xl:mt-5">
                 <h4
@@ -1391,7 +1530,9 @@ export default function WebsiteDevelopmentHero() {
                     leading-[1.05]
                     tracking-[-0.035em]
                     text-[#0B2A52]
+
                     lg:text-[0.92rem]
+
                     xl:text-[1rem]
                   "
                 >
@@ -1406,6 +1547,7 @@ export default function WebsiteDevelopmentHero() {
                     text-[0.4rem]
                     leading-[1.55]
                     text-[#6D7F91]
+
                     xl:mt-3
                     xl:text-[0.46rem]
                   "
@@ -1415,7 +1557,9 @@ export default function WebsiteDevelopmentHero() {
                   Real business results.
                 </p>
 
-                {/* MOBILE IMAGE */}
+                {/* =================================================
+                    MOBILE IMAGE
+                ================================================= */}
 
                 <div
                   className="
@@ -1443,7 +1587,9 @@ export default function WebsiteDevelopmentHero() {
                   />
                 </div>
 
-                {/* MOBILE BUTTON */}
+                {/* =================================================
+                    MOBILE BUTTON
+                ================================================= */}
 
                 <button
                   type="button"
@@ -1482,8 +1628,18 @@ export default function WebsiteDevelopmentHero() {
           ================================================= */}
 
           <motion.div
-            initial={reduceMotion ? false : { opacity: 0, y: 18 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={
+              reduceMotion
+                ? false
+                : {
+                    opacity: 0,
+                    y: 18,
+                  }
+            }
+            whileInView={{
+              opacity: 1,
+              y: 0,
+            }}
             viewport={{
               once: true,
               amount: 0.3,
@@ -1590,7 +1746,9 @@ export default function WebsiteDevelopmentHero() {
             ))}
           </motion.div>
 
-          {/* DECORATIVE TEXT */}
+          {/* =================================================
+              DECORATIVE TEXT
+          ================================================= */}
 
           <div
             className="
@@ -1604,6 +1762,7 @@ export default function WebsiteDevelopmentHero() {
               italic
               leading-[1.08]
               text-[#0B2A52]/20
+
               2xl:block
             "
           >
@@ -1613,11 +1772,6 @@ export default function WebsiteDevelopmentHero() {
           </div>
         </motion.div>
       </div>
-
-     
-       
-       
-    
     </section>
   );
 }

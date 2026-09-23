@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -9,10 +9,16 @@ const newYorkFont = {
 };
 
 /* =========================================================
-   SERVICES
+   COLORS
 
-   Replace these with your actual services.
-   Each service has its own individual page.
+   NAVY      #0B2A52
+   BLUE      #6285AD
+   GOLD      #B79A72
+   LIGHT BG  #F5F8FC
+========================================================= */
+
+/* =========================================================
+   SERVICES
 ========================================================= */
 
 const services = [
@@ -24,7 +30,6 @@ const services = [
     label: "Search Engine Optimization (SEO)",
     href: "/services/search-engine-optimization",
   },
- 
   {
     label: "Performance Marketing / Paid Media",
     href: "/services/performance-marketing",
@@ -40,9 +45,12 @@ const services = [
   {
     label: "AI Automation",
     href: "/services/AI-Automation",
-  }
-  
+  },
 ];
+
+/* =========================================================
+   NAVBAR
+========================================================= */
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -50,9 +58,9 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
 
-  /* =========================================================
-     ACTIVE PAGE
-  ========================================================= */
+  /* =======================================================
+     ACTIVE STATES
+  ======================================================= */
 
   const isHome = pathname === "/";
 
@@ -72,9 +80,51 @@ export default function Navbar() {
     pathname === "/contact" ||
     pathname.startsWith("/contact/");
 
-  /* =========================================================
-     CLOSE MOBILE MENU
-  ========================================================= */
+  /* =======================================================
+     CLOSE MENU ON ROUTE CHANGE
+  ======================================================= */
+
+  useEffect(() => {
+    setMenuOpen(false);
+    setServicesOpen(false);
+  }, [pathname]);
+
+  /* =======================================================
+     LOCK BODY SCROLL
+  ======================================================= */
+
+  useEffect(() => {
+    const previousOverflow = document.body.style.overflow;
+
+    if (menuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = previousOverflow;
+    }
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [menuOpen]);
+
+  /* =======================================================
+     ESCAPE KEY
+  ======================================================= */
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setMenuOpen(false);
+        setServicesOpen(false);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
 
   const closeMobileMenu = () => {
     setMenuOpen(false);
@@ -84,7 +134,7 @@ export default function Navbar() {
   return (
     <>
       {/* =====================================================
-          NAVBAR BORDER ANIMATION
+          ANIMATION
       ===================================================== */}
 
       <style>{`
@@ -100,22 +150,42 @@ export default function Navbar() {
       `}</style>
 
       {/* =====================================================
-          MAIN NAVBAR
+          MAIN HEADER
       ===================================================== */}
 
-      <header className="fixed inset-x-0 top-0 z-[100]">
+      <header
+        className="
+          fixed
+          inset-x-0
+          top-0
+          z-[100]
+          border-b
+          border-[#0B2A52]/[0.06]
+          bg-white/90
+          backdrop-blur-xl
+        "
+      >
         <nav
           className="
             relative
             mx-auto
             flex
-            h-[92px]
+            h-[72px]
             w-full
+            max-w-[1760px]
             items-center
-            px-6
+            justify-between
+            px-5
+
+            sm:h-[80px]
             sm:px-8
+
+            lg:h-[92px]
             lg:px-12
+
             xl:px-16
+
+            2xl:px-20
           "
         >
           {/* =================================================
@@ -125,10 +195,13 @@ export default function Navbar() {
           <Link
             href="/"
             aria-label="Sharp Rays Home"
+            onClick={() => {
+              setMenuOpen(false);
+              setServicesOpen(false);
+            }}
             className="
-              group
               relative
-              z-[110]
+              z-[130]
               flex
               shrink-0
               items-center
@@ -141,11 +214,20 @@ export default function Navbar() {
               src="/logo/sharp-rays-logo.png"
               alt="Sharp Rays"
               className="
-                h-[100px]
-                w-auto
+                h-auto
+                w-[150px]
                 object-contain
-                sm:h-[100px]
-                lg:h-[100px]
+                object-left
+
+                min-[380px]:w-[165px]
+
+                sm:w-[185px]
+
+                md:w-[195px]
+
+                lg:w-[205px]
+
+                xl:w-[225px]
               "
             />
           </Link>
@@ -159,29 +241,23 @@ export default function Navbar() {
               absolute
               left-1/2
               top-1/2
-              z-[105]
+              z-[110]
               hidden
               -translate-x-1/2
               -translate-y-1/2
               items-center
-              gap-10
+              gap-8
+
               lg:flex
+
               xl:gap-11
             "
           >
-            {/* =================================================
-                HOME
-            ================================================= */}
-
             <NavLink
               href="/"
               label="Home"
               active={isHome}
             />
-
-            {/* =================================================
-                ABOUT
-            ================================================= */}
 
             <NavLink
               href="/about"
@@ -190,7 +266,7 @@ export default function Navbar() {
             />
 
             {/* =================================================
-                SERVICES
+                SERVICES DESKTOP
             ================================================= */}
 
             <div
@@ -201,7 +277,9 @@ export default function Navbar() {
               <button
                 type="button"
                 aria-expanded={servicesOpen}
-                onClick={() => setServicesOpen(!servicesOpen)}
+                onClick={() =>
+                  setServicesOpen((prev) => !prev)
+                }
                 style={{
                   ...newYorkFont,
                   color: isServices
@@ -215,17 +293,16 @@ export default function Navbar() {
                   items-center
                   gap-2
                   whitespace-nowrap
-                  text-[16px]
+                  text-[15px]
                   font-medium
                   tracking-[-0.01em]
                   transition-colors
                   duration-300
+
                   xl:text-[17px]
                 "
               >
                 <span>Services</span>
-
-                {/* Arrow */}
 
                 <svg
                   width="11"
@@ -252,29 +329,28 @@ export default function Navbar() {
                   />
                 </svg>
 
-                {/* Active underline */}
-
                 <span
                   className={`
                     absolute
                     -bottom-[10px]
                     left-1/2
-                    h-[1px]
+                    h-[2px]
                     -translate-x-1/2
-                    bg-[#6285AD]
+                    bg-[#B79A72]
                     transition-all
                     duration-300
+
                     ${
                       isServices
-                        ? "w-5 opacity-100"
-                        : "w-0 opacity-0 group-hover:w-5 group-hover:opacity-100"
+                        ? "w-6 opacity-100"
+                        : "w-0 opacity-0 group-hover:w-6 group-hover:opacity-100"
                     }
                   `}
                 />
               </button>
 
               {/* =================================================
-                  SERVICES DROPDOWN
+                  DESKTOP SERVICES DROPDOWN
               ================================================= */}
 
               <div
@@ -283,17 +359,19 @@ export default function Navbar() {
                   left-1/2
                   top-full
                   mt-5
-                  w-[300px]
+                  w-[320px]
                   -translate-x-1/2
-                  rounded-[18px]
+                  overflow-hidden
+                  rounded-[20px]
                   border
-                  border-[#6285AD]/15
-                  bg-white
+                  border-[#0B2A52]/[0.09]
+                  bg-white/95
                   p-3
-                  shadow-[0_20px_60px_rgba(11,42,82,0.15)]
+                  shadow-[0_24px_70px_rgba(11,42,82,0.14)]
                   backdrop-blur-xl
                   transition-all
                   duration-300
+
                   ${
                     servicesOpen
                       ? "visible translate-y-0 opacity-100"
@@ -301,155 +379,101 @@ export default function Navbar() {
                   }
                 `}
               >
-                {/* Dropdown heading */}
+                {/* heading */}
 
-                <div className="mb-2 px-3 pt-2">
+                <div
+                  className="
+                    mb-2
+                    px-3
+                    pb-2
+                    pt-2
+                  "
+                >
                   <span
                     style={newYorkFont}
                     className="
                       text-[10px]
-                      font-medium
+                      font-semibold
                       uppercase
-                      tracking-[0.22em]
-                      text-[#6285AD]
+                      tracking-[0.24em]
+                      text-[#B79A72]
                     "
                   >
                     Our Services
                   </span>
                 </div>
 
-                {/* Service items */}
+                {/* services */}
 
                 <div className="flex flex-col">
-                  {services.map(
-                    (service, index) => {
-                      const serviceActive =
-                        pathname === service.href;
+  {services.map((service) => {
+    const serviceActive = pathname === service.href;
 
-                      return (
-                        <Link
-                          key={service.href}
-                          href={service.href}
-                          onClick={() =>
-                            setServicesOpen(false)
-                          }
-                          style={newYorkFont}
-                          className={`
-                            group
-                            flex
-                            items-center
-                            justify-between
-                            rounded-[12px]
-                            px-3
-                            py-3
-                            transition-all
-                            duration-300
-                            ${
-                              serviceActive
-                                ? "bg-[#6285AD]/[0.07]"
-                                : "hover:bg-[#6285AD]/[0.07]"
-                            }
-                          `}
-                        >
-                          <span
-                            className={`
-                              text-[14px]
-                              font-medium
-                              transition-all
-                              duration-300
-                              ${
-                                serviceActive
-                                  ? "translate-x-1 text-[#6285AD]"
-                                  : "text-[#0B2A52] group-hover:translate-x-1 group-hover:text-[#6285AD]"
-                              }
-                            `}
-                          >
-                            {service.label}
-                          </span>
+    return (
+      <Link
+        key={service.href}
+        href={service.href}
+        onClick={() => setServicesOpen(false)}
+        style={newYorkFont}
+        className={`
+          group
+          flex
+          items-center
+          rounded-[12px]
+          px-3
+          py-[11px]
+          transition-all
+          duration-300
 
-                          <span
-                            className={`
-                              text-[11px]
-                              transition-all
-                              duration-300
-                              ${
-                                serviceActive
-                                  ? "translate-x-1 text-[#6285AD]"
-                                  : "text-[#0B2A52]/30 group-hover:translate-x-1 group-hover:text-[#6285AD]"
-                              }
-                            `}
-                          >
-                            →
-                          </span>
-                        </Link>
-                      );
-                    }
-                  )}
-                </div>
+          ${
+            serviceActive
+              ? "bg-[#6285AD]/[0.08]"
+              : "hover:bg-[#6285AD]/[0.06]"
+          }
+        `}
+      >
+        <span
+          className={`
+            text-[13px]
+            font-medium
+            leading-[1.35]
+            transition-all
+            duration-300
 
-                {/* View all */}
+            ${
+              serviceActive
+                ? "translate-x-1 text-[#6285AD]"
+                : "text-[#0B2A52] group-hover:translate-x-1 group-hover:text-[#6285AD]"
+            }
+          `}
+        >
+          {service.label}
+        </span>
+      </Link>
+    );
+  })}
+</div>
+
+                {/* view all */}
 
                 <div
                   className="
                     mt-2
                     border-t
-                    border-[#0B2A52]/[0.08]
+                    border-[#0B2A52]/[0.07]
                     pt-2
                   "
                 >
-                  <Link
-                    href="/services"
-                    onClick={() =>
-                      setServicesOpen(false)
-                    }
-                    style={newYorkFont}
-                    className="
-                      group
-                      flex
-                      items-center
-                      justify-between
-                      rounded-[12px]
-                      px-3
-                      py-3
-                      text-[13px]
-                      font-medium
-                      text-[#6285AD]
-                      transition-all
-                      duration-300
-                      hover:bg-[#6285AD]/[0.07]
-                    "
-                  >
-                    <span>
-                      View All Services
-                    </span>
-
-                    <span
-                      className="
-                        transition-transform
-                        duration-300
-                        group-hover:translate-x-1
-                      "
-                    >
-                      →
-                    </span>
-                  </Link>
+                  
                 </div>
               </div>
             </div>
-
-            {/* =================================================
-                WORK
-            ================================================= */}
 
             <NavLink
               href="/work"
               label="Work"
               active={isWork}
             />
-
-            {/* =================================================
-                CONTACT
-            ================================================= */}
 
             <NavLink
               href="/contact"
@@ -459,7 +483,7 @@ export default function Navbar() {
           </div>
 
           {/* =================================================
-              LET'S TALK BUTTON
+              DESKTOP CTA
           ================================================= */}
 
           <Link
@@ -467,50 +491,37 @@ export default function Navbar() {
             style={newYorkFont}
             className="
               group
-              absolute
-              right-6
-              top-1/2
+              relative
               z-[110]
               hidden
-              h-[54px]
-              -translate-y-1/2
+              h-[50px]
               items-center
               gap-3
               overflow-hidden
-              rounded-[16px]
+              rounded-[14px]
               border
-              border-[#6285AD]/30
-              bg-white/80
-              px-6
-              text-[16px]
+              border-[#6285AD]/25
+              bg-white
+              px-5
+              text-[15px]
               font-medium
-              tracking-[-0.01em]
               text-[#0B2A52]
-              shadow-[0_8px_30px_rgba(11,42,82,0.08)]
-              backdrop-blur-[8px]
+              shadow-[0_8px_30px_rgba(11,42,82,0.06)]
               transition-all
               duration-300
-              hover:bg-white
-              hover:shadow-[0_10px_35px_rgba(98,133,173,0.15)]
+
+              hover:-translate-y-[1px]
+              hover:border-[#6285AD]/40
+              hover:shadow-[0_12px_35px_rgba(11,42,82,0.11)]
+
               lg:flex
-              lg:right-12
-              xl:right-16
+
+              xl:h-[54px]
+              xl:px-6
+              xl:text-[16px]
             "
           >
-            {/* Soft border */}
-
-            <span
-              className="
-                pointer-events-none
-                absolute
-                inset-0
-                rounded-[16px]
-                border
-                border-[#6285AD]/25
-              "
-            />
-
-            {/* Animated border */}
+            {/* animated border */}
 
             <svg
               className="
@@ -533,7 +544,7 @@ export default function Navbar() {
                 ry="16"
                 fill="none"
                 stroke="#6285AD"
-                strokeWidth="1.8"
+                strokeWidth="1.4"
                 pathLength="100"
                 strokeDasharray="20 80"
                 strokeLinecap="round"
@@ -543,20 +554,9 @@ export default function Navbar() {
               />
             </svg>
 
-            {/* Text */}
-
-            <span
-              className="
-                relative
-                z-10
-                whitespace-nowrap
-                !text-[#0B2A52]
-              "
-            >
-              Let's Talk
+            <span className="relative z-10 whitespace-nowrap">
+              Let&apos;s Talk
             </span>
-
-            {/* Arrow circle */}
 
             <span
               className="
@@ -573,7 +573,9 @@ export default function Navbar() {
                 text-white
                 transition-all
                 duration-300
+
                 group-hover:translate-x-1
+                group-hover:bg-[#6285AD]
               "
             >
               <svg
@@ -606,62 +608,75 @@ export default function Navbar() {
                 : "Open navigation menu"
             }
             aria-expanded={menuOpen}
-            onClick={() =>
-              setMenuOpen(!menuOpen)
-            }
+            onClick={() => {
+              setMenuOpen((prev) => !prev);
+
+              if (menuOpen) {
+                setServicesOpen(false);
+              }
+            }}
             className="
-              absolute
-              right-5
-              top-1/2
-              z-[120]
+              relative
+              z-[140]
               flex
               h-11
               w-11
-              -translate-y-1/2
+              shrink-0
               items-center
               justify-center
-              bg-transparent
-              sm:right-7
+              rounded-full
+              border
+              border-[#0B2A52]/[0.08]
+              bg-white/70
+              transition-all
+              duration-300
+
+              hover:border-[#6285AD]/30
+              hover:bg-[#F5F8FC]
+
               lg:hidden
             "
           >
             <div
               className="
-                flex
-                w-[23px]
-                flex-col
-                gap-[6px]
+                relative
+                h-[16px]
+                w-[21px]
               "
             >
-              {/* Top line */}
-
               <span
                 className={`
+                  absolute
+                  left-0
+                  top-[4px]
                   h-[1.5px]
                   w-full
                   bg-[#0B2A52]
                   transition-all
                   duration-300
+
                   ${
                     menuOpen
-                      ? "translate-y-[3.75px] rotate-45"
+                      ? "top-[7px] rotate-45"
                       : ""
                   }
                 `}
               />
 
-              {/* Bottom line */}
-
               <span
                 className={`
+                  absolute
+                  bottom-[4px]
+                  left-0
                   h-[1.5px]
                   w-full
                   bg-[#0B2A52]
                   transition-all
                   duration-300
+
                   ${
                     menuOpen
-                      ? "-translate-y-[3.75px] -rotate-45"
+                      ? "bottom-[7px] -rotate-45"
                       : ""
                   }
                 `}
@@ -672,7 +687,7 @@ export default function Navbar() {
       </header>
 
       {/* =====================================================
-          MOBILE FULLSCREEN MENU
+          MOBILE / TABLET FULLSCREEN MENU
       ===================================================== */}
 
       <div
@@ -680,53 +695,132 @@ export default function Navbar() {
           fixed
           inset-0
           z-[90]
-          bg-[#02091B]
+          overflow-y-auto
+          bg-[linear-gradient(145deg,#FFFFFF_0%,#F7FAFD_48%,#EEF4FA_100%)]
           transition-all
           duration-500
+          ease-out
+
           lg:hidden
+
           ${
             menuOpen
-              ? "pointer-events-auto opacity-100"
-              : "pointer-events-none opacity-0"
+              ? "pointer-events-auto translate-y-0 opacity-100"
+              : "pointer-events-none -translate-y-3 opacity-0"
           }
         `}
       >
+        {/* subtle decorative gradient */}
+
+        <div
+          aria-hidden="true"
+          className="
+            pointer-events-none
+            absolute
+            -right-[180px]
+            top-[40px]
+            h-[420px]
+            w-[420px]
+            rounded-full
+            bg-[radial-gradient(circle,rgba(98,133,173,0.12)_0%,rgba(98,133,173,0.03)_42%,transparent_70%)]
+            blur-2xl
+          "
+        />
+
+        <div
+          aria-hidden="true"
+          className="
+            pointer-events-none
+            absolute
+            -bottom-[200px]
+            -left-[180px]
+            h-[420px]
+            w-[420px]
+            rounded-full
+            bg-[radial-gradient(circle,rgba(183,154,114,0.10)_0%,rgba(183,154,114,0.025)_42%,transparent_72%)]
+            blur-3xl
+          "
+        />
+
+        {/* ===================================================
+            CONTENT
+        =================================================== */}
+
         <div
           className="
+            relative
+            mx-auto
             flex
-            min-h-screen
+            min-h-[100dvh]
+            w-full
+            max-w-[900px]
             flex-col
-            justify-center
-            px-7
-            pt-20
-            sm:px-12
+            px-5
+            pb-8
+            pt-[100px]
+
+            min-[380px]:px-6
+
+            sm:px-10
+            sm:pb-10
+            sm:pt-[116px]
+
+            md:px-14
+            md:pb-12
+            md:pt-[124px]
           "
         >
           {/* =================================================
-              MOBILE BRAND
+              MOBILE INTRO
           ================================================= */}
 
           <div
-            style={newYorkFont}
             className="
-              mb-10
-              text-[11px]
-              font-medium
-              uppercase
-              tracking-[0.28em]
-              text-white/50
+              mb-6
+              flex
+              items-center
+              gap-3
+
+              sm:mb-8
             "
           >
-            Sharp Rays
+            <span
+              className="
+                h-px
+                w-7
+                bg-[#B79A72]
+                sm:w-9
+              "
+            />
+
+            <span
+              style={newYorkFont}
+              className="
+                text-[9px]
+                font-semibold
+                uppercase
+                tracking-[0.3em]
+                text-[#6285AD]
+
+                sm:text-[10px]
+              "
+            >
+              Explore Sharp Rays
+            </span>
           </div>
 
           {/* =================================================
-              MOBILE NAVIGATION
+              NAVIGATION
           ================================================= */}
 
-          <div className="flex flex-col">
-            {/* HOME */}
-
+          <div
+            className="
+              flex
+              flex-col
+              border-t
+              border-[#0B2A52]/[0.08]
+            "
+          >
             <MobileNavLink
               label="Home"
               href="/"
@@ -734,8 +828,6 @@ export default function Navbar() {
               active={isHome}
               onClick={closeMobileMenu}
             />
-
-            {/* ABOUT */}
 
             <MobileNavLink
               label="About"
@@ -752,157 +844,276 @@ export default function Navbar() {
             <div
               className="
                 border-b
-                border-white/[0.08]
+                border-[#0B2A52]/[0.08]
               "
             >
               <button
                 type="button"
+                aria-expanded={servicesOpen}
                 onClick={() =>
-                  setServicesOpen(!servicesOpen)
+                  setServicesOpen((prev) => !prev)
                 }
-                style={{
-                  ...newYorkFont,
-                  color: isServices
-                    ? "#6285AD"
-                    : "#FFFFFF",
-                }}
                 className="
-                  group
                   flex
                   w-full
                   items-center
                   justify-between
-                  py-[19px]
+                  gap-5
+                  py-[18px]
+                  text-left
+
+                  min-[380px]:py-5
+
+                  sm:py-[22px]
+
+                  md:py-6
                 "
               >
-                <span
+                <div
                   className="
-                    text-[36px]
-                    font-medium
-                    leading-none
-                    tracking-[-0.04em]
-                    transition-all
-                    duration-300
-                    sm:text-[42px]
+                    flex
+                    min-w-0
+                    items-center
+                    gap-4
+                    sm:gap-5
                   "
                 >
-                  Services
-                </span>
+                  {/* active marker */}
 
-                <svg
-                  width="18"
-                  height="18"
-                  viewBox="0 0 18 18"
-                  fill="none"
-                  className={`
-                    transition-transform
-                    duration-300
-                    ${
-                      servicesOpen
-                        ? "rotate-180 text-[#6285AD]"
-                        : "text-white/30"
-                    }
-                  `}
-                >
-                  <path
-                    d="M4 7L9 12L14 7"
-                    stroke="currentColor"
-                    strokeWidth="1.3"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
+                  <span
+                    className={`
+                      h-[28px]
+                      w-[2px]
+                      shrink-0
+                      rounded-full
+                      transition-all
+                      duration-300
+
+                      ${
+                        isServices
+                          ? "bg-[#B79A72] opacity-100"
+                          : "bg-transparent opacity-0"
+                      }
+                    `}
                   />
-                </svg>
+
+                  <span
+                    style={newYorkFont}
+                    className={`
+                      text-[28px]
+                      font-medium
+                      leading-none
+                      tracking-[-0.035em]
+                      transition-colors
+                      duration-300
+
+                      min-[380px]:text-[30px]
+
+                      sm:text-[35px]
+
+                      md:text-[39px]
+
+                      ${
+                        isServices
+                          ? "text-[#6285AD]"
+                          : "text-[#0B2A52]"
+                      }
+                    `}
+                  >
+                    Services
+                  </span>
+                </div>
+
+                <div className="flex shrink-0 items-center gap-4">
+                  <span
+                    className="
+                      hidden
+                      text-[9px]
+                      tracking-[0.18em]
+                      text-[#0B2A52]/35
+
+                      min-[360px]:block
+
+                      sm:text-[10px]
+                    "
+                  >
+                    03
+                  </span>
+
+                  <span
+                    className="
+                      flex
+                      h-8
+                      w-8
+                      items-center
+                      justify-center
+                      rounded-full
+                      border
+                      border-[#0B2A52]/[0.08]
+                      bg-white/70
+                      text-[#0B2A52]/65
+
+                      sm:h-9
+                      sm:w-9
+                    "
+                  >
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 18 18"
+                      fill="none"
+                      aria-hidden="true"
+                      className={`
+                        transition-transform
+                        duration-300
+                        ${
+                          servicesOpen
+                            ? "rotate-180"
+                            : ""
+                        }
+                      `}
+                    >
+                      <path
+                        d="M4 7L9 12L14 7"
+                        stroke="currentColor"
+                        strokeWidth="1.3"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </span>
+                </div>
               </button>
 
-              {/* MOBILE SERVICE LIST */}
+              {/* ===============================================
+                  MOBILE SERVICE LIST
+              =============================================== */}
 
               <div
                 className={`
-                  overflow-hidden
+                  grid
                   transition-all
                   duration-500
+                  ease-in-out
+
                   ${
                     servicesOpen
-                      ? "max-h-[600px] pb-4 opacity-100"
-                      : "max-h-0 opacity-0"
+                      ? "grid-rows-[1fr] opacity-100"
+                      : "grid-rows-[0fr] opacity-0"
                   }
                 `}
               >
-                {services.map(
-                  (service, index) => {
-                    const serviceActive =
-                      pathname === service.href;
+                <div className="overflow-hidden">
+                  <div
+                    className="
+                      mb-5
+                      ml-[18px]
+                      border-l
+                      border-[#B79A72]/40
+                      pl-5
 
-                    return (
-                      <Link
-                        key={service.href}
-                        href={service.href}
-                        onClick={closeMobileMenu}
-                        style={newYorkFont}
-                        className="
-                          group
-                          flex
-                          items-center
-                          justify-between
-                          py-3
-                          pl-3
-                          text-white/65
-                          transition-all
-                          duration-300
-                          hover:pl-5
-                          hover:text-[#6285AD]
-                        "
-                      >
-                        <span
-                          className={`
-                            text-[16px]
-                            ${
-                              serviceActive
-                                ? "text-[#6285AD]"
-                                : ""
-                            }
-                          `}
-                        >
-                          {service.label}
-                        </span>
+                      sm:mb-6
+                      sm:ml-[22px]
+                      sm:pl-7
+                    "
+                  >
+                    {services.map((service, index) => {
+                      const serviceActive =
+                        pathname === service.href;
 
-                        <span
+                      return (
+                        <Link
+                          key={service.href}
+                          href={service.href}
+                          onClick={closeMobileMenu}
+                          style={newYorkFont}
                           className="
-                            mr-2
-                            text-[10px]
-                            text-white/20
+                            group
+                            flex
+                            items-start
+                            justify-between
+                            gap-4
+                            border-b
+                            border-[#0B2A52]/[0.055]
+                            py-[11px]
+
+                            sm:py-[13px]
                           "
                         >
-                          0{index + 1}
-                        </span>
-                      </Link>
-                    );
-                  }
-                )}
+                          <span
+                            className={`
+                              max-w-[82%]
+                              text-[13px]
+                              font-medium
+                              leading-[1.45]
+                              transition-colors
+                              duration-300
 
-                {/* View all */}
+                              min-[380px]:text-[14px]
 
-                <Link
-                  href="/services"
-                  onClick={closeMobileMenu}
-                  style={newYorkFont}
-                  className="
-                    mt-2
-                    flex
-                    items-center
-                    gap-2
-                    pl-3
-                    text-[14px]
-                    font-medium
-                    text-[#6285AD]
-                  "
-                >
-                  View All Services →
-                </Link>
+                              sm:text-[15px]
+
+                              ${
+                                serviceActive
+                                  ? "text-[#6285AD]"
+                                  : "text-[#0B2A52]/70 group-hover:text-[#6285AD]"
+                              }
+                            `}
+                          >
+                            {service.label}
+                          </span>
+
+                          <span
+                            className="
+                              mt-[2px]
+                              shrink-0
+                              text-[9px]
+                              tracking-[0.15em]
+                              text-[#B79A72]
+
+                              sm:text-[10px]
+                            "
+                          >
+                            0{index + 1}
+                          </span>
+                        </Link>
+                      );
+                    })}
+
+                    <Link
+                      href="/services"
+                      onClick={closeMobileMenu}
+                      style={newYorkFont}
+                      className="
+                        group
+                        mt-4
+                        inline-flex
+                        items-center
+                        gap-2
+                        text-[13px]
+                        font-medium
+                        text-[#6285AD]
+
+                        sm:text-[14px]
+                      "
+                    >
+                      <span>View All Services</span>
+
+                      <span
+                        className="
+                          text-[#B79A72]
+                          transition-transform
+                          duration-300
+                          group-hover:translate-x-1
+                        "
+                      >
+                        →
+                      </span>
+                    </Link>
+                  </div>
+                </div>
               </div>
             </div>
-
-            {/* WORK */}
 
             <MobileNavLink
               label="Work"
@@ -911,8 +1122,6 @@ export default function Navbar() {
               active={isWork}
               onClick={closeMobileMenu}
             />
-
-            {/* CONTACT */}
 
             <MobileNavLink
               label="Contact"
@@ -924,48 +1133,151 @@ export default function Navbar() {
           </div>
 
           {/* =================================================
-              MOBILE CTA
-          ================================================= */}
+    MOBILE BOTTOM CONTENT
+================================================= */}
 
-          <Link
-            href="/contact"
-            onClick={closeMobileMenu}
-            style={newYorkFont}
-            className="
-              group
-              mt-10
-              flex
-              w-fit
-              items-center
-              gap-3
-              text-[18px]
-              font-medium
-              text-white
-            "
-          >
-            <span
-              className="
-                transition-colors
-                duration-300
-                group-hover:text-[#6285AD]
-              "
-            >
-              Start a Project
-            </span>
+<div
+  className="
+    mt-auto
+    pt-7
+    sm:pt-9
+  "
+>
+  {/* SMALL CENTER LET'S TALK CTA */}
 
-            <span
-              className="
-                text-[22px]
-                leading-none
-                transition-all
-                duration-300
-                group-hover:translate-x-1
-                group-hover:text-[#6285AD]
-              "
-            >
-              →
-            </span>
-          </Link>
+  <div className="flex w-full justify-center">
+    <Link
+      href="/contact"
+      onClick={closeMobileMenu}
+      style={newYorkFont}
+      className="
+        group
+        relative
+        inline-flex
+        items-center
+        justify-center
+        gap-2.5
+        overflow-hidden
+        rounded-[13px]
+        border
+        border-[#0B2A52]/10
+        bg-white
+        px-4
+        py-2.5
+        text-[#0B2A52]
+        shadow-[0_7px_22px_rgba(11,42,82,0.07)]
+        transition-all
+        duration-300
+
+        hover:-translate-y-[1px]
+        hover:border-[#6285AD]/30
+        hover:shadow-[0_10px_28px_rgba(11,42,82,0.10)]
+
+        sm:px-[18px]
+        sm:py-[11px]
+      "
+    >
+      <span
+        className="
+          pointer-events-none
+          absolute
+          bottom-0
+          left-1/2
+          h-[2px]
+          w-0
+          -translate-x-1/2
+          bg-[#B79A72]
+          transition-all
+          duration-300
+          group-hover:w-[68%]
+        "
+      />
+
+      <span
+        className="
+          relative
+          z-10
+          whitespace-nowrap
+          text-[13px]
+          font-medium
+          tracking-[-0.01em]
+          sm:text-[14px]
+        "
+      >
+        Let&apos;s Talk
+      </span>
+
+      <span
+        className="
+          relative
+          z-10
+          flex
+          h-7
+          w-7
+          shrink-0
+          items-center
+          justify-center
+          rounded-full
+          bg-[#0B2A52]
+          text-white
+          transition-all
+          duration-300
+
+          group-hover:translate-x-[2px]
+          group-hover:bg-[#6285AD]
+        "
+      >
+        <svg
+          width="11"
+          height="11"
+          viewBox="0 0 14 14"
+          fill="none"
+          aria-hidden="true"
+        >
+          <path
+            d="M2.5 7H11.5M7.8 3.3L11.5 7L7.8 10.7"
+            stroke="currentColor"
+            strokeWidth="1.4"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      </span>
+    </Link>
+  </div>
+
+  {/* SMALL SUPPORTING LINE */}
+
+  <div
+    className="
+      mt-5
+      flex
+      flex-wrap
+      items-center
+      justify-center
+      gap-x-4
+      gap-y-2
+      text-[9px]
+      font-medium
+      uppercase
+      tracking-[0.2em]
+      text-[#0B2A52]/40
+
+      sm:mt-6
+      sm:text-[10px]
+    "
+  >
+    <span>Ideas</span>
+
+    <span className="h-[4px] w-[4px] rounded-full bg-[#B79A72]" />
+
+    <span>Strategy</span>
+
+    <span className="h-[4px] w-[4px] rounded-full bg-[#B79A72]" />
+
+    <span>Impact</span>
+  </div>
+</div>
         </div>
       </div>
     </>
@@ -998,34 +1310,34 @@ function NavLink({
         group
         relative
         whitespace-nowrap
-        text-[16px]
+        text-[15px]
         font-medium
         tracking-[-0.01em]
         transition-colors
         duration-300
+
+        hover:text-[#6285AD]
+
         xl:text-[17px]
       "
     >
       <span>{label}</span>
-
-      {/* =================================================
-          ACTIVE / HOVER UNDERLINE
-      ================================================= */}
 
       <span
         className={`
           absolute
           -bottom-[10px]
           left-1/2
-          h-[1px]
+          h-[2px]
           -translate-x-1/2
-          bg-[#6285AD]
+          bg-[#B79A72]
           transition-all
           duration-300
+
           ${
             active
-              ? "w-5 opacity-100"
-              : "w-0 opacity-0 group-hover:w-5 group-hover:opacity-100"
+              ? "w-6 opacity-100"
+              : "w-0 opacity-0 group-hover:w-6 group-hover:opacity-100"
           }
         `}
       />
@@ -1054,45 +1366,100 @@ function MobileNavLink({
     <Link
       href={href}
       onClick={onClick}
-      style={{
-        ...newYorkFont,
-        color: active
-          ? "#6285AD"
-          : "#FFFFFF",
-      }}
       className="
         group
         flex
+        w-full
         items-center
         justify-between
+        gap-5
         border-b
-        border-white/[0.08]
-        py-[19px]
+        border-[#0B2A52]/[0.08]
+        py-[18px]
+
+        min-[380px]:py-5
+
+        sm:py-[22px]
+
+        md:py-6
       "
     >
-      <span
+      <div
         className="
-          text-[36px]
-          font-medium
-          leading-none
-          tracking-[-0.04em]
-          transition-all
-          duration-300
-          sm:text-[42px]
+          flex
+          min-w-0
+          items-center
+          gap-4
+
+          sm:gap-5
         "
       >
-        {label}
-      </span>
+        {/* ACTIVE GOLD MARKER */}
+
+        <span
+          className={`
+            h-[28px]
+            w-[2px]
+            shrink-0
+            rounded-full
+            transition-all
+            duration-300
+
+            ${
+              active
+                ? "bg-[#B79A72] opacity-100"
+                : "bg-transparent opacity-0"
+            }
+          `}
+        />
+
+        {/* TEXT */}
+
+        <span
+          style={newYorkFont}
+          className={`
+            text-[28px]
+            font-medium
+            leading-none
+            tracking-[-0.035em]
+            transition-all
+            duration-300
+
+            min-[380px]:text-[30px]
+
+            sm:text-[35px]
+
+            md:text-[39px]
+
+            ${
+              active
+                ? "text-[#6285AD]"
+                : "text-[#0B2A52] group-hover:text-[#6285AD]"
+            }
+          `}
+        >
+          {label}
+        </span>
+      </div>
+
+      {/* NUMBER */}
 
       <span
-        className="
-          text-[10px]
+        className={`
+          shrink-0
+          text-[9px]
           tracking-[0.18em]
-          text-white/25
           transition-colors
           duration-300
-          group-hover:text-[#6285AD]
-        "
+
+          sm:text-[10px]
+
+          ${
+            active
+              ? "text-[#B79A72]"
+              : "text-[#0B2A52]/30 group-hover:text-[#B79A72]"
+          }
+        `}
       >
         0{index}
       </span>
