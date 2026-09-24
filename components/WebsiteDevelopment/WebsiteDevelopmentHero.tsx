@@ -4,10 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import {
-  ArrowDown,
   ArrowUpRight,
   BarChart3,
-  Check,
   Code2,
   LayoutGrid,
   Menu,
@@ -147,10 +145,13 @@ export default function WebsiteDevelopmentHero() {
             mx-auto
             w-full
             max-w-[720px]
+
             lg:mx-0
           "
         >
-          {/* LABEL */}
+          {/* =================================================
+              LABEL
+          ================================================= */}
 
           <div
             className="
@@ -158,8 +159,10 @@ export default function WebsiteDevelopmentHero() {
               flex
               items-center
               gap-3
+
               sm:mb-7
               sm:gap-4
+
               lg:mb-8
             "
           >
@@ -185,6 +188,7 @@ export default function WebsiteDevelopmentHero() {
                 text-[#B79A72]
                 sm:text-[0.65rem]
                 sm:tracking-[0.26em]
+
                 md:text-[0.7rem]
                 md:tracking-[0.3em]
               "
@@ -203,7 +207,9 @@ export default function WebsiteDevelopmentHero() {
           />
           </div>
 
-          {/* HEADING */}
+          {/* =================================================
+              HEADING
+          ================================================= */}
 
           <h1
             id="website-development-heading"
@@ -216,8 +222,11 @@ export default function WebsiteDevelopmentHero() {
               text-[#0B2A52]
 
               sm:text-[2.6rem]
+
               md:text-[2.95rem]
+
               lg:text-[3.1rem]
+
               xl:text-[3.35rem]
             "
           >
@@ -236,7 +245,9 @@ export default function WebsiteDevelopmentHero() {
             and Used.
           </h1>
 
-          {/* PARAGRAPH 1 */}
+          {/* =================================================
+              PARAGRAPH 1
+          ================================================= */}
 
           <p
             className="
@@ -245,8 +256,10 @@ export default function WebsiteDevelopmentHero() {
               text-[0.88rem]
               leading-[1.7]
               text-[#536B84]
+
               sm:mt-7
               sm:text-[0.96rem]
+
               md:mt-8
               md:text-[1rem]
             "
@@ -256,7 +269,9 @@ export default function WebsiteDevelopmentHero() {
             into meaningful action.
           </p>
 
-          {/* PARAGRAPH 2 */}
+          {/* =================================================
+              PARAGRAPH 2
+          ================================================= */}
 
           <p
             className="
@@ -265,8 +280,10 @@ export default function WebsiteDevelopmentHero() {
               text-[0.88rem]
               leading-[1.7]
               text-[#536B84]
+
               sm:mt-5
               sm:text-[0.96rem]
+
               md:text-[1rem]
             "
           >
@@ -275,7 +292,9 @@ export default function WebsiteDevelopmentHero() {
             together around one purpose:
           </p>
 
-          {/* STRONG MESSAGE */}
+          {/* =================================================
+              STRONG MESSAGE
+          ================================================= */}
 
           <div
             className="
@@ -284,6 +303,7 @@ export default function WebsiteDevelopmentHero() {
               border-l-[3px]
               border-[#B79A72]
               pl-4
+
               sm:mt-7
               sm:pl-5
             "
@@ -294,7 +314,9 @@ export default function WebsiteDevelopmentHero() {
                 font-semibold
                 leading-[1.6]
                 text-[#0B2A52]
+
                 sm:text-[1rem]
+
                 md:text-[1.04rem]
               "
             >
@@ -322,6 +344,8 @@ export default function WebsiteDevelopmentHero() {
               sm:gap-3
             "
           >
+            {/* PRIMARY CTA */}
+
             <Link
               href="/contact"
               className="
@@ -397,6 +421,8 @@ export default function WebsiteDevelopmentHero() {
                 Build My Website
               </span>
             </Link>
+
+            {/* SECONDARY CTA */}
 
             <Link
               href="#our-approach"
@@ -475,7 +501,9 @@ export default function WebsiteDevelopmentHero() {
             </Link>
           </div>
 
-          {/* SUPPORTING LINE */}
+          {/* =================================================
+              SUPPORTING LINE
+          ================================================= */}
 
          
         </motion.div>
@@ -517,7 +545,9 @@ export default function WebsiteDevelopmentHero() {
             lg:max-w-none
           "
         >
-          {/* GLOW */}
+          {/* =================================================
+              GLOW
+          ================================================= */}
 
           <div
             className="
@@ -535,8 +565,10 @@ export default function WebsiteDevelopmentHero() {
               rounded-full
               bg-[#EAF2F8]/60
               blur-[65px]
+
               sm:h-[82%]
               sm:w-[82%]
+
               lg:blur-[80px]
             "
           />
@@ -584,7 +616,9 @@ export default function WebsiteDevelopmentHero() {
                 border
                 border-[#E0E6EA]
                 bg-white
+
                 sm:rounded-[18px]
+
                 xl:rounded-[21px]
               "
             >
@@ -602,6 +636,7 @@ export default function WebsiteDevelopmentHero() {
                   border-[#E8ECEF]
                   bg-[#FAFBFB]
                   px-3
+
                   sm:h-[38px]
                   sm:gap-2
                   sm:px-4
@@ -614,6 +649,7 @@ export default function WebsiteDevelopmentHero() {
                     shrink-0
                     rounded-full
                     bg-[#E96F5B]
+
                     sm:h-2
                     sm:w-2
                   "
@@ -626,6 +662,7 @@ export default function WebsiteDevelopmentHero() {
                     shrink-0
                     rounded-full
                     bg-[#F2BB43]
+
                     sm:h-2
                     sm:w-2
                   "
@@ -638,6 +675,7 @@ export default function WebsiteDevelopmentHero() {
                     shrink-0
                     rounded-full
                     bg-[#52B76B]
+
                     sm:h-2
                     sm:w-2
                   "
@@ -656,6 +694,7 @@ export default function WebsiteDevelopmentHero() {
                     border
                     border-[#E0E5E9]
                     bg-white
+
                     sm:h-[23px]
                     sm:w-[42%]
                   "
@@ -666,6 +705,7 @@ export default function WebsiteDevelopmentHero() {
                       px-2
                       text-[5.5px]
                       text-[#96A3AD]
+
                       sm:text-[6.5px]
                     "
                   >
@@ -677,6 +717,7 @@ export default function WebsiteDevelopmentHero() {
                   className="
                     w-[22px]
                     shrink-0
+
                     sm:w-[30px]
                   "
                 />
@@ -696,8 +737,10 @@ export default function WebsiteDevelopmentHero() {
                   border-[#EEF1F3]
                   bg-white
                   px-3
+
                   sm:h-[54px]
                   sm:px-4
+
                   md:h-[58px]
                   md:px-5
                 "
@@ -710,12 +753,17 @@ export default function WebsiteDevelopmentHero() {
                   className="
                     h-auto
                     w-[60px]
+
                     sm:w-[72px]
+
                     md:w-[85px]
                   "
                 />
 
-                {/* mobile menu visual */}
+                {/* =================================================
+                    MOBILE MENU VISUAL
+                ================================================= */}
+
                 <div
                   className="
                     flex
@@ -725,6 +773,7 @@ export default function WebsiteDevelopmentHero() {
                     justify-center
                     rounded-full
                     bg-[#F7F8FA]
+
                     md:hidden
                   "
                 >
@@ -735,14 +784,20 @@ export default function WebsiteDevelopmentHero() {
                   />
                 </div>
 
-                {/* desktop nav visual */}
+                {/* =================================================
+                    DESKTOP NAV VISUAL
+                ================================================= */}
+
                 <div
                   className="
                     hidden
                     items-center
                     gap-3
+
                     md:flex
+
                     lg:gap-4
+
                     xl:gap-5
                   "
                 >
@@ -758,7 +813,16 @@ export default function WebsiteDevelopmentHero() {
                     Services
                   </span>
 
-                  <span className="hidden text-[6px] font-medium text-[#617388] lg:block">
+                  <span
+                    className="
+                      hidden
+                      text-[6px]
+                      font-medium
+                      text-[#617388]
+
+                      lg:block
+                    "
+                  >
                     Work
                   </span>
 
@@ -773,6 +837,7 @@ export default function WebsiteDevelopmentHero() {
                       text-[6px]
                       font-semibold
                       text-white
+
                       xl:px-4
                       xl:py-2
                       xl:text-[6.5px]
@@ -801,9 +866,9 @@ export default function WebsiteDevelopmentHero() {
                   xl:min-h-[255px]
                 "
               >
-                {/* =============================================
+                {/* =================================================
                     LEFT MINI HERO CONTENT
-                ============================================= */}
+                ================================================= */}
 
                 <div
                   className="
@@ -834,6 +899,7 @@ export default function WebsiteDevelopmentHero() {
                       uppercase
                       tracking-[0.2em]
                       text-[#B18458]
+
                       sm:text-[6px]
                       sm:tracking-[0.22em]
                     "
@@ -908,9 +974,12 @@ export default function WebsiteDevelopmentHero() {
                       flex-wrap
                       items-center
                       gap-3
+
                       sm:mt-5
                       sm:gap-4
+
                       md:gap-2.5
+
                       xl:gap-4
                     "
                   >
@@ -927,6 +996,7 @@ export default function WebsiteDevelopmentHero() {
                         text-[6px]
                         font-semibold
                         text-white
+
                         sm:px-4
                         sm:text-[6.5px]
                       "
@@ -945,6 +1015,7 @@ export default function WebsiteDevelopmentHero() {
                         text-[6px]
                         font-semibold
                         text-[#0B2A52]
+
                         sm:gap-2
                         sm:text-[6.5px]
                       "
@@ -985,9 +1056,9 @@ export default function WebsiteDevelopmentHero() {
                     xl:min-h-[255px]
                   "
                 >
-                  {/* =========================================
-                      IMAGE NOW COVERS COMPLETE BOX
-                  ========================================= */}
+                  {/* =================================================
+                      IMAGE
+                  ================================================= */}
 
                   <Image
                     src={desktopRightImage}
@@ -1009,9 +1080,9 @@ export default function WebsiteDevelopmentHero() {
                     "
                   />
 
-                  {/* =========================================
+                  {/* =================================================
                       LEFT OVERLAY FOR TEXT
-                  ========================================= */}
+                  ================================================= */}
 
                   <div
                     className="
@@ -1031,9 +1102,9 @@ export default function WebsiteDevelopmentHero() {
                     "
                   />
 
-                  {/* =========================================
+                  {/* =================================================
                       IDEAS TEXT
-                  ========================================= */}
+                  ================================================= */}
 
                   <div
                     className="
@@ -1105,14 +1176,19 @@ export default function WebsiteDevelopmentHero() {
                   bg-white
                 "
               >
+                {/* FAST */}
+
                 <div
                   className="
                     min-w-0
                     px-2
                     py-2.5
+
                     sm:px-4
                     sm:py-3
+
                     lg:px-5
+
                     xl:px-6
                   "
                 >
@@ -1122,7 +1198,9 @@ export default function WebsiteDevelopmentHero() {
                       text-[0.5rem]
                       font-bold
                       text-[#0B2A52]
+
                       sm:text-[0.56rem]
+
                       xl:text-[0.62rem]
                     "
                   >
@@ -1135,7 +1213,9 @@ export default function WebsiteDevelopmentHero() {
                       truncate
                       text-[0.34rem]
                       text-[#8897A5]
+
                       sm:text-[0.39rem]
+
                       xl:text-[0.43rem]
                     "
                   >
@@ -1143,14 +1223,19 @@ export default function WebsiteDevelopmentHero() {
                   </p>
                 </div>
 
+                {/* RESULTS */}
+
                 <div
                   className="
                     min-w-0
                     px-2
                     py-2.5
+
                     sm:px-4
                     sm:py-3
+
                     lg:px-5
+
                     xl:px-6
                   "
                 >
@@ -1160,7 +1245,9 @@ export default function WebsiteDevelopmentHero() {
                       text-[0.5rem]
                       font-bold
                       text-[#0B2A52]
+
                       sm:text-[0.56rem]
+
                       xl:text-[0.62rem]
                     "
                   >
@@ -1173,7 +1260,9 @@ export default function WebsiteDevelopmentHero() {
                       truncate
                       text-[0.34rem]
                       text-[#8897A5]
+
                       sm:text-[0.39rem]
+
                       xl:text-[0.43rem]
                     "
                   >
@@ -1181,14 +1270,19 @@ export default function WebsiteDevelopmentHero() {
                   </p>
                 </div>
 
+                {/* SEO */}
+
                 <div
                   className="
                     min-w-0
                     px-2
                     py-2.5
+
                     sm:px-4
                     sm:py-3
+
                     lg:px-5
+
                     xl:px-6
                   "
                 >
@@ -1198,7 +1292,9 @@ export default function WebsiteDevelopmentHero() {
                       text-[0.5rem]
                       font-bold
                       text-[#0B2A52]
+
                       sm:text-[0.56rem]
+
                       xl:text-[0.62rem]
                     "
                   >
@@ -1211,7 +1307,9 @@ export default function WebsiteDevelopmentHero() {
                       truncate
                       text-[0.34rem]
                       text-[#8897A5]
+
                       sm:text-[0.39rem]
+
                       xl:text-[0.43rem]
                     "
                   >
@@ -1243,7 +1341,9 @@ export default function WebsiteDevelopmentHero() {
               x: 0,
               y: 0,
             }}
-            viewport={{ once: true }}
+            viewport={{
+              once: true,
+            }}
             transition={{
               duration: 0.75,
               delay: 0.55,
@@ -1251,8 +1351,8 @@ export default function WebsiteDevelopmentHero() {
             }}
             className="
               absolute
-              right-[-1%]
               bottom-[15%]
+              right-[-1%]
               z-40
               hidden
               w-[125px]
@@ -1292,7 +1392,9 @@ export default function WebsiteDevelopmentHero() {
                 xl:pt-4
               "
             >
-              {/* PHONE TOP */}
+              {/* =================================================
+                  PHONE TOP
+              ================================================= */}
 
               <div
                 className="
@@ -1311,7 +1413,9 @@ export default function WebsiteDevelopmentHero() {
                 "
               />
 
-              {/* PHONE NAVBAR */}
+              {/* =================================================
+                  PHONE NAVBAR
+              ================================================= */}
 
               <div
                 className="
@@ -1330,6 +1434,7 @@ export default function WebsiteDevelopmentHero() {
                     h-4
                     w-auto
                     object-contain
+
                     xl:h-5
                   "
                 />
@@ -1337,11 +1442,18 @@ export default function WebsiteDevelopmentHero() {
                 <Menu
                   size={11}
                   strokeWidth={2}
-                  className="text-[#0B2A52] xl:h-3 xl:w-3"
+                  className="
+                    text-[#0B2A52]
+
+                    xl:h-3
+                    xl:w-3
+                  "
                 />
               </div>
 
-              {/* MOBILE CONTENT */}
+              {/* =================================================
+                  MOBILE CONTENT
+              ================================================= */}
 
               <div className="mt-4 xl:mt-5">
                 <h4
@@ -1351,7 +1463,9 @@ export default function WebsiteDevelopmentHero() {
                     leading-[1.05]
                     tracking-[-0.035em]
                     text-[#0B2A52]
+
                     lg:text-[0.92rem]
+
                     xl:text-[1rem]
                   "
                 >
@@ -1366,6 +1480,7 @@ export default function WebsiteDevelopmentHero() {
                     text-[0.4rem]
                     leading-[1.55]
                     text-[#6D7F91]
+
                     xl:mt-3
                     xl:text-[0.46rem]
                   "
@@ -1375,7 +1490,9 @@ export default function WebsiteDevelopmentHero() {
                   Real business results.
                 </p>
 
-                {/* MOBILE IMAGE */}
+                {/* =================================================
+                    MOBILE IMAGE
+                ================================================= */}
 
                 <div
                   className="
@@ -1403,7 +1520,9 @@ export default function WebsiteDevelopmentHero() {
                   />
                 </div>
 
-                {/* MOBILE BUTTON */}
+                {/* =================================================
+                    MOBILE BUTTON
+                ================================================= */}
 
                 <button
                   type="button"
@@ -1439,7 +1558,9 @@ export default function WebsiteDevelopmentHero() {
 
         
 
-          {/* DECORATIVE TEXT */}
+          {/* =================================================
+              DECORATIVE TEXT
+          ================================================= */}
 
           <div
             className="
@@ -1453,6 +1574,7 @@ export default function WebsiteDevelopmentHero() {
               italic
               leading-[1.08]
               text-[#0B2A52]/20
+
               2xl:block
             "
           >
@@ -1462,11 +1584,6 @@ export default function WebsiteDevelopmentHero() {
           </div>
         </motion.div>
       </div>
-
-     
-       
-       
-    
     </section>
   );
 }
