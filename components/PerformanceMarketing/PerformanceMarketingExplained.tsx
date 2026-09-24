@@ -57,8 +57,8 @@ export default function PerformanceMarketingExplained() {
         isolate
         overflow-hidden
         bg-white
-        py-24
-        sm:py-28
+        py-20
+        sm:py-24
         lg:py-32
         xl:py-36
       "
@@ -68,24 +68,14 @@ export default function PerformanceMarketingExplained() {
       ========================================================= */}
 
       <div className="pointer-events-none absolute inset-0 -z-20">
-        <div
-          className="
-            absolute
-            left-1/2
-            top-[28%]
-            h-[620px]
-            w-[820px]
-            -translate-x-1/2
-            rounded-full
-            bg-[#EAF4FC]/65
-            blur-[130px]
-          "
-        />
+        
 
         <div
           className="
             absolute
             -right-40
+            hidden
+            sm:block
             top-[18%]
             h-[390px]
             w-[390px]
@@ -99,12 +89,14 @@ export default function PerformanceMarketingExplained() {
           className="
             absolute
             -left-40
+            hidden
+            sm:block
             bottom-[5%]
             h-[390px]
             w-[390px]
             rounded-full
-            bg-[#E4F0FB]/60
-            blur-[120px]
+            bg-white
+        
           "
         />
 
@@ -160,29 +152,46 @@ export default function PerformanceMarketingExplained() {
               ease,
             }}
             className="
-              mb-6
+              mb-5
               flex
               items-center
               justify-center
               gap-4
             "
           >
-            <span className="h-px w-9 bg-[#B67D49]" />
+          <span
+            className="
+              h-px
+              w-10
+
+              bg-gradient-to-r
+              from-transparent
+              to-[#B79A72]
+            "
+          />
 
             <span
               className="
                 text-[0.66rem]
-                font-semibold
+             
                 uppercase
                 tracking-[0.28em]
-                text-[#A87040]
+                text-[#B79A72]
                 sm:text-[0.7rem]
               "
             >
               Performance Marketing Explained
             </span>
+ <span
+            className="
+              h-px
+              w-10
 
-            <span className="h-px w-9 bg-[#B67D49]" />
+              bg-gradient-to-l
+              from-transparent
+              to-[#B79A72]
+            "
+          />
           </motion.div>
 
           <motion.h2
@@ -209,7 +218,7 @@ export default function PerformanceMarketingExplained() {
               ease,
             }}
             className="
-              text-[2.3rem]
+              text-[2.2rem]
               font-medium
               leading-[1.06]
               tracking-[-0.045em]
@@ -255,19 +264,32 @@ export default function PerformanceMarketingExplained() {
           className="
             relative
             mx-auto
-            mt-10
+            mt-8
             max-w-[1040px]
-            overflow-hidden
-            rounded-[30px]
-            border
-            border-[#C9D9E8]
-            bg-white/85
-            px-6
-            py-8
-            shadow-[0_24px_80px_rgba(11,42,82,0.07)]
-            backdrop-blur-xl
+
+            overflow-visible
+
+            border-y
+            border-[#D6E2EB]
+
+            bg-transparent
+
+            px-0
+            py-7
+
+            shadow-none
+
+            sm:mt-10
+            sm:overflow-hidden
+            sm:rounded-[28px]
+            sm:border
+            sm:border-[#C9D9E8]
+            sm:bg-white/85
             sm:px-9
             sm:py-10
+            sm:shadow-[0_24px_80px_rgba(11,42,82,0.07)]
+            sm:backdrop-blur-xl
+
             lg:px-12
             lg:py-11
           "
@@ -278,6 +300,8 @@ export default function PerformanceMarketingExplained() {
               pointer-events-none
               absolute
               -right-20
+              hidden
+              sm:block
               -top-24
               h-[280px]
               w-[280px]
@@ -292,6 +316,8 @@ export default function PerformanceMarketingExplained() {
               pointer-events-none
               absolute
               -bottom-28
+              hidden
+              sm:block
               -left-24
               h-[270px]
               w-[270px]
@@ -314,10 +340,14 @@ export default function PerformanceMarketingExplained() {
                 <div
                   className="
                     grid
-                    h-10
-                    w-10
+                    h-9
+                    w-9
                     place-items-center
-                    rounded-2xl
+                    rounded-xl
+
+                    sm:h-10
+                    sm:w-10
+                    sm:rounded-2xl
                     border
                     border-[#C8DCEB]
                     bg-[#EEF6FC]
@@ -353,42 +383,30 @@ export default function PerformanceMarketingExplained() {
                 </div>
               </div>
 
-              <span
-                className="
-                  hidden
-                  rounded-full
-                  border
-                  border-[#D4E0EA]
-                  bg-white/75
-                  px-4
-                  py-2
-                  text-[0.57rem]
-                  font-semibold
-                  uppercase
-                  tracking-[0.17em]
-                  text-[#6E8397]
-                  sm:inline-flex
-                "
-              >
-                AEO Answer
-              </span>
+             
             </div>
 
             <div
               className="
-                mt-7
+                mt-6
                 grid
-                gap-7
+                gap-5
+
+                sm:mt-7
+                sm:gap-7
+
                 lg:grid-cols-[1fr_auto_1fr]
                 lg:items-start
               "
             >
               <p
                 className="
-                  text-[1rem]
-                  leading-[1.8]
+                  text-[0.92rem]
+                  leading-[1.75]
                   text-[#385775]
+
                   sm:text-[1.04rem]
+                  sm:leading-[1.8]
                 "
               >
                 Performance marketing is a results-focused approach to digital
@@ -411,10 +429,19 @@ export default function PerformanceMarketingExplained() {
 
               <p
                 className="
-                  text-[1rem]
-                  leading-[1.8]
+                  border-t
+                  border-[#DDE7EE]
+                  pt-5
+
+                  text-[0.92rem]
+                  leading-[1.75]
                   text-[#385775]
+
                   sm:text-[1.04rem]
+                  sm:leading-[1.8]
+
+                  lg:border-t-0
+                  lg:pt-0
                 "
               >
                 Depending on the objective, those actions may include website
@@ -453,8 +480,10 @@ export default function PerformanceMarketingExplained() {
           }}
           className="
             mx-auto
-            h-14
+            h-10
             w-px
+
+            sm:h-14
             origin-top
             bg-gradient-to-b
             from-[#9DB5CA]
@@ -526,8 +555,10 @@ export default function PerformanceMarketingExplained() {
           }}
           className="
             mx-auto
-            mt-7
+            mt-6
             max-w-[650px]
+
+            sm:mt-7
             text-center
           "
         >
@@ -548,212 +579,384 @@ export default function PerformanceMarketingExplained() {
             FIVE CONNECTED SIGNALS
         ========================================================= */}
 
-        <div className="relative mt-10">
-          {/* desktop center line */}
-          <div
-            className="
-              pointer-events-none
-              absolute
-              left-[10%]
-              right-[10%]
-              top-[49px]
-              hidden
-              h-px
-              bg-gradient-to-r
-              from-transparent
-              via-[#AFC2D3]
-              to-transparent
-              lg:block
-            "
-          />
+        <div className="relative mt-7 sm:mt-10">
+          {/* =====================================================
+              MOBILE — OPEN CONNECTED TIMELINE
+              No stacked cards on small screens.
+          ===================================================== */}
 
-          <div
-            className="
-              grid
-              gap-4
-              sm:grid-cols-2
-              lg:grid-cols-5
-            "
-          >
-            {signals.map((item, index) => {
-              const Icon = item.icon;
+          <div className="relative sm:hidden">
+            <div
+              aria-hidden="true"
+              className="
+                absolute
+                bottom-5
+                left-[18px]
+                top-5
+                w-px
+                bg-gradient-to-b
+                from-[#7FA9C7]
+                via-[#C8D8E4]
+                to-[#B79A72]/55
+              "
+            />
 
-              return (
-                <motion.article
-                  key={item.title}
-                  initial={
-                    reduceMotion
-                      ? false
-                      : {
-                          opacity: 0,
-                          y: 34,
-                        }
-                  }
-                  whileInView={{
-                    opacity: 1,
-                    y: 0,
-                  }}
-                  viewport={{
-                    once: true,
-                    amount: 0.4,
-                  }}
-                  transition={{
-                    duration: reduceMotion ? 0 : 0.7,
-                    delay: reduceMotion ? 0 : index * 0.08,
-                    ease,
-                  }}
-                  whileHover={
-                    reduceMotion
-                      ? undefined
-                      : {
-                          y: -7,
-                        }
-                  }
-                  className="
-                    group
-                    relative
-                    z-10
-                    overflow-hidden
-                    rounded-[24px]
-                    border
-                    border-[#C8D8E6]
-                    bg-white
-                    px-5
-                    pb-6
-                    pt-5
-                    shadow-[0_12px_40px_rgba(11,42,82,0.045)]
-                    transition
-                    duration-300
-                    hover:border-[#8CB2CF]
-                    hover:shadow-[0_22px_55px_rgba(11,42,82,0.09)]
-                  "
-                >
-                  {/* hover glow */}
-                  <div
-                    className="
-                      pointer-events-none
-                      absolute
-                      -right-10
-                      -top-12
-                      h-32
-                      w-32
-                      rounded-full
-                      bg-[#E5F2FB]
-                      opacity-0
-                      blur-2xl
-                      transition-opacity
-                      duration-500
-                      group-hover:opacity-100
-                    "
-                  />
+            <div className="relative">
+              {signals.map((item, index) => {
+                const Icon = item.icon;
 
-                  <div
+                return (
+                  <motion.div
+                    key={item.title}
+                    initial={
+                      reduceMotion
+                        ? false
+                        : {
+                            opacity: 0,
+                            x: -18,
+                          }
+                    }
+                    whileInView={{
+                      opacity: 1,
+                      x: 0,
+                    }}
+                    viewport={{
+                      once: true,
+                      amount: 0.35,
+                    }}
+                    transition={{
+                      duration: reduceMotion ? 0 : 0.55,
+                      delay: reduceMotion ? 0 : index * 0.06,
+                      ease,
+                    }}
                     className="
                       relative
                       flex
-                      items-center
-                      justify-between
-                      gap-3
+                      items-start
+                      gap-4
+                      py-4
                     "
                   >
-                    <span
+                    <div
                       className="
-                        text-[0.55rem]
-                        font-semibold
-                        tracking-[0.18em]
-                        text-[#98A8B8]
-                      "
-                    >
-                      {item.number}
-                    </span>
+                        relative
+                        z-10
 
-                    <span
-                      className="
+                        grid
+                        h-9
+                        w-9
+                        shrink-0
+                        place-items-center
+
                         rounded-full
+
                         border
-                        border-[#DEE7EF]
-                        bg-[#FAFCFD]
-                        px-2.5
-                        py-1
-                        text-[0.48rem]
-                        font-bold
-                        tracking-[0.15em]
-                        text-[#7890A5]
+                        border-[#BFD3E2]
+
+                        bg-white
+
+                        text-[#0D5A93]
+
+                        shadow-[0_5px_18px_rgba(11,42,82,0.07)]
                       "
                     >
-                      {item.label}
-                    </span>
-                  </div>
+                      <Icon size={15} strokeWidth={1.7} />
+                    </div>
 
-                  <div
+                    <div
+                      className="
+                        min-w-0
+                        flex-1
+                        border-b
+                        border-[#E2EAF0]
+                        pb-4
+                      "
+                    >
+                      <div
+                        className="
+                          flex
+                          items-center
+                          justify-between
+                          gap-3
+                        "
+                      >
+                        <span
+                          className="
+                            text-[8px]
+                            font-semibold
+                            uppercase
+                            tracking-[0.18em]
+                            text-[#B79A72]
+                          "
+                        >
+                          {item.label}
+                        </span>
+
+                        <span
+                          className="
+                            font-serif
+                            text-[10px]
+                            text-[#0B2A52]/35
+                          "
+                        >
+                          {item.number}
+                        </span>
+                      </div>
+
+                      <h3
+                        className="
+                          mt-1.5
+                          max-w-[280px]
+
+                          text-[0.95rem]
+                          font-semibold
+                          leading-[1.45]
+
+                          text-[#13385C]
+                        "
+                      >
+                        {item.title}
+                      </h3>
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* =====================================================
+              TABLET + DESKTOP — EXISTING PREMIUM CARD SYSTEM
+          ===================================================== */}
+
+          <div className="relative hidden sm:block">
+            <div
+              className="
+                pointer-events-none
+                absolute
+                left-[10%]
+                right-[10%]
+                top-[49px]
+                hidden
+                h-px
+
+                bg-gradient-to-r
+                from-transparent
+                via-[#AFC2D3]
+                to-transparent
+
+                lg:block
+              "
+            />
+
+            <div
+              className="
+                grid
+                gap-4
+
+                sm:grid-cols-2
+                lg:grid-cols-5
+              "
+            >
+              {signals.map((item, index) => {
+                const Icon = item.icon;
+
+                return (
+                  <motion.article
+                    key={item.title}
+                    initial={
+                      reduceMotion
+                        ? false
+                        : {
+                            opacity: 0,
+                            y: 34,
+                          }
+                    }
+                    whileInView={{
+                      opacity: 1,
+                      y: 0,
+                    }}
+                    viewport={{
+                      once: true,
+                      amount: 0.4,
+                    }}
+                    transition={{
+                      duration: reduceMotion ? 0 : 0.7,
+                      delay: reduceMotion ? 0 : index * 0.08,
+                      ease,
+                    }}
+                    whileHover={
+                      reduceMotion
+                        ? undefined
+                        : {
+                            y: -7,
+                          }
+                    }
                     className="
+                      group
                       relative
-                      mt-8
-                      grid
-                      h-11
-                      w-11
-                      place-items-center
-                      rounded-2xl
+                      z-10
+
+                      overflow-hidden
+
+                      rounded-[24px]
+
                       border
-                      border-[#D4E2ED]
-                      bg-[#EFF6FB]
-                      text-[#0C578F]
+                      border-[#C8D8E6]
+
+                      bg-white
+
+                      px-5
+                      pb-6
+                      pt-5
+
+                      shadow-[0_12px_40px_rgba(11,42,82,0.045)]
+
                       transition
                       duration-300
-                      group-hover:border-[#9DC3DF]
-                      group-hover:bg-[#0E568E]
-                      group-hover:text-white
-                    "
-                  >
-                    <Icon size={18} strokeWidth={1.7} />
-                  </div>
 
-                  <h3
-                    className="
-                      relative
-                      mt-6
-                      max-w-[185px]
-                      text-[0.94rem]
-                      font-semibold
-                      leading-[1.45]
-                      text-[#13385C]
+                      hover:border-[#8CB2CF]
+                      hover:shadow-[0_22px_55px_rgba(11,42,82,0.09)]
                     "
                   >
-                    {item.title}
-                  </h3>
-
-                  <div
-                    className="
-                      relative
-                      mt-5
-                      h-px
-                      w-full
-                      overflow-hidden
-                      bg-[#E7EDF2]
-                    "
-                  >
-                    <span
+                    <div
                       className="
-                        block
-                        h-full
-                        w-0
-                        bg-gradient-to-r
-                        from-[#0C5C98]
-                        to-[#B67D49]
-                        transition-all
+                        pointer-events-none
+                        absolute
+                        -right-10
+                        -top-12
+
+                        h-32
+                        w-32
+
+                        rounded-full
+
+                        bg-[#E5F2FB]
+
+                        opacity-0
+                        blur-2xl
+
+                        transition-opacity
                         duration-500
-                        group-hover:w-full
+
+                        group-hover:opacity-100
                       "
                     />
-                  </div>
-                </motion.article>
-              );
-            })}
+
+                    <div
+                      className="
+                        relative
+                        flex
+                        items-center
+                        justify-between
+                        gap-3
+                      "
+                    >
+                      <span
+                        className="
+                          rounded-full
+
+                          border
+                          border-[#DEE7EF]
+
+                          bg-[#FAFCFD]
+
+                          px-2.5
+                          py-1
+
+                          text-[0.48rem]
+                          font-bold
+                          tracking-[0.15em]
+                          text-[#7890A5]
+                        "
+                      >
+                        {item.label}
+                      </span>
+                    </div>
+
+                    <div
+                      className="
+                        relative
+                        mt-8
+
+                        grid
+                        h-11
+                        w-11
+                        place-items-center
+
+                        rounded-2xl
+
+                        border
+                        border-[#D4E2ED]
+
+                        bg-[#EFF6FB]
+
+                        text-[#0C578F]
+
+                        transition
+                        duration-300
+
+                        group-hover:border-[#9DC3DF]
+                        group-hover:bg-[#0E568E]
+                        group-hover:text-white
+                      "
+                    >
+                      <Icon size={18} strokeWidth={1.7} />
+                    </div>
+
+                    <h3
+                      className="
+                        relative
+                        mt-6
+                        max-w-[185px]
+
+                        text-[0.94rem]
+                        font-semibold
+                        leading-[1.45]
+
+                        text-[#13385C]
+                      "
+                    >
+                      {item.title}
+                    </h3>
+
+                    <div
+                      className="
+                        relative
+                        mt-5
+
+                        h-px
+                        w-full
+                        overflow-hidden
+
+                        bg-[#E7EDF2]
+                      "
+                    >
+                      <span
+                        className="
+                          block
+                          h-full
+                          w-0
+
+                          bg-gradient-to-r
+                          from-[#0C5C98]
+                          to-[#B67D49]
+
+                          transition-all
+                          duration-500
+
+                          group-hover:w-full
+                        "
+                      />
+                    </div>
+                  </motion.article>
+                );
+              })}
+            </div>
           </div>
         </div>
 
         {/* =========================================================
-            FINAL STATEMENT
+            FINAL STATEMENT — OPEN / CENTERED / NO CARD
         ========================================================= */}
 
         <motion.div
@@ -762,102 +965,58 @@ export default function PerformanceMarketingExplained() {
               ? false
               : {
                   opacity: 0,
-                  y: 35,
-                  scale: 0.98,
+                  y: 22,
                 }
           }
           whileInView={{
             opacity: 1,
             y: 0,
-            scale: 1,
           }}
           viewport={{
             once: true,
-            amount: 0.45,
+            amount: 0.5,
           }}
           transition={{
-            duration: reduceMotion ? 0 : 0.85,
-            delay: reduceMotion ? 0 : 0.1,
+            duration: reduceMotion ? 0 : 0.75,
             ease,
           }}
           className="
-            relative
             mx-auto
-            mt-14
-            max-w-[990px]
-            overflow-hidden
-            rounded-[30px]
-            border
-            border-[#AFC8DC]
-            bg-gradient-to-br
-            from-[#F7FBFE]
-            via-white
-            to-[#FCF8F4]
-            px-6
-            py-9
+            mt-12
+            max-w-[900px]
+
+            px-2
+
             text-center
-            shadow-[0_20px_65px_rgba(11,42,82,0.06)]
-            sm:px-10
-            sm:py-11
+
+            sm:mt-14
+            md:mt-16
           "
         >
-          <div
+          <p
             className="
-              pointer-events-none
-              absolute
-              left-1/2
-              top-0
-              h-[100px]
-              w-[60%]
-              -translate-x-1/2
-              rounded-full
-              bg-[#DCECF8]/55
-              blur-[50px]
+              font-serif
+
+              text-[1.35rem]
+              font-medium
+              italic
+              leading-[1.35]
+              tracking-[-0.02em]
+
+              text-[#0B2A52]
+
+              sm:text-[1.7rem]
+              md:text-[1.9rem]
+              lg:text-[2.05rem]
             "
-          />
-
-          <div className="relative">
-            <p
-              className="
-                text-[0.98rem]
-                leading-[1.75]
-                text-[#536B84]
-              "
-            >
-              At Sharp Rays, we look beyond how many people an ad reaches.
-            </p>
-
-            <div
-              className="
-                mx-auto
-                my-5
-                h-px
-                w-16
-                bg-gradient-to-r
-                from-transparent
-                via-[#B67D49]
-                to-transparent
-              "
-            />
-
-            <p
-              className="
-                font-serif
-                text-[1.45rem]
-                font-medium
-                italic
-                leading-[1.35]
-                tracking-[-0.02em]
-                text-[#0B2A52]
-                sm:text-[1.7rem]
-                md:text-[1.9rem]
-              "
-            >
-              We focus on what happens{" "}
-              <span className="text-[#B67D49]">after they see it.</span>
-            </p>
-          </div>
+          >
+            We focus on what happens{" "}
+            <span className="text-[#B67D49]">
+              after they see it.
+            </span>
+          </p>
         </motion.div>
+
       </div>
     </section>
   );

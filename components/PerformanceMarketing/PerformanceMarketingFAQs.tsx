@@ -70,36 +70,8 @@ const faqs = [
     answer:
       "Cost per lead, or CPL, is the amount of advertising spend required on average to generate a recorded lead.\n\nLead quality should be evaluated alongside CPL rather than judging campaign performance on cost alone.",
   },
-  {
-    question: "What is ROAS?",
-    answer:
-      "Return on ad spend compares measurable revenue generated with the advertising spend used to generate it.\n\nFor example, where accurate revenue tracking is available, ROAS can help evaluate how efficiently advertising investment generates revenue.",
-  },
-  {
-    question: "How quickly can paid advertising generate results?",
-    answer:
-      "Paid campaigns can begin generating traffic and activity soon after launch, but meaningful optimization requires enough reliable data to understand what is happening.\n\nThe timeline depends on budget, market size, objective, offer, audience, conversion journey and available data.",
-  },
-  {
-    question: "Can you guarantee leads or sales?",
-    answer:
-      "No responsible agency should guarantee a specific number of leads, sales or return before sufficient campaign and business data exists.\n\nAdvertising performance depends on multiple factors including market demand, competition, pricing, offer, creative, website experience and sales follow-up.",
-  },
-  {
-    question: "Do you create the ads?",
-    answer:
-      "Advertising creative can be included depending on the agreed scope.\n\nThis may include campaign messaging, copy, graphics, concepts or short-form video requirements.",
-  },
-  {
-    question: "Do you optimize landing pages?",
-    answer:
-      "Landing-page analysis and optimization recommendations can be included where the page experience is affecting campaign performance.\n\nThe exact design or development responsibility is confirmed within your proposal.",
-  },
-  {
-    question: "How do you report performance?",
-    answer:
-      "Reporting is built around the KPIs relevant to your campaign objectives.\n\nThat may include reach, clicks, conversions, cost per lead, cost per acquisition, conversion value and return on ad spend where accurate measurement is available.",
-  },
+
+ 
 ];
 
 /* =========================================================
@@ -301,20 +273,39 @@ export default function PerformanceMarketingFAQs() {
                 gap-4
               "
             >
-              <span className="h-px w-9 bg-[#B67D49]" />
+           <span
+            className="
+              h-px
+              w-10
+
+              bg-gradient-to-r
+              from-transparent
+              to-[#B79A72]
+            "
+          />
 
               <span
                 className="
                   text-[0.66rem]
-                  font-semibold
+               
                   uppercase
                   tracking-[0.28em]
-                  text-[#35618E]
+                  text-[#B79A72]
                   sm:text-[0.7rem]
                 "
               >
                 Performance Marketing FAQs
               </span>
+              <span
+            className="
+              h-px
+              w-10
+
+              bg-gradient-to-l
+              from-transparent
+              to-[#B79A72]
+            "
+          />
             </motion.div>
 
             <motion.h2
@@ -360,7 +351,7 @@ export default function PerformanceMarketingFAQs() {
                   font-normal
                   italic
                   tracking-[-0.02em]
-                  text-[#B67D49]
+                  text-[#B79A72]
                 "
               >
                 Paid Growth?
@@ -1238,143 +1229,16 @@ export default function PerformanceMarketingFAQs() {
           })}
         </div>
 
-        {/* =====================================================
-            BOTTOM PRINCIPLE
-        ===================================================== */}
-
-        <motion.div
-          initial={
-            reduceMotion
-              ? false
-              : {
-                  opacity: 0,
-                  y: 30,
-                }
-          }
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
-          viewport={{
-            once: true,
-            amount: 0.5,
-          }}
-          transition={{
-            duration: reduceMotion ? 0 : 0.75,
-            ease,
-          }}
-          className="
-            relative
-            mx-auto
-            mt-12
-            max-w-[980px]
-            overflow-hidden
-            rounded-[24px]
-            border
-            border-[#BCD1E0]
-            bg-gradient-to-r
-            from-[#F4F9FD]
-            via-white
-            to-[#FCF7F2]
-            px-6
-            py-6
-            shadow-[0_16px_50px_rgba(11,42,82,0.045)]
-            sm:px-8
-          "
-        >
-          <div
-            className="
-              pointer-events-none
-              absolute
-              left-1/2
-              top-[-80px]
-              h-[160px]
-              w-[500px]
-              -translate-x-1/2
-              rounded-full
-              bg-[#DDEEF9]/65
-              blur-[60px]
-            "
-          />
-
-          <div
-            className="
-              relative
-              flex
-              flex-col
-              items-center
-              gap-4
-              text-center
-              sm:flex-row
-              sm:text-left
-            "
-          >
-            <span
-              className="
-                grid
-                h-10
-                w-10
-                shrink-0
-                place-items-center
-                rounded-full
-                bg-gradient-to-br
-                from-[#0B3E70]
-                to-[#176CA8]
-                text-white
-                shadow-[0_9px_25px_rgba(11,62,112,0.17)]
-              "
-            >
-              <CircleDollarSign size={16} strokeWidth={1.7} />
-            </span>
+       
+             
 
             <div className="flex-1">
-              <p
-                className="
-                  text-[0.5rem]
-                  font-semibold
-                  uppercase
-                  tracking-[0.18em]
-                  text-[#8195A7]
-                "
-              >
-                Performance Marketing With Sharp Rays
-              </p>
-
-              <p
-                className="
-                  mt-1.5
-                  text-[0.92rem]
-                  font-medium
-                  leading-[1.6]
-                  text-[#365A77]
-                "
-              >
-                Clear strategy, transparent measurement and decisions built
-                around meaningful business outcomes.
-              </p>
+             
             </div>
 
-            <span
-              className="
-                hidden
-                h-10
-                w-10
-                shrink-0
-                items-center
-                justify-center
-                rounded-full
-                border
-                border-[#CBDDE8]
-                bg-white
-                text-[#0D5A93]
-                sm:flex
-              "
-            >
-              <ArrowRight size={14} strokeWidth={1.8} />
-            </span>
-          </div>
-        </motion.div>
-      </div>
+              </div>
+       
+    
     </section>
   );
 }

@@ -92,11 +92,11 @@ export default function PerformanceMarketingProblem() {
         relative
         isolate
         overflow-hidden
-        bg-[#FBFCFD]
-        py-20
-        sm:py-24
-        lg:py-28
-        xl:py-32
+        bg-white
+        py-10
+        sm:py-12
+        lg:py-14
+        xl:py-16
       "
     >
       {/* =====================================================
@@ -105,13 +105,7 @@ export default function PerformanceMarketingProblem() {
       ===================================================== */}
 
       <div className="pointer-events-none absolute inset-0 -z-20 overflow-hidden">
-        <div
-          className="
-            absolute
-            inset-0
-            bg-[linear-gradient(125deg,#FFFFFF_0%,#FBFDFE_28%,#F0F7FC_64%,#F8FBFD_100%)]
-          "
-        />
+       
 
         <motion.div
           animate={
@@ -132,25 +126,7 @@ export default function PerformanceMarketingProblem() {
             ease: "easeInOut",
           }}
           style={{
-            backgroundImage: `
-              radial-gradient(
-                ellipse at 78% 26%,
-                rgba(81, 142, 190, 0.15) 0%,
-                rgba(156, 198, 228, 0.07) 35%,
-                transparent 66%
-              ),
-              radial-gradient(
-                ellipse at 25% 72%,
-                rgba(215, 235, 249, 0.40) 0%,
-                rgba(239, 248, 253, 0.12) 38%,
-                transparent 68%
-              ),
-              radial-gradient(
-                ellipse at 91% 88%,
-                rgba(183, 154, 114, 0.06) 0%,
-                transparent 56%
-              )
-            `,
+          
             backgroundSize: "160% 160%",
           }}
           className="absolute inset-0"
@@ -209,20 +185,39 @@ export default function PerformanceMarketingProblem() {
                 gap-4
               "
             >
-              <span className="h-px w-10 bg-[#B67D49]" />
+          <span
+            className="
+              h-px
+              w-10
+
+              bg-gradient-to-r
+              from-transparent
+              to-[#B79A72]
+            "
+          />
 
               <span
                 className="
                   text-[0.66rem]
-                  font-semibold
+                
                   uppercase
                   tracking-[0.28em]
-                  text-[#A86F3E]
+                  text-[#B79A72]
                   sm:text-[0.7rem]
                 "
               >
                 The Problem
               </span>
+               <span
+            className="
+              h-px
+              w-10
+
+              bg-gradient-to-l
+              from-transparent
+              to-[#B79A72]
+            "
+          />
             </motion.div>
 
             <motion.h2
@@ -264,7 +259,7 @@ export default function PerformanceMarketingProblem() {
                   font-serif
                   font-normal
                   italic
-                  text-[#B67D49]
+                  text-[#B79A72]
                 "
               >
                 Growing More.
@@ -385,7 +380,7 @@ export default function PerformanceMarketingProblem() {
               "
             >
               Does this sound{" "}
-              <span className="font-normal italic text-[#B67D49]">
+              <span className="font-normal italic text-[#B79A72]">
                 familiar?
               </span>
             </h3>
@@ -398,38 +393,11 @@ export default function PerformanceMarketingProblem() {
               gap-3
             "
           >
-            <span
-              className="
-                text-[0.52rem]
-                font-semibold
-                uppercase
-                tracking-[0.17em]
-                text-[#8296A8]
-              "
-            >
-              06 signals
-            </span>
+            
 
-            <span
-              className="
-                h-1.5
-                w-1.5
-                rounded-full
-                bg-[#B67D49]
-              "
-            />
+         
 
-            <span
-              className="
-                text-[0.52rem]
-                font-semibold
-                uppercase
-                tracking-[0.17em]
-                text-[#8296A8]
-              "
-            >
-              One growth problem
-            </span>
+            
           </div>
         </motion.div>
 

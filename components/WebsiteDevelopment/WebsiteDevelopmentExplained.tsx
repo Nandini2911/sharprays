@@ -79,45 +79,11 @@ export default function WebsiteDevelopmentExplained() {
       ===================================================== */}
 
       <div className="pointer-events-none absolute inset-0 -z-20 overflow-hidden">
-        <div
-          className="
-            absolute
-            left-1/2
-            top-[-220px]
-            h-[640px]
-            w-[1100px]
-            -translate-x-1/2
-            rounded-full
-            bg-white
        
-          "
-        />
 
-        <div
-          className="
-            absolute
-            -left-[260px]
-            top-[42%]
-            h-[480px]
-            w-[480px]
-            rounded-full
-            bg-[#FAF4EC]/65
-            blur-[120px]
-          "
-        />
+       
 
-        <div
-          className="
-            absolute
-            -right-[300px]
-            top-[34%]
-            h-[520px]
-            w-[520px]
-            rounded-full
-            bg-[#EAF4FA]/75
-            blur-[125px]
-          "
-        />
+       
       </div>
 
       <div
@@ -165,21 +131,40 @@ export default function WebsiteDevelopmentExplained() {
           {/* EYEBROW */}
 
           <div className="flex items-center justify-center gap-4">
-            <span className="h-px w-10 bg-[#B79A72]" />
+            <span
+            className="
+              h-px
+              w-10
+
+              bg-gradient-to-r
+              from-transparent
+              to-[#B79A72]
+            "
+          />
+
 
             <span
               className="
                 text-[0.62rem]
-                font-semibold
+             
                 uppercase
                 tracking-[0.32em]
-                text-[#356E9E]
+                text-[#B79A72]
               "
             >
               Website Development Explained
             </span>
 
-            <span className="h-px w-10 bg-[#B79A72]" />
+<span
+            className="
+              h-px
+              w-10
+
+              bg-gradient-to-l
+              from-transparent
+              to-[#B79A72]
+            "
+          />
           </div>
 
           {/* HEADING */}
@@ -206,7 +191,7 @@ export default function WebsiteDevelopmentExplained() {
     className="
       font-normal
       tracking-[-0.03em]
-      text-[#B18458]
+      text-[#B79A72]
     "
   >
     Website Development?

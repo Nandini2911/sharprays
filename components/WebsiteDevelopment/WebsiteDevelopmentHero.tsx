@@ -58,16 +58,21 @@ export default function WebsiteDevelopmentHero() {
         w-full
         overflow-hidden
         bg-white
-        pt-24
-        pb-14
-        sm:pt-28
-        sm:pb-16
-        md:pt-32
-        md:pb-20
-        lg:pt-32
+
+        pb-12
+        pt-20
+
+        sm:pb-14
+        sm:pt-24
+
+        md:pb-16
+        md:pt-28
+
         lg:pb-16
-        xl:pt-36
+        lg:pt-32
+
         xl:pb-20
+        xl:pt-36
       "
     >
       {/* =====================================================
@@ -76,42 +81,7 @@ export default function WebsiteDevelopmentHero() {
 
       <div className="pointer-events-none absolute inset-0 -z-20 bg-white" />
 
-      {/* subtle blue glow only behind visual */}
-      <div
-        className="
-          pointer-events-none
-          absolute
-          right-[-260px]
-          top-[18%]
-          -z-10
-          hidden
-          h-[640px]
-          w-[640px]
-          rounded-full
-          bg-[#EEF5FB]/55
-          blur-[120px]
-          lg:block
-        "
-      />
-
-      {/* subtle warm accent */}
-      <div
-        className="
-          pointer-events-none
-          absolute
-          right-[12%]
-          top-[10%]
-          -z-10
-          hidden
-          h-[280px]
-          w-[280px]
-          rounded-full
-          bg-[#F8F3EC]/60
-          blur-[100px]
-          xl:block
-        "
-      />
-
+     
       {/* =====================================================
           MAIN HERO
       ===================================================== */}
@@ -123,18 +93,23 @@ export default function WebsiteDevelopmentHero() {
           w-full
           max-w-[1480px]
           items-center
-          gap-12
+          gap-10
           px-4
-          sm:gap-14
+
+          sm:gap-12
           sm:px-6
-          md:gap-16
+
+          md:gap-14
           md:px-8
+
           lg:grid-cols-[0.94fr_1.06fr]
           lg:gap-8
           lg:px-10
+
           xl:grid-cols-[0.92fr_1.08fr]
           xl:gap-12
           xl:px-14
+
           2xl:gap-16
           2xl:px-16
         "
@@ -189,31 +164,43 @@ export default function WebsiteDevelopmentHero() {
             "
           >
             <span
-              className="
-                h-px
-                w-7
-                shrink-0
-                bg-[#B79A72]
-                sm:w-9
-              "
-            />
+            className="
+              h-px
+              w-10
+
+              bg-gradient-to-r
+              from-transparent
+              to-[#B79A72]
+            "
+          />
+
 
             <span
               className="
                 text-[0.59rem]
-                font-semibold
+             
                 uppercase
                 leading-5
-                tracking-[0.22em]
-                text-[#9D7650]
+             
+                text-[#B79A72]
                 sm:text-[0.65rem]
                 sm:tracking-[0.26em]
                 md:text-[0.7rem]
                 md:tracking-[0.3em]
               "
             >
-              Website Design &amp; Development
+              Website Development &amp; Management
             </span>
+            <span
+            className="
+              h-px
+              w-10
+
+              bg-gradient-to-l
+              from-transparent
+              to-[#B79A72]
+            "
+          />
           </div>
 
           {/* HEADING */}
@@ -222,7 +209,7 @@ export default function WebsiteDevelopmentHero() {
             id="website-development-heading"
             className="
               max-w-[700px]
-              text-[2.15rem]
+              text-[2.2rem]
               font-medium
               leading-[1.04]
               tracking-[-0.045em]
@@ -255,8 +242,8 @@ export default function WebsiteDevelopmentHero() {
             className="
               mt-6
               max-w-[625px]
-              text-[0.91rem]
-              leading-[1.75]
+              text-[0.88rem]
+              leading-[1.7]
               text-[#536B84]
               sm:mt-7
               sm:text-[0.96rem]
@@ -275,8 +262,8 @@ export default function WebsiteDevelopmentHero() {
             className="
               mt-4
               max-w-[625px]
-              text-[0.91rem]
-              leading-[1.75]
+              text-[0.88rem]
+              leading-[1.7]
               text-[#536B84]
               sm:mt-5
               sm:text-[0.96rem]
@@ -322,123 +309,175 @@ export default function WebsiteDevelopmentHero() {
 
           <div
             className="
-              mt-8
+              mt-7
               flex
               w-full
-              flex-col
-              gap-3
+              flex-row
+              flex-nowrap
+              items-center
+              gap-2
+
               sm:mt-9
               sm:w-auto
-              sm:flex-row
-              sm:flex-wrap
+              sm:gap-3
             "
           >
             <Link
               href="/contact"
               className="
                 group
+                relative
                 inline-flex
-                min-h-[52px]
-                w-full
+                min-h-[44px]
+                min-w-0
+                flex-1
                 items-center
                 justify-center
-                gap-3
-                rounded-full
-                bg-gradient-to-r
-                from-[#A77D4C]
-                via-[#C09A65]
-                to-[#D2AD78]
-                px-5
-                text-[0.86rem]
-                font-semibold
-                text-white
-                shadow-[0_13px_30px_rgba(183,154,114,0.24)]
+                overflow-hidden
+                rounded-[14px]
+                border
+                border-[#6285AD]/30
+                bg-white/80
+                px-3
+                py-2.5
+                text-[0.72rem]
+                font-medium
+                tracking-[-0.01em]
+                text-[#0B2A52]
+                shadow-[0_8px_30px_rgba(11,42,82,0.08)]
+                backdrop-blur-[8px]
                 transition-all
                 duration-300
-                hover:-translate-y-0.5
-                hover:shadow-[0_18px_38px_rgba(183,154,114,0.32)]
-                sm:w-auto
-                sm:min-h-[54px]
-                sm:gap-4
-                sm:px-7
-                sm:text-[0.9rem]
+                ease-out
+                hover:-translate-y-[2px]
+                hover:border-[#6285AD]/40
+                hover:bg-white
+                hover:shadow-[0_10px_35px_rgba(98,133,173,0.15)]
+                active:translate-y-0
+
+                sm:min-h-[48px]
+                sm:flex-none
+                sm:rounded-[16px]
+                sm:px-6
+                sm:py-3
+                sm:text-[0.86rem]
+
+                md:text-[0.9rem]
               "
             >
-              Build My Website
+              <span
+                aria-hidden="true"
+                className="
+                  pointer-events-none
+                  absolute
+                  inset-[2px]
+                  rounded-[11px]
+                  border
+                  border-white/60
+                  sm:rounded-[13px]
+                "
+              />
 
-            
+              <span
+                aria-hidden="true"
+                className="
+                  pointer-events-none
+                  absolute
+                  inset-x-4
+                  top-0
+                  h-px
+                  bg-gradient-to-r
+                  from-transparent
+                  via-white
+                  to-transparent
+                "
+              />
+
+              <span className="relative z-10 whitespace-nowrap">
+                Build My Website
+              </span>
             </Link>
 
             <Link
               href="#our-approach"
               className="
                 group
+                relative
                 inline-flex
-                min-h-[52px]
-                w-full
+                min-h-[44px]
+                min-w-0
+                flex-1
                 items-center
                 justify-center
-                gap-3
-                rounded-full
+                overflow-hidden
+                rounded-[14px]
                 border
-                border-[#0B2A52]
-                bg-white
-                px-5
-                text-[0.86rem]
-                font-semibold
+                border-[#8DA6BE]/26
+                bg-white/60
+                px-3
+                py-2.5
+                text-[0.7rem]
+                font-medium
+                tracking-[-0.01em]
                 text-[#0B2A52]
+                shadow-[0_7px_24px_rgba(11,42,82,0.045)]
+                backdrop-blur-[8px]
                 transition-all
                 duration-300
-                hover:-translate-y-0.5
-                hover:bg-[#F8FAFC]
-                sm:w-auto
-                sm:min-h-[54px]
-                sm:gap-5
-                sm:px-7
-                sm:text-[0.9rem]
+                ease-out
+                hover:-translate-y-[2px]
+                hover:border-[#6285AD]/38
+                hover:bg-white/90
+                hover:shadow-[0_10px_32px_rgba(98,133,173,0.11)]
+                active:translate-y-0
+
+                sm:min-h-[48px]
+                sm:flex-none
+                sm:rounded-[16px]
+                sm:px-6
+                sm:py-3
+                sm:text-[0.86rem]
+
+                md:text-[0.9rem]
               "
             >
-              Explore Our Approach
+              <span
+                aria-hidden="true"
+                className="
+                  pointer-events-none
+                  absolute
+                  inset-[2px]
+                  rounded-[11px]
+                  border
+                  border-white/65
+                  sm:rounded-[13px]
+                "
+              />
 
-              
+              <span
+                aria-hidden="true"
+                className="
+                  pointer-events-none
+                  absolute
+                  inset-x-4
+                  top-0
+                  h-px
+                  bg-gradient-to-r
+                  from-transparent
+                  via-white
+                  to-transparent
+                "
+              />
+
+              <span className="relative z-10 whitespace-nowrap">
+                Explore Our Approach
+              </span>
             </Link>
           </div>
 
           {/* SUPPORTING LINE */}
 
-          <div
-            className="
-              mt-7
-              flex
-              max-w-[600px]
-              flex-wrap
-              items-center
-              gap-x-2
-              gap-y-2
-              text-[0.53rem]
-              font-semibold
-              uppercase
-              tracking-[0.2em]
-              text-[#637B93]
-              sm:mt-8
-              sm:gap-x-2.5
-              sm:text-[0.57rem]
-              sm:tracking-[0.25em]
-              md:text-[0.62rem]
-              md:tracking-[0.28em]
-            "
-          >
-            <span>Strategy</span>
-            <span className="text-[#B79A72]">·</span>
-
-            <span>Design</span>
-            <span className="text-[#B79A72]">·</span>
-
-            <span>Develop</span>
-            <span className="text-[#B79A72]">·</span>
-
-            <span>Improve</span>
-          </div>
+         
         </motion.div>
 
         {/* =================================================
@@ -472,7 +511,8 @@ export default function WebsiteDevelopmentHero() {
             relative
             mx-auto
             w-full
-            max-w-[720px]
+            max-w-[680px]
+            sm:max-w-[720px]
             lg:mx-0
             lg:max-w-none
           "
@@ -486,8 +526,10 @@ export default function WebsiteDevelopmentHero() {
               left-1/2
               top-1/2
               -z-10
+              hidden
               h-[75%]
               w-[85%]
+              lg:block
               -translate-x-1/2
               -translate-y-1/2
               rounded-full
@@ -508,14 +550,14 @@ export default function WebsiteDevelopmentHero() {
               relative
               z-20
               mx-auto
-              w-full
+              w-[98%]
               overflow-hidden
-              rounded-[18px]
+              rounded-[16px]
               border
               border-[#D8CDBE]
               bg-white
               p-[4px]
-              shadow-[0_22px_60px_rgba(11,42,82,0.12)]
+              shadow-[0_14px_38px_rgba(11,42,82,0.09)]
 
               sm:w-[96%]
               sm:rounded-[24px]
@@ -921,14 +963,22 @@ export default function WebsiteDevelopmentHero() {
                 <div
                   className="
                     relative
-                    hidden
-                    min-h-[230px]
+                    block
+
+                    min-h-[190px]
+
                     overflow-hidden
-                    border-l
+
+                    border-t
                     border-[#ECE6DE]
+
                     bg-[#F2EEE8]
 
-                    md:block
+                    sm:min-h-[220px]
+
+                    md:min-h-[230px]
+                    md:border-l
+                    md:border-t-0
 
                     lg:min-h-[240px]
 
@@ -945,7 +995,8 @@ export default function WebsiteDevelopmentHero() {
                     fill
                     priority
                     sizes="
-                      (max-width: 768px) 0px,
+                      (max-width: 640px) 96vw,
+                      (max-width: 768px) 92vw,
                       (max-width: 1024px) 42vw,
                       (max-width: 1280px) 36vw,
                       430px
@@ -953,6 +1004,8 @@ export default function WebsiteDevelopmentHero() {
                     className="
                       object-cover
                       object-center
+
+                      sm:object-center
                     "
                   />
 
@@ -965,10 +1018,16 @@ export default function WebsiteDevelopmentHero() {
                       pointer-events-none
                       absolute
                       inset-0
-                      bg-gradient-to-r
-                      from-[#F7F2EB]/95
-                      via-[#F7F2EB]/45
+
+                      bg-gradient-to-t
+                      from-[#F7F2EB]/45
+                      via-transparent
                       to-transparent
+
+                      md:bg-gradient-to-r
+                      md:from-[#F7F2EB]/95
+                      md:via-[#F7F2EB]/45
+                      md:to-transparent
                     "
                   />
 
@@ -982,6 +1041,10 @@ export default function WebsiteDevelopmentHero() {
                       left-4
                       top-4
                       z-20
+
+                      hidden
+
+                      md:block
 
                       lg:left-5
                       lg:top-5
@@ -1159,110 +1222,7 @@ export default function WebsiteDevelopmentHero() {
             </div>
           </div>
 
-          {/* =================================================
-              REAL RESULTS CARD
-          ================================================= */}
-
-          <motion.div
-            initial={
-              reduceMotion
-                ? false
-                : {
-                    opacity: 0,
-                    y: -12,
-                    x: 8,
-                  }
-            }
-            whileInView={{
-              opacity: 1,
-              y: 0,
-              x: 0,
-            }}
-            viewport={{ once: true }}
-            transition={{
-              duration: 0.65,
-              delay: 0.4,
-              ease,
-            }}
-            className="
-              absolute
-              right-[1%]
-              top-[-14px]
-              z-40
-              hidden
-              min-w-[160px]
-              rounded-[14px]
-              border
-              border-[#E9EDF1]
-              bg-white
-              px-3.5
-              py-2.5
-              shadow-[0_14px_38px_rgba(11,42,82,0.09)]
-
-              md:block
-
-              lg:right-[1%]
-              lg:top-0
-
-              xl:right-[3%]
-              xl:min-w-[174px]
-              xl:px-4
-              xl:py-3
-            "
-          >
-            <div className="flex items-center gap-2.5">
-              <BarChart3
-                size={17}
-                strokeWidth={1.9}
-                className="
-                  shrink-0
-                  text-[#B79A72]
-                  xl:h-[19px]
-                  xl:w-[19px]
-                "
-              />
-
-              <div className="min-w-0">
-                <div className="flex items-center gap-2">
-                  <p
-                    className="
-                      whitespace-nowrap
-                      text-[0.56rem]
-                      font-bold
-                      text-[#0B2A52]
-                      xl:text-[0.61rem]
-                    "
-                  >
-                    Real Results
-                  </p>
-
-                  <span
-                    className="
-                      h-1.5
-                      w-1.5
-                      shrink-0
-                      rounded-full
-                      bg-[#48AF6E]
-                      xl:h-2
-                      xl:w-2
-                    "
-                  />
-                </div>
-
-                <p
-                  className="
-                    mt-0.5
-                    whitespace-nowrap
-                    text-[0.42rem]
-                    text-[#8B9AA8]
-                    xl:text-[0.46rem]
-                  "
-                >
-                  Websites that perform
-                </p>
-              </div>
-            </div>
-          </motion.div>
+         
 
           {/* =================================================
               MOBILE PREVIEW
@@ -1302,7 +1262,7 @@ export default function WebsiteDevelopmentHero() {
               bg-[#0B2A52]
               shadow-[0_22px_50px_rgba(11,42,82,0.22)]
 
-              md:block
+              lg:block
 
               lg:right-[-2%]
               lg:w-[132px]
@@ -1477,118 +1437,7 @@ export default function WebsiteDevelopmentHero() {
             </div>
           </motion.div>
 
-          {/* =================================================
-              STRATEGY / DESIGN / DEVELOPMENT PILLS
-          ================================================= */}
-
-          <motion.div
-            initial={reduceMotion ? false : { opacity: 0, y: 18 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{
-              once: true,
-              amount: 0.3,
-            }}
-            transition={{
-              duration: 0.7,
-              delay: 0.25,
-              ease,
-            }}
-            className="
-              relative
-              z-30
-              mt-5
-              grid
-              grid-cols-1
-              gap-2.5
-
-              sm:mt-6
-              sm:grid-cols-3
-              sm:gap-2
-
-              md:px-[4%]
-
-              lg:mt-7
-              lg:pl-[6%]
-              lg:pr-[4%]
-
-              xl:gap-3
-              xl:pl-[8%]
-              xl:pr-[5%]
-            "
-          >
-            {expertise.map(({ icon: Icon, title, text }) => (
-              <div
-                key={title}
-                className="
-                  group
-                  flex
-                  min-w-0
-                  items-center
-                  gap-3
-                  rounded-2xl
-                  border
-                  border-[#E8EDF1]
-                  bg-white
-                  px-4
-                  py-3
-                  shadow-[0_8px_25px_rgba(11,42,82,0.05)]
-                  transition-all
-                  duration-300
-
-                  hover:-translate-y-0.5
-                  hover:border-[#D8C5AC]
-                  hover:shadow-[0_13px_30px_rgba(11,42,82,0.08)]
-
-                  sm:rounded-full
-                  sm:px-3
-                  sm:py-2.5
-
-                  lg:px-4
-                  lg:py-3
-                "
-              >
-                <span
-                  className="
-                    flex
-                    h-8
-                    w-8
-                    shrink-0
-                    items-center
-                    justify-center
-                    rounded-full
-                    bg-[#F7F0E8]
-                    text-[#B18458]
-                  "
-                >
-                  <Icon size={14} strokeWidth={1.8} />
-                </span>
-
-                <div className="min-w-0">
-                  <p
-                    className="
-                      truncate
-                      text-[0.55rem]
-                      font-bold
-                      text-[#0B2A52]
-                    "
-                  >
-                    {title}
-                  </p>
-
-                  <p
-                    className="
-                      mt-0.5
-                      truncate
-                      text-[0.41rem]
-                      text-[#8796A5]
-                    "
-                  >
-                    {text}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </motion.div>
+        
 
           {/* DECORATIVE TEXT */}
 
