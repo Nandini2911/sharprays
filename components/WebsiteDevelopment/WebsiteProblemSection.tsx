@@ -222,22 +222,40 @@ export default function WebsitePointOfViewSection() {
               sm:mb-6
             "
           >
-            <span className="h-px w-8 bg-[#B79A72] sm:w-10" />
+          <span
+            className="
+              h-px
+              w-10
+
+              bg-gradient-to-r
+              from-transparent
+              to-[#B79A72]
+            "
+          />
+
 
             <span
               className="
                 text-[0.56rem]
-                font-semibold
+         
                 uppercase
                 tracking-[0.28em]
-                text-[#92745C]
+                text-[#B79A72]
                 sm:text-[0.62rem]
               "
             >
               How We Think About Websites
             </span>
+<span
+            className="
+              h-px
+              w-10
 
-            <span className="h-px w-8 bg-[#B79A72] sm:w-10" />
+              bg-gradient-to-l
+              from-transparent
+              to-[#B79A72]
+            "
+          />
           </motion.div>
 
           <motion.h2
@@ -267,7 +285,7 @@ export default function WebsitePointOfViewSection() {
                 font-serif
                 font-normal
                 italic
-                text-[#A97C52]
+                text-[#B79A72]
 
                 sm:inline
               "
@@ -935,172 +953,7 @@ export default function WebsitePointOfViewSection() {
           </motion.div>
         </div>
 
-        {/* =====================================================
-            OUR PRINCIPLES
-        ===================================================== */}
-
-        <motion.div
-          variants={stagger}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{
-            once: true,
-            amount: 0.15,
-          }}
-          className="
-            mx-auto
-            mt-10
-            max-w-[1240px]
-
-            sm:mt-12
-          "
-        >
-          <motion.div
-            variants={fadeUp}
-            className="
-              mb-6
-              flex
-              items-center
-              justify-center
-              gap-3
-            "
-          >
-            <span className="h-px w-12 bg-[#B79A72]" />
-
-            <span
-              className="
-                text-[0.52rem]
-                font-semibold
-                uppercase
-                tracking-[0.25em]
-                text-[#667C91]
-              "
-            >
-              Our Principles
-            </span>
-
-            <span className="h-px w-12 bg-[#B79A72]" />
-          </motion.div>
-
-          <div
-            className="
-              grid
-              grid-cols-1
-              gap-3.5
-
-              md:grid-cols-3
-              md:gap-4
-            "
-          >
-            {principles.map(({ icon: Icon, title, text }) => (
-              <motion.article
-                key={title}
-                variants={fadeUp}
-                whileHover={
-                  reduceMotion
-                    ? undefined
-                    : {
-                        y: -4,
-                      }
-                }
-                className="
-                  group
-                  relative
-
-                  min-h-[190px]
-
-                  overflow-hidden
-
-                  rounded-[19px]
-
-                  border
-                  border-[#DDE6ED]
-
-                  bg-white
-
-                  px-5
-                  py-6
-
-                  shadow-[0_7px_24px_rgba(11,42,82,0.025)]
-
-                  transition-all
-                  duration-300
-
-                  hover:border-[#C9D5DE]
-                  hover:shadow-[0_14px_35px_rgba(11,42,82,0.06)]
-
-                  sm:px-6
-                  sm:py-7
-                "
-              >
-                <div
-                  className="
-                    flex
-                    h-12
-                    w-12
-                    items-center
-                    justify-center
-
-                    rounded-full
-
-                    bg-[#EDF4F9]
-
-                    text-[#0B2A52]
-
-                    transition-all
-                    duration-300
-
-                    group-hover:bg-[#0B2A52]
-                    group-hover:text-white
-                  "
-                >
-                  <Icon size={19} strokeWidth={1.7} />
-                </div>
-
-                <h3
-                  className="
-                    mt-5
-                    max-w-[270px]
-
-                    font-serif
-                    text-[1.12rem]
-                    font-normal
-                    leading-[1.3]
-                    text-[#0B2A52]
-
-                    sm:text-[1.2rem]
-                  "
-                >
-                  {title}
-                </h3>
-
-                <span
-                  className="
-                    mt-3
-                    block
-                    h-px
-                    w-8
-                    bg-[#B79A72]
-                  "
-                />
-
-                <p
-                  className="
-                    mt-3
-                    max-w-[300px]
-
-                    font-serif
-                    text-[0.78rem]
-                    leading-[1.65]
-                    text-[#6B7E91]
-                  "
-                >
-                  {text}
-                </p>
-              </motion.article>
-            ))}
-          </div>
-        </motion.div>
+       
 
         {/* =====================================================
             THE SHIFT

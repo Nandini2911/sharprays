@@ -69,9 +69,12 @@ export default function WebsiteDevelopmentExplained() {
         isolate
         overflow-hidden
         bg-white
-        py-24
-        sm:py-28
-        lg:py-32
+
+        py-16
+        sm:py-20
+        md:py-24
+        lg:py-28
+        xl:py-32
       "
     >
       {/* =====================================================
@@ -91,8 +94,9 @@ export default function WebsiteDevelopmentExplained() {
           mx-auto
           w-full
           max-w-[1400px]
-          px-6
-          sm:px-8
+          px-4
+          sm:px-6
+          md:px-8
           lg:px-12
           xl:px-16
         "
@@ -130,11 +134,12 @@ export default function WebsiteDevelopmentExplained() {
         >
           {/* EYEBROW */}
 
-          <div className="flex items-center justify-center gap-4">
+          <div className="flex items-center justify-center gap-3 sm:gap-4">
             <span
             className="
               h-px
-              w-10
+              w-7
+              sm:w-10
 
               bg-gradient-to-r
               from-transparent
@@ -158,7 +163,8 @@ export default function WebsiteDevelopmentExplained() {
 <span
             className="
               h-px
-              w-10
+              w-7
+              sm:w-10
 
               bg-gradient-to-l
               from-transparent
@@ -172,9 +178,11 @@ export default function WebsiteDevelopmentExplained() {
   id="website-development-explained-heading"
   className="
     mx-auto
-    mt-8
+    mt-6
     max-w-[980px]
-    text-[2.35rem]
+    text-[2.2rem]
+
+    sm:mt-8
     font-medium
     leading-[1.04]
     tracking-[-0.045em]
@@ -201,10 +209,13 @@ export default function WebsiteDevelopmentExplained() {
           <span
             className="
               mx-auto
-              mt-7
+              mt-5
               block
               h-[2px]
-              w-16
+              w-12
+
+              sm:mt-7
+              sm:w-16
               bg-[#B79A72]
             "
           />
@@ -214,12 +225,16 @@ export default function WebsiteDevelopmentExplained() {
           <p
             className="
               mx-auto
-              mt-7
+              mt-5
               max-w-[820px]
-              text-[0.98rem]
-              leading-[1.75]
+              text-[0.9rem]
+              leading-[1.7]
               text-[#516B85]
-              sm:text-[1.04rem]
+
+              sm:mt-7
+              sm:text-[1rem]
+
+              md:text-[1.04rem]
             "
           >
             Website development is the process of planning, building, testing
@@ -231,12 +246,16 @@ export default function WebsiteDevelopmentExplained() {
           <p
             className="
               mx-auto
-              mt-5
+              mt-4
               max-w-[920px]
-              text-[0.94rem]
-              leading-[1.8]
+              text-[0.86rem]
+              leading-[1.7]
               text-[#637A90]
-              sm:text-[1rem]
+
+              sm:mt-5
+              sm:text-[0.95rem]
+
+              md:text-[1rem]
             "
           >
             It can include website architecture, responsive interfaces,
@@ -251,9 +270,12 @@ export default function WebsiteDevelopmentExplained() {
             className="
               relative
               mx-auto
-              mt-9
+              mt-7
               max-w-[760px]
-              px-10
+              px-6
+
+              sm:mt-9
+              sm:px-10
             "
           >
             <span
@@ -262,8 +284,10 @@ export default function WebsiteDevelopmentExplained() {
                 left-0
                 top-[-7px]
                 font-serif
-                text-[4rem]
+                text-[2.8rem]
                 leading-none
+
+                sm:text-[4rem]
                 text-[#BBD7EC]
               "
             >
@@ -273,11 +297,13 @@ export default function WebsiteDevelopmentExplained() {
             <p
               className="
                 font-serif
-                text-[1.25rem]
+                text-[1.05rem]
                 italic
                 leading-[1.5]
                 text-[#0B2A52]
-                sm:text-[1.45rem]
+
+                sm:text-[1.3rem]
+                md:text-[1.45rem]
               "
             >
               Good development is not only about making pages work.
@@ -289,8 +315,10 @@ export default function WebsiteDevelopmentExplained() {
                 right-0
                 top-[-7px]
                 font-serif
-                text-[4rem]
+                text-[2.8rem]
                 leading-none
+
+                sm:text-[4rem]
                 text-[#BBD7EC]
               "
             >
@@ -306,12 +334,16 @@ export default function WebsiteDevelopmentExplained() {
         <div
           className="
             mx-auto
-            mt-16
+            mt-12
             grid
             max-w-[1180px]
-            gap-14
+            gap-10
+
+            sm:mt-14
+            sm:gap-12
 
             lg:mt-20
+            lg:gap-0
             lg:grid-cols-[1.05fr_0.95fr]
             lg:items-center
             lg:gap-0
@@ -357,7 +389,10 @@ export default function WebsiteDevelopmentExplained() {
                 relative
                 aspect-square
                 w-full
-                max-w-[540px]
+                max-w-[390px]
+
+                sm:max-w-[470px]
+                md:max-w-[540px]
               "
             >
               {/* ===============================================
@@ -656,9 +691,15 @@ export default function WebsiteDevelopmentExplained() {
                   className="
                     mx-auto
                     flex
-                    h-[126px]
-                    w-[126px]
+                    h-[86px]
+                    w-[86px]
                     items-center
+
+                    sm:h-[108px]
+                    sm:w-[108px]
+
+                    md:h-[126px]
+                    md:w-[126px]
                     justify-center
                     rounded-full
                     border
@@ -669,19 +710,49 @@ export default function WebsiteDevelopmentExplained() {
                 >
                   <div>
                     <Compass
-                      size={31}
+                      size={22}
                       strokeWidth={1.45}
                       className="
                         mx-auto
                         text-[#B18458]
+
+                        sm:h-[22px]
+                        sm:w-[22px]
+
+                        md:h-[25px]
+                        md:w-[25px]
+
+                        sm:h-[27px]
+                        sm:w-[27px]
+
+                        md:h-[31px]
+                        md:w-[31px]
+
+                        sm:h-[27px]
+                        sm:w-[27px]
+
+                        md:h-[31px]
+                        md:w-[31px]
+
+                        sm:h-[27px]
+                        sm:w-[27px]
+
+                        md:h-[31px]
+                        md:w-[31px]
                       "
                     />
 
                     <p
                       className="
-                        mt-3
+                        mt-2
                         font-serif
-                        text-[1.2rem]
+                        text-[0.82rem]
+
+                        sm:mt-2.5
+                        sm:text-[1rem]
+
+                        md:mt-3
+                        md:text-[1.2rem]
                         text-[#0B2A52]
                       "
                     >
@@ -692,12 +763,20 @@ export default function WebsiteDevelopmentExplained() {
 
                 <p
                   className="
-                    mt-3
-                    text-[0.48rem]
+                    mt-2
+                    text-[0.36rem]
                     font-semibold
                     uppercase
-                    leading-[1.7]
-                    tracking-[0.28em]
+                    leading-[1.55]
+                    tracking-[0.16em]
+
+                    sm:mt-2.5
+                    sm:text-[0.42rem]
+                    sm:tracking-[0.22em]
+
+                    md:mt-3
+                    md:text-[0.48rem]
+                    md:tracking-[0.28em]
                     text-[#52779A]
                   "
                 >
@@ -751,9 +830,15 @@ export default function WebsiteDevelopmentExplained() {
                   className="
                     mx-auto
                     flex
-                    h-[126px]
-                    w-[126px]
+                    h-[86px]
+                    w-[86px]
                     items-center
+
+                    sm:h-[108px]
+                    sm:w-[108px]
+
+                    md:h-[126px]
+                    md:w-[126px]
                     justify-center
                     rounded-full
                     border
@@ -764,7 +849,7 @@ export default function WebsiteDevelopmentExplained() {
                 >
                   <div>
                     <Brush
-                      size={31}
+                      size={22}
                       strokeWidth={1.45}
                       className="
                         mx-auto
@@ -774,9 +859,15 @@ export default function WebsiteDevelopmentExplained() {
 
                     <p
                       className="
-                        mt-3
+                        mt-2
                         font-serif
-                        text-[1.2rem]
+                        text-[0.82rem]
+
+                        sm:mt-2.5
+                        sm:text-[1rem]
+
+                        md:mt-3
+                        md:text-[1.2rem]
                         text-[#0B2A52]
                       "
                     >
@@ -787,12 +878,20 @@ export default function WebsiteDevelopmentExplained() {
 
                 <p
                   className="
-                    mt-3
-                    text-[0.48rem]
+                    mt-2
+                    text-[0.36rem]
                     font-semibold
                     uppercase
-                    leading-[1.7]
-                    tracking-[0.28em]
+                    leading-[1.55]
+                    tracking-[0.16em]
+
+                    sm:mt-2.5
+                    sm:text-[0.42rem]
+                    sm:tracking-[0.22em]
+
+                    md:mt-3
+                    md:text-[0.48rem]
+                    md:tracking-[0.28em]
                     text-[#52779A]
                   "
                 >
@@ -846,9 +945,15 @@ export default function WebsiteDevelopmentExplained() {
                   className="
                     mx-auto
                     flex
-                    h-[126px]
-                    w-[126px]
+                    h-[86px]
+                    w-[86px]
                     items-center
+
+                    sm:h-[108px]
+                    sm:w-[108px]
+
+                    md:h-[126px]
+                    md:w-[126px]
                     justify-center
                     rounded-full
                     border
@@ -859,7 +964,7 @@ export default function WebsiteDevelopmentExplained() {
                 >
                   <div>
                     <Code2
-                      size={31}
+                      size={22}
                       strokeWidth={1.45}
                       className="
                         mx-auto
@@ -869,9 +974,15 @@ export default function WebsiteDevelopmentExplained() {
 
                     <p
                       className="
-                        mt-3
+                        mt-2
                         font-serif
-                        text-[1.15rem]
+                        text-[0.76rem]
+
+                        sm:mt-2.5
+                        sm:text-[0.95rem]
+
+                        md:mt-3
+                        md:text-[1.15rem]
                         text-[#0B2A52]
                       "
                     >
@@ -882,12 +993,20 @@ export default function WebsiteDevelopmentExplained() {
 
                 <p
                   className="
-                    mt-3
-                    text-[0.48rem]
+                    mt-2
+                    text-[0.36rem]
                     font-semibold
                     uppercase
-                    leading-[1.7]
-                    tracking-[0.28em]
+                    leading-[1.55]
+                    tracking-[0.16em]
+
+                    sm:mt-2.5
+                    sm:text-[0.42rem]
+                    sm:tracking-[0.22em]
+
+                    md:mt-3
+                    md:text-[0.48rem]
+                    md:tracking-[0.28em]
                     text-[#52779A]
                   "
                 >
@@ -945,9 +1064,15 @@ export default function WebsiteDevelopmentExplained() {
                   className="
                     relative
                     flex
-                    h-[180px]
-                    w-[180px]
+                    h-[122px]
+                    w-[122px]
                     items-center
+
+                    sm:h-[152px]
+                    sm:w-[152px]
+
+                    md:h-[180px]
+                    md:w-[180px]
                     justify-center
                     rounded-full
                     border
@@ -959,8 +1084,11 @@ export default function WebsiteDevelopmentExplained() {
                   <span
                     className="
                       absolute
-                      inset-[10px]
+                      inset-[7px]
                       rounded-full
+
+                      sm:inset-[9px]
+                      md:inset-[10px]
                       border
                       border-[#E9D9BF]
                     "
@@ -968,7 +1096,7 @@ export default function WebsiteDevelopmentExplained() {
 
                   <div className="relative z-10 text-center">
                     <BarChart3
-                      size={25}
+                      size={18}
                       strokeWidth={1.5}
                       className="
                         mx-auto
@@ -978,10 +1106,16 @@ export default function WebsiteDevelopmentExplained() {
 
                     <p
                       className="
-                        mt-3
+                        mt-2
                         font-serif
-                        text-[1.45rem]
+                        text-[0.9rem]
                         leading-[1.05]
+
+                        sm:mt-2.5
+                        sm:text-[1.15rem]
+
+                        md:mt-3
+                        md:text-[1.45rem]
                         text-[#0B2A52]
                       "
                     >
@@ -1004,8 +1138,11 @@ export default function WebsiteDevelopmentExplained() {
                   absolute
                   bottom-[-3%]
                   left-1/2
+                  hidden
                   -translate-x-1/2
                   text-center
+
+                  sm:block
                 "
               >
                 <span
@@ -1061,14 +1198,22 @@ export default function WebsiteDevelopmentExplained() {
               ease,
             }}
             className="
+              mx-auto
+              w-full
+              max-w-[620px]
+
+              lg:mx-0
+              lg:max-w-none
               lg:pl-12
             "
           >
             <h3
               className="
                 font-serif
-                text-[1.65rem]
+                text-[1.4rem]
                 font-normal
+
+                sm:text-[1.65rem]
                 leading-[1.25]
                 tracking-[-0.035em]
                 text-[#0B2A52]
@@ -1078,7 +1223,7 @@ export default function WebsiteDevelopmentExplained() {
               It should create a website that is:
             </h3>
 
-            <div className="mt-7">
+            <div className="mt-5 sm:mt-7">
               {outcomes.map(({ number, icon: Icon, text }, index) => (
                 <motion.div
                   key={number}
@@ -1107,10 +1252,13 @@ export default function WebsiteDevelopmentExplained() {
                     group
                     flex
                     items-center
-                    gap-4
+                    gap-3
                     border-b
                     border-[#D8E5EE]
-                    py-4.5
+                    py-3
+
+                    sm:gap-4
+                    sm:py-4
                     last:border-b-0
                   "
                 >
@@ -1119,9 +1267,12 @@ export default function WebsiteDevelopmentExplained() {
                   <span
                     className="
                       flex
-                      h-10
-                      w-10
+                      h-8
+                      w-8
                       shrink-0
+
+                      sm:h-10
+                      sm:w-10
                       items-center
                       justify-center
                       rounded-full
@@ -1129,8 +1280,10 @@ export default function WebsiteDevelopmentExplained() {
                       border-[#D6E5EF]
                       bg-[#F1F7FB]
                       font-serif
-                      text-[0.95rem]
+                      text-[0.78rem]
                       text-[#0B2A52]
+
+                      sm:text-[0.95rem]
                     "
                   >
                     {number}
@@ -1141,9 +1294,12 @@ export default function WebsiteDevelopmentExplained() {
                   <span
                     className="
                       flex
-                      h-12
-                      w-12
+                      h-9
+                      w-9
                       shrink-0
+
+                      sm:h-12
+                      sm:w-12
                       items-center
                       justify-center
                       rounded-full
@@ -1160,16 +1316,22 @@ export default function WebsiteDevelopmentExplained() {
                       group-hover:shadow-[0_10px_28px_rgba(11,42,82,0.08)]
                     "
                   >
-                    <Icon size={21} strokeWidth={1.6} />
+                    <Icon
+                      size={17}
+                      strokeWidth={1.6}
+                      className="sm:h-[21px] sm:w-[21px]"
+                    />
                   </span>
 
                   {/* TEXT */}
 
                   <p
                     className="
-                      text-[0.95rem]
+                      text-[0.84rem]
                       leading-[1.45]
                       text-[#173E68]
+
+                      sm:text-[0.95rem]
                       transition-transform
                       duration-300
                       group-hover:translate-x-1
@@ -1213,22 +1375,27 @@ export default function WebsiteDevelopmentExplained() {
           className="
             relative
             mx-auto
-            mt-24
+            mt-14
             max-w-[1280px]
             overflow-hidden
             border-t
             border-[#E5EDF2]
-            px-6
-            pb-20
-            pt-16
+            px-0
+            pb-10
+            pt-10
             text-center
 
-            sm:mt-28
-            sm:pb-24
-            sm:pt-20
+            sm:mt-20
+            sm:px-6
+            sm:pb-16
+            sm:pt-14
 
-            lg:mt-32
-            lg:pb-28
+            md:mt-24
+            md:pb-20
+            md:pt-16
+
+            lg:mt-28
+            lg:pb-24
           "
         >
           {/* ===============================================
@@ -1242,6 +1409,9 @@ export default function WebsiteDevelopmentExplained() {
               pointer-events-none
               absolute
               bottom-[-20px]
+              hidden
+
+              sm:block
               left-0
               h-[250px]
               w-full
@@ -1367,8 +1537,10 @@ export default function WebsiteDevelopmentExplained() {
   <p
     className="
       font-serif
-      text-[1.35rem]
-      leading-[1.35]
+      text-[1.15rem]
+      leading-[1.4]
+
+      sm:text-[1.35rem]
       tracking-[-0.025em]
       text-[#0B2A52]
 
@@ -1389,21 +1561,28 @@ export default function WebsiteDevelopmentExplained() {
             <span
               className="
                 mx-auto
-                mt-8
+                mt-6
                 block
                 h-[2px]
-                w-14
+                w-12
+
+                sm:mt-8
+                sm:w-14
                 bg-[#B79A72]
               "
             />
 
             <p
               className="
-                mt-6
-                text-[0.52rem]
+                mt-5
+                text-[0.46rem]
                 font-semibold
                 uppercase
-                tracking-[0.32em]
+                tracking-[0.2em]
+
+                sm:mt-6
+                sm:text-[0.52rem]
+                sm:tracking-[0.32em]
                 text-[#52779A]
               "
             >

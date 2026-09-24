@@ -261,9 +261,12 @@ function PerformanceAreaItem({
         relative
 
         flex
-        min-h-[62px]
+        min-h-[56px]
         items-center
-        gap-3
+        gap-2.5
+
+        sm:min-h-[62px]
+        sm:gap-3
 
         overflow-hidden
 
@@ -271,7 +274,9 @@ function PerformanceAreaItem({
 
         border
 
-        px-4
+        px-3
+
+        sm:px-4
 
         shadow-[0_7px_22px_rgba(11,42,82,0.035)]
 
@@ -317,8 +322,11 @@ function PerformanceAreaItem({
         }
         className={`
           flex
-          h-9
-          w-9
+          h-8
+          w-8
+
+          sm:h-9
+          sm:w-9
           shrink-0
           items-center
           justify-center
@@ -336,8 +344,10 @@ function PerformanceAreaItem({
 
       <span
         className="
-          text-[0.78rem]
+          text-[0.7rem]
           font-medium
+
+          sm:text-[0.78rem]
           leading-[1.4]
 
           text-[#284765]
@@ -398,15 +408,20 @@ function VitalCard({
         group
         relative
 
-        min-h-[155px]
+        min-h-[138px]
 
         overflow-hidden
 
-        rounded-[17px]
+        rounded-[15px]
+
+        sm:min-h-[150px]
+        sm:rounded-[17px]
 
         border
 
-        p-5
+        p-4
+
+        sm:p-5
 
         shadow-[0_9px_25px_rgba(11,42,82,0.035)]
 
@@ -474,8 +489,14 @@ function VitalCard({
         <span
           className={`
             flex
-            h-[64px]
-            w-[64px]
+            h-[52px]
+            w-[52px]
+
+            sm:h-[60px]
+            sm:w-[60px]
+
+            lg:h-[64px]
+            lg:w-[64px]
             shrink-0
             items-center
             justify-center
@@ -506,8 +527,11 @@ function VitalCard({
             <h3
               className="
                 font-serif
-                text-[1.7rem]
+                text-[1.45rem]
                 font-semibold
+
+                sm:text-[1.6rem]
+                lg:text-[1.7rem]
                 leading-none
                 tracking-[-0.035em]
 
@@ -555,8 +579,10 @@ function VitalCard({
               mt-3
               max-w-[260px]
 
-              text-[0.77rem]
+              text-[0.7rem]
               leading-[1.5]
+
+              sm:text-[0.77rem]
 
               text-[#526A82]
             "
@@ -579,8 +605,11 @@ function VitalCard({
           bottom-1
           right-0
 
+          hidden
           h-[52px]
           w-[45%]
+
+          sm:block
         "
       >
         <path
@@ -666,8 +695,9 @@ export default function WebsitePerformanceSection() {
 
         bg-white
 
-        py-20
-        sm:py-24
+        py-16
+        sm:py-20
+        md:py-24
         lg:py-28
       "
     >
@@ -681,7 +711,11 @@ export default function WebsitePerformanceSection() {
           absolute
           inset-0
           -z-20
+
+          hidden
           overflow-hidden
+
+          sm:block
         "
       >
         {/* BLUE */}
@@ -770,9 +804,9 @@ export default function WebsitePerformanceSection() {
           w-full
           max-w-[1420px]
 
-          px-5
-          sm:px-7
-          md:px-9
+          px-4
+          sm:px-6
+          md:px-8
           lg:px-12
           xl:px-14
         "
@@ -785,7 +819,7 @@ export default function WebsitePerformanceSection() {
           className="
             relative
 
-            min-h-[470px]
+            min-h-0
 
             lg:min-h-[500px]
           "
@@ -819,10 +853,13 @@ export default function WebsitePerformanceSection() {
               relative
               z-20
 
+              mx-auto
+              w-full
               max-w-[590px]
 
-              pt-3
+              pt-0
 
+              lg:mx-0
               lg:pt-8
             "
           >
@@ -832,7 +869,9 @@ export default function WebsitePerformanceSection() {
               <span
                 className="
                   h-px
-                  w-8
+                  w-6
+
+                  sm:w-8
 
                   bg-[linear-gradient(90deg,#B79A72,#6A9CD1)]
                 "
@@ -840,10 +879,13 @@ export default function WebsitePerformanceSection() {
 
               <span
                 className="
-                  text-[0.6rem]
+                  text-[0.54rem]
                   font-semibold
                   uppercase
-                  tracking-[0.3em]
+                  tracking-[0.22em]
+
+                  sm:text-[0.6rem]
+                  sm:tracking-[0.3em]
 
                   text-[#92745C]
                 "
@@ -860,7 +902,7 @@ export default function WebsitePerformanceSection() {
                 mt-5
 
                 font-serif
-                text-[2.1rem]
+                text-[2.2rem]
                 font-normal
                 leading-[1.04]
                 tracking-[-0.04em]
@@ -930,8 +972,11 @@ export default function WebsitePerformanceSection() {
                 max-w-[560px]
 
                 font-serif
-                text-[0.97rem]
-                leading-[1.7]
+                text-[0.88rem]
+                leading-[1.68]
+
+                sm:text-[0.95rem]
+                md:text-[0.97rem]
 
                 text-[#425F7A]
               "
@@ -946,8 +991,11 @@ export default function WebsitePerformanceSection() {
                 max-w-[570px]
 
                 font-serif
-                text-[0.97rem]
-                leading-[1.7]
+                text-[0.88rem]
+                leading-[1.68]
+
+                sm:text-[0.95rem]
+                md:text-[0.97rem]
 
                 text-[#61758A]
               "
@@ -965,9 +1013,15 @@ export default function WebsitePerformanceSection() {
             className="
               relative
 
-              mt-10
+              mt-8
 
-              h-[330px]
+              h-[250px]
+              w-full
+
+              sm:mt-10
+              sm:h-[300px]
+
+              md:h-[360px]
 
               lg:absolute
               lg:right-0
@@ -985,9 +1039,15 @@ export default function WebsitePerformanceSection() {
                 inset-0
 
                 bg-[linear-gradient(rgba(92,157,211,0.065)_1px,transparent_1px),linear-gradient(90deg,rgba(92,157,211,0.065)_1px,transparent_1px)]
-                bg-[size:34px_34px]
+                bg-[size:24px_24px]
 
-                opacity-70
+                opacity-55
+
+                sm:bg-[size:30px_30px]
+                sm:opacity-65
+
+                lg:bg-[size:34px_34px]
+                lg:opacity-70
               "
             />
 
@@ -1203,7 +1263,8 @@ export default function WebsitePerformanceSection() {
                 CHECKPOINT 01 — BLUE
             ================================================= */}
 
-            <Checkpoint
+            <div className="hidden md:block">
+              <Checkpoint
               left="left-[22%]"
               top="top-[52%]"
               delay={0.35}
@@ -1214,12 +1275,14 @@ export default function WebsitePerformanceSection() {
               text="Optimised"
               second="Assets"
             />
+            </div>
 
             {/* =================================================
                 CHECKPOINT 02 — VIOLET
             ================================================= */}
 
-            <Checkpoint
+            <div className="hidden md:block">
+              <Checkpoint
               left="left-[45%]"
               top="top-[40%]"
               delay={0.48}
@@ -1230,12 +1293,14 @@ export default function WebsitePerformanceSection() {
               text="Faster"
               second="Responses"
             />
+            </div>
 
             {/* =================================================
                 CHECKPOINT 03 — GREEN
             ================================================= */}
 
-            <Checkpoint
+            <div className="hidden md:block">
+              <Checkpoint
               left="left-[66%]"
               top="top-[26%]"
               delay={0.62}
@@ -1246,6 +1311,7 @@ export default function WebsitePerformanceSection() {
               text="Smoother"
               second="Experiences"
             />
+            </div>
 
             {/* =================================================
                 FINAL — GOLD
@@ -1273,6 +1339,9 @@ export default function WebsitePerformanceSection() {
                 absolute
                 right-[13%]
                 top-[10%]
+
+                hidden
+                md:block
               "
             >
               <span
@@ -1354,6 +1423,9 @@ export default function WebsitePerformanceSection() {
                 absolute
                 bottom-[17%]
                 left-[4%]
+
+                hidden
+                sm:block
               "
             >
               <div className="flex items-center gap-2">
@@ -1464,26 +1536,47 @@ export default function WebsitePerformanceSection() {
               }}
               className="
                 absolute
-                bottom-[7%]
-                right-[5%]
+                bottom-[3%]
+                left-0
+                right-0
 
-                w-[46%]
-                min-w-[300px]
+                mx-auto
+
+                w-[94%]
+                min-w-0
 
                 overflow-hidden
 
-                rounded-[18px]
+                rounded-[14px]
 
                 border
                 border-[#D3DFE8]
 
-                bg-white/90
+                bg-white/92
 
-                p-5
+                p-3
 
-                shadow-[0_16px_38px_rgba(11,42,82,0.08)]
+                shadow-[0_12px_30px_rgba(11,42,82,0.07)]
 
                 backdrop-blur-md
+
+                sm:bottom-[5%]
+                sm:w-[70%]
+                sm:rounded-[16px]
+                sm:p-4
+
+                md:bottom-[7%]
+                md:left-auto
+                md:right-[4%]
+                md:mx-0
+                md:w-[52%]
+                md:min-w-[280px]
+
+                lg:right-[5%]
+                lg:w-[46%]
+                lg:min-w-[300px]
+                lg:rounded-[18px]
+                lg:p-5
               "
             >
               {/* color top strip */}
@@ -1505,8 +1598,10 @@ export default function WebsitePerformanceSection() {
                 <div className="flex items-center gap-2">
                   <span
                     className="
-                      text-[0.52rem]
+                      text-[0.46rem]
                       font-semibold
+
+                      sm:text-[0.52rem]
                       uppercase
                       tracking-[0.22em]
 
@@ -1519,7 +1614,9 @@ export default function WebsitePerformanceSection() {
                   <span
                     className="
                       font-serif
-                      text-[1rem]
+                      text-[0.88rem]
+
+                      sm:text-[1rem]
                       font-semibold
 
                       text-[#0B2A52]
@@ -1531,8 +1628,11 @@ export default function WebsitePerformanceSection() {
 
                 <span
                   className="
+                    hidden
                     text-[0.42rem]
                     font-semibold
+
+                    sm:block
                     uppercase
                     tracking-[0.18em]
 
@@ -1547,9 +1647,12 @@ export default function WebsitePerformanceSection() {
 
               <div
                 className="
-                  mt-4
+                  mt-3
 
-                  h-[12px]
+                  h-[9px]
+
+                  sm:mt-4
+                  sm:h-[12px]
                   overflow-hidden
 
                   rounded-full
@@ -1586,7 +1689,7 @@ export default function WebsitePerformanceSection() {
 
               <div
                 className="
-                  mt-4
+                  mt-3
 
                   flex
                   flex-wrap
@@ -1678,8 +1781,9 @@ export default function WebsitePerformanceSection() {
             ease,
           }}
           className="
-            mt-7
+            mt-10
 
+            sm:mt-12
             lg:mt-2
           "
         >
@@ -1687,38 +1791,48 @@ export default function WebsitePerformanceSection() {
             className="
               flex
               flex-col
-              gap-3
+              gap-4
 
-              sm:flex-row
-              sm:items-end
-              sm:justify-between
+              md:flex-row
+              md:items-end
+              md:justify-between
             "
           >
             <div>
               <div className="flex items-center gap-3">
-                <span
-                  className="
-                    h-[2px]
-                    w-8
+                    <span
+            className="
+              h-px
+              w-10
 
-                    rounded-full
-
-                    bg-[linear-gradient(90deg,#4D98D5,#B79A72)]
-                  "
-                />
+              bg-gradient-to-r
+              from-transparent
+              to-[#B79A72]
+            "
+          />
 
                 <span
                   className="
                     text-[0.51rem]
-                    font-semibold
+                    text-[10px]
                     uppercase
                     tracking-[0.22em]
 
-                    text-[#92745C]
+                    text-[#B79A72]
                   "
                 >
                   Performance Foundations
                 </span>
+                <span
+            className="
+              h-px
+              w-10
+
+              bg-gradient-to-l
+              from-transparent
+              to-[#B79A72]
+            "
+          />
               </div>
 
               <h3
@@ -1739,36 +1853,25 @@ export default function WebsitePerformanceSection() {
               </h3>
             </div>
 
-            <p
-              className="
-                max-w-[420px]
-
-                font-serif
-                text-[0.77rem]
-                leading-[1.65]
-
-                text-[#718599]
-
-                sm:text-right
-              "
-            >
-              Small technical decisions work together to create a faster,
-              smoother and more useful experience.
-            </p>
+         
           </div>
 
           {/* COLORFUL ITEMS */}
 
           <div
             className="
-              mt-6
+              mt-5
 
               grid
               grid-cols-1
-              gap-3
+              gap-2.5
 
-              sm:grid-cols-2
+              min-[380px]:grid-cols-2
+
+              md:mt-6
               md:grid-cols-3
+              md:gap-3
+
               lg:grid-cols-5
             "
           >
@@ -1809,9 +1912,10 @@ export default function WebsitePerformanceSection() {
             ease,
           }}
           className="
-            mt-14
+            mt-10
 
-            sm:mt-16
+            sm:mt-14
+            md:mt-16
           "
         >
           <div className="flex items-center gap-4">
@@ -1859,13 +1963,17 @@ export default function WebsitePerformanceSection() {
 
           <div
             className="
-              mt-6
+              mt-5
 
               grid
               grid-cols-1
-              gap-4
+              gap-3
 
+              sm:grid-cols-2
+
+              md:mt-6
               md:grid-cols-3
+              md:gap-4
             "
           >
             {vitals.map((vital, index) => (
@@ -1880,7 +1988,7 @@ export default function WebsitePerformanceSection() {
         </motion.div>
 
         {/* =====================================================
-            THE PRINCIPLE
+            THE PRINCIPLE — TEXT ONLY
         ===================================================== */}
 
         <motion.div
@@ -1898,222 +2006,118 @@ export default function WebsitePerformanceSection() {
           }}
           viewport={{
             once: true,
-            amount: 0.3,
+            amount: 0.35,
           }}
           transition={{
-            duration: 0.65,
+            duration: reduceMotion ? 0 : 0.65,
             ease,
           }}
           className="
-            relative
-
+            mx-auto
             mt-12
+            max-w-[950px]
+            px-2
+            text-center
 
-            overflow-hidden
-
-            rounded-[22px]
-
-            border
-            border-[#DEC6A6]
-
-            bg-white
-
-            px-6
-            py-8
-
-            shadow-[0_10px_32px_rgba(11,42,82,0.035)]
-
-            sm:px-8
-            sm:py-9
-
-            lg:px-10
+            sm:mt-14
+            md:mt-16
           "
         >
-          {/* COLORFUL SOFT BG */}
+          {/* LABEL */}
 
           <div
             className="
-              pointer-events-none
-              absolute
-              inset-0
-
-              bg-[linear-gradient(115deg,#FFFDFC_0%,#F7FBFF_34%,#F7F4FF_60%,#F2FAF6_80%,#FFF6EC_100%)]
-            "
-          />
-
-          {/* CURVES */}
-
-          <svg
-            viewBox="0 0 350 130"
-            fill="none"
-            aria-hidden="true"
-            className="
-              pointer-events-none
-
-              absolute
-              bottom-0
-              right-0
-
-              h-full
-              w-[42%]
-
-              opacity-65
+              flex
+              items-center
+              justify-center
+              gap-3
             "
           >
-            <path
-              d="M 20 130 C 95 70, 160 25, 350 8"
-              stroke="#91BFE4"
-              strokeWidth="1"
-            />
-
-            <path
-              d="M 70 130 C 145 80, 215 30, 350 22"
-              stroke="#B4A5E2"
-              strokeWidth="1"
-            />
-
-            <path
-              d="M 125 130 C 190 90, 260 50, 350 35"
-              stroke="#8CC3A9"
-              strokeWidth="1"
-            />
-
-            <path
-              d="M 175 130 C 230 95, 295 70, 350 58"
-              stroke="#D6B184"
-              strokeWidth="1"
-            />
-
-            <circle
-              cx="163"
-              cy="68"
-              r="3.3"
-              fill="#8179C7"
-            />
-
-            <circle
-              cx="225"
-              cy="61"
-              r="3"
-              fill="#61A889"
-            />
-
-            <circle
-              cx="290"
-              cy="55"
-              r="3"
-              fill="#B79A72"
-            />
-          </svg>
-
-          <div
-            className="
-              relative
-              z-10
-
-              grid
-              gap-6
-
-              lg:grid-cols-[0.3fr_1.45fr_0.35fr]
-              lg:items-center
-            "
-          >
-            {/* LABEL */}
-
-            <div>
-              <span
-                className="
-                  text-[0.55rem]
-                  font-semibold
-                  uppercase
-                  tracking-[0.25em]
-
-                  text-[#92745C]
-                "
-              >
-                The Principle
-              </span>
-
-              <span
-                className="
-                  mt-4
-                  block
-
-                  h-[3px]
-                  w-12
-
-                  rounded-full
-
-                  bg-[linear-gradient(90deg,#4D98D5,#8B78CC,#61A889,#B79A72)]
-                "
-              />
-            </div>
-
-            {/* MESSAGE */}
-
-            <h3
+            <span
               className="
-                max-w-[860px]
+                h-px
+                w-7
+                bg-[#B79A72]/70
+                sm:w-9
+              "
+            />
 
-                font-serif
-                text-[1.55rem]
-                font-normal
-                leading-[1.15]
-                tracking-[-0.035em]
+            <span
+              className="
+                text-[0.5rem]
+                font-semibold
+                uppercase
+                tracking-[0.22em]
+                text-[#92745C]
 
-                text-[#0B2A52]
-
-                sm:text-[1.85rem]
-                lg:text-[2.05rem]
+                sm:text-[0.55rem]
+                sm:tracking-[0.25em]
               "
             >
-              Performance should be{" "}
-              <span
-                className="
-                  italic
-                  text-[#A97C52]
-                "
-              >
-                felt by the visitor
-              </span>{" "}
-              — not just reported by a testing tool.
-            </h3>
+              The Principle
+            </span>
 
-            {/* RIGHT WORDS */}
-
-            <div
+            <span
               className="
-                hidden
-                text-right
-
-                lg:block
+                h-px
+                w-7
+                bg-[#B79A72]/70
+                sm:w-9
               "
-            >
-              <span
-                className="
-                  text-[0.47rem]
-                  font-semibold
-                  uppercase
-                  leading-[1.8]
-                  tracking-[0.21em]
-
-                  text-[#587A97]
-                "
-              >
-                <span className="text-[#4D98D5]">Faster</span>
-                <br />
-
-                <span className="text-[#8B78CC]">Responsive</span>
-                <br />
-
-                <span className="text-[#61A889]">Stable</span>
-                <br />
-
-                <span className="text-[#B18458]">Useful</span>
-              </span>
-            </div>
+            />
           </div>
+
+          {/* MESSAGE */}
+
+          <h3
+            className="
+              mx-auto
+              mt-5
+              max-w-[880px]
+
+              font-serif
+              text-[1.35rem]
+              font-normal
+              leading-[1.3]
+              tracking-[-0.03em]
+              text-[#0B2A52]
+
+              sm:text-[1.6rem]
+              md:text-[1.85rem]
+              lg:text-[2.05rem]
+            "
+          >
+            Performance should be{" "}
+            <span
+              className="
+                italic
+                text-[#A97C52]
+              "
+            >
+              felt by the visitor
+            </span>{" "}
+            — not just reported by a testing tool.
+          </h3>
+
+          {/* SUPPORTING WORDS */}
+
+          <p
+            className="
+              mt-5
+              text-[0.48rem]
+              font-semibold
+              uppercase
+              tracking-[0.18em]
+              text-[#698097]
+
+              sm:text-[0.52rem]
+              sm:tracking-[0.22em]
+            "
+          >
+            Faster · Responsive · Stable · Useful
+          </p>
         </motion.div>
+
       </div>
     </section>
   );

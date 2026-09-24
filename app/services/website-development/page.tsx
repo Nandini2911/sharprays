@@ -23,16 +23,22 @@ export default function WebsiteDevelopment() {
       <Navbar />
        <WebsiteDevelopmentHero />
        <WebsiteDevelopmentExplained />
+       
        <WebsitePointOfViewSection />
         <WebsiteProblemSection/>
        
         <WebsiteDevelopmentServicesSection />
+
         <WebsitePerformanceSection />
+
         <WebsiteDevlopmentSeoAiSearchFoundation />
+
         <WebsiteDevelopmentTrustSignalItem />
+
         <WebsiteFrameworkSection  />
+        
         <WebsiteDeliverablesSection />
-      
+        <WebsiteDevelopmentPricing />
         <WebsiteDevelopmentFAQs />
         <WebsiteFinalSections />
        

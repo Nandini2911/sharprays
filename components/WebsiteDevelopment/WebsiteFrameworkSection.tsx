@@ -216,17 +216,29 @@ export default function WebsiteFrameworkSection() {
         overflow-hidden
         bg-white
 
-        py-20
-        sm:py-24
-        md:py-28
-        lg:py-32
+        py-16
+        sm:py-20
+        md:py-24
+        lg:py-28
+        xl:py-32
       "
     >
       {/* =====================================================
           BACKGROUND
       ===================================================== */}
 
-      <div className="pointer-events-none absolute inset-0 -z-20 overflow-hidden">
+      <div
+        className="
+          pointer-events-none
+          absolute
+          inset-0
+          -z-20
+          hidden
+          overflow-hidden
+
+          sm:block
+        "
+      >
         <div
           className="
             absolute
@@ -290,11 +302,12 @@ export default function WebsiteFrameworkSection() {
           w-full
           max-w-[1440px]
 
-          px-5
-          sm:px-7
-          md:px-9
-          lg:px-12
-          xl:px-16
+          px-4
+          sm:px-6
+          md:px-8
+          lg:px-10
+          xl:px-14
+          2xl:px-16
         "
       >
         {/* =====================================================
@@ -322,19 +335,30 @@ export default function WebsiteFrameworkSection() {
               flex
               items-center
               justify-center
-              gap-4
+              gap-3
+              sm:gap-4
             "
           >
-            <span className="h-px w-9 bg-[#B79A72]" />
+           <span
+            className="
+              h-px
+              w-7
+              sm:w-10
+
+              bg-gradient-to-r
+              from-transparent
+              to-[#B79A72]
+            "
+          />
 
             <span
               className="
-                text-[0.56rem]
-                font-semibold
+                text-[10px]
+              
                 uppercase
                 tracking-[0.29em]
 
-                text-[#92745C]
+                text-[#B79A72]
 
                 sm:text-[0.62rem]
               "
@@ -342,7 +366,17 @@ export default function WebsiteFrameworkSection() {
               The Sharp Rays Approach
             </span>
 
-            <span className="h-px w-9 bg-[#B79A72]" />
+        <span
+            className="
+              h-px
+              w-7
+              sm:w-10
+
+              bg-gradient-to-l
+              from-transparent
+              to-[#B79A72]
+            "
+          />
           </motion.div>
 
           <motion.h2
@@ -354,7 +388,7 @@ export default function WebsiteFrameworkSection() {
               max-w-[1080px]
 
               font-serif
-              text-[2.1rem]
+              text-[2.2rem]
               font-normal
               leading-[1.04]
               tracking-[-0.045em]
@@ -384,16 +418,19 @@ export default function WebsiteFrameworkSection() {
             variants={fadeUp}
             className="
               mx-auto
-              mt-6
+              mt-5
               max-w-[760px]
 
               font-serif
-              text-[0.96rem]
-              leading-[1.8]
+              text-[0.88rem]
+              leading-[1.7]
+
+              sm:mt-6
+              sm:text-[0.96rem]
+
+              md:text-[1rem]
 
               text-[#60758A]
-
-              sm:text-[1rem]
             "
           >
             Our website development process keeps business goals connected to
@@ -424,90 +461,17 @@ export default function WebsiteFrameworkSection() {
           }}
           className="
             mx-auto
-            mt-14
+            mt-10
             max-w-[1260px]
 
-            sm:mt-16
+            sm:mt-12
+            md:mt-14
+            lg:mt-16
           "
         >
           {/* TOP META */}
 
-          <div
-            className="
-              flex
-              flex-col
-              gap-4
-
-              border-y
-              border-[#DBE5EB]
-
-              py-5
-
-              sm:flex-row
-              sm:items-center
-              sm:justify-between
-            "
-          >
-            <div className="flex items-center gap-3">
-              <span
-                className="
-                  flex
-                  h-8
-                  w-8
-                  items-center
-                  justify-center
-
-                  rounded-full
-
-                  bg-[#F1F6F9]
-
-                  text-[#0B2A52]
-                "
-              >
-                <Layers3 size={13} strokeWidth={1.7} />
-              </span>
-
-              <span
-                className="
-                  text-[0.47rem]
-                  font-semibold
-                  uppercase
-                  tracking-[0.2em]
-
-                  text-[#536D83]
-                "
-              >
-                Website Development Framework
-              </span>
-            </div>
-
-            <div
-              className="
-                flex
-                items-center
-                gap-3
-              "
-            >
-              <span
-                className="
-                  text-[0.43rem]
-                  font-semibold
-                  uppercase
-                  tracking-[0.17em]
-
-                  text-[#92745C]
-                "
-              >
-                Explore Each Stage
-              </span>
-
-              <ArrowRight
-                size={11}
-                strokeWidth={1.8}
-                className="text-[#B79A72]"
-              />
-            </div>
-          </div>
+         
 
           {/* =================================================
               DESKTOP EXPERIENCE
@@ -517,10 +481,15 @@ export default function WebsiteFrameworkSection() {
             className="
               hidden
 
-              min-h-[610px]
+              min-h-[560px]
 
               lg:grid
-              lg:grid-cols-[360px_1fr]
+              lg:grid-cols-[290px_minmax(0,1fr)]
+
+              xl:min-h-[610px]
+              xl:grid-cols-[340px_minmax(0,1fr)]
+
+              2xl:grid-cols-[360px_minmax(0,1fr)]
             "
           >
             {/* ===============================================
@@ -534,8 +503,11 @@ export default function WebsiteFrameworkSection() {
                 border-r
                 border-[#DDE6EC]
 
-                pr-8
-                pt-8
+                pr-5
+                pt-6
+
+                xl:pr-8
+                xl:pt-8
               "
             >
               {/* VERTICAL GUIDE */}
@@ -609,12 +581,17 @@ export default function WebsiteFrameworkSection() {
                         flex
                         w-full
                         items-center
-                        gap-5
+                        gap-3
 
-                        rounded-[16px]
+                        rounded-[14px]
 
-                        px-2
-                        py-3.5
+                        px-1.5
+                        py-3
+
+                        xl:gap-5
+                        xl:rounded-[16px]
+                        xl:px-2
+                        xl:py-3.5
 
                         text-left
 
@@ -632,8 +609,11 @@ export default function WebsiteFrameworkSection() {
                           z-10
 
                           flex
-                          h-[39px]
-                          w-[39px]
+                          h-[35px]
+                          w-[35px]
+
+                          xl:h-[39px]
+                          xl:w-[39px]
                           shrink-0
                           items-center
                           justify-center
@@ -716,7 +696,9 @@ export default function WebsiteFrameworkSection() {
                             truncate
 
                             font-serif
-                            text-[0.96rem]
+                            text-[0.82rem]
+
+                            xl:text-[0.96rem]
 
                             transition-colors
                             duration-300
@@ -777,10 +759,13 @@ export default function WebsiteFrameworkSection() {
                 relative
                 overflow-hidden
 
-                pl-12
-                pt-8
+                pl-7
+                pt-6
 
-                xl:pl-16
+                xl:pl-12
+                xl:pt-8
+
+                2xl:pl-16
               "
             >
               <AnimatePresence mode="wait">
@@ -804,7 +789,9 @@ export default function WebsiteFrameworkSection() {
                   }}
                   className="
                     relative
-                    min-h-[570px]
+                    min-h-[520px]
+
+                    xl:min-h-[570px]
                   "
                 >
                   {/* LARGE BACKGROUND NUMBER */}
@@ -831,7 +818,9 @@ export default function WebsiteFrameworkSection() {
                       select-none
 
                       font-serif
-                      text-[11rem]
+                      text-[8.5rem]
+
+                      xl:text-[11rem]
                       leading-none
                       tracking-[-0.08em]
 
@@ -866,8 +855,11 @@ export default function WebsiteFrameworkSection() {
                       right-[3%]
                       top-[16%]
 
-                      h-[330px]
-                      w-[330px]
+                      h-[260px]
+                      w-[260px]
+
+                      xl:h-[330px]
+                      xl:w-[330px]
 
                       rounded-full
 
@@ -887,7 +879,9 @@ export default function WebsiteFrameworkSection() {
                       z-10
 
                       flex
-                      min-h-[540px]
+                      min-h-[490px]
+
+                      xl:min-h-[540px]
                       flex-col
                     "
                   >
@@ -898,7 +892,9 @@ export default function WebsiteFrameworkSection() {
                         flex
                         items-start
                         justify-between
-                        gap-8
+                        gap-5
+
+                        xl:gap-8
                       "
                     >
                       <div>
@@ -944,11 +940,14 @@ export default function WebsiteFrameworkSection() {
 
                         <h3
                           className="
-                            mt-6
+                            mt-5
                             max-w-[650px]
 
                             font-serif
-                            text-[2.55rem]
+                            text-[2.05rem]
+
+                            xl:mt-6
+                            xl:text-[2.55rem]
                             font-normal
                             leading-[1.05]
                             tracking-[-0.045em]
@@ -982,8 +981,11 @@ export default function WebsiteFrameworkSection() {
                         }}
                         className="
                           flex
-                          h-16
-                          w-16
+                          h-14
+                          w-14
+
+                          xl:h-16
+                          xl:w-16
                           shrink-0
                           items-center
                           justify-center
@@ -1008,10 +1010,14 @@ export default function WebsiteFrameworkSection() {
 
                     <div
                       className="
-                        mt-10
+                        mt-8
                         grid
-                        grid-cols-[1.1fr_0.9fr]
-                        gap-12
+                        grid-cols-[1.05fr_0.95fr]
+                        gap-7
+
+                        xl:mt-10
+                        xl:grid-cols-[1.1fr_0.9fr]
+                        xl:gap-12
                       "
                     >
                       {/* DESCRIPTION */}
@@ -1036,8 +1042,11 @@ export default function WebsiteFrameworkSection() {
                             max-w-[530px]
 
                             font-serif
-                            text-[1rem]
-                            leading-[1.8]
+                            text-[0.9rem]
+                            leading-[1.7]
+
+                            xl:text-[1rem]
+                            xl:leading-[1.8]
 
                             text-[#5B7286]
                           "
@@ -1049,8 +1058,10 @@ export default function WebsiteFrameworkSection() {
 
                         <div
                           className="
-                            mt-8
+                            mt-6
                             max-w-[520px]
+
+                            xl:mt-8
 
                             border-l-2
 
@@ -1376,23 +1387,490 @@ export default function WebsiteFrameworkSection() {
           </div>
 
           {/* =================================================
-              MOBILE VERSION
+              MOBILE — HORIZONTAL SNAP SCROLL
           ================================================= */}
 
-          <div className="lg:hidden">
+          <div className="md:hidden">
+            {/* SMALL SCROLL HINT */}
+
             <div
               className="
                 mt-7
 
                 flex
-                gap-2
+                items-center
+                justify-between
+                gap-4
+              "
+            >
+              <div className="flex items-center gap-2">
+                <span
+                  className="
+                    h-1.5
+                    w-1.5
+
+                    rounded-full
+
+                    bg-[#B79A72]
+                  "
+                />
+
+                <span
+                  className="
+                    text-[0.48rem]
+                    font-semibold
+                    uppercase
+                    tracking-[0.16em]
+
+                    text-[#7B8D9D]
+                  "
+                >
+                  Swipe Through the Process
+                </span>
+              </div>
+
+              <span
+                className="
+                  text-[0.48rem]
+                  font-semibold
+                  tracking-[0.12em]
+
+                  text-[#A0ADB7]
+                "
+              >
+                01 — 07
+              </span>
+            </div>
+
+            {/* SCROLL CARDS */}
+
+            <div
+              className="
+                -mx-4
+                mt-4
+
+                flex
+                snap-x
+                snap-mandatory
+                gap-3
 
                 overflow-x-auto
+                overscroll-x-contain
 
-                pb-3
+                px-4
+                pb-4
+
+                scroll-px-4
+                scroll-smooth
 
                 [scrollbar-width:none]
                 [&::-webkit-scrollbar]:hidden
+
+                sm:-mx-6
+                sm:px-6
+                sm:scroll-px-6
+              "
+            >
+              {steps.map((step, index) => {
+                const Icon = step.icon;
+
+                return (
+                  <motion.article
+                    key={step.number}
+                    initial={
+                      reduceMotion
+                        ? false
+                        : {
+                            opacity: 0,
+                            y: 18,
+                          }
+                    }
+                    whileInView={{
+                      opacity: 1,
+                      y: 0,
+                    }}
+                    viewport={{
+                      once: true,
+                      amount: 0.35,
+                    }}
+                    transition={{
+                      duration: reduceMotion ? 0 : 0.5,
+                      delay: reduceMotion ? 0 : index * 0.035,
+                      ease,
+                    }}
+                    className="
+                      relative
+
+                      w-[84vw]
+                      min-w-[270px]
+                      max-w-[340px]
+                      shrink-0
+                      snap-center
+
+                      overflow-hidden
+
+                      rounded-[20px]
+
+                      border
+                      border-[#D8E2E8]
+
+                      bg-white
+
+                      p-5
+
+                      shadow-[0_12px_34px_rgba(11,42,82,0.055)]
+
+                      min-[390px]:w-[82vw]
+
+                      sm:w-[360px]
+                      sm:min-w-[360px]
+                      sm:max-w-[360px]
+                      sm:p-6
+                    "
+                  >
+                    {/* SOFT COLOR WASH */}
+
+                    <div
+                      aria-hidden="true"
+                      className="
+                        pointer-events-none
+
+                        absolute
+                        -right-16
+                        -top-16
+
+                        h-40
+                        w-40
+
+                        rounded-full
+
+                        blur-[45px]
+                      "
+                      style={{
+                        backgroundColor: step.soft,
+                        opacity: 0.9,
+                      }}
+                    />
+
+                    {/* GHOST NUMBER */}
+
+                    <span
+                      aria-hidden="true"
+                      className="
+                        pointer-events-none
+
+                        absolute
+                        -right-1
+                        -top-4
+
+                        font-serif
+                        text-[5.4rem]
+                        leading-none
+                        tracking-[-0.08em]
+
+                        text-[#0B2A52]/[0.035]
+                      "
+                    >
+                      {step.number}
+                    </span>
+
+                    <div className="relative z-10">
+                      {/* TOP */}
+
+                      <div
+                        className="
+                          flex
+                          items-start
+                          justify-between
+                          gap-4
+                        "
+                      >
+                        <span
+                          className="
+                            flex
+                            h-11
+                            w-11
+                            shrink-0
+                            items-center
+                            justify-center
+
+                            rounded-[13px]
+
+                            border
+                            border-white/80
+                          "
+                          style={{
+                            backgroundColor: step.soft,
+                            color: step.accent,
+                          }}
+                        >
+                          <Icon size={17} strokeWidth={1.7} />
+                        </span>
+
+                        <span
+                          className="
+                            rounded-full
+
+                            border
+                            border-[#DCE4E9]
+
+                            bg-white/80
+
+                            px-2.5
+                            py-1.5
+
+                            text-[0.48rem]
+                            font-semibold
+                            uppercase
+                            tracking-[0.13em]
+
+                            text-[#788B9B]
+                          "
+                        >
+                          {step.number} / 07
+                        </span>
+                      </div>
+
+                      {/* STAGE */}
+
+                      <span
+                        className="
+                          mt-5
+                          block
+
+                          text-[0.48rem]
+                          font-semibold
+                          uppercase
+                          tracking-[0.18em]
+
+                          text-[#92745C]
+                        "
+                      >
+                        {step.stage}
+                      </span>
+
+                      {/* ACTION */}
+
+                      <h3
+                        className="
+                          mt-2
+
+                          font-serif
+                          text-[1.45rem]
+                          font-normal
+                          leading-[1.1]
+                          tracking-[-0.035em]
+
+                          text-[#0B2A52]
+
+                          sm:text-[1.55rem]
+                        "
+                      >
+                        {step.action}
+                      </h3>
+
+                      {/* DESCRIPTION */}
+
+                      <p
+                        className="
+                          mt-4
+
+                          text-[0.76rem]
+                          leading-[1.62]
+
+                          text-[#60758A]
+                        "
+                      >
+                        {step.description}
+                      </p>
+
+                      {/* FOCUS */}
+
+                      <div
+                        className="
+                          mt-5
+
+                          border-t
+                          border-[#E1E7EB]
+
+                          pt-4
+                        "
+                      >
+                        <span
+                          className="
+                            text-[0.43rem]
+                            font-semibold
+                            uppercase
+                            tracking-[0.17em]
+
+                            text-[#97A4AF]
+                          "
+                        >
+                          Focus
+                        </span>
+
+                        <div
+                          className="
+                            mt-3
+
+                            flex
+                            flex-wrap
+                            gap-2
+                          "
+                        >
+                          {step.focus.map((item) => (
+                            <span
+                              key={item}
+                              className="
+                                inline-flex
+                                items-center
+                                gap-1.5
+
+                                rounded-full
+
+                                bg-[#F3F6F8]
+
+                                px-2.5
+                                py-1.5
+
+                                text-[0.56rem]
+                                font-medium
+
+                                text-[#536D83]
+                              "
+                            >
+                              <Check
+                                size={8}
+                                strokeWidth={2.2}
+                                className="text-[#A97C52]"
+                              />
+
+                              {item}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* SHORT INSIGHT */}
+
+                      <p
+                        className="
+                          mt-5
+
+                          border-l-2
+
+                          pl-3.5
+
+                          font-serif
+                          text-[0.7rem]
+                          leading-[1.58]
+
+                          text-[#405D76]
+                        "
+                        style={{
+                          borderColor: step.accent,
+                        }}
+                      >
+                        {step.note}
+                      </p>
+
+                      {/* BOTTOM STEP INDICATOR */}
+
+                      <div
+                        className="
+                          mt-5
+
+                          flex
+                          items-center
+                          justify-between
+                          gap-4
+                        "
+                      >
+                        <div
+                          className="
+                            flex
+                            items-center
+                            gap-1
+                          "
+                        >
+                          {steps.map((_, dotIndex) => (
+                            <span
+                              key={dotIndex}
+                              className={`
+                                block
+                                h-[3px]
+                                rounded-full
+
+                                ${
+                                  dotIndex === index
+                                    ? "w-7 bg-[#0B2A52]"
+                                    : dotIndex < index
+                                      ? "w-3 bg-[#B79A72]"
+                                      : "w-3 bg-[#D7E1E7]"
+                                }
+                              `}
+                            />
+                          ))}
+                        </div>
+
+                        {index < steps.length - 1 ? (
+                          <span
+                            className="
+                              inline-flex
+                              items-center
+                              gap-1.5
+
+                              text-[0.48rem]
+                              font-semibold
+                              uppercase
+                              tracking-[0.13em]
+
+                              text-[#718496]
+                            "
+                          >
+                            Swipe
+                            <ArrowRight
+                              size={10}
+                              strokeWidth={1.8}
+                              className="text-[#B18458]"
+                            />
+                          </span>
+                        ) : (
+                          <span
+                            className="
+                              text-[0.48rem]
+                              font-semibold
+                              uppercase
+                              tracking-[0.13em]
+
+                              text-[#B18458]
+                            "
+                          >
+                            Improve
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                  </motion.article>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* =================================================
+              TABLET — STEP SELECTOR + ACTIVE DETAIL
+          ================================================= */}
+
+          <div className="hidden md:block lg:hidden">
+            {/* TABLET STEP SELECTOR */}
+
+            <div
+              className="
+                mt-8
+
+                grid
+                grid-cols-4
+                gap-2.5
               "
             >
               {steps.map((step, index) => {
@@ -1405,16 +1883,17 @@ export default function WebsiteFrameworkSection() {
                     onClick={() => setActiveIndex(index)}
                     className={`
                       flex
-                      shrink-0
+                      w-full
                       items-center
+                      justify-center
                       gap-2
 
                       rounded-full
 
                       border
 
-                      px-3
-                      py-2
+                      px-2.5
+                      py-2.5
 
                       transition-all
                       duration-300
@@ -1434,12 +1913,7 @@ export default function WebsiteFrameworkSection() {
                       }
                     `}
                   >
-                    <span
-                      className="
-                        text-[0.42rem]
-                        font-semibold
-                      "
-                    >
+                    <span className="text-[0.42rem] font-semibold">
                       {step.number}
                     </span>
 
@@ -1448,7 +1922,7 @@ export default function WebsiteFrameworkSection() {
                         text-[0.43rem]
                         font-semibold
                         uppercase
-                        tracking-[0.14em]
+                        tracking-[0.12em]
                       "
                     >
                       {step.stage}
@@ -1457,6 +1931,8 @@ export default function WebsiteFrameworkSection() {
                 );
               })}
             </div>
+
+            {/* ACTIVE TABLET DETAIL */}
 
             <AnimatePresence mode="wait">
               <motion.div
@@ -1480,28 +1956,29 @@ export default function WebsiteFrameworkSection() {
                 className="
                   relative
 
-                  mt-7
+                  mt-8
 
                   overflow-hidden
 
                   border-y
                   border-[#D9E3EA]
 
-                  py-8
+                  py-10
                 "
               >
-                {/* NUMBER */}
+                {/* GHOST NUMBER */}
 
                 <span
+                  aria-hidden="true"
                   className="
                     pointer-events-none
 
                     absolute
                     right-0
-                    top-[-18px]
+                    top-[-28px]
 
                     font-serif
-                    text-[6.5rem]
+                    text-[7.5rem]
                     leading-none
                     tracking-[-0.08em]
 
@@ -1511,232 +1988,229 @@ export default function WebsiteFrameworkSection() {
                   {activeStep.number}
                 </span>
 
-                {/* ICON */}
-
                 <div
                   className="
                     relative
                     z-10
 
-                    flex
-                    h-12
-                    w-12
-                    items-center
-                    justify-center
-
-                    rounded-[15px]
-                  "
-                  style={{
-                    backgroundColor: activeStep.soft,
-                    color: activeStep.accent,
-                  }}
-                >
-                  <ActiveIcon size={18} strokeWidth={1.65} />
-                </div>
-
-                <span
-                  className="
-                    relative
-                    z-10
-
-                    mt-5
-                    block
-
-                    text-[0.45rem]
-                    font-semibold
-                    uppercase
-                    tracking-[0.19em]
-
-                    text-[#92745C]
+                    grid
+                    grid-cols-[1fr_0.8fr]
+                    gap-8
                   "
                 >
-                  {activeStep.stage}
-                </span>
+                  {/* LEFT */}
 
-                <h3
-                  className="
-                    relative
-                    z-10
+                  <div>
+                    <div
+                      className="
+                        flex
+                        h-14
+                        w-14
+                        items-center
+                        justify-center
 
-                    mt-3
+                        rounded-[16px]
+                      "
+                      style={{
+                        backgroundColor: activeStep.soft,
+                        color: activeStep.accent,
+                      }}
+                    >
+                      <ActiveIcon size={20} strokeWidth={1.65} />
+                    </div>
 
-                    max-w-[500px]
-
-                    font-serif
-                    text-[1.85rem]
-                    leading-[1.08]
-                    tracking-[-0.04em]
-
-                    text-[#0B2A52]
-                  "
-                >
-                  {activeStep.action}
-                </h3>
-
-                <p
-                  className="
-                    relative
-                    z-10
-
-                    mt-5
-
-                    max-w-[550px]
-
-                    font-serif
-                    text-[0.83rem]
-                    leading-[1.75]
-
-                    text-[#60758A]
-                  "
-                >
-                  {activeStep.description}
-                </p>
-
-                <div
-                  className="
-                    relative
-                    z-10
-
-                    mt-6
-
-                    border-l-2
-
-                    pl-4
-                  "
-                  style={{
-                    borderColor: activeStep.accent,
-                  }}
-                >
-                  <p
-                    className="
-                      font-serif
-                      text-[0.78rem]
-                      leading-[1.7]
-
-                      text-[#405D76]
-                    "
-                  >
-                    {activeStep.note}
-                  </p>
-                </div>
-
-                <div
-                  className="
-                    relative
-                    z-10
-
-                    mt-7
-                  "
-                >
-                  <span
-                    className="
-                      text-[0.42rem]
-                      font-semibold
-                      uppercase
-                      tracking-[0.18em]
-
-                      text-[#91A0AD]
-                    "
-                  >
-                    Focus
-                  </span>
-
-                  <div
-                    className="
-                      mt-3
-                      flex
-                      flex-wrap
-                      gap-2
-                    "
-                  >
-                    {activeStep.focus.map((item) => (
-                      <span
-                        key={item}
-                        className="
-                          flex
-                          items-center
-                          gap-2
-
-                          rounded-full
-
-                          border
-                          border-[#D8E2E8]
-
-                          bg-white
-
-                          px-3
-                          py-2
-
-                          text-[0.62rem]
-
-                          text-[#536D83]
-                        "
-                      >
-                        <Check
-                          size={9}
-                          strokeWidth={2.2}
-                          className="text-[#A97C52]"
-                        />
-
-                        {item}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                {/* MOBILE NEXT */}
-
-                {activeIndex < steps.length - 1 && (
-                  <button
-                    type="button"
-                    onClick={() =>
-                      setActiveIndex((current) =>
-                        Math.min(current + 1, steps.length - 1),
-                      )
-                    }
-                    className="
-                      relative
-                      z-10
-
-                      mt-8
-
-                      flex
-                      items-center
-                      gap-3
-                    "
-                  >
                     <span
                       className="
+                        mt-5
+                        block
+
                         text-[0.46rem]
                         font-semibold
                         uppercase
-                        tracking-[0.16em]
+                        tracking-[0.19em]
+
+                        text-[#92745C]
+                      "
+                    >
+                      {activeStep.stage}
+                    </span>
+
+                    <h3
+                      className="
+                        mt-3
+
+                        max-w-[560px]
+
+                        font-serif
+                        text-[2.05rem]
+                        leading-[1.08]
+                        tracking-[-0.04em]
 
                         text-[#0B2A52]
                       "
                     >
-                      Next — {steps[activeIndex + 1].stage}
-                    </span>
+                      {activeStep.action}
+                    </h3>
 
-                    <span
+                    <p
                       className="
-                        flex
-                        h-8
-                        w-8
-                        items-center
-                        justify-center
+                        mt-5
+                        max-w-[620px]
 
-                        rounded-full
+                        font-serif
+                        text-[0.88rem]
+                        leading-[1.7]
 
-                        bg-[#0B2A52]
-
-                        text-white
+                        text-[#60758A]
                       "
                     >
-                      <ArrowRight size={11} strokeWidth={1.8} />
+                      {activeStep.description}
+                    </p>
+
+                    <p
+                      className="
+                        mt-6
+                        max-w-[620px]
+
+                        border-l-2
+
+                        pl-4
+
+                        font-serif
+                        text-[0.82rem]
+                        leading-[1.7]
+
+                        text-[#405D76]
+                      "
+                      style={{
+                        borderColor: activeStep.accent,
+                      }}
+                    >
+                      {activeStep.note}
+                    </p>
+                  </div>
+
+                  {/* RIGHT / FOCUS */}
+
+                  <div
+                    className="
+                      border-l
+                      border-[#E0E7EC]
+
+                      pl-7
+                    "
+                  >
+                    <span
+                      className="
+                        text-[0.43rem]
+                        font-semibold
+                        uppercase
+                        tracking-[0.18em]
+
+                        text-[#91A0AD]
+                      "
+                    >
+                      Focus
                     </span>
-                  </button>
-                )}
+
+                    <div className="mt-4 space-y-3">
+                      {activeStep.focus.map((item) => (
+                        <div
+                          key={item}
+                          className="
+                            flex
+                            items-center
+                            gap-3
+
+                            border-b
+                            border-[#E3E9ED]
+
+                            pb-3
+                          "
+                        >
+                          <span
+                            className="
+                              flex
+                              h-6
+                              w-6
+                              shrink-0
+                              items-center
+                              justify-center
+
+                              rounded-full
+
+                              bg-[#F1F5F7]
+
+                              text-[#A97C52]
+                            "
+                          >
+                            <Check size={9} strokeWidth={2.4} />
+                          </span>
+
+                          <span
+                            className="
+                              text-[0.7rem]
+                              font-medium
+
+                              text-[#536D83]
+                            "
+                          >
+                            {item}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+
+                    {activeIndex < steps.length - 1 && (
+                      <button
+                        type="button"
+                        onClick={() =>
+                          setActiveIndex((current) =>
+                            Math.min(current + 1, steps.length - 1),
+                          )
+                        }
+                        className="
+                          mt-7
+
+                          flex
+                          items-center
+                          gap-3
+                        "
+                      >
+                        <span
+                          className="
+                            text-[0.46rem]
+                            font-semibold
+                            uppercase
+                            tracking-[0.15em]
+
+                            text-[#0B2A52]
+                          "
+                        >
+                          Next — {steps[activeIndex + 1].stage}
+                        </span>
+
+                        <span
+                          className="
+                            flex
+                            h-8
+                            w-8
+                            items-center
+                            justify-center
+
+                            rounded-full
+
+                            bg-[#0B2A52]
+
+                            text-white
+                          "
+                        >
+                          <ArrowRight size={11} strokeWidth={1.8} />
+                        </span>
+                      </button>
+                    )}
+                  </div>
+                </div>
               </motion.div>
             </AnimatePresence>
           </div>
@@ -1765,12 +2239,14 @@ export default function WebsiteFrameworkSection() {
           }}
           className="
             mx-auto
-            mt-16
+            mt-12
             max-w-[900px]
 
             text-center
 
-            sm:mt-20
+            sm:mt-14
+            md:mt-16
+            lg:mt-20
           "
         >
           <div
@@ -1804,12 +2280,15 @@ export default function WebsiteFrameworkSection() {
               mt-5
 
               font-serif
-              text-[1.15rem]
-              leading-[1.45]
+              text-[1rem]
+              leading-[1.5]
+
+              sm:text-[1.15rem]
+              md:text-[1.25rem]
 
               text-[#0B2A52]
 
-              sm:text-[1.35rem]
+              lg:text-[1.35rem]
             "
           >
             A clear process keeps every decision connected to{" "}
