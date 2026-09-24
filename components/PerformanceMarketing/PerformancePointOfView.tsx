@@ -106,8 +106,10 @@ export default function PerformancePointOfView() {
         relative
         isolate
         overflow-hidden
-        bg-[#F8F5F0]
+        bg-white
         py-20
+
+        sm:bg-[#F8F5F0]
         sm:py-24
         lg:py-28
         xl:py-32
@@ -117,7 +119,7 @@ export default function PerformancePointOfView() {
           PREMIUM BACKGROUND
       ===================================================== */}
 
-      <div className="pointer-events-none absolute inset-0 -z-20 overflow-hidden">
+      <div className="pointer-events-none absolute inset-0 -z-20 hidden overflow-hidden sm:block">
         <div
           className="
             absolute
@@ -215,17 +217,37 @@ export default function PerformancePointOfView() {
             "
           >
             <span
+            className="
+              h-px
+              w-10
+
+              bg-gradient-to-r
+              from-transparent
+              to-[#B79A72]
+            "
+          />
+            <span
               className="
                 text-[0.65rem]
-                font-semibold
+             
                 uppercase
                 tracking-[0.3em]
-                text-[#9B6F42]
+                text-[#B79A72]
                 sm:text-[0.7rem]
               "
             >
               How We Think About Performance
             </span>
+            <span
+            className="
+              h-px
+              w-10
+
+              bg-gradient-to-l
+              from-transparent
+              to-[#B79A72]
+            "
+          />
           </motion.div>
 
           <motion.h2
@@ -250,7 +272,7 @@ export default function PerformancePointOfView() {
             className="
               mt-4
               font-serif
-              text-[2.3rem]
+              text-[2.2rem]
               font-medium
               leading-[1.03]
               tracking-[-0.045em]
@@ -266,7 +288,7 @@ export default function PerformancePointOfView() {
             <span
               className="
                 font-normal
-                text-[#A87947]
+                text-[#B79A72]
               "
             >
               Beginning.
@@ -338,10 +360,13 @@ export default function PerformancePointOfView() {
           }}
           className="
             mx-auto
-            mt-12
+            mt-10
             grid
             max-w-[1120px]
-            gap-3
+            gap-7
+
+            sm:mt-12
+            sm:gap-3
 
             lg:grid-cols-[1fr_280px]
           "
@@ -352,13 +377,22 @@ export default function PerformancePointOfView() {
 
           <div
             className="
-              overflow-hidden
-              rounded-[1.5rem]
-              border
-              border-white/80
-              bg-white/82
-              shadow-[0_22px_60px_rgba(29,43,57,0.11)]
-              backdrop-blur-xl
+              overflow-visible
+
+              border-y
+              border-[#DCE5EC]
+
+              bg-transparent
+
+              shadow-none
+
+              sm:overflow-hidden
+              sm:rounded-[1.5rem]
+              sm:border
+              sm:border-white/80
+              sm:bg-white/82
+              sm:shadow-[0_22px_60px_rgba(29,43,57,0.11)]
+              sm:backdrop-blur-xl
             "
           >
             {/* DASHBOARD HEADER */}
@@ -368,11 +402,12 @@ export default function PerformancePointOfView() {
                 flex
                 flex-col
                 gap-4
-                px-5
+                px-0
                 pb-4
                 pt-5
 
                 sm:flex-row
+                sm:px-7
                 sm:items-center
                 sm:justify-between
                 sm:px-7
@@ -428,9 +463,12 @@ export default function PerformancePointOfView() {
               className="
                 grid
                 grid-cols-2
-                border-y
+
+                border-t
                 border-[#EDF0F2]
+
                 sm:grid-cols-4
+                sm:border-y
               "
             >
               {metrics.map((metric, index) => {
@@ -443,8 +481,9 @@ export default function PerformancePointOfView() {
                       flex
                       items-center
                       gap-3
-                      px-4
+                      px-0
                       py-4
+
                       sm:px-5
 
                       ${
@@ -495,9 +534,10 @@ export default function PerformancePointOfView() {
             <div
               className="
                 relative
-                px-4
+                px-0
                 pb-5
                 pt-4
+
                 sm:px-6
               "
             >
@@ -704,14 +744,22 @@ export default function PerformancePointOfView() {
 
           <div
             className="
-              rounded-[1.5rem]
-              border
-              border-white/80
-              bg-white/82
-              p-5
-              shadow-[0_22px_60px_rgba(29,43,57,0.10)]
-              backdrop-blur-xl
+              border-y
+              border-[#DCE5EC]
+
+              bg-transparent
+
+              py-6
+
+              shadow-none
+
+              sm:rounded-[1.5rem]
+              sm:border
+              sm:border-white/80
+              sm:bg-white/82
               sm:p-6
+              sm:shadow-[0_22px_60px_rgba(29,43,57,0.10)]
+              sm:backdrop-blur-xl
             "
           >
             <h3
@@ -846,15 +894,165 @@ export default function PerformancePointOfView() {
           }}
           className="
             mx-auto
-            mt-4
+            mt-8
             max-w-[1360px]
+
+            sm:mt-4
           "
         >
+          {/* =================================================
+              MOBILE — CONNECTED OPEN TIMELINE
+          ================================================= */}
+
+          <div className="relative sm:hidden">
+            <div
+              aria-hidden="true"
+              className="
+                absolute
+                bottom-4
+                left-[18px]
+                top-4
+
+                w-px
+
+                bg-gradient-to-b
+                from-[#0B2A52]/35
+                via-[#C9D7E1]
+                to-[#B79A72]/55
+              "
+            />
+
+            <div className="relative">
+              {stages.map((stage, index) => {
+                const Icon = stage.icon;
+
+                return (
+                  <motion.div
+                    key={stage.number}
+                    initial={{
+                      opacity: 0,
+                      x: reduceMotion ? 0 : -16,
+                    }}
+                    whileInView={{
+                      opacity: 1,
+                      x: 0,
+                    }}
+                    viewport={{
+                      once: true,
+                      amount: 0.35,
+                    }}
+                    transition={{
+                      duration: reduceMotion ? 0 : 0.5,
+                      delay: reduceMotion ? 0 : index * 0.05,
+                      ease,
+                    }}
+                    className="
+                      relative
+                      flex
+                      items-start
+                      gap-4
+                      py-4
+                    "
+                  >
+                    <div
+                      className="
+                        relative
+                        z-10
+
+                        grid
+                        h-9
+                        w-9
+                        shrink-0
+                        place-items-center
+
+                        rounded-full
+
+                        border
+                        border-[#C7D7E3]
+
+                        bg-white
+
+                        text-[#A97845]
+
+                        shadow-[0_5px_16px_rgba(11,42,82,0.06)]
+                      "
+                    >
+                      <Icon size={15} strokeWidth={1.7} />
+                    </div>
+
+                    <div
+                      className="
+                        min-w-0
+                        flex-1
+
+                        border-b
+                        border-[#E1E8EE]
+
+                        pb-4
+                      "
+                    >
+                      <div
+                        className="
+                          flex
+                          items-center
+                          justify-between
+                          gap-3
+                        "
+                      >
+                        <span
+                          className="
+                            text-[0.74rem]
+                            font-bold
+                            tracking-[0.04em]
+                            text-[#0B2A52]
+                          "
+                        >
+                          {stage.title}
+                        </span>
+
+                        <span
+                          className="
+                            font-serif
+                            text-[0.68rem]
+                            text-[#A97845]
+                          "
+                        >
+                          {stage.number}
+                        </span>
+                      </div>
+
+                      <p
+                        className="
+                          mt-1.5
+                          max-w-[300px]
+
+                          text-[0.78rem]
+                          leading-[1.55]
+
+                          text-[#5E6D7B]
+                        "
+                      >
+                        {stage.description}
+                      </p>
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* =================================================
+              TABLET + DESKTOP — EXISTING CARD SYSTEM
+          ================================================= */}
+
           <div
             className="
-              grid
+              hidden
+              grid-cols-2
               gap-3
-              sm:grid-cols-2
+
+              sm:grid
+
               lg:grid-cols-7
             "
           >
@@ -878,10 +1076,7 @@ export default function PerformancePointOfView() {
                   }}
                   transition={{
                     duration: reduceMotion ? 0 : 0.55,
-                    delay:
-                      reduceMotion
-                        ? 0
-                        : index * 0.055,
+                    delay: reduceMotion ? 0 : index * 0.055,
                     ease,
                   }}
                   whileHover={
@@ -900,13 +1095,20 @@ export default function PerformancePointOfView() {
                     className="
                       h-full
                       min-h-[170px]
+
                       rounded-[1rem]
+
                       border
                       border-white/90
+
                       bg-white/82
+
                       p-4
+
                       shadow-[0_14px_35px_rgba(28,42,57,0.075)]
+
                       backdrop-blur-xl
+
                       transition-all
                       duration-300
 
@@ -942,9 +1144,11 @@ export default function PerformancePointOfView() {
                     <h3
                       className="
                         mt-5
+
                         text-[0.82rem]
                         font-bold
                         tracking-[0.02em]
+
                         text-[#0B2A52]
                       "
                     >
@@ -954,16 +1158,16 @@ export default function PerformancePointOfView() {
                     <p
                       className="
                         mt-2
+
                         text-[0.72rem]
                         leading-[1.5]
+
                         text-[#5E6D7B]
                       "
                     >
                       {stage.description}
                     </p>
                   </div>
-
-                  {/* DESKTOP CONNECTOR */}
 
                   {index !== stages.length - 1 && (
                     <span
@@ -972,20 +1176,24 @@ export default function PerformancePointOfView() {
                         right-[-11px]
                         top-1/2
                         z-10
+
                         hidden
+
                         -translate-y-1/2
+
                         items-center
                         justify-center
+
                         bg-[#F8F5F0]
+
                         px-1
+
                         text-[#0B2A52]
+
                         lg:flex
                       "
                     >
-                      <ArrowRight
-                        size={16}
-                        strokeWidth={1.6}
-                      />
+                      <ArrowRight size={16} strokeWidth={1.6} />
                     </span>
                   )}
                 </motion.div>
@@ -1017,15 +1225,26 @@ export default function PerformancePointOfView() {
           }}
           className="
             mx-auto
-            mt-7
+            mt-10
             max-w-[1360px]
-            overflow-hidden
-            rounded-[1.35rem]
-            border
-            border-white/90
-            bg-white/76
-            shadow-[0_18px_50px_rgba(28,42,57,0.07)]
-            backdrop-blur-xl
+
+            overflow-visible
+
+            border-y
+            border-[#D5E0E8]
+
+            bg-transparent
+
+            shadow-none
+
+            sm:mt-7
+            sm:overflow-hidden
+            sm:rounded-[1.35rem]
+            sm:border
+            sm:border-white/90
+            sm:bg-white/76
+            sm:shadow-[0_18px_50px_rgba(28,42,57,0.07)]
+            sm:backdrop-blur-xl
           "
         >
           {/* LABEL */}
@@ -1035,9 +1254,13 @@ export default function PerformancePointOfView() {
               flex
               items-center
               justify-center
-              gap-5
-              px-5
-              pt-5
+              gap-4
+              px-0
+              pt-6
+
+              sm:gap-5
+              sm:px-5
+              sm:pt-5
             "
           >
             <span className="h-px w-12 bg-[#B9A184]" />
@@ -1060,9 +1283,12 @@ export default function PerformancePointOfView() {
           <div
             className="
               grid
-              px-6
+              px-0
               pb-7
-              pt-5
+              pt-4
+
+              sm:px-6
+              sm:pt-5
 
               md:grid-cols-[1fr_auto_1fr]
               md:items-center
@@ -1082,9 +1308,12 @@ export default function PerformancePointOfView() {
               <div
                 className="
                   flex
-                  h-12
-                  w-12
+                  h-10
+                  w-10
                   shrink-0
+
+                  sm:h-12
+                  sm:w-12
                   items-center
                   justify-center
                   rounded-full
@@ -1113,7 +1342,7 @@ export default function PerformancePointOfView() {
                   className="
                     mt-1
                     font-serif
-                    text-[1.45rem]
+                    text-[1.2rem]
                     font-medium
                     leading-[1.2]
                     text-[#0B2A52]
@@ -1153,9 +1382,12 @@ export default function PerformancePointOfView() {
               <div
                 className="
                   flex
-                  h-12
-                  w-12
+                  h-10
+                  w-10
                   shrink-0
+
+                  sm:h-12
+                  sm:w-12
                   items-center
                   justify-center
                   rounded-full
@@ -1184,7 +1416,7 @@ export default function PerformancePointOfView() {
                   className="
                     mt-1
                     font-serif
-                    text-[1.45rem]
+                    text-[1.2rem]
                     font-medium
                     leading-[1.2]
                     text-[#A5743D]

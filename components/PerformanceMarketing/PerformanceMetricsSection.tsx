@@ -113,111 +113,18 @@ export default function PerformanceMetricsSection() {
         relative
         isolate
         overflow-hidden
-        bg-[#FBFAF7]
-        py-20
-        sm:py-24
+        bg-white
+        py-16
+
+      
+        sm:py-20
+
+        md:py-24
         lg:py-28
         xl:py-32
       "
     >
-      {/* =====================================================
-          BACKGROUND
-      ===================================================== */}
-
-      <div className="pointer-events-none absolute inset-0 -z-20 overflow-hidden">
-        <div
-          className="
-            absolute
-            inset-0
-            bg-gradient-to-br
-            from-[#FCFBF8]
-            via-white
-            to-[#F4F8FB]
-          "
-        />
-
-        <div
-          className="
-            absolute
-            left-[16%]
-            top-[12%]
-            h-[540px]
-            w-[760px]
-            rounded-full
-            bg-[#EAF2F8]/50
-            blur-[115px]
-          "
-        />
-
-        <div
-          className="
-            absolute
-            right-[8%]
-            top-[8%]
-            h-[440px]
-            w-[540px]
-            rounded-full
-            bg-[#F2E8DB]/38
-            blur-[130px]
-          "
-        />
-
-        {/* LEFT RINGS */}
-
-        <div
-          className="
-            absolute
-            -left-[260px]
-            -top-[150px]
-            h-[520px]
-            w-[520px]
-            rounded-full
-            border
-            border-[#C7A579]/20
-          "
-        />
-
-        <div
-          className="
-            absolute
-            -left-[205px]
-            -top-[95px]
-            h-[410px]
-            w-[410px]
-            rounded-full
-            border
-            border-[#0B2A52]/[0.05]
-          "
-        />
-
-        {/* RIGHT RINGS */}
-
-        <div
-          className="
-            absolute
-            -right-[270px]
-            top-[50px]
-            h-[540px]
-            w-[540px]
-            rounded-full
-            border
-            border-[#C7A579]/20
-          "
-        />
-
-        <div
-          className="
-            absolute
-            -right-[215px]
-            top-[105px]
-            h-[430px]
-            w-[430px]
-            rounded-full
-            border
-            border-[#0B2A52]/[0.05]
-          "
-        />
-      </div>
+      
 
       {/* =====================================================
           SIDE MICROCOPY
@@ -297,8 +204,10 @@ export default function PerformanceMetricsSection() {
           mx-auto
           w-full
           max-w-[1540px]
-          px-5
-          sm:px-8
+          px-4
+
+          sm:px-6
+          md:px-8
           lg:px-10
           xl:px-12
         "
@@ -332,21 +241,42 @@ export default function PerformanceMetricsSection() {
               gap-4
             "
           >
-            <span className="h-px w-10 bg-[#B67D49]" />
+           <span
+            className="
+              h-px
+              w-10
+
+              bg-gradient-to-r
+              from-transparent
+              to-[#B79A72]
+            "
+          />
 
             <span
               className="
-                text-[0.65rem]
+                text-[0.58rem]
                 font-semibold
                 uppercase
-                tracking-[0.32em]
-                text-[#335E87]
+                tracking-[0.22em]
+                text-[#B79A72]
+
+                sm:text-[0.65rem]
+                sm:tracking-[0.32em]
               "
             >
               What We Measure
             </span>
 
-            <span className="h-px w-10 bg-[#B67D49]" />
+         <span
+            className="
+              h-px
+              w-10
+
+              bg-gradient-to-l
+              from-transparent
+              to-[#B79A72]
+            "
+          />
           </motion.div>
 
           <motion.h2
@@ -371,7 +301,7 @@ export default function PerformanceMetricsSection() {
             className="
               mt-5
               font-serif
-              text-[2.3rem]
+              text-[2.2rem]
               font-medium
               leading-[1.03]
               tracking-[-0.045em]
@@ -388,7 +318,7 @@ export default function PerformanceMetricsSection() {
               className="
                 font-normal
                 italic
-                text-[#A97743]
+                text-[#B79A72]
               "
             >
               Do Next.
@@ -417,10 +347,12 @@ export default function PerformanceMetricsSection() {
               mx-auto
               mt-4
               max-w-[820px]
-              text-[0.98rem]
-              leading-[1.6]
+              text-[0.9rem]
+              leading-[1.65]
               text-[#455D75]
-              sm:text-[1rem]
+
+              sm:text-[0.98rem]
+              md:text-[1rem]
             "
           >
             Performance reporting should make advertising decisions clearer.
@@ -443,9 +375,12 @@ export default function PerformanceMetricsSection() {
             }}
             className="
               mt-2
-              text-[0.78rem]
+              text-[0.72rem]
               font-medium
+              leading-[1.55]
               text-[#193C62]
+
+              sm:text-[0.78rem]
             "
           >
             Depending on your business and campaign objectives, we may monitor:
@@ -482,14 +417,19 @@ export default function PerformanceMetricsSection() {
           }}
           className="
             mx-auto
-            mt-11
+            mt-8
             max-w-[1420px]
+
+            sm:mt-10
+            lg:mt-11
           "
         >
           <div
             className="
               grid
-              gap-5
+              gap-6
+
+              sm:gap-5
 
               xl:grid-cols-[205px_minmax(0,1fr)_205px]
               xl:items-center
@@ -506,7 +446,6 @@ export default function PerformanceMetricsSection() {
               className="
                 order-2
                 grid
-                sm:grid-cols-2
 
                 xl:order-1
                 xl:block
@@ -539,7 +478,7 @@ export default function PerformanceMetricsSection() {
                 className="
                   overflow-hidden
 
-                  rounded-[1.5rem]
+                  rounded-[1rem]
 
                   border
                   border-[#244868]
@@ -548,16 +487,26 @@ export default function PerformanceMetricsSection() {
                   from-[#173B5D]
                   to-[#102D49]
 
-                  p-[10px]
+                  p-[6px]
 
-                  shadow-[0_30px_85px_rgba(11,42,82,0.21)]
+                  shadow-[0_22px_60px_rgba(11,42,82,0.16)]
+
+                  sm:rounded-[1.25rem]
+                  sm:p-[8px]
+
+                  lg:rounded-[1.5rem]
+                  lg:p-[10px]
+                  lg:shadow-[0_30px_85px_rgba(11,42,82,0.21)]
                 "
               >
                 <div
                   className="
                     overflow-hidden
-                    rounded-[1rem]
+                    rounded-[0.75rem]
                     bg-[#F8F9FA]
+
+                    sm:rounded-[0.9rem]
+                    lg:rounded-[1rem]
 
                     lg:grid
                     lg:grid-cols-[145px_minmax(0,1fr)]
@@ -655,7 +604,7 @@ export default function PerformanceMetricsSection() {
                       DASHBOARD CONTENT
                   ============================================= */}
 
-                  <div className="min-w-0 bg-[#F7F8F9] p-4 sm:p-5">
+                  <div className="min-w-0 bg-[#F7F8F9] p-3 sm:p-4 md:p-5">
                     {/* HEADER */}
 
                     <div
@@ -693,6 +642,7 @@ export default function PerformanceMetricsSection() {
 
                       <div
                         className="
+                          max-w-full
                           w-fit
 
                           rounded-md
@@ -722,9 +672,11 @@ export default function PerformanceMetricsSection() {
                       className="
                         mt-4
                         grid
-                        gap-3
+                        grid-cols-2
+                        gap-2
 
-                        sm:grid-cols-2
+                        sm:gap-3
+
                         2xl:grid-cols-4
                       "
                     >
@@ -767,7 +719,7 @@ export default function PerformanceMetricsSection() {
                         grid
                         gap-3
 
-                        lg:grid-cols-2
+                        xl:grid-cols-2
                       "
                     >
                       {/* CONVERSIONS */}
@@ -784,7 +736,9 @@ export default function PerformanceMetricsSection() {
 
                           bg-white
 
-                          p-4
+                          p-3
+
+                          sm:p-4
                         "
                       >
                         <p
@@ -844,7 +798,9 @@ export default function PerformanceMetricsSection() {
 
                           bg-white
 
-                          p-4
+                          p-3
+
+                          sm:p-4
                         "
                       >
                         <p
@@ -906,9 +862,10 @@ export default function PerformanceMetricsSection() {
               className="
                 order-3
                 grid
-                gap-5
+                gap-0
 
                 sm:grid-cols-2
+                sm:gap-5
 
                 xl:grid-cols-1
                 xl:self-center
@@ -947,14 +904,17 @@ export default function PerformanceMetricsSection() {
             z-20
 
             mx-auto
-            mt-7
+            mt-8
 
             grid
             max-w-[1400px]
-            gap-3
+            gap-0
 
             sm:grid-cols-2
-            lg:grid-cols-5
+            sm:gap-3
+
+            md:grid-cols-3
+            xl:grid-cols-5
           "
         >
           {metrics.map((metric, index) => {
@@ -993,26 +953,35 @@ export default function PerformanceMetricsSection() {
                 className="
                   group
 
-                  min-h-[132px]
+                  min-h-0
 
-                  rounded-[0.85rem]
+                  rounded-none
 
-                  border
-                  border-white
+                  border-0
+                  border-b
+                  border-[#DCE5EC]
 
-                  bg-white/88
+                  bg-transparent
 
-                  p-4
+                  px-0
+                  py-4
 
-                  shadow-[0_10px_30px_rgba(11,42,82,0.065)]
-
-                  backdrop-blur-xl
+                  shadow-none
 
                   transition-all
                   duration-300
 
-                  hover:border-[#B9D1E2]
-                  hover:shadow-[0_16px_40px_rgba(11,42,82,0.10)]
+                  sm:min-h-[132px]
+                  sm:rounded-[0.85rem]
+                  sm:border
+                  sm:border-white
+                  sm:bg-white/88
+                  sm:p-4
+                  sm:shadow-[0_10px_30px_rgba(11,42,82,0.065)]
+                  sm:backdrop-blur-xl
+
+                  sm:hover:border-[#B9D1E2]
+                  sm:hover:shadow-[0_16px_40px_rgba(11,42,82,0.10)]
                 "
               >
                 <div
@@ -1042,8 +1011,10 @@ export default function PerformanceMetricsSection() {
                   <div>
                     <h3
                       className="
-                        text-[0.72rem]
+                        text-[0.78rem]
                         font-semibold
+
+                        sm:text-[0.72rem]
                         leading-[1.35]
                         text-[#0B2A52]
                       "
@@ -1053,10 +1024,14 @@ export default function PerformanceMetricsSection() {
 
                     <p
                       className="
-                        mt-2
-                        text-[0.66rem]
-                        leading-[1.5]
+                        mt-1.5
+                        text-[0.72rem]
+                        leading-[1.55]
                         text-[#536A80]
+
+                        sm:mt-2
+                        sm:text-[0.66rem]
+                        sm:leading-[1.5]
                       "
                     >
                       {metric.question}
@@ -1091,27 +1066,35 @@ export default function PerformanceMetricsSection() {
           }}
           className="
             mx-auto
-            mt-6
+            mt-8
             max-w-[1400px]
 
-            overflow-hidden
+            overflow-visible
 
-            rounded-[1.3rem]
+            rounded-none
 
-            border
+            border-y
             border-[#D6E2EB]
 
-            bg-gradient-to-r
-            from-[#EDF5FB]
-            via-[#F8FAFC]
-            to-[#EEF5FA]
+            bg-transparent
 
-            px-6
+            px-0
             py-7
 
-            shadow-[0_14px_40px_rgba(11,42,82,0.05)]
+            shadow-none
 
+            sm:mt-6
+            sm:overflow-hidden
+            sm:rounded-[1.3rem]
+            sm:border
+            sm:border-[#D6E2EB]
+            sm:bg-gradient-to-r
+            sm:from-[#EDF5FB]
+            sm:via-[#F8FAFC]
+            sm:to-[#EEF5FA]
             sm:px-8
+            sm:shadow-[0_14px_40px_rgba(11,42,82,0.05)]
+
             lg:px-10
           "
         >
@@ -1154,14 +1137,15 @@ export default function PerformanceMetricsSection() {
                   mt-4
 
                   font-serif
-                  text-[1.75rem]
+                  text-[1.55rem]
                   font-medium
                   leading-[1.15]
                   tracking-[-0.035em]
 
                   text-[#071F45]
 
-                  sm:text-[2rem]
+                  sm:text-[1.85rem]
+                  md:text-[2rem]
                   lg:text-[2.15rem]
                 "
               >
@@ -1325,20 +1309,27 @@ function SideStatCard({
       className="
         w-full
 
-        overflow-hidden
+        overflow-visible
 
-        rounded-[1.25rem]
+        rounded-none
 
-        border
-        border-white
+        border-y
+        border-[#DCE5EC]
 
-        bg-white/95
+        bg-transparent
 
-        p-5
+        py-5
 
-        shadow-[0_18px_48px_rgba(11,42,82,0.10)]
+        shadow-none
 
-        backdrop-blur-xl
+        sm:overflow-hidden
+        sm:rounded-[1.25rem]
+        sm:border
+        sm:border-white
+        sm:bg-white/95
+        sm:p-5
+        sm:shadow-[0_18px_48px_rgba(11,42,82,0.10)]
+        sm:backdrop-blur-xl
 
         xl:min-h-[220px]
       "
@@ -1379,9 +1370,11 @@ function SideStatCard({
 
       <div
         className="
-          mt-5
+          mt-3
           flex
           flex-wrap
+
+          sm:mt-5
           items-end
           gap-x-3
           gap-y-1
@@ -1390,8 +1383,10 @@ function SideStatCard({
         <span
           className="
             font-serif
-            text-[1.9rem]
+            text-[1.65rem]
             font-semibold
+
+            sm:text-[1.9rem]
             leading-none
             tracking-[-0.035em]
             text-[#071F45]
@@ -1416,7 +1411,7 @@ function SideStatCard({
 
       {/* GRAPH */}
 
-      <div className="mt-5">
+      <div className="mt-5 hidden sm:block">
         {chart === "line" ? (
           <MiniLine />
         ) : (
@@ -1429,9 +1424,13 @@ function SideStatCard({
       <p
         className="
           mt-4
+          hidden
+
           text-[0.61rem]
           leading-[1.5]
           text-[#64788B]
+
+          sm:block
         "
       >
         {description}
@@ -1465,9 +1464,11 @@ function DashboardMetric({
 
         bg-white
 
-        p-3
+        p-2.5
 
         shadow-[0_4px_12px_rgba(11,42,82,0.025)]
+
+        sm:p-3
       "
     >
       <div
@@ -1493,7 +1494,9 @@ function DashboardMetric({
             className="
               mt-1
               truncate
-              text-[0.91rem]
+              text-[0.82rem]
+
+              sm:text-[0.91rem]
               font-semibold
               text-[#0B2A52]
             "
@@ -1583,7 +1586,7 @@ function NavItem({
 
 function LineChart() {
   return (
-    <div className="relative mt-4 h-[118px]">
+    <div className="relative mt-4 h-[92px] sm:h-[118px]">
       <div
         className="
           absolute
@@ -1703,9 +1706,12 @@ function ValueBars() {
       className="
         mt-4
         flex
-        h-[118px]
+        h-[92px]
         items-end
-        gap-[5px]
+        gap-[3px]
+
+        sm:h-[118px]
+        sm:gap-[5px]
 
         border-b
         border-[#DDE4E9]

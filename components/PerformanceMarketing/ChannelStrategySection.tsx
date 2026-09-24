@@ -145,14 +145,7 @@ export default function ChannelStrategySection() {
       ===================================================== */}
 
       <div className="pointer-events-none absolute inset-0 -z-20 overflow-hidden">
-        <div
-          className="
-            absolute
-            inset-0
-            bg-[linear-gradient(135deg,#FFFFFF_0%,#FCFDFE_34%,#F3F8FC_70%,#FFFFFF_100%)]
-          "
-        />
-
+       
         <motion.div
           animate={
             reduceMotion
@@ -243,22 +236,40 @@ export default function ChannelStrategySection() {
               gap-4
             "
           >
-            <span className="h-px w-9 bg-[#B67D49]" />
+          <span
+            className="
+              h-px
+              w-10
+
+              bg-gradient-to-r
+              from-transparent
+              to-[#B79A72]
+            "
+          />
 
             <span
               className="
                 text-[0.66rem]
-                font-semibold
+           
                 uppercase
                 tracking-[0.3em]
-                text-[#4E7597]
+                text-[#B79A72]
                 sm:text-[0.7rem]
               "
             >
               Paid Media Channels
             </span>
 
-            <span className="h-px w-9 bg-[#B67D49]" />
+          <span
+            className="
+              h-px
+              w-10
+
+              bg-gradient-to-l
+              from-transparent
+              to-[#B79A72]
+            "
+          />
           </motion.div>
 
           <motion.h2
@@ -299,7 +310,7 @@ export default function ChannelStrategySection() {
                 font-serif
                 font-normal
                 italic
-                text-[#4D82AE]
+                text-[#B79A72]
               "
             >
               Opportunity Is.

@@ -25,418 +25,6 @@ export default function PerformanceMarketingFinalSections() {
           SECTION 14 — FINAL ANSWER BLOCK
       ===================================================== */}
 
-      <section
-        id="performance-marketing-partner"
-        aria-labelledby="performance-partner-heading"
-        className="
-          relative
-          isolate
-          overflow-hidden
-          bg-white
-          py-20
-          sm:py-24
-          lg:py-28
-          xl:py-32
-        "
-      >
-        {/* ===================================================
-            BACKGROUND
-        =================================================== */}
-
-        <div className="pointer-events-none absolute inset-0 -z-20 overflow-hidden">
-          <div
-            className="
-              absolute
-              inset-0
-              bg-[linear-gradient(135deg,#FFFFFF_0%,#FBFDFE_34%,#F1F7FC_72%,#FFFFFF_100%)]
-            "
-          />
-
-          <motion.div
-            animate={
-              reduceMotion
-                ? undefined
-                : {
-                    backgroundPosition: [
-                      "0% 40%",
-                      "100% 54%",
-                      "68% 100%",
-                      "0% 40%",
-                    ],
-                  }
-            }
-            transition={{
-              duration: 26,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-            style={{
-              backgroundImage: `
-                radial-gradient(
-                  ellipse at 20% 45%,
-                  rgba(210,232,248,0.42) 0%,
-                  transparent 64%
-                ),
-                radial-gradient(
-                  ellipse at 82% 32%,
-                  rgba(198,225,244,0.32) 0%,
-                  transparent 62%
-                )
-              `,
-              backgroundSize: "160% 160%",
-            }}
-            className="absolute inset-0"
-          />
-        </div>
-
-        {/* ===================================================
-            CONTAINER
-        =================================================== */}
-
-        <div
-          className="
-            relative
-            z-10
-            mx-auto
-            w-full
-            max-w-[1320px]
-            px-5
-            sm:px-8
-            lg:px-10
-            xl:px-14
-          "
-        >
-          {/* =================================================
-              ANSWER PANEL
-          ================================================= */}
-
-          <motion.div
-            initial={{
-              opacity: 0,
-              y: reduceMotion ? 0 : 32,
-              scale: reduceMotion ? 1 : 0.99,
-            }}
-            whileInView={{
-              opacity: 1,
-              y: 0,
-              scale: 1,
-            }}
-            viewport={{
-              once: true,
-              amount: 0.3,
-            }}
-            transition={{
-              duration: reduceMotion ? 0 : 0.85,
-              ease,
-            }}
-            className="
-              relative
-              mx-auto
-              max-w-[1180px]
-              overflow-hidden
-              rounded-[2rem]
-              border
-              border-[#B8CDDC]
-              bg-white/82
-              shadow-[0_28px_85px_rgba(11,42,82,0.07)]
-              backdrop-blur-xl
-            "
-          >
-            {/* TOP ACCENT */}
-
-            <div
-              className="
-                h-[4px]
-                w-full
-                bg-gradient-to-r
-                from-[#0B2A52]
-                via-[#3F87BC]
-                to-[#8CC4E8]
-              "
-            />
-
-            <div
-              className="
-                px-6
-                py-10
-                sm:px-8
-                sm:py-12
-                lg:px-12
-                lg:py-14
-              "
-            >
-              {/* EYEBROW */}
-
-              <motion.div
-                initial={{
-                  opacity: 0,
-                  y: reduceMotion ? 0 : 14,
-                }}
-                whileInView={{
-                  opacity: 1,
-                  y: 0,
-                }}
-                viewport={{
-                  once: true,
-                  amount: 0.7,
-                }}
-                transition={{
-                  duration: reduceMotion ? 0 : 0.6,
-                  ease,
-                }}
-                className="
-                  flex
-                  items-center
-                  justify-center
-                  gap-4
-                "
-              >
-                <span className="h-px w-9 bg-[#6D9EC1]" />
-
-                <span
-                  className="
-                    text-[0.64rem]
-                    font-semibold
-                    uppercase
-                    tracking-[0.3em]
-                    text-[#4B789B]
-                    sm:text-[0.7rem]
-                  "
-                >
-                  Performance Marketing With Sharp Rays
-                </span>
-
-                <span className="h-px w-9 bg-[#6D9EC1]" />
-              </motion.div>
-
-              {/* HEADING */}
-
-              <motion.h2
-                id="performance-partner-heading"
-                initial={{
-                  opacity: 0,
-                  y: reduceMotion ? 0 : 26,
-                }}
-                whileInView={{
-                  opacity: 1,
-                  y: 0,
-                }}
-                viewport={{
-                  once: true,
-                  amount: 0.55,
-                }}
-                transition={{
-                  duration: reduceMotion ? 0 : 0.8,
-                  delay: reduceMotion ? 0 : 0.05,
-                  ease,
-                }}
-                className="
-                  mx-auto
-                  mt-6
-                  max-w-[900px]
-                  text-center
-                  text-[2.3rem]
-                  font-medium
-                  leading-[1.04]
-                  tracking-[-0.045em]
-                  text-[#0B2A52]
-
-                  sm:text-[2.6rem]
-                  md:text-[2.95rem]
-                  lg:text-[3.1rem]
-                  xl:text-[3.35rem]
-                "
-              >
-                Looking for a Performance Marketing{" "}
-                <span
-                  className="
-                    font-serif
-                    font-normal
-                    italic
-                    text-[#4D82AE]
-                  "
-                >
-                  Partner?
-                </span>
-              </motion.h2>
-
-              {/* COPY */}
-
-              <motion.div
-                initial={{
-                  opacity: 0,
-                  y: reduceMotion ? 0 : 18,
-                }}
-                whileInView={{
-                  opacity: 1,
-                  y: 0,
-                }}
-                viewport={{
-                  once: true,
-                  amount: 0.55,
-                }}
-                transition={{
-                  duration: reduceMotion ? 0 : 0.7,
-                  delay: reduceMotion ? 0 : 0.12,
-                  ease,
-                }}
-                className="
-                  mx-auto
-                  mt-7
-                  max-w-[760px]
-                  space-y-4
-                  text-center
-                  text-[0.98rem]
-                  leading-[1.75]
-                  text-[#506981]
-                  sm:text-[1rem]
-                "
-              >
-                <p>
-                  Sharp Rays helps businesses plan, launch and optimize paid
-                  advertising around measurable objectives.
-                </p>
-
-                <p>
-                  From Google Ads and paid social to creative, conversion
-                  tracking and ongoing optimization, we build campaigns around
-                  what happens after the impression and after the click.
-                </p>
-              </motion.div>
-
-              {/* =================================================
-                  PROCESS SIGNAL
-              ================================================= */}
-
-              <motion.div
-                initial={{
-                  opacity: 0,
-                  y: reduceMotion ? 0 : 18,
-                }}
-                whileInView={{
-                  opacity: 1,
-                  y: 0,
-                }}
-                viewport={{
-                  once: true,
-                  amount: 0.55,
-                }}
-                transition={{
-                  duration: reduceMotion ? 0 : 0.72,
-                  delay: reduceMotion ? 0 : 0.18,
-                  ease,
-                }}
-                className="
-                  mx-auto
-                  mt-10
-                  grid
-                  max-w-[820px]
-                  gap-3
-
-                  sm:grid-cols-3
-                "
-              >
-                <AnswerSignal
-                  number="01"
-                  label="PLAN"
-                  text="Connect media decisions to the business objective."
-                  icon={Target}
-                />
-
-                <AnswerSignal
-                  number="02"
-                  label="LAUNCH"
-                  text="Put campaigns into market with clear measurement."
-                  icon={MousePointerClick}
-                />
-
-                <AnswerSignal
-                  number="03"
-                  label="OPTIMIZE"
-                  text="Use performance data to improve what happens next."
-                  icon={TrendingUp}
-                />
-              </motion.div>
-
-              {/* CTA */}
-
-              <motion.div
-                initial={{
-                  opacity: 0,
-                  y: reduceMotion ? 0 : 18,
-                }}
-                whileInView={{
-                  opacity: 1,
-                  y: 0,
-                }}
-                viewport={{
-                  once: true,
-                }}
-                transition={{
-                  duration: reduceMotion ? 0 : 0.65,
-                  delay: reduceMotion ? 0 : 0.24,
-                  ease,
-                }}
-                className="
-                  mt-10
-                  flex
-                  justify-center
-                "
-              >
-                <motion.a
-                  href="/contact"
-                  whileHover={
-                    reduceMotion
-                      ? undefined
-                      : {
-                          y: -3,
-                        }
-                  }
-                  whileTap={
-                    reduceMotion
-                      ? undefined
-                      : {
-                          scale: 0.98,
-                        }
-                  }
-                  className="
-                    group
-                    inline-flex
-                    items-center
-                    gap-3
-                    rounded-full
-                    bg-gradient-to-r
-                    from-[#0B2A52]
-                    via-[#0E4D84]
-                    to-[#176EA8]
-                    px-6
-                    py-3.5
-                    text-[0.72rem]
-                    font-semibold
-                    text-white
-                    shadow-[0_14px_35px_rgba(11,42,82,0.18)]
-                    transition-shadow
-                    duration-300
-                    hover:shadow-[0_18px_42px_rgba(11,42,82,0.24)]
-                  "
-                >
-                  Talk to a Performance Marketer
-
-                  <ArrowRight
-                    size={15}
-                    strokeWidth={1.8}
-                    className="
-                      transition-transform
-                      duration-300
-                      group-hover:translate-x-1
-                    "
-                  />
-                </motion.a>
-              </motion.div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
 
       {/* =====================================================
           SECTION 15 — FINAL CTA
@@ -450,67 +38,28 @@ export default function PerformanceMarketingFinalSections() {
           isolate
           overflow-hidden
           bg-white
-          py-20
-          sm:py-24
+          py-16
+
+          sm:py-20
+          md:py-24
           lg:py-28
           xl:py-32
         "
       >
         {/* ===================================================
-            CTA BACKGROUND
+            CLEAN WHITE BACKGROUND
         =================================================== */}
 
-        <div className="pointer-events-none absolute inset-0 -z-20 overflow-hidden">
-          <div
-            className="
-              absolute
-              inset-0
-              bg-[linear-gradient(145deg,#FFFFFF_0%,#F9FCFE_32%,#EAF4FB_68%,#F8FCFE_100%)]
-            "
-          />
-
-          <motion.div
-            animate={
-              reduceMotion
-                ? undefined
-                : {
-                    backgroundPosition: [
-                      "0% 30%",
-                      "100% 50%",
-                      "55% 100%",
-                      "0% 30%",
-                    ],
-                  }
-            }
-            transition={{
-              duration: 24,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-            style={{
-              backgroundImage: `
-                radial-gradient(
-                  ellipse at 50% 50%,
-                  rgba(123,181,220,0.18) 0%,
-                  rgba(206,230,247,0.12) 38%,
-                  transparent 68%
-                ),
-                radial-gradient(
-                  ellipse at 18% 70%,
-                  rgba(218,237,249,0.32) 0%,
-                  transparent 62%
-                ),
-                radial-gradient(
-                  ellipse at 88% 24%,
-                  rgba(185,220,243,0.28) 0%,
-                  transparent 60%
-                )
-              `,
-              backgroundSize: "160% 160%",
-            }}
-            className="absolute inset-0"
-          />
-        </div>
+        <div
+          aria-hidden="true"
+          className="
+            pointer-events-none
+            absolute
+            inset-0
+            -z-20
+            bg-white
+          "
+        />
 
         {/* ===================================================
             CONTENT
@@ -551,45 +100,17 @@ export default function PerformanceMarketingFinalSections() {
             className="
               relative
               mx-auto
-              max-w-[1120px]
-              overflow-hidden
-              rounded-[2.2rem]
-              border
-              border-[#AFC9DB]
-              bg-white/74
-              px-6
-              py-12
+              max-w-[1040px]
+
+              px-0
+              py-4
+
               text-center
-              shadow-[0_30px_95px_rgba(11,42,82,0.085)]
-              backdrop-blur-xl
 
-              sm:px-8
-              sm:py-14
-
-              lg:px-14
-              lg:py-16
+              sm:py-6
+              lg:py-8
             "
           >
-            {/* =================================================
-                SOFT INTERNAL LIGHT
-            ================================================= */}
-
-            <div
-              className="
-                pointer-events-none
-                absolute
-                left-1/2
-                top-1/2
-                h-[360px]
-                w-[720px]
-                -translate-x-1/2
-                -translate-y-1/2
-                rounded-full
-                bg-[#DDEFFA]/45
-                blur-[90px]
-              "
-            />
-
             <div className="relative z-10">
               {/* EYEBROW */}
 
@@ -616,7 +137,16 @@ export default function PerformanceMarketingFinalSections() {
                   gap-4
                 "
               >
-                <span className="h-px w-9 bg-[#6B9DC1]" />
+             <span
+            className="
+              h-px
+              w-10
+
+              bg-gradient-to-r
+              from-transparent
+              to-[#B79A72]
+            "
+          />
 
                 <span
                   className="
@@ -624,13 +154,22 @@ export default function PerformanceMarketingFinalSections() {
                     font-semibold
                     uppercase
                     tracking-[0.3em]
-                    text-[#487698]
+                    text-[#B79A72]
                   "
                 >
                   Your Next Move
                 </span>
 
-                <span className="h-px w-9 bg-[#6B9DC1]" />
+              <span
+            className="
+              h-px
+              w-10
+
+              bg-gradient-to-l
+              from-transparent
+              to-[#B79A72]
+            "
+          />
               </motion.div>
 
               {/* HEADING */}
@@ -658,7 +197,7 @@ export default function PerformanceMarketingFinalSections() {
                   mx-auto
                   mt-6
                   max-w-[900px]
-                  text-[2.3rem]
+                  text-[2.2rem]
                   font-medium
                   leading-[1.04]
                   tracking-[-0.045em]
@@ -676,7 +215,7 @@ export default function PerformanceMarketingFinalSections() {
                     font-serif
                     font-normal
                     italic
-                    text-[#4D82AE]
+                    text-[#B79A72]
                   "
                 >
                   Growth?
@@ -730,77 +269,7 @@ export default function PerformanceMarketingFinalSections() {
                 </p>
               </motion.div>
 
-              {/* =================================================
-                  GROWTH PATH
-              ================================================= */}
-
-              <motion.div
-                initial={{
-                  opacity: 0,
-                  y: reduceMotion ? 0 : 18,
-                }}
-                whileInView={{
-                  opacity: 1,
-                  y: 0,
-                }}
-                viewport={{
-                  once: true,
-                }}
-                transition={{
-                  duration: reduceMotion ? 0 : 0.7,
-                  delay: reduceMotion ? 0 : 0.18,
-                  ease,
-                }}
-                className="
-                  mx-auto
-                  mt-9
-                  flex
-                  max-w-[720px]
-                  flex-wrap
-                  items-center
-                  justify-center
-                  gap-x-3
-                  gap-y-3
-                "
-              >
-                <GrowthStep
-                  icon={Target}
-                  label="Reach"
-                />
-
-                <ArrowRight
-                  size={12}
-                  strokeWidth={1.8}
-                  className="text-[#8BA5B8]"
-                />
-
-                <GrowthStep
-                  icon={MousePointerClick}
-                  label="Convert"
-                />
-
-                <ArrowRight
-                  size={12}
-                  strokeWidth={1.8}
-                  className="text-[#8BA5B8]"
-                />
-
-                <GrowthStep
-                  icon={BarChart3}
-                  label="Optimize"
-                />
-
-                <ArrowRight
-                  size={12}
-                  strokeWidth={1.8}
-                  className="text-[#8BA5B8]"
-                />
-
-                <GrowthStep
-                  icon={TrendingUp}
-                  label="Scale"
-                />
-              </motion.div>
+             
 
               {/* CTA */}
 
@@ -822,21 +291,15 @@ export default function PerformanceMarketingFinalSections() {
                   ease,
                 }}
                 className="
-                  mt-10
+                  mt-8
                   flex
+
+                  sm:mt-10
                   justify-center
                 "
               >
                 <motion.a
                   href="/contact"
-                  whileHover={
-                    reduceMotion
-                      ? undefined
-                      : {
-                          y: -3,
-                          scale: 1.01,
-                        }
-                  }
                   whileTap={
                     reduceMotion
                       ? undefined
@@ -846,36 +309,96 @@ export default function PerformanceMarketingFinalSections() {
                   }
                   className="
                     group
+                    relative
+
                     inline-flex
+                    min-h-[46px]
+
                     items-center
-                    gap-3
-                    rounded-full
-                    bg-gradient-to-r
-                    from-[#0B2A52]
-                    via-[#0E4F86]
-                    to-[#1B75AD]
-                    px-7
-                    py-4
-                    text-[0.73rem]
-                    font-semibold
-                    text-white
-                    shadow-[0_16px_38px_rgba(11,42,82,0.2)]
-                    transition-shadow
+                    justify-center
+
+                    overflow-hidden
+
+                    rounded-[16px]
+
+                    border
+                    border-[#6285AD]/30
+
+                    bg-white/80
+
+                    px-5
+                    py-[11px]
+
+                    text-[13px]
+                    font-medium
+                    tracking-[-0.01em]
+                    text-[#0B2A52]
+
+                    shadow-[0_8px_30px_rgba(11,42,82,0.08)]
+
+                    backdrop-blur-[8px]
+
+                    transition-all
                     duration-300
-                    hover:shadow-[0_21px_48px_rgba(11,42,82,0.26)]
+                    ease-out
+
+                    hover:-translate-y-[2px]
+                    hover:border-[#6285AD]/40
+                    hover:bg-white
+                    hover:shadow-[0_10px_35px_rgba(98,133,173,0.15)]
+
+                    active:translate-y-0
+
+                    sm:min-h-[48px]
+                    sm:px-6
+                    sm:py-3
+                    sm:text-[14px]
+
+                    md:text-[15px]
                   "
                 >
-                  Start Growing With Paid Media
-
-                  <ArrowRight
-                    size={15}
-                    strokeWidth={1.9}
+                  {/* SOFT INNER BORDER */}
+                  <span
+                    aria-hidden="true"
                     className="
-                      transition-transform
-                      duration-300
-                      group-hover:translate-x-1
+                      pointer-events-none
+                      absolute
+                      inset-[2px]
+
+                      rounded-[13px]
+
+                      border
+                      border-white/60
                     "
                   />
+
+                  {/* INNER LIGHT */}
+                  <span
+                    aria-hidden="true"
+                    className="
+                      pointer-events-none
+                      absolute
+                      inset-x-4
+                      top-0
+
+                      h-px
+
+                      bg-gradient-to-r
+                      from-transparent
+                      via-white
+                      to-transparent
+                    "
+                  />
+
+                  <span
+                    className="
+                      relative
+                      z-10
+                      whitespace-nowrap
+                    "
+                  >
+                    Start Growing With Paid Media
+                  </span>
                 </motion.a>
               </motion.div>
 
@@ -913,27 +436,9 @@ export default function PerformanceMarketingFinalSections() {
                   "
                 />
 
-                <span
-                  className="
-                    text-[0.56rem]
-                    font-semibold
-                    uppercase
-                    tracking-[0.22em]
-                    text-[#66849B]
-                  "
-                >
-                  Reach · Convert · Optimize · Scale
-                </span>
+              
 
-                <span
-                  className="
-                    hidden
-                    h-px
-                    w-9
-                    bg-[#B4C9D8]
-                    sm:block
-                  "
-                />
+                
               </motion.div>
             </div>
           </motion.div>
@@ -1058,31 +563,37 @@ function GrowthStep({
   return (
     <div
       className="
-        flex
+        inline-flex
         items-center
         gap-2
-        rounded-full
-        border
-        border-[#C7DAE7]
-        bg-white/78
-        px-4
-        py-2.5
-        shadow-[0_6px_18px_rgba(11,42,82,0.04)]
-        backdrop-blur-md
       "
     >
-      <Icon
-        size={13}
-        strokeWidth={1.7}
-        className="text-[#1763A0]"
-      />
+      <span
+        className="
+          grid
+          h-7
+          w-7
+          place-items-center
+
+          rounded-full
+
+          bg-[#EEF6FB]
+
+          text-[#1763A0]
+        "
+      >
+        <Icon
+          size={12}
+          strokeWidth={1.7}
+        />
+      </span>
 
       <span
         className="
           text-[0.52rem]
           font-semibold
           uppercase
-          tracking-[0.16em]
+          tracking-[0.15em]
           text-[#476A85]
         "
       >

@@ -21,6 +21,16 @@ import {
    SERVICES DATA
 ========================================================= */
 
+type ServiceTone =
+  | "sky"
+  | "mint"
+  | "peach"
+  | "lavender"
+  | "gold"
+  | "blue"
+  | "rose"
+  | "cyan";
+
 type Service = {
   number: string;
   title: string;
@@ -28,7 +38,8 @@ type Service = {
   description: string;
   items: string[];
   icon: LucideIcon;
-  tone: "blue" | "warm";
+  tone: ServiceTone;
+  href: string;
   note?: string;
   noteLabel?: string;
   wide?: boolean;
@@ -54,7 +65,8 @@ const services: Service[] = [
       "Measurement requirements",
     ],
     icon: Target,
-    tone: "blue",
+    tone: "sky",
+    href: "/services/performance-marketing/paid-media-strategy",
   },
   {
     number: "02",
@@ -74,7 +86,8 @@ const services: Service[] = [
     note:
       "Campaign selection depends on your business, available data and advertising objectives.",
     icon: Search,
-    tone: "warm",
+    tone: "mint",
+    href: "/services/performance-marketing/google-ads-management",
     brand: "google",
   },
   {
@@ -94,7 +107,8 @@ const services: Service[] = [
       "Creative testing",
     ],
     icon: Megaphone,
-    tone: "blue",
+    tone: "peach",
+    href: "/services/performance-marketing/paid-social-advertising",
     brand: "social",
   },
   {
@@ -117,7 +131,8 @@ const services: Service[] = [
     note:
       "We develop creative around the audience, offer and stage of the journey rather than simply producing more variations.",
     icon: Images,
-    tone: "warm",
+    tone: "lavender",
+    href: "/services/performance-marketing/performance-creative",
   },
   {
     number: "05",
@@ -139,7 +154,8 @@ const services: Service[] = [
       "Make the next action easier to understand and easier to take.",
     noteLabel: "THE OBJECTIVE",
     icon: MousePointerClick,
-    tone: "blue",
+    tone: "gold",
+    href: "/services/performance-marketing/landing-page-optimization",
   },
   {
     number: "06",
@@ -160,7 +176,8 @@ const services: Service[] = [
     note:
       "Measurement gives campaigns stronger information for understanding performance and deciding what should be optimized next.",
     icon: BarChart3,
-    tone: "warm",
+    tone: "blue",
+    href: "/services/performance-marketing/conversion-tracking",
   },
   {
     number: "07",
@@ -178,7 +195,8 @@ const services: Service[] = [
     note:
       "Where appropriate, we use retargeting as part of the wider customer journey rather than repeatedly showing the same message to everyone.",
     icon: RefreshCcw,
-    tone: "blue",
+    tone: "rose",
+    href: "/services/performance-marketing/retargeting",
   },
   {
     number: "08",
@@ -200,7 +218,8 @@ const services: Service[] = [
     note:
       "The objective is continuous improvement rather than constant activity.",
     icon: TrendingUp,
-    tone: "warm",
+    tone: "cyan",
+    href: "/services/performance-marketing/campaign-optimization",
     wide: true,
   },
 ];
@@ -232,102 +251,16 @@ export default function PerformanceMarketingServices() {
           BACKGROUND DECORATION
       ===================================================== */}
 
-      <div className="pointer-events-none absolute inset-0 -z-20">
+      <div className="pointer-events-none absolute inset-0 -z-20 hidden sm:block">
         {/* left warm shape */}
-        <div
-          className="
-            absolute
-            -left-[150px]
-            top-[40px]
-            h-[310px]
-            w-[310px]
-            rounded-full
-            bg-[#F7F0E7]
-            opacity-80
-          "
-        />
+       
+       
 
-        {/* top right blue shape */}
-        <div
-          className="
-            absolute
-            right-[4%]
-            top-[-120px]
-            h-[360px]
-            w-[440px]
-            rotate-[18deg]
-            rounded-[90px]
-            bg-[#EAF3F9]
-            opacity-80
-          "
-        />
+      
 
-        {/* right rings */}
-        <div
-          className="
-            absolute
-            -right-[230px]
-            top-[250px]
-            h-[500px]
-            w-[500px]
-            rounded-full
-            border
-            border-[#8DB5D2]/30
-          "
-        />
+      
 
-        <div
-          className="
-            absolute
-            -right-[180px]
-            top-[300px]
-            h-[400px]
-            w-[400px]
-            rounded-full
-            border
-            border-[#8DB5D2]/25
-          "
-        />
-
-        <div
-          className="
-            absolute
-            bottom-[-230px]
-            right-[-140px]
-            h-[480px]
-            w-[480px]
-            rounded-full
-            border
-            border-[#B88652]/35
-          "
-        />
-
-        <div
-          className="
-            absolute
-            bottom-[-170px]
-            right-[-90px]
-            h-[380px]
-            w-[380px]
-            rounded-full
-            border
-            border-[#8DB5D2]/25
-          "
-        />
-
-        {/* soft glow */}
-        <div
-          className="
-            absolute
-            left-[18%]
-            top-[240px]
-            h-[380px]
-            w-[480px]
-            rounded-full
-            bg-[#EAF4FB]/55
-            blur-[130px]
-          "
-        />
+      
       </div>
 
       <div
@@ -384,20 +317,39 @@ export default function PerformanceMarketingServices() {
                 gap-4
               "
             >
-              <span className="h-px w-8 bg-[#B47B45]" />
+             <span
+            className="
+              h-px
+              w-10
+
+              bg-gradient-to-r
+              from-transparent
+              to-[#B79A72]
+            "
+          />
 
               <span
                 className="
                   text-[0.66rem]
-                  font-semibold
+                 
                   uppercase
                   tracking-[0.3em]
-                  text-[#365F8F]
+                  text-[#B79A72]
                   sm:text-[0.7rem]
                 "
               >
                 Our Performance Marketing Services
               </span>
+              <span
+            className="
+              h-px
+              w-10
+
+              bg-gradient-to-l
+              from-transparent
+              to-[#B79A72]
+            "
+          />
             </motion.div>
 
             <motion.h2
@@ -447,7 +399,7 @@ export default function PerformanceMarketingServices() {
                   font-normal
                   italic
                   tracking-[-0.025em]
-                  text-[#B38150]
+                  text-[#B79A72]
                 "
               >
                 Connected.
@@ -494,69 +446,9 @@ export default function PerformanceMarketingServices() {
               </p>
             </motion.div>
 
-            <motion.div
-              initial={
-                reduceMotion
-                  ? false
-                  : {
-                      opacity: 0,
-                      scaleX: 0,
-                    }
-              }
-              whileInView={{
-                opacity: 1,
-                scaleX: 1,
-              }}
-              viewport={{
-                once: true,
-                amount: 0.8,
-              }}
-              transition={{
-                duration: reduceMotion ? 0 : 0.8,
-                delay: reduceMotion ? 0 : 0.25,
-                ease,
-              }}
-              className="
-                mt-7
-                h-px
-                max-w-[460px]
-                origin-left
-                bg-gradient-to-r
-                from-[#0B447D]
-                via-[#82A7C6]
-                to-transparent
-              "
-            />
+           
 
-            <motion.p
-              initial={
-                reduceMotion
-                  ? false
-                  : {
-                      opacity: 0,
-                    }
-              }
-              whileInView={{
-                opacity: 1,
-              }}
-              viewport={{
-                once: true,
-              }}
-              transition={{
-                duration: reduceMotion ? 0 : 0.7,
-                delay: reduceMotion ? 0 : 0.34,
-              }}
-              className="
-                mt-5
-                text-[0.6rem]
-                font-semibold
-                uppercase
-                tracking-[0.25em]
-                text-[#365D87]
-              "
-            >
-              Strategy · Execution · Optimization · Growth
-            </motion.p>
+           
           </div>
 
           {/* =====================================================
@@ -572,8 +464,12 @@ export default function PerformanceMarketingServices() {
 
         <div
           className="
-            mt-20
+            mt-12
             grid
+            items-start
+
+            sm:mt-16
+            lg:mt-20
             gap-5
             md:grid-cols-2
             lg:grid-cols-3
@@ -589,64 +485,7 @@ export default function PerformanceMarketingServices() {
           ))}
         </div>
 
-        {/* =====================================================
-            BOTTOM DECORATIVE MESSAGE
-        ===================================================== */}
-
-        <motion.div
-          initial={
-            reduceMotion
-              ? false
-              : {
-                  opacity: 0,
-                  y: 20,
-                }
-          }
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
-          viewport={{
-            once: true,
-            amount: 0.6,
-          }}
-          transition={{
-            duration: reduceMotion ? 0 : 0.7,
-            ease,
-          }}
-          className="
-            ml-auto
-            mt-12
-            hidden
-            w-fit
-            items-start
-            gap-5
-            lg:flex
-          "
-        >
-          <span className="mt-2 h-px w-10 bg-[#B38150]" />
-
-          <p
-            className="
-              text-[0.58rem]
-              font-semibold
-              uppercase
-              leading-[1.8]
-              tracking-[0.26em]
-              text-[#42668E]
-            "
-          >
-            Strategy
-            <br />
-            Ads
-            <br />
-            Creative
-            <br />
-            Conversions
-            <br />
-            Growth
-          </p>
-        </motion.div>
+       
       </div>
     </section>
   );
@@ -691,6 +530,9 @@ function PerformanceDashboard({
       className="
         relative
         mx-auto
+
+        hidden
+        sm:block
         min-h-[390px]
         w-full
         max-w-[650px]
@@ -1113,91 +955,9 @@ function PerformanceDashboard({
         </div>
       </motion.div>
 
-      {/* gold conversion block */}
-      <motion.div
-        animate={
-          reduceMotion
-            ? undefined
-            : {
-                y: [0, -7, 0],
-              }
-        }
-        transition={{
-          duration: 6.4,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        className="
-          absolute
-          bottom-[55px]
-          right-0
-          z-30
-          hidden
-          w-[145px]
-          rounded-[18px]
-          bg-gradient-to-br
-          from-[#B89565]
-          to-[#9E7748]
-          p-4
-          text-white
-          shadow-[0_18px_45px_rgba(110,77,41,0.20)]
-          sm:block
-        "
-      >
-        <p
-          className="
-            font-serif
-            text-[1.02rem]
-            font-medium
-            leading-[1.1]
-          "
-        >
-          More
-          <br />
-          Customers
-        </p>
+   
 
-        <div
-          className="
-            mt-3
-            flex
-            items-center
-            justify-between
-          "
-        >
-          <span className="text-[0.52rem] text-white/80">
-            Real Growth
-          </span>
-
-          <span
-            className="
-              grid
-              h-7
-              w-7
-              place-items-center
-              rounded-full
-              bg-[#F0D7B3]
-              text-[#76542F]
-            "
-          >
-            <ArrowRight size={12} />
-          </span>
-        </div>
-      </motion.div>
-
-      {/* small dot */}
-      <div
-        className="
-          absolute
-          bottom-[38px]
-          left-[2%]
-          h-10
-          w-10
-          rounded-full
-          bg-[#DCE8F1]
-          shadow-[inset_0_0_15px_rgba(11,42,82,0.04)]
-        "
-      />
+     
     </motion.div>
   );
 }
@@ -1269,8 +1029,7 @@ function ServiceCard({
 }) {
   const Icon = service.icon;
   const ease = [0.22, 1, 0.36, 1] as const;
-
-  const isBlue = service.tone === "blue";
+  const theme = getServiceCardTheme(service.tone);
 
   return (
     <motion.article
@@ -1313,37 +1072,24 @@ function ServiceCard({
         group
         relative
         flex
-        min-h-[620px]
+        self-start
         flex-col
         overflow-hidden
         rounded-[20px]
         border
-        p-6
+        p-5
         transition-all
         duration-500
-        sm:p-7
 
-        ${
-          isBlue
-            ? `
-                border-[#C6DCEB]
-                bg-[#F3F9FD]
-                hover:border-[#78A9CB]
-                hover:shadow-[0_22px_60px_rgba(24,92,143,0.11)]
-              `
-            : `
-                border-[#E2D5C6]
-                bg-[#FCF9F5]
-                hover:border-[#C29A6C]
-                hover:shadow-[0_22px_60px_rgba(126,85,43,0.10)]
-              `
-        }
+        sm:p-6
+        lg:p-7
+
+        ${theme.card}
 
         ${
           service.wide
             ? `
                 lg:col-span-2
-                lg:min-h-[430px]
               `
             : ""
         }
@@ -1365,28 +1111,11 @@ function ServiceCard({
           duration-500
           group-hover:opacity-100
 
-          ${
-            isBlue
-              ? "bg-[#BFDDF1]/70"
-              : "bg-[#EBD5BB]/60"
-          }
+          ${theme.glow}
         `}
       />
 
-      {/* number */}
-      <span
-        className="
-          absolute
-          right-5
-          top-5
-          font-serif
-          text-[0.85rem]
-          text-[#697D90]
-        "
-      >
-        {service.number}
-      </span>
-
+    
       {/* icon / brand */}
       <div className="relative z-10">
         {service.brand === "google" ? (
@@ -1401,15 +1130,12 @@ function ServiceCard({
               w-14
               place-items-center
               rounded-full
-              border
-              bg-white
               shadow-[0_7px_18px_rgba(11,42,82,0.06)]
+              transition-all
+              duration-300
+              group-hover:scale-105
 
-              ${
-                isBlue
-                  ? "border-[#BED7E8] text-[#0B477B]"
-                  : "border-[#E2D3C3] text-[#0B3766]"
-              }
+              ${theme.icon}
             `}
           >
             <Icon size={25} strokeWidth={1.65} />
@@ -1422,7 +1148,7 @@ function ServiceCard({
         className="
           relative
           z-10
-          mt-5
+          mt-4
           max-w-[430px]
           font-serif
           text-[1.42rem]
@@ -1454,7 +1180,7 @@ function ServiceCard({
         className="
           relative
           z-10
-          mt-4
+          mt-3
           max-w-[540px]
           text-[0.84rem]
           leading-[1.55]
@@ -1469,7 +1195,7 @@ function ServiceCard({
         className={`
           relative
           z-10
-          mt-5
+          mt-4
           grid
           gap-x-8
           gap-y-1.5
@@ -1520,7 +1246,7 @@ function ServiceCard({
             className="
               relative
               z-10
-              mt-5
+              mt-4
               flex
               gap-3
               rounded-[15px]
@@ -1576,7 +1302,7 @@ function ServiceCard({
             className="
               relative
               z-10
-              mt-5
+              mt-4
               text-[0.73rem]
               leading-[1.5]
               text-[#687E92]
@@ -1586,28 +1312,43 @@ function ServiceCard({
           </p>
         ))}
 
-      {/* bottom */}
+      {/* bottom actions */}
       <div
         className="
           relative
           z-10
-          mt-auto
+
+          mt-6
+
           flex
           items-center
           justify-between
-          pt-7
+          gap-4
+
+          border-t
+          border-[#0B2A52]/[0.07]
+
+          pt-5
         "
       >
+        {/* Every Learn More goes to its own service page */}
         <a
-          href="#contact"
+          href={service.href}
           className="
             group/link
+
             inline-flex
             items-center
-            gap-3
+            gap-2.5
+
             text-[0.76rem]
             font-semibold
             text-[#0B315D]
+
+            transition-colors
+            duration-300
+
+            hover:text-[#0B2A52]
           "
         >
           Learn More
@@ -1618,37 +1359,162 @@ function ServiceCard({
             className="
               transition-transform
               duration-300
+
               group-hover/link:translate-x-1
             "
           />
         </a>
 
-        <span
+        {/* Colored arrow always goes to Contact */}
+        <a
+          href="/contact"
+          aria-label={`Contact Sharp Rays about ${service.title}`}
           className={`
+            group/contact
+
             grid
             h-9
             w-9
+            shrink-0
             place-items-center
+
             rounded-full
+
             text-white
+
             shadow-[0_8px_20px_rgba(11,42,82,0.12)]
+
             transition-all
             duration-300
-            group-hover:rotate-[-8deg]
-            group-hover:scale-105
 
-            ${
-              isBlue
-                ? "bg-[#274E73]"
-                : "bg-[#B38A52]"
-            }
+            hover:-translate-y-0.5
+            hover:scale-105
+
+            ${theme.arrow}
           `}
         >
-          <ArrowRight size={14} strokeWidth={1.7} />
-        </span>
+          <ArrowRight
+            size={14}
+            strokeWidth={1.7}
+            className="
+              transition-transform
+              duration-300
+
+              group-hover/contact:translate-x-0.5
+            "
+          />
+        </a>
       </div>
     </motion.article>
   );
+}
+
+/* =========================================================
+   SERVICE CARD THEMES
+   Same color system used in the Deliverables section
+========================================================= */
+
+function getServiceCardTheme(tone: ServiceTone) {
+  const tones: Record<
+    ServiceTone,
+    {
+      card: string;
+      icon: string;
+      arrow: string;
+      glow: string;
+      line: string;
+    }
+  > = {
+    sky: {
+      card:
+        "border-[#AFCFE6] bg-gradient-to-br from-[#FBFEFF] via-[#F2F8FD] to-[#EAF5FC] hover:border-[#78ACD3] hover:shadow-[0_20px_50px_rgba(44,128,194,0.11)]",
+      icon:
+        "bg-gradient-to-br from-[#DCEFFD] to-[#B9DDF7] text-[#1261A1]",
+      arrow:
+        "bg-gradient-to-br from-[#4DA1EF] to-[#2475CE]",
+      glow: "bg-[#AAD7F6]",
+      line: "bg-[#5B9ED0]",
+    },
+
+    mint: {
+      card:
+        "border-[#B5D9D0] bg-gradient-to-br from-[#FCFFFE] via-[#F2FAF7] to-[#EAF7F3] hover:border-[#7DBCA9] hover:shadow-[0_20px_50px_rgba(50,143,119,0.09)]",
+      icon:
+        "bg-gradient-to-br from-[#DCF5ED] to-[#B5E5D7] text-[#167A69]",
+      arrow:
+        "bg-gradient-to-br from-[#248F7B] to-[#0D6D62]",
+      glow: "bg-[#B8E7DA]",
+      line: "bg-[#54A995]",
+    },
+
+    peach: {
+      card:
+        "border-[#E5C8B4] bg-gradient-to-br from-[#FFFDFC] via-[#FFF7F2] to-[#FCEFE6] hover:border-[#D3976F] hover:shadow-[0_20px_50px_rgba(183,112,56,0.09)]",
+      icon:
+        "bg-gradient-to-br from-[#FFE7D6] to-[#F8C6A4] text-[#B85E28]",
+      arrow:
+        "bg-gradient-to-br from-[#E19A60] to-[#C36A31]",
+      glow: "bg-[#F5CFB4]",
+      line: "bg-[#D28B56]",
+    },
+
+    lavender: {
+      card:
+        "border-[#CEC4EA] bg-gradient-to-br from-[#FEFDFF] via-[#F8F6FE] to-[#F0EDFC] hover:border-[#A897DD] hover:shadow-[0_20px_50px_rgba(103,78,197,0.09)]",
+      icon:
+        "bg-gradient-to-br from-[#EEE9FF] to-[#CBBFF6] text-[#654CD0]",
+      arrow:
+        "bg-gradient-to-br from-[#7B64E9] to-[#5C43D2]",
+      glow: "bg-[#D5CBF7]",
+      line: "bg-[#8B76D8]",
+    },
+
+    gold: {
+      card:
+        "border-[#E5D2A9] bg-gradient-to-br from-[#FFFDF8] via-[#FFF8EB] to-[#FCF2DC] hover:border-[#D1A759] hover:shadow-[0_20px_50px_rgba(171,126,48,0.09)]",
+      icon:
+        "bg-gradient-to-br from-[#FFF0C7] to-[#F0CE88] text-[#AD791A]",
+      arrow:
+        "bg-gradient-to-br from-[#DFAA46] to-[#BE8422]",
+      glow: "bg-[#F1D9A1]",
+      line: "bg-[#D3A449]",
+    },
+
+    blue: {
+      card:
+        "border-[#B7D3E9] bg-gradient-to-br from-[#FCFEFF] via-[#F2F8FD] to-[#E9F4FB] hover:border-[#7CAFDA] hover:shadow-[0_20px_50px_rgba(41,116,184,0.10)]",
+      icon:
+        "bg-gradient-to-br from-[#DCECFB] to-[#AFCFF4] text-[#1B63CA]",
+      arrow:
+        "bg-gradient-to-br from-[#438FED] to-[#246DDA]",
+      glow: "bg-[#B5D6F7]",
+      line: "bg-[#548CC6]",
+    },
+
+    rose: {
+      card:
+        "border-[#E8C3C8] bg-gradient-to-br from-[#FFFDFD] via-[#FFF5F6] to-[#FBECEE] hover:border-[#DA8D97] hover:shadow-[0_20px_50px_rgba(189,75,88,0.08)]",
+      icon:
+        "bg-gradient-to-br from-[#FFE1E4] to-[#F5B9C0] text-[#B83E4E]",
+      arrow:
+        "bg-gradient-to-br from-[#ED6877] to-[#D7485A]",
+      glow: "bg-[#F6C6CC]",
+      line: "bg-[#DB7B86]",
+    },
+
+    cyan: {
+      card:
+        "border-[#B8DBEA] bg-gradient-to-br from-[#FCFEFF] via-[#F1F9FD] to-[#E8F6FC] hover:border-[#7DBCD8] hover:shadow-[0_20px_50px_rgba(32,139,192,0.09)]",
+      icon:
+        "bg-gradient-to-br from-[#DDF4FC] to-[#ACE0F3] text-[#12699D]",
+      arrow:
+        "bg-gradient-to-br from-[#2DA8DC] to-[#1685BC]",
+      glow: "bg-[#B7E4F5]",
+      line: "bg-[#55A8CC]",
+    },
+  };
+
+  return tones[tone];
 }
 
 /* =========================================================

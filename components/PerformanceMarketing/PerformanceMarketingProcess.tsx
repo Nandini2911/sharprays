@@ -133,57 +133,10 @@ export default function PerformanceMarketingProcess() {
           PREMIUM BACKGROUND
       ===================================================== */}
 
-      <div className="pointer-events-none absolute inset-0 -z-20 overflow-hidden">
-        <div
-          className="
-            absolute
-            inset-0
-            bg-[linear-gradient(135deg,#FFFFFF_0%,#FBFDFE_34%,#F2F8FC_72%,#FFFFFF_100%)]
-          "
-        />
+    
+        
 
-        <motion.div
-          animate={
-            reduceMotion
-              ? undefined
-              : {
-                  backgroundPosition: [
-                    "0% 35%",
-                    "100% 50%",
-                    "65% 100%",
-                    "0% 35%",
-                  ],
-                }
-          }
-          transition={{
-            duration: 28,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          style={{
-            backgroundImage: `
-              radial-gradient(
-                ellipse at 18% 22%,
-                rgba(207,231,248,0.42) 0%,
-                transparent 62%
-              ),
-              radial-gradient(
-                ellipse at 82% 64%,
-                rgba(210,232,247,0.34) 0%,
-                transparent 64%
-              ),
-              radial-gradient(
-                ellipse at 50% 100%,
-                rgba(233,244,251,0.5) 0%,
-                transparent 66%
-              )
-            `,
-            backgroundSize: "160% 160%",
-          }}
-          className="absolute inset-0"
-        />
-      </div>
-
+       
       {/* =====================================================
           CONTAINER
       ===================================================== */}
@@ -230,22 +183,39 @@ export default function PerformanceMarketingProcess() {
               gap-4
             "
           >
-            <span className="h-px w-9 bg-[#6EA3C8]" />
+         <span
+            className="
+              h-px
+              w-10
+
+              bg-gradient-to-r
+              from-transparent
+              to-[#B79A72]
+            "
+          />
 
             <span
               className="
                 text-[0.66rem]
-                font-semibold
-                uppercase
+                 uppercase
                 tracking-[0.3em]
-                text-[#46779D]
+                text-[#B79A72]
                 sm:text-[0.7rem]
               "
             >
               Your Experience
             </span>
 
-            <span className="h-px w-9 bg-[#6EA3C8]" />
+      <span
+            className="
+              h-px
+              w-10
+
+              bg-gradient-to-l
+              from-transparent
+              to-[#B79A72]
+            "
+          />
           </motion.div>
 
           <motion.h2
@@ -287,7 +257,7 @@ export default function PerformanceMarketingProcess() {
                 font-serif
                 font-normal
                 italic
-                text-[#4D82AE]
+                text-[#B79A72]
               "
             >
               Better Performance.

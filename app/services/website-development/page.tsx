@@ -11,11 +11,9 @@ import WebsiteDevelopmentTrustSignalItem from "@/components/WebsiteDevelopment/W
 import WebsiteDevlopmentSeoAiSearchFoundation from "@/components/WebsiteDevelopment/websiteDevlopmentSeoAiSearchFoundation";
 import WebsiteFinalSections from "@/components/WebsiteDevelopment/WebsiteFinalSections";
 import WebsiteFrameworkSection from "@/components/WebsiteDevelopment/WebsiteFrameworkSection";
-import WebsiteJourneySection from "@/components/WebsiteDevelopment/WebsiteJourneySection";
 import WebsitePerformanceSection from "@/components/WebsiteDevelopment/WebsitePerformanceSection";
 import WebsitePointOfViewSection from "@/components/WebsiteDevelopment/WebsitePointOfViewSection";
 import WebsiteProblemSection from "@/components/WebsiteDevelopment/WebsiteProblemSection";
-import WhoWebsiteDevelopmentIsFor from "@/components/WebsiteDevelopment/WhoIsWebsiteDevelopmentFor";
 
 
 
@@ -27,15 +25,14 @@ export default function WebsiteDevelopment() {
        <WebsiteDevelopmentExplained />
        <WebsitePointOfViewSection />
         <WebsiteProblemSection/>
-        <WebsiteJourneySection />
+       
         <WebsiteDevelopmentServicesSection />
         <WebsitePerformanceSection />
         <WebsiteDevlopmentSeoAiSearchFoundation />
         <WebsiteDevelopmentTrustSignalItem />
         <WebsiteFrameworkSection  />
         <WebsiteDeliverablesSection />
-        <WhoWebsiteDevelopmentIsFor />
-        <WebsiteDevelopmentPricing/>
+      
         <WebsiteDevelopmentFAQs />
         <WebsiteFinalSections />
        

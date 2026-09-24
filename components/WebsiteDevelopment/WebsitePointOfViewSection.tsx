@@ -374,21 +374,41 @@ export default function WebsiteProblemSection() {
           {/* LABEL */}
 
           <div className="flex items-center justify-center gap-4">
-            <span className="h-px w-10 bg-[#B79A72]" />
+          <span
+            className="
+              h-px
+              w-10
+
+              bg-gradient-to-r
+              from-transparent
+              to-[#B79A72]
+            "
+          />
+
 
             <span
               className="
                 text-[0.58rem]
-                font-semibold
+               
                 uppercase
                 tracking-[0.3em]
-                text-[#0B2A52]
+                text-[#B79A72]
+                text-[10px]
               "
             >
               The Problem
             </span>
 
-            <span className="h-px w-10 bg-[#B79A72]" />
+   <span
+            className="
+              h-px
+              w-10
+
+              bg-gradient-to-l
+              from-transparent
+              to-[#B79A72]
+            "
+          />
           </div>
 
           {/* HEADING */}
@@ -419,7 +439,7 @@ export default function WebsiteProblemSection() {
               className="
                 font-serif
                 font-normal
-                text-[#B18458]
+                text-[#B79A72]
               "
             >
               Work Against Your Business.

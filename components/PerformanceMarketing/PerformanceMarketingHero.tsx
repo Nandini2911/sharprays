@@ -28,166 +28,14 @@ export default function PerformanceMarketingHero() {
       className="
         relative
         isolate
-        min-h-screen
+        min-h-0
         overflow-hidden
-        bg-[#FCFDFC]
+        bg-white
+
+        lg:min-h-screen
       "
     >
-      {/* =========================================================
-          CLEAN PREMIUM BACKGROUND
-      ========================================================= */}
-
-      <div className="pointer-events-none absolute inset-0 -z-20 overflow-hidden">
-        {/* BASE */}
-
-        <div
-          className="
-            absolute
-            inset-0
-            bg-[#FCFDFC]
-          "
-        />
-
-        {/* SOFT RIGHT BLUE ATMOSPHERE */}
-
-        <div
-          className="
-            absolute
-            inset-y-0
-            right-0
-            w-[62%]
-
-            bg-gradient-to-l
-            from-[#EAF4FC]/80
-            via-[#F2F8FD]/55
-            to-transparent
-          "
-        />
-
-        {/* CENTER TRANSITION */}
-
-        <div
-          className="
-            absolute
-            inset-y-0
-            left-[36%]
-            w-[34%]
-
-            bg-gradient-to-r
-            from-transparent
-            via-[#EEF6FC]/45
-            to-transparent
-          "
-        />
-
-        {/* TOP SOFT LIGHT */}
-
-        <div
-          className="
-            absolute
-            inset-x-0
-            top-0
-            h-[230px]
-
-            bg-gradient-to-b
-            from-[#EAF4FC]/55
-            via-[#F5FAFE]/20
-            to-transparent
-          "
-        />
-
-        {/* BOTTOM SOFT DEPTH */}
-
-        <div
-          className="
-            absolute
-            inset-x-0
-            bottom-0
-            h-[260px]
-
-            bg-gradient-to-t
-            from-[#EAF4FC]/55
-            via-[#F6FAFD]/20
-            to-transparent
-          "
-        />
-
-        {/* RIGHT VISUAL FOCUS LIGHT */}
-
-        <div
-          className="
-            absolute
-            right-[1%]
-            top-[18%]
-
-            h-[62%]
-            w-[48%]
-
-            bg-gradient-to-br
-            from-[#DCECF9]/28
-            via-[#EDF6FD]/18
-            to-transparent
-
-            blur-[70px]
-          "
-        />
-
-        {/* SUBTLE CENTER LIGHT */}
-
-        <div
-          className="
-            absolute
-            left-[43%]
-            top-[16%]
-
-            h-[68%]
-            w-[44%]
-
-            bg-gradient-to-br
-            from-white/10
-            via-white/55
-            to-[#E5F2FB]/18
-
-            blur-[65px]
-          "
-        />
-
-        {/* VERY SOFT LEFT FADE */}
-
-        <div
-          className="
-            absolute
-            bottom-[8%]
-            left-[-10%]
-
-            h-[330px]
-            w-[52%]
-
-            bg-gradient-to-r
-            from-[#EEF6FC]/45
-            to-transparent
-
-            blur-[80px]
-          "
-        />
-
-        {/* FINE HORIZONTAL LIGHT DIVIDER */}
-
-        <div
-          className="
-            absolute
-            inset-x-[5%]
-            bottom-[12%]
-
-            h-px
-
-            bg-gradient-to-r
-            from-transparent
-            via-[#D7E4EF]/70
-            to-transparent
-          "
-        />
-      </div>
+      
 
       {/* =========================================================
           MAIN CONTAINER
@@ -197,19 +45,24 @@ export default function PerformanceMarketingHero() {
         className="
           mx-auto
           flex
-          min-h-screen
+          min-h-0
           w-full
           max-w-[1480px]
           items-center
 
-          px-5
-          pb-16
-          pt-28
+          px-4
+          pb-12
+          pt-24
 
-          sm:px-8
-          sm:pb-20
-          sm:pt-32
+          sm:px-6
+          sm:pb-16
+          sm:pt-28
 
+          md:px-8
+          md:pb-20
+          md:pt-32
+
+          lg:min-h-screen
           lg:px-10
           lg:pb-24
           lg:pt-36
@@ -222,7 +75,10 @@ export default function PerformanceMarketingHero() {
             grid
             w-full
             items-center
-            gap-16
+            gap-10
+
+            sm:gap-12
+            md:gap-14
 
             lg:grid-cols-[0.93fr_1.07fr]
             lg:gap-12
@@ -234,7 +90,7 @@ export default function PerformanceMarketingHero() {
               LEFT CONTENT
           ===================================================== */}
 
-          <div className="relative z-10 max-w-[690px]">
+          <div className="relative z-10 mx-auto w-full max-w-[690px] lg:mx-0">
             {/* EYEBROW */}
 
             <motion.div
@@ -256,26 +112,54 @@ export default function PerformanceMarketingHero() {
               }}
               transition={transition}
               className="
-                mb-7
+                mb-5
                 flex
                 items-center
-                gap-4
+                gap-3
+
+                sm:mb-6
+                sm:gap-4
+
+                lg:mb-7
               "
             >
-              <span className="h-px w-10 bg-[#B98654]" />
+           <span
+            className="
+              h-px
+              w-10
+
+              bg-gradient-to-r
+              from-transparent
+              to-[#B79A72]
+            "
+          />
 
               <span
                 className="
-                  text-[0.68rem]
-                  font-semibold
-                  tracking-[0.28em]
-                  text-[#A36E3E]
+                  text-[0.58rem]
+          
+                  tracking-[0.21em]
+                  text-[#B79A72]
 
-                  sm:text-[0.72rem]
+                  sm:text-[0.66rem]
+                  sm:tracking-[0.26em]
+
+                  md:text-[0.72rem]
+                  md:tracking-[0.28em]
                 "
               >
                 PERFORMANCE MARKETING
               </span>
+               <span
+            className="
+              h-px
+              w-10
+
+              bg-gradient-to-l
+              from-transparent
+              to-[#B79A72]
+            "
+          />
             </motion.div>
 
             {/* =====================================================
@@ -307,7 +191,7 @@ export default function PerformanceMarketingHero() {
               className="
                 max-w-[650px]
 
-                text-[2.3rem]
+                text-[2.2rem]
                 font-medium
                 leading-[1.04]
                 tracking-[-0.045em]
@@ -322,15 +206,13 @@ export default function PerformanceMarketingHero() {
               Turn Reach Into{" "}
               <span
                 className="
-                  relative
-                  inline-block
+             
+                
 
-                  font-serif
-                  font-normal
-                  italic
+                 
                   tracking-[-0.025em]
 
-                  text-[#B67D49]
+                  text-[#B79A72]
                 "
               >
                 Results.
@@ -397,15 +279,20 @@ export default function PerformanceMarketingHero() {
                 delay: reduceMotion ? 0 : 0.16,
               }}
               className="
-                mt-7
+                mt-6
                 max-w-[620px]
-                space-y-4
+                space-y-3
 
-                text-[0.98rem]
-                leading-[1.75]
+                text-[0.9rem]
+                leading-[1.7]
                 text-[#405A79]
 
-                sm:text-[1rem]
+                sm:mt-7
+                sm:space-y-4
+                sm:text-[0.98rem]
+                sm:leading-[1.75]
+
+                md:text-[1rem]
               "
             >
               <p>
@@ -448,10 +335,13 @@ export default function PerformanceMarketingHero() {
               }}
               className="
                 relative
-                mt-7
+                mt-6
                 border-l-2
                 border-[#B78350]
-                pl-5
+                pl-4
+
+                sm:mt-7
+                sm:pl-5
               "
             >
               <div
@@ -463,7 +353,9 @@ export default function PerformanceMarketingHero() {
                   gap-x-3
                   gap-y-1.5
 
-                  text-[0.92rem]
+                  text-[0.84rem]
+
+                  sm:text-[0.92rem]
                   font-medium
                   text-[#234468]
                 "
@@ -490,7 +382,9 @@ export default function PerformanceMarketingHero() {
                   mt-1
 
                   font-serif
-                  text-[1.08rem]
+                  text-[1rem]
+
+                  sm:text-[1.08rem]
                   font-semibold
                   italic
                   text-[#0B2A52]
@@ -526,114 +420,215 @@ export default function PerformanceMarketingHero() {
                 delay: reduceMotion ? 0 : 0.34,
               }}
               className="
-                mt-8
+                mt-7
                 flex
-                flex-col
-                gap-3
+                w-full
+                flex-row
+                flex-nowrap
+                items-center
+                gap-2
 
-                sm:flex-row
-                sm:items-center
+                sm:mt-8
+                sm:w-auto
+                sm:gap-3
               "
             >
-              {/* PRIMARY CTA */}
+              {/* =================================================
+                  PRIMARY CTA — SOFT GLASS STYLE
+              ================================================= */}
 
               <a
                 href="#performance-services"
                 className="
                   group
+                  relative
 
                   inline-flex
-                  min-h-[54px]
+                  min-h-[42px]
+                  min-w-0
+                  flex-1
 
                   items-center
                   justify-center
-                  gap-3
+                  gap-1.5
 
-                  rounded-full
+                  overflow-hidden
 
-                  bg-gradient-to-r
-                  from-[#0B2A52]
-                  via-[#0D3A70]
-                  to-[#145899]
+                  rounded-[14px]
 
-                  px-7
+                  border
+                  border-[#6285AD]/30
 
-                  text-[0.88rem]
+                  bg-white/80
+
+                  px-3
+                  py-2.5
+
+                  text-[0.7rem]
                   font-medium
-                  text-white
+                  tracking-[-0.01em]
+                  text-[#0B2A52]
 
-                  shadow-[0_16px_40px_rgba(11,42,82,0.16)]
+                  shadow-[0_8px_30px_rgba(11,42,82,0.08)]
+
+                  backdrop-blur-[8px]
 
                   transition-all
                   duration-300
+                  ease-out
 
-                  hover:-translate-y-0.5
-                  hover:shadow-[0_20px_45px_rgba(11,42,82,0.22)]
+                  hover:-translate-y-[2px]
+                  hover:border-[#6285AD]/40
+                  hover:bg-white
+                  hover:shadow-[0_10px_35px_rgba(98,133,173,0.15)]
+
+                  active:translate-y-0
+
+                  sm:min-h-[48px]
+                  sm:flex-none
+                  sm:rounded-[16px]
+                  sm:px-6
+                  sm:py-3
+                  sm:text-[0.88rem]
                 "
               >
-                Grow With Paid Media
-
-                <ArrowRight
-                  size={17}
-                  strokeWidth={1.8}
+                {/* STATIC SOFT INNER BORDER */}
+                <span
+                  aria-hidden="true"
                   className="
-                    transition-transform
-                    duration-300
+                    pointer-events-none
+                    absolute
+                    inset-[2px]
 
-                    group-hover:translate-x-1
+                    rounded-[13px]
+
+                    border
+                    border-white/60
                   "
                 />
+
+                {/* VERY SUBTLE INNER LIGHT */}
+                <span
+                  aria-hidden="true"
+                  className="
+                    pointer-events-none
+                    absolute
+                    inset-x-4
+                    top-0
+
+                    h-px
+
+                    bg-gradient-to-r
+                    from-transparent
+                    via-white
+                    to-transparent
+                  "
+                />
+
+                <span className="relative z-10 whitespace-nowrap">
+                  Grow With Paid Media
+                </span>
+
+               
               </a>
 
-              {/* SECONDARY CTA */}
+              {/* =================================================
+                  SECONDARY CTA — SAME GLASS DESIGN FAMILY
+              ================================================= */}
 
               <a
                 href="#performance-approach"
                 className="
                   group
+                  relative
 
                   inline-flex
-                  min-h-[54px]
+                  min-h-[42px]
+                  min-w-0
+                  flex-1
 
                   items-center
                   justify-center
-                  gap-3
+                  gap-1.5
 
-                  rounded-full
+                  overflow-hidden
+
+                  rounded-[14px]
 
                   border
-                  border-[#9AAEC5]
+                  border-[#8DA6BE]/26
 
-                  bg-white/80
+                  bg-white/60
 
-                  px-7
+                  px-3
+                  py-2.5
 
-                  text-[0.88rem]
+                  text-[0.7rem]
                   font-medium
+                  tracking-[-0.01em]
                   text-[#0B2A52]
 
-                  backdrop-blur-md
+                  shadow-[0_7px_24px_rgba(11,42,82,0.045)]
+
+                  backdrop-blur-[8px]
 
                   transition-all
                   duration-300
+                  ease-out
 
-                  hover:-translate-y-0.5
-                  hover:border-[#0B2A52]
-                  hover:bg-white
+                  hover:-translate-y-[2px]
+                  hover:border-[#6285AD]/38
+                  hover:bg-white/90
+                  hover:shadow-[0_10px_32px_rgba(98,133,173,0.11)]
+
+                  active:translate-y-0
+
+                  sm:min-h-[48px]
+                  sm:flex-none
+                  sm:rounded-[16px]
+                  sm:px-6
+                  sm:py-3
+                  sm:text-[0.88rem]
                 "
               >
-                Explore Our Approach
-
-                <ArrowRight
-                  size={17}
-                  strokeWidth={1.8}
+                {/* STATIC SOFT INNER BORDER */}
+                <span
+                  aria-hidden="true"
                   className="
-                    transition-transform
-                    duration-300
+                    pointer-events-none
+                    absolute
+                    inset-[2px]
 
-                    group-hover:translate-x-1
+                    rounded-[13px]
+
+                    border
+                    border-white/65
                   "
                 />
+
+                {/* VERY SUBTLE INNER LIGHT */}
+                <span
+                  aria-hidden="true"
+                  className="
+                    pointer-events-none
+                    absolute
+                    inset-x-4
+                    top-0
+
+                    h-px
+
+                    bg-gradient-to-r
+                    from-transparent
+                    via-white
+                    to-transparent
+                  "
+                />
+
+                <span className="relative z-10 whitespace-nowrap">
+                  Explore Our Approach
+                </span>
+
+              
               </a>
             </motion.div>
 
@@ -661,46 +656,21 @@ export default function PerformanceMarketingHero() {
                 delay: reduceMotion ? 0 : 0.48,
               }}
               className="
-                mt-9
+                mt-7
                 flex
                 items-center
-                gap-4
+                justify-center
+                gap-3
+
+                sm:mt-9
+                sm:gap-4
+
+                lg:justify-start
               "
             >
-              <span
-                className="
-                  hidden
-                  h-px
-                  w-8
-                  bg-[#B78350]/70
+             
+             
 
-                  sm:block
-                "
-              />
-
-              <p
-                className="
-                  text-[0.64rem]
-                  font-semibold
-                  tracking-[0.24em]
-                  text-[#5B7390]
-
-                  sm:text-[0.68rem]
-                "
-              >
-                REACH · CONVERT · OPTIMIZE · SCALE
-              </p>
-
-              <span
-                className="
-                  hidden
-                  h-px
-                  w-8
-                  bg-[#B78350]/70
-
-                  sm:block
-                "
-              />
             </motion.div>
           </div>
 
@@ -736,9 +706,13 @@ export default function PerformanceMarketingHero() {
               relative
               mx-auto
               w-full
-              max-w-[690px]
+              max-w-[610px]
+
+              sm:max-w-[650px]
+              md:max-w-[680px]
 
               lg:mx-0
+              lg:max-w-[690px]
             "
           >
             <div
@@ -746,69 +720,16 @@ export default function PerformanceMarketingHero() {
                 relative
                 mx-auto
 
-                aspect-[1.05/0.88]
+                aspect-[1/1.04]
 
                 w-full
                 max-w-[690px]
+
+                sm:aspect-[1.03/0.94]
+                md:aspect-[1.05/0.88]
               "
             >
-              {/* =================================================
-                  MAIN VISUAL FRAMEWORK
-                  This belongs to the visual, not section background.
-              ================================================= */}
-
-              <motion.div
-                animate={
-                  reduceMotion
-                    ? undefined
-                    : {
-                        rotate: [0, 2, 0, -2, 0],
-                      }
-                }
-                transition={{
-                  duration: 14,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-                className="
-                  absolute
-                  left-1/2
-                  top-1/2
-
-                  h-[78%]
-                  w-[78%]
-
-                  -translate-x-1/2
-                  -translate-y-1/2
-
-                  rounded-full
-
-                  border
-                  border-[#B79A72]/35
-                "
-              />
-
-              <div
-                className="
-                  absolute
-                  left-1/2
-                  top-1/2
-
-                  h-[65%]
-                  w-[65%]
-
-                  -translate-x-1/2
-                  -translate-y-1/2
-
-                  rounded-full
-
-                  bg-white/35
-
-                  shadow-[0_30px_100px_rgba(11,42,82,0.07)]
-
-                  backdrop-blur-[2px]
-                "
-              />
+             
 
               {/* =================================================
                   CENTRAL DASHBOARD
@@ -829,15 +750,25 @@ export default function PerformanceMarketingHero() {
                 }}
                 className="
                   absolute
-                  left-[10%]
-                  top-[27%]
+                  left-[2%]
+                  top-[17%]
                   z-20
 
-                  w-[69%]
+                  w-[96%]
 
                   overflow-hidden
 
-                  rounded-[28px]
+                  rounded-[20px]
+
+                  sm:left-[7%]
+                  sm:top-[22%]
+                  sm:w-[82%]
+                  sm:rounded-[24px]
+
+                  md:left-[10%]
+                  md:top-[27%]
+                  md:w-[69%]
+                  md:rounded-[28px]
 
                   border
                   border-[#D7E0EA]
@@ -860,8 +791,11 @@ export default function PerformanceMarketingHero() {
                     border-b
                     border-[#E7EDF3]
 
-                    px-5
-                    py-4
+                    px-3
+                    py-3
+
+                    sm:px-5
+                    sm:py-4
                   "
                 >
                   <div className="flex items-center gap-2">
@@ -907,9 +841,12 @@ export default function PerformanceMarketingHero() {
 
                     <span
                       className="
-                        text-[0.58rem]
+                        text-[0.48rem]
                         font-semibold
-                        tracking-[0.12em]
+                        tracking-[0.08em]
+
+                        sm:text-[0.58rem]
+                        sm:tracking-[0.12em]
                         text-[#56708B]
                       "
                     >
@@ -920,7 +857,7 @@ export default function PerformanceMarketingHero() {
 
                 {/* DASHBOARD BODY */}
 
-                <div className="p-5 sm:p-6">
+                <div className="p-3 sm:p-5 md:p-6">
                   {/* TITLE */}
 
                   <div className="flex items-start justify-between gap-5">
@@ -940,11 +877,12 @@ export default function PerformanceMarketingHero() {
                         className="
                           mt-1.5
 
-                          text-[1.1rem]
+                          text-[0.95rem]
                           font-semibold
                           text-[#0B2A52]
 
-                          sm:text-[1.22rem]
+                          sm:text-[1.08rem]
+                          md:text-[1.22rem]
                         "
                       >
                         From attention to action.
@@ -954,9 +892,12 @@ export default function PerformanceMarketingHero() {
                     <div
                       className="
                         grid
-                        h-10
-                        w-10
+                        h-9
+                        w-9
                         shrink-0
+
+                        sm:h-10
+                        sm:w-10
                         place-items-center
 
                         rounded-xl
@@ -978,10 +919,13 @@ export default function PerformanceMarketingHero() {
                       mt-6
 
                       grid
-                      grid-cols-[1fr_auto_1fr_auto_1fr]
+                      grid-cols-3
 
                       items-center
-                      gap-2
+                      gap-1.5
+
+                      sm:grid-cols-[1fr_auto_1fr_auto_1fr]
+                      sm:gap-2
                     "
                   >
                     {[
@@ -1004,21 +948,25 @@ export default function PerformanceMarketingHero() {
                         <div key={item.label} className="contents">
                           <div
                             className="
-                              rounded-2xl
+                              rounded-xl
 
                               border
                               border-[#E1E8F0]
 
                               bg-[#F9FBFD]
 
-                              px-2
-                              py-3.5
+                              px-1
+                              py-3
+
+                              sm:rounded-2xl
+                              sm:px-2
+                              sm:py-3.5
 
                               text-center
                             "
                           >
                             <Icon
-                              size={17}
+                              size={15}
                               strokeWidth={1.8}
                               className="
                                 mx-auto
@@ -1042,7 +990,7 @@ export default function PerformanceMarketingHero() {
                           {index < 2 && (
                             <ArrowRight
                               size={13}
-                              className="text-[#B48459]"
+                              className="hidden text-[#B48459] sm:block"
                             />
                           )}
                         </div>
@@ -1057,11 +1005,14 @@ export default function PerformanceMarketingHero() {
                   <div
                     className="
                       relative
-                      mt-5
+                      mt-4
 
                       overflow-hidden
 
-                      rounded-[20px]
+                      rounded-[16px]
+
+                      sm:mt-5
+                      sm:rounded-[20px]
 
                       border
                       border-[#E1E8F0]
@@ -1070,9 +1021,13 @@ export default function PerformanceMarketingHero() {
                       from-[#F8FBFE]
                       to-white
 
-                      px-4
-                      pb-4
-                      pt-5
+                      px-3
+                      pb-3
+                      pt-4
+
+                      sm:px-4
+                      sm:pb-4
+                      sm:pt-5
                     "
                   >
                     <div
@@ -1091,9 +1046,12 @@ export default function PerformanceMarketingHero() {
                       className="
                         relative
                         flex
-                        h-[90px]
+                        h-[72px]
                         items-end
-                        gap-2.5
+                        gap-1.5
+
+                        sm:h-[90px]
+                        sm:gap-2.5
                       "
                     >
                       {[34, 43, 39, 55, 50, 67, 75, 71, 87].map(
@@ -1175,7 +1133,7 @@ export default function PerformanceMarketingHero() {
 
                   backdrop-blur-xl
 
-                  sm:block
+                  md:block
                 "
               >
                 <div
@@ -1243,22 +1201,38 @@ export default function PerformanceMarketingHero() {
                 }}
                 className="
                   absolute
-                  bottom-[5%]
-                  right-[3%]
+                  bottom-[3%]
+                  right-[1%]
                   z-30
 
-                  w-[170px]
+                  sm:bottom-[4%]
+                  sm:right-[2%]
 
-                  rounded-[22px]
+                  md:bottom-[5%]
+                  md:right-[3%]
+
+                  hidden
+                  w-[148px]
+
+                  rounded-[18px]
+
+                  sm:block
+                  sm:w-[158px]
+                  sm:rounded-[20px]
+
+                  md:w-[170px]
+                  md:rounded-[22px]
 
                   border
                   border-[#E3D7CA]
 
                   bg-[#FFFDFC]/95
 
-                  p-4
+                  p-3
 
                   shadow-[0_18px_55px_rgba(86,59,31,0.08)]
+
+                  sm:p-4
 
                   backdrop-blur-xl
                 "
@@ -1356,7 +1330,7 @@ export default function PerformanceMarketingHero() {
 
                   backdrop-blur-xl
 
-                  sm:block
+                  md:block
                 "
               >
                 <CircleDollarSign
@@ -1399,88 +1373,14 @@ export default function PerformanceMarketingHero() {
                   VERTICAL EDITORIAL TEXT
               ================================================= */}
 
-              <div
-                className="
-                  absolute
-                  right-[-1%]
-                  top-[38%]
-
-                  hidden
-                  rotate-90
-
-                  text-[0.55rem]
-                  font-semibold
-                  tracking-[0.24em]
-                  text-[#7890A9]
-
-                  xl:block
-                "
-              >
-                DATA · DIRECTION · GROWTH
-              </div>
 
               {/* =================================================
                   SMALL VISUAL NODES
                   These are part of the performance illustration.
               ================================================= */}
 
-              <motion.span
-                animate={
-                  reduceMotion
-                    ? undefined
-                    : {
-                        scale: [1, 1.15, 1],
-                      }
-                }
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-                className="
-                  absolute
-                  left-[9%]
-                  top-[15%]
-
-                  h-2
-                  w-2
-
-                  rounded-full
-
-                  bg-[#B78350]
-
-                  shadow-[0_0_0_7px_rgba(183,131,80,0.08)]
-                "
-              />
-
-              <motion.span
-                animate={
-                  reduceMotion
-                    ? undefined
-                    : {
-                        scale: [1, 1.15, 1],
-                      }
-                }
-                transition={{
-                  duration: 3.4,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-                className="
-                  absolute
-                  bottom-[18%]
-                  right-[11%]
-
-                  h-2
-                  w-2
-
-                  rounded-full
-
-                  bg-[#1B629F]
-
-                  shadow-[0_0_0_7px_rgba(27,98,159,0.08)]
-                "
-              />
+             
+            
             </div>
           </motion.div>
         </div>
