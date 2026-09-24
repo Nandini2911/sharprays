@@ -1,6 +1,7 @@
 import Footer from "@/components/Home/Footer";
 
 import Navbar from "@/components/Home/Navbar";
+import SelectedWebsiteWork from "@/components/WebsiteDevelopment/SelectedWebsiteWork";
 import WebsiteDeliverablesSection from "@/components/WebsiteDevelopment/WebsiteDeliverablesSection";
 import WebsiteDevelopmentExplained from "@/components/WebsiteDevelopment/WebsiteDevelopmentExplained";
 import WebsiteDevelopmentFAQs from "@/components/WebsiteDevelopment/WebsiteDevelopmentFAQs";
@@ -31,7 +32,9 @@ export default function WebsiteDevelopment() {
         <WebsiteDevlopmentSeoAiSearchFoundation />
         <WebsiteDevelopmentTrustSignalItem />
         <WebsiteFrameworkSection  />
+        <SelectedWebsiteWork/>
         <WebsiteDeliverablesSection />
+        <WebsiteDevelopmentPricing/>
       
         <WebsiteDevelopmentFAQs />
         <WebsiteFinalSections />

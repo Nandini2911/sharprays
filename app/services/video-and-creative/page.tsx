@@ -5,6 +5,7 @@ import Navbar from "@/components/Home/Navbar";
 
 import AiVideoAdFormats from "@/components/VideoandCreative/AiVideoAdFormats";
 import AiVideoEditingFaq from "@/components/VideoandCreative/AiVideoEditingFaq";
+import AiVideoEditingPricing from "@/components/VideoandCreative/AiVideoEditingPricing";
 import AiVideoFinalCTA from "@/components/VideoandCreative/AiVideoFinalCTA";
 
 import CreativeChannels from "@/components/VideoandCreative/CreativeChannels";
@@ -34,6 +35,7 @@ export default function VideoCreativePage() {
       <SharpRaysCreativeFramework />
       <VideoCreativeDeliverables />
       <VideoCreativeFit />
+      <AiVideoEditingPricing/>
       <AiVideoEditingFaq />
       <AiVideoFinalCTA />
       <Footer />

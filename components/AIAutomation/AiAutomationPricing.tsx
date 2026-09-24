@@ -2,16 +2,16 @@
 
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
+import type { LucideIcon } from "lucide-react";
 import {
   ArrowUpRight,
-  BarChart3,
+  Bot,
   Check,
   Layers3,
-  Megaphone,
+  Settings,
   Sparkles,
-  Target,
+  Wrench,
 } from "lucide-react";
-import type { LucideIcon } from "lucide-react";
 
 /* =========================================================
    FONT + MOTION
@@ -29,23 +29,15 @@ const ease = [0.22, 1, 0.36, 1] as const;
 
 type Plan = {
   name: string;
-  subtitle: string;
-  description: string;
   price: string;
-
-  platformScope: string;
-
-  bundleTitle: string;
-  bundleText: string;
-
-  items: string[];
-
-  bestFor: string;
-
-  cta: string;
-
+  label: string;
+  title: string;
+  description: string;
+  scope: string;
   icon: LucideIcon;
-
+  features: string[];
+  bestFor: string;
+  cta: string;
   popular?: boolean;
 };
 
@@ -56,127 +48,105 @@ type Plan = {
 const plans: Plan[] = [
   {
     name: "Starter",
-
-    subtitle: "Start With Smarter Paid Media.",
-
+    price: "₹14,999",
+    label: "Focused Automation",
+    title: "Automate One Repetitive Process Properly.",
     description:
-      "For businesses that want to begin paid advertising with one focused channel and a clear performance objective.",
+      "For businesses that have one clear manual process they want to simplify, connect or automate.",
+    scope: "1 Focused Automation Workflow",
+    icon: Settings,
 
-    price: "₹12,999",
-
-    platformScope: "1 Advertising Platform",
-
-    bundleTitle: "Focused Start",
-
-    bundleText:
-      "A focused single-channel plan for businesses that want to test and improve paid acquisition before expanding.",
-
-    items: [
-      "Paid Media Strategy",
-      "Campaign Setup & Management",
-      "Audience / Keyword Research",
-      "Campaign Structure & Targeting",
-      "Ad Copy & Messaging Support",
-      "Basic Conversion Tracking",
-      "Ongoing Campaign Optimization",
-      "Budget Allocation Recommendations",
-      "Monthly Performance Report",
-      "Monthly Performance Review",
+    features: [
+      "Workflow Mapping",
+      "Up to 2 Connected Tools",
+      "Basic Triggers & Conditions",
+      "Email / Notification Automation",
+      "Data Transfer Between Systems",
+      "Basic CRM / Spreadsheet Automation",
+      "Error Handling",
+      "Testing & Launch",
+      "Basic Workflow Documentation",
+      "1 Revision Round",
+      "14 Days Post-Launch Support",
     ],
 
     bestFor:
-      "Startups, local businesses and companies starting with Google Ads or Meta Ads.",
+      "Startups and small businesses automating their first repetitive workflow.",
 
-    cta: "Start With Starter",
-
-    icon: Target,
+    cta: "Start With Automation",
   },
 
   {
     name: "Growth",
-
-    subtitle: "Build a Connected Performance System.",
-
+    price: "₹34,999",
+    label: "Connected Automation",
+    title: "Connect Multiple Steps Into One Smarter Workflow.",
     description:
-      "For growing businesses that want two paid channels working together with stronger tracking, testing and retargeting.",
+      "For growing businesses that need several systems, actions or follow-ups working together automatically.",
+    scope: "Up to 3 Connected Workflows",
+    icon: Layers3,
+    popular: true,
 
-    price: "₹22,999",
-
-    platformScope: "Up to 2 Advertising Platforms",
-
-    bundleTitle: "Bundle Advantage",
-
-    bundleText:
-      "Save ₹2,999 compared with two separate Starter plans — plus unlock cross-platform strategy, retargeting and creative testing.",
-
-    items: [
+    features: [
       "Everything in Starter",
-      "Cross-Platform Campaign Strategy",
-      "Multi-Campaign Management",
-      "Retargeting Campaigns",
-      "Advanced Conversion Tracking",
-      "Audience Testing",
-      "Creative Performance Testing",
-      "Ad Copy, Hook & CTA Testing",
-      "Cross-Platform Budget Optimization",
-      "Landing Page Recommendations",
-      "Lead / Conversion Quality Review",
-      "Monthly Strategy Review",
-      "Priority Campaign Support",
+      "Up to 4 Standard Tool Integrations",
+      "Multi-Step Conditional Logic",
+      "Lead Qualification Automation",
+      "CRM Updates & Lead Routing",
+      "Automated Follow-Up Sequences",
+      "Email / Marketing Automation",
+      "Webhook / API Integration Where Required",
+      "AI Classification or Summarization",
+      "Internal Alerts & Notifications",
+      "Error Alerts & Fallback Paths",
+      "Human Review Checkpoints",
+      "Workflow Documentation",
+      "2 Revision Rounds",
+      "30 Days Post-Launch Support",
     ],
 
     bestFor:
-      "Growing businesses that want Google Ads and Meta Ads working together to generate more consistent leads or sales.",
+      "Growing businesses connecting leads, CRM, communication and internal processes.",
 
     cta: "Choose Growth",
-
-    icon: BarChart3,
-
-    popular: true,
   },
 
   {
     name: "Scale",
-
-    subtitle: "Scale What Performs Across Channels.",
-
+    price: "₹64,999",
+    label: "Advanced Automation",
+    title: "Build a More Connected Automation System.",
     description:
-      "For businesses ready for a broader paid growth system across multiple channels, audiences and conversion journeys.",
+      "For businesses that need automation across several processes, systems or operational teams.",
+    scope: "Up to 5 Connected Workflows",
+    icon: Bot,
 
-    price: "₹32,999",
-
-    platformScope: "Up to 3 Advertising Platforms",
-
-    bundleTitle: "Scale Advantage",
-
-    bundleText:
-      "Save ₹5,998 compared with three separate Starter plans — with advanced tracking, segmentation, CRO and multi-channel optimization included.",
-
-    items: [
+    features: [
       "Everything in Growth",
-      "Multi-Channel Paid Media Strategy",
-      "Advanced Campaign Architecture",
-      "Advanced Retargeting",
-      "Audience Segmentation",
-      "Cross-Channel Budget Allocation",
-      "Advanced Conversion & Attribution Tracking",
-      "Larger Creative Testing Framework",
-      "Offer & Messaging Testing",
-      "Landing Page CRO Recommendations",
-      "Funnel & Conversion Path Review",
-      "Conversion Value / ROAS Analysis",
-      "More Frequent Performance Optimization",
-      "Advanced Performance Reporting",
-      "Monthly Growth Strategy Review",
+      "Advanced Workflow Architecture",
+      "Multi-System Automation",
+      "Advanced Conditional Routing",
+      "Advanced API / Webhook Connections",
+      "Document Processing Automation",
+      "Reporting & Data Automation",
+      "Customer Support Automation",
+      "Advanced Lead & Sales Automation",
+      "AI-Assisted Decision Steps",
+      "Human-in-the-Loop Controls",
+      "Exception Routing",
+      "Automated Error Notifications",
+      "Data Synchronization",
+      "Workflow Monitoring Setup",
+      "Detailed Documentation",
+      "3 Revision Rounds",
+      "60 Days Post-Launch Support",
       "Priority Support",
     ],
 
     bestFor:
-      "Businesses scaling paid acquisition across Google, Meta and an additional platform such as YouTube or LinkedIn.",
+      "Businesses building a broader automation system across multiple processes and teams.",
 
-    cta: "Choose Scale",
-
-    icon: Layers3,
+    cta: "Build My Automation System",
   },
 ];
 
@@ -184,11 +154,7 @@ const plans: Plan[] = [
    PLAN BUTTON
 ========================================================= */
 
-function PlanButton({
-  plan,
-}: {
-  plan: Plan;
-}) {
+function PlanButton({ plan }: { plan: Plan }) {
   const isGrowth = plan.name === "Growth";
   const isScale = plan.name === "Scale";
 
@@ -197,7 +163,7 @@ function PlanButton({
       href="/contact"
       style={newYorkFont}
       className={`
-        group/button
+        group
         flex
         min-h-[48px]
         w-full
@@ -210,10 +176,8 @@ function PlanButton({
         py-3
         text-[13px]
         font-medium
-        tracking-[-0.01em]
         transition-all
         duration-300
-        ease-out
 
         ${
           isGrowth
@@ -221,34 +185,31 @@ function PlanButton({
               border-[#0B2A52]
               bg-[#0B2A52]
               !text-white
-              shadow-[0_10px_28px_rgba(11,42,82,0.16)]
+              shadow-[0_10px_28px_rgba(11,42,82,0.15)]
 
               hover:-translate-y-[2px]
               hover:bg-[#123B6A]
               hover:!text-white
-              hover:shadow-[0_14px_34px_rgba(11,42,82,0.20)]
             `
             : isScale
-            ? `
-              border-[#B79A72]/35
-              bg-[#FFF9F1]
-              text-[#0B2A52]
-              shadow-[0_8px_25px_rgba(183,154,114,0.08)]
+              ? `
+                border-[#C6A77A]/45
+                bg-[#FFF8EE]
+                text-[#0B2A52]
 
-              hover:-translate-y-[2px]
-              hover:border-[#B79A72]/55
-              hover:bg-[#FFF5E8]
-            `
-            : `
-              border-[#6285AD]/30
-              bg-white/85
-              text-[#0B2A52]
-              shadow-[0_8px_25px_rgba(11,42,82,0.07)]
+                hover:-translate-y-[2px]
+                hover:border-[#B79A72]/70
+                hover:bg-[#FFF3E3]
+              `
+              : `
+                border-[#6285AD]/30
+                bg-white/85
+                text-[#0B2A52]
 
-              hover:-translate-y-[2px]
-              hover:border-[#6285AD]/45
-              hover:bg-[#F3F8FC]
-            `
+                hover:-translate-y-[2px]
+                hover:border-[#6285AD]/50
+                hover:bg-[#F2F7FB]
+              `
         }
       `}
     >
@@ -262,9 +223,8 @@ function PlanButton({
         className={`
           transition-transform
           duration-300
-
-          group-hover/button:translate-x-0.5
-          group-hover/button:-translate-y-0.5
+          group-hover:translate-x-0.5
+          group-hover:-translate-y-0.5
 
           ${isGrowth ? "text-white" : ""}
         `}
@@ -277,13 +237,13 @@ function PlanButton({
    MAIN COMPONENT
 ========================================================= */
 
-export default function PerformanceMarketingPricing() {
+export default function AiAutomationPricing() {
   const reduceMotion = Boolean(useReducedMotion());
 
   return (
     <section
-      id="performance-marketing-pricing"
-      aria-labelledby="performance-pricing-heading"
+      id="ai-automation-pricing"
+      aria-labelledby="ai-automation-pricing-heading"
       className="
         relative
         isolate
@@ -315,24 +275,24 @@ export default function PerformanceMarketingPricing() {
           className="
             absolute
             left-1/2
-            top-[-300px]
-            h-[560px]
+            top-[-280px]
+            h-[540px]
             w-[900px]
             -translate-x-1/2
             rounded-full
-            bg-[#E8F3FB]/75
-            blur-[170px]
+            bg-[#EAF4FB]/75
+            blur-[165px]
           "
         />
 
         <div
           className="
             absolute
-            -right-[300px]
-            top-[43%]
+            -right-[280px]
+            top-[40%]
             hidden
-            h-[560px]
-            w-[560px]
+            h-[540px]
+            w-[540px]
             rounded-full
             border
             border-[#B79A72]/10
@@ -345,13 +305,13 @@ export default function PerformanceMarketingPricing() {
           className="
             absolute
             -left-[260px]
-            bottom-[5%]
+            bottom-[4%]
             hidden
-            h-[500px]
-            w-[500px]
+            h-[480px]
+            w-[480px]
             rounded-full
-            bg-[#DDEDF8]/45
-            blur-[160px]
+            bg-[#EDF6FC]/70
+            blur-[150px]
 
             lg:block
           "
@@ -432,7 +392,7 @@ export default function PerformanceMarketingPricing() {
                 sm:text-[10px]
               "
             >
-              Performance Marketing Pricing
+              AI Automation Pricing
             </span>
 
             <span
@@ -447,7 +407,7 @@ export default function PerformanceMarketingPricing() {
           </div>
 
           <h2
-            id="performance-pricing-heading"
+            id="ai-automation-pricing-heading"
             style={newYorkFont}
             className="
               mx-auto
@@ -466,9 +426,9 @@ export default function PerformanceMarketingPricing() {
               xl:text-[3.35rem]
             "
           >
-            More Channels. More Capability.{" "}
+            Start With One Workflow.{" "}
             <span className="text-[#B79A72]">
-              Better Value.
+              Build From There.
             </span>
           </h2>
 
@@ -476,7 +436,7 @@ export default function PerformanceMarketingPricing() {
             className="
               mx-auto
               mt-5
-              max-w-[740px]
+              max-w-[735px]
 
               text-[13px]
               leading-[1.8]
@@ -486,14 +446,14 @@ export default function PerformanceMarketingPricing() {
               md:text-[15px]
             "
           >
-            Start with one focused advertising channel, then unlock stronger
-            cross-platform strategy, testing, tracking and optimization as your
-            paid media grows.
+            Clear project-based pricing for businesses that want to reduce
+            repetitive work, connect systems and build smarter operational
+            workflows.
           </p>
         </motion.div>
 
         {/* =====================================================
-            PRICING GRID
+            PRICING CARDS
         ===================================================== */}
 
         <div
@@ -519,7 +479,6 @@ export default function PerformanceMarketingPricing() {
         >
           {plans.map((plan, index) => {
             const Icon = plan.icon;
-
             const isGrowth = plan.name === "Growth";
             const isScale = plan.name === "Scale";
 
@@ -528,7 +487,7 @@ export default function PerformanceMarketingPricing() {
                 key={plan.name}
                 initial={{
                   opacity: 0,
-                  y: reduceMotion ? 0 : 28,
+                  y: reduceMotion ? 0 : 30,
                 }}
                 whileInView={{
                   opacity: 1,
@@ -536,7 +495,7 @@ export default function PerformanceMarketingPricing() {
                 }}
                 viewport={{
                   once: true,
-                  amount: 0.14,
+                  amount: 0.12,
                 }}
                 transition={{
                   duration: reduceMotion ? 0 : 0.7,
@@ -570,20 +529,20 @@ export default function PerformanceMarketingPricing() {
                     isGrowth
                       ? `
                         border-[#78AED3]/70
-                        bg-[linear-gradient(180deg,#EFF7FC_0%,#FFFFFF_34%,#FFFFFF_100%)]
+                        bg-[linear-gradient(180deg,#EEF7FC_0%,#FFFFFF_34%,#FFFFFF_100%)]
                         shadow-[0_22px_55px_rgba(11,42,82,0.10)]
                       `
                       : isScale
-                      ? `
-                        border-[#DDCDB8]
-                        bg-[linear-gradient(180deg,#FFF9F1_0%,#FFFFFF_34%,#FFFFFF_100%)]
-                        shadow-[0_12px_36px_rgba(11,42,82,0.05)]
-                      `
-                      : `
-                        border-[#D6E3EC]
-                        bg-[linear-gradient(180deg,#F7FBFD_0%,#FFFFFF_34%,#FFFFFF_100%)]
-                        shadow-[0_12px_36px_rgba(11,42,82,0.05)]
-                      `
+                        ? `
+                          border-[#DDCDB8]
+                          bg-[linear-gradient(180deg,#FFF9F2_0%,#FFFFFF_35%,#FFFFFF_100%)]
+                          shadow-[0_12px_36px_rgba(11,42,82,0.05)]
+                        `
+                        : `
+                          border-[#D6E3EC]
+                          bg-[linear-gradient(180deg,#F7FBFD_0%,#FFFFFF_35%,#FFFFFF_100%)]
+                          shadow-[0_12px_36px_rgba(11,42,82,0.05)]
+                        `
                   }
 
                   ${
@@ -605,8 +564,8 @@ export default function PerformanceMarketingPricing() {
                       isGrowth
                         ? "bg-gradient-to-r from-[#0B2A52] via-[#6C9CC2] to-[#B79A72]"
                         : isScale
-                        ? "bg-gradient-to-r from-transparent via-[#B79A72]/80 to-transparent"
-                        : "bg-gradient-to-r from-transparent via-[#72A3C7]/75 to-transparent"
+                          ? "bg-gradient-to-r from-transparent via-[#B79A72]/80 to-transparent"
+                          : "bg-gradient-to-r from-transparent via-[#72A3C7]/75 to-transparent"
                     }
                   `}
                 />
@@ -653,7 +612,7 @@ export default function PerformanceMarketingPricing() {
                   </div>
                 )}
 
-                {/* CONTENT */}
+                {/* CARD */}
 
                 <div
                   className="
@@ -661,13 +620,12 @@ export default function PerformanceMarketingPricing() {
                     h-full
                     flex-1
                     flex-col
-
                     p-5
 
                     sm:p-6
                   "
                 >
-                  {/* PLAN */}
+                  {/* PLAN HEADER */}
 
                   <div className="flex items-center gap-3">
                     <span
@@ -676,18 +634,16 @@ export default function PerformanceMarketingPricing() {
                         h-10
                         w-10
                         shrink-0
-
                         items-center
                         justify-center
-
                         rounded-[12px]
 
                         ${
                           isGrowth
                             ? "bg-[#0B2A52] text-white"
                             : isScale
-                            ? "bg-[#FFF0DB] text-[#A97C52]"
-                            : "bg-[#E7F2FA] text-[#0D5A93]"
+                              ? "bg-[#FFF0DB] text-[#A97C52]"
+                              : "bg-[#E7F2FA] text-[#0D5A93]"
                         }
                       `}
                     >
@@ -720,7 +676,7 @@ export default function PerformanceMarketingPricing() {
                           text-[#8496A8]
                         "
                       >
-                        Monthly Management
+                        {plan.label}
                       </p>
                     </div>
                   </div>
@@ -742,7 +698,7 @@ export default function PerformanceMarketingPricing() {
                       sm:text-[24px]
                     "
                   >
-                    {plan.subtitle}
+                    {plan.title}
                   </h3>
 
                   {/* DESCRIPTION */}
@@ -750,7 +706,7 @@ export default function PerformanceMarketingPricing() {
                   <p
                     className="
                       mt-3
-                      min-h-[64px]
+                      min-h-[65px]
 
                       text-[11.5px]
                       leading-[1.65]
@@ -774,7 +730,7 @@ export default function PerformanceMarketingPricing() {
                       py-4
                     "
                   >
-                    <span
+                    <p
                       className="
                         text-[7px]
                         font-semibold
@@ -784,12 +740,11 @@ export default function PerformanceMarketingPricing() {
                       "
                     >
                       Starting From
-                    </span>
+                    </p>
 
                     <div
                       className="
                         mt-2
-
                         flex
                         flex-wrap
                         items-end
@@ -815,18 +770,19 @@ export default function PerformanceMarketingPricing() {
                       <span
                         className="
                           pb-1
-
-                          text-[10px]
+                          text-[9px]
                           font-medium
+                          uppercase
+                          tracking-[0.08em]
                           text-[#71879A]
                         "
                       >
-                        / month
+                        One-Time
                       </span>
                     </div>
                   </div>
 
-                  {/* PLATFORM SCOPE */}
+                  {/* SCOPE */}
 
                   <div
                     className={`
@@ -838,9 +794,7 @@ export default function PerformanceMarketingPricing() {
                       gap-3
 
                       rounded-[11px]
-
                       border
-
                       px-3.5
                       py-3
 
@@ -848,8 +802,8 @@ export default function PerformanceMarketingPricing() {
                         isGrowth
                           ? "border-[#C7DDEA] bg-[#F1F8FC]"
                           : isScale
-                          ? "border-[#E5D7C5] bg-[#FFF9F1]"
-                          : "border-[#D7E4ED] bg-[#F7FAFC]"
+                            ? "border-[#E5D7C5] bg-[#FFF9F1]"
+                            : "border-[#D7E4ED] bg-[#F7FAFC]"
                       }
                     `}
                   >
@@ -862,7 +816,7 @@ export default function PerformanceMarketingPricing() {
                         text-[#8495A6]
                       "
                     >
-                      Platform Scope
+                      Project Scope
                     </span>
 
                     <span
@@ -873,81 +827,11 @@ export default function PerformanceMarketingPricing() {
                         text-[#274F72]
                       "
                     >
-                      {plan.platformScope}
+                      {plan.scope}
                     </span>
                   </div>
 
-                  {/* =====================================================
-                      BUNDLE / VALUE ADVANTAGE
-                  ===================================================== */}
-
-                  <div
-                    className={`
-                      mt-3
-                      rounded-[12px]
-                      border
-                      px-3.5
-                      py-3.5
-
-                      ${
-                        isGrowth
-                          ? `
-                            border-[#AFCDE2]/75
-                            bg-[linear-gradient(135deg,#EAF5FC_0%,#F7FBFD_100%)]
-                          `
-                          : isScale
-                          ? `
-                            border-[#DFCCB1]/75
-                            bg-[linear-gradient(135deg,#FFF4E5_0%,#FFFBF6_100%)]
-                          `
-                          : `
-                            border-[#DBE6EE]
-                            bg-white/80
-                          `
-                      }
-                    `}
-                  >
-                    <div className="flex items-center gap-2">
-                      {(isGrowth || isScale) && (
-                        <Sparkles
-                          size={11}
-                          strokeWidth={1.7}
-                          className={
-                            isScale
-                              ? "text-[#A97C52]"
-                              : "text-[#2F739E]"
-                          }
-                        />
-                      )}
-
-                      <p
-                        className="
-                          text-[7px]
-                          font-bold
-                          uppercase
-                          tracking-[0.16em]
-                          text-[#B79A72]
-                        "
-                      >
-                        {plan.bundleTitle}
-                      </p>
-                    </div>
-
-                    <p
-                      className="
-                        mt-1.5
-
-                        text-[10px]
-                        font-medium
-                        leading-[1.55]
-                        text-[#526F88]
-                      "
-                    >
-                      {plan.bundleText}
-                    </p>
-                  </div>
-
-                  {/* INCLUDED */}
+                  {/* FEATURES */}
 
                   <div className="mt-5">
                     <p
@@ -963,9 +847,9 @@ export default function PerformanceMarketingPricing() {
                     </p>
 
                     <div className="mt-3.5 space-y-[9px]">
-                      {plan.items.map((item) => (
+                      {plan.features.map((feature) => (
                         <div
-                          key={item}
+                          key={feature}
                           className="
                             flex
                             items-start
@@ -975,23 +859,20 @@ export default function PerformanceMarketingPricing() {
                           <span
                             className={`
                               mt-[1px]
-
                               flex
                               h-[17px]
                               w-[17px]
                               shrink-0
-
                               items-center
                               justify-center
-
                               rounded-full
 
                               ${
                                 isGrowth
                                   ? "bg-[#E1EFF8] text-[#0B2A52]"
                                   : isScale
-                                  ? "bg-[#F8F0E5] text-[#9A7147]"
-                                  : "bg-[#EAF4FB] text-[#3573A6]"
+                                    ? "bg-[#F8F0E5] text-[#9A7147]"
+                                    : "bg-[#EAF4FB] text-[#3573A6]"
                               }
                             `}
                           >
@@ -1010,14 +891,12 @@ export default function PerformanceMarketingPricing() {
                               sm:text-[11.5px]
                             "
                           >
-                            {item}
+                            {feature}
                           </span>
                         </div>
                       ))}
                     </div>
                   </div>
-
-                  {/* SPACER */}
 
                   <div className="flex-1" />
 
@@ -1026,10 +905,8 @@ export default function PerformanceMarketingPricing() {
                   <div
                     className="
                       mt-6
-
                       border-t
                       border-[#DCE6EE]
-
                       pt-4
                     "
                   >
@@ -1055,7 +932,6 @@ export default function PerformanceMarketingPricing() {
                       <p
                         className="
                           mt-1.5
-
                           text-[10.5px]
                           leading-[1.6]
                           text-[#667D92]
@@ -1078,418 +954,7 @@ export default function PerformanceMarketingPricing() {
         </div>
 
         {/* =====================================================
-            WHY HIGHER PLANS GIVE MORE VALUE
-        ===================================================== */}
-
-        <motion.div
-          initial={{
-            opacity: 0,
-            y: reduceMotion ? 0 : 20,
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
-          viewport={{
-            once: true,
-            amount: 0.2,
-          }}
-          transition={{
-            duration: reduceMotion ? 0 : 0.7,
-            ease,
-          }}
-          className="
-            mx-auto
-            mt-8
-
-            max-w-[1100px]
-
-            rounded-[18px]
-
-            border
-            border-[#D3E1EA]
-
-            bg-[#F8FBFD]
-
-            px-5
-            py-5
-
-            sm:px-6
-            sm:py-6
-          "
-        >
-          <div
-            className="
-              grid
-              gap-5
-
-              md:grid-cols-[0.8fr_1.2fr]
-              md:items-center
-              md:gap-8
-            "
-          >
-            <div>
-              <p
-                className="
-                  text-[8px]
-                  font-bold
-                  uppercase
-                  tracking-[0.2em]
-                  text-[#B79A72]
-                "
-              >
-                Better Value as You Scale
-              </p>
-
-              <h3
-                style={newYorkFont}
-                className="
-                  mt-2
-
-                  text-[23px]
-                  font-medium
-                  leading-[1.1]
-                  tracking-[-0.03em]
-                  text-[#0B2A52]
-
-                  sm:text-[26px]
-                "
-              >
-                More Platforms Should Unlock More Than More Management.
-              </h3>
-            </div>
-
-            <div
-              className="
-                grid
-                gap-3
-
-                sm:grid-cols-2
-              "
-            >
-              <div
-                className="
-                  rounded-[13px]
-
-                  border
-                  border-[#C9DDEB]
-
-                  bg-white
-
-                  px-4
-                  py-3.5
-                "
-              >
-                <p
-                  className="
-                    text-[8px]
-                    font-bold
-                    uppercase
-                    tracking-[0.15em]
-                    text-[#2F739E]
-                  "
-                >
-                  Growth Advantage
-                </p>
-
-                <p
-                  className="
-                    mt-1.5
-
-                    text-[10.5px]
-                    leading-[1.6]
-                    text-[#637A90]
-                  "
-                >
-                  Lower combined management cost plus retargeting, creative
-                  testing and cross-platform optimization.
-                </p>
-              </div>
-
-              <div
-                className="
-                  rounded-[13px]
-
-                  border
-                  border-[#E0CFB8]
-
-                  bg-[#FFFBF6]
-
-                  px-4
-                  py-3.5
-                "
-              >
-                <p
-                  className="
-                    text-[8px]
-                    font-bold
-                    uppercase
-                    tracking-[0.15em]
-                    text-[#A97C52]
-                  "
-                >
-                  Scale Advantage
-                </p>
-
-                <p
-                  className="
-                    mt-1.5
-
-                    text-[10.5px]
-                    leading-[1.6]
-                    text-[#637A90]
-                  "
-                >
-                  Better multi-channel value plus attribution, segmentation,
-                  CRO, funnel analysis and deeper optimization.
-                </p>
-              </div>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* =====================================================
-            IMPORTANT NOTE
-        ===================================================== */}
-
-        <motion.div
-          initial={{
-            opacity: 0,
-            y: reduceMotion ? 0 : 16,
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
-          viewport={{
-            once: true,
-            amount: 0.3,
-          }}
-          transition={{
-            duration: reduceMotion ? 0 : 0.65,
-            ease,
-          }}
-          className="
-            mx-auto
-            mt-8
-
-            max-w-[1100px]
-
-            rounded-[17px]
-
-            border
-            border-[#D7E3EC]
-
-            bg-white/85
-
-            px-5
-            py-5
-
-            shadow-[0_8px_28px_rgba(11,42,82,0.035)]
-
-            sm:px-6
-          "
-        >
-          <div
-            className="
-              flex
-              flex-col
-              gap-4
-
-              sm:flex-row
-              sm:items-start
-            "
-          >
-            <span
-              className="
-                flex
-                h-9
-                w-9
-                shrink-0
-
-                items-center
-                justify-center
-
-                rounded-full
-
-                bg-[#EAF4FB]
-
-                text-[#0D5A93]
-              "
-            >
-              <Megaphone
-                size={15}
-                strokeWidth={1.7}
-              />
-            </span>
-
-            <div>
-              <p
-                className="
-                  text-[8px]
-                  font-bold
-                  uppercase
-                  tracking-[0.18em]
-                  text-[#B79A72]
-                "
-              >
-                Important
-              </p>
-
-              <p
-                className="
-                  mt-1.5
-
-                  text-[11.5px]
-                  font-medium
-                  leading-6
-                  text-[#0B2A52]
-
-                  sm:text-[12px]
-                "
-              >
-                Advertising spend is not included in the management fee and is
-                paid separately to the advertising platforms.
-              </p>
-
-              <p
-                className="
-                  mt-1
-
-                  text-[10.5px]
-                  leading-5
-                  text-[#60768B]
-
-                  sm:text-[11px]
-                "
-              >
-                Pricing covers the agreed advertising platform and campaign
-                scope. Multiple ad accounts, larger campaign structures,
-                advanced creative production or complex tracking requirements
-                may require a custom scope.
-              </p>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* =====================================================
-            CREATIVE SCOPE
-        ===================================================== */}
-
-        <motion.div
-          initial={{
-            opacity: 0,
-            y: reduceMotion ? 0 : 18,
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
-          viewport={{
-            once: true,
-            amount: 0.25,
-          }}
-          transition={{
-            duration: reduceMotion ? 0 : 0.7,
-            ease,
-          }}
-          className="
-            mx-auto
-            mt-8
-
-            max-w-[1080px]
-
-            border-y
-            border-[#E0E8EE]
-
-            py-5
-          "
-        >
-          <div
-            className="
-              grid
-              gap-5
-
-              md:grid-cols-2
-              md:gap-10
-            "
-          >
-            <div>
-              <p
-                className="
-                  text-[8px]
-                  font-bold
-                  uppercase
-                  tracking-[0.18em]
-                  text-[#B79A72]
-                "
-              >
-                Included Creative Support
-              </p>
-
-              <p
-                className="
-                  mt-2
-
-                  text-[11px]
-                  leading-[1.7]
-                  text-[#647B90]
-
-                  sm:text-[11.5px]
-                "
-              >
-                Ad copy, hooks, CTA variations, creative recommendations and
-                agreed performance creative testing are included according to
-                the selected plan.
-              </p>
-            </div>
-
-            <div
-              className="
-                border-t
-                border-[#E0E8EE]
-
-                pt-5
-
-                md:border-l
-                md:border-t-0
-                md:pl-10
-                md:pt-0
-              "
-            >
-              <p
-                className="
-                  text-[8px]
-                  font-bold
-                  uppercase
-                  tracking-[0.18em]
-                  text-[#B79A72]
-                "
-              >
-                Quoted Separately
-              </p>
-
-              <p
-                className="
-                  mt-2
-
-                  text-[11px]
-                  leading-[1.7]
-                  text-[#647B90]
-
-                  sm:text-[11.5px]
-                "
-              >
-                Professional shoots, UGC creators, talent, advanced video
-                production, large creative batches and new landing-page
-                development are scoped separately where required.
-              </p>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* =====================================================
-            CUSTOM PLAN
+            CUSTOM AI SYSTEMS
         ===================================================== */}
 
         <motion.div
@@ -1514,11 +979,9 @@ export default function PerformanceMarketingPricing() {
 
             mx-auto
             mt-10
-
-            max-w-[1100px]
+            max-w-[1120px]
 
             overflow-hidden
-
             rounded-[22px]
 
             border
@@ -1534,11 +997,10 @@ export default function PerformanceMarketingPricing() {
             sm:px-7
             sm:py-7
 
-            md:flex
-            md:items-center
-            md:justify-between
-            md:gap-10
-
+            lg:flex
+            lg:items-center
+            lg:justify-between
+            lg:gap-10
             lg:px-9
           "
         >
@@ -1546,16 +1008,14 @@ export default function PerformanceMarketingPricing() {
             aria-hidden="true"
             className="
               pointer-events-none
-
               absolute
               -right-[100px]
-              -top-[115px]
+              -top-[110px]
 
               h-[250px]
               w-[250px]
 
               rounded-full
-
               border
               border-[#B79A72]/15
             "
@@ -1565,55 +1025,95 @@ export default function PerformanceMarketingPricing() {
             className="
               relative
               z-10
-              max-w-[710px]
+              max-w-[760px]
             "
           >
-            <p
-              className="
-                text-[8px]
-                font-bold
-                uppercase
-                tracking-[0.2em]
-                text-[#B79A72]
-              "
-            >
-              Custom Performance Plan
-            </p>
+            <div className="flex items-center gap-2.5">
+              <Bot
+                size={14}
+                strokeWidth={1.6}
+                className="text-[#B79A72]"
+              />
+
+              <p
+                className="
+                  text-[8px]
+                  font-bold
+                  uppercase
+                  tracking-[0.2em]
+                  text-[#B79A72]
+                "
+              >
+                Need Something More Advanced?
+              </p>
+            </div>
 
             <h3
               style={newYorkFont}
               className="
-                mt-2
+                mt-3
 
-                text-[24px]
+                text-[25px]
                 font-medium
-                leading-[1.1]
-                tracking-[-0.03em]
+                leading-[1.08]
+                tracking-[-0.035em]
                 text-[#0B2A52]
 
-                sm:text-[28px]
+                sm:text-[29px]
+                lg:text-[31px]
               "
             >
-              Running More Platforms or More Complex Campaigns?
+              Custom AI Agents & Automation Systems.
             </h3>
 
             <p
               className="
                 mt-3
+                max-w-[730px]
 
-                max-w-[680px]
+                text-[12.5px]
+                leading-[1.75]
+                text-[#657C95]
 
-                text-[12px]
-                leading-[1.7]
-                text-[#5B7187]
-
-                sm:text-[13px]
+                sm:text-[13.5px]
               "
             >
-              For four or more advertising platforms, multiple ad accounts,
-              larger campaign structures, advanced tracking or heavier creative
-              requirements, we build a custom performance marketing scope.
+              AI agents, internal knowledge systems, voice automation,
+              high-volume workflows and complex integrations require a tailored
+              architecture and project scope.
             </p>
+
+            <div
+              className="
+                mt-4
+                flex
+                flex-wrap
+                gap-x-3
+                gap-y-2
+              "
+            >
+              {[
+                "Custom AI Agents",
+                "Knowledge / RAG",
+                "Voice AI",
+                "WhatsApp AI",
+                "Multi-Agent Systems",
+                "Custom APIs",
+              ].map((item) => (
+                <span
+                  key={item}
+                  className="
+                    text-[8px]
+                    font-semibold
+                    uppercase
+                    tracking-[0.09em]
+                    text-[#56758F]
+                  "
+                >
+                  {item}
+                </span>
+              ))}
+            </div>
           </div>
 
           <div
@@ -1621,11 +1121,11 @@ export default function PerformanceMarketingPricing() {
               relative
               z-10
 
-              mt-5
+              mt-6
               shrink-0
 
-              md:mt-0
-              md:text-right
+              lg:mt-0
+              lg:text-right
             "
           >
             <p
@@ -1637,15 +1137,14 @@ export default function PerformanceMarketingPricing() {
                 text-[#B79A72]
               "
             >
-              Pricing
+              Project Pricing
             </p>
 
             <p
               style={newYorkFont}
               className="
                 mt-1
-
-                text-[24px]
+                text-[25px]
                 font-medium
                 text-[#0B2A52]
               "
@@ -1660,10 +1159,8 @@ export default function PerformanceMarketingPricing() {
                 group
 
                 mt-4
-
                 inline-flex
                 min-h-[46px]
-
                 items-center
                 justify-center
                 gap-2
@@ -1691,7 +1188,7 @@ export default function PerformanceMarketingPricing() {
                 hover:bg-[#123B6A]
               "
             >
-              Get a Custom Proposal
+              Request an Automation Proposal
 
               <ArrowUpRight
                 size={13}
@@ -1699,7 +1196,6 @@ export default function PerformanceMarketingPricing() {
                 className="
                   transition-transform
                   duration-300
-
                   group-hover:translate-x-0.5
                   group-hover:-translate-y-0.5
                 "
@@ -1709,20 +1205,21 @@ export default function PerformanceMarketingPricing() {
         </motion.div>
 
         {/* =====================================================
-            PLATFORM FOOTER
+            AUTOMATION CARE
         ===================================================== */}
 
         <motion.div
           initial={{
             opacity: 0,
-            scaleX: reduceMotion ? 1 : 0.9,
+            y: reduceMotion ? 0 : 20,
           }}
           whileInView={{
             opacity: 1,
-            scaleX: 1,
+            y: 0,
           }}
           viewport={{
             once: true,
+            amount: 0.25,
           }}
           transition={{
             duration: reduceMotion ? 0 : 0.7,
@@ -1730,58 +1227,307 @@ export default function PerformanceMarketingPricing() {
           }}
           className="
             mx-auto
+            mt-8
+            max-w-[1120px]
+
+            rounded-[18px]
+
+            border
+            border-[#D5E3ED]
+
+            bg-[#F7FAFC]
+
+            px-5
+            py-5
+
+            sm:px-6
+          "
+        >
+          <div
+            className="
+              flex
+              flex-col
+              gap-5
+
+              md:flex-row
+              md:items-center
+              md:justify-between
+              md:gap-8
+            "
+          >
+            <div className="flex items-start gap-3.5">
+              <span
+                className="
+                  flex
+                  h-9
+                  w-9
+                  shrink-0
+                  items-center
+                  justify-center
+
+                  rounded-full
+
+                  bg-white
+                  text-[#0B2A52]
+
+                  shadow-[0_5px_14px_rgba(11,42,82,0.06)]
+                "
+              >
+                <Wrench
+                  size={14}
+                  strokeWidth={1.7}
+                />
+              </span>
+
+              <div>
+                <p
+                  className="
+                    text-[8px]
+                    font-bold
+                    uppercase
+                    tracking-[0.18em]
+                    text-[#B79A72]
+                  "
+                >
+                  Optional Ongoing Support
+                </p>
+
+                <h3
+                  style={newYorkFont}
+                  className="
+                    mt-1
+                    text-[20px]
+                    font-medium
+                    text-[#0B2A52]
+
+                    sm:text-[22px]
+                  "
+                >
+                  Automation Care
+                </h3>
+
+                <p
+                  className="
+                    mt-1.5
+                    max-w-[680px]
+
+                    text-[11px]
+                    leading-[1.65]
+                    text-[#617991]
+
+                    sm:text-[11.5px]
+                  "
+                >
+                  Monitoring, error checks, minor workflow adjustments,
+                  dependency checks and basic ongoing optimization after the
+                  included support period.
+                </p>
+              </div>
+            </div>
+
+            <div className="shrink-0 md:text-right">
+              <p
+                className="
+                  text-[7px]
+                  font-bold
+                  uppercase
+                  tracking-[0.16em]
+                  text-[#8495A6]
+                "
+              >
+                Starting From
+              </p>
+
+              <p
+                style={newYorkFont}
+                className="
+                  mt-1
+                  text-[24px]
+                  font-medium
+                  text-[#0B2A52]
+                "
+              >
+                ₹4,999
+                <span
+                  className="
+                    ml-1
+                    text-[10px]
+                    font-normal
+                    text-[#71879A]
+                  "
+                >
+                  / month
+                </span>
+              </p>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* =====================================================
+            IMPORTANT SCOPE NOTE
+        ===================================================== */}
+
+        <motion.div
+          initial={{
+            opacity: 0,
+            y: reduceMotion ? 0 : 16,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{
+            once: true,
+            amount: 0.25,
+          }}
+          transition={{
+            duration: reduceMotion ? 0 : 0.65,
+            ease,
+          }}
+          className="
+            mx-auto
+            mt-8
+            max-w-[1060px]
+
+            border-y
+            border-[#E0E8EE]
+
+            py-5
+          "
+        >
+          <div
+            className="
+              grid
+              gap-5
+
+              md:grid-cols-2
+              md:gap-10
+            "
+          >
+            <div>
+              <p
+                className="
+                  text-[8px]
+                  font-bold
+                  uppercase
+                  tracking-[0.18em]
+                  text-[#B79A72]
+                "
+              >
+                Pricing Depends On
+              </p>
+
+              <p
+                className="
+                  mt-2
+                  text-[11px]
+                  leading-[1.7]
+                  text-[#647B90]
+
+                  sm:text-[11.5px]
+                "
+              >
+                Workflow complexity, number of systems, integrations, AI
+                requirements, conditional logic, data volume and approval
+                requirements.
+              </p>
+            </div>
+
+            <div
+              className="
+                border-t
+                border-[#E0E8EE]
+
+                pt-5
+
+                md:border-l
+                md:border-t-0
+                md:pl-10
+                md:pt-0
+              "
+            >
+              <p
+                className="
+                  text-[8px]
+                  font-bold
+                  uppercase
+                  tracking-[0.18em]
+                  text-[#B79A72]
+                "
+              >
+                Third-Party Costs
+              </p>
+
+              <p
+                className="
+                  mt-2
+                  text-[11px]
+                  leading-[1.7]
+                  text-[#647B90]
+
+                  sm:text-[11.5px]
+                "
+              >
+                Automation platforms, AI model usage, APIs, WhatsApp charges,
+                premium tools and other external software costs are separate
+                unless specifically included in your proposal.
+              </p>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* =====================================================
+            END LINE
+        ===================================================== */}
+
+        <div
+          className="
+            mx-auto
             mt-9
 
             flex
-            max-w-[720px]
-
+            max-w-[650px]
             items-center
             gap-3
-
-            sm:gap-4
           "
         >
           <span
             className="
               h-px
               flex-1
-
               bg-gradient-to-r
               from-transparent
-              to-[#8CB4D0]/50
+              to-[#B79A72]/45
             "
           />
 
           <span
             className="
               shrink-0
-
               text-center
 
-              text-[7px]
+              text-[8px]
               font-semibold
               uppercase
-              tracking-[0.12em]
-              text-[#536F8A]
+              tracking-[0.16em]
+              text-[#8295A8]
 
-              sm:text-[8.5px]
-              sm:tracking-[0.17em]
+              sm:tracking-[0.22em]
             "
           >
-            Google Ads · Meta Ads · YouTube · LinkedIn Ads
+            Connect · Automate · Review · Improve
           </span>
 
           <span
             className="
               h-px
               flex-1
-
               bg-gradient-to-l
               from-transparent
               to-[#B79A72]/45
             "
           />
-        </motion.div>
+        </div>
       </div>
     </section>
   );
