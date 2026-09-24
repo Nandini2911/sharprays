@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import {
   AnimatePresence,
   motion,
@@ -41,6 +42,7 @@ type Service = {
   icon: LucideIcon;
   features: string[];
   note?: string;
+  href: string;
 
   bg: string;
   border: string;
@@ -81,6 +83,7 @@ const services: Service[] = [
     description:
       "We start by understanding the business, audience and actions the website needs to support.",
     icon: Route,
+    href: "/services/website-development/website-strategy-architecture",
     features: [
       "Business objectives",
       "Audience priorities",
@@ -109,6 +112,7 @@ const services: Service[] = [
     description:
       "Good user experience reduces friction between what someone wants and where they need to go.",
     icon: LayoutTemplate,
+    href: "/services/website-development/ux-interface-design",
     features: [
       "Content hierarchy",
       "Page structure",
@@ -137,6 +141,7 @@ const services: Service[] = [
     description:
       "Reusable, maintainable components developed around the agreed design, functionality and business requirements.",
     icon: Braces,
+    href: "/services/website-development/custom-website-development",
     features: [
       "Custom page layouts",
       "Interactive sections",
@@ -165,6 +170,7 @@ const services: Service[] = [
     description:
       "For suitable projects, we use modern frameworks such as Next.js to create fast, component-based experiences.",
     icon: Code2,
+    href: "/services/website-development/nextjs-website-development",
     features: [
       "Responsive interfaces",
       "Reusable components",
@@ -193,6 +199,7 @@ const services: Service[] = [
     description:
       "Layouts and interactions adapt naturally across desktop, tablet and mobile.",
     icon: MonitorSmartphone,
+    href: "/services/website-development/responsive-website-development",
     features: [
       "Desktop layouts",
       "Tablet behaviour",
@@ -220,6 +227,7 @@ const services: Service[] = [
     description:
       "Landing pages are designed around a focused audience, offer or campaign objective.",
     icon: Target,
+    href: "/services/website-development/landing-page-development",
     features: [
       "Lead generation",
       "Paid advertising",
@@ -248,6 +256,7 @@ const services: Service[] = [
     description:
       "We identify what should be preserved and what genuinely needs improvement.",
     icon: RefreshCw,
+    href: "/services/website-development/website-redesign-redevelopment",
     features: [
       "Outdated interfaces",
       "Confusing structure",
@@ -275,6 +284,7 @@ const services: Service[] = [
     description:
       "Suitable content can be updated without rebuilding individual pages manually.",
     icon: FilePenLine,
+    href: "/services/website-development/cms-content-management",
     features: [
       "Editor requirements",
       "Regular updates",
@@ -300,6 +310,7 @@ const services: Service[] = [
     description:
       "We plan the systems and connections required behind the customer experience.",
     icon: PlugZap,
+    href: "/services/website-development/integrations-functionality",
     features: [
       "CRM systems",
       "Analytics platforms",
@@ -416,10 +427,12 @@ const platforms: PlatformService[] = [
 ];
 
 /* =========================================================
-   SERVICE BAND
+   SERVICE CARD
+   Performance Marketing style:
+   compact, colored, content-height, no forced empty space
 ========================================================= */
 
-function ServiceBand({
+function ServiceCard({
   service,
   index,
   reduceMotion,
@@ -437,7 +450,7 @@ function ServiceBand({
           ? false
           : {
               opacity: 0,
-              y: 22,
+              y: 24,
             }
       }
       whileInView={{
@@ -446,23 +459,28 @@ function ServiceBand({
       }}
       viewport={{
         once: true,
-        amount: 0.18,
+        amount: 0.15,
       }}
       transition={{
-        duration: 0.55,
-        delay: reduceMotion ? 0 : index * 0.04,
+        duration: reduceMotion ? 0 : 0.58,
+        delay: reduceMotion ? 0 : index * 0.045,
         ease,
       }}
       whileHover={
         reduceMotion
           ? undefined
           : {
-              y: -3,
+              y: -5,
             }
       }
       className={`
         group
         relative
+
+        flex
+        h-full
+        flex-col
+
         overflow-hidden
 
         rounded-[22px]
@@ -472,423 +490,285 @@ function ServiceBand({
         ${service.bg}
         ${service.border}
 
-        shadow-[0_9px_26px_rgba(11,42,82,0.03)]
+        p-5
 
-        transition-shadow
-        duration-300
+        shadow-[0_12px_34px_rgba(11,42,82,0.045)]
 
-        hover:shadow-[0_18px_40px_rgba(11,42,82,0.07)]
+        transition-all
+        duration-500
+
+        hover:shadow-[0_20px_48px_rgba(11,42,82,0.09)]
+
+        sm:p-6
       `}
     >
-      {/* LEFT ACCENT */}
+      {/* =====================================================
+          SOFT COLOR GLOW
+      ===================================================== */}
 
-      <motion.span
+      <div
+        aria-hidden="true"
         className={`
-          absolute
-          bottom-0
-          left-0
-          top-0
-
-          w-[4px]
-
-          ${service.accent}
-        `}
-        whileHover={
-          reduceMotion
-            ? undefined
-            : {
-                width: 7,
-              }
-        }
-      />
-
-      {/* LARGE NUMBER */}
-
-      <span
-        className="
           pointer-events-none
 
           absolute
-          -right-3
-          -top-8
+          -right-16
+          -top-16
 
-          font-serif
-          text-[7.5rem]
-          leading-none
-          tracking-[-0.08em]
+          h-40
+          w-40
 
-          text-[#0B2A52]/[0.025]
-        "
-      >
-        {service.number}
-      </span>
+          rounded-full
 
-      <div
-        className="
-          relative
-          z-10
+          ${service.accent}
 
-          grid
-          gap-6
+          opacity-[0.055]
+          blur-[42px]
 
-          p-5
-          pl-6
+          transition-all
+          duration-500
 
-          sm:p-6
-          sm:pl-7
+          group-hover:scale-125
+          group-hover:opacity-[0.09]
+        `}
+      />
 
-          lg:grid-cols-[0.78fr_1.22fr]
-          lg:items-center
-          lg:gap-8
-        "
-      >
-        {/* =====================================================
-            LEFT — SERVICE IDENTITY
-        ===================================================== */}
+      {/* =====================================================
+          LARGE NUMBER
+      ===================================================== */}
 
-        <div className="min-w-0">
-          <div className="flex items-center gap-4">
-            <motion.span
-              whileHover={
-                reduceMotion
-                  ? undefined
-                  : {
-                      scale: 1.08,
-                      rotate: -5,
-                    }
-              }
-              className={`
-                flex
-                h-12
-                w-12
-                shrink-0
-                items-center
-                justify-center
+   
 
-                rounded-[14px]
-
-                ${service.iconBg}
-
-                text-[#0B2A52]
-              `}
-            >
-              <Icon size={20} strokeWidth={1.7} />
-            </motion.span>
-
-            <div>
-              <span
-                className={`
-                  block
-
-                  text-[0.58rem]
-                  font-semibold
-                  uppercase
-                  tracking-[0.16em]
-
-                  ${service.accentText}
-                `}
-              >
-                {service.category}
-              </span>
-
-              <span
-                className="
-                  mt-1
-                  block
-
-                  text-[0.65rem]
-                  font-semibold
-                  tracking-[0.12em]
-
-                  text-[#8795A1]
-                "
-              >
-                {service.number} / 09
-              </span>
-            </div>
-          </div>
-
-          <h3
-            className="
-              mt-5
-
-              max-w-[500px]
-
-              font-serif
-              text-[1.45rem]
-              font-normal
-              leading-[1.12]
-              tracking-[-0.03em]
-
-              text-[#0B2A52]
-
-              sm:text-[1.58rem]
-            "
-          >
-            {service.title}
-          </h3>
-
-          <p
-            className="
-              mt-3
-
-              max-w-[510px]
-
-              text-[0.72rem]
-              font-semibold
-              uppercase
-              leading-[1.5]
-              tracking-[0.06em]
-
-              text-[#3E5870]
-            "
-          >
-            {service.subtitle}
-          </p>
-
-          <p
-            className="
-              mt-3
-
-              max-w-[530px]
-
-              font-serif
-              text-[0.84rem]
-              leading-[1.65]
-
-              text-[#5D7287]
-            "
-          >
-            {service.description}
-          </p>
-
-          {service.note && (
-            <div
-              className="
-                mt-4
-
-                flex
-                items-start
-                gap-2.5
-              "
-            >
-              <span
-                className={`
-                  mt-[7px]
-
-                  h-1.5
-                  w-1.5
-                  shrink-0
-
-                  rounded-full
-
-                  ${service.accent}
-                `}
-              />
-
-              <p
-                className="
-                  max-w-[500px]
-
-                  text-[0.7rem]
-                  leading-[1.55]
-
-                  text-[#6D8091]
-                "
-              >
-                {service.note}
-              </p>
-            </div>
-          )}
-        </div>
-
-        {/* =====================================================
-            RIGHT — FULL SCOPE
-        ===================================================== */}
+      <div className="relative z-10 flex h-full flex-col">
+        {/* =================================================
+            TOP
+        ================================================= */}
 
         <div
           className="
-            lg:border-l
-            lg:border-black/[0.07]
-            lg:pl-8
+            flex
+            items-start
+            justify-between
+            gap-4
           "
         >
-          <div
-            className="
+          <motion.span
+            whileHover={
+              reduceMotion
+                ? undefined
+                : {
+                    scale: 1.08,
+                    rotate: -5,
+                  }
+            }
+            className={`
               flex
+              h-11
+              w-11
+              shrink-0
               items-center
-              justify-between
-              gap-4
-            "
+              justify-center
+
+              rounded-[13px]
+
+              ${service.iconBg}
+
+              ${service.accentText}
+
+              shadow-[0_7px_20px_rgba(11,42,82,0.04)]
+
+              sm:h-12
+              sm:w-12
+              sm:rounded-[14px]
+            `}
           >
-            <div className="flex items-center gap-2.5">
-              <Sparkles
-                size={14}
-                strokeWidth={1.7}
-                className={service.accentText}
-              />
+            <Icon size={19} strokeWidth={1.7} />
+          </motion.span>
 
-              <span
-                className="
-                  text-[0.58rem]
-                  font-semibold
-                  uppercase
-                  tracking-[0.16em]
+         
+        </div>
 
-                  text-[#526A80]
-                "
-              >
-                What&apos;s Included
-              </span>
-            </div>
+        {/* =================================================
+            SERVICE IDENTITY
+        ================================================= */}
 
-            <span
-              className={`
-                rounded-full
+        <span
+          className={`
+            mt-5
+            block
 
-                px-2.5
-                py-1.5
+            text-[0.53rem]
+            font-semibold
+            uppercase
+            tracking-[0.18em]
 
-                text-[0.56rem]
-                font-semibold
+            ${service.accentText}
+          `}
+        >
+          {service.category}
+        </span>
 
-                ${service.chipBg}
-                ${service.accentText}
-              `}
-            >
-              {service.features.length} items
-            </span>
-          </div>
+        <h3
+          className="
+            mt-2
 
-          {/* FEATURES */}
+            max-w-[420px]
 
-          <div
+            font-serif
+            text-[1.3rem]
+            font-normal
+            leading-[1.12]
+            tracking-[-0.03em]
+
+            text-[#0B2A52]
+
+            sm:text-[1.42rem]
+          "
+        >
+          {service.title}
+        </h3>
+
+        <div
+          className={`
+            mt-4
+
+            rounded-[13px]
+
+            ${service.chipBg}
+
+            px-3.5
+            py-3
+          `}
+        >
+          <p
+            className={`
+              text-[0.72rem]
+              font-semibold
+              leading-[1.5]
+
+              ${service.accentText}
+            `}
+          >
+            {service.subtitle}
+          </p>
+        </div>
+
+        <p
+          className="
+            mt-4
+
+            text-[0.78rem]
+            leading-[1.68]
+
+            text-[#5E7488]
+          "
+        >
+          {service.description}
+        </p>
+
+        {/* =================================================
+            BOTTOM ACTIONS
+        ================================================= */}
+
+        <div
+          className="
+            mt-auto
+            pt-6
+
+            flex
+            items-center
+            justify-between
+            gap-4
+
+            border-t
+            border-black/[0.07]
+
+            pt-4
+          "
+        >
+          {/* Learn More → unique service page */}
+          <Link
+            href={service.href}
             className="
-              mt-4
+              group/learn
 
-              grid
-              grid-cols-1
-              gap-x-3
-              gap-y-2
+              inline-flex
+              items-center
+              gap-3
 
-              sm:grid-cols-2
+              font-serif
+              text-[0.88rem]
+              font-semibold
+              text-[#0B2A52]
+
+              transition-colors
+              duration-300
+
+              hover:text-[#183E64]
+
+              sm:text-[0.95rem]
             "
           >
-            {service.features.map((feature, featureIndex) => (
-              <motion.div
-                key={feature}
-                initial={
-                  reduceMotion
-                    ? false
-                    : {
-                        opacity: 0,
-                        x: 8,
-                      }
-                }
-                whileInView={{
-                  opacity: 1,
-                  x: 0,
-                }}
-                viewport={{
-                  once: true,
-                  amount: 0.3,
-                }}
-                transition={{
-                  duration: 0.28,
-                  delay: reduceMotion
-                    ? 0
-                    : featureIndex * 0.02,
-                }}
-                whileHover={
-                  reduceMotion
-                    ? undefined
-                    : {
-                        x: 3,
-                      }
-                }
-                className="
-                  group/item
+            <span>Learn More</span>
 
-                  flex
-                  min-h-[40px]
-                  items-center
-                  gap-2.5
+            <ArrowRight
+              size={14}
+              strokeWidth={1.7}
+              className="
+                transition-transform
+                duration-300
 
-                  rounded-[11px]
+                group-hover/learn:translate-x-1
+              "
+            />
+          </Link>
 
-                  border
-                  border-transparent
+          {/* Colored circular arrow → Contact */}
+          <Link
+            href="/contact"
+            aria-label={`Contact Sharp Rays about ${service.title}`}
+            className={`
+              group/contact
 
-                  px-2.5
-                  py-2
+              flex
+              h-10
+              w-10
+              shrink-0
+              items-center
+              justify-center
 
-                  transition-all
-                  duration-300
+              rounded-full
 
-                  hover:border-black/[0.06]
-                  hover:bg-white/75
-                "
-              >
-                <span
-                  className={`
-                    flex
-                    h-6
-                    w-6
-                    shrink-0
-                    items-center
-                    justify-center
+              ${service.accent}
 
-                    rounded-full
+              text-[#0B2A52]
 
-                    ${service.chipBg}
+              shadow-[0_10px_24px_rgba(11,42,82,0.10)]
 
-                    ${service.accentText}
-                  `}
-                >
-                  <Check size={9} strokeWidth={2.4} />
-                </span>
+              transition-all
+              duration-300
 
-                <span
-                  className="
-                    text-[0.72rem]
-                    font-medium
-                    leading-[1.35]
+              hover:-translate-y-0.5
+              hover:scale-[1.04]
+              hover:shadow-[0_14px_30px_rgba(11,42,82,0.15)]
 
-                    text-[#435E76]
-                  "
-                >
-                  {feature}
-                </span>
-              </motion.div>
-            ))}
-          </div>
+              sm:h-11
+              sm:w-11
+            `}
+          >
+            <ArrowRight
+              size={15}
+              strokeWidth={1.8}
+              className="
+                transition-transform
+                duration-300
+
+                group-hover/contact:translate-x-0.5
+              "
+            />
+          </Link>
         </div>
       </div>
-
-      {/* HOVER SWEEP */}
-
-      <motion.div
-        className={`
-          pointer-events-none
-
-          absolute
-          bottom-0
-          left-0
-          top-0
-
-          w-[120px]
-
-          ${service.accent}
-
-          opacity-0
-          blur-[55px]
-
-          transition-opacity
-          duration-500
-
-          group-hover:opacity-[0.07]
-        `}
-      />
     </motion.article>
   );
 }
@@ -1513,8 +1393,9 @@ export default function WebsiteDevelopmentServicesSection() {
 
         bg-white
 
-        py-20
-        sm:py-24
+        py-16
+        sm:py-20
+        md:py-24
         lg:py-28
       "
     >
@@ -1567,9 +1448,9 @@ export default function WebsiteDevelopmentServicesSection() {
           w-full
           max-w-[1380px]
 
-          px-5
-          sm:px-7
-          md:px-9
+          px-4
+          sm:px-6
+          md:px-8
           lg:px-12
           xl:px-14
         "
@@ -1606,22 +1487,40 @@ export default function WebsiteDevelopmentServicesSection() {
           "
         >
           <div className="flex items-center justify-center gap-4">
-            <span className="h-px w-10 bg-[#B79A72]" />
+              <span
+            className="
+              h-px
+              w-10
+
+              bg-gradient-to-r
+              from-transparent
+              to-[#B79A72]
+            "
+          />
 
             <span
               className="
                 text-[0.58rem]
-                font-semibold
+          
                 uppercase
                 tracking-[0.28em]
-
-                text-[#92745C]
+                text-[10px]
+                text-[#B79A72]
               "
             >
               Our Website Development Services
             </span>
 
-            <span className="h-px w-10 bg-[#B79A72]" />
+           <span
+            className="
+              h-px
+              w-10
+
+              bg-gradient-to-l
+              from-transparent
+              to-[#B79A72]
+            "
+          />
           </div>
 
           <h2
@@ -1631,7 +1530,7 @@ export default function WebsiteDevelopmentServicesSection() {
               mt-6
               max-w-[1050px]
 
-              text-[2.3rem]
+              text-[2.2rem]
               font-medium
               leading-[1.04]
               tracking-[-0.045em]
@@ -1651,7 +1550,7 @@ export default function WebsiteDevelopmentServicesSection() {
                 font-normal
                 italic
 
-                text-[#B18458]
+                text-[#B79A72]
               "
             >
               Connected.
@@ -1679,23 +1578,32 @@ export default function WebsiteDevelopmentServicesSection() {
         </motion.div>
 
         {/* =====================================================
-            SERVICE BANDS
+            SERVICE CARDS
         ===================================================== */}
 
         <div
           className="
             mx-auto
-            mt-14
-
+            mt-12
             max-w-[1230px]
 
-            space-y-4
+            grid
+            grid-cols-1
+            auto-rows-fr
+            items-stretch
+            gap-4
 
-            lg:mt-16
+            sm:mt-14
+            sm:gap-5
+
+            md:grid-cols-2
+
+            xl:mt-16
+            xl:grid-cols-3
           "
         >
           {services.map((service, index) => (
-            <ServiceBand
+            <ServiceCard
               key={service.number}
               service={service}
               index={index}
@@ -1880,24 +1788,7 @@ export default function WebsiteDevelopmentServicesSection() {
             text-center
           "
         >
-          <div className="flex items-center justify-center gap-3">
-            <span className="h-px w-9 bg-[#B79A72]" />
-
-            <span
-              className="
-                text-[0.52rem]
-                font-semibold
-                uppercase
-                tracking-[0.21em]
-
-                text-[#92745C]
-              "
-            >
-              The Right Stack for the Right Requirement
-            </span>
-
-            <span className="h-px w-9 bg-[#B79A72]" />
-          </div>
+         
 
           <p
             className="
@@ -1921,38 +1812,7 @@ export default function WebsiteDevelopmentServicesSection() {
             </span>
           </p>
 
-          <motion.span
-            animate={
-              reduceMotion
-                ? undefined
-                : {
-                    x: [0, 4, 0],
-                  }
-            }
-            transition={{
-              duration: 2.2,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-            className="
-              mx-auto
-              mt-6
-
-              flex
-              h-10
-              w-10
-              items-center
-              justify-center
-
-              rounded-full
-
-              bg-[#0B2A52]
-
-              text-white
-            "
-          >
-            <ArrowRight size={14} strokeWidth={1.7} />
-          </motion.span>
+         
         </motion.div>
       </div>
     </section>

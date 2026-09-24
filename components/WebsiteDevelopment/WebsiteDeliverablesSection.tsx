@@ -225,10 +225,11 @@ function DeliverableItem({
           relative
           z-10
           grid
-          grid-cols-[45px_42px_1px_1fr]
+          grid-cols-[45px_1px_minmax(0,1fr)]
           items-start
           gap-3
-          sm:grid-cols-[48px_46px_1px_1fr]
+
+          sm:grid-cols-[48px_1px_minmax(0,1fr)]
         "
       >
         {/* icon */}
@@ -252,21 +253,6 @@ function DeliverableItem({
         >
           <Icon size={18} strokeWidth={1.7} />
         </div>
-
-        {/* number */}
-
-        <span
-          className="
-            pt-1
-            font-serif
-            text-[1.65rem]
-            leading-none
-            tracking-[-0.05em]
-            text-[#B08A5D]
-          "
-        >
-          {item.number}
-        </span>
 
         {/* divider */}
 
@@ -442,7 +428,16 @@ export default function WebsiteDeliverablesSection() {
               gap-4
             "
           >
-            <span className="h-px w-9 bg-[#C7A577]" />
+         <span
+            className="
+              h-px
+              w-10
+
+              bg-gradient-to-r
+              from-transparent
+              to-[#B79A72]
+            "
+          />
 
             <span
               className="
@@ -450,14 +445,23 @@ export default function WebsiteDeliverablesSection() {
                 font-semibold
                 uppercase
                 tracking-[0.3em]
-                text-[#0B2A52]
+                text-[#B79A72]
                 sm:text-[0.61rem]
               "
             >
               Website Development Deliverables
             </span>
 
-            <span className="h-px w-9 bg-[#C7A577]" />
+          <span
+            className="
+              h-px
+              w-10
+
+              bg-gradient-to-l
+              from-transparent
+              to-[#B79A72]
+            "
+          />
           </motion.div>
 
           <motion.h2
