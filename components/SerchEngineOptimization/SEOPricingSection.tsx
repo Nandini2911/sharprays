@@ -9,7 +9,6 @@ import {
   Search,
   Target,
 } from "lucide-react";
-
 import {
   motion,
   useReducedMotion,
@@ -27,68 +26,82 @@ const ease = [0.22, 1, 0.36, 1] as const;
 
 const plans = [
   {
-    name: "Basic",
-    price: "₹14,999",
+    name: "Foundation",
+    price: "₹12,999",
     tagline: "Build the Right Search Foundation.",
     icon: Search,
     items: [
-      "SEO Audit",
+      "SEO Audit & Priority Action Plan",
       "Keyword & Search Intent Research",
-      "Technical SEO Checks",
-      "Up to 5 Priority Pages / Month",
+      "Core Technical SEO Checks",
+      "Up to 5 Priority Page Optimizations / Month",
+      "On-Page SEO Improvements",
+      "Meta Titles & Descriptions",
       "Internal Linking Improvements",
-      "Monthly Tracking & Report",
+      "Google Search Console Review",
+      "GA4 Performance Review",
+      "Monthly SEO Report",
     ],
-    bonus:
-      "Free Search Console & Analytics Review",
+    bonus: "SEO Opportunity Snapshot",
     bestFor:
-      "Startups & smaller websites",
-    cta: "Start With Basic",
+      "Startups, local businesses and smaller websites building their organic search foundation.",
+    cta: "Start With Foundation",
   },
 
   {
-    name: "Pro",
-    price: "₹29,999",
-    tagline:
-      "Turn Search Visibility Into Consistent Growth.",
+    name: "Growth",
+    price: "₹24,999",
+    tagline: "Turn Search Visibility Into Consistent Growth.",
     icon: Target,
     items: [
-      "Everything in Basic",
+      "Everything in Foundation",
       "Advanced Keyword & Competitor Research",
-      "Up to 10 Priority Pages / Month",
-      "Content Gap & Content Optimization",
+      "Up to 10 Priority Page Optimizations / Month",
+      "Content Gap Analysis",
+      "Existing Content Optimization",
       "Technical SEO Monitoring",
-      "AI Search Recommendations",
-      "Monthly Strategy Review",
+      "Search Intent & Page Mapping",
+      "Schema & Structured Data Recommendations",
+      "AI Search Readiness Recommendations",
+      "2 SEO Content Briefs / Month",
+      "Monthly Performance & Strategy Review",
     ],
     bonus:
-      "2 SEO Content Briefs + Opportunity Report",
+      "Competitor & Content Opportunity Report",
     bestFor:
-      "Growing businesses",
-    cta: "Choose Pro",
+      "Growing businesses targeting more services, keywords or locations.",
+    cta: "Choose Growth",
     popular: true,
   },
 
   {
-    name: "Premium",
-    price: "₹49,999",
-    tagline:
-      "Build a Complete Organic Growth System.",
+    name: "Scale",
+    price: "₹39,999",
+    tagline: "Build a Complete Organic Growth System.",
     icon: BarChart3,
     items: [
-      "Everything in Pro",
-      "Up to 20 Priority Pages / Month",
-      "Advanced SEO Strategy",
-      "Content Cluster Planning",
-      "Local SEO Support",
-      "AI Search & Overview Optimization",
+      "Everything in Growth",
+      "Up to 15 Priority Page Optimizations / Month",
+      "Advanced Keyword & Competitor Strategy",
+      "Advanced Technical SEO Monitoring",
+      "Technical Issue Prioritization",
+      "Content Cluster & Topical Authority Planning",
+      "Advanced Internal Linking Strategy",
+      "Local SEO Optimization Support",
+      "Schema & Structured Data Strategy",
+      "AI Search & AI Overview Optimization",
+      "Search Console & GA4 Performance Analysis",
+      "Organic Competitor Growth Analysis",
+      "Authority & Digital PR Opportunity Mapping",
+      "Conversion & Search Performance Review",
+      "Monthly Growth Strategy Session",
       "Priority Support",
     ],
     bonus:
-      "Competitor Growth Report + Strategy Session",
+      "Competitor Growth Report + 60-Minute Strategy Session",
     bestFor:
-      "Competitive & larger websites",
-    cta: "Choose Premium",
+      "Competitive businesses, larger websites and brands building long-term organic growth.",
+    cta: "Choose Scale",
   },
 ];
 
@@ -97,11 +110,12 @@ const plans = [
 ========================================================= */
 
 export default function SEOPricingSection() {
-  const reduceMotion = useReducedMotion();
+  const reduceMotion = Boolean(useReducedMotion());
 
   return (
     <section
       id="seo-pricing"
+      aria-labelledby="seo-pricing-heading"
       className="
         relative
         overflow-hidden
@@ -114,7 +128,9 @@ export default function SEOPricingSection() {
         lg:py-28
       "
     >
-      {/* BACKGROUND */}
+      {/* =====================================================
+          BACKGROUND
+      ===================================================== */}
 
       <div
         aria-hidden="true"
@@ -129,14 +145,10 @@ export default function SEOPricingSection() {
             absolute
             left-1/2
             top-[-280px]
-
             h-[500px]
             w-[850px]
-
             -translate-x-1/2
-
             rounded-full
-
             bg-[#EAF4FC]/70
             blur-[160px]
           "
@@ -146,31 +158,42 @@ export default function SEOPricingSection() {
           className="
             absolute
             -right-[280px]
-            top-[48%]
-
+            top-[46%]
             h-[500px]
             w-[500px]
-
             rounded-full
-
             bg-[#C6A77A]/[0.07]
             blur-[150px]
           "
         />
+
+        <div
+          className="
+            absolute
+            -left-[240px]
+            bottom-[2%]
+            h-[430px]
+            w-[430px]
+            rounded-full
+            bg-[#EAF4FC]/45
+            blur-[140px]
+          "
+        />
       </div>
 
-      {/* CONTAINER */}
+      {/* =====================================================
+          CONTAINER
+      ===================================================== */}
 
       <div
         className="
           relative
           z-10
-
           mx-auto
           w-full
           max-w-[1340px]
-
           px-5
+
           sm:px-7
           md:px-8
           lg:px-12
@@ -231,18 +254,20 @@ export default function SEOPricingSection() {
           </div>
 
           <h2
+            id="seo-pricing-heading"
             style={newYorkFont}
             className="
               mx-auto
               mt-5
               max-w-[850px]
 
-              text-[2.6rem]
+              text-[2.1rem]
               font-medium
               leading-[1]
               tracking-[-0.045em]
               text-[#0B2A52]
 
+              sm:text-[2.6rem]
               md:text-[2.95rem]
               lg:text-[3.1rem]
               xl:text-[3.35rem]
@@ -273,7 +298,7 @@ export default function SEOPricingSection() {
         </motion.div>
 
         {/* =====================================================
-            SMALL OFFER STRIP
+            OFFERS
         ===================================================== */}
 
         <motion.div
@@ -287,6 +312,7 @@ export default function SEOPricingSection() {
           }}
           viewport={{
             once: true,
+            amount: 0.3,
           }}
           transition={{
             duration: reduceMotion ? 0 : 0.65,
@@ -295,57 +321,120 @@ export default function SEOPricingSection() {
           className="
             mx-auto
             mt-8
+            grid
+            max-w-[980px]
+            gap-3
 
-            flex
-            max-w-[900px]
-
-            flex-col
-            items-center
-            justify-center
-
-            gap-2
-
-            rounded-[16px]
-
-            border
-            border-[#C6A77A]/25
-
-            bg-[#FFF9EF]
-
-            px-4
-            py-3.5
-
-            text-center
-
-            sm:flex-row
-            sm:gap-3
+            md:grid-cols-2
           "
         >
-          <Gift
-            size={14}
-            strokeWidth={1.7}
-            className="
-              shrink-0
-              text-[#B88E55]
-            "
-          />
+          {/* NEW CLIENT OFFER */}
 
-          <p
+          <div
             className="
-              text-[10.5px]
-              font-medium
-              leading-5
-              text-[#0B2A52]
+              flex
+              items-center
+              justify-center
+              gap-3
 
-              sm:text-[11px]
+              rounded-[16px]
+
+              border
+              border-[#C6A77A]/25
+
+              bg-[#FFF9EF]
+
+              px-4
+              py-3.5
+
+              text-center
             "
           >
-            <strong>
-              New Client Offer:
-            </strong>{" "}
-            Free SEO Growth Audit + 30-Minute Strategy Call with
-            any plan.
-          </p>
+            <Gift
+              size={14}
+              strokeWidth={1.7}
+              className="
+                shrink-0
+                text-[#B88E55]
+              "
+            />
+
+            <p
+              className="
+                text-[10.5px]
+                font-medium
+                leading-5
+                text-[#0B2A52]
+
+                sm:text-[11px]
+              "
+            >
+              <strong>
+                New Client Offer:
+              </strong>{" "}
+              Free SEO Opportunity Review with any plan.
+            </p>
+          </div>
+
+          {/* QUARTERLY OFFER */}
+
+          <div
+            className="
+              flex
+              items-center
+              justify-center
+              gap-3
+
+              rounded-[16px]
+
+              border
+              border-[#A8C6DC]/40
+
+              bg-[#F0F7FC]
+
+              px-4
+              py-3.5
+
+              text-center
+            "
+          >
+            <span
+              className="
+                flex
+                h-[24px]
+                w-[24px]
+                shrink-0
+                items-center
+                justify-center
+
+                rounded-full
+
+                bg-[#0B2A52]
+
+                text-[8px]
+                font-bold
+                text-white
+              "
+            >
+              %
+            </span>
+
+            <p
+              className="
+                text-[10.5px]
+                font-medium
+                leading-5
+                text-[#0B2A52]
+
+                sm:text-[11px]
+              "
+            >
+              <strong>
+                Quarterly Billing:
+              </strong>{" "}
+              Save 10% when you choose a quarterly plan.
+            </p>
+          </div>
         </motion.div>
 
         {/* =====================================================
@@ -361,10 +450,10 @@ export default function SEOPricingSection() {
             max-w-[1180px]
             grid-cols-1
 
-            gap-4
+            items-stretch
+            gap-5
 
             md:grid-cols-2
-            md:gap-5
 
             xl:grid-cols-3
           "
@@ -388,12 +477,8 @@ export default function SEOPricingSection() {
                   amount: 0.15,
                 }}
                 transition={{
-                  duration: reduceMotion
-                    ? 0
-                    : 0.65,
-                  delay: reduceMotion
-                    ? 0
-                    : index * 0.07,
+                  duration: reduceMotion ? 0 : 0.65,
+                  delay: reduceMotion ? 0 : index * 0.07,
                   ease,
                 }}
                 whileHover={
@@ -406,22 +491,15 @@ export default function SEOPricingSection() {
                 className={`
                   group
                   relative
-
                   flex
+                  h-full
                   flex-col
-
                   overflow-hidden
-
                   rounded-[22px]
-
                   border
-
                   bg-white
-
                   p-5
-
                   shadow-[0_12px_35px_rgba(11,42,82,0.045)]
-
                   transition-all
                   duration-300
 
@@ -431,7 +509,7 @@ export default function SEOPricingSection() {
                     plan.popular
                       ? `
                         border-[#3976B6]/50
-                        shadow-[0_18px_45px_rgba(57,118,182,0.1)]
+                        shadow-[0_18px_45px_rgba(57,118,182,0.10)]
                       `
                       : `
                         border-[#D6E2EC]
@@ -440,14 +518,13 @@ export default function SEOPricingSection() {
                   }
 
                   ${
-                    plan.name ===
-                    "Premium"
+                    plan.name === "Scale"
                       ? "md:col-span-2 xl:col-span-1"
                       : ""
                   }
                 `}
               >
-                {/* BG */}
+                {/* CARD BACKGROUND */}
 
                 <div
                   aria-hidden="true"
@@ -501,7 +578,15 @@ export default function SEOPricingSection() {
                   </span>
                 )}
 
-                <div className="relative z-10">
+                <div
+                  className="
+                    relative
+                    z-10
+                    flex
+                    h-full
+                    flex-col
+                  "
+                >
                   {/* PLAN */}
 
                   <div
@@ -517,10 +602,8 @@ export default function SEOPricingSection() {
                         h-9
                         w-9
                         shrink-0
-
                         items-center
                         justify-center
-
                         rounded-[11px]
 
                         ${
@@ -555,6 +638,7 @@ export default function SEOPricingSection() {
                     style={newYorkFont}
                     className="
                       mt-4
+                      min-h-[58px]
                       max-w-[350px]
 
                       text-[23px]
@@ -574,11 +658,9 @@ export default function SEOPricingSection() {
                   <div
                     className="
                       mt-5
-
                       flex
                       flex-wrap
                       items-end
-
                       gap-1.5
                     "
                   >
@@ -600,7 +682,6 @@ export default function SEOPricingSection() {
                     <span
                       className="
                         pb-1
-
                         text-[10px]
                         text-[#61778D]
                       "
@@ -613,7 +694,6 @@ export default function SEOPricingSection() {
                     className="
                       mt-1.5
                       block
-
                       text-[7px]
                       font-semibold
                       uppercase
@@ -624,35 +704,116 @@ export default function SEOPricingSection() {
                     Starting From
                   </span>
 
-                  {/* KEY INCLUSIONS */}
+                  {/* QUARTERLY SAVING */}
 
-                  <div className="mt-5">
-                    {plan.items.map(
-                      (item) => (
+                  <div
+                    className="
+                      mt-4
+                      flex
+                      items-center
+                      gap-2
+
+                      rounded-[10px]
+
+                      border
+                      border-[#C2D9E8]/65
+
+                      bg-[#F4F9FC]
+
+                      px-3
+                      py-2
+                    "
+                  >
+                    <span
+                      className="
+                        flex
+                        h-[19px]
+                        w-[19px]
+                        shrink-0
+                        items-center
+                        justify-center
+
+                        rounded-full
+
+                        bg-[#DDECF6]
+
+                        text-[7px]
+                        font-bold
+                        text-[#0B2A52]
+                      "
+                    >
+                      %
+                    </span>
+
+                    <span
+                      className="
+                        text-[8.5px]
+                        font-medium
+                        leading-4
+                        text-[#536F87]
+                      "
+                    >
+                      Save 10% with quarterly billing
+                    </span>
+                  </div>
+
+                  {/* INCLUDED */}
+
+                  <div
+                    className="
+                      mt-5
+                      border-t
+                      border-[#0B2A52]/[0.07]
+                      pt-4
+                    "
+                  >
+                    <span
+                      className="
+                        text-[7px]
+                        font-bold
+                        uppercase
+                        tracking-[0.18em]
+                        text-[#0B2A52]/55
+                      "
+                    >
+                      What&apos;s Included
+                    </span>
+
+                    <div className="mt-2">
+                      {plan.items.map((item) => (
                         <div
                           key={item}
                           className="
                             flex
                             items-start
                             gap-2.5
-
-                            py-1.5
+                            py-[5px]
                           "
                         >
-                          <Check
-                            size={12}
-                            strokeWidth={1.8}
+                          <span
                             className="
                               mt-[3px]
+                              flex
+                              h-[16px]
+                              w-[16px]
                               shrink-0
-                              text-[#3976B6]
+                              items-center
+                              justify-center
+                              rounded-full
+                              bg-[#EAF4FC]
                             "
-                          />
+                          >
+                            <Check
+                              size={9}
+                              strokeWidth={2}
+                              className="text-[#3976B6]"
+                            />
+                          </span>
 
                           <span
                             className="
                               text-[10.5px]
-                              leading-5
+                              leading-[1.55]
                               text-[#5F758B]
 
                               sm:text-[11px]
@@ -661,8 +822,8 @@ export default function SEOPricingSection() {
                             {item}
                           </span>
                         </div>
-                      ),
-                    )}
+                      ))}
+                    </div>
                   </div>
 
                   {/* BONUS */}
@@ -670,15 +831,13 @@ export default function SEOPricingSection() {
                   <div
                     className="
                       mt-5
-
                       flex
                       items-start
                       gap-2.5
-
                       rounded-[12px]
-
+                      border
+                      border-[#EFDDBD]/55
                       bg-[#FFF8ED]
-
                       px-3
                       py-2.5
                     "
@@ -687,7 +846,7 @@ export default function SEOPricingSection() {
                       size={12}
                       strokeWidth={1.7}
                       className="
-                        mt-[2px]
+                        mt-[3px]
                         shrink-0
                         text-[#B88E55]
                       "
@@ -702,7 +861,7 @@ export default function SEOPricingSection() {
                       "
                     >
                       <span className="text-[#A77D45]">
-                        Bonus:
+                        Included Bonus:
                       </span>{" "}
                       {plan.bonus}
                     </p>
@@ -710,94 +869,143 @@ export default function SEOPricingSection() {
 
                   {/* BEST FOR */}
 
-                  <p
+                  <div
                     className="
                       mt-4
-
-                      text-[9.5px]
-                      leading-5
-                      text-[#61778D]
+                      border-l
+                      border-[#C6A77A]
+                      pl-3
                     "
                   >
-                    <strong className="text-[#0B2A52]">
-                      Best for:
-                    </strong>{" "}
-                    {plan.bestFor}
-                  </p>
-                </div>
-
-                {/* CTA */}
-
-                <div
-                  className="
-                    relative
-                    z-10
-
-                    mt-auto
-                    pt-5
-                  "
-                >
-                  <Link
-                    href="/contact"
-                    className={`
-                      group/button
-
-                      flex
-                      min-h-[44px]
-                      w-full
-
-                      items-center
-                      justify-center
-                      gap-2
-
-                      rounded-[13px]
-
-                      border
-
-                      px-4
-                      py-2.5
-
-                      text-[11.5px]
-                      font-medium
-
-                      transition-all
-                      duration-300
-
-                      ${
-                        plan.popular
-                          ? `
-                            border-[#0B2A52]
-                            bg-[#0B2A52]
-                            text-white
-
-                            hover:-translate-y-0.5
-                            hover:shadow-[0_9px_24px_rgba(11,42,82,0.15)]
-                          `
-                          : `
-                            border-[#6285AD]/30
-                            bg-white
-                            text-[#0B2A52]
-
-                            hover:-translate-y-0.5
-                            hover:border-[#6285AD]/45
-                          `
-                      }
-                    `}
-                  >
-                    {plan.cta}
-
-                    <ArrowUpRight
-                      size={13}
-                      strokeWidth={1.5}
+                    <span
                       className="
-                        transition-transform
-                        duration-300
-
-                        group-hover/button:translate-x-0.5
-                        group-hover/button:-translate-y-0.5
+                        block
+                        text-[7px]
+                        font-bold
+                        uppercase
+                        tracking-[0.17em]
+                        text-[#C6A77A]
                       "
-                    />
-                  </Link>
+                    >
+                      Best For
+                    </span>
+
+                    <p
+                      className="
+                        mt-1
+                        text-[9.5px]
+                        leading-[1.55]
+                        text-[#61778D]
+                      "
+                    >
+                      {plan.bestFor}
+                    </p>
+                  </div>
+
+                  {/* CTA */}
+{/* CTA */}
+
+<div
+  className="
+    mt-auto
+    pt-6
+  "
+>
+  <Link
+    href="/contact"
+    className={`
+      group/button
+
+      flex
+      min-h-[48px]
+      w-full
+      items-center
+      justify-center
+      gap-2
+
+      rounded-[13px]
+      border
+
+      px-4
+      py-3
+
+      text-[11.5px]
+      font-medium
+
+      transition-all
+      duration-300
+
+      ${
+        plan.name === "Growth"
+          ? `
+            border-[#0B2A52]
+            bg-[#0B2A52]
+            !text-white
+
+            shadow-[0_10px_26px_rgba(11,42,82,0.12)]
+
+            hover:-translate-y-0.5
+            hover:bg-[#123B6A]
+            hover:!text-white
+            hover:shadow-[0_14px_30px_rgba(11,42,82,0.18)]
+          `
+          : plan.name === "Scale"
+          ? `
+            border-[#C6A77A]/55
+            bg-[#FFF8EE]
+            text-[#0B2A52]
+
+            hover:-translate-y-0.5
+            hover:border-[#B58D61]
+            hover:bg-[#FCF2E4]
+            hover:text-[#9A7043]
+
+            hover:shadow-[0_10px_26px_rgba(181,141,97,0.12)]
+          `
+          : `
+            border-[#8FB2D3]/55
+            bg-[#F2F7FB]
+            text-[#0B2A52]
+
+            hover:-translate-y-0.5
+            hover:border-[#6E9CC6]
+            hover:bg-[#EAF3FA]
+            hover:text-[#245C91]
+
+            hover:shadow-[0_10px_26px_rgba(78,126,171,0.10)]
+          `
+      }
+    `}
+  >
+    <span
+      className={
+        plan.name === "Growth"
+          ? "!text-white"
+          : ""
+      }
+    >
+      {plan.cta}
+    </span>
+
+    <ArrowUpRight
+      size={13}
+      strokeWidth={1.5}
+      className={`
+        transition-transform
+        duration-300
+
+        group-hover/button:translate-x-0.5
+        group-hover/button:-translate-y-0.5
+
+        ${
+          plan.name === "Growth"
+            ? "text-white"
+            : ""
+        }
+      `}
+    />
+  </Link>
+</div>
                 </div>
               </motion.article>
             );
@@ -805,7 +1013,7 @@ export default function SEOPricingSection() {
         </div>
 
         {/* =====================================================
-            BOTTOM FREE AUDIT CTA
+            FREE REVIEW CTA
         ===================================================== */}
 
         <motion.div
@@ -819,6 +1027,7 @@ export default function SEOPricingSection() {
           }}
           viewport={{
             once: true,
+            amount: 0.3,
           }}
           transition={{
             duration: reduceMotion ? 0 : 0.65,
@@ -881,8 +1090,23 @@ export default function SEOPricingSection() {
                 sm:text-[23px]
               "
             >
-              Start With a Free SEO Audit.
+              Start With a Free SEO Opportunity Review.
             </h3>
+
+            <p
+              className="
+                mt-2
+                max-w-[610px]
+
+                text-[10px]
+                leading-5
+                text-[#61778D]
+              "
+            >
+              We&apos;ll review your search visibility, technical
+              priorities and growth opportunities before recommending
+              the right level of SEO support.
+            </p>
           </div>
 
           <Link
@@ -893,6 +1117,7 @@ export default function SEOPricingSection() {
               inline-flex
               min-h-[44px]
               w-full
+              shrink-0
 
               items-center
               justify-center
@@ -923,7 +1148,7 @@ export default function SEOPricingSection() {
               sm:w-auto
             "
           >
-            Get My Free SEO Audit
+            Get My Free SEO Review
 
             <ArrowUpRight
               size={13}
@@ -939,24 +1164,45 @@ export default function SEOPricingSection() {
           </Link>
         </motion.div>
 
-        {/* SMALL NOTE */}
+        {/* =====================================================
+            SCOPE NOTE
+        ===================================================== */}
 
-        <p
+        <div
           className="
             mx-auto
-            mt-5
-            max-w-[750px]
-
+            mt-6
+            max-w-[850px]
+            border-t
+            border-[#0B2A52]/[0.07]
+            pt-5
             text-center
-
-            text-[9px]
-            leading-5
-            text-[#61778D]
           "
         >
-          Final scope is confirmed after reviewing your website,
-          competition and SEO opportunities.
-        </p>
+          <p
+            className="
+              text-[9px]
+              leading-5
+              text-[#61778D]
+            "
+          >
+            Pricing shown is a starting point. Final scope depends on
+            website size, competition, technical requirements and SEO
+            opportunities.
+          </p>
+
+          <p
+            className="
+              mt-1
+              text-[9px]
+              leading-5
+              text-[#61778D]
+            "
+          >
+            New content creation, development work and third-party costs
+            are scoped separately where required.
+          </p>
+        </div>
       </div>
     </section>
   );

@@ -5,6 +5,7 @@ import WebsiteDeliverablesSection from "@/components/WebsiteDevelopment/WebsiteD
 import WebsiteDevelopmentExplained from "@/components/WebsiteDevelopment/WebsiteDevelopmentExplained";
 import WebsiteDevelopmentFAQs from "@/components/WebsiteDevelopment/WebsiteDevelopmentFAQs";
 import WebsiteDevelopmentHero from "@/components/WebsiteDevelopment/WebsiteDevelopmentHero";
+import WebsiteDevelopmentPricing from "@/components/WebsiteDevelopment/WebsiteDevelopmentPricing";
 import WebsiteDevelopmentServicesSection from "@/components/WebsiteDevelopment/WebsiteDevelopmentServicesSection";
 import WebsiteDevelopmentTrustSignalItem from "@/components/WebsiteDevelopment/WebsiteDevelopmentTrustSignalItem";
 import WebsiteDevlopmentSeoAiSearchFoundation from "@/components/WebsiteDevelopment/websiteDevlopmentSeoAiSearchFoundation";
@@ -34,6 +35,7 @@ export default function WebsiteDevelopment() {
         <WebsiteFrameworkSection  />
         <WebsiteDeliverablesSection />
         <WhoWebsiteDevelopmentIsFor />
+        <WebsiteDevelopmentPricing/>
         <WebsiteDevelopmentFAQs />
         <WebsiteFinalSections />
        
