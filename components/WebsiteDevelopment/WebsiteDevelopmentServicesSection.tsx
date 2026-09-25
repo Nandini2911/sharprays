@@ -1500,7 +1500,7 @@ export default function WebsiteDevelopmentServicesSection() {
 
             <span
               className="
-                text-[0.58rem]
+                text-[10px]
           
                 uppercase
                 tracking-[0.28em]

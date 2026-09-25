@@ -12,7 +12,6 @@ import CreativeChannels from "@/components/VideoandCreative/CreativeChannels";
 import SelectedCreative from "@/components/VideoandCreative/SelectedCreative";
 import SharpRaysCreativeFramework from "@/components/VideoandCreative/SharpRaysCreativeFramework";
 
-import VideoCreativeDeliverables from "@/components/VideoandCreative/VideoCreativeDeliverables";
 import VideoCreativeExplained from "@/components/VideoandCreative/VideoCreativeExplained";
 import VideoCreativeFit from "@/components/VideoandCreative/VideoCreativeFit";
 import VideoCreativeHero from "@/components/VideoandCreative/VideoCreativeHero";
@@ -28,13 +27,17 @@ export default function VideoCreativePage() {
       <VideoCreativeExplained />
       <VideoCreativeProblem />
       <VideoCreativeServices />
+
       <AiVideoAdFormats />
+      
       <CreativeChannels />
+
       <SelectedCreative />
-      <VideoSearchAIDiscovery />
+
+   
       <SharpRaysCreativeFramework />
-      <VideoCreativeDeliverables />
-      <VideoCreativeFit />
+      
+    
       <AiVideoEditingPricing/>
       <AiVideoEditingFaq />
       <AiVideoFinalCTA />

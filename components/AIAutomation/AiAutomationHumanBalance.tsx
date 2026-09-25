@@ -442,59 +442,6 @@ export default function AiAutomationHumanBalance() {
               xl:min-h-[670px]
             "
           >
-            {/* CENTER TEXT */}
-
-            <div
-              className="
-                mb-5
-                text-center
-                xl:absolute
-                xl:left-1/2
-                xl:top-[20px]
-                xl:-translate-x-1/2
-              "
-            >
-              <span
-                className="
-                  mx-auto
-                  block
-                  h-px
-                  w-9
-                  bg-[#B18458]
-                "
-              />
-
-              <p
-                style={newYorkFont}
-                className="
-                  mt-5
-                  text-[8px]
-                  uppercase
-                  leading-[1.75]
-                  tracking-[0.32em]
-                  text-[#0B2A52]
-                "
-              >
-                Different
-                <br />
-                Strengths.
-                <br />
-                A Stronger
-                <br />
-                Business.
-              </p>
-
-              <span
-                className="
-                  mx-auto
-                  mt-5
-                  block
-                  h-px
-                  w-9
-                  bg-[#B18458]
-                "
-              />
-            </div>
 
             {/* CURVED BALANCE LINE */}
 

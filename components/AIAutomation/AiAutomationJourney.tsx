@@ -157,18 +157,7 @@ function DesktopStep({
             gap-4
           "
         >
-          <span
-            style={newYorkFont}
-            className="
-              text-[2rem]
-              font-light
-              leading-none
-              tracking-[-0.055em]
-              text-[#B18458]
-            "
-          >
-            {step.number}
-          </span>
+          
 
           <div
             className="
@@ -473,17 +462,8 @@ function MobileStep({
         "
       >
         <div className="flex items-center gap-4">
-          <span
-            style={newYorkFont}
-            className="
-              text-[1.5rem]
-              font-light
-              leading-none
-              text-[#B18458]
-            "
-          >
-            {step.number}
-          </span>
+         
+      
 
           <span
             style={newYorkFont}
@@ -928,33 +908,10 @@ export default function AiAutomationJourney() {
               gap-5
             "
           >
-            <span
-              className="
-                h-px
-                w-20
-                bg-[linear-gradient(90deg,transparent,#C6A77A)]
-              "
-            />
+            
 
-            <span
-              style={newYorkFont}
-              className="
-                text-[7px]
-                uppercase
-                tracking-[0.32em]
-                text-[#0B2A52]/40
-              "
-            >
-              TRIGGER · UNDERSTAND · DECIDE · ACT · REVIEW · LEARN
-            </span>
-
-            <span
-              className="
-                h-px
-                w-20
-                bg-[linear-gradient(90deg,#C6A77A,transparent)]
-              "
-            />
+           
+           
           </div>
         </div>
 

@@ -865,34 +865,45 @@ export default function WebsitePerformanceSection() {
           >
             {/* EYEBROW */}
 
-            <div className="flex items-center gap-3">
-              <span
-                className="
-                  h-px
-                  w-6
+           <div className="flex items-center  gap-3">
+  {/* LEFT LINE */}
+  <span
+    className="
+      h-px
+      w-10
+      shrink-0
 
-                  sm:w-8
+      bg-gradient-to-r
+      from-transparent
+      to-[#B79A72]
+    "
+  />
 
-                  bg-[linear-gradient(90deg,#B79A72,#6A9CD1)]
-                "
-              />
+  {/* TEXT */}
+  <span
+    className="
+      text-[10px]
+      uppercase
+      tracking-[0.22em]
+      text-[#B79A72]
+    "
+  >
+    Built for Real Users
+  </span>
 
-              <span
-                className="
-                  text-[0.54rem]
-                  font-semibold
-                  uppercase
-                  tracking-[0.22em]
+  {/* RIGHT LINE */}
+  <span
+    className="
+      h-px
+      w-10
+      shrink-0
 
-                  sm:text-[0.6rem]
-                  sm:tracking-[0.3em]
-
-                  text-[#92745C]
-                "
-              >
-                Built for Real Users
-              </span>
-            </div>
+      bg-gradient-to-l
+      from-transparent
+      to-[#B79A72]
+    "
+  />
+</div>
 
             {/* TITLE */}
 
@@ -921,7 +932,7 @@ export default function WebsitePerformanceSection() {
                   font-serif
                   italic
 
-                  text-[#A97C52]
+                  text-[#B79A72]
                 "
               >
                 Feature.

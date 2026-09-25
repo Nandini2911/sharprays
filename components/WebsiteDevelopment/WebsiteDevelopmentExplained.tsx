@@ -150,8 +150,8 @@ export default function WebsiteDevelopmentExplained() {
 
             <span
               className="
-                text-[0.62rem]
              
+                text-[10px]
                 uppercase
                 tracking-[0.32em]
                 text-[#B79A72]

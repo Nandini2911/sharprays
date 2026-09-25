@@ -2,7 +2,6 @@ import Footer from "@/components/Home/Footer";
 
 import Navbar from "@/components/Home/Navbar";
 import SelectedWebsiteWork from "@/components/WebsiteDevelopment/SelectedWebsiteWork";
-import WebsiteDeliverablesSection from "@/components/WebsiteDevelopment/WebsiteDeliverablesSection";
 import WebsiteDevelopmentExplained from "@/components/WebsiteDevelopment/WebsiteDevelopmentExplained";
 import WebsiteDevelopmentFAQs from "@/components/WebsiteDevelopment/WebsiteDevelopmentFAQs";
 import WebsiteDevelopmentHero from "@/components/WebsiteDevelopment/WebsiteDevelopmentHero";
@@ -38,7 +37,7 @@ export default function WebsiteDevelopment() {
 
         <WebsiteFrameworkSection  />
         <SelectedWebsiteWork/>
-        <WebsiteDeliverablesSection />
+       
         <WebsiteDevelopmentPricing/>
       
         <WebsiteDevelopmentFAQs />

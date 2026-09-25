@@ -144,28 +144,7 @@ function ControlRow({
           strokeWidth={1.45}
         />
 
-        <span
-          style={newYorkFont}
-          className="
-            absolute
-            -right-[7px]
-            -top-[7px]
-            flex
-            h-[25px]
-            w-[25px]
-            items-center
-            justify-center
-            rounded-full
-            border
-            border-white
-            bg-[#B18458]
-            text-[8px]
-            text-white
-            shadow-[0_5px_12px_rgba(177,132,88,0.2)]
-          "
-        >
-          {item.number}
-        </span>
+       
       </div>
 
       {/* COPY */}
@@ -1381,21 +1360,7 @@ export default function HumanInTheLoopAutomation() {
 
           {/* DECORATIVE SECTION NUMBER */}
 
-          <span
-            style={newYorkFont}
-            className="
-              pointer-events-none
-              absolute
-              -bottom-12
-              right-8
-              text-[10rem]
-              font-light
-              leading-none
-              text-[#0B2A52]/[0.025]
-            "
-          >
-            10
-          </span>
+          
         </motion.div>
       </div>
     </section>

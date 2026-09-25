@@ -1247,16 +1247,7 @@ export default function AiAutomationProblem() {
               gap-5
             "
           >
-            <span
-              className="
-                hidden
-                h-px
-                w-14
-                bg-[#C6A77A]
-                sm:block
-              "
-            />
-
+           
             <p
               style={newYorkFont}
               className="
@@ -1276,38 +1267,7 @@ export default function AiAutomationProblem() {
 
             {/* PROPER ROUND CTA ARROW */}
 
-            <motion.span
-              whileHover={
-                reduceMotion
-                  ? undefined
-                  : {
-                      x: 4,
-                  }
-              }
-              transition={{
-                duration: 0.25,
-                ease,
-              }}
-              className="
-                flex
-                h-[48px]
-                w-[48px]
-                shrink-0
-                items-center
-                justify-center
-                rounded-full
-                border
-                border-[#C8DDEA]
-                bg-white
-                text-[#0B2A52]
-                shadow-[0_8px_20px_rgba(11,42,82,0.06)]
-              "
-            >
-              <ArrowRight
-                size={20}
-                strokeWidth={1.55}
-              />
-            </motion.span>
+           
           </div>
         </motion.div>
 

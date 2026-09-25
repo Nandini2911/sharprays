@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import type { LucideIcon } from "lucide-react";
 import {
@@ -18,137 +19,188 @@ import {
 const ease = [0.22, 1, 0.36, 1] as const;
 
 const newYorkFont = {
-  fontFamily: "New York, ui-serif, Georgia, serif",
+  fontFamily: '"New York", "Bodoni Moda", Georgia, serif',
 };
 
-type ServiceItem = {
-  number: string;
+type Service = {
+  category: string;
   title: string;
+  subtitle: string;
   description: string;
   icon: LucideIcon;
-  accent: string;
-  soft: string;
+  href: string;
+
+  bg: string;
   border: string;
   iconBg: string;
+  accent: string;
+  accentText: string;
+  chipBg: string;
 };
 
-const topServices: ServiceItem[] = [
+const services: Service[] = [
   {
-    number: "01",
+    category: "AI Creation",
     title: "AI Video Creation",
+    subtitle: "Turn an idea into a visual starting point.",
     description:
-      "Turn ideas into visuals without starting from a blank screen.",
+      "We use AI-assisted tools to develop scenes, concepts and video assets around a clear creative direction.",
     icon: Sparkles,
-    accent: "#4D91DF",
-    soft: "#F5FAFF",
-    border: "#BFD9F7",
-    iconBg: "#DDEEFF",
+    href: "/services/ai-video-editing/ai-video-creation",
+    bg: "bg-[#EAF5FF]",
+    border: "border-[#78B7EA]",
+    iconBg: "bg-[#CFE9FF]",
+    accent: "bg-[#62A8E5]",
+    accentText: "text-[#2E78B7]",
+    chipBg: "bg-[#D9EDFF]",
   },
   {
-    number: "02",
+    category: "Editing",
     title: "Professional Video Editing",
-    description: "Turn raw material into something worth watching.",
+    subtitle: "Shape raw material into something worth watching.",
+    description:
+      "Footage, audio and visual assets are edited into a polished story built around the intended audience and objective.",
     icon: Scissors,
-    accent: "#B97B35",
-    soft: "#FFF9F2",
-    border: "#E8D5BA",
-    iconBg: "#F8E7D1",
+    href: "/services/ai-video-editing/professional-video-editing",
+    bg: "bg-[#FFF1E5]",
+    border: "border-[#E4A878]",
+    iconBg: "bg-[#FADDC4]",
+    accent: "bg-[#D9935B]",
+    accentText: "text-[#A9622E]",
+    chipBg: "bg-[#FFE4CE]",
   },
   {
-    number: "03",
+    category: "Short Form",
     title: "Short-Form Video Editing",
-    description: "Make every second work harder.",
+    subtitle: "Make every second earn attention.",
+    description:
+      "Tighter edits for Reels, Shorts and vertical video where pace, hooks and clarity matter quickly.",
     icon: Play,
-    accent: "#7453D8",
-    soft: "#F9F6FF",
-    border: "#D8CDF5",
-    iconBg: "#E9E0FF",
+    href: "/services/ai-video-editing/short-form-video-editing",
+    bg: "bg-[#F2EEFF]",
+    border: "border-[#A997E8]",
+    iconBg: "bg-[#DDD4FF]",
+    accent: "bg-[#8D72D9]",
+    accentText: "text-[#6B50BC]",
+    chipBg: "bg-[#E4DCFF]",
   },
   {
-    number: "04",
+    category: "Social",
     title: "Social Media Video Editing",
-    description: "Create content that feels native to the feed.",
+    subtitle: "Create content that feels native to the feed.",
+    description:
+      "Video is adapted for the pace, format and viewing behaviour of the platforms where it will be published.",
     icon: Users,
-    accent: "#149A88",
-    soft: "#F3FCFA",
-    border: "#C2E8E2",
-    iconBg: "#D6F4EF",
+    href: "/services/ai-video-editing/social-media-video-editing",
+    bg: "bg-[#EAF9F3]",
+    border: "border-[#79C5A2]",
+    iconBg: "bg-[#CFEFE0]",
+    accent: "bg-[#61B08C]",
+    accentText: "text-[#3D8768]",
+    chipBg: "bg-[#D8F2E7]",
   },
   {
-    number: "05",
+    category: "Performance",
     title: "Advertising & Performance Video",
-    description: "Creative designed to be tested.",
+    subtitle: "Creative designed to be tested and improved.",
+    description:
+      "We develop video variations around campaign messages, audience angles and performance objectives.",
     icon: BarChart3,
-    accent: "#D25057",
-    soft: "#FFF6F7",
-    border: "#F2CDCF",
-    iconBg: "#FADFE1",
+    href: "/services/ai-video-editing/advertising-performance-video",
+    bg: "bg-[#FFF0F4]",
+    border: "border-[#DF93A7]",
+    iconBg: "bg-[#FAD5DF]",
+    accent: "bg-[#D67991]",
+    accentText: "text-[#AD526A]",
+    chipBg: "bg-[#F9DDE5]",
   },
-];
-
-const bottomServices: ServiceItem[] = [
   {
-    number: "06",
+    category: "Concept",
     title: "AI Product & Concept Videos",
-    description: "Show the idea before traditional production exists.",
+    subtitle: "Show the idea before traditional production exists.",
+    description:
+      "Useful for visualising products, environments and concepts when traditional footage is unavailable or unnecessary.",
     icon: Package,
-    accent: "#4D91DF",
-    soft: "#F5FAFF",
-    border: "#BFD9F7",
-    iconBg: "#DDEEFF",
+    href: "/services/ai-video-editing/ai-product-concept-videos",
+    bg: "bg-[#EAF9FB]",
+    border: "border-[#74BDCA]",
+    iconBg: "bg-[#CFECEF]",
+    accent: "bg-[#58A9B8]",
+    accentText: "text-[#347F8D]",
+    chipBg: "bg-[#D8F1F4]",
   },
   {
-    number: "07",
+    category: "Motion",
     title: "Motion Graphics & Visual Effects",
-    description: "Give information movement.",
+    subtitle: "Give information movement where it helps.",
+    description:
+      "Motion, transitions and visual effects are used to clarify ideas, add emphasis and strengthen presentation.",
     icon: Sparkles,
-    accent: "#B97B35",
-    soft: "#FFF9F2",
-    border: "#E8D5BA",
-    iconBg: "#F8E7D1",
+    href: "/services/ai-video-editing/motion-graphics-visual-effects",
+    bg: "bg-[#FFF9E4]",
+    border: "border-[#DCC05D]",
+    iconBg: "bg-[#F8E9B5]",
+    accent: "bg-[#D0AD45]",
+    accentText: "text-[#9D7B24]",
+    chipBg: "bg-[#F9EDC1]",
   },
   {
-    number: "08",
+    category: "Repurposing",
     title: "Video Repurposing",
-    description: "One recording. Multiple opportunities.",
+    subtitle: "One recording. More useful content.",
+    description:
+      "Longer videos and existing recordings are reshaped into shorter edits for different channels and use cases.",
     icon: RefreshCw,
-    accent: "#7453D8",
-    soft: "#F9F6FF",
-    border: "#D8CDF5",
-    iconBg: "#E9E0FF",
+    href: "/services/ai-video-editing/video-repurposing",
+    bg: "bg-[#F1F8E9]",
+    border: "border-[#9EBF70]",
+    iconBg: "bg-[#DCEBCB]",
+    accent: "bg-[#85AA58]",
+    accentText: "text-[#5F813A]",
+    chipBg: "bg-[#E3EFD5]",
   },
   {
-    number: "09",
+    category: "Accessibility",
     title: "Captions, Subtitles & Text Treatment",
-    description: "Make the message work with or without sound.",
+    subtitle: "Make the message work with or without sound.",
+    description:
+      "Captions, subtitles and on-screen text help make the content clearer, more usable and easier to follow.",
     icon: Type,
-    accent: "#149A88",
-    soft: "#F3FCFA",
-    border: "#C2E8E2",
-    iconBg: "#D6F4EF",
+    href: "/services/ai-video-editing/captions-subtitles-text-treatment",
+    bg: "bg-[#EDF4FA]",
+    border: "border-[#7EA4C3]",
+    iconBg: "bg-[#D6E7F4]",
+    accent: "bg-[#6D98BA]",
+    accentText: "text-[#476F91]",
+    chipBg: "bg-[#DDEBF5]",
   },
   {
-    number: "10",
+    category: "Enhancement",
     title: "AI-Assisted Enhancement",
-    description: "Improve the material you already have.",
+    subtitle: "Improve the material you already have.",
+    description:
+      "AI-assisted tools can support cleanup, enhancement and selected production tasks where they improve the final result.",
     icon: Settings,
-    accent: "#D25057",
-    soft: "#FFF6F7",
-    border: "#F2CDCF",
-    iconBg: "#FADFE1",
+    href: "/services/ai-video-editing/ai-assisted-enhancement",
+    bg: "bg-[#EFF2FF]",
+    border: "border-[#94A7E8]",
+    iconBg: "bg-[#DCE3FF]",
+    accent: "bg-[#7589D8]",
+    accentText: "text-[#5368B8]",
+    chipBg: "bg-[#E4E9FF]",
   },
 ];
 
 function ServiceCard({
-  item,
+  service,
   index,
   reduceMotion,
 }: {
-  item: ServiceItem;
+  service: Service;
   index: number;
   reduceMotion: boolean;
 }) {
-  const Icon = item.icon;
+  const Icon = service.icon;
 
   return (
     <motion.article
@@ -157,211 +209,340 @@ function ServiceCard({
           ? false
           : {
               opacity: 0,
-              y: 30,
-              scale: 0.98,
+              y: 24,
             }
       }
       whileInView={{
         opacity: 1,
         y: 0,
-        scale: 1,
       }}
       viewport={{
         once: true,
-        amount: 0.2,
+        amount: 0.15,
       }}
       transition={{
-        duration: reduceMotion ? 0 : 0.65,
-        delay: reduceMotion ? 0 : index * 0.06,
+        duration: reduceMotion ? 0 : 0.58,
+        delay: reduceMotion ? 0 : index * 0.045,
         ease,
       }}
       whileHover={
         reduceMotion
           ? undefined
           : {
-              y: -7,
+              y: -5,
             }
       }
-      style={{
-        backgroundColor: item.soft,
-        borderColor: item.border,
-      }}
-      className="
+      className={`
         group
         relative
+
         flex
-        min-h-[285px]
+        h-full
         flex-col
+
         overflow-hidden
-        rounded-[72px_72px_58px_58px]
+
+        rounded-[20px]
+
         border
-        px-5
-        pb-5
-        pt-6
-        text-center
-        shadow-[0_16px_45px_rgba(11,42,82,0.035)]
-        transition-shadow
-        duration-300
 
-        hover:shadow-[0_24px_55px_rgba(11,42,82,0.075)]
+        ${service.bg}
+        ${service.border}
 
-        sm:min-h-[300px]
-        sm:px-6
+        p-5
 
-        lg:min-h-[310px]
-      "
+        shadow-[0_12px_34px_rgba(11,42,82,0.06)]
+
+        transition-all
+        duration-500
+
+        hover:shadow-[0_20px_48px_rgba(11,42,82,0.09)]
+
+        sm:p-5
+
+        xl:h-[365px]
+        xl:min-h-[365px]
+        xl:max-h-[365px]
+        xl:p-[18px]
+
+        2xl:h-[375px]
+        2xl:min-h-[375px]
+        2xl:max-h-[375px]
+        2xl:p-5
+      `}
     >
-      {/* NUMBER */}
-
-      <span
-        style={{
-          ...newYorkFont,
-          color: item.accent,
-        }}
-        className="
-          absolute
-          left-4
-          top-5
-
-          text-[1.4rem]
-          font-light
-          leading-none
-
-          sm:left-5
-          sm:text-[1.55rem]
-        "
-      >
-        {item.number}
-      </span>
-
-      {/* ICON */}
-
-      <motion.div
-        animate={
-          reduceMotion
-            ? undefined
-            : {
-                y: [0, -4, 0],
-              }
-        }
-        transition={{
-          duration: 3.6 + index * 0.15,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        style={{
-          backgroundColor: item.iconBg,
-          color: "#0B2A52",
-        }}
-        className="
-          mx-auto
-          flex
-          h-[62px]
-          w-[62px]
-          items-center
-          justify-center
-          rounded-full
-
-          sm:h-[68px]
-          sm:w-[68px]
-        "
-      >
-        <Icon size={25} strokeWidth={1.55} />
-      </motion.div>
-
-      {/* TITLE */}
-
-      <h3
-        style={newYorkFont}
-        className="
-          mx-auto
-          mt-5
-          max-w-[220px]
-
-          text-[1.15rem]
-          font-medium
-          leading-[1.04]
-          tracking-[-0.035em]
-
-          text-[#0B2A52]
-
-          sm:text-[1.28rem]
-        "
-      >
-        {item.title}
-      </h3>
-
-      {/* DESCRIPTION */}
-
-      <p
-        style={newYorkFont}
-        className="
-          mx-auto
-          mt-4
-          max-w-[220px]
-
-          text-[0.74rem]
-          leading-[1.5]
-
-          text-[#48637C]
-
-          sm:text-[0.78rem]
-        "
-      >
-        {item.description}
-      </p>
-
-      {/* ARROW */}
-
-      <motion.span
-        whileHover={
-          reduceMotion
-            ? undefined
-            : {
-                x: 3,
-              }
-        }
-        style={{
-          backgroundColor: item.iconBg,
-          color: "#0B2A52",
-        }}
-        className="
-          mx-auto
-          mt-auto
-
-          flex
-          h-9
-          w-9
-          items-center
-          justify-center
-
-          rounded-full
-
-          transition-transform
-          duration-300
-        "
-      >
-        <ArrowRight size={14} strokeWidth={1.8} />
-      </motion.span>
-
-      {/* SUBTLE INNER GLOW */}
-
+      {/* soft accent glow */}
       <div
-        className="
+        aria-hidden="true"
+        className={`
           pointer-events-none
-          absolute
-          inset-x-8
-          top-0
 
-          h-24
+          absolute
+          -right-16
+          -top-16
+
+          h-40
+          w-40
 
           rounded-full
 
-          bg-white/60
+          ${service.accent}
 
-          blur-[35px]
-        "
+          opacity-[0.10]
+          blur-[38px]
+
+          transition-all
+          duration-500
+
+          group-hover:scale-125
+          group-hover:opacity-[0.16]
+        `}
       />
+
+      <div className="relative z-10 flex h-full flex-col">
+        {/* icon */}
+        <div className="flex items-start justify-between gap-4">
+          <motion.span
+            whileHover={
+              reduceMotion
+                ? undefined
+                : {
+                    scale: 1.08,
+                    rotate: -5,
+                  }
+            }
+            className={`
+              flex
+              h-9
+              w-9
+              shrink-0
+              items-center
+              justify-center
+
+              rounded-[13px]
+
+              ${service.iconBg}
+              ${service.accentText}
+
+              shadow-[0_7px_20px_rgba(11,42,82,0.04)]
+
+              sm:h-10
+              sm:w-10
+
+              xl:h-9
+              xl:w-9
+              sm:rounded-[13px]
+            `}
+          >
+            <Icon size={17} strokeWidth={1.7} />
+          </motion.span>
+        </div>
+
+        {/* category */}
+        <span
+          className={`
+            mt-4
+            block
+
+            text-[0.53rem]
+            font-semibold
+            uppercase
+            tracking-[0.18em]
+
+            ${service.accentText}
+          `}
+        >
+          {service.category}
+        </span>
+
+        {/* title */}
+        <h3
+          style={newYorkFont}
+          className="
+            mt-2
+            max-w-[420px]
+
+            text-[1.22rem]
+            font-normal
+            leading-[1.12]
+            tracking-[-0.03em]
+
+            text-[#0B2A52]
+
+            sm:text-[1.3rem]
+
+            xl:min-h-[50px]
+            xl:text-[1.08rem]
+            xl:leading-[1.14]
+
+            2xl:text-[1.14rem]
+          "
+        >
+          {service.title}
+        </h3>
+
+        {/* highlighted subtitle */}
+        <div
+          className={`
+            mt-3
+
+            flex
+            min-h-[58px]
+            items-center
+
+            rounded-[12px]
+
+            ${service.chipBg}
+
+            px-3
+            py-2.5
+
+            xl:min-h-[62px]
+          `}
+        >
+          <p
+            className={`
+              text-[0.7rem]
+              font-semibold
+              leading-[1.45]
+
+              xl:text-[0.66rem]
+
+              ${service.accentText}
+            `}
+          >
+            {service.subtitle}
+          </p>
+        </div>
+
+        {/* description */}
+        <p
+          style={newYorkFont}
+          className="
+            mt-3
+
+            text-[0.76rem]
+            leading-[1.58]
+
+            text-[#5E7488]
+
+            xl:min-h-[48px]
+            xl:line-clamp-3
+            xl:text-[0.66rem]
+            xl:leading-[1.5]
+
+            2xl:text-[0.69rem]
+          "
+        >
+          {service.description}
+        </p>
+
+        {/* footer */}
+        <div
+          className="
+            mt-auto
+            flex
+            min-h-[52px]
+            shrink-0
+            items-center
+            justify-between
+            gap-3
+
+            border-t
+            border-black/[0.08]
+
+            pt-3.5
+          "
+        >
+          <Link
+            href={service.href}
+            style={newYorkFont}
+            className="
+              group/learn
+
+              inline-flex
+              shrink-0
+              items-center
+              gap-2
+
+              whitespace-nowrap
+
+              text-[0.78rem]
+              font-semibold
+
+              text-[#0B2A52]
+
+              transition-colors
+              duration-300
+
+              hover:text-[#183E64]
+
+              sm:text-[0.84rem]
+
+              xl:text-[0.72rem]
+
+              2xl:text-[0.76rem]
+            "
+          >
+            <span>Learn More</span>
+
+            <ArrowRight
+              size={14}
+              strokeWidth={1.7}
+              className="
+                transition-transform
+                duration-300
+
+                group-hover/learn:translate-x-1
+              "
+            />
+          </Link>
+
+          <Link
+            href="/contact"
+            aria-label={`Contact Sharp Rays about ${service.title}`}
+            className={`
+              group/contact
+
+              flex
+              h-10
+              w-10
+              shrink-0
+              items-center
+              justify-center
+
+              rounded-full
+
+              ${service.accent}
+
+              text-[#0B2A52]
+
+              shadow-[0_10px_24px_rgba(11,42,82,0.10)]
+
+              transition-all
+              duration-300
+
+              hover:-translate-y-0.5
+              hover:scale-[1.04]
+              hover:shadow-[0_14px_30px_rgba(11,42,82,0.15)]
+
+              sm:h-11
+              sm:w-11
+            `}
+          >
+            <ArrowRight
+              size={15}
+              strokeWidth={1.8}
+              className="
+                transition-transform
+                duration-300
+
+                group-hover/contact:translate-x-0.5
+              "
+            />
+          </Link>
+        </div>
+      </div>
     </motion.article>
   );
 }
@@ -377,170 +558,53 @@ export default function AiVideoEditingServices() {
         relative
         isolate
         overflow-hidden
+
         bg-white
 
-        py-20
-        sm:py-24
+        py-16
+        sm:py-20
+        md:py-24
         lg:py-28
-        xl:py-32
       "
     >
-      {/* =====================================================
-          BACKGROUND
-      ===================================================== */}
-
+      {/* background */}
       <div className="pointer-events-none absolute inset-0 -z-20">
-        {/* TOP LEFT */}
+        <div
+          className="
+            absolute
+            left-1/2
+            top-[3%]
+
+            h-[480px]
+            w-[980px]
+
+            -translate-x-1/2
+
+            rounded-full
+
+            bg-[#F6F8FA]
+
+            blur-[150px]
+          "
+        />
 
         <div
           className="
             absolute
-            -left-[210px]
-            -top-[230px]
+            -right-[260px]
+            bottom-[5%]
 
             h-[500px]
             w-[500px]
 
             rounded-full
 
-            bg-[#EAF4FD]
+            bg-[#B79A72]/[0.035]
 
-            blur-[10px]
-          "
-        />
-
-        {/* TOP RIGHT */}
-
-        <div
-          className="
-            absolute
-            -right-[260px]
-            -top-[170px]
-
-            h-[530px]
-            w-[530px]
-
-            rounded-full
-
-            border
-            border-[#C9DFF4]
-
-            bg-[#F2F8FD]/70
-          "
-        />
-
-        {/* BOTTOM LEFT */}
-
-        <div
-          className="
-            absolute
-            -bottom-[260px]
-            -left-[220px]
-
-            h-[600px]
-            w-[600px]
-
-            rounded-full
-
-            bg-[#E9F4FC]
-          "
-        />
-
-        {/* BOTTOM RIGHT */}
-
-        <div
-          className="
-            absolute
-            -bottom-[260px]
-            -right-[260px]
-
-            h-[620px]
-            w-[620px]
-
-            rounded-full
-
-            bg-[#EDF6FD]
+            blur-[110px]
           "
         />
       </div>
-
-      {/* =====================================================
-          SIDE MICROCOPY
-      ===================================================== */}
-
-      <div
-        className="
-          absolute
-          left-[3.8%]
-          top-[6%]
-          hidden
-          xl:block
-        "
-      >
-        <span className="block h-px w-10 bg-[#B79A72]" />
-
-        <p
-          style={newYorkFont}
-          className="
-            mt-4
-
-            text-[8px]
-            uppercase
-            leading-[2]
-            tracking-[0.27em]
-
-            text-[#284A69]
-          "
-        >
-          Ideas
-          <br />
-          Visuals
-          <br />
-          Stories
-          <br />
-          Real Impact
-        </p>
-
-        <span className="mt-4 block h-px w-7 bg-[#B79A72]" />
-      </div>
-
-      <div
-        className="
-          absolute
-          right-[4.4%]
-          top-[4.8%]
-          hidden
-          xl:block
-        "
-      >
-        <p
-          style={newYorkFont}
-          className="
-            text-[8px]
-            uppercase
-            leading-[2]
-            tracking-[0.27em]
-
-            text-[#284A69]
-          "
-        >
-          AI
-          <br />
-          Meets
-          <br />
-          Creativity
-          <br />
-          For A Brighter
-          <br />
-          Tomorrow
-        </p>
-
-        <span className="mt-4 block h-px w-10 bg-[#B79A72]" />
-      </div>
-
-      {/* =====================================================
-          CONTAINER
-      ===================================================== */}
 
       <div
         className="
@@ -549,26 +613,24 @@ export default function AiVideoEditingServices() {
 
           mx-auto
           w-full
-          max-w-[1500px]
+          max-w-[1580px]
 
-          px-5
-          sm:px-8
-          md:px-10
-          lg:px-12
-          xl:px-14
+          px-4
+          sm:px-6
+          md:px-8
+          lg:px-10
+          xl:px-8
+          2xl:px-12
         "
       >
-        {/* =====================================================
-            HEADER
-        ===================================================== */}
-
+        {/* header */}
         <motion.div
           initial={
             reduceMotion
               ? false
               : {
                   opacity: 0,
-                  y: 28,
+                  y: 20,
                 }
           }
           whileInView={{
@@ -577,61 +639,70 @@ export default function AiVideoEditingServices() {
           }}
           viewport={{
             once: true,
-            amount: 0.4,
+            amount: 0.3,
           }}
           transition={{
-            duration: reduceMotion ? 0 : 0.85,
+            duration: reduceMotion ? 0 : 0.7,
             ease,
           }}
           className="
             mx-auto
             max-w-[1050px]
+
             text-center
           "
         >
-          {/* EYEBROW */}
+          <div className="flex items-center justify-center gap-4">
+            <span
+              className="
+                h-px
+                w-10
 
-          <div
-            className="
-              flex
-              items-center
-              justify-center
-              gap-4
-            "
-          >
-            <span className="h-px w-10 bg-[#B79A72]" />
+                bg-gradient-to-r
+                from-transparent
+                to-[#B79A72]
+              "
+            />
 
             <span
               style={newYorkFont}
               className="
                 text-[9px]
-                font-semibold
                 uppercase
-                tracking-[0.32em]
+                tracking-[0.28em]
 
-                text-[#0B2A52]
+                text-[#B79A72]
 
                 sm:text-[10px]
               "
             >
-              Our Services
+              Our AI Video & Editing Services
             </span>
 
-            <span className="h-px w-10 bg-[#B79A72]" />
-          </div>
+            <span
+              className="
+                h-px
+                w-10
 
-          {/* HEADING */}
+                bg-gradient-to-l
+                from-transparent
+                to-[#B79A72]
+              "
+            />
+          </div>
 
           <h2
             id="ai-video-editing-services-heading"
             style={newYorkFont}
             className="
-              mt-5
+              mx-auto
+              mt-6
+              max-w-[1050px]
 
-              text-[2.1rem]
-              font-light
-              leading-[1.02]
-              tracking-[-0.05em]
+              text-[2.2rem]
+              font-medium
+              leading-[1.04]
+              tracking-[-0.045em]
 
               text-[#0B2A52]
 
@@ -641,608 +712,84 @@ export default function AiVideoEditingServices() {
               xl:text-[3.35rem]
             "
           >
-            From Prompt to{" "}
-            <span className="text-[#B18458]">
-              Publish.
+            From AI Creation to Final Edit.{" "}
+            <span
+              className="
+                font-serif
+                font-normal
+                italic
+
+                text-[#B79A72]
+              "
+            >
+              Connected.
             </span>
           </h2>
 
-          {/* DESCRIPTION */}
-
           <p
             style={newYorkFont}
-            className="
-              mx-auto
-              mt-4
-              max-w-[760px]
-
-              text-[14px]
-              leading-[1.65]
-
-              text-[#425E79]
-
-              sm:text-[15px]
-              md:text-[16px]
-            "
-          >
-            We combine generative tools, traditional editing and creative
-            direction based on what the project actually needs.
-          </p>
-        </motion.div>
-
-        {/* =====================================================
-            TOP SERVICES
-        ===================================================== */}
-
-        <div
-          className="
-            relative
-            mt-12
-
-            grid
-            grid-cols-1
-            gap-5
-
-            sm:grid-cols-2
-            md:gap-6
-
-            lg:grid-cols-5
-            lg:gap-5
-
-            xl:gap-6
-          "
-        >
-          {topServices.map((item, index) => (
-            <ServiceCard
-              key={item.number}
-              item={item}
-              index={index}
-              reduceMotion={reduceMotion}
-            />
-          ))}
-        </div>
-
-        {/* =====================================================
-            TOP WAVE
-        ===================================================== */}
-
-        <div
-          className="
-            relative
-            z-20
-
-            -mt-7
-            hidden
-            h-[90px]
-
-            lg:block
-          "
-        >
-          <svg
-            viewBox="0 0 1400 100"
-            preserveAspectRatio="none"
-            className="h-full w-full"
-            fill="none"
-          >
-            <motion.path
-              d="
-                M0 60
-                C80 20 145 18 220 58
-                C300 100 365 95 440 55
-                C520 15 590 15 665 55
-                C745 95 815 92 890 52
-                C970 15 1040 20 1115 60
-                C1190 100 1270 98 1400 55
-              "
-              stroke="#B79A72"
-              strokeOpacity="0.6"
-              strokeWidth="1.2"
-              initial={{
-                pathLength: reduceMotion ? 1 : 0,
-              }}
-              whileInView={{
-                pathLength: 1,
-              }}
-              viewport={{
-                once: true,
-              }}
-              transition={{
-                duration: reduceMotion ? 0 : 1.4,
-                ease,
-              }}
-            />
-
-            <motion.path
-              d="
-                M0 66
-                C90 25 150 25 225 65
-                C305 107 375 101 450 61
-                C530 23 600 22 675 62
-                C750 102 825 100 900 60
-                C985 21 1055 25 1130 65
-                C1205 105 1280 103 1400 62
-              "
-              stroke="#4D91DF"
-              strokeOpacity="0.34"
-              strokeWidth="1.1"
-              initial={{
-                pathLength: reduceMotion ? 1 : 0,
-              }}
-              whileInView={{
-                pathLength: 1,
-              }}
-              viewport={{
-                once: true,
-              }}
-              transition={{
-                duration: reduceMotion ? 0 : 1.6,
-                delay: reduceMotion ? 0 : 0.1,
-                ease,
-              }}
-            />
-
-            {[
-              [80, 40, "#0B2A52"],
-              [380, 78, "#B97B35"],
-              [650, 38, "#7453D8"],
-              [890, 43, "#149A88"],
-              [1190, 78, "#D25057"],
-            ].map(([cx, cy, fill], index) => (
-              <motion.circle
-                key={index}
-                cx={Number(cx)}
-                cy={Number(cy)}
-                r="4"
-                fill={String(fill)}
-                initial={{
-                  opacity: 0,
-                  scale: 0,
-                }}
-                whileInView={{
-                  opacity: 1,
-                  scale: 1,
-                }}
-                viewport={{
-                  once: true,
-                }}
-                transition={{
-                  delay: reduceMotion ? 0 : 0.35 + index * 0.08,
-                }}
-              />
-            ))}
-          </svg>
-        </div>
-
-        {/* =====================================================
-            CENTER CREATIVE MESSAGE
-        ===================================================== */}
-
-        <motion.div
-          initial={
-            reduceMotion
-              ? false
-              : {
-                  opacity: 0,
-                  y: 20,
-                  scale: 0.97,
-                }
-          }
-          whileInView={{
-            opacity: 1,
-            y: 0,
-            scale: 1,
-          }}
-          viewport={{
-            once: true,
-            amount: 0.3,
-          }}
-          transition={{
-            duration: reduceMotion ? 0 : 0.75,
-            ease,
-          }}
-          className="
-            relative
-            z-10
-
-            mx-auto
-            -mt-3
-            max-w-[830px]
-
-            overflow-hidden
-
-            px-5
-            py-9
-
-            text-center
-
-            sm:py-11
-            lg:-mt-8
-          "
-        >
-          {/* BIG SOFT SHAPE */}
-
-          <div
-            className="
-              pointer-events-none
-              absolute
-              left-1/2
-              top-1/2
-              -z-10
-
-              h-[330px]
-              w-[750px]
-
-              -translate-x-1/2
-              -translate-y-1/2
-
-              rounded-[50%]
-
-              bg-[radial-gradient(circle_at_center,#EAF4FD_0%,#F5FAFE_45%,transparent_72%)]
-            "
-          />
-
-          <p
-            style={newYorkFont}
-            className="
-              text-[8px]
-              font-semibold
-              uppercase
-              tracking-[0.31em]
-
-              text-[#0B2A52]
-
-              sm:text-[9px]
-            "
-          >
-            AI Video & Editing Services
-          </p>
-
-          <h3
-            style={newYorkFont}
-            className="
-              mt-4
-
-              text-[2rem]
-              font-light
-              leading-[1.04]
-              tracking-[-0.045em]
-
-              text-[#0B2A52]
-
-              sm:text-[2.5rem]
-              md:text-[2.9rem]
-              lg:text-[3.2rem]
-            "
-          >
-            Create What&apos;s{" "}
-            <span className="text-[#B18458]">
-              Next.
-            </span>
-          </h3>
-
-          <div
             className="
               mx-auto
               mt-5
+              max-w-[790px]
 
-              flex
-              max-w-[580px]
-              items-center
-              justify-center
-              gap-4
+              text-[0.9rem]
+              leading-[1.72]
+
+              text-[#5A7186]
+
+              sm:text-[0.96rem]
             "
           >
-            <span className="h-px w-9 bg-[#B79A72]" />
-
-            <p
-              style={newYorkFont}
-              className="
-                text-[7px]
-                font-semibold
-                uppercase
-                tracking-[0.3em]
-
-                text-[#355675]
-
-                sm:text-[8px]
-              "
-            >
-              Idea · Create · Edit · Publish · Grow
-            </p>
-
-            <span className="h-px w-9 bg-[#B79A72]" />
-          </div>
-        </motion.div>
-
-        {/* =====================================================
-            DECORATIVE HANDWRITTEN COPY
-        ===================================================== */}
-
-        <motion.div
-          initial={
-            reduceMotion
-              ? false
-              : {
-                  opacity: 0,
-                  x: -20,
-                }
-          }
-          whileInView={{
-            opacity: 1,
-            x: 0,
-          }}
-          viewport={{
-            once: true,
-          }}
-          transition={{
-            duration: reduceMotion ? 0 : 0.7,
-            ease,
-          }}
-          className="
-            absolute
-            left-[2.7%]
-            top-[48%]
-
-            hidden
-
-            -rotate-[8deg]
-
-            xl:block
-          "
-        >
-          <p
-            className="
-              text-[1.7rem]
-              italic
-              leading-[0.92]
-
-              text-[#3F70B0]
-            "
-            style={{
-              fontFamily:
-                "'Brush Script MT', 'Segoe Script', cursive",
-            }}
-          >
-            Ideas
-            <br />
-            Into
-            <br />
-            Impact
+            Creation, editing, repurposing and enhancement work together around
+            the audience, platform and objective behind the video.
           </p>
-
-          <span
-            className="
-              mt-4
-              block
-              h-px
-              w-20
-              rotate-[-12deg]
-              bg-[#B79A72]
-            "
-          />
         </motion.div>
 
-        <motion.div
-          initial={
-            reduceMotion
-              ? false
-              : {
-                  opacity: 0,
-                  x: 20,
-                }
-          }
-          whileInView={{
-            opacity: 1,
-            x: 0,
-          }}
-          viewport={{
-            once: true,
-          }}
-          transition={{
-            duration: reduceMotion ? 0 : 0.7,
-            ease,
-          }}
-          className="
-            absolute
-            right-[1.8%]
-            top-[48%]
-
-            hidden
-
-            rotate-[8deg]
-
-            xl:block
-          "
-        >
-          <p
-            className="
-              text-right
-              text-[1.55rem]
-              italic
-              leading-[0.92]
-
-              text-[#3F70B0]
-            "
-            style={{
-              fontFamily:
-                "'Brush Script MT', 'Segoe Script', cursive",
-            }}
-          >
-            Same
-            <br />
-            Content
-            <br />
-            More
-            <br />
-            Possibilities
-          </p>
-
-          <span
-            className="
-              ml-auto
-              mt-4
-              block
-              h-px
-              w-20
-              rotate-[10deg]
-              bg-[#B79A72]
-            "
-          />
-        </motion.div>
-
-        {/* =====================================================
-            BOTTOM WAVE
-        ===================================================== */}
-
+        {/* service cards */}
         <div
           className="
-            relative
-            z-20
-
-            -mb-7
-            hidden
-            h-[88px]
-
-            lg:block
-          "
-        >
-          <svg
-            viewBox="0 0 1400 100"
-            preserveAspectRatio="none"
-            className="h-full w-full"
-            fill="none"
-          >
-            <motion.path
-              d="
-                M0 48
-                C80 15 150 20 225 58
-                C305 100 375 96 450 54
-                C530 16 600 20 675 59
-                C750 98 825 98 900 56
-                C980 18 1055 20 1130 58
-                C1210 100 1290 94 1400 50
-              "
-              stroke="#4D91DF"
-              strokeOpacity="0.45"
-              strokeWidth="1.1"
-              initial={{
-                pathLength: reduceMotion ? 1 : 0,
-              }}
-              whileInView={{
-                pathLength: 1,
-              }}
-              viewport={{
-                once: true,
-              }}
-              transition={{
-                duration: reduceMotion ? 0 : 1.5,
-                ease,
-              }}
-            />
-
-            <motion.path
-              d="
-                M0 55
-                C85 24 150 28 225 65
-                C305 106 375 102 450 61
-                C530 23 600 25 675 66
-                C750 104 825 104 900 62
-                C980 24 1055 27 1130 65
-                C1210 107 1290 102 1400 57
-              "
-              stroke="#B79A72"
-              strokeOpacity="0.42"
-              strokeWidth="1"
-              initial={{
-                pathLength: reduceMotion ? 1 : 0,
-              }}
-              whileInView={{
-                pathLength: 1,
-              }}
-              viewport={{
-                once: true,
-              }}
-              transition={{
-                duration: reduceMotion ? 0 : 1.7,
-                delay: reduceMotion ? 0 : 0.1,
-                ease,
-              }}
-            />
-
-            {[
-              [90, 29, "#0B2A52"],
-              [380, 81, "#B97B35"],
-              [650, 38, "#7453D8"],
-              [900, 39, "#149A88"],
-              [1200, 78, "#D25057"],
-            ].map(([cx, cy, fill], index) => (
-              <motion.circle
-                key={index}
-                cx={Number(cx)}
-                cy={Number(cy)}
-                r="4"
-                fill={String(fill)}
-                initial={{
-                  opacity: 0,
-                  scale: 0,
-                }}
-                whileInView={{
-                  opacity: 1,
-                  scale: 1,
-                }}
-                viewport={{
-                  once: true,
-                }}
-                transition={{
-                  delay: reduceMotion ? 0 : 0.3 + index * 0.08,
-                }}
-              />
-            ))}
-          </svg>
-        </div>
-
-        {/* =====================================================
-            BOTTOM SERVICES
-        ===================================================== */}
-
-        <div
-          className="
-            relative
+            mx-auto
+            mt-12
+            max-w-[1500px]
 
             grid
+            auto-rows-fr
             grid-cols-1
-            gap-5
+            items-stretch
+            gap-4
 
+            sm:mt-14
             sm:grid-cols-2
-            md:gap-6
+            sm:gap-5
 
-            lg:grid-cols-5
-            lg:gap-5
+            lg:grid-cols-3
 
-            xl:gap-6
+            xl:mt-16
+            xl:grid-cols-5
+            xl:gap-4
+
+            2xl:gap-5
           "
         >
-          {bottomServices.map((item, index) => (
+          {services.map((service, index) => (
             <ServiceCard
-              key={item.number}
-              item={item}
+              key={service.title}
+              service={service}
               index={index}
               reduceMotion={reduceMotion}
             />
           ))}
         </div>
 
-        {/* =====================================================
-            CTA
-        ===================================================== */}
-
+        {/* ending */}
         <motion.div
           initial={
             reduceMotion
               ? false
               : {
                   opacity: 0,
-                  y: 28,
+                  y: 16,
                 }
           }
           whileInView={{
@@ -1254,227 +801,39 @@ export default function AiVideoEditingServices() {
             amount: 0.3,
           }}
           transition={{
-            duration: reduceMotion ? 0 : 0.8,
+            duration: reduceMotion ? 0 : 0.6,
             ease,
           }}
           className="
-            relative
-            mt-8
+            mx-auto
+            mt-14
+            max-w-[940px]
 
-            overflow-hidden
+            text-center
 
-            rounded-[24px]
-
-            bg-[#0B2A52]
-
-            px-6
-            py-6
-
-            shadow-[0_24px_70px_rgba(11,42,82,0.17)]
-
-            sm:px-8
-            lg:px-10
+            sm:mt-16
           "
         >
-          {/* CTA BACKGROUND DETAILS */}
-
-          <div
+          <p
+            style={newYorkFont}
             className="
-              pointer-events-none
-              absolute
-              -left-[130px]
-              -bottom-[160px]
+              mx-auto
+              max-w-[880px]
 
-              h-[310px]
-              w-[430px]
+              text-[1.25rem]
+              leading-[1.35]
+              tracking-[-0.025em]
 
-              rotate-[18deg]
+              text-[#0B2A52]
 
-              rounded-[45%]
-
-              bg-[#265586]/55
-            "
-          />
-
-          <div
-            className="
-              pointer-events-none
-              absolute
-              -right-[110px]
-              -top-[160px]
-
-              h-[320px]
-              w-[390px]
-
-              rounded-[45%]
-
-              bg-[#1D4673]/70
-            "
-          />
-
-          <div
-            className="
-              relative
-              z-10
-
-              grid
-              gap-6
-
-              lg:grid-cols-[230px_1fr_auto_110px]
-              lg:items-center
+              sm:text-[1.5rem]
             "
           >
-            {/* LEFT */}
-
-            <div
-              className="
-                hidden
-                border-r
-                border-white/25
-
-                pr-8
-
-                lg:block
-              "
-            >
-              <p
-                style={newYorkFont}
-                className="
-                  text-[7px]
-                  font-semibold
-                  uppercase
-                  leading-[2]
-                  tracking-[0.28em]
-
-                  text-white/70
-                "
-              >
-                Better Videos
-                <br />
-                Stronger Brands
-                <br />
-                Real Results
-              </p>
-            </div>
-
-            {/* CENTER */}
-
-            <div className="lg:text-center">
-              <h3
-                style={newYorkFont}
-                className="
-                  text-[1.55rem]
-                  font-light
-                  leading-[1.1]
-                  tracking-[-0.035em]
-
-                  text-white
-
-                  sm:text-[1.85rem]
-                  md:text-[2rem]
-                "
-              >
-                Let&apos;s Create Something Remarkable.
-              </h3>
-
-              <span
-                className="
-                  mx-auto
-                  mt-4
-                  hidden
-                  h-px
-                  w-14
-                  bg-[#D5A765]
-
-                  lg:block
-                "
-              />
-            </div>
-
-            {/* BUTTON */}
-
-            <a
-              href="/contact"
-              style={newYorkFont}
-              className="
-                group
-
-                inline-flex
-                min-h-[52px]
-                items-center
-                justify-center
-                gap-5
-
-                rounded-full
-
-                bg-[linear-gradient(110deg,#F4D09B,#D9A75E)]
-
-                px-7
-                py-3
-
-                text-[0.78rem]
-                font-medium
-
-                text-[#0B2A52]
-
-                shadow-[0_12px_30px_rgba(0,0,0,0.14)]
-
-                transition-all
-                duration-300
-
-                hover:-translate-y-1
-                hover:shadow-[0_17px_38px_rgba(0,0,0,0.18)]
-              "
-            >
-              Start Your Project
-
-              <ArrowRight
-                size={14}
-                strokeWidth={1.8}
-                className="
-                  transition-transform
-                  duration-300
-
-                  group-hover:translate-x-1
-                "
-              />
-            </a>
-
-            {/* RIGHT */}
-
-            <div
-              className="
-                hidden
-                border-l
-                border-white/25
-
-                pl-8
-
-                lg:block
-              "
-            >
-              <p
-                style={newYorkFont}
-                className="
-                  text-[7px]
-                  font-semibold
-                  uppercase
-                  leading-[1.9]
-                  tracking-[0.25em]
-
-                  text-white/65
-                "
-              >
-                Plan
-                <br />
-                Produce
-                <br />
-                Publish
-                <br />
-                Grow
-              </p>
-            </div>
-          </div>
+            The format changes. The goal stays the same —{" "}
+            <span className="italic text-[#B18458]">
+              make the video worth watching.
+            </span>
+          </p>
         </motion.div>
       </div>
     </section>

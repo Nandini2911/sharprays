@@ -3,7 +3,6 @@
 import { motion, useReducedMotion } from "framer-motion";
 import type { LucideIcon } from "lucide-react";
 import {
-  ArrowRight,
   BarChart3,
   BrainCircuit,
   Database,
@@ -183,41 +182,7 @@ export default function AiAutomationExplained() {
           VERY LIGHT BACKGROUND DETAILS
       ===================================================== */}
 
-      <div
-        className="
-          pointer-events-none
-          absolute
-          inset-0
-          overflow-hidden
-        "
-      >
-        <div
-          className="
-            absolute
-            -left-[420px]
-            -top-[340px]
-            h-[760px]
-            w-[760px]
-            rounded-full
-            border-[95px]
-            border-[#F1F6F9]
-          "
-        />
-
-        <div
-          className="
-            absolute
-            -bottom-[400px]
-            right-[-210px]
-            h-[720px]
-            w-[720px]
-            rounded-full
-            border-[85px]
-            border-[#F0F5F8]
-          "
-        />
-      </div>
-
+     
       {/* =====================================================
           CONTAINER
       ===================================================== */}
@@ -284,7 +249,7 @@ export default function AiAutomationExplained() {
                 text-[9px]
                 uppercase
                 tracking-[0.33em]
-                text-[#0B2A52]
+                text-[#C6A77A]
                 sm:text-[10px]
               "
             >
@@ -292,40 +257,7 @@ export default function AiAutomationExplained() {
             </span>
           </div>
 
-          <div
-            className="
-              hidden
-              items-center
-              gap-4
-              lg:flex
-            "
-          >
-            <span
-              style={newYorkFont}
-              className="
-                text-[7px]
-                uppercase
-                tracking-[0.29em]
-                text-[#0B2A52]/55
-              "
-            >
-              Sharp Rays
-            </span>
-
-            <span className="h-px w-8 bg-[#C6A77A]" />
-
-            <span
-              style={newYorkFont}
-              className="
-                text-[7px]
-                uppercase
-                tracking-[0.29em]
-                text-[#0B2A52]/40
-              "
-            >
-              AI for a Brighter Tomorrow
-            </span>
-          </div>
+       
         </motion.div>
 
         {/* =====================================================
@@ -463,49 +395,93 @@ export default function AiAutomationExplained() {
                 delay: reduceMotion ? 0 : 0.08,
                 ease,
               }}
+              style={newYorkFont}
               className="
                 group
+                relative
                 mt-9
                 inline-flex
-                min-h-[50px]
+                min-h-[46px]
                 items-center
-                justify-between
-                gap-8
-                rounded-full
+                justify-center
+                overflow-hidden
+
+                rounded-[16px]
+
                 border
-                border-[#B88959]
-                bg-white
-                px-6
-                py-3
+                border-[#6285AD]/30
+
+                bg-white/80
+
+                px-5
+                py-[11px]
+
+                text-[13px]
+                font-medium
+                tracking-[-0.01em]
                 text-[#0B2A52]
+
+                shadow-[0_8px_30px_rgba(11,42,82,0.08)]
+
+                backdrop-blur-[8px]
+
                 transition-all
                 duration-300
+                ease-out
 
-                hover:bg-[#FCF9F5]
+                hover:-translate-y-[2px]
+                hover:border-[#6285AD]/40
+                hover:bg-white
+                hover:shadow-[0_10px_35px_rgba(98,133,173,0.15)]
 
-                sm:min-w-[330px]
+                active:translate-y-0
+
+                sm:min-h-[48px]
+                sm:px-6
+                sm:py-3
+                sm:text-[14px]
+
+                md:text-[15px]
               "
             >
+              {/* STATIC SOFT BORDER */}
               <span
-                style={newYorkFont}
                 className="
-                  text-[8px]
-                  uppercase
-                  tracking-[0.27em]
+                  pointer-events-none
+                  absolute
+                  inset-[2px]
+                  rounded-[13px]
+                  border
+                  border-white/60
+                "
+              />
+
+              {/* VERY SUBTLE INNER LIGHT */}
+              <span
+                className="
+                  pointer-events-none
+                  absolute
+                  inset-x-4
+                  top-0
+                  h-px
+                  bg-gradient-to-r
+                  from-transparent
+                  via-white
+                  to-transparent
+                "
+              />
+
+              {/* TEXT */}
+              <span
+                className="
+                  relative
+                  z-10
+                  whitespace-nowrap
+                  text-[#0B2A52]
                 "
               >
                 Build a More Efficient Business
               </span>
-
-              <ArrowRight
-                size={14}
-                strokeWidth={1.4}
-                className="
-                  transition-transform
-                  duration-300
-                  group-hover:translate-x-1
-                "
-              />
             </motion.a>
           </motion.div>
 
@@ -539,6 +515,11 @@ export default function AiAutomationExplained() {
               mx-auto
               w-full
               max-w-[850px]
+
+              xl:origin-center
+              xl:scale-[0.86]
+
+              2xl:scale-[0.9]
             "
           >
             {/* =================================================
@@ -549,7 +530,7 @@ export default function AiAutomationExplained() {
               className="
                 relative
                 hidden
-                h-[585px]
+                h-[540px]
                 xl:block
               "
             >
@@ -559,7 +540,7 @@ export default function AiAutomationExplained() {
                 className="
                   absolute
                   left-1/2
-                  top-1/2
+                  top-[48%]
                   h-[465px]
                   w-[465px]
                   -translate-x-1/2
@@ -576,7 +557,7 @@ export default function AiAutomationExplained() {
                 className="
                   absolute
                   left-1/2
-                  top-1/2
+                  top-[48%]
                   h-[340px]
                   w-[340px]
                   -translate-x-1/2
@@ -773,7 +754,7 @@ export default function AiAutomationExplained() {
                 className="
                   absolute
                   left-1/2
-                  top-1/2
+                  top-[48%]
                   z-20
                   flex
                   h-[220px]
@@ -915,8 +896,8 @@ export default function AiAutomationExplained() {
                 className="
                   mx-auto
                   flex
-                  h-[200px]
-                  w-[200px]
+                  h-[170px]
+                  w-[170px]
                   flex-col
                   items-center
                   justify-center
@@ -928,7 +909,7 @@ export default function AiAutomationExplained() {
                 "
               >
                 <BrainCircuit
-                  size={36}
+                  size={31}
                   strokeWidth={1.35}
                   className="text-[#B88959]"
                 />
@@ -962,9 +943,9 @@ export default function AiAutomationExplained() {
 
               <div
                 className="
-                  mt-10
+                  mt-8
                   grid
-                  gap-4
+                  gap-3.5
                   md:grid-cols-2
                 "
               >
@@ -1012,8 +993,8 @@ export default function AiAutomationExplained() {
                       <div
                         className="
                           flex
-                          h-[48px]
-                          w-[48px]
+                          h-[42px]
+                          w-[42px]
                           shrink-0
                           items-center
                           justify-center
@@ -1031,7 +1012,7 @@ export default function AiAutomationExplained() {
                       <p
                         style={newYorkFont}
                         className="
-                          text-[14px]
+                          text-[13px]
                           font-light
                           text-[#0B2A52]
                         "
@@ -1046,115 +1027,7 @@ export default function AiAutomationExplained() {
           </motion.div>
         </div>
 
-        {/* =====================================================
-            BOTTOM PRINCIPLE
-        ===================================================== */}
-
-        <motion.div
-          initial={
-            reduceMotion
-              ? false
-              : {
-                  opacity: 0,
-                  y: 22,
-                }
-          }
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
-          viewport={{
-            once: true,
-            amount: 0.35,
-          }}
-          transition={{
-            duration: reduceMotion ? 0 : 0.75,
-            ease,
-          }}
-          className="
-            mt-14
-            grid
-            gap-8
-            border-t
-            border-[#0B2A52]/10
-            pt-9
-
-            lg:mt-16
-            lg:grid-cols-[0.65fr_0.35fr]
-            lg:items-end
-          "
-        >
-          <div className="max-w-[920px]">
-            <span className="block h-px w-12 bg-[#C6A77A]" />
-
-            <p
-              style={newYorkFont}
-              className="
-                mt-6
-                text-[1.35rem]
-                font-light
-                leading-[1.2]
-                tracking-[-0.03em]
-                text-[#0B2A52]
-                sm:text-[1.55rem]
-              "
-            >
-              The objective is not to automate everything.
-            </p>
-
-            <h3
-              style={newYorkFont}
-              className="
-                mt-2
-                text-[2rem]
-                font-light
-                leading-[1]
-                tracking-[-0.05em]
-                text-[#B88959]
-
-                sm:text-[2.45rem]
-                md:text-[2.7rem]
-                lg:text-[2.9rem]
-              "
-            >
-              It is to automate the right work.
-            </h3>
-          </div>
-
-          <div
-            className="
-              hidden
-              text-right
-              lg:block
-            "
-          >
-            <span
-              style={newYorkFont}
-              className="
-                text-[7px]
-                uppercase
-                leading-[1.9]
-                tracking-[0.3em]
-                text-[#0B2A52]/38
-              "
-            >
-              SMARTER PROCESSES
-              <br />
-              BRIGHTER POSSIBILITIES
-            </span>
-
-            <span
-              className="
-                ml-auto
-                mt-4
-                block
-                h-px
-                w-9
-                bg-[#C6A77A]
-              "
-            />
-          </div>
-        </motion.div>
+        
       </div>
     </section>
   );

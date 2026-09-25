@@ -309,8 +309,16 @@ export default function WebsiteDevelopmentFAQs() {
                 gap-4
               "
             >
-              <span className="h-px w-9 bg-[#B79A72]" />
+            <span
+            className="
+              h-px
+              w-10
 
+              bg-gradient-to-r
+              from-transparent
+              to-[#B79A72]
+            "
+          />
               <span
                 className="
                   text-[0.61rem]
@@ -318,13 +326,23 @@ export default function WebsiteDevelopmentFAQs() {
                   uppercase
                   tracking-[0.28em]
 
-                  text-[#92745C]
+                  text-[#B79A72]
 
                   sm:text-[0.66rem]
                 "
               >
                 Website Development FAQs
               </span>
+              <span
+            className="
+              h-px
+              w-10
+
+              bg-gradient-to-l
+              from-transparent
+              to-[#B79A72]
+            "
+          />
             </motion.div>
 
             <motion.h2
@@ -410,68 +428,9 @@ export default function WebsiteDevelopmentFAQs() {
             }}
             className="lg:pb-1"
           >
-            <p
-              className="
-                max-w-[500px]
+            
 
-                font-serif
-                text-[0.96rem]
-                leading-[1.75]
-
-                text-[#536C83]
-
-                sm:text-[1rem]
-
-                lg:ml-auto
-              "
-            >
-              Straightforward answers to the questions businesses commonly ask
-              before starting a website project.
-            </p>
-
-            <div
-              className="
-                mt-5
-                flex
-                items-center
-                gap-3
-
-                lg:justify-end
-              "
-            >
-              <span
-                className="
-                  grid
-                  h-8
-                  w-8
-                  place-items-center
-
-                  rounded-full
-
-                  border
-                  border-[#CDDCE7]
-
-                  bg-[#F1F6F9]
-
-                  text-[#0B2A52]
-                "
-              >
-                <CheckCircle2 size={14} strokeWidth={1.8} />
-              </span>
-
-              <span
-                className="
-                  text-[0.54rem]
-                  font-semibold
-                  uppercase
-                  tracking-[0.18em]
-
-                  text-[#73899D]
-                "
-              >
-                Clear Answers · Clear Scope
-              </span>
-            </div>
+            
           </motion.div>
         </div>
 
@@ -577,27 +536,7 @@ export default function WebsiteDevelopmentFAQs() {
                 </div>
               </div>
 
-              <span
-                className="
-                  rounded-full
-
-                  border
-                  border-[#D3E1EA]
-
-                  bg-white
-
-                  px-3
-                  py-1.5
-
-                  text-[0.47rem]
-                  font-bold
-                  tracking-[0.14em]
-
-                  text-[#698196]
-                "
-              >
-                16 QUESTIONS
-              </span>
+             
             </div>
 
             {/* QUESTIONS */}

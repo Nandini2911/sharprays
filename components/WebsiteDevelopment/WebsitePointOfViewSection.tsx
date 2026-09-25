@@ -358,7 +358,7 @@ export default function WebsiteProblemSection() {
 
             <span
               className="
-                text-[0.58rem]
+              
                
                 uppercase
                 tracking-[0.3em]

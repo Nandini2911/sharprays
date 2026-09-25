@@ -2,69 +2,48 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 import {
-  ArrowDownRight,
-  Clock3,
   Film,
   Lightbulb,
-  Megaphone,
-  Scissors,
   Smartphone,
   Sparkles,
-  TrendingDown,
 } from "lucide-react";
 
 const newYorkFont = {
-  fontFamily: "New York, ui-serif, Georgia, serif",
+  fontFamily: '"New York", "Bodoni Moda", Georgia, serif',
 };
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
-/* =========================================================
-   PROBLEMS
-========================================================= */
-
 const problems = [
   {
     number: "01",
-    title: "You Have an Idea",
-    text: "But turning it into a polished video still takes too much time.",
+    label: "Ideas",
+    title: "Good Ideas Take Too Long",
+    text: "Long production cycles can slow momentum before an idea reaches people.",
     icon: Lightbulb,
   },
   {
     number: "02",
-    title: "You Have Raw Footage",
-    text: "But it sits unused because nobody has shaped it into finished content.",
+    label: "Footage",
+    title: "Useful Footage Stays Unused",
+    text: "Raw clips only create value when they become clear, finished content.",
     icon: Film,
   },
   {
     number: "03",
-    title: "You’re Using AI Tools",
-    text: "But the output still looks inconsistent, generic or disconnected from your brand.",
+    label: "AI Output",
+    title: "Fast Can Feel Generic",
+    text: "AI still needs direction and editing to feel consistent with your brand.",
     icon: Sparkles,
   },
   {
     number: "04",
-    title: "You Need More Short-Form Content",
-    text: "But creating every Reel or campaign variation from scratch is slowing your team down.",
+    label: "Content Demand",
+    title: "Freshness Never Stops",
+    text: "Reels, ads and campaigns constantly need new creative variations.",
     icon: Smartphone,
   },
-  {
-    number: "05",
-    title: "Your Videos Look Polished",
-    text: "But they take too long to reach the point.",
-    icon: Clock3,
-  },
-  {
-    number: "06",
-    title: "You’re Running Ads",
-    text: "But the same creative is being used long after the audience has stopped responding to it.",
-    icon: TrendingDown,
-  },
 ];
-
-/* =========================================================
-   COMPONENT
-========================================================= */
 
 export default function AiVideoProblem() {
   const reduceMotion = Boolean(useReducedMotion());
@@ -75,1034 +54,521 @@ export default function AiVideoProblem() {
       aria-labelledby="ai-video-problem-heading"
       className="
         relative
+        isolate
         overflow-hidden
-        bg-[#F5F7F9]
-        py-20
-        sm:py-24
+        bg-white
+
+        py-16
+        sm:py-20
+        md:py-24
         lg:py-28
-        xl:py-32
       "
     >
-      {/* =====================================================
-          BACKGROUND
-      ===================================================== */}
+      {/* soft background */}
+      <div
+        aria-hidden="true"
+        className="
+          pointer-events-none
+          absolute
+          left-1/2
+          top-[38%]
+          -z-10
 
-      <div className="pointer-events-none absolute inset-0">
-        {/* BLUE GLOW */}
+          h-[520px]
+          w-[950px]
 
-        <div
-          className="
-            absolute
-            -left-[220px]
-            top-[12%]
-            h-[500px]
-            w-[500px]
-            rounded-full
-            bg-[#6285AD]/10
-            blur-[120px]
-          "
-        />
+          -translate-x-1/2
 
-        {/* GOLD GLOW */}
-
-        <div
-          className="
-            absolute
-            -right-[220px]
-            bottom-[5%]
-            h-[520px]
-            w-[520px]
-            rounded-full
-            bg-[#C6A77A]/10
-            blur-[130px]
-          "
-        />
-
-        {/* CENTER DIVIDER */}
-
-        <div
-          className="
-            absolute
-            left-1/2
-            top-0
-            hidden
-            h-full
-            w-px
-            bg-[#0B2A52]/[0.03]
-            lg:block
-          "
-        />
-      </div>
-
-      {/* =====================================================
-          CONTAINER
-      ===================================================== */}
+          rounded-full
+          bg-[#EEF5FA]/75
+          blur-[150px]
+        "
+      />
 
       <div
         className="
-          relative
-          z-10
           mx-auto
           w-full
-          max-w-[1440px]
-          px-5
-          sm:px-8
-          md:px-10
-          lg:px-14
-          xl:px-16
-          2xl:px-20
+          max-w-[1280px]
+
+          px-4
+          sm:px-6
+          md:px-8
+          lg:px-12
+          xl:px-14
         "
       >
-        {/* =====================================================
-            MAIN GRID
-        ===================================================== */}
+        {/* HEADER */}
+
+        <motion.div
+          initial={reduceMotion ? false : { opacity: 0, y: 22 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{
+            duration: reduceMotion ? 0 : 0.7,
+            ease,
+          }}
+          className="mx-auto max-w-[920px] text-center"
+        >
+          <div className="flex items-center justify-center gap-3">
+            <span
+              className="
+                h-px
+                w-8
+                bg-gradient-to-r
+                from-transparent
+                to-[#B79A72]
+              "
+            />
+
+            <span
+              style={newYorkFont}
+              className="
+                text-[9px]
+                font-medium
+                uppercase
+                tracking-[0.25em]
+
+                text-[#B79A72]
+
+                sm:text-[10px]
+              "
+            >
+              The Problem
+            </span>
+
+            <span
+              className="
+                h-px
+                w-8
+                bg-gradient-to-l
+                from-transparent
+                to-[#B79A72]
+              "
+            />
+          </div>
+
+          <h2
+            id="ai-video-problem-heading"
+            style={newYorkFont}
+            className="
+              mx-auto
+              mt-5
+              max-w-[950px]
+
+              text-[2.2rem]
+              font-light
+              leading-[1.04]
+              tracking-[-0.045em]
+
+              text-[#0B2A52]
+
+              sm:text-[2.6rem]
+              md:text-[2.95rem]
+              lg:text-[3.1rem]
+              xl:text-[3.35rem]
+            "
+          >
+            More Video Does Not Automatically Mean{" "}
+            <span className="font-normal italic text-[#B79A72]">
+              Better Video.
+            </span>
+          </h2>
+
+          <p
+            style={newYorkFont}
+            className="
+              mx-auto
+              mt-5
+              max-w-[650px]
+
+              text-[0.86rem]
+              leading-[1.7]
+
+              text-[#5F7488]
+
+              sm:text-[0.95rem]
+            "
+          >
+            AI makes production faster. The harder part is creating something
+            people actually choose to watch.
+          </p>
+        </motion.div>
+
+        {/* ==================================================
+            CONNECTED PROBLEM FLOW
+        ================================================== */}
 
         <div
           className="
-            grid
-            gap-12
+            relative
+            mx-auto
+            mt-14
+            max-w-[1160px]
 
-            lg:grid-cols-[0.88fr_1.12fr]
-            lg:gap-16
-
-            xl:gap-20
+            sm:mt-16
+            lg:mt-20
           "
         >
-          {/* =================================================
-              LEFT — STICKY INTRO
-          ================================================= */}
+          {/* DESKTOP LINE */}
 
-          <motion.div
-            initial={{
-              opacity: 0,
-              x: reduceMotion ? 0 : -45,
-            }}
-            whileInView={{
-              opacity: 1,
-              x: 0,
-            }}
-            viewport={{
-              once: true,
-              amount: 0.2,
-            }}
-            transition={{
-              duration: reduceMotion ? 0 : 0.85,
-              ease,
-            }}
+          <div
+            aria-hidden="true"
             className="
-              lg:sticky
-              lg:top-28
-              lg:self-start
+              absolute
+              left-[12.5%]
+              right-[12.5%]
+              top-[35px]
+
+              hidden
+              h-px
+
+              bg-[#D8E4EC]
+
+              lg:block
+            "
+          />
+
+          {/* animated light travelling on line */}
+
+          {!reduceMotion && (
+            <motion.div
+              aria-hidden="true"
+              initial={{ left: "12.5%" }}
+              animate={{ left: "87.5%" }}
+              transition={{
+                duration: 5,
+                repeat: Infinity,
+                repeatType: "reverse",
+                ease: "easeInOut",
+              }}
+              className="
+                absolute
+                top-[31px]
+
+                hidden
+                h-[8px]
+                w-[8px]
+
+                -translate-x-1/2
+
+                rounded-full
+
+                bg-[#B79A72]
+
+                shadow-[0_0_20px_rgba(183,154,114,0.45)]
+
+                lg:block
+              "
+            />
+          )}
+
+          <div
+            className="
+              grid
+              grid-cols-1
+              gap-0
+
+              sm:grid-cols-2
+
+              lg:grid-cols-4
             "
           >
-            {/* LABEL */}
+            {problems.map((item, index) => {
+              const Icon = item.icon;
 
-            <div
-              className="
-                mb-6
-                flex
-                items-center
-                gap-3
-              "
-            >
-              <span className="h-px w-8 bg-[#C6A77A]" />
-
-              <span
-                style={newYorkFont}
-                className="
-                  text-[9px]
-                  font-medium
-                  uppercase
-                  tracking-[0.28em]
-                  text-[#92745C]
-                  sm:text-[10px]
-                "
-              >
-                The Problem
-              </span>
-            </div>
-
-            {/* HEADING */}
-
-            <h2
-              id="ai-video-problem-heading"
-              style={newYorkFont}
-              className="
-                max-w-[620px]
-
-                text-[2.1rem]
-                font-light
-                leading-[0.99]
-                tracking-[-0.045em]
-
-                text-[#0B2A52]
-
-                sm:text-[2.6rem]
-                md:text-[2.95rem]
-                lg:text-[3.1rem]
-                xl:text-[3.35rem]
-              "
-            >
-              Creating More Video Is Easy.{" "}
-              <span
-                className="
-                  font-normal
-                  italic
-                  text-[#A97C52]
-                "
-              >
-                Creating Better Video Is Harder.
-              </span>
-            </h2>
-
-            {/* INTRO COPY */}
-
-            <div
-              style={newYorkFont}
-              className="
-                mt-7
-                max-w-[590px]
-                space-y-4
-
-                text-[14px]
-                leading-[1.75]
-
-                text-[#344054]
-
-                sm:text-[16px]
-                md:text-[17px]
-              "
-            >
-              <p>
-                AI has made it possible to produce visual content faster.
-              </p>
-
-              <p>
-                But faster production does not automatically create stronger
-                communication.
-              </p>
-            </div>
-
-            {/* =================================================
-                SPEED VS IMPACT PANEL
-            ================================================= */}
-
-            <motion.div
-              initial={{
-                opacity: 0,
-                y: reduceMotion ? 0 : 25,
-              }}
-              whileInView={{
-                opacity: 1,
-                y: 0,
-              }}
-              viewport={{
-                once: true,
-                amount: 0.35,
-              }}
-              transition={{
-                duration: reduceMotion ? 0 : 0.75,
-                delay: reduceMotion ? 0 : 0.15,
-                ease,
-              }}
-              className="
-                relative
-                mt-10
-                overflow-hidden
-
-                rounded-[28px]
-
-                bg-[#0B2A52]
-
-                p-6
-
-                shadow-[0_25px_65px_rgba(11,42,82,0.16)]
-
-                sm:p-7
-              "
-            >
-              {/* DECORATIVE CIRCLE */}
-
-              <div
-                className="
-                  pointer-events-none
-                  absolute
-                  -right-16
-                  -top-20
-
-                  h-[220px]
-                  w-[220px]
-
-                  rounded-full
-
-                  border-[38px]
-                  border-white/[0.035]
-                "
-              />
-
-              <div
-                className="
-                  relative
-                  z-10
-
-                  flex
-                  items-start
-                  justify-between
-                  gap-5
-                "
-              >
-                <div>
-                  <p
-                    style={newYorkFont}
-                    className="
-                      text-[9px]
-                      uppercase
-                      tracking-[0.22em]
-
-                      text-[#C6A77A]
-                    "
-                  >
-                    Faster Production
-                  </p>
-
-                  <p
-                    style={newYorkFont}
-                    className="
-                      mt-2
-                      max-w-[355px]
-
-                      text-[18px]
-                      font-light
-                      leading-[1.35]
-
-                      text-white
-
-                      sm:text-[20px]
-                    "
-                  >
-                    Speed helps. But speed alone does not make a video worth
-                    watching.
-                  </p>
-                </div>
-
-                <div
+              return (
+                <motion.article
+                  key={item.title}
+                  initial={
+                    reduceMotion
+                      ? false
+                      : {
+                          opacity: 0,
+                          y: 26,
+                        }
+                  }
+                  whileInView={{
+                    opacity: 1,
+                    y: 0,
+                  }}
+                  viewport={{
+                    once: true,
+                    amount: 0.25,
+                  }}
+                  transition={{
+                    duration: reduceMotion ? 0 : 0.6,
+                    delay: reduceMotion ? 0 : index * 0.08,
+                    ease,
+                  }}
                   className="
-                    flex
-                    h-11
-                    w-11
-                    shrink-0
-                    items-center
-                    justify-center
-
-                    rounded-full
-
-                    border
-                    border-white/15
-
-                    bg-white/[0.06]
-
-                    text-[#C6A77A]
-                  "
-                >
-                  <Scissors size={18} strokeWidth={1.5} />
-                </div>
-              </div>
-
-              {/* COMPARISON */}
-
-              <div className="relative z-10 mt-7">
-                <div
-                  className="
-                    mb-2
-                    flex
-                    items-center
-                    justify-between
-                  "
-                >
-                  <span
-                    style={newYorkFont}
-                    className="
-                      text-[8px]
-                      uppercase
-                      tracking-[0.18em]
-
-                      text-white/45
-                    "
-                  >
-                    Produce
-                  </span>
-
-                  <span
-                    style={newYorkFont}
-                    className="
-                      text-[8px]
-                      uppercase
-                      tracking-[0.18em]
-
-                      text-white/45
-                    "
-                  >
-                    Perform
-                  </span>
-                </div>
-
-                {/* TRACK */}
-
-                <div
-                  className="
+                    group
                     relative
 
-                    h-[6px]
+                    border-b
+                    border-[#DDE8EF]
 
-                    overflow-hidden
+                    py-7
 
-                    rounded-full
+                    sm:px-5
 
-                    bg-white/10
+                    lg:border-b-0
+                    lg:px-6
+                    lg:py-0
+                    lg:text-center
                   "
                 >
-                  <motion.div
-                    initial={{
-                      width: "0%",
-                    }}
-                    whileInView={{
-                      width: "62%",
-                    }}
-                    viewport={{
-                      once: true,
-                    }}
-                    transition={{
-                      duration: reduceMotion ? 0 : 1.15,
-                      delay: reduceMotion ? 0 : 0.3,
-                      ease,
-                    }}
+                  {/* NUMBER */}
+                  <span
+                    style={newYorkFont}
                     className="
                       absolute
-                      inset-y-0
-                      left-0
+                      right-0
+                      top-7
+
+                      text-[0.55rem]
+                      tracking-[0.18em]
+
+                      text-[#8FA3B4]
+
+                      sm:right-5
+
+                      lg:hidden
+                    "
+                  >
+                    {item.number}
+                  </span>
+
+                  {/* ICON NODE */}
+
+                  <div
+                    className="
+                      relative
+                      z-10
+
+                      flex
+                      h-[70px]
+                      w-[70px]
+                      items-center
+                      justify-center
 
                       rounded-full
 
-                      bg-[#C6A77A]
-                    "
-                  />
-                </div>
-
-                <div
-                  className="
-                    mt-3
-                    flex
-                    items-center
-                    justify-between
-                    gap-4
-                  "
-                >
-                  <span
-                    style={newYorkFont}
-                    className="
-                      text-[10px]
-                      text-white/50
-                    "
-                  >
-                    More video
-                  </span>
-
-                  <span
-                    style={newYorkFont}
-                    className="
-                      text-right
-                      text-[10px]
-                      font-medium
-
-                      text-white
-                    "
-                  >
-                    Better reason to keep watching
-                  </span>
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
-
-          {/* =================================================
-              RIGHT — PROBLEMS
-          ================================================= */}
-
-          <div>
-            {/* TITLE ROW */}
-
-            <motion.div
-              initial={{
-                opacity: 0,
-                y: reduceMotion ? 0 : 24,
-              }}
-              whileInView={{
-                opacity: 1,
-                y: 0,
-              }}
-              viewport={{
-                once: true,
-                amount: 0.4,
-              }}
-              transition={{
-                duration: reduceMotion ? 0 : 0.7,
-                ease,
-              }}
-              className="
-                mb-7
-                flex
-                items-center
-                justify-between
-
-                border-b
-                border-[#0B2A52]/10
-
-                pb-4
-              "
-            >
-              <p
-                style={newYorkFont}
-                className="
-                  text-[10px]
-                  font-medium
-                  uppercase
-                  tracking-[0.22em]
-
-                  text-[#0B2A52]
-
-                  sm:text-[11px]
-                "
-              >
-                Does This Sound Familiar?
-              </p>
-
-              <span
-                style={newYorkFont}
-                className="
-                  text-[9px]
-                  uppercase
-                  tracking-[0.18em]
-
-                  text-[#344054]/45
-                "
-              >
-                06 Signals
-              </span>
-            </motion.div>
-
-            {/* =================================================
-                PROBLEM LIST
-            ================================================= */}
-
-            <div className="space-y-4">
-              {problems.map((item, index) => {
-                const Icon = item.icon;
-
-                return (
-                  <motion.article
-                    key={item.number}
-                    initial={{
-                      opacity: 0,
-                      x: reduceMotion ? 0 : 42,
-                      y: reduceMotion ? 0 : 14,
-                    }}
-                    whileInView={{
-                      opacity: 1,
-                      x: 0,
-                      y: 0,
-                    }}
-                    viewport={{
-                      once: true,
-                      amount: 0.22,
-                    }}
-                    transition={{
-                      duration: reduceMotion ? 0 : 0.7,
-                      delay: reduceMotion ? 0 : index * 0.055,
-                      ease,
-                    }}
-                    whileHover={
-                      reduceMotion
-                        ? undefined
-                        : {
-                            x: 6,
-                          }
-                    }
-                    className="
-                      group
-                      relative
-
-                      overflow-hidden
-
-                      rounded-[25px]
-
                       border
-                      border-[#0B2A52]/10
+                      border-[#C9D9E5]
 
                       bg-white
 
-                      p-[5px]
+                      text-[#6285AD]
 
-                      shadow-[0_14px_35px_rgba(11,42,82,0.045)]
+                      shadow-[0_12px_35px_rgba(11,42,82,0.05)]
 
-                      transition-shadow
-                      duration-300
+                      transition-all
+                      duration-500
 
-                      hover:shadow-[0_20px_45px_rgba(11,42,82,0.08)]
+                      group-hover:-translate-y-1
+                      group-hover:border-[#9CB8CD]
+                      group-hover:bg-[#EEF5FA]
+
+                      lg:mx-auto
                     "
                   >
-                    <div
+                    <Icon size={19} strokeWidth={1.55} />
+
+                    <span
+                      style={newYorkFont}
                       className="
-                        relative
+                        absolute
+                        -top-6
+                        left-1/2
 
-                        grid
-                        min-h-[145px]
-                        grid-cols-[auto_1fr]
-                        gap-4
+                        hidden
+                        -translate-x-1/2
 
-                        overflow-hidden
+                        text-[0.52rem]
+                        tracking-[0.16em]
 
-                        rounded-[20px]
+                        text-[#8FA3B4]
 
-                        bg-[#F6F8FA]
-
-                        px-5
-                        py-5
-
-                        sm:grid-cols-[56px_1fr_auto]
-                        sm:items-center
-                        sm:gap-5
-                        sm:px-6
+                        lg:block
                       "
                     >
-                      {/* SOFT BACKGROUND WASH */}
+                      {item.number}
+                    </span>
+                  </div>
 
-                      <div
-                        className="
-                          pointer-events-none
-                          absolute
-                          inset-0
+                  {/* TEXT */}
 
-                          bg-[linear-gradient(110deg,rgba(237,244,249,0.9)_0%,rgba(255,255,255,0.4)_58%,rgba(249,244,236,0.7)_100%)]
+                  <div className="mt-5 lg:mt-7">
+                    <span
+                      style={newYorkFont}
+                      className="
+                        text-[8px]
+                        font-medium
+                        uppercase
+                        tracking-[0.2em]
 
-                          opacity-80
-                        "
-                      />
+                        text-[#6285AD]
+                      "
+                    >
+                      {item.label}
+                    </span>
 
-                      {/* ICON */}
+                    <h3
+                      style={newYorkFont}
+                      className="
+                        mt-2
 
-                      <div
-                        className="
-                          relative
-                          z-10
+                        max-w-[260px]
 
-                          flex
-                          h-12
-                          w-12
-                          items-center
-                          justify-center
+                        text-[1.12rem]
+                        font-normal
+                        leading-[1.2]
+                        tracking-[-0.025em]
 
-                          rounded-full
+                        text-[#0B2A52]
 
-                          border
-                          border-[#D7E2EA]
+                        sm:text-[1.18rem]
 
-                          bg-white
+                        lg:mx-auto
+                        lg:text-[1.22rem]
+                      "
+                    >
+                      {item.title}
+                    </h3>
 
-                          text-[#0B2A52]
+                    <p
+                      style={newYorkFont}
+                      className="
+                        mt-3
 
-                          shadow-[0_8px_24px_rgba(11,42,82,0.055)]
+                        max-w-[270px]
 
-                          transition-all
-                          duration-300
+                        text-[0.76rem]
+                        leading-[1.65]
 
-                          group-hover:border-[#B79A72]/55
-                          group-hover:text-[#A97C52]
-                        "
-                      >
-                        <Icon size={18} strokeWidth={1.5} />
-                      </div>
+                        text-[#5F7488]
 
-                      {/* TEXT */}
+                        lg:mx-auto
+                      "
+                    >
+                      {item.text}
+                    </p>
+                  </div>
 
-                      <div className="relative z-10">
-                        <div
-                          className="
-                            mb-2
-                            flex
-                            items-center
-                            gap-3
-                          "
-                        >
-                          <span
-                            style={newYorkFont}
-                            className="
-                              text-[9px]
-                              font-medium
-                              tracking-[0.18em]
+                  {/* SMALL ACCENT */}
 
-                              text-[#A97C52]
-                            "
-                          >
-                            {item.number}
-                          </span>
+                  <div
+                    className="
+                      mt-5
+                      h-px
+                      w-7
 
-                          <span
-                            className="
-                              h-px
-                              w-5
+                      bg-[#6285AD]
 
-                              bg-[#B79A72]
-                            "
-                          />
-                        </div>
+                      transition-all
+                      duration-300
 
-                        <h3
-                          style={newYorkFont}
-                          className="
-                            text-[17px]
-                            font-medium
-                            leading-[1.35]
+                      group-hover:w-12
 
-                            text-[#0B2A52]
-
-                            sm:text-[18px]
-                          "
-                        >
-                          {item.title}
-                        </h3>
-
-                        <p
-                          style={newYorkFont}
-                          className="
-                            mt-2
-                            max-w-[540px]
-
-                            text-[13px]
-                            leading-[1.65]
-
-                            text-[#4F6377]
-
-                            sm:text-[14px]
-                          "
-                        >
-                          {item.text}
-                        </p>
-                      </div>
-
-                      {/* ARROW */}
-
-                      <div
-                        className="
-                          relative
-                          z-10
-
-                          hidden
-                          h-10
-                          w-10
-                          items-center
-                          justify-center
-
-                          rounded-full
-
-                          border
-                          border-[#D8E2E9]
-
-                          bg-white/85
-
-                          text-[#0B2A52]
-
-                          transition-all
-                          duration-300
-
-                          group-hover:border-[#B79A72]/50
-                          group-hover:text-[#A97C52]
-
-                          sm:flex
-                        "
-                      >
-                        <ArrowDownRight
-                          size={15}
-                          strokeWidth={1.5}
-                          className="
-                            transition-transform
-                            duration-300
-
-                            group-hover:translate-x-0.5
-                            group-hover:translate-y-0.5
-                          "
-                        />
-                      </div>
-
-                      {/* GHOST NUMBER */}
-
-                      <span
-                        style={newYorkFont}
-                        className="
-                          pointer-events-none
-                          absolute
-                          -right-3
-                          -top-5
-
-                          text-[95px]
-                          font-light
-                          leading-none
-
-                          text-[#0B2A52]/[0.035]
-
-                          transition-transform
-                          duration-500
-
-                          group-hover:scale-105
-                        "
-                      >
-                        {item.number}
-                      </span>
-
-                      {/* GOLD LEFT TRACE */}
-
-                      <motion.span
-                        initial={{
-                          scaleY: reduceMotion ? 1 : 0,
-                        }}
-                        whileInView={{
-                          scaleY: 1,
-                        }}
-                        viewport={{
-                          once: true,
-                        }}
-                        transition={{
-                          duration: reduceMotion ? 0 : 0.5,
-                          delay: reduceMotion
-                            ? 0
-                            : index * 0.055 + 0.18,
-                          ease,
-                        }}
-                        className="
-                          absolute
-                          bottom-4
-                          left-0
-                          top-4
-
-                          w-[3px]
-
-                          origin-top
-
-                          rounded-full
-
-                          bg-[#B79A72]
-                        "
-                      />
-                    </div>
-                  </motion.article>
-                );
-              })}
-            </div>
+                      lg:mx-auto
+                    "
+                  />
+                </motion.article>
+              );
+            })}
           </div>
         </div>
 
-        {/* =====================================================
-            REAL PROBLEM
-        ===================================================== */}
+        {/* ==================================================
+            ATTENTION STATEMENT
+        ================================================== */}
 
         <motion.div
-          initial={{
-            opacity: 0,
-            y: reduceMotion ? 0 : 34,
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
+          initial={reduceMotion ? false : { opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{
             once: true,
-            amount: 0.3,
+            amount: 0.35,
           }}
           transition={{
-            duration: reduceMotion ? 0 : 0.82,
+            duration: reduceMotion ? 0 : 0.7,
             ease,
           }}
           className="
             relative
+            mx-auto
 
-            mt-16
+            mt-12
+            max-w-[900px]
 
-            overflow-hidden
+            pt-10
 
-            rounded-[34px]
+            text-center
 
-            border
-            border-[#DCE4EA]
+            sm:mt-14
+            sm:pt-12
 
-            bg-white
-
-            px-6
-            py-10
-
-            shadow-[0_22px_65px_rgba(11,42,82,0.06)]
-
-            sm:px-9
-            sm:py-12
-
-            lg:mt-20
-            lg:px-12
-            lg:py-14
+            lg:mt-16
           "
         >
-          {/* BIG BACKGROUND WORD */}
+          {/* vertical connector */}
+          <div
+            aria-hidden="true"
+            className="
+              absolute
+              left-1/2
+              top-0
+
+              h-7
+              w-px
+
+              -translate-x-1/2
+
+              bg-gradient-to-b
+              from-[#8FA9BE]
+              to-transparent
+            "
+          />
 
           <span
             style={newYorkFont}
             className="
-              pointer-events-none
-              absolute
-              -right-4
-              -top-8
+              text-[8px]
+              font-medium
+              uppercase
+              tracking-[0.24em]
 
-              text-[105px]
-              font-light
-              leading-none
-              tracking-[-0.07em]
-
-              text-[#0B2A52]/[0.022]
-
-              sm:text-[155px]
+              text-[#B79A72]
             "
           >
-            WATCH
+            The Real Problem
           </span>
 
-          {/* BLUE GLOW */}
-
-          <div
+          <p
+            style={newYorkFont}
             className="
-              pointer-events-none
-              absolute
-              -bottom-32
-              -left-20
+              mx-auto
+              mt-4
+              max-w-[820px]
 
-              h-[280px]
-              w-[360px]
+              text-[1.4rem]
+              font-light
+              leading-[1.27]
+              tracking-[-0.03em]
 
-              rounded-full
+              text-[#0B2A52]
 
-              bg-[#EAF2F7]
-
-              blur-[85px]
-            "
-          />
-
-          <div
-            className="
-              relative
-              z-10
-
-              grid
-              gap-8
-
-              lg:grid-cols-[0.34fr_0.66fr]
-              lg:items-center
+              sm:text-[1.6rem]
+              md:text-[1.85rem]
             "
           >
-            {/* LEFT */}
-
-            <div>
-              <div
-                className="
-                  flex
-                  h-11
-                  w-11
-                  items-center
-                  justify-center
-
-                  rounded-full
-
-                  bg-[#0B2A52]
-
-                  text-white
-
-                  shadow-[0_9px_25px_rgba(11,42,82,0.14)]
-                "
-              >
-                <Megaphone size={17} strokeWidth={1.5} />
-              </div>
-
-              <p
-                style={newYorkFont}
-                className="
-                  mt-5
-
-                  text-[9px]
-                  font-medium
-                  uppercase
-                  tracking-[0.25em]
-
-                  text-[#92745C]
-
-                  sm:text-[10px]
-                "
-              >
-                The Real Problem
-              </p>
-
-              <div
-                className="
-                  mt-4
-                  h-px
-                  w-14
-
-                  bg-[#C6A77A]
-                "
-              />
-            </div>
-
-            {/* RIGHT */}
-
-            <div>
-              <p
-                style={newYorkFont}
-                className="
-                  text-[16px]
-                  leading-[1.65]
-
-                  text-[#4B6075]
-
-                  sm:text-[17px]
-                "
-              >
-                The challenge is no longer simply making video.
-              </p>
-
-              <h3
-                style={newYorkFont}
-                className="
-                  mt-3
-                  max-w-[790px]
-
-                  text-[27px]
-                  font-light
-                  leading-[1.12]
-                  tracking-[-0.035em]
-
-                  text-[#0B2A52]
-
-                  sm:text-[32px]
-                  md:text-[36px]
-                  lg:text-[40px]
-                "
-              >
-                It is turning ideas and assets into content people{" "}
-                <span
-                  className="
-                    font-normal
-                    italic
-                    text-[#A97C52]
-                  "
-                >
-                  actually want to watch.
-                </span>
-              </h3>
-            </div>
-          </div>
+            Production speed creates more content.
+            <br className="hidden sm:block" />{" "}
+            <span className="font-normal italic text-[#B79A72]">
+              Creative judgment creates attention.
+            </span>
+          </p>
         </motion.div>
       </div>
     </section>

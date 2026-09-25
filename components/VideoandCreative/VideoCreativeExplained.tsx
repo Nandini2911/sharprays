@@ -7,7 +7,6 @@ import {
   Clapperboard,
   Film,
   Layers3,
-  Lightbulb,
   Megaphone,
   MonitorSmartphone,
   Package,
@@ -142,219 +141,16 @@ export default function AiVideoExplained() {
         overflow-hidden
         bg-white
 
-        py-20
-        sm:py-24
+        py-16
+        sm:py-20
+        md:py-24
         lg:py-28
         xl:py-32
       "
     >
-      {/* =====================================================
-          BACKGROUND
-      ===================================================== */}
+   
 
-      <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-        {/* LEFT BLUE CIRCLE */}
-
-        <div
-          className="
-            absolute
-            -left-[225px]
-            top-[35px]
-
-            hidden
-            h-[435px]
-            w-[435px]
-
-            rounded-full
-
-            border
-            border-[#8EB8DD]/45
-
-            bg-[#EAF4FC]/75
-
-            lg:block
-          "
-        />
-
-        <div
-          className="
-            absolute
-            -left-[190px]
-            top-[70px]
-
-            hidden
-            h-[365px]
-            w-[365px]
-
-            rounded-full
-
-            border
-            border-white/90
-
-            lg:block
-          "
-        />
-
-        {/* RIGHT CREAM CIRCLE */}
-
-        <div
-          className="
-            absolute
-            -right-[225px]
-            top-[-25px]
-
-            hidden
-            h-[445px]
-            w-[445px]
-
-            rounded-full
-
-            border
-            border-[#E7CFA8]/55
-
-            bg-[#FCF7EF]/85
-
-            lg:block
-          "
-        />
-
-        {/* CENTER LIGHT */}
-
-        <div
-          className="
-            absolute
-            left-1/2
-            top-[29%]
-
-            h-[560px]
-            w-[950px]
-
-            -translate-x-1/2
-
-            rounded-full
-
-            bg-[#F5F8FB]
-
-            blur-[130px]
-          "
-        />
-      </div>
-
-      {/* =====================================================
-          SIDE MICRO COPY
-      ===================================================== */}
-
-      <motion.div
-        initial={
-          reduceMotion
-            ? false
-            : {
-                opacity: 0,
-                x: -22,
-              }
-        }
-        whileInView={{
-          opacity: 1,
-          x: 0,
-        }}
-        viewport={{
-          once: true,
-          amount: 0.3,
-        }}
-        transition={{
-          duration: reduceMotion ? 0 : 0.7,
-          ease,
-        }}
-        className="
-          absolute
-          left-[2.6%]
-          top-[18%]
-          z-10
-
-          hidden
-
-          xl:block
-        "
-      >
-        <p
-          style={newYorkFont}
-          className="
-            text-[9px]
-            uppercase
-            leading-[2.15]
-            tracking-[0.27em]
-
-            text-[#315573]
-          "
-        >
-          Ideas
-          <br />
-          Edited
-          <br />
-          For A
-          <br />
-          Brighter
-          <br />
-          Tomorrow
-        </p>
-
-        <span className="mt-4 block h-px w-10 bg-[#B79A72]" />
-      </motion.div>
-
-      <motion.div
-        initial={
-          reduceMotion
-            ? false
-            : {
-                opacity: 0,
-                x: 22,
-              }
-        }
-        whileInView={{
-          opacity: 1,
-          x: 0,
-        }}
-        viewport={{
-          once: true,
-          amount: 0.3,
-        }}
-        transition={{
-          duration: reduceMotion ? 0 : 0.7,
-          ease,
-        }}
-        className="
-          absolute
-          right-[4.3%]
-          top-[11%]
-          z-10
-
-          hidden
-
-          xl:block
-        "
-      >
-        <p
-          style={newYorkFont}
-          className="
-            text-[9px]
-            uppercase
-            leading-[2.1]
-            tracking-[0.27em]
-
-            text-[#315573]
-          "
-        >
-          Same
-          <br />
-          Message
-          <br />
-          More
-          <br />
-          Possibilities
-        </p>
-
-        <span className="mt-4 block h-px w-10 bg-[#B79A72]" />
-      </motion.div>
+      
 
       {/* =====================================================
           CONTAINER
@@ -369,11 +165,12 @@ export default function AiVideoExplained() {
           w-full
           max-w-[1450px]
 
-          px-5
-          sm:px-8
-          md:px-10
-          lg:px-14
-          xl:px-16
+          px-4
+          sm:px-6
+          md:px-8
+          lg:px-12
+          xl:px-14
+          2xl:px-16
         "
       >
         {/* =====================================================
@@ -409,10 +206,11 @@ export default function AiVideoExplained() {
               flex
               w-fit
               items-center
-              gap-4
+              gap-3
+              sm:gap-4
             "
           >
-            <span className="h-px w-11 bg-[#B79A72]" />
+            <span className="h-px w-7 bg-[#B79A72] sm:w-11" />
 
             <span
               style={newYorkFont}
@@ -431,7 +229,7 @@ export default function AiVideoExplained() {
               AI Video Explained
             </span>
 
-            <span className="h-px w-11 bg-[#B79A72]" />
+            <span className="h-px w-7 bg-[#B79A72] sm:w-11" />
           </motion.div>
 
           {/* HEADING */}
@@ -465,7 +263,7 @@ export default function AiVideoExplained() {
               mt-6
               max-w-[1000px]
 
-              text-[2.1rem]
+              text-[2.2rem]
               font-light
               leading-[1.02]
               tracking-[-0.05em]
@@ -511,15 +309,17 @@ export default function AiVideoExplained() {
             style={newYorkFont}
             className="
               mx-auto
-              mt-6
+              mt-5
               max-w-[940px]
 
-              text-[14px]
+              text-[13px]
+
+              sm:mt-6
+              sm:text-[15px]
               leading-[1.68]
 
               text-[#49657E]
 
-              sm:text-[15px]
               md:text-[16px]
             "
           >
@@ -544,9 +344,10 @@ export default function AiVideoExplained() {
           className="
             relative
             mx-auto
-            mt-10
+            mt-8
             max-w-[1240px]
 
+            sm:mt-10
             lg:mt-12
           "
         >
@@ -1200,7 +1001,7 @@ export default function AiVideoExplained() {
         </div>
 
         {/* =====================================================
-            BOTTOM SHARP RAYS PANEL
+            SHARP RAYS — OPEN ENDING / NO CARD
         ===================================================== */}
 
         <motion.div
@@ -1209,7 +1010,7 @@ export default function AiVideoExplained() {
               ? false
               : {
                   opacity: 0,
-                  y: 26,
+                  y: 22,
                 }
           }
           whileInView={{
@@ -1218,207 +1019,141 @@ export default function AiVideoExplained() {
           }}
           viewport={{
             once: true,
-            amount: 0.2,
+            amount: 0.3,
           }}
           transition={{
-            duration: reduceMotion ? 0 : 0.8,
+            duration: reduceMotion ? 0 : 0.7,
             ease,
           }}
           className="
-            relative
-
             mx-auto
-            mt-8
-            max-w-[1320px]
+            mt-10
+            max-w-[980px]
 
-            overflow-hidden
+            px-1
+            text-center
 
-            rounded-[22px]
+            sm:mt-12
+            sm:px-3
 
-            border
-            border-[#BCD7EB]
-
-            bg-[linear-gradient(100deg,#EFF7FD_0%,#FAFCFE_50%,#F2F8FC_100%)]
-
-            px-5
-            py-6
-
-            shadow-[0_12px_35px_rgba(11,42,82,0.045)]
-
-            sm:px-7
-            sm:py-7
-
-            lg:px-9
+            md:mt-14
           "
         >
-          {/* BACKGROUND GLOW */}
+          {/* LABEL */}
 
           <div
             className="
-              pointer-events-none
-              absolute
-              -left-20
-              top-1/2
+              flex
+              items-center
+              justify-center
+              gap-3
 
-              h-[240px]
-              w-[240px]
-
-              -translate-y-1/2
-
-              rounded-full
-
-              bg-[#DCECF7]
-
-              blur-[60px]
-            "
-          />
-
-          <div
-            className="
-              relative
-              z-10
-
-              grid
-              gap-6
-
-              lg:grid-cols-[150px_1fr_230px]
-              lg:items-center
+              sm:gap-4
             "
           >
-            {/* ICON */}
-
-            <div
+            <span
               className="
-                flex
-                items-center
-                justify-center
+                h-px
+                w-7
 
-                lg:border-r
-                lg:border-[#AFC6D8]
+                bg-gradient-to-r
+                from-transparent
+                to-[#B79A72]
+
+                sm:w-10
+              "
+            />
+
+            <span
+              style={newYorkFont}
+              className="
+                text-[8px]
+                font-medium
+                uppercase
+                tracking-[0.22em]
+
+                text-[#A4774C]
+
+                sm:text-[9px]
+                sm:tracking-[0.27em]
               "
             >
-              <motion.div
-                animate={
-                  reduceMotion
-                    ? undefined
-                    : {
-                        y: [0, -4, 0],
-                      }
-                }
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-                className="
-                  flex
-                  h-[86px]
-                  w-[86px]
-                  items-center
-                  justify-center
+              At Sharp Rays
+            </span>
 
-                  rounded-full
-
-                  bg-[#0B2A52]
-
-                  text-white
-
-                  shadow-[0_12px_30px_rgba(11,42,82,0.18)]
-                "
-              >
-                <Lightbulb size={34} strokeWidth={1.35} />
-              </motion.div>
-            </div>
-
-            {/* CONTENT */}
-
-            <div>
-              <p
-                style={newYorkFont}
-                className="
-                  text-[9px]
-                  uppercase
-                  tracking-[0.27em]
-
-                  text-[#345978]
-                "
-              >
-                At Sharp Rays,
-              </p>
-
-              <h3
-                style={newYorkFont}
-                className="
-                  mt-2
-
-                  text-[1.65rem]
-                  font-light
-                  leading-[1.12]
-                  tracking-[-0.035em]
-
-                  text-[#0B2A52]
-
-                  sm:text-[1.9rem]
-                  md:text-[2.1rem]
-                "
-              >
-                AI is part of the production toolkit.
-              </h3>
-
-              <p
-                style={newYorkFont}
-                className="
-                  mt-2
-
-                  text-[0.9rem]
-                  leading-[1.6]
-
-                  text-[#526E87]
-
-                  sm:text-[0.96rem]
-                "
-              >
-                The final creative direction still starts with the message,
-                audience and purpose.
-              </p>
-            </div>
-
-            {/* RIGHT MESSAGE */}
-
-            <div
+            <span
               className="
-                hidden
+                h-px
+                w-7
 
-                border-l
-                border-[#AFC6D8]
+                bg-gradient-to-l
+                from-transparent
+                to-[#B79A72]
 
-                pl-10
-
-                lg:block
+                sm:w-10
               "
-            >
-              <p
-                style={newYorkFont}
-                className="
-                  text-[8px]
-                  uppercase
-                  leading-[2]
-                  tracking-[0.28em]
-
-                  text-[#3A5D7A]
-                "
-              >
-                Better Ideas
-                <br />
-                Stronger Stories
-                <br />
-                Real Impact
-              </p>
-
-              <span className="mt-4 block h-px w-10 bg-[#B79A72]" />
-            </div>
+            />
           </div>
+
+          {/* MAIN STATEMENT */}
+
+          <h3
+            style={newYorkFont}
+            className="
+              mx-auto
+              mt-4
+              max-w-[850px]
+
+              text-[1.45rem]
+              font-light
+              leading-[1.18]
+              tracking-[-0.035em]
+
+              text-[#0B2A52]
+
+              min-[390px]:text-[1.6rem]
+              sm:mt-5
+              sm:text-[1.85rem]
+              md:text-[2.05rem]
+              lg:text-[2.25rem]
+            "
+          >
+            AI is part of the{" "}
+            <span className="font-normal italic text-[#B18458]">
+              production toolkit.
+            </span>
+          </h3>
+
+          {/* SUPPORT COPY */}
+
+          <p
+            style={newYorkFont}
+            className="
+              mx-auto
+              mt-3
+              max-w-[720px]
+
+              text-[0.78rem]
+              leading-[1.65]
+
+              text-[#5B7286]
+
+              sm:mt-4
+              sm:text-[0.88rem]
+
+              md:text-[0.94rem]
+            "
+          >
+            The final creative direction still starts with the message,
+            audience and purpose.
+          </p>
+
+          {/* SUPPORTING LINE */}
+
+          
+             
         </motion.div>
+
       </div>
     </section>
   );

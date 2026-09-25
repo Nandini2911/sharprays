@@ -1267,58 +1267,95 @@ function BiggerPictureCard({
         with less manual coordination.
       </p>
 
-      <button
-        type="button"
+      <a
+        href="/contact"
+        style={newYorkFont}
         className="
+          group
           relative
           z-10
           mt-auto
-          flex
-          h-[48px]
+          inline-flex
+          min-h-[46px]
           shrink-0
           items-center
-          justify-between
-          rounded-full
+          justify-center
+          overflow-hidden
+
+          rounded-[16px]
+
           border
-          border-white/10
-          bg-white/[0.05]
-          p-[6px]
-          pl-4
+          border-[#6285AD]/30
+
+          bg-white/80
+
+          px-5
+          py-[11px]
+
+          text-[13px]
+          font-medium
+          tracking-[-0.01em]
+          text-[#0B2A52]
+
+          shadow-[0_8px_30px_rgba(11,42,82,0.08)]
+
+          backdrop-blur-[8px]
+
+          transition-all
+          duration-300
+          ease-out
+
+          hover:-translate-y-[2px]
+          hover:border-[#6285AD]/40
+          hover:bg-white
+          hover:shadow-[0_10px_35px_rgba(98,133,173,0.15)]
+
+          active:translate-y-0
+
+          sm:min-h-[48px]
+          sm:px-6
+          sm:py-3
+          sm:text-[14px]
+
+          md:text-[15px]
         "
       >
         <span
-          style={newYorkFont}
           className="
-            text-[9px]
-            text-white/85
+            pointer-events-none
+            absolute
+            inset-[2px]
+            rounded-[13px]
+            border
+            border-white/60
+          "
+        />
+
+        <span
+          className="
+            pointer-events-none
+            absolute
+            inset-x-4
+            top-0
+            h-px
+            bg-gradient-to-r
+            from-transparent
+            via-white
+            to-transparent
+          "
+        />
+
+        <span
+          className="
+            relative
+            z-10
+            whitespace-nowrap
+            text-[#0B2A52]
           "
         >
           Let&apos;s Talk
         </span>
-
-        <span
-          className="
-            flex
-            h-[34px]
-            w-[34px]
-            items-center
-            justify-center
-            rounded-full
-            bg-white
-            text-[#0B2A52]
-          "
-        >
-          <ArrowRight
-            size={14}
-            strokeWidth={1.5}
-            className="
-              transition-transform
-              duration-300
-              group-hover:translate-x-1
-            "
-          />
-        </span>
-      </button>
+      </a>
     </motion.article>
   );
 }
@@ -1354,34 +1391,6 @@ export default function AiAutomationServices() {
       "
     >
       {/* BACKGROUND */}
-
-      <div
-        className="
-          pointer-events-none
-          absolute
-          -left-[250px]
-          top-[110px]
-          h-[520px]
-          w-[520px]
-          rounded-full
-          bg-[#EFF6FC]
-          opacity-65
-        "
-      />
-
-      <div
-        className="
-          pointer-events-none
-          absolute
-          -right-[250px]
-          top-[120px]
-          h-[520px]
-          w-[520px]
-          rounded-full
-          bg-[#FBF3E8]
-          opacity-60
-        "
-      />
 
       <div
         className="
@@ -1500,210 +1509,13 @@ export default function AiAutomationServices() {
                 gap-4
               "
             >
-              <button
-                type="button"
-                onClick={() =>
-                  document
-                    .getElementById("automation-service-grid")
-                    ?.scrollIntoView({
-                      behavior: reduceMotion
-                        ? "auto"
-                        : "smooth",
-                      block: "start",
-                    })
-                }
-                className="
-                  group
-                  flex
-                  h-[54px]
-                  items-center
-                  gap-5
-                  rounded-full
-                  bg-[#0B2A52]
-                  pl-6
-                  pr-2
-                  text-white
-                  shadow-[0_12px_30px_rgba(11,42,82,0.14)]
-                "
-              >
-                <span
-                  style={newYorkFont}
-                  className="text-[12px]"
-                >
-                  Explore Automation Services
-                </span>
+            
 
-                <span
-                  className="
-                    flex
-                    h-[40px]
-                    w-[40px]
-                    items-center
-                    justify-center
-                    rounded-full
-                    bg-white/10
-                  "
-                >
-                  <ArrowRight
-                    size={17}
-                    strokeWidth={1.5}
-                    className="
-                      transition-transform
-                      duration-300
-                      group-hover:translate-x-1
-                    "
-                  />
-                </span>
-              </button>
-
-              <button
-                type="button"
-                className="
-                  group
-                  flex
-                  items-center
-                  gap-3
-                  text-[#0B2A52]
-                "
-              >
-                <span
-                  className="
-                    flex
-                    h-[48px]
-                    w-[48px]
-                    items-center
-                    justify-center
-                    rounded-full
-                    border
-                    border-[#0B2A52]/30
-                  "
-                >
-                  <Play size={15} />
-                </span>
-
-                <span
-                  style={newYorkFont}
-                  className="
-                    text-[11px]
-                    leading-[1.15]
-                  "
-                >
-                  See How
-                  <br />
-                  It Works
-                </span>
-              </button>
+              
             </div>
           </motion.div>
 
-          {/* SIMPLE RIGHT VISUAL */}
-
-          <motion.div
-            initial={
-              reduceMotion
-                ? false
-                : {
-                    opacity: 0,
-                    x: 24,
-                  }
-            }
-            whileInView={{
-              opacity: 1,
-              x: 0,
-            }}
-            viewport={{
-              once: true,
-              amount: 0.3,
-            }}
-            transition={{
-              duration: reduceMotion ? 0 : 0.8,
-              ease,
-            }}
-            className="
-              relative
-              mx-auto
-              flex
-              min-h-[360px]
-              w-full
-              max-w-[520px]
-              items-center
-              justify-center
-            "
-          >
-            <div
-              className="
-                absolute
-                h-[330px]
-                w-[330px]
-                rounded-full
-                bg-[#F2F7FB]
-              "
-            />
-
-            <div
-              className="
-                absolute
-                h-[260px]
-                w-[260px]
-                rounded-full
-                border
-                border-[#C9DDE8]
-              "
-            />
-
-            <div
-              className="
-                relative
-                z-10
-                flex
-                h-[180px]
-                w-[180px]
-                flex-col
-                items-center
-                justify-center
-                rounded-full
-                border
-                border-[#C4D9E6]
-                bg-white
-                text-center
-                shadow-[0_20px_50px_rgba(11,42,82,0.07)]
-              "
-            >
-              <Bot
-                size={28}
-                strokeWidth={1.4}
-                className="text-[#0B2A52]"
-              />
-
-              <span
-                style={newYorkFont}
-                className="
-                  mt-4
-                  text-[7px]
-                  uppercase
-                  tracking-[0.3em]
-                  text-[#B18458]
-                "
-              >
-                AI Automation
-              </span>
-
-              <span
-                style={newYorkFont}
-                className="
-                  mt-2
-                  text-[1.35rem]
-                  font-light
-                  leading-[1]
-                  text-[#0B2A52]
-                "
-              >
-                Connect.
-                <br />
-                Automate.
-              </span>
-            </div>
-          </motion.div>
+         
         </div>
 
         {/* =====================================================
@@ -2119,50 +1931,92 @@ export default function AiAutomationServices() {
             more time for the work that actually matters.
           </p>
 
-          <button
-            type="button"
+          <a
+            href="/contact"
+            style={newYorkFont}
             className="
               group
-              flex
-              h-[50px]
+              relative
+              inline-flex
+              min-h-[46px]
               items-center
-              gap-5
-              rounded-full
-              bg-[#0B2A52]
-              pl-5
-              pr-2
-              text-white
+              justify-center
+              overflow-hidden
+
+              rounded-[16px]
+
+              border
+              border-[#6285AD]/30
+
+              bg-white/80
+
+              px-5
+              py-[11px]
+
+              text-[13px]
+              font-medium
+              tracking-[-0.01em]
+              text-[#0B2A52]
+
+              shadow-[0_8px_30px_rgba(11,42,82,0.08)]
+
+              backdrop-blur-[8px]
+
+              transition-all
+              duration-300
+              ease-out
+
+              hover:-translate-y-[2px]
+              hover:border-[#6285AD]/40
+              hover:bg-white
+              hover:shadow-[0_10px_35px_rgba(98,133,173,0.15)]
+
+              active:translate-y-0
+
+              sm:min-h-[48px]
+              sm:px-6
+              sm:py-3
+              sm:text-[14px]
+
+              md:text-[15px]
             "
           >
             <span
-              style={newYorkFont}
-              className="text-[10px]"
-            >
-              Talk About Automation
-            </span>
+              className="
+                pointer-events-none
+                absolute
+                inset-[2px]
+                rounded-[13px]
+                border
+                border-white/60
+              "
+            />
 
             <span
               className="
-                flex
-                h-[36px]
-                w-[36px]
-                items-center
-                justify-center
-                rounded-full
-                bg-white/10
+                pointer-events-none
+                absolute
+                inset-x-4
+                top-0
+                h-px
+                bg-gradient-to-r
+                from-transparent
+                via-white
+                to-transparent
+              "
+            />
+
+            <span
+              className="
+                relative
+                z-10
+                whitespace-nowrap
+                text-[#0B2A52]
               "
             >
-              <ArrowRight
-                size={15}
-                strokeWidth={1.5}
-                className="
-                  transition-transform
-                  duration-300
-                  group-hover:translate-x-1
-                "
-              />
+              Talk About Automation
             </span>
-          </button>
+          </a>
         </motion.div>
       </div>
     </section>

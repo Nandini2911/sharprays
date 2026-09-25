@@ -79,667 +79,7 @@ export default function WebsiteFinalSections() {
 
   return (
     <>
-      {/* =====================================================
-          SECTION 14 — FINAL ANSWER BLOCK
-      ===================================================== */}
-
-      <section
-        id="website-development-with-sharp-rays"
-        aria-labelledby="website-development-partner-heading"
-        className="
-          relative
-          isolate
-          overflow-hidden
-          bg-white
-          py-20
-          sm:py-24
-          md:py-28
-          lg:py-32
-        "
-      >
-        {/* BACKGROUND */}
-
-        <div className="pointer-events-none absolute inset-0 -z-20 overflow-hidden">
-          <div
-            className="
-              absolute
-              -left-[240px]
-              top-[15%]
-              h-[480px]
-              w-[480px]
-              rounded-full
-              bg-[#EDF5FB]
-              blur-[125px]
-            "
-          />
-
-          <div
-            className="
-              absolute
-              -right-[200px]
-              bottom-[-80px]
-              h-[420px]
-              w-[460px]
-              rounded-full
-              bg-[#FBF5EC]
-              blur-[120px]
-            "
-          />
-
-          <div
-            className="
-              absolute
-              left-1/2
-              top-0
-              h-px
-              w-[82%]
-              -translate-x-1/2
-              bg-[linear-gradient(90deg,transparent,#DDE6EC,transparent)]
-            "
-          />
-        </div>
-
-        <div
-          className="
-            relative
-            z-10
-            mx-auto
-            w-full
-            max-w-[1400px]
-            px-5
-            sm:px-7
-            md:px-9
-            lg:px-12
-            xl:px-16
-          "
-        >
-          <div
-            className="
-              grid
-              items-center
-              gap-14
-              lg:grid-cols-[0.95fr_1.05fr]
-              lg:gap-20
-            "
-          >
-            {/* ===============================================
-                LEFT CONTENT
-            =============================================== */}
-
-            <motion.div
-              variants={stagger}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{
-                once: true,
-                amount: 0.25,
-              }}
-              className="max-w-[650px]"
-            >
-              {/* EYEBROW */}
-
-              <motion.div
-                variants={fadeLeft}
-                className="flex items-center gap-3"
-              >
-                <span className="h-px w-9 bg-[#B79A72]" />
-
-                <span
-                  className="
-                    text-[0.56rem]
-                    font-semibold
-                    uppercase
-                    tracking-[0.27em]
-                    text-[#92745C]
-                    sm:text-[0.62rem]
-                  "
-                >
-                  Website Development With Sharp Rays
-                </span>
-              </motion.div>
-
-              {/* HEADING */}
-
-              <motion.h2
-                id="website-development-partner-heading"
-                variants={fadeLeft}
-                className="
-                  mt-5
-                  max-w-[650px]
-                  font-serif
-                  text-[2.1rem]
-                  font-normal
-                  leading-[1.04]
-                  tracking-[-0.045em]
-                  text-[#0B2A52]
-                  sm:text-[2.6rem]
-                  md:text-[2.95rem]
-                  lg:text-[3.1rem]
-                  xl:text-[3.35rem]
-                "
-              >
-                Looking for a Website{" "}
-                <span className="italic text-[#A97C52]">
-                  Development Partner?
-                </span>
-              </motion.h2>
-
-              {/* COPY */}
-
-              <motion.p
-                variants={fadeLeft}
-                className="
-                  mt-6
-                  max-w-[610px]
-                  font-serif
-                  text-[0.92rem]
-                  leading-[1.78]
-                  text-[#60758A]
-                  sm:text-[0.98rem]
-                "
-              >
-                Sharp Rays helps businesses plan, design and develop websites
-                that are clear for users, technically considered and built
-                around meaningful business actions.
-              </motion.p>
-
-              <motion.p
-                variants={fadeLeft}
-                className="
-                  mt-4
-                  max-w-[610px]
-                  font-serif
-                  text-[0.92rem]
-                  leading-[1.78]
-                  text-[#60758A]
-                  sm:text-[0.98rem]
-                "
-              >
-                Whether you are launching something new, replacing an outdated
-                website or improving an existing digital experience, we start
-                by understanding what the website needs to accomplish before
-                deciding what needs to be built.
-              </motion.p>
-
-              {/* SUPPORT POINTS */}
-
-              <motion.div
-                variants={fadeLeft}
-                className="
-                  mt-8
-                  grid
-                  gap-3
-                  sm:grid-cols-3
-                "
-              >
-                {[
-                  "Clear Strategy",
-                  "Considered Design",
-                  "Purposeful Development",
-                ].map((item) => (
-                  <div
-                    key={item}
-                    className="
-                      flex
-                      items-center
-                      gap-2.5
-                    "
-                  >
-                    <span
-                      className="
-                        flex
-                        h-6
-                        w-6
-                        shrink-0
-                        items-center
-                        justify-center
-                        rounded-full
-                        bg-[#F4F7F9]
-                        text-[#A97C52]
-                      "
-                    >
-                      <Check size={10} strokeWidth={2.2} />
-                    </span>
-
-                    <span
-                      className="
-                        text-[0.57rem]
-                        font-semibold
-                        uppercase
-                        tracking-[0.12em]
-                        text-[#536D83]
-                      "
-                    >
-                      {item}
-                    </span>
-                  </div>
-                ))}
-              </motion.div>
-
-              {/* CTA */}
-
-              <motion.div variants={fadeLeft} className="mt-9">
-                <a
-                  href="/contact"
-                  className="
-                    group
-                    inline-flex
-                    items-center
-                    gap-3
-                    rounded-full
-                    bg-[linear-gradient(135deg,#0B2A52_0%,#16487C_100%)]
-                    px-6
-                    py-3.5
-                    text-[0.68rem]
-                    font-semibold
-                    uppercase
-                    tracking-[0.13em]
-                    text-white
-                    shadow-[0_12px_28px_rgba(11,42,82,0.16)]
-                    transition-all
-                    duration-300
-                    hover:-translate-y-1
-                    hover:shadow-[0_18px_36px_rgba(11,42,82,0.22)]
-                  "
-                >
-                  Talk About My Website
-
-                  <span
-                    className="
-                      flex
-                      h-7
-                      w-7
-                      items-center
-                      justify-center
-                      rounded-full
-                      bg-white/12
-                      transition-transform
-                      duration-300
-                      group-hover:translate-x-1
-                    "
-                  >
-                    <ArrowRight size={12} strokeWidth={1.8} />
-                  </span>
-                </a>
-              </motion.div>
-            </motion.div>
-
-            {/* ===============================================
-                RIGHT VISUAL
-            =============================================== */}
-
-            <motion.div
-              variants={fadeRight}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{
-                once: true,
-                amount: 0.25,
-              }}
-              className="
-                relative
-                mx-auto
-                w-full
-                max-w-[590px]
-              "
-            >
-              {/* DECORATIVE ORBIT */}
-
-              <div
-                className="
-                  pointer-events-none
-                  absolute
-                  left-1/2
-                  top-1/2
-                  h-[430px]
-                  w-[430px]
-                  -translate-x-1/2
-                  -translate-y-1/2
-                  rounded-full
-                  border
-                  border-[#E2E9EE]
-                "
-              />
-
-              <div
-                className="
-                  pointer-events-none
-                  absolute
-                  left-1/2
-                  top-1/2
-                  h-[330px]
-                  w-[330px]
-                  -translate-x-1/2
-                  -translate-y-1/2
-                  rounded-full
-                  bg-[#F3F8FB]
-                  blur-[2px]
-                "
-              />
-
-              {/* BROWSER */}
-
-              <motion.div
-                animate={
-                  reduceMotion
-                    ? undefined
-                    : {
-                        y: [0, -6, 0],
-                      }
-                }
-                transition={{
-                  duration: 5,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-                className="
-                  relative
-                  z-10
-                  overflow-hidden
-                  rounded-[26px]
-                  border
-                  border-[#D6E2E9]
-                  bg-white
-                  shadow-[0_28px_70px_rgba(11,42,82,0.10)]
-                "
-              >
-                {/* Browser Top */}
-
-                <div
-                  className="
-                    flex
-                    items-center
-                    justify-between
-                    border-b
-                    border-[#E4EBEF]
-                    bg-[#F8FAFC]
-                    px-5
-                    py-4
-                  "
-                >
-                  <div className="flex gap-2">
-                    <span className="h-2 w-2 rounded-full bg-[#D5DFE6]" />
-                    <span className="h-2 w-2 rounded-full bg-[#D5DFE6]" />
-                    <span className="h-2 w-2 rounded-full bg-[#D5DFE6]" />
-                  </div>
-
-                  <div
-                    className="
-                      h-2
-                      w-28
-                      rounded-full
-                      bg-[#E6ECF0]
-                    "
-                  />
-
-                  <span
-                    className="
-                      flex
-                      h-7
-                      w-7
-                      items-center
-                      justify-center
-                      rounded-full
-                      bg-white
-                      text-[#0B2A52]
-                    "
-                  >
-                    <MousePointer2 size={11} />
-                  </span>
-                </div>
-
-                {/* Browser Content */}
-
-                <div className="p-6 sm:p-7">
-                  {/* Hero simulation */}
-
-                  <div
-                    className="
-                      rounded-[20px]
-                      bg-[linear-gradient(135deg,#F1F7FB_0%,#FBF8F3_100%)]
-                      px-6
-                      py-8
-                    "
-                  >
-                    <div
-                      className="
-                        flex
-                        items-center
-                        gap-2
-                      "
-                    >
-                      <span className="h-px w-7 bg-[#B79A72]" />
-
-                      <span
-                        className="
-                          text-[0.42rem]
-                          font-semibold
-                          uppercase
-                          tracking-[0.18em]
-                          text-[#92745C]
-                        "
-                      >
-                        Website Experience
-                      </span>
-                    </div>
-
-                    <div
-                      className="
-                        mt-5
-                        h-4
-                        w-[68%]
-                        rounded-full
-                        bg-[#0B2A52]/90
-                      "
-                    />
-
-                    <div
-                      className="
-                        mt-3
-                        h-4
-                        w-[52%]
-                        rounded-full
-                        bg-[#0B2A52]/90
-                      "
-                    />
-
-                    <div
-                      className="
-                        mt-6
-                        h-2
-                        w-[76%]
-                        rounded-full
-                        bg-[#A7B7C5]/45
-                      "
-                    />
-
-                    <div
-                      className="
-                        mt-2
-                        h-2
-                        w-[61%]
-                        rounded-full
-                        bg-[#A7B7C5]/45
-                      "
-                    />
-
-                    <div
-                      className="
-                        mt-7
-                        flex
-                        items-center
-                        gap-3
-                      "
-                    >
-                      <div
-                        className="
-                          h-9
-                          w-28
-                          rounded-full
-                          bg-[#0B2A52]
-                        "
-                      />
-
-                      <div
-                        className="
-                          h-9
-                          w-24
-                          rounded-full
-                          border
-                          border-[#CBD8E1]
-                          bg-white
-                        "
-                      />
-                    </div>
-                  </div>
-
-                  {/* Bottom feature blocks */}
-
-                  <div
-                    className="
-                      mt-5
-                      grid
-                      grid-cols-3
-                      gap-3
-                    "
-                  >
-                    {[
-                      {
-                        icon: LayoutTemplate,
-                        label: "Clear",
-                      },
-                      {
-                        icon: Code2,
-                        label: "Functional",
-                      },
-                      {
-                        icon: Sparkles,
-                        label: "Considered",
-                      },
-                    ].map(({ icon: Icon, label }) => (
-                      <div
-                        key={label}
-                        className="
-                          rounded-[15px]
-                          border
-                          border-[#E1E8ED]
-                          bg-white
-                          p-4
-                        "
-                      >
-                        <span
-                          className="
-                            flex
-                            h-8
-                            w-8
-                            items-center
-                            justify-center
-                            rounded-full
-                            bg-[#F3F7FA]
-                            text-[#0B2A52]
-                          "
-                        >
-                          <Icon size={13} strokeWidth={1.7} />
-                        </span>
-
-                        <span
-                          className="
-                            mt-4
-                            block
-                            text-[0.43rem]
-                            font-semibold
-                            uppercase
-                            tracking-[0.14em]
-                            text-[#536D83]
-                          "
-                        >
-                          {label}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* FLOATING DETAIL */}
-
-              <motion.div
-                animate={
-                  reduceMotion
-                    ? undefined
-                    : {
-                        y: [0, 5, 0],
-                      }
-                }
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-                className="
-                  absolute
-                  -bottom-6
-                  -left-5
-                  z-20
-                  hidden
-                  items-center
-                  gap-3
-                  rounded-[16px]
-                  border
-                  border-[#D8E2E8]
-                  bg-white
-                  px-4
-                  py-3
-                  shadow-[0_14px_32px_rgba(11,42,82,0.08)]
-                  sm:flex
-                "
-              >
-                <span
-                  className="
-                    flex
-                    h-8
-                    w-8
-                    items-center
-                    justify-center
-                    rounded-full
-                    bg-[#F7F1E8]
-                    text-[#A97C52]
-                  "
-                >
-                  <MessageCircle size={13} strokeWidth={1.7} />
-                </span>
-
-                <div>
-                  <span
-                    className="
-                      block
-                      text-[0.39rem]
-                      font-semibold
-                      uppercase
-                      tracking-[0.17em]
-                      text-[#9AA7B1]
-                    "
-                  >
-                    Start With
-                  </span>
-
-                  <span
-                    className="
-                      mt-1
-                      block
-                      font-serif
-                      text-[0.76rem]
-                      text-[#0B2A52]
-                    "
-                  >
-                    What the website needs to do.
-                  </span>
-                </div>
-              </motion.div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
+     
 
       {/* =====================================================
           SECTION 15 — FINAL CTA
@@ -1014,101 +354,225 @@ export default function WebsiteFinalSections() {
               <motion.div
                 variants={fadeUp}
                 className="
-                  mt-9
+                  mx-auto
+                  mt-8
+
                   flex
+                  w-full
+                  max-w-[430px]
                   flex-col
-                  items-center
+                  items-stretch
                   justify-center
-                  gap-3
+                  gap-2.5
+
+                  sm:mt-9
+                  sm:max-w-none
                   sm:flex-row
+                  sm:items-center
+                  sm:gap-3
                 "
               >
                 {/* PRIMARY */}
 
                 <a
                   href="/contact"
+                  style={{
+                    fontFamily: '"New York", "Bodoni Moda", Georgia, serif',
+                  }}
                   className="
                     group
+                    relative
                     inline-flex
-                    min-w-[190px]
+                    min-h-[44px]
+                    w-full
                     items-center
                     justify-center
-                    gap-3
-                    rounded-full
-                    bg-[linear-gradient(135deg,#0B2A52_0%,#154A80_100%)]
-                    px-6
-                    py-3.5
-                    text-[0.66rem]
-                    font-semibold
-                    uppercase
-                    tracking-[0.14em]
-                    text-white
-                    shadow-[0_13px_30px_rgba(11,42,82,0.18)]
+                    gap-2
+
+                    overflow-hidden
+
+                    rounded-[16px]
+
+                    border
+                    border-[#6285AD]/30
+
+                    bg-white/80
+
+                    px-4
+                    py-[10px]
+
+                    text-[12px]
+                    font-medium
+                    tracking-[-0.01em]
+
+                    text-[#0B2A52]
+
+                    shadow-[0_8px_30px_rgba(11,42,82,0.08)]
+
+                    backdrop-blur-[8px]
+
                     transition-all
                     duration-300
-                    hover:-translate-y-1
-                    hover:shadow-[0_18px_38px_rgba(11,42,82,0.24)]
+                    ease-out
+
+                    hover:-translate-y-[2px]
+                    hover:border-[#6285AD]/40
+                    hover:bg-white
+                    hover:shadow-[0_10px_35px_rgba(98,133,173,0.15)]
+
+                    active:translate-y-0
+
+                    sm:min-h-[46px]
+                    sm:w-auto
+                    sm:px-5
+                    sm:py-[11px]
+                    sm:text-[13px]
+
+                    md:min-h-[48px]
+                    md:px-6
+                    md:py-3
+                    md:text-[14px]
                   "
                 >
-                  Build My Website
+                  <span
+                    className="
+                      pointer-events-none
+                      absolute
+                      inset-[2px]
+
+                      rounded-[13px]
+
+                      border
+                      border-white/60
+                    "
+                  />
 
                   <span
                     className="
-                      flex
-                      h-7
-                      w-7
-                      items-center
-                      justify-center
-                      rounded-full
-                      bg-white/12
+                      pointer-events-none
+                      absolute
+                      inset-x-4
+                      top-0
+
+                      h-px
+
+                      bg-gradient-to-r
+                      from-transparent
+                      via-white
+                      to-transparent
+                    "
+                  />
+
+                  <span className="relative z-10 whitespace-nowrap">
+                    Build My Website
+                  </span>
+
+                  <ArrowRight
+                    size={13}
+                    strokeWidth={1.7}
+                    className="
+                      relative
+                      z-10
+
                       transition-transform
                       duration-300
+
                       group-hover:translate-x-1
                     "
-                  >
-                    <ArrowRight size={12} strokeWidth={1.8} />
-                  </span>
+                  />
                 </a>
 
                 {/* SECONDARY */}
 
                 <a
                   href="/contact"
+                  style={{
+                    fontFamily: '"New York", "Bodoni Moda", Georgia, serif',
+                  }}
                   className="
                     group
+                    relative
                     inline-flex
-                    min-w-[190px]
+                    min-h-[44px]
+                    w-full
                     items-center
                     justify-center
-                    gap-3
-                    rounded-full
+                    gap-2
+
+                    overflow-hidden
+
+                    rounded-[16px]
+
                     border
-                    border-[#C9D8E2]
-                    bg-white
-                    px-6
-                    py-3.5
-                    text-[0.66rem]
-                    font-semibold
-                    uppercase
-                    tracking-[0.14em]
+                    border-[#6285AD]/25
+
+                    bg-white/60
+
+                    px-4
+                    py-[10px]
+
+                    text-[12px]
+                    font-medium
+                    tracking-[-0.01em]
+
                     text-[#0B2A52]
-                    shadow-[0_8px_20px_rgba(11,42,82,0.04)]
+
+                    shadow-[0_6px_24px_rgba(11,42,82,0.055)]
+
+                    backdrop-blur-[8px]
+
                     transition-all
                     duration-300
-                    hover:-translate-y-1
-                    hover:border-[#B79A72]/60
-                    hover:shadow-[0_13px_28px_rgba(11,42,82,0.08)]
+                    ease-out
+
+                    hover:-translate-y-[2px]
+                    hover:border-[#6285AD]/40
+                    hover:bg-white
+                    hover:shadow-[0_10px_32px_rgba(98,133,173,0.12)]
+
+                    active:translate-y-0
+
+                    sm:min-h-[46px]
+                    sm:w-auto
+                    sm:px-5
+                    sm:py-[11px]
+                    sm:text-[13px]
+
+                    md:min-h-[48px]
+                    md:px-6
+                    md:py-3
+                    md:text-[14px]
                   "
                 >
-                  Talk to Sharp Rays
+                  <span
+                    className="
+                      pointer-events-none
+                      absolute
+                      inset-[2px]
+
+                      rounded-[13px]
+
+                      border
+                      border-white/60
+                    "
+                  />
+
+                  <span className="relative z-10 whitespace-nowrap">
+                    Talk to Sharp Rays
+                  </span>
 
                   <ArrowRight
-                    size={12}
-                    strokeWidth={1.8}
+                    size={13}
+                    strokeWidth={1.7}
                     className="
+                      relative
+                      z-10
+
                       text-[#B79A72]
+
                       transition-transform
                       duration-300
+
                       group-hover:translate-x-1
                     "
                   />

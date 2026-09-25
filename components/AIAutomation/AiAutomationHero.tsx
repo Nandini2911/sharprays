@@ -2,11 +2,7 @@
 
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
-import {
-  ArrowRight,
-  ArrowUpRight,
-  Sparkles,
-} from "lucide-react";
+import { Sparkles } from "lucide-react";
 
 const newYorkFont = {
   fontFamily: "New York, ui-serif, Georgia, serif",
@@ -264,6 +260,7 @@ export default function AiAutomationHero() {
                 flex
                 flex-col
                 gap-3
+
                 sm:flex-row
                 sm:items-center
               "
@@ -272,58 +269,91 @@ export default function AiAutomationHero() {
 
               <a
                 href="/contact"
+                style={newYorkFont}
                 className="
                   group
+                  relative
                   inline-flex
-                  min-h-[54px]
+                  min-h-[46px]
                   items-center
-                  justify-between
-                  gap-7
-                  rounded-full
-                  bg-[#0B2A52]
-                  px-6
-                  py-3
-                  text-white
+                  justify-center
+                  overflow-hidden
 
-                  shadow-[0_14px_32px_rgba(11,42,82,0.17)]
+                  rounded-[16px]
+
+                  border
+                  border-[#6285AD]/30
+
+                  bg-white/80
+
+                  px-5
+                  py-[11px]
+
+                  text-[13px]
+                  font-medium
+                  tracking-[-0.01em]
+                  text-[#0B2A52]
+
+                  shadow-[0_8px_30px_rgba(11,42,82,0.08)]
+
+                  backdrop-blur-[8px]
 
                   transition-all
                   duration-300
+                  ease-out
 
-                  hover:-translate-y-1
-                  hover:bg-[#123E70]
-                  hover:shadow-[0_19px_40px_rgba(11,42,82,0.22)]
+                  hover:-translate-y-[2px]
+                  hover:border-[#6285AD]/40
+                  hover:bg-white
+                  hover:shadow-[0_10px_35px_rgba(98,133,173,0.15)]
 
-                  sm:min-w-[225px]
+                  active:translate-y-0
+
+                  sm:min-h-[48px]
+                  sm:px-6
+                  sm:py-3
+                  sm:text-[14px]
+
+                  md:text-[15px]
                 "
               >
-                <span
-                  style={newYorkFont}
-                  className="text-[13px]"
-                >
-                  Automate My Workflow
-                </span>
-
+                {/* STATIC SOFT BORDER */}
                 <span
                   className="
-                    flex
-                    h-[32px]
-                    w-[32px]
-                    items-center
-                    justify-center
-                    rounded-full
-                    bg-[#B18458]
+                    pointer-events-none
+                    absolute
+                    inset-[2px]
+                    rounded-[13px]
+                    border
+                    border-white/60
+                  "
+                />
 
-                    transition-transform
-                    duration-300
+                {/* VERY SUBTLE INNER LIGHT */}
+                <span
+                  className="
+                    pointer-events-none
+                    absolute
+                    inset-x-4
+                    top-0
+                    h-px
+                    bg-gradient-to-r
+                    from-transparent
+                    via-white
+                    to-transparent
+                  "
+                />
 
-                    group-hover:rotate-45
+                {/* TEXT */}
+                <span
+                  className="
+                    relative
+                    z-10
+                    whitespace-nowrap
+                    text-[#0B2A52]
                   "
                 >
-                  <ArrowUpRight
-                    size={15}
-                    strokeWidth={1.45}
-                  />
+                  Automate My Workflow
                 </span>
               </a>
 
@@ -331,110 +361,96 @@ export default function AiAutomationHero() {
 
               <a
                 href="#what-we-can-automate"
+                style={newYorkFont}
                 className="
                   group
+                  relative
                   inline-flex
-                  min-h-[54px]
+                  min-h-[46px]
                   items-center
                   justify-center
-                  gap-3
-                  px-4
-                  py-3
+                  overflow-hidden
+
+                  rounded-[16px]
+
+                  border
+                  border-[#6285AD]/30
+
+                  bg-white/80
+
+                  px-5
+                  py-[11px]
+
+                  text-[13px]
+                  font-medium
+                  tracking-[-0.01em]
                   text-[#0B2A52]
+
+                  shadow-[0_8px_30px_rgba(11,42,82,0.08)]
+
+                  backdrop-blur-[8px]
+
+                  transition-all
+                  duration-300
+                  ease-out
+
+                  hover:-translate-y-[2px]
+                  hover:border-[#6285AD]/40
+                  hover:bg-white
+                  hover:shadow-[0_10px_35px_rgba(98,133,173,0.15)]
+
+                  active:translate-y-0
+
+                  sm:min-h-[48px]
+                  sm:px-6
+                  sm:py-3
+                  sm:text-[14px]
+
+                  md:text-[15px]
                 "
               >
+                {/* STATIC SOFT BORDER */}
                 <span
-                  style={newYorkFont}
                   className="
-                    border-b
-                    border-[#0B2A52]/20
-                    pb-1
-                    text-[13px]
-                    transition-colors
-                    duration-300
+                    pointer-events-none
+                    absolute
+                    inset-[2px]
+                    rounded-[13px]
+                    border
+                    border-white/60
+                  "
+                />
 
-                    group-hover:border-[#B18458]
+                {/* VERY SUBTLE INNER LIGHT */}
+                <span
+                  className="
+                    pointer-events-none
+                    absolute
+                    inset-x-4
+                    top-0
+                    h-px
+                    bg-gradient-to-r
+                    from-transparent
+                    via-white
+                    to-transparent
+                  "
+                />
+
+                {/* TEXT */}
+                <span
+                  className="
+                    relative
+                    z-10
+                    whitespace-nowrap
+                    text-[#0B2A52]
                   "
                 >
                   Explore What We Can Automate
                 </span>
-
-                <ArrowRight
-                  size={14}
-                  strokeWidth={1.45}
-                  className="
-                    transition-transform
-                    duration-300
-                    group-hover:translate-x-1
-                  "
-                />
               </a>
             </motion.div>
 
-            {/* SUPPORTING LINE */}
-
-            <motion.div
-              initial={
-                reduceMotion
-                  ? false
-                  : {
-                      opacity: 0,
-                      y: 10,
-                    }
-              }
-              animate={{
-                opacity: 1,
-                y: 0,
-              }}
-              transition={{
-                duration: reduceMotion ? 0 : 0.6,
-                delay: reduceMotion ? 0 : 0.3,
-                ease,
-              }}
-              className="
-                mt-9
-                flex
-                flex-wrap
-                items-center
-                gap-x-5
-                gap-y-2
-              "
-            >
-              {[
-                "CONNECT",
-                "AUTOMATE",
-                "REVIEW",
-                "IMPROVE",
-              ].map((item, index) => (
-                <div
-                  key={item}
-                  className="flex items-center gap-5"
-                >
-                  <span
-                    style={newYorkFont}
-                    className="
-                      text-[7px]
-                      uppercase
-                      tracking-[0.28em]
-                      text-[#0B2A52]/42
-                    "
-                  >
-                    {item}
-                  </span>
-
-                  {index < 3 && (
-                    <span
-                      className="
-                        h-1
-                        w-1
-                        rounded-full
-                        bg-[#B18458]
-                      "
-                    />
-                  )}
-                </div>
-              ))}
-            </motion.div>
+           
           </motion.div>
 
           {/* =====================================================
@@ -563,157 +579,10 @@ export default function AiAutomationHero() {
 
             {/* FLOATING NOTE */}
 
-            <motion.div
-              initial={
-                reduceMotion
-                  ? false
-                  : {
-                      opacity: 0,
-                      y: 20,
-                    }
-              }
-              animate={{
-                opacity: 1,
-                y: 0,
-              }}
-              transition={{
-                duration: reduceMotion ? 0 : 0.7,
-                delay: reduceMotion ? 0 : 0.35,
-                ease,
-              }}
-              className="
-                relative
-                z-20
-                mx-auto
-                -mt-8
-                w-[88%]
-
-                rounded-[22px]
-                border
-                border-[#D8E4EC]
-                bg-white/95
-
-                px-5
-                py-4
-
-                shadow-[0_16px_38px_rgba(11,42,82,0.075)]
-                backdrop-blur-sm
-
-                sm:absolute
-                sm:-bottom-8
-                sm:left-8
-                sm:mt-0
-                sm:w-auto
-                sm:max-w-[330px]
-              "
-            >
-              <div
-                className="
-                  flex
-                  items-center
-                  gap-4
-                "
-              >
-                <div
-                  className="
-                    flex
-                    h-[42px]
-                    w-[42px]
-                    shrink-0
-                    items-center
-                    justify-center
-                    rounded-full
-                    bg-[#EDF5FA]
-                    text-[#0B2A52]
-                  "
-                >
-                  <Sparkles
-                    size={18}
-                    strokeWidth={1.45}
-                  />
-                </div>
-
-                <div>
-                  <span
-                    style={newYorkFont}
-                    className="
-                      text-[7px]
-                      uppercase
-                      tracking-[0.22em]
-                      text-[#B18458]
-                    "
-                  >
-                    AI + HUMAN JUDGEMENT
-                  </span>
-
-                  <p
-                    style={newYorkFont}
-                    className="
-                      mt-1
-                      text-[12px]
-                      leading-[1.45]
-                      text-[#0B2A52]
-                    "
-                  >
-                    Automate the repetition. Keep people in control.
-                  </p>
-                </div>
-              </div>
-            </motion.div>
 
             {/* SMALL TOP META */}
 
-            <div
-              className="
-                mt-12
-                flex
-                items-center
-                justify-between
-                gap-5
-                sm:mt-10
-              "
-            >
-              <div
-                className="
-                  flex
-                  items-center
-                  gap-3
-                "
-              >
-                <span
-                  className="
-                    h-[7px]
-                    w-[7px]
-                    rounded-full
-                    bg-[#B18458]
-                  "
-                />
-
-                <span
-                  style={newYorkFont}
-                  className="
-                    text-[7px]
-                    uppercase
-                    tracking-[0.23em]
-                    text-[#0B2A52]/40
-                  "
-                >
-                  CONNECTED SYSTEMS
-                </span>
-              </div>
-
-              <span
-                style={newYorkFont}
-                className="
-                  text-[7px]
-                  uppercase
-                  tracking-[0.23em]
-                  text-[#0B2A52]/40
-                "
-              >
-                LESS FRICTION
-              </span>
-            </div>
+         
           </motion.div>
         </div>
 
@@ -721,32 +590,7 @@ export default function AiAutomationHero() {
             BOTTOM DIVIDER
         ===================================================== */}
 
-        <motion.div
-          initial={
-            reduceMotion
-              ? false
-              : {
-                  opacity: 0,
-                  scaleX: 0,
-                }
-          }
-          animate={{
-            opacity: 1,
-            scaleX: 1,
-          }}
-          transition={{
-            duration: reduceMotion ? 0 : 0.8,
-            delay: reduceMotion ? 0 : 0.38,
-            ease,
-          }}
-          className="
-            mt-16
-            h-px
-            w-full
-            origin-left
-            bg-[#0B2A52]/10
-          "
-        />
+        
       </div>
     </section>
   );

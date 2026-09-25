@@ -4,7 +4,6 @@ import AiAutomationFinalCTA from "@/components/AIAutomation/AiAutomationFinalCTA
 import AiAutomationHero from "@/components/AIAutomation/AiAutomationHero";
 import AiAutomationHumanBalance from "@/components/AIAutomation/AiAutomationHumanBalance";
 import AiAutomationJourney from "@/components/AIAutomation/AiAutomationJourney";
-import AiAutomationPartner from "@/components/AIAutomation/AiAutomationPartner";
 import AiAutomationPricing from "@/components/AIAutomation/AiAutomationPricing";
 import AiAutomationProblem from "@/components/AIAutomation/AiAutomationProblem";
 import AiAutomationServices from "@/components/AIAutomation/AiAutomationServices";
@@ -23,15 +22,20 @@ export default function AiAutomationPage() {
       <AiAutomationExplained/>
       <AiAutomationProblem/>
       <AiAutomationHumanBalance/>
+
       <AiAutomationJourney/>
       <AiAutomationServices/>
+
       <AutomationByBusinessFunction/>
+
       <BeforeAfterAutomation/>
+
       <SharpRaysAutomationFramework/>
+      
       <HumanInTheLoopAutomation/>
       <AiAutomationPricing/>
       <AiAutomationFAQ/>
-      <AiAutomationPartner/>
+     
       <AiAutomationFinalCTA/>
       <Footer/>
     </main>

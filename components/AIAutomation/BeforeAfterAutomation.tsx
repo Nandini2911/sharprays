@@ -1545,38 +1545,7 @@ export default function BeforeAfterAutomation() {
         >
           {/* LEFT MICRO COPY */}
 
-          <div
-            className="
-              absolute
-              left-8
-              top-1/2
-              hidden
-              -translate-y-1/2
-              lg:block
-            "
-          >
-            <span className="block h-px w-6 bg-[#C6A77A]" />
-
-            <p
-              style={newYorkFont}
-              className="
-                mt-5
-                text-[5.5px]
-                uppercase
-                leading-[1.8]
-                tracking-[0.3em]
-                text-[#47627D]
-              "
-            >
-              SAME
-              <br />
-              BUSINESS.
-              <br />
-              BRIGHTER
-              <br />
-              POSSIBILITIES.
-            </p>
-          </div>
+           
 
           {/* CENTER */}
 
@@ -1662,48 +1631,7 @@ export default function BeforeAfterAutomation() {
               lg:block
             "
           >
-            <span
-              className="
-                ml-auto
-                block
-                h-px
-                w-6
-                bg-[#C6A77A]
-              "
-            />
-
-            <p
-              style={newYorkFont}
-              className="
-                mt-5
-                text-[5.5px]
-                uppercase
-                leading-[1.8]
-                tracking-[0.3em]
-                text-[#47627D]
-              "
-            >
-              AUTOMATION
-              <br />
-              THAT WORKS
-              <br />
-              AROUND PEOPLE
-              <br />
-              NOT THE OTHER WAY
-              <br />
-              AROUND.
-            </p>
-
-            <span
-              className="
-                ml-auto
-                mt-4
-                block
-                h-px
-                w-6
-                bg-[#C6A77A]
-              "
-            />
+           
           </div>
         </motion.div>
       </div>

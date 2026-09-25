@@ -248,22 +248,7 @@ function RibbonStep({
 
         {/* LARGE NUMBER */}
 
-        <span
-          style={newYorkFont}
-          className="
-            pointer-events-none
-            absolute
-            -right-3
-            -top-8
-            text-[8rem]
-            font-light
-            leading-none
-            tracking-[-0.08em]
-            text-[#0B2A52]/[0.035]
-          "
-        >
-          {step.number}
-        </span>
+      
 
         {/* ===================================================
             TOP ROW
@@ -279,35 +264,7 @@ function RibbonStep({
             gap-5
           "
         >
-          <div>
-            <span
-              style={newYorkFont}
-              className="
-                text-[2rem]
-                font-light
-                leading-none
-                tracking-[-0.05em]
-                text-[#A97C52]
-              "
-            >
-              {step.number}
-            </span>
-
-            <span
-              style={newYorkFont}
-              className="
-                mt-2
-                block
-                text-[6px]
-                uppercase
-                tracking-[0.3em]
-                text-[#0B2A52]/45
-              "
-            >
-              Framework Stage
-            </span>
-          </div>
-
+         
           <div
             className="
               relative
@@ -538,25 +495,7 @@ function MobileStep({
         >
           <Icon size={20} strokeWidth={1.45} />
 
-          <span
-            style={newYorkFont}
-            className="
-              absolute
-              -right-[5px]
-              -top-[5px]
-              flex
-              h-[22px]
-              w-[22px]
-              items-center
-              justify-center
-              rounded-full
-              bg-[#A97C52]
-              text-[8px]
-              text-white
-            "
-          >
-            {step.number}
-          </span>
+          
         </div>
       </div>
 
@@ -1196,54 +1135,6 @@ export default function SharpRaysAutomationFramework() {
               FOOTER ROUTE
           ================================================= */}
 
-          <div
-            className="
-              relative
-              z-10
-              mt-9
-              flex
-              items-center
-              justify-center
-              gap-5
-              rounded-[18px]
-              border
-              border-white
-              bg-white/65
-              px-7
-              py-5
-              shadow-[0_7px_22px_rgba(11,42,82,0.025)]
-              backdrop-blur-[8px]
-            "
-          >
-            <span
-              className="
-                h-px
-                flex-1
-                bg-[linear-gradient(90deg,transparent,#A8C5D9)]
-              "
-            />
-
-            <span
-              style={newYorkFont}
-              className="
-                text-[6px]
-                uppercase
-                tracking-[0.3em]
-                text-[#0B2A52]/50
-              "
-            >
-              01 MAP · 02 SIMPLIFY · 03 DESIGN · 04 CONNECT · 05 AUTOMATE ·
-              06 TEST · 07 IMPROVE
-            </span>
-
-            <span
-              className="
-                h-px
-                flex-1
-                bg-[linear-gradient(90deg,#A8C5D9,transparent)]
-              "
-            />
-          </div>
         </div>
 
         {/* =====================================================

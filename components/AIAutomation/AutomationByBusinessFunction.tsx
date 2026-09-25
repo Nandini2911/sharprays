@@ -227,19 +227,7 @@ function DesktopFunctionCard({
       {/* CONTENT */}
 
       <div className="relative z-10 min-w-0 flex-1">
-        <div className="flex items-center gap-3">
-          <span
-            style={newYorkFont}
-            className="
-              text-[10px]
-              text-[#B18458]
-            "
-          >
-            {item.number}
-          </span>
-
-          <span className="h-px w-8 bg-[#C6A77A]" />
-        </div>
+      
 
         <h3
           style={newYorkFont}
@@ -488,37 +476,7 @@ export default function AutomationByBusinessFunction() {
         xl:pb-36
       "
     >
-      {/* =====================================================
-          BACKGROUND
-      ===================================================== */}
-
-      <div
-        className="
-          pointer-events-none
-          absolute
-          -left-[210px]
-          -top-[250px]
-          h-[470px]
-          w-[470px]
-          rounded-full
-          border
-          border-[#E0EAF1]
-        "
-      />
-
-      <div
-        className="
-          pointer-events-none
-          absolute
-          -right-[210px]
-          -top-[250px]
-          h-[470px]
-          w-[470px]
-          rounded-full
-          border
-          border-[#E0EAF1]
-        "
-      />
+      
 
       <div
         className="
@@ -1409,57 +1367,96 @@ export default function AutomationByBusinessFunction() {
           {/* CTA */}
 
           <div className="mt-7 lg:mt-0">
-            <button
-              type="button"
+            <a
+              href="/contact"
+              style={newYorkFont}
               className="
                 group
-                flex
-                h-[54px]
+                relative
+                inline-flex
+                min-h-[46px]
                 w-full
                 items-center
-                justify-between
-                gap-4
-                rounded-full
-                bg-[#0B2A52]
-                pl-6
-                pr-2
-                text-white
-                shadow-[0_12px_28px_rgba(11,42,82,0.15)]
+                justify-center
+                overflow-hidden
+
+                rounded-[16px]
+
+                border
+                border-[#6285AD]/30
+
+                bg-white/80
+
+                px-5
+                py-[11px]
+
+                text-[13px]
+                font-medium
+                tracking-[-0.01em]
+                text-[#0B2A52]
+
+                shadow-[0_8px_30px_rgba(11,42,82,0.08)]
+
+                backdrop-blur-[8px]
+
+                transition-all
+                duration-300
+                ease-out
+
+                hover:-translate-y-[2px]
+                hover:border-[#6285AD]/40
+                hover:bg-white
+                hover:shadow-[0_10px_35px_rgba(98,133,173,0.15)]
+
+                active:translate-y-0
+
+                sm:min-h-[48px]
+                sm:px-6
+                sm:py-3
+                sm:text-[14px]
+
+                md:text-[15px]
               "
             >
+              {/* STATIC SOFT BORDER */}
               <span
-                style={newYorkFont}
                 className="
-                  text-[11px]
-                  font-light
+                  pointer-events-none
+                  absolute
+                  inset-[2px]
+                  rounded-[13px]
+                  border
+                  border-white/60
+                "
+              />
+
+              {/* VERY SUBTLE INNER LIGHT */}
+              <span
+                className="
+                  pointer-events-none
+                  absolute
+                  inset-x-4
+                  top-0
+                  h-px
+                  bg-gradient-to-r
+                  from-transparent
+                  via-white
+                  to-transparent
+                "
+              />
+
+              {/* TEXT */}
+              <span
+                className="
+                  relative
+                  z-10
+                  whitespace-nowrap
+                  text-[#0B2A52]
                 "
               >
                 Explore Automation for Your Team
               </span>
-
-              <span
-                className="
-                  flex
-                  h-[40px]
-                  w-[40px]
-                  shrink-0
-                  items-center
-                  justify-center
-                  rounded-full
-                  bg-white/[0.09]
-                "
-              >
-                <ArrowRight
-                  size={17}
-                  strokeWidth={1.5}
-                  className="
-                    transition-transform
-                    duration-300
-                    group-hover:translate-x-1
-                  "
-                />
-              </span>
-            </button>
+            </a>
           </div>
         </motion.div>
       </div>

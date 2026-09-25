@@ -28,81 +28,10 @@ export default function AiVideoEditingHero() {
         min-h-[100svh]
         w-full
         overflow-hidden
-        bg-[#F3F6F8]
+        bg-white
       "
     >
-      {/* =========================================================
-          BACKGROUND
-      ========================================================= */}
 
-      <div className="pointer-events-none absolute inset-0">
-        <div
-          className="
-            absolute
-            -left-[180px]
-            top-[90px]
-            h-[430px]
-            w-[430px]
-            rounded-full
-            bg-[#6285AD]/20
-            blur-[100px]
-          "
-        />
-
-        <div
-          className="
-            absolute
-            -right-[140px]
-            top-[30px]
-            h-[520px]
-            w-[520px]
-            rounded-full
-            bg-[#C6A77A]/20
-            blur-[110px]
-          "
-        />
-
-        <div
-          className="
-            absolute
-            bottom-[-220px]
-            left-[38%]
-            h-[520px]
-            w-[520px]
-            rounded-full
-            bg-[#6285AD]/15
-            blur-[120px]
-          "
-        />
-
-        {/* subtle vertical line */}
-
-        <div
-          className="
-            absolute
-            left-[7%]
-            top-0
-            hidden
-            h-full
-            w-px
-            bg-[#0B2A52]/[0.05]
-            xl:block
-          "
-        />
-
-        <div
-          className="
-            absolute
-            right-[7%]
-            top-0
-            hidden
-            h-full
-            w-px
-            bg-[#0B2A52]/[0.05]
-            xl:block
-          "
-        />
-      </div>
 
       {/* =========================================================
           MAIN CONTENT
@@ -146,13 +75,7 @@ export default function AiVideoEditingHero() {
             ease,
           }}
           className="
-            mb-8
-            flex
-            items-center
-            justify-between
-            border-b
-            border-[#0B2A52]/10
-            pb-4
+           
           "
         >
           <div className="flex items-center gap-3">
@@ -174,22 +97,7 @@ export default function AiVideoEditingHero() {
             </span>
           </div>
 
-          <div
-            style={newYorkFont}
-            className="
-              hidden
-              items-center
-              gap-2
-              text-[9px]
-              uppercase
-              tracking-[0.22em]
-              text-[#0B2A52]/50
-              sm:flex
-            "
-          >
-            <span className="h-1.5 w-1.5 rounded-full bg-[#C6A77A]" />
-            AI + Editing Studio
-          </div>
+       
         </motion.div>
 
         {/* =======================================================
@@ -212,32 +120,7 @@ export default function AiVideoEditingHero() {
           ===================================================== */}
 
           <div className="relative z-20">
-            <motion.p
-              initial={{
-                opacity: 0,
-                x: reduceMotion ? 0 : -30,
-              }}
-              animate={{
-                opacity: 1,
-                x: 0,
-              }}
-              transition={{
-                duration: reduceMotion ? 0 : 0.75,
-                delay: reduceMotion ? 0 : 0.1,
-                ease,
-              }}
-              style={newYorkFont}
-              className="
-                mb-5
-                text-[11px]
-                font-medium
-                uppercase
-                tracking-[0.22em]
-                text-[#0B2A52]/55
-              "
-            >
-              Imagine / Create / Edit / Publish
-            </motion.p>
+          
 
             {/* HEADLINE */}
 
@@ -410,12 +293,19 @@ export default function AiVideoEditingHero() {
                 ease,
               }}
               className="
-                mt-8
+                mt-7
+
                 flex
-                flex-col
-                gap-3
-                sm:flex-row
-                sm:flex-wrap
+                w-full
+                max-w-[430px]
+                flex-row
+                flex-nowrap
+                items-center
+                gap-2
+
+                sm:mt-8
+                sm:max-w-none
+                sm:gap-3
               "
             >
               {/* PRIMARY CTA */}
@@ -425,44 +315,125 @@ export default function AiVideoEditingHero() {
                 style={newYorkFont}
                 className="
                   group
+                  relative
+
                   inline-flex
-                  min-h-[55px]
+                  min-h-[43px]
+                  min-w-0
+                  flex-1
                   items-center
                   justify-center
-                  gap-4
-                  rounded-full
-                  bg-[#0B2A52]
-                  px-6
-                  py-3.5
-                  text-[14px]
+                  gap-1.5
+
+                  overflow-hidden
+
+                  rounded-[16px]
+
+                  border
+                  border-[#6285AD]/30
+
+                  bg-white/85
+
+                  px-2.5
+                  py-[9px]
+
+                  text-[10.5px]
                   font-medium
-                  text-white
-                  shadow-[0_18px_45px_rgba(11,42,82,0.18)]
+                  tracking-[-0.01em]
+
+                  text-[#0B2A52]
+
+                  shadow-[0_8px_28px_rgba(11,42,82,0.08)]
+
+                  backdrop-blur-[8px]
+
                   transition-all
                   duration-300
-                  hover:-translate-y-1
-                  hover:shadow-[0_24px_55px_rgba(11,42,82,0.24)]
-                  sm:px-7
+                  ease-out
+
+                  hover:-translate-y-[2px]
+                  hover:border-[#6285AD]/45
+                  hover:bg-white
+                  hover:shadow-[0_12px_34px_rgba(98,133,173,0.15)]
+
+                  active:translate-y-0
+
+                  min-[390px]:px-3
+                  min-[390px]:text-[11.5px]
+
+                  sm:min-h-[46px]
+                  sm:flex-none
+                  sm:px-5
+                  sm:py-[11px]
+                  sm:text-[13px]
+
+                  md:min-h-[48px]
+                  md:px-6
+                  md:py-3
+                  md:text-[14px]
                 "
               >
-                Create My Video
+                {/* inner glass edge */}
+                <span
+                  className="
+                    pointer-events-none
+                    absolute
+                    inset-[2px]
+
+                    rounded-[13px]
+
+                    border
+                    border-white/70
+                  "
+                />
+
+                {/* subtle top highlight */}
+                <span
+                  className="
+                    pointer-events-none
+                    absolute
+                    inset-x-4
+                    top-0
+
+                    h-px
+
+                    bg-gradient-to-r
+                    from-transparent
+                    via-white
+                    to-transparent
+                  "
+                />
 
                 <span
                   className="
-                    flex
-                    h-8
-                    w-8
-                    items-center
-                    justify-center
-                    rounded-full
-                    bg-[#C6A77A]
-                    transition-transform
-                    duration-300
-                    group-hover:translate-x-1
+                    relative
+                    z-10
+                    whitespace-nowrap
                   "
                 >
-                  <ArrowUpRight size={15} />
+                  Create My Video
                 </span>
+
+                <ArrowUpRight
+                  size={12}
+                  strokeWidth={1.8}
+                  className="
+                    relative
+                    z-10
+                    shrink-0
+
+                    text-[#B79A72]
+
+                    transition-transform
+                    duration-300
+
+                    group-hover:translate-x-0.5
+                    group-hover:-translate-y-0.5
+
+                    sm:h-[13px]
+                    sm:w-[13px]
+                  "
+                />
               </Link>
 
               {/* SECONDARY CTA */}
@@ -472,38 +443,105 @@ export default function AiVideoEditingHero() {
                 style={newYorkFont}
                 className="
                   group
+                  relative
+
                   inline-flex
-                  min-h-[55px]
+                  min-h-[43px]
+                  min-w-0
+                  flex-1
                   items-center
                   justify-center
-                  gap-3
-                  rounded-full
+                  gap-1.5
+
+                  overflow-hidden
+
+                  rounded-[16px]
+
                   border
-                  border-[#0B2A52]/15
-                  bg-white/60
-                  px-6
-                  py-3.5
-                  text-[14px]
+                  border-[#6285AD]/22
+
+                  bg-white/55
+
+                  px-2.5
+                  py-[9px]
+
+                  text-[10px]
+                  font-medium
+                  tracking-[-0.01em]
+
                   text-[#0B2A52]
-                  backdrop-blur-md
+
+                  shadow-[0_6px_24px_rgba(11,42,82,0.055)]
+
+                  backdrop-blur-[8px]
+
                   transition-all
                   duration-300
-                  hover:-translate-y-1
-                  hover:border-[#C6A77A]/60
+                  ease-out
+
+                  hover:-translate-y-[2px]
+                  hover:border-[#6285AD]/40
                   hover:bg-white
-                  sm:px-7
+                  hover:shadow-[0_10px_30px_rgba(98,133,173,0.12)]
+
+                  active:translate-y-0
+
+                  min-[390px]:px-3
+                  min-[390px]:text-[11px]
+
+                  sm:min-h-[46px]
+                  sm:flex-none
+                  sm:px-5
+                  sm:py-[11px]
+                  sm:text-[13px]
+
+                  md:min-h-[48px]
+                  md:px-6
+                  md:py-3
+                  md:text-[14px]
                 "
               >
-                Explore Our Approach
+                <span
+                  className="
+                    pointer-events-none
+                    absolute
+                    inset-[2px]
+
+                    rounded-[13px]
+
+                    border
+                    border-white/60
+                  "
+                />
+
+                <span
+                  className="
+                    relative
+                    z-10
+                    whitespace-nowrap
+                  "
+                >
+                  Explore Our Approach
+                </span>
 
                 <ArrowUpRight
-                  size={15}
+                  size={12}
+                  strokeWidth={1.8}
                   className="
-                    text-[#C6A77A]
+                    relative
+                    z-10
+                    shrink-0
+
+                    text-[#B79A72]
+
                     transition-transform
                     duration-300
-                    group-hover:translate-x-1
+
+                    group-hover:translate-x-0.5
                     group-hover:-translate-y-0.5
+
+                    sm:h-[13px]
+                    sm:w-[13px]
                   "
                 />
               </Link>
@@ -513,47 +551,7 @@ export default function AiVideoEditingHero() {
                 SUPPORTING LINE
             ===================================================== */}
 
-            <motion.div
-              initial={{
-                opacity: 0,
-              }}
-              animate={{
-                opacity: 1,
-              }}
-              transition={{
-                duration: reduceMotion ? 0 : 0.8,
-                delay: reduceMotion ? 0 : 0.72,
-              }}
-              style={newYorkFont}
-              className="
-                mt-8
-                flex
-                flex-wrap
-                items-center
-                gap-2
-                text-[10px]
-                font-medium
-                uppercase
-                tracking-[0.2em]
-                text-[#344054]/70
-                sm:text-[11px]
-              "
-            >
-              <span>Imagine</span>
-
-              <span className="text-[#C6A77A]">·</span>
-
-              <span>Create</span>
-
-              <span className="text-[#C6A77A]">·</span>
-
-              <span>Edit</span>
-
-              <span className="text-[#C6A77A]">·</span>
-
-              <span>Publish</span>
-            </motion.div>
-          </div>
+        </div>
 
           {/* =====================================================
               RIGHT — VIDEO EDITING STAGE
@@ -774,22 +772,7 @@ export default function AiVideoEditingHero() {
                   <span className="h-2.5 w-2.5 rounded-full bg-[#0B2A52]/20" />
                 </div>
 
-                <div
-                  style={newYorkFont}
-                  className="
-                    flex
-                    items-center
-                    gap-2
-                    text-[8px]
-                    uppercase
-                    tracking-[0.2em]
-                    text-[#344054]/60
-                    sm:text-[9px]
-                  "
-                >
-                  <Clapperboard size={14} strokeWidth={1.4} />
-                  AI Edit / Cut 01
-                </div>
+             
               </div>
 
               {/* =================================================
@@ -1087,158 +1070,8 @@ export default function AiVideoEditingHero() {
                 FLOATING SHORT-FORM FRAME
             ================================================= */}
 
-            <motion.div
-              animate={
-                reduceMotion
-                  ? undefined
-                  : {
-                      y: [0, -10, 0],
-                      rotate: [-3, -1, -3],
-                    }
-              }
-              transition={{
-                duration: 4.8,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-              className="
-                absolute
-                bottom-[3%]
-                left-[2%]
-                z-30
-                hidden
-                w-[165px]
-                rotate-[-3deg]
-                overflow-hidden
-                rounded-[22px]
-                border-[4px]
-                border-white
-                bg-white
-                shadow-[0_22px_55px_rgba(11,42,82,0.16)]
-                sm:block
-              "
-            >
-              <div
-                className="
-                  relative
-                  aspect-[1.15/1]
-                  bg-[#6285AD]
-                "
-              >
-                <Video
-                  size={22}
-                  strokeWidth={1.4}
-                  className="
-                    absolute
-                    left-4
-                    top-4
-                    text-white
-                  "
-                />
 
-                <div
-                  className="
-                    absolute
-                    -bottom-10
-                    -right-6
-                    h-28
-                    w-28
-                    rounded-full
-                    bg-[#C6A77A]
-                  "
-                />
-
-                <p
-                  style={newYorkFont}
-                  className="
-                    absolute
-                    bottom-4
-                    left-4
-                    text-[9px]
-                    uppercase
-                    tracking-[0.16em]
-                    text-white
-                  "
-                >
-                  Short Form
-                </p>
-              </div>
-            </motion.div>
-
-            {/* =================================================
-                FLOATING AI + EDITING LABEL
-            ================================================= */}
-
-            <motion.div
-              animate={
-                reduceMotion
-                  ? undefined
-                  : {
-                      y: [0, 9, 0],
-                    }
-              }
-              transition={{
-                duration: 5,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-              className="
-                absolute
-                bottom-[6%]
-                right-[0%]
-                z-30
-                hidden
-                rounded-2xl
-                border
-                border-[#0B2A52]/10
-                bg-white/90
-                px-4
-                py-3
-                shadow-[0_18px_45px_rgba(11,42,82,0.12)]
-                backdrop-blur-md
-                sm:block
-              "
-            >
-              <div className="flex items-center gap-3">
-                <div
-                  className="
-                    flex
-                    h-9
-                    w-9
-                    items-center
-                    justify-center
-                    rounded-full
-                    bg-[#0B2A52]
-                    text-white
-                  "
-                >
-                  <Sparkles size={15} strokeWidth={1.4} />
-                </div>
-
-                <div style={newYorkFont}>
-                  <p
-                    className="
-                      text-[8px]
-                      uppercase
-                      tracking-[0.18em]
-                      text-[#344054]/55
-                    "
-                  >
-                    AI + Editing
-                  </p>
-
-                  <p
-                    className="
-                      mt-1
-                      text-[11px]
-                      text-[#0B2A52]
-                    "
-                  >
-                    Imagine → Edit → Publish
-                  </p>
-                </div>
-              </div>
-            </motion.div>
+            
           </motion.div>
         </div>
 

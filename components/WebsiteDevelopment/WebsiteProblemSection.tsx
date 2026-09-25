@@ -236,12 +236,12 @@ export default function WebsitePointOfViewSection() {
 
             <span
               className="
-                text-[0.56rem]
+                text-[10px]
          
                 uppercase
                 tracking-[0.28em]
                 text-[#B79A72]
-                sm:text-[0.62rem]
+              
               "
             >
               How We Think About Websites
