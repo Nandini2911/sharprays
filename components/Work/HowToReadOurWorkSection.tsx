@@ -3,19 +3,17 @@
 import { motion, useReducedMotion } from "framer-motion";
 import type { LucideIcon } from "lucide-react";
 import {
-  ArrowRight,
   CircleHelp,
-  Eye,
   Lightbulb,
   Rocket,
   TrendingUp,
 } from "lucide-react";
 
-const ease = [0.22, 1, 0.36, 1] as const;
+const newYorkFont = {
+  fontFamily: '"New York", "Bodoni Moda", Georgia, serif',
+};
 
-/* =========================================================
-   TYPES
-========================================================= */
+const ease = [0.22, 1, 0.36, 1] as const;
 
 type WorkLens = {
   number: string;
@@ -25,10 +23,6 @@ type WorkLens = {
   accent: string;
   soft: string;
 };
-
-/* =========================================================
-   DATA
-========================================================= */
 
 const lenses: WorkLens[] = [
   {
@@ -65,39 +59,8 @@ const lenses: WorkLens[] = [
   },
 ];
 
-/* =========================================================
-   MAIN COMPONENT
-========================================================= */
-
 export default function HowToReadOurWorkSection() {
   const reduceMotion = Boolean(useReducedMotion());
-
-  const fadeUp = {
-    hidden: {
-      opacity: 0,
-      y: reduceMotion ? 0 : 24,
-    },
-
-    visible: {
-      opacity: 1,
-      y: 0,
-
-      transition: {
-        duration: 0.7,
-        ease,
-      },
-    },
-  };
-
-  const stagger = {
-    hidden: {},
-
-    visible: {
-      transition: {
-        staggerChildren: reduceMotion ? 0 : 0.08,
-      },
-    },
-  };
 
   return (
     <section
@@ -108,54 +71,36 @@ export default function HowToReadOurWorkSection() {
         isolate
         overflow-hidden
         bg-white
-        py-20
-        sm:py-24
-        md:py-28
-        lg:py-32
+
+        py-14
+        sm:py-16
+        md:py-20
+        lg:py-24
       "
     >
-      {/* =====================================================
-          BACKGROUND
-      ===================================================== */}
-
-      <div className="pointer-events-none absolute inset-0 -z-20 overflow-hidden">
+      <div
+        aria-hidden="true"
+        className="
+          pointer-events-none
+          absolute
+          inset-0
+          -z-10
+        "
+      >
         <div
           className="
             absolute
             left-1/2
-            top-[-320px]
-            h-[650px]
-            w-[1120px]
+            top-[-280px]
+
+            h-[470px]
+            w-[850px]
+
             -translate-x-1/2
             rounded-full
-            bg-[#EEF5FA]
-            blur-[150px]
-          "
-        />
 
-        <div
-          className="
-            absolute
-            -left-[230px]
-            top-[45%]
-            h-[430px]
-            w-[430px]
-            rounded-full
-            bg-[#F4F8FA]
-            blur-[115px]
-          "
-        />
-
-        <div
-          className="
-            absolute
-            -right-[240px]
-            bottom-[-130px]
-            h-[470px]
-            w-[500px]
-            rounded-full
-            bg-[#FBF5EC]
-            blur-[125px]
+            bg-[#EEF5FA]/80
+            blur-[145px]
           "
         />
       </div>
@@ -164,78 +109,99 @@ export default function HowToReadOurWorkSection() {
         className="
           relative
           z-10
+
           mx-auto
           w-full
-          max-w-[1440px]
-          px-5
-          sm:px-7
-          md:px-9
+          max-w-[1320px]
+
+          px-4
+          sm:px-6
+          md:px-8
           lg:px-12
-          xl:px-16
+          xl:px-14
         "
       >
-        {/* =====================================================
-            INTRO
-        ===================================================== */}
-
         <motion.div
-          variants={stagger}
-          initial="hidden"
-          whileInView="visible"
+          initial={
+            reduceMotion
+              ? false
+              : {
+                  opacity: 0,
+                  y: 22,
+                }
+          }
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
           viewport={{
             once: true,
-            amount: 0.3,
+            amount: 0.35,
+          }}
+          transition={{
+            duration: reduceMotion ? 0 : 0.7,
+            ease,
           }}
           className="
             mx-auto
-            max-w-[1060px]
+            max-w-[920px]
             text-center
           "
         >
-          {/* eyebrow */}
-
-          <motion.div
-            variants={fadeUp}
-            className="
-              flex
-              items-center
-              justify-center
-              gap-4
-            "
-          >
-            <span className="h-px w-9 bg-[#B79A72]" />
-
+          <div className="flex items-center justify-center gap-3">
             <span
               className="
-                text-[0.56rem]
-                font-semibold
+                h-px
+                w-7
+                bg-gradient-to-r
+                from-transparent
+                to-[#B79A72]
+                sm:w-10
+              "
+            />
+
+            <span
+              style={newYorkFont}
+              className="
+                text-[9px]
+                font-medium
                 uppercase
-                tracking-[0.3em]
-                text-[#92745C]
-                sm:text-[0.62rem]
+                tracking-[0.23em]
+                text-[#B79A72]
+
+                sm:text-[10px]
+                sm:tracking-[0.27em]
               "
             >
               Beyond the Final Screen
             </span>
 
-            <span className="h-px w-9 bg-[#B79A72]" />
-          </motion.div>
+            <span
+              className="
+                h-px
+                w-7
+                bg-gradient-to-l
+                from-transparent
+                to-[#B79A72]
+                sm:w-10
+              "
+            />
+          </div>
 
-          {/* heading */}
-
-          <motion.h2
+          <h2
             id="how-to-read-our-work-heading"
-            variants={fadeUp}
+            style={newYorkFont}
             className="
               mx-auto
               mt-5
-              max-w-[1040px]
-        
-              text-[2.1rem]
-          
+              max-w-[920px]
+
+              text-[2.2rem]
+              font-light
               leading-[1.04]
               tracking-[-0.045em]
               text-[#0B2A52]
+
               sm:text-[2.6rem]
               md:text-[2.95rem]
               lg:text-[3.1rem]
@@ -243,198 +209,47 @@ export default function HowToReadOurWorkSection() {
             "
           >
             The Outcome Makes More Sense When You{" "}
-            <span className="italic text-[#A97C52]">
+            <span className="font-normal italic text-[#B79A72]">
               Understand the Thinking.
             </span>
-          </motion.h2>
+          </h2>
 
-          {/* intro copy */}
-
-          <motion.div
-            variants={fadeUp}
+          <p
+            style={newYorkFont}
             className="
               mx-auto
-              mt-6
-              max-w-[760px]
+              mt-4
+              max-w-[690px]
+
+              text-[0.84rem]
+              leading-[1.65]
+              text-[#60758A]
+
+              sm:text-[0.94rem]
             "
           >
-            <p
-              className="
-                font-serif
-                text-[0.95rem]
-                leading-[1.8]
-                text-[#60758A]
-                sm:text-[1rem]
-              "
-            >
-              A portfolio can show you what something looked like.
-            </p>
-
-            <p
-              className="
-                mt-2
-                font-serif
-                text-[0.95rem]
-                leading-[1.8]
-                text-[#60758A]
-                sm:text-[1rem]
-              "
-            >
-              A useful case study should show you{" "}
-              <span
-                className="
-                  font-medium
-                  italic
-                  text-[#0B2A52]
-                "
-              >
-                why it was built that way.
-              </span>
-            </p>
-          </motion.div>
-
-          <motion.p
-            variants={fadeUp}
-            className="
-              mt-5
-              text-[0.49rem]
-              font-semibold
-              uppercase
-              tracking-[0.2em]
-              text-[#92745C]
-            "
-          >
-            That is why our work focuses on four things
-          </motion.p>
+            A useful case study should show more than the final screen. It
+            should explain why the work was done that way.
+          </p>
         </motion.div>
-
-        {/* =====================================================
-            FRAMEWORK INTRO
-        ===================================================== */}
-
-        <motion.div
-          initial={{
-            opacity: 0,
-            y: reduceMotion ? 0 : 20,
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
-          viewport={{
-            once: true,
-            amount: 0.4,
-          }}
-          transition={{
-            duration: 0.7,
-            ease,
-          }}
-          className="
-            mx-auto
-            mt-14
-            max-w-[1220px]
-            sm:mt-16
-          "
-        >
-          <div
-            className="
-              flex
-              items-center
-              gap-4
-            "
-          >
-            <span
-              className="
-                text-[0.44rem]
-                font-semibold
-                uppercase
-                tracking-[0.18em]
-                text-[#8A9AA7]
-              "
-            >
-              Read the Work
-            </span>
-
-            <span className="h-px flex-1 bg-[#DDE6EC]" />
-
-            <span
-              className="
-                text-[0.44rem]
-                font-semibold
-                uppercase
-                tracking-[0.18em]
-                text-[#B08A62]
-              "
-            >
-              01 — 04
-            </span>
-          </div>
-        </motion.div>
-
-        {/* =====================================================
-            CONNECTED FOUR-PART FRAMEWORK
-        ===================================================== */}
 
         <div
           className="
-            relative
             mx-auto
-            mt-7
-            max-w-[1220px]
+            mt-10
+            max-w-[1160px]
+
+            border-y
+            border-[#DDE6EC]
+
+            sm:mt-12
           "
         >
-          {/* desktop top connector */}
-
-          <div
-            className="
-              absolute
-              left-[11%]
-              right-[11%]
-              top-[28px]
-              hidden
-              h-px
-              bg-[#DCE5EA]
-              lg:block
-            "
-          />
-
-          <motion.div
-            initial={{
-              scaleX: reduceMotion ? 1 : 0,
-            }}
-            whileInView={{
-              scaleX: 1,
-            }}
-            viewport={{
-              once: true,
-              amount: 0.5,
-            }}
-            transition={{
-              duration: 1.1,
-              ease,
-            }}
-            style={{
-              transformOrigin: "left",
-            }}
-            className="
-              absolute
-              left-[11%]
-              right-[11%]
-              top-[28px]
-              hidden
-              h-px
-              bg-[linear-gradient(90deg,#3976A4,#75629A,#A57A50,#477D73)]
-              lg:block
-            "
-          />
-
           <div
             className="
               grid
               grid-cols-1
-              border-y
-              border-[#DDE6EC]
-              md:grid-cols-2
+              sm:grid-cols-2
               lg:grid-cols-4
             "
           >
@@ -444,226 +259,139 @@ export default function HowToReadOurWorkSection() {
               return (
                 <motion.article
                   key={item.number}
-                  initial={{
-                    opacity: 0,
-                    y: reduceMotion ? 0 : 30,
-                  }}
+                  initial={
+                    reduceMotion
+                      ? false
+                      : {
+                          opacity: 0,
+                          y: 18,
+                        }
+                  }
                   whileInView={{
                     opacity: 1,
                     y: 0,
                   }}
                   viewport={{
                     once: true,
-                    amount: 0.25,
+                    amount: 0.3,
                   }}
                   transition={{
-                    duration: 0.65,
-                    delay: reduceMotion ? 0 : index * 0.09,
+                    duration: reduceMotion ? 0 : 0.55,
+                    delay: reduceMotion ? 0 : index * 0.06,
                     ease,
                   }}
                   className={`
                     group
                     relative
-                    px-5
-                    py-7
-                    sm:px-7
-                    sm:py-8
-                    lg:px-7
-                    lg:pb-10
-                    lg:pt-4
+
+                    px-4
+                    py-5
+
+                    sm:px-5
+                    sm:py-6
+
+                    lg:px-6
+                    lg:py-7
 
                     ${
                       index !== lenses.length - 1
                         ? `
-                          border-b
-                          border-[#E1E8ED]
+                            border-b
+                            border-[#E1E8ED]
 
-                          md:border-r
-
-                          lg:border-b-0
-                        `
+                            sm:[&:nth-child(odd)]:border-r
+                            lg:border-b-0
+                            lg:border-r
+                          `
                         : ""
                     }
 
-                    ${
-                      index === 1
-                        ? "md:border-r-0 lg:border-r"
-                        : ""
-                    }
-
-                    ${
-                      index === 2
-                        ? "md:border-b-0"
-                        : ""
-                    }
+                    ${index === 1 ? "sm:border-r-0 lg:border-r" : ""}
+                    ${index === 2 ? "sm:border-b-0" : ""}
                   `}
                 >
-                  {/* top icon marker */}
-
-                  <motion.div
-                    whileHover={
-                      reduceMotion
-                        ? undefined
-                        : {
-                            y: -4,
-                            scale: 1.05,
-                          }
-                    }
-                    className="
-                      relative
-                      z-10
-                      flex
-                      h-14
-                      w-14
-                      items-center
-                      justify-center
-                      rounded-full
-                      border-[6px]
-                      border-white
-                      shadow-[0_0_0_1px_#D5E0E7]
-                    "
-                    style={{
-                      backgroundColor: item.soft,
-                      color: item.accent,
-                    }}
-                  >
-                    <Icon size={18} strokeWidth={1.65} />
-                  </motion.div>
-
-                  {/* number */}
-
-                  <div
-                    className="
-                      mt-7
-                      flex
-                      items-center
-                      gap-3
-                    "
-                  >
+                  <div className="flex items-start justify-between gap-4">
                     <span
                       className="
-                        font-serif
-                        text-[1.9rem]
-                        leading-none
-                        tracking-[-0.05em]
-                        text-[#B79A72]
+                        flex
+                        h-10
+                        w-10
+                        shrink-0
+                        items-center
+                        justify-center
+
+                        rounded-[12px]
+                        border
+                        border-black/[0.05]
+                      "
+                      style={{
+                        backgroundColor: item.soft,
+                        color: item.accent,
+                      }}
+                    >
+                      <Icon size={16} strokeWidth={1.65} />
+                    </span>
+
+                    <span
+                      style={newYorkFont}
+                      className="
+                        pt-1
+                        text-[0.52rem]
+                        tracking-[0.12em]
+                        text-[#9AA7B1]
                       "
                     >
                       {item.number}
                     </span>
-
-                    <motion.span
-                      initial={{
-                        width: reduceMotion ? 30 : 0,
-                      }}
-                      whileInView={{
-                        width: 30,
-                      }}
-                      viewport={{ once: true }}
-                      transition={{
-                        duration: 0.55,
-                        delay: reduceMotion ? 0 : 0.15 + index * 0.07,
-                        ease,
-                      }}
-                      className="h-px"
-                      style={{
-                        backgroundColor: item.accent,
-                      }}
-                    />
                   </div>
 
-                  {/* title */}
-
                   <h3
+                    style={newYorkFont}
                     className="
                       mt-4
-                      text-[0.55rem]
-                      font-semibold
+                      text-[0.53rem]
+                      font-medium
                       uppercase
-                      tracking-[0.2em]
+                      tracking-[0.18em]
                       text-[#92745C]
                     "
                   >
                     {item.label}
                   </h3>
 
-                  {/* question */}
-
                   <p
+                    style={newYorkFont}
                     className="
-                      mt-4
+                      mt-2.5
                       max-w-[245px]
-                      font-serif
-                      text-[1.22rem]
+
+                      text-[1.08rem]
+                      font-normal
                       leading-[1.28]
                       tracking-[-0.02em]
                       text-[#0B2A52]
-                      sm:text-[1.32rem]
+
+                      sm:text-[1.14rem]
                     "
                   >
                     {item.question}
                   </p>
 
-                  {/* hover arrow */}
-
-                  <div
-                    className="
-                      mt-7
-                      flex
-                      items-center
-                      gap-2
-                    "
-                  >
-                    <span
-                      className="
-                        h-1.5
-                        w-1.5
-                        rounded-full
-                      "
-                      style={{
-                        backgroundColor: item.accent,
-                      }}
-                    />
-
-                    <span
-                      className="
-                        text-[0.41rem]
-                        font-semibold
-                        uppercase
-                        tracking-[0.16em]
-                        text-[#9AA7B1]
-                      "
-                    >
-                      Case Study Lens
-                    </span>
-
-                    <ArrowRight
-                      size={10}
-                      strokeWidth={1.8}
-                      className="
-                        ml-auto
-                        text-[#B79A72]
-                        opacity-0
-                        transition-all
-                        duration-300
-                        group-hover:translate-x-1
-                        group-hover:opacity-100
-                      "
-                    />
-                  </div>
-
-                  {/* bottom hover line */}
-
                   <span
+                    aria-hidden="true"
                     className="
                       absolute
-                      bottom-0
+                      bottom-[-1px]
                       left-0
+
                       h-[2px]
                       w-0
+
+                      rounded-full
                       transition-all
                       duration-500
-                      group-hover:w-full
+
+                      group-hover:w-14
                     "
                     style={{
                       backgroundColor: item.accent,
@@ -675,184 +403,71 @@ export default function HowToReadOurWorkSection() {
           </div>
         </div>
 
-        {/* =====================================================
-            TRANSITION
-        ===================================================== */}
-
         <motion.div
-          initial={{
-            opacity: 0,
-            y: reduceMotion ? 0 : 18,
-          }}
+          initial={
+            reduceMotion
+              ? false
+              : {
+                  opacity: 0,
+                  y: 14,
+                }
+          }
           whileInView={{
             opacity: 1,
             y: 0,
           }}
           viewport={{
             once: true,
-            amount: 0.5,
+            amount: 0.45,
           }}
           transition={{
-            duration: 0.65,
+            duration: reduceMotion ? 0 : 0.6,
             ease,
           }}
           className="
             mx-auto
-            mt-12
+            mt-8
             max-w-[850px]
-          "
-        >
-          <div
-            className="
-              flex
-              items-center
-              gap-5
-            "
-          >
-            <span
-              className="
-                h-px
-                flex-1
-                bg-[linear-gradient(90deg,transparent,#D7E2E9)]
-              "
-            />
-
-            <motion.span
-              animate={
-                reduceMotion
-                  ? undefined
-                  : {
-                      rotate: [0, 8, 0],
-                    }
-              }
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-              className="
-                flex
-                h-11
-                w-11
-                shrink-0
-                items-center
-                justify-center
-                rounded-full
-                border
-                border-[#D5E0E7]
-                bg-white
-                text-[#0B2A52]
-                shadow-[0_8px_22px_rgba(11,42,82,0.055)]
-              "
-            >
-              <Eye size={15} strokeWidth={1.7} />
-            </motion.span>
-
-            <span
-              className="
-                h-px
-                flex-1
-                bg-[linear-gradient(90deg,#D7E2E9,transparent)]
-              "
-            />
-          </div>
-        </motion.div>
-
-        {/* =====================================================
-            PRINCIPLE
-        ===================================================== */}
-
-        <motion.div
-          variants={stagger}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{
-            once: true,
-            amount: 0.35,
-          }}
-          className="
-            mx-auto
-            mt-9
-            max-w-[1000px]
             text-center
+
+            sm:mt-10
           "
         >
-          <motion.span
-            variants={fadeUp}
+          <span
+            style={newYorkFont}
             className="
-              text-[0.5rem]
-              font-semibold
+              text-[8px]
+              font-medium
               uppercase
-              tracking-[0.24em]
-              text-[#92745C]
+              tracking-[0.2em]
+              text-[#B79A72]
             "
           >
             The Principle
-          </motion.span>
+          </span>
 
-          <motion.h3
-            variants={fadeUp}
-            className="
-              mx-auto
-              mt-5
-              max-w-[900px]
-              font-serif
-              text-[1.85rem]
-              font-normal
-              leading-[1.16]
-              tracking-[-0.035em]
-              text-[#0B2A52]
-              sm:text-[2.15rem]
-              md:text-[2.45rem]
-            "
-          >
-            Don&apos;t Judge the Work Only by{" "}
-            <span className="italic text-[#A97C52]">
-              How It Looks.
-            </span>
-          </motion.h3>
-
-          <motion.p
-            variants={fadeUp}
+          <p
+            style={newYorkFont}
             className="
               mx-auto
               mt-3
-              max-w-[780px]
-              font-serif
-              text-[1.05rem]
-              leading-[1.55]
-              text-[#60758A]
-              sm:text-[1.18rem]
+              max-w-[820px]
+
+              text-[1.2rem]
+              font-light
+              leading-[1.32]
+              tracking-[-0.025em]
+              text-[#0B2A52]
+
+              sm:text-[1.4rem]
+              md:text-[1.55rem]
             "
           >
-            Understand what it was{" "}
-            <span
-              className="
-                font-medium
-                text-[#0B2A52]
-              "
-            >
-              designed to do.
+            Don&apos;t judge the work only by how it looks.{" "}
+            <span className="italic text-[#B79A72]">
+              Understand what it was designed to do.
             </span>
-          </motion.p>
-
-          {/* final visual detail */}
-
-          <motion.div
-            variants={fadeUp}
-            className="
-              mx-auto
-              mt-7
-              flex
-              w-fit
-              items-center
-              gap-3
-            "
-          >
-            <span className="h-px w-10 bg-[#D5E0E7]" />
-            <span className="h-1.5 w-1.5 rounded-full bg-[#B79A72]" />
-            <span className="h-px w-10 bg-[#D5E0E7]" />
-          </motion.div>
+          </p>
         </motion.div>
       </div>
     </section>

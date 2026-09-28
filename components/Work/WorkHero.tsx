@@ -2,9 +2,12 @@
 
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
 
 const ease = [0.22, 1, 0.36, 1] as const;
+
+const newYorkFont = {
+  fontFamily: '"New York", "Bodoni Moda", Georgia, serif',
+};
 
 /* =========================================================
    YOUR RIGHT-SIDE IMAGE
@@ -380,8 +383,11 @@ export default function WorkHero() {
                 gap-3
 
                 sm:flex-row
+                sm:items-center
               "
             >
+              {/* PRIMARY */}
+
               <motion.a
                 href="#portfolio"
                 whileHover={
@@ -394,50 +400,94 @@ export default function WorkHero() {
                 whileTap={{
                   scale: 0.98,
                 }}
+                style={newYorkFont}
                 className="
                   group
-
+                  relative
                   inline-flex
-                  min-h-[52px]
+                  min-h-[46px]
                   items-center
                   justify-center
-                  gap-4
+                  overflow-hidden
 
-                  rounded-[10px]
+                  rounded-[16px]
 
                   border
-                  border-[#0B2A52]
+                  border-[#6285AD]/30
 
-                  bg-[linear-gradient(110deg,#0B2A52_0%,#143E69_100%)]
+                  bg-white/80
 
-                  px-7
+                  px-5
+                  py-[11px]
 
-                  text-[0.8rem]
-                  font-semibold
+                  text-[13px]
+                  font-medium
+                  tracking-[-0.01em]
+                  text-[#0B2A52]
 
-                  text-white
+                  shadow-[0_8px_30px_rgba(11,42,82,0.08)]
 
-                  shadow-[0_11px_26px_rgba(11,42,82,0.16)]
+                  backdrop-blur-[8px]
 
                   transition-all
                   duration-300
+                  ease-out
 
-                  hover:shadow-[0_16px_34px_rgba(11,42,82,0.21)]
+                  hover:border-[#6285AD]/40
+                  hover:bg-white
+                  hover:shadow-[0_10px_35px_rgba(98,133,173,0.15)]
+
+                  active:translate-y-0
+
+                  sm:min-h-[48px]
+                  sm:px-6
+                  sm:py-3
+                  sm:text-[14px]
+
+                  md:text-[15px]
                 "
               >
-                Explore Our Work
-
-                <ArrowRight
-                  size={16}
-                  strokeWidth={1.8}
+                {/* STATIC SOFT BORDER */}
+                <span
                   className="
-                    transition-transform
-                    duration-300
-
-                    group-hover:translate-x-1
+                    pointer-events-none
+                    absolute
+                    inset-[2px]
+                    rounded-[13px]
+                    border
+                    border-white/60
                   "
                 />
+
+                {/* VERY SUBTLE INNER LIGHT */}
+                <span
+                  className="
+                    pointer-events-none
+                    absolute
+                    inset-x-4
+                    top-0
+                    h-px
+                    bg-gradient-to-r
+                    from-transparent
+                    via-white
+                    to-transparent
+                  "
+                />
+
+                {/* TEXT */}
+                <span
+                  className="
+                    relative
+                    z-10
+                    whitespace-nowrap
+                    text-[#0B2A52]
+                  "
+                >
+                  Explore Our Work
+                </span>
               </motion.a>
+
+              {/* SECONDARY */}
 
               <motion.a
                 href="#contact"
@@ -451,35 +501,91 @@ export default function WorkHero() {
                 whileTap={{
                   scale: 0.98,
                 }}
+                style={newYorkFont}
                 className="
+                  group
+                  relative
                   inline-flex
-                  min-h-[52px]
+                  min-h-[46px]
                   items-center
                   justify-center
+                  overflow-hidden
 
-                  rounded-[10px]
+                  rounded-[16px]
 
                   border
-                  border-[#B79A72]
+                  border-[#6285AD]/30
 
-                  bg-white
+                  bg-white/80
 
-                  px-8
+                  px-5
+                  py-[11px]
 
-                  text-[0.8rem]
-                  font-semibold
-
+                  text-[13px]
+                  font-medium
+                  tracking-[-0.01em]
                   text-[#0B2A52]
 
-                  shadow-[0_5px_18px_rgba(11,42,82,0.035)]
+                  shadow-[0_8px_30px_rgba(11,42,82,0.08)]
+
+                  backdrop-blur-[8px]
 
                   transition-all
                   duration-300
+                  ease-out
 
-                  hover:bg-[#FBF7F1]
+                  hover:border-[#6285AD]/40
+                  hover:bg-white
+                  hover:shadow-[0_10px_35px_rgba(98,133,173,0.15)]
+
+                  active:translate-y-0
+
+                  sm:min-h-[48px]
+                  sm:px-6
+                  sm:py-3
+                  sm:text-[14px]
+
+                  md:text-[15px]
                 "
               >
-                Start a Project
+                {/* STATIC SOFT BORDER */}
+                <span
+                  className="
+                    pointer-events-none
+                    absolute
+                    inset-[2px]
+                    rounded-[13px]
+                    border
+                    border-white/60
+                  "
+                />
+
+                {/* VERY SUBTLE INNER LIGHT */}
+                <span
+                  className="
+                    pointer-events-none
+                    absolute
+                    inset-x-4
+                    top-0
+                    h-px
+                    bg-gradient-to-r
+                    from-transparent
+                    via-white
+                    to-transparent
+                  "
+                />
+
+                {/* TEXT */}
+                <span
+                  className="
+                    relative
+                    z-10
+                    whitespace-nowrap
+                    text-[#0B2A52]
+                  "
+                >
+                  Start a Project
+                </span>
               </motion.a>
             </div>
 

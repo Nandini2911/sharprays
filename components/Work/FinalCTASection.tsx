@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import {
-  ArrowRight,
   ArrowUpRight,
   MessageCircle,
   Search,
@@ -476,89 +475,193 @@ export default function FinalCTASection() {
                   flex
                   flex-col
                   gap-3
+
                   sm:flex-row
                   sm:items-center
                 "
               >
+                {/* PRIMARY */}
+
                 <Link
                   href="/contact"
+               
                   className="
                     group
+                    relative
                     inline-flex
-                    min-h-[58px]
+                    min-h-[46px]
                     items-center
                     justify-center
-                    gap-5
-                    rounded-full
-                    bg-[linear-gradient(135deg,#0B2A52_0%,#174D80_100%)]
-                    px-7
-                    text-[0.9rem]
-                    font-semibold
-                    text-white
-                    shadow-[0_16px_38px_rgba(11,42,82,0.20)]
+                    overflow-hidden
+
+                    rounded-[16px]
+
+                    border
+                    border-[#6285AD]/30
+
+                    bg-white/80
+
+                    px-5
+                    py-[11px]
+
+                    text-[13px]
+                    font-medium
+                    tracking-[-0.01em]
+                    text-[#0B2A52]
+
+                    shadow-[0_8px_30px_rgba(11,42,82,0.08)]
+
+                    backdrop-blur-[8px]
+
                     transition-all
                     duration-300
-                    hover:-translate-y-1
-                    hover:shadow-[0_22px_45px_rgba(11,42,82,0.27)]
+                    ease-out
+
+                    hover:-translate-y-[2px]
+                    hover:border-[#6285AD]/40
+                    hover:bg-white
+                    hover:shadow-[0_10px_35px_rgba(98,133,173,0.15)]
+
+                    active:translate-y-0
+
+                    sm:min-h-[48px]
+                    sm:px-6
+                    sm:py-3
+                    sm:text-[14px]
+
+                    md:text-[15px]
                   "
                 >
-                  Start a Project
-
+                  {/* STATIC SOFT BORDER */}
                   <span
                     className="
-                      flex
-                      h-8
-                      w-8
-                      items-center
-                      justify-center
-                      rounded-full
-                      bg-[#D8B67F]
+                      pointer-events-none
+                      absolute
+                      inset-[2px]
+                      rounded-[13px]
+                      border
+                      border-white/60
+                    "
+                  />
+
+                  {/* VERY SUBTLE INNER LIGHT */}
+                  <span
+                    className="
+                      pointer-events-none
+                      absolute
+                      inset-x-4
+                      top-0
+                      h-px
+                      bg-gradient-to-r
+                      from-transparent
+                      via-white
+                      to-transparent
+                    "
+                  />
+
+                  {/* TEXT */}
+                  <span
+                    className="
+                      relative
+                      z-10
+                      whitespace-nowrap
                       text-[#0B2A52]
-                      transition-transform
-                      duration-300
-                      group-hover:translate-x-1
                     "
                   >
-                    <ArrowRight size={15} strokeWidth={2} />
+                    Start a Project
                   </span>
                 </Link>
 
+                {/* SECONDARY */}
+
                 <Link
                   href="/contact"
+                 
                   className="
                     group
+                    relative
                     inline-flex
-                    min-h-[58px]
+                    min-h-[46px]
                     items-center
                     justify-center
-                    gap-3
-                    rounded-full
+                    overflow-hidden
+
+                    rounded-[16px]
+
                     border
-                    border-[#0B2A52]/15
+                    border-[#6285AD]/30
+
                     bg-white/80
-                    px-7
-                    text-[0.9rem]
-                    font-semibold
+
+                    px-5
+                    py-[11px]
+
+                    text-[13px]
+                    font-medium
+                    tracking-[-0.01em]
                     text-[#0B2A52]
+
+                    shadow-[0_8px_30px_rgba(11,42,82,0.08)]
+
+                    backdrop-blur-[8px]
+
                     transition-all
                     duration-300
-                    hover:-translate-y-1
-                    hover:border-[#B79A72]/55
-                    hover:bg-[#FCF8F2]
+                    ease-out
+
+                    hover:-translate-y-[2px]
+                    hover:border-[#6285AD]/40
+                    hover:bg-white
+                    hover:shadow-[0_10px_35px_rgba(98,133,173,0.15)]
+
+                    active:translate-y-0
+
+                    sm:min-h-[48px]
+                    sm:px-6
+                    sm:py-3
+                    sm:text-[14px]
+
+                    md:text-[15px]
                   "
                 >
-                  Talk to Sharp Rays
-
-                  <ArrowUpRight
-                    size={16}
+                  {/* STATIC SOFT BORDER */}
+                  <span
                     className="
-                      text-[#B79A72]
-                      transition-transform
-                      duration-300
-                      group-hover:translate-x-0.5
-                      group-hover:-translate-y-0.5
+                      pointer-events-none
+                      absolute
+                      inset-[2px]
+                      rounded-[13px]
+                      border
+                      border-white/60
                     "
                   />
+
+                  {/* VERY SUBTLE INNER LIGHT */}
+                  <span
+                    className="
+                      pointer-events-none
+                      absolute
+                      inset-x-4
+                      top-0
+                      h-px
+                      bg-gradient-to-r
+                      from-transparent
+                      via-white
+                      to-transparent
+                    "
+                  />
+
+                  {/* TEXT */}
+                  <span
+                    className="
+                      relative
+                      z-10
+                      whitespace-nowrap
+                      text-[#0B2A52]
+                    "
+                  >
+                    Talk to Sharp Rays
+                  </span>
                 </Link>
               </motion.div>
             </div>

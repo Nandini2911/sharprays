@@ -5,7 +5,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { Sparkles } from "lucide-react";
 
 const newYorkFont = {
-  fontFamily: "New York, ui-serif, Georgia, serif",
+  fontFamily: '"New York", "Bodoni Moda", Georgia, serif',
 };
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -21,13 +21,23 @@ export default function AiAutomationHero() {
         relative
         overflow-hidden
         bg-white
-        pb-20
-        pt-32
-        sm:pb-24
-        sm:pt-36
-        lg:pb-28
-        lg:pt-40
-        xl:pb-32
+
+        pb-14
+        pt-28
+
+        sm:pb-16
+        sm:pt-32
+
+        md:pb-18
+
+        lg:pb-20
+        lg:pt-32
+
+        xl:pb-20
+        xl:pt-32
+
+        2xl:pb-24
+        2xl:pt-36
       "
     >
       <div
@@ -35,25 +45,33 @@ export default function AiAutomationHero() {
           mx-auto
           w-full
           max-w-[1500px]
-          px-5
-          sm:px-8
-          md:px-10
-          lg:px-14
-          xl:px-16
-          2xl:px-20
+
+          px-4
+          sm:px-6
+          md:px-8
+          lg:px-10
+          xl:px-12
+          2xl:px-16
         "
       >
         <div
           className="
             grid
             items-center
-            gap-14
-            xl:grid-cols-[0.44fr_0.56fr]
-            xl:gap-16
+
+            gap-10
+            sm:gap-12
+            lg:gap-14
+
+            xl:grid-cols-[0.47fr_0.53fr]
+            xl:gap-10
+
+            2xl:grid-cols-[0.45fr_0.55fr]
+            2xl:gap-14
           "
         >
           {/* =====================================================
-              LEFT
+              LEFT CONTENT
           ===================================================== */}
 
           <motion.div
@@ -76,22 +94,32 @@ export default function AiAutomationHero() {
             className="
               relative
               z-10
-              max-w-[670px]
+
+              mx-auto
+              w-full
+              max-w-[650px]
+
+              xl:mx-0
+              xl:max-w-[630px]
+
+              2xl:max-w-[670px]
             "
           >
             {/* EYEBROW */}
 
-            <div className="flex items-center gap-4">
-              <span className="h-px w-12 bg-[#C6A77A]" />
+            <div className="flex items-center gap-3 sm:gap-4">
+              <span className="h-px w-8 bg-[#C6A77A] sm:w-10 xl:w-12" />
 
               <span
                 style={newYorkFont}
                 className="
                   text-[9px]
                   uppercase
-                  tracking-[0.32em]
+                  tracking-[0.28em]
                   text-[#B18458]
+
                   sm:text-[10px]
+                  sm:tracking-[0.32em]
                 "
               >
                 AI Automation
@@ -104,12 +132,12 @@ export default function AiAutomationHero() {
               id="ai-automation-heading"
               style={newYorkFont}
               className="
-                mt-7
+                mt-5
                 max-w-[720px]
 
-                text-[2.1rem]
+                text-[2.2rem]
                 font-light
-                leading-[0.96]
+                leading-[1.01]
                 tracking-[-0.05em]
                 text-[#0B2A52]
 
@@ -146,17 +174,23 @@ export default function AiAutomationHero() {
                 ease,
               }}
               className="
-                mt-7
-                max-w-[600px]
+                mt-5
+                max-w-[590px]
+
+                sm:mt-6
               "
             >
               <p
                 style={newYorkFont}
                 className="
-                  text-[15px]
-                  leading-[1.7]
+                  text-[13px]
+                  leading-[1.65]
                   text-[#405E79]
-                  sm:text-[16px]
+
+                  sm:text-[14px]
+                  md:text-[15px]
+
+                  2xl:text-[16px]
                 "
               >
                 Sharp Rays helps businesses design AI-powered workflows that
@@ -167,11 +201,19 @@ export default function AiAutomationHero() {
               <p
                 style={newYorkFont}
                 className="
-                  mt-4
-                  text-[15px]
-                  leading-[1.7]
+                  mt-3
+
+                  text-[13px]
+                  leading-[1.65]
                   text-[#405E79]
-                  sm:text-[16px]
+
+                  sm:mt-3.5
+                  sm:text-[14px]
+
+                  md:text-[15px]
+
+                  2xl:mt-4
+                  2xl:text-[16px]
                 "
               >
                 From lead qualification and CRM workflows to customer support,
@@ -202,31 +244,41 @@ export default function AiAutomationHero() {
                 ease,
               }}
               className="
-                mt-7
+                mt-5
                 flex
                 items-start
-                gap-4
+                gap-3
+
+                sm:mt-6
+                sm:gap-4
               "
             >
               <span
                 className="
                   mt-1
-                  h-[54px]
+                  h-[46px]
                   w-[2px]
                   shrink-0
                   bg-[#C6A77A]
+
+                  sm:h-[50px]
+                  2xl:h-[54px]
                 "
               />
 
               <p
                 style={newYorkFont}
                 className="
-                  text-[1.35rem]
+                  text-[1.16rem]
                   font-light
                   leading-[1.18]
                   tracking-[-0.03em]
                   text-[#0B2A52]
-                  sm:text-[1.5rem]
+
+                  sm:text-[1.28rem]
+                  md:text-[1.35rem]
+
+                  2xl:text-[1.5rem]
                 "
               >
                 Less manual repetition.
@@ -256,13 +308,21 @@ export default function AiAutomationHero() {
                 ease,
               }}
               className="
-                mt-8
-                flex
-                flex-col
-                gap-3
+                mx-auto
+                mt-6
 
-                sm:flex-row
-                sm:items-center
+                flex
+                w-full
+                max-w-[430px]
+                flex-row
+                flex-nowrap
+                items-center
+                gap-2
+
+                sm:mx-0
+                sm:mt-7
+                sm:max-w-none
+                sm:gap-3
               "
             >
               {/* PRIMARY */}
@@ -274,7 +334,11 @@ export default function AiAutomationHero() {
                   group
                   relative
                   inline-flex
-                  min-h-[46px]
+
+                  min-h-[43px]
+                  min-w-0
+                  flex-1
+
                   items-center
                   justify-center
                   overflow-hidden
@@ -286,10 +350,10 @@ export default function AiAutomationHero() {
 
                   bg-white/80
 
-                  px-5
-                  py-[11px]
+                  px-2.5
+                  py-[9px]
 
-                  text-[13px]
+                  text-[9px]
                   font-medium
                   tracking-[-0.01em]
                   text-[#0B2A52]
@@ -309,15 +373,23 @@ export default function AiAutomationHero() {
 
                   active:translate-y-0
 
-                  sm:min-h-[48px]
-                  sm:px-6
-                  sm:py-3
-                  sm:text-[14px]
+                  min-[380px]:px-3
+                  min-[380px]:text-[10px]
 
-                  md:text-[15px]
+                  sm:min-h-[46px]
+                  sm:flex-none
+                  sm:px-5
+                  sm:py-[11px]
+                  sm:text-[13px]
+
+                  md:min-h-[48px]
+                  md:px-6
+                  md:py-3
+                  md:text-[14px]
+
+                  2xl:text-[15px]
                 "
               >
-                {/* STATIC SOFT BORDER */}
                 <span
                   className="
                     pointer-events-none
@@ -329,7 +401,6 @@ export default function AiAutomationHero() {
                   "
                 />
 
-                {/* VERY SUBTLE INNER LIGHT */}
                 <span
                   className="
                     pointer-events-none
@@ -344,7 +415,6 @@ export default function AiAutomationHero() {
                   "
                 />
 
-                {/* TEXT */}
                 <span
                   className="
                     relative
@@ -366,7 +436,11 @@ export default function AiAutomationHero() {
                   group
                   relative
                   inline-flex
-                  min-h-[46px]
+
+                  min-h-[43px]
+                  min-w-0
+                  flex-1
+
                   items-center
                   justify-center
                   overflow-hidden
@@ -378,10 +452,10 @@ export default function AiAutomationHero() {
 
                   bg-white/80
 
-                  px-5
-                  py-[11px]
+                  px-2
+                  py-[9px]
 
-                  text-[13px]
+                  text-[8.5px]
                   font-medium
                   tracking-[-0.01em]
                   text-[#0B2A52]
@@ -401,15 +475,23 @@ export default function AiAutomationHero() {
 
                   active:translate-y-0
 
-                  sm:min-h-[48px]
-                  sm:px-6
-                  sm:py-3
-                  sm:text-[14px]
+                  min-[380px]:px-3
+                  min-[380px]:text-[9.5px]
 
-                  md:text-[15px]
+                  sm:min-h-[46px]
+                  sm:flex-none
+                  sm:px-5
+                  sm:py-[11px]
+                  sm:text-[13px]
+
+                  md:min-h-[48px]
+                  md:px-6
+                  md:py-3
+                  md:text-[14px]
+
+                  2xl:text-[15px]
                 "
               >
-                {/* STATIC SOFT BORDER */}
                 <span
                   className="
                     pointer-events-none
@@ -421,7 +503,6 @@ export default function AiAutomationHero() {
                   "
                 />
 
-                {/* VERY SUBTLE INNER LIGHT */}
                 <span
                   className="
                     pointer-events-none
@@ -436,7 +517,6 @@ export default function AiAutomationHero() {
                   "
                 />
 
-                {/* TEXT */}
                 <span
                   className="
                     relative
@@ -449,8 +529,6 @@ export default function AiAutomationHero() {
                 </span>
               </a>
             </motion.div>
-
-           
           </motion.div>
 
           {/* =====================================================
@@ -479,9 +557,17 @@ export default function AiAutomationHero() {
             }}
             className="
               relative
+
               mx-auto
               w-full
-              max-w-[820px]
+              max-w-[620px]
+
+              sm:max-w-[680px]
+
+              xl:max-w-[560px]
+              xl:justify-self-end
+
+              2xl:max-w-[680px]
             "
           >
             {/* VERTICAL SIDE LABEL */}
@@ -489,46 +575,38 @@ export default function AiAutomationHero() {
             <div
               className="
                 absolute
-                -left-7
+                -left-6
                 top-1/2
                 z-20
+
                 hidden
                 -translate-y-1/2
-                xl:flex
-                xl:flex-col
-                xl:items-center
-                xl:gap-4
+
+                2xl:flex
+                2xl:flex-col
+                2xl:items-center
+                2xl:gap-4
               "
             >
-              <span
-                className="
-                  h-16
-                  w-px
-                  bg-[#C6A77A]
-                "
-              />
+              <span className="h-14 w-px bg-[#C6A77A]" />
 
               <span
                 style={newYorkFont}
                 className="
                   rotate-180
+
                   text-[7px]
                   uppercase
                   tracking-[0.28em]
                   text-[#0B2A52]/40
+
                   [writing-mode:vertical-rl]
                 "
               >
                 WORKFLOW AUTOMATION
               </span>
 
-              <span
-                className="
-                  h-16
-                  w-px
-                  bg-[#0B2A52]/10
-                "
-              />
+              <span className="h-14 w-px bg-[#0B2A52]/10" />
             </div>
 
             {/* IMAGE FRAME */}
@@ -538,15 +616,20 @@ export default function AiAutomationHero() {
                 relative
                 overflow-hidden
 
-                rounded-[34px_34px_110px_34px]
+                rounded-[24px_24px_70px_24px]
 
                 border
                 border-[#DCE6ED]
+
                 bg-[#F5F9FC]
 
-                shadow-[0_30px_75px_rgba(11,42,82,0.075)]
+                shadow-[0_24px_60px_rgba(11,42,82,0.07)]
 
-                sm:rounded-[42px_42px_135px_42px]
+                sm:rounded-[30px_30px_90px_30px]
+
+                lg:rounded-[36px_36px_105px_36px]
+
+                2xl:rounded-[42px_42px_125px_42px]
               "
             >
               <Image
@@ -555,21 +638,32 @@ export default function AiAutomationHero() {
                 width={1536}
                 height={1024}
                 priority
+                sizes="
+                  (max-width: 639px) 92vw,
+                  (max-width: 1279px) 680px,
+                  (max-width: 1535px) 560px,
+                  680px
+                "
                 className="
                   h-auto
                   w-full
                   object-cover
+
+                  xl:max-h-[390px]
+                  xl:object-contain
+
+                  2xl:max-h-[470px]
                 "
               />
-
-              {/* SOFT INNER EDGE */}
 
               <div
                 className="
                   pointer-events-none
                   absolute
                   inset-0
+
                   rounded-[inherit]
+
                   ring-1
                   ring-inset
                   ring-white/80
@@ -577,20 +671,63 @@ export default function AiAutomationHero() {
               />
             </div>
 
-            {/* FLOATING NOTE */}
+            {/* SMALL META */}
 
+            <div
+              className="
+                mt-5
+                flex
+                items-center
+                justify-between
+                gap-4
 
-            {/* SMALL TOP META */}
+                px-1
 
-         
+                sm:mt-6
+              "
+            >
+              <div className="flex items-center gap-2.5">
+                <span className="h-[6px] w-[6px] rounded-full bg-[#B18458]" />
+
+                <span
+                  style={newYorkFont}
+                  className="
+                    text-[6px]
+                    uppercase
+                    tracking-[0.21em]
+                    text-[#0B2A52]/40
+
+                    sm:text-[7px]
+                  "
+                >
+                  CONNECTED SYSTEMS
+                </span>
+              </div>
+
+              <div className="flex items-center gap-2">
+                <Sparkles
+                  size={11}
+                  strokeWidth={1.4}
+                  className="text-[#B18458]"
+                />
+
+                <span
+                  style={newYorkFont}
+                  className="
+                    text-[6px]
+                    uppercase
+                    tracking-[0.21em]
+                    text-[#0B2A52]/40
+
+                    sm:text-[7px]
+                  "
+                >
+                  LESS FRICTION
+                </span>
+              </div>
+            </div>
           </motion.div>
         </div>
-
-        {/* =====================================================
-            BOTTOM DIVIDER
-        ===================================================== */}
-
-        
       </div>
     </section>
   );
