@@ -226,9 +226,16 @@ function PlanButton({
   const isGrowth = planName === "Growth";
   const isScale = planName === "Scale";
 
+  const planHref =
+    planName === "Starter"
+      ? "/contact?service=social-media-marketing&plan=starter"
+      : planName === "Growth"
+      ? "/contact?service=social-media-marketing&plan=growth"
+      : "/contact?service=social-media-marketing&plan=scale";
+
   return (
     <Link
-      href="/contact"
+      href={planHref}
       className={`
         group/button
 
@@ -836,69 +843,14 @@ export default function SocialMediaPricing() {
 
                   {/* PRICE */}
 
-                  <div
-                    className="
-                      mt-5
+                
+                    
 
-                      border-y
-                      border-[#DCE6EF]
+                    
 
-                      py-5
-                    "
-                  >
-                    <p
-                      className="
-                        text-[8px]
-                        font-semibold
-                        uppercase
-                        tracking-[0.19em]
-                        text-[#8093A8]
-                      "
-                    >
-                      Starting From
-                    </p>
-
-                    <div
-                      className="
-                        mt-2
-
-                        flex
-                        flex-wrap
-                        items-end
-
-                        gap-x-2
-                        gap-y-1
-                      "
-                    >
-                      <span
-                        style={newYorkFont}
-                        className="
-                          text-[34px]
-                          font-medium
-                          leading-none
-                          tracking-[-0.04em]
-                          text-[#0B2A52]
-
-                          sm:text-[36px]
-                          xl:text-[38px]
-                        "
-                      >
-                        {plan.price}
-                      </span>
-
-                      <span
-                        className="
-                          pb-1
-
-                          text-[11px]
-                          font-medium
-                          text-[#7B90A6]
-                        "
-                      >
-                        / month
-                      </span>
-                    </div>
-                  </div>
+                      
+               
+                
 
                   {/* INCLUDED */}
 
@@ -1262,7 +1214,7 @@ export default function SocialMediaPricing() {
 
             <div className="shrink-0">
               <GlassButton
-                href="/contact"
+                href="/contact?service=social-media-marketing&need=custom-plan"
                 label="Get a Custom Proposal"
               />
             </div>
@@ -1460,7 +1412,7 @@ export default function SocialMediaPricing() {
 
               <div className="shrink-0">
                 <GlassButton
-                  href="/contact"
+             href="/contact?service=social-media-marketing"
                   label="Talk About My Social Media"
                 />
               </div>

@@ -211,6 +211,7 @@ export default function HowWeWork() {
 
   return (
     <section
+      id="how-we-work"
       ref={sectionRef}
       className="relative w-full overflow-hidden bg-white"
     >

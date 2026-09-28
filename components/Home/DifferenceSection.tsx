@@ -799,19 +799,6 @@ export default function DifferenceSection() {
 
                     {/* number */}
 
-                    <span
-                      className="
-                        mt-7
-                        block
-                        text-[0.4rem]
-                        font-semibold
-                        uppercase
-                        tracking-[0.2em]
-                        text-[#B08A62]
-                      "
-                    >
-                      {step.number}
-                    </span>
 
                     {/* title */}
 
@@ -1095,23 +1082,7 @@ export default function DifferenceSection() {
               >
                 <span className="h-px flex-1 bg-[#D8E3E9]" />
 
-                <span
-                  className="
-                    flex
-                    h-8
-                    w-8
-                    items-center
-                    justify-center
-                    rounded-full
-                    bg-[#0B2A52]
-                    text-white
-                  "
-                >
-                  <ArrowRight
-                    size={11}
-                    strokeWidth={1.8}
-                  />
-                </span>
+               
               </div>
             </div>
           </div>

@@ -760,52 +760,7 @@ function SocialCard({
           "
         />
 
-        {/* INSTAGRAM LABEL */}
-
-        <div
-          className="
-            absolute
-            left-4
-            top-4
-
-            flex
-            items-center
-            gap-2
-
-            rounded-full
-
-            border
-            border-white/80
-
-            bg-white/95
-
-            px-3
-            py-2
-
-            shadow-[0_5px_18px_rgba(11,42,82,0.08)]
-
-            sm:left-5
-            sm:top-5
-          "
-        >
-          <Camera
-            size={13}
-            strokeWidth={1.6}
-            className="text-[#B79A72]"
-          />
-
-          <span
-            className="
-              text-[8px]
-              font-semibold
-              uppercase
-              tracking-[0.14em]
-              text-[#0B2A52]
-            "
-          >
-            Instagram
-          </span>
-        </div>
+     
       </div>
 
       {/* =====================================================

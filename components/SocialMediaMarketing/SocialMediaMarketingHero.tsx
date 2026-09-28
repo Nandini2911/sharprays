@@ -413,118 +413,90 @@ export default function SocialMediaMarketingHero() {
               {/* =================================================
                   PRIMARY BUTTON
               ================================================== */}
+<Link
+  href="#social-media-process"
+  onClick={(e) => {
+    e.preventDefault();
 
-              <Link
-                href="/contact"
-                className="
-                  group
-                  relative
+    const section = document.getElementById("social-media-process");
 
-                  inline-flex
+    if (section) {
+      section.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  }}
+  className="
+    group
+    relative
+    inline-flex
+    min-h-[44px]
+    items-center
+    justify-center
+    overflow-hidden
+    rounded-[16px]
+    border
+    border-[#6285AD]/30
+    bg-white/80
+    px-4
+    py-[10px]
+    text-[12px]
+    font-medium
+    tracking-[-0.01em]
+    text-[#0B2A52]
+    shadow-[0_8px_30px_rgba(11,42,82,0.08)]
+    backdrop-blur-[8px]
+    transition-all
+    duration-300
+    ease-out
+    hover:-translate-y-[2px]
+    hover:border-[#6285AD]/40
+    hover:bg-white
+    hover:shadow-[0_10px_35px_rgba(98,133,173,0.15)]
+    active:translate-y-0
+    min-[375px]:min-h-[46px]
+    min-[375px]:px-5
+    min-[375px]:py-[11px]
+    min-[375px]:text-[13px]
+    sm:min-h-[48px]
+    sm:px-6
+    sm:py-3
+    sm:text-[14px]
+    md:text-[15px]
+  "
+>
+  <span
+    aria-hidden="true"
+    className="
+      pointer-events-none
+      absolute
+      inset-[2px]
+      rounded-[13px]
+      border
+      border-white/60
+    "
+  />
 
-                  min-h-[44px]
+  <span
+    aria-hidden="true"
+    className="
+      pointer-events-none
+      absolute
+      inset-x-4
+      top-0
+      h-px
+      bg-gradient-to-r
+      from-transparent
+      via-white
+      to-transparent
+    "
+  />
 
-                  items-center
-                  justify-center
-
-                  overflow-hidden
-
-                  rounded-[16px]
-
-                  border
-                  border-[#6285AD]/30
-
-                  bg-white/80
-
-                  px-4
-                  py-[10px]
-
-                  text-[12px]
-                  font-medium
-
-                  tracking-[-0.01em]
-
-                  text-[#0B2A52]
-
-                  shadow-[0_8px_30px_rgba(11,42,82,0.08)]
-
-                  backdrop-blur-[8px]
-
-                  transition-all
-                  duration-300
-                  ease-out
-
-                  hover:-translate-y-[2px]
-                  hover:border-[#6285AD]/40
-                  hover:bg-white
-                  hover:shadow-[0_10px_35px_rgba(98,133,173,0.15)]
-
-                  active:translate-y-0
-
-                  min-[375px]:min-h-[46px]
-                  min-[375px]:px-5
-                  min-[375px]:py-[11px]
-                  min-[375px]:text-[13px]
-
-                  sm:min-h-[48px]
-                  sm:px-6
-                  sm:py-3
-                  sm:text-[14px]
-
-                  md:text-[15px]
-                "
-              >
-                {/* STATIC SOFT INNER BORDER */}
-
-                <span
-                  aria-hidden="true"
-                  className="
-                    pointer-events-none
-                    absolute
-                    inset-[2px]
-
-                    rounded-[13px]
-
-                    border
-                    border-white/60
-                  "
-                />
-
-                {/* SUBTLE TOP LIGHT */}
-
-                <span
-                  aria-hidden="true"
-                  className="
-                    pointer-events-none
-                    absolute
-
-                    inset-x-4
-                    top-0
-
-                    h-px
-
-                    bg-gradient-to-r
-                    from-transparent
-                    via-white
-                    to-transparent
-                  "
-                />
-
-                {/* TEXT */}
-
-                <span
-                  className="
-                    relative
-                    z-10
-
-                    whitespace-nowrap
-
-                    text-[#0B2A52]
-                  "
-                >
-                  Build My Social Presence
-                </span>
-              </Link>
+  <span className="relative z-10 whitespace-nowrap text-[#0B2A52]">
+    Explore Our Approach
+  </span>
+</Link>
 
               {/* =================================================
                   SECONDARY BUTTON
@@ -638,7 +610,7 @@ export default function SocialMediaMarketingHero() {
                     text-[#0B2A52]
                   "
                 >
-                  Explore Our Approach
+                Build My Social Presence
                 </span>
               </a>
             </div>
@@ -687,25 +659,6 @@ export default function SocialMediaMarketingHero() {
                 "
               />
 
-              <p
-                className="
-                  text-[6.5px]
-                  font-medium
-
-                  tracking-[0.12em]
-
-                  text-[#0B2A52]/40
-
-                  min-[360px]:text-[7px]
-
-                  sm:text-[8px]
-                  sm:tracking-[0.16em]
-
-                  md:tracking-[0.19em]
-                "
-              >
-                STRATEGY · CONTENT · COMMUNITY · GROWTH
-              </p>
             </div>
           </div>
 
@@ -887,44 +840,7 @@ export default function SocialMediaMarketingHero() {
           BOTTOM SCROLL INDICATOR
       ========================================================== */}
 
-      <div
-        className={`
-          absolute
-
-          bottom-6
-          left-1/2
-          z-20
-
-          hidden
-          -translate-x-1/2
-
-          items-center
-
-          gap-3
-
-          transition-all
-          delay-700
-          duration-1000
-
-          md:flex
-
-          ${
-            isVisible
-              ? "translate-y-0 opacity-100"
-              : "translate-y-5 opacity-0"
-          }
-        `}
-      >
-        
-
-        <ArrowDown
-          size={11}
-          className="
-            animate-bounce
-            text-[#B79A72]
-          "
-        />
-      </div>
+    
     </section>
   );
 }

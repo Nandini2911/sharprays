@@ -149,23 +149,21 @@ export default function FirstConversationToCampaign() {
   }, []);
 
   return (
-    <section
-      ref={sectionRef}
-      aria-labelledby={`${id}-heading`}
-      className="
-        relative
-        overflow-hidden
-
-        bg-white
-
-        py-20
-
-        text-[#0B2A52]
-
-        sm:py-24
-        lg:py-28
-      "
-    >
+   <section
+  id="social-media-process"
+  ref={sectionRef}
+  aria-labelledby={`${id}-heading`}
+  className="
+    relative
+    scroll-mt-24
+    overflow-hidden
+    bg-white
+    py-20
+    text-[#0B2A52]
+    sm:py-24
+    lg:py-28
+  "
+>
       {/* =====================================================
           BRAND ATMOSPHERE
           NAVY DOMINANT + RESTRAINED GOLD
@@ -947,65 +945,9 @@ export default function FirstConversationToCampaign() {
                     >
                       {/* STEP TEXT */}
 
-                      <span
-                        className="
-                          text-[8px]
-                          font-medium
+                     
 
-                          uppercase
-
-                          tracking-[0.16em]
-
-                          text-[#0B2A52]/40
-                        "
-                      >
-                        Step {index + 1} of 4
-                      </span>
-
-                      {/* ARROW */}
-
-                      <span
-                        className="
-                          flex
-
-                          h-9
-                          w-9
-
-                          items-center
-                          justify-center
-
-                          rounded-full
-
-                          border
-                          border-[#0B2A52]/[0.12]
-
-                          bg-white
-
-                          text-[#0B2A52]
-
-                          shadow-[0_10px_22px_-18px_rgba(11,42,82,0.32)]
-
-                          transition-all
-
-                          duration-500
-
-                          group-hover:rotate-45
-
-                          group-hover:border-[#B79A72]
-
-                          group-hover:bg-[#0B2A52]
-
-                          group-hover:text-white
-
-                          group-hover:shadow-[0_14px_28px_-17px_rgba(11,42,82,0.40)]
-                        "
-                      >
-                        <ArrowUpRight
-                          size={14}
-                          strokeWidth={1.4}
-                          aria-hidden="true"
-                        />
-                      </span>
+                     
                     </div>
                   </div>
                 </article>

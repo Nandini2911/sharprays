@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import {
   Bot,
@@ -34,8 +34,41 @@ const services = [
   "Performance Marketing",
   "Website Development",
   "AI Video & Video Editing",
+  "AI Automation",
   "Not Sure Yet",
 ];
+
+const serviceQueryMap: Record<string, string> = {
+  "social-media-marketing": "Social Media Marketing",
+  seo: "SEO",
+  "content-marketing": "Content Marketing",
+  "performance-marketing": "Performance Marketing",
+  "website-development": "Website Development",
+  "ai-video-editing": "AI Video & Video Editing",
+  "ai-automation": "AI Automation",
+};
+
+const needQueryMap: Record<string, string> = {
+  "platform-strategy": "Platform Strategy",
+  "social-media-management": "Social Media Management",
+  "content-strategy": "Content Strategy",
+  "content-creation": "Content Creation",
+  "seo-strategy": "SEO Strategy",
+  "paid-media": "Paid Media",
+  "website-project": "Website Development",
+  "video-editing": "Video Editing",
+  "workflow-automation": "Workflow Automation",
+  "custom-plan": "Custom Plan",
+};
+
+const planQueryMap: Record<string, string> = {
+  starter: "Starter Plan",
+  basic: "Basic Plan",
+  growth: "Growth Plan",
+  pro: "Pro Plan",
+  scale: "Scale Plan",
+  premium: "Premium Plan",
+};
 
 const problemRoutes = [
   {
@@ -234,7 +267,41 @@ export default function ContactPage() {
   const reduceMotion = Boolean(useReducedMotion());
 
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
+  const [enquiryContext, setEnquiryContext] = useState("");
   const [openFaq, setOpenFaq] = useState<number | null>(0);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+
+    const serviceParam = params.get("service");
+    const needParam = params.get("need");
+    const planParam = params.get("plan");
+
+    if (serviceParam) {
+      const serviceName = serviceQueryMap[serviceParam];
+
+      if (serviceName) {
+        setSelectedServices([serviceName]);
+      }
+    }
+
+    if (needParam && needQueryMap[needParam]) {
+      setEnquiryContext(needQueryMap[needParam]);
+    } else if (planParam && planQueryMap[planParam]) {
+      setEnquiryContext(planQueryMap[planParam]);
+    }
+
+    if (serviceParam || needParam || planParam) {
+      const timer = window.setTimeout(() => {
+        document.getElementById("contact-form")?.scrollIntoView({
+          behavior: reduceMotion ? "auto" : "smooth",
+          block: "start",
+        });
+      }, 250);
+
+      return () => window.clearTimeout(timer);
+    }
+  }, [reduceMotion]);
 
   const fadeUp = {
     hidden: {
@@ -291,288 +358,556 @@ export default function ContactPage() {
           SECTION 01 — HERO
       ===================================================== */}
 
-      <section
+     <section
+  className="
+    relative
+    isolate
+    overflow-hidden
+    bg-white
+
+    pb-16
+    pt-24
+
+    sm:pb-20
+    sm:pt-28
+
+    md:pb-24
+    md:pt-32
+
+    lg:min-h-[82vh]
+    lg:pb-28
+    lg:pt-36
+  "
+>
+  {/* =====================================================
+      BACKGROUND
+  ===================================================== */}
+
+  <div
+    aria-hidden="true"
+    className="
+      pointer-events-none
+      absolute
+      inset-0
+      -z-20
+      overflow-hidden
+    "
+  >
+    {/* TOP BLUE GLOW */}
+
+    <div
+      className="
+        absolute
+        left-1/2
+        top-[-260px]
+
+        h-[500px]
+        w-[760px]
+
+        -translate-x-1/2
+
+        rounded-full
+
+        bg-[#EDF5FB]
+
+        blur-[130px]
+
+        sm:top-[-320px]
+        sm:h-[620px]
+        sm:w-[1000px]
+
+        lg:top-[-360px]
+        lg:h-[720px]
+        lg:w-[1250px]
+        lg:blur-[165px]
+      "
+    />
+
+    {/* SOFT GOLD GLOW */}
+
+    <div
+      className="
+        absolute
+        -right-[180px]
+        bottom-[-120px]
+
+        h-[330px]
+        w-[330px]
+
+        rounded-full
+
+        bg-[#FBF4EA]
+
+        blur-[100px]
+
+        sm:h-[390px]
+        sm:w-[390px]
+
+        lg:-right-[210px]
+        lg:bottom-[-100px]
+        lg:h-[450px]
+        lg:w-[450px]
+        lg:blur-[120px]
+      "
+    />
+
+    {/* VERY SOFT LEFT DETAIL */}
+
+    <div
+      className="
+        absolute
+        -left-[180px]
+        top-[42%]
+
+        h-[320px]
+        w-[320px]
+
+        rounded-full
+
+        bg-[#EEF5FA]/70
+
+        blur-[115px]
+      "
+    />
+  </div>
+
+  {/* =====================================================
+      CONTENT
+  ===================================================== */}
+
+  <div
+    className="
+      relative
+      z-10
+
+      mx-auto
+      flex
+      w-full
+      max-w-[1240px]
+
+      items-center
+      justify-center
+
+      px-4
+
+      sm:px-6
+      md:px-8
+      lg:px-12
+      xl:px-14
+    "
+  >
+    {/* =====================================================
+        HERO COPY
+    ===================================================== */}
+
+    <motion.div
+      variants={stagger}
+      initial="hidden"
+      animate="visible"
+      className="
+        mx-auto
+        w-full
+        max-w-[880px]
+
+        text-center
+      "
+    >
+      {/* EYEBROW */}
+
+      <motion.div variants={fadeUp}>
+        <Eyebrow centered>Let&apos;s Talk</Eyebrow>
+      </motion.div>
+
+      {/* HEADING */}
+
+      <motion.h1
+        variants={fadeUp}
         className="
-          relative
-          isolate
-          overflow-hidden
-          bg-white
-          pb-16
-          pt-24
-          sm:pb-20
-          sm:pt-28
-          md:pb-24
-          md:pt-32
-          lg:min-h-[82vh]
-          lg:pb-28
-          lg:pt-36
+          mx-auto
+          mt-5
+          max-w-[840px]
+
+          font-serif
+
+          text-[2.2rem]
+          font-normal
+          leading-[1.03]
+          tracking-[-0.05em]
+
+          text-[#0B2A52]
+
+          sm:mt-6
+          sm:text-[2.6rem]
+
+          md:text-[2.95rem]
+
+          lg:text-[3.1rem]
+
+          xl:text-[3.35rem]
         "
       >
-        {/* BACKGROUND */}
+        Tell Us What You&apos;re Trying to{" "}
+        <span className="italic text-[#A97C52]">
+          Improve.
+        </span>
+      </motion.h1>
 
-        <div className="pointer-events-none absolute inset-0 -z-20">
-          <div
-            className="
-              absolute
-              left-1/2
-              top-[-360px]
-              h-[720px]
-              w-[1250px]
-              -translate-x-1/2
-              rounded-full
-              bg-[#EDF5FB]
-              blur-[165px]
-            "
-          />
+      {/* COPY */}
 
-          <div
-            className="
-              absolute
-              -right-[210px]
-              bottom-[-100px]
-              h-[450px]
-              w-[450px]
-              rounded-full
-              bg-[#FBF4EA]
-              blur-[120px]
-            "
-          />
-        </div>
+      <motion.div
+        variants={fadeUp}
+        className="
+          mx-auto
+          mt-5
+          max-w-[680px]
 
-        <div
+          space-y-1.5
+
+          font-serif
+          text-[0.9rem]
+          leading-[1.7]
+
+          text-[#5F7488]
+
+          sm:mt-6
+          sm:space-y-2
+          sm:text-[1rem]
+          sm:leading-[1.75]
+        "
+      >
+        <p>You do not need a perfect brief.</p>
+
+        <p>
+          You do not need to know exactly which service you need.
+        </p>
+
+        <p className="pt-1.5 sm:pt-2">
+          Tell us what you are trying to achieve, what feels unclear or
+          what is currently not working.
+        </p>
+
+        <p className="font-medium text-[#0B2A52]">
+          We&apos;ll start there.
+        </p>
+      </motion.div>
+
+      {/* =====================================================
+          CTA BUTTONS
+      ===================================================== */}
+
+      <motion.div
+        variants={fadeUp}
+        className="
+          mx-auto
+          mt-7
+
+          flex
+          w-full
+          max-w-[430px]
+
+          flex-row
+          flex-nowrap
+
+          items-center
+          justify-center
+
+          gap-2
+
+          sm:mt-8
+          sm:max-w-none
+          sm:gap-3
+        "
+      >
+        {/* PRIMARY BUTTON */}
+
+        <a
+          href="#contact-form"
+          style={newYorkFont}
           className="
-            mx-auto
-            flex
-            w-full
-            max-w-[1240px]
+            group
+            relative
+
+            inline-flex
+
+            min-h-[44px]
+            min-w-0
+            flex-1
+
             items-center
             justify-center
-            px-4
+
+            overflow-hidden
+
+            rounded-[16px]
+
+            border
+            border-[#6285AD]/30
+
+            bg-white/80
+
+            px-3
+            py-[10px]
+
+            text-[10px]
+            font-medium
+            tracking-[-0.01em]
+
+            text-[#0B2A52]
+
+            shadow-[0_8px_30px_rgba(11,42,82,0.08)]
+
+            backdrop-blur-[8px]
+
+            transition-all
+            duration-300
+            ease-out
+
+            hover:-translate-y-[2px]
+            hover:border-[#6285AD]/40
+            hover:bg-white
+            hover:shadow-[0_10px_35px_rgba(98,133,173,0.15)]
+
+            active:translate-y-0
+
+            sm:min-h-[48px]
+            sm:flex-none
             sm:px-6
-            md:px-8
-            lg:px-12
-            xl:px-14
+            sm:py-3
+            sm:text-[14px]
+
+            md:text-[15px]
           "
         >
-          {/* HERO COPY */}
+          {/* INNER BORDER */}
 
-          <motion.div
-            variants={stagger}
-            initial="hidden"
-            animate="visible"
-            className="mx-auto w-full max-w-[860px] text-center"
+          <span
+            className="
+              pointer-events-none
+              absolute
+              inset-[2px]
+
+              rounded-[13px]
+
+              border
+              border-white/60
+            "
+          />
+
+          {/* TOP LIGHT */}
+
+          <span
+            className="
+              pointer-events-none
+              absolute
+              inset-x-4
+              top-0
+
+              h-px
+
+              bg-gradient-to-r
+              from-transparent
+              via-white
+              to-transparent
+            "
+          />
+
+          {/* TEXT */}
+
+          <span
+            className="
+              relative
+              z-10
+
+              whitespace-nowrap
+
+              text-[#0B2A52]
+            "
           >
-            <motion.div variants={fadeUp}>
-              <Eyebrow centered>Let&apos;s Talk</Eyebrow>
-            </motion.div>
+            Start the Conversation
+          </span>
+        </a>
 
-            <motion.h1
-              variants={fadeUp}
+        {/* SECONDARY BUTTON */}
+
+        <a
+          href="#services"
+          style={newYorkFont}
+          className="
+            group
+            relative
+
+            inline-flex
+
+            min-h-[44px]
+            min-w-0
+            flex-1
+
+            items-center
+            justify-center
+
+            overflow-hidden
+
+            rounded-[16px]
+
+            border
+            border-[#6285AD]/30
+
+            bg-white/80
+
+            px-3
+            py-[10px]
+
+            text-[10px]
+            font-medium
+            tracking-[-0.01em]
+
+            text-[#0B2A52]
+
+            shadow-[0_8px_30px_rgba(11,42,82,0.08)]
+
+            backdrop-blur-[8px]
+
+            transition-all
+            duration-300
+            ease-out
+
+            hover:-translate-y-[2px]
+            hover:border-[#6285AD]/40
+            hover:bg-white
+            hover:shadow-[0_10px_35px_rgba(98,133,173,0.15)]
+
+            active:translate-y-0
+
+            sm:min-h-[48px]
+            sm:flex-none
+            sm:px-6
+            sm:py-3
+            sm:text-[14px]
+
+            md:text-[15px]
+          "
+        >
+          {/* INNER BORDER */}
+
+          <span
+            className="
+              pointer-events-none
+              absolute
+              inset-[2px]
+
+              rounded-[13px]
+
+              border
+              border-white/60
+            "
+          />
+
+          {/* TOP LIGHT */}
+
+          <span
+            className="
+              pointer-events-none
+              absolute
+              inset-x-4
+              top-0
+
+              h-px
+
+              bg-gradient-to-r
+              from-transparent
+              via-white
+              to-transparent
+            "
+          />
+
+          {/* TEXT */}
+
+          <span
+            className="
+              relative
+              z-10
+
+              whitespace-nowrap
+
+              text-[#0B2A52]
+            "
+          >
+            Explore Our Services
+          </span>
+        </a>
+      </motion.div>
+
+      {/* =====================================================
+          SUPPORTING LINE
+      ===================================================== */}
+
+      <motion.div
+        variants={fadeUp}
+        className="
+          mt-7
+
+          flex
+          flex-wrap
+
+          items-center
+          justify-center
+
+          gap-x-2.5
+          gap-y-2
+
+          sm:mt-9
+          sm:gap-x-3
+        "
+      >
+        {["Ask", "Understand", "Plan", "Move"].map(
+          (item, index) => (
+            <div
+              key={item}
               className="
-                mt-6
-                mx-auto
-                max-w-[820px]
-                font-serif
-                text-[2.3rem]
-                font-normal
-                leading-[1.03]
-                tracking-[-0.05em]
-                text-[#0B2A52]
-                sm:text-[2.6rem]
-                md:text-[2.95rem]
-                lg:text-[3.1rem]
-                xl:text-[3.35rem]
-              "
-            >
-              Tell Us What You&apos;re Trying to{" "}
-              <span className="italic text-[#A97C52]">
-                Improve.
-              </span>
-            </motion.h1>
-
-            <motion.div
-              variants={fadeUp}
-              className="
-                mx-auto
-                mt-6
-                max-w-[680px]
-                space-y-2
-                font-serif
-                text-[0.95rem]
-                leading-[1.75]
-                text-[#5F7488]
-                sm:text-[1rem]
-              "
-            >
-              <p>You do not need a perfect brief.</p>
-              <p>You do not need to know exactly which service you need.</p>
-
-              <p className="pt-2">
-                Tell us what you are trying to achieve, what feels unclear or
-                what is currently not working.
-              </p>
-
-              <p className="font-medium text-[#0B2A52]">
-                We&apos;ll start there.
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={fadeUp}
-              className="
-                mx-auto
-                mt-8
                 flex
-                w-full
-                max-w-[430px]
-                flex-row
-                flex-nowrap
                 items-center
-                justify-center
-                gap-2
-                sm:max-w-none
+                gap-2.5
+
                 sm:gap-3
               "
             >
-              <a
-                href="#contact-form"
-                style={newYorkFont}
+              <span
                 className="
-                  group
-                  relative
-                  inline-flex
-                  min-h-[44px]
-                  min-w-0
-                  flex-1
-                  items-center
-                  justify-center
-                  overflow-hidden
-                  rounded-[16px]
-                  border
-                  border-[#6285AD]/30
-                  bg-white/80
-                  px-3
-                  py-[10px]
-                  text-[10px]
-                  font-medium
-                  tracking-[-0.01em]
-                  text-[#0B2A52]
-                  shadow-[0_8px_30px_rgba(11,42,82,0.08)]
-                  backdrop-blur-[8px]
-                  transition-all
-                  duration-300
-                  ease-out
-                  hover:-translate-y-[2px]
-                  hover:border-[#6285AD]/40
-                  hover:bg-white
-                  hover:shadow-[0_10px_35px_rgba(98,133,173,0.15)]
-                  active:translate-y-0
-                  sm:min-h-[48px]
-                  sm:flex-none
-                  sm:px-6
-                  sm:py-3
-                  sm:text-[14px]
-                  md:text-[15px]
+                  text-[0.42rem]
+                  font-semibold
+                  uppercase
+                  tracking-[0.16em]
+
+                  text-[#6D8193]
+
+                  sm:text-[0.45rem]
+                  sm:tracking-[0.19em]
                 "
               >
-                <span className="pointer-events-none absolute inset-[2px] rounded-[13px] border border-white/60" />
-                <span className="pointer-events-none absolute inset-x-4 top-0 h-px bg-gradient-to-r from-transparent via-white to-transparent" />
-                <span className="relative z-10 whitespace-nowrap text-[#0B2A52]">
-                  Start the Conversation
-                </span>
-              </a>
+                {item}
+              </span>
 
-              <a
-                href="#services"
-                style={newYorkFont}
-                className="
-                  group
-                  relative
-                  inline-flex
-                  min-h-[44px]
-                  min-w-0
-                  flex-1
-                  items-center
-                  justify-center
-                  overflow-hidden
-                  rounded-[16px]
-                  border
-                  border-[#6285AD]/30
-                  bg-white/80
-                  px-3
-                  py-[10px]
-                  text-[10px]
-                  font-medium
-                  tracking-[-0.01em]
-                  text-[#0B2A52]
-                  shadow-[0_8px_30px_rgba(11,42,82,0.08)]
-                  backdrop-blur-[8px]
-                  transition-all
-                  duration-300
-                  ease-out
-                  hover:-translate-y-[2px]
-                  hover:border-[#6285AD]/40
-                  hover:bg-white
-                  hover:shadow-[0_10px_35px_rgba(98,133,173,0.15)]
-                  active:translate-y-0
-                  sm:min-h-[48px]
-                  sm:flex-none
-                  sm:px-6
-                  sm:py-3
-                  sm:text-[14px]
-                  md:text-[15px]
-                "
-              >
-                <span className="pointer-events-none absolute inset-[2px] rounded-[13px] border border-white/60" />
-                <span className="pointer-events-none absolute inset-x-4 top-0 h-px bg-gradient-to-r from-transparent via-white to-transparent" />
-                <span className="relative z-10 whitespace-nowrap text-[#0B2A52]">
-                  Explore Our Services
-                </span>
-              </a>
-            </motion.div>
+              {index !== 3 && (
+                <span
+                  className="
+                    h-1
+                    w-1
 
-            <motion.div
-              variants={fadeUp}
-              className="
-                mt-8
-                flex
-                flex-wrap
-                items-center
-                justify-center
-                gap-3
-              "
-            >
-              {["Ask", "Understand", "Plan", "Move"].map(
-                (item, index) => (
-                  <div
-                    key={item}
-                    className="flex items-center gap-3"
-                  >
-                    <span
-                      className="
-                        text-[0.43rem]
-                        font-semibold
-                        uppercase
-                        tracking-[0.19em]
-                        text-[#6D8193]
-                      "
-                    >
-                      {item}
-                    </span>
+                    shrink-0
 
-                    {index !== 3 && (
-                      <span className="h-1 w-1 rounded-full bg-[#B79A72]" />
-                    )}
-                  </div>
-                ),
+                    rounded-full
+
+                    bg-[#B79A72]
+                  "
+                />
               )}
-            </motion.div>
-          </motion.div>
-
-         
-         
-        </div>
-      </section>
+            </div>
+          ),
+        )}
+      </motion.div>
+    </motion.div>
+  </div>
+</section>
 
       {/* =====================================================
           SECTION 02 — CONTACT FORM
@@ -582,6 +917,7 @@ export default function ContactPage() {
         id="contact-form"
         className="
           relative
+          scroll-mt-24
           overflow-hidden
           bg-[#F8FAFC]
           py-16
@@ -717,6 +1053,18 @@ export default function ContactPage() {
               md:p-8
             "
           >
+            <input
+              type="hidden"
+              name="selectedServices"
+              value={selectedServices.join(", ")}
+            />
+
+            <input
+              type="hidden"
+              name="enquiryContext"
+              value={enquiryContext}
+            />
+
             {/* BASIC FIELDS */}
 
             <div className="grid gap-5 md:grid-cols-2">
@@ -864,6 +1212,36 @@ export default function ContactPage() {
                 Select one or more.
               </p>
 
+              {enquiryContext && (
+                <div
+                  className="
+                    mt-4
+                    rounded-[14px]
+                    border
+                    border-[#B79A72]/30
+                    bg-[#FBF7F1]
+                    px-4
+                    py-3
+                  "
+                >
+                  <span
+                    className="
+                      text-[0.46rem]
+                      font-semibold
+                      uppercase
+                      tracking-[0.18em]
+                      text-[#92745C]
+                    "
+                  >
+                    You&apos;re enquiring about
+                  </span>
+
+                  <p className="mt-1 font-serif text-[0.85rem] text-[#0B2A52]">
+                    {enquiryContext}
+                  </p>
+                </div>
+              )}
+
               <div
                 className="
                   mt-4
@@ -879,6 +1257,7 @@ export default function ContactPage() {
                     <button
                       key={service}
                       type="button"
+                      aria-pressed={selected}
                       onClick={() => toggleService(service)}
                       style={newYorkFont}
                       className={`
@@ -896,7 +1275,6 @@ export default function ContactPage() {
                         text-[11px]
                         font-medium
                         tracking-[-0.01em]
-                        text-[#0B2A52]
                         shadow-[0_7px_24px_rgba(11,42,82,0.065)]
                         backdrop-blur-[8px]
                         transition-all
@@ -909,14 +1287,25 @@ export default function ContactPage() {
 
                         ${
                           selected
-                            ? "border-[#6285AD]/45 bg-[#EEF5FA]"
-                            : "border-[#6285AD]/30 bg-white/80 hover:border-[#6285AD]/40 hover:bg-white"
+                            ? "border-[#0B2A52] bg-[#0B2A52] text-white shadow-[0_10px_30px_rgba(11,42,82,0.18)]"
+                            : "border-[#6285AD]/30 bg-white/80 text-[#0B2A52] hover:border-[#6285AD]/40 hover:bg-white"
                         }
                       `}
                     >
-                      <span className="pointer-events-none absolute inset-[2px] rounded-[13px] border border-white/60" />
+                      <span
+                        className={`pointer-events-none absolute inset-[2px] rounded-[13px] border ${
+                          selected ? "border-white/15" : "border-white/60"
+                        }`}
+                      />
                       <span className="pointer-events-none absolute inset-x-3 top-0 h-px bg-gradient-to-r from-transparent via-white to-transparent" />
-                      <span className="relative z-10 whitespace-nowrap">
+
+                      <span className="relative z-10 flex items-center gap-2 whitespace-nowrap">
+                        {selected && (
+                          <span aria-hidden="true" className="text-white">
+                            ✓
+                          </span>
+                        )}
+
                         {service}
                       </span>
                     </button>

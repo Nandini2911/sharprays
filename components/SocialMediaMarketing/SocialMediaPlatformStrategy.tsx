@@ -891,7 +891,7 @@ export default function SocialMediaPlatformStrategy() {
 
                 <div className="mt-8">
                   <Link
-                    href="/contact"
+                    href="/contact?service=social-media-marketing&need=platform-strategy"
                     style={newYorkFont}
                     className="
                       group

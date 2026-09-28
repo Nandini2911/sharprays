@@ -10,6 +10,7 @@ import {
   Code2,
   Video,
   Brain,
+  FileText,
 } from "lucide-react";
 
 const BRAND = "#0B2A52";
@@ -21,129 +22,112 @@ const ease = [0.22, 1, 0.36, 1] as const;
    CONTENT UPDATED ONLY
    UI / STYLE / COLORS REMAIN SAME
 ========================================================= */
-
 const services = [
   {
     icon: Megaphone,
-
     title: "Social Media Marketing",
-
     slug: "/services/social-media-marketing",
-
     image: "/whatwedo/social-media1.png",
-
     description:
-      "Build a stronger and more recognizable social presence through strategy, content, publishing, community engagement, and ongoing social media management.",
-
+      "Build a stronger and more recognizable social presence through strategy, content planning, publishing, community engagement, and ongoing management.",
     items: [
       "Social Media Strategy",
       "Content Planning",
-      "Social Media Management",
+      "Publishing & Management",
       "Community Engagement",
     ],
   },
 
   {
     icon: Search,
-
     title: "Search Engine Optimization (SEO)",
-
     slug: "/services/search-engine-optimization",
-
     image: "/seo.webp",
-
     description:
-      "Improve your organic search visibility with technical SEO, keyword and search intent strategy, on-page optimization, content, and ongoing performance analysis.",
-
+      "Improve organic search visibility through technical SEO, search intent strategy, on-page optimization, internal linking, and continuous improvement.",
     items: [
       "Technical SEO",
-      "Keyword Strategy",
-      "On-Page SEO",
+      "Keyword & Intent Strategy",
+      "On-Page Optimization",
       "Organic Growth",
     ],
   },
 
   {
     icon: BarChart3,
-
     title: "Performance Marketing / Paid Media",
-
     slug: "/services/performance-marketing",
-
     image: "/whatwedo/performance-maketing.png",
-
     description:
-      "Generate measurable leads, sales, and business growth through paid advertising campaigns built around targeting, creative testing, tracking, and conversion performance.",
-
+      "Generate measurable leads and sales through paid campaigns built around targeting, creative testing, conversion tracking, and ongoing optimization.",
     items: [
       "Google Ads",
       "Meta Ads",
-      "Paid Social",
+      "Audience & Creative Testing",
       "Conversion Tracking",
     ],
   },
 
   {
     icon: Code2,
-
     title: "Website Development & Management",
-
     slug: "/services/website-development",
-
     image: "/whatwedo/web.png",
-
     description:
-      "Plan, design, develop, and manage responsive websites built for clearer user journeys, strong performance, search visibility, and meaningful business actions.",
-
+      "Plan, design, develop, and manage responsive websites built for clearer user journeys, strong performance, search visibility, and business growth.",
     items: [
       "Website Strategy",
       "UX / UI Design",
-      "Web Development",
+      "Website Development",
       "Website Management",
     ],
   },
 
   {
-    icon: Video,
-
-    title: "AI Video & Video Editing",
-
-    slug: "/services/video-and-creative",
-
-    image: "/whatwedo/video-creative.png",
-
+    icon: FileText,
+    title: "Content Management",
+    slug: "/services/content-marketing",
+    image: "/whatwedo/content-marketing.png",
     description:
-      "Create, edit, and adapt video content using modern production workflows, AI-assisted creative tools, motion, captions, and platform-ready post-production.",
-
+      "Keep your website and digital content organized, accurate, consistent, and up to date across pages, services, campaigns, and brand communication.",
     items: [
-      "AI Video Creation",
-      "Video Editing",
-      "Reels & Shorts",
-      "Motion & Graphics",
+      "Website Content Updates",
+      "Content Organization",
+      "Publishing & Maintenance",
+      "Content Quality Control",
     ],
   },
 
   {
     icon: Brain,
-
     title: "AI Automation",
-
     slug: "/services/ai-automation",
-
     image: "/whatwedo/ai.webp",
-
     description:
-      "Use practical AI automation to reduce repetitive work, connect marketing workflows, organize information, and help teams operate more efficiently.",
-
+      "Reduce repetitive work and connect everyday business processes through practical AI workflows, automation, and smarter information handling.",
     items: [
-      "Marketing Automation",
+      "Workflow Automation",
       "AI Workflows",
       "Lead Automation",
       "Process Automation",
     ],
   },
-];
 
+  {
+    icon: Video,
+    title: "AI Video & Video Editing",
+    slug: "/services/video-and-creative",
+    image: "/whatwedo/video-creative.png",
+    description:
+      "Create, edit, and adapt video content using AI-assisted production, professional editing, motion graphics, captions, and platform-ready workflows.",
+    items: [
+      "AI Video Creation",
+      "Professional Editing",
+      "Reels & Shorts",
+      "Motion & Graphics",
+    ],
+  },
+];
 /* =========================================================
    EACH CARD GETS ITS OWN ACCENT
    SAME COLORS — NOT CHANGED
@@ -169,21 +153,27 @@ const accents = [
   },
 
   {
-    border: "#E11D48",
-    soft: "#FFF1F2",
-    icon: "#E11D48",
+    border: "#2b7777",
+    soft: "#e7fcfc",
+    icon: "#2b7777",
+  },
+
+  {
+    border: "#f1636f",
+    soft: "#fde6ea",
+    icon: "#e54656",
+  },
+
+  {
+    border: "#5e6bf0",
+    soft: "#daeaff",
+    icon: "#679be8",
   },
 
   {
     border: "#0891B2",
     soft: "#ECFEFF",
     icon: "#0891B2",
-  },
-
-  {
-    border: "#0F766E",
-    soft: "#F0FDFA",
-    icon: "#0F766E",
   },
 ];
 
@@ -379,7 +369,7 @@ export default function ServicesSection() {
               xl:text-[3.35rem]
             "
             style={{
-              color: BRAND,
+              color: BRAND
             }}
           >
             Digital Marketing Services
@@ -427,7 +417,7 @@ export default function ServicesSection() {
           >
             SHARPRAYS helps businesses strengthen their digital presence through
             social media marketing, SEO, paid media, website development,
-            AI-powered video production, and practical AI automation.
+            AI-powered video production, AI automation, and ongoing content management.
           </motion.p>
         </motion.div>
 
@@ -455,8 +445,22 @@ export default function ServicesSection() {
               accents[index % accents.length];
 
             return (
-              <motion.article
+              <Link
                 key={service.slug}
+                href={service.slug}
+                aria-label={`Explore ${service.title}`}
+                className="
+                  block
+                  h-full
+                  rounded-[28px]
+
+                  focus-visible:outline-none
+                  focus-visible:ring-2
+                  focus-visible:ring-[#6285AD]/45
+                  focus-visible:ring-offset-4
+                "
+              >
+                <motion.article
                 initial={{
                   opacity: 0,
                   y: 65,
@@ -478,6 +482,8 @@ export default function ServicesSection() {
                   group
                   relative
                   flex
+                  h-full
+                  cursor-pointer
                   flex-col
                   overflow-hidden
                   rounded-[28px]
@@ -768,16 +774,17 @@ export default function ServicesSection() {
                       EXPLORE MORE
                   ================================================= */}
 
-                  <Link
-                    href={service.slug}
+                  <div
                     className="
                       mt-auto
                       flex
                       items-center
-                      gap-3
+                      gap-2.5
                       pt-5
+
                       text-[14px]
                       font-semibold
+
                       transition-all
                       duration-300
                     "
@@ -788,29 +795,19 @@ export default function ServicesSection() {
                     <span>Explore More</span>
 
                     <span
+                      aria-hidden="true"
                       className="
-                        flex
-                        h-8
-                        w-8
-                        items-center
-                        justify-center
-                        rounded-full
-                        border
-                        transition-all
+                        inline-block
+
+                        transition-transform
                         duration-300
 
                         group-hover:translate-x-1
                       "
-                      style={{
-                        borderColor:
-                          `${accent.border}45`,
-                      }}
                     >
-                      <span className="text-lg leading-none">
-                        →
-                      </span>
+                      →
                     </span>
-                  </Link>
+                  </div>
                 </motion.div>
 
                 {/* =================================================
@@ -831,6 +828,7 @@ export default function ServicesSection() {
                   }}
                 />
               </motion.article>
+              </Link>
             );
           })}
         </div>

@@ -50,50 +50,7 @@ export default function ComparisonSection() {
         xl:py-32
       "
     >
-      {/* =====================================================
-          BACKGROUND DETAILS
-      ===================================================== */}
-
-      <div
-        className="
-          pointer-events-none
-          absolute
-          left-1/2
-          top-[42%]
-          h-[420px]
-          w-[420px]
-          -translate-x-1/2
-          -translate-y-1/2
-          rounded-full
-          bg-[#DCEAF2]/35
-          blur-[110px]
-
-          sm:h-[520px]
-          sm:w-[520px]
-
-          lg:h-[680px]
-          lg:w-[680px]
-          lg:blur-[150px]
-        "
-      />
-
-      <div
-        className="
-          pointer-events-none
-          absolute
-          -left-[120px]
-          top-[20%]
-          h-[260px]
-          w-[260px]
-          rounded-full
-          bg-[#C6A77A]/[0.06]
-          blur-[90px]
-
-          lg:h-[380px]
-          lg:w-[380px]
-        "
-      />
-
+     
       {/* =====================================================
           MAIN CONTAINER
       ===================================================== */}

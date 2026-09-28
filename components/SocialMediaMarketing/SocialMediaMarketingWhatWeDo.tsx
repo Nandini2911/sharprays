@@ -691,19 +691,7 @@ export default function SocialMediaMarketingServices() {
 
                     {/* NUMBER */}
 
-                    <span
-                      className="
-                        text-[18px]
-                        font-medium
-                        leading-none
-                      "
-                      style={{
-                        ...newYorkFont,
-                        color: `${service.color}`,
-                      }}
-                    >
-                      {service.number}
-                    </span>
+                
                   </div>
 
                   {/* CATEGORY */}
@@ -906,98 +894,47 @@ export default function SocialMediaMarketingServices() {
                     }}
                   >
                     <Link
-                      href="/contact"
+                      href="/services/social-media-marketing"
                       style={newYorkFont}
                       className="
                         group/button
-                        relative
 
                         inline-flex
-                        min-h-[44px]
-
                         items-center
-                        justify-center
-                        overflow-hidden
-
-                        rounded-[14px]
-
-                        border
-                        border-[#6285AD]/30
-
-                        bg-white/80
-
-                        px-4
-                        py-[10px]
+                        gap-2
 
                         text-[12px]
-                        font-medium
+                        font-semibold
                         tracking-[-0.01em]
-                        text-[#0B2A52]
-
-                        shadow-[0_7px_24px_rgba(11,42,82,0.07)]
-
-                        backdrop-blur-[8px]
 
                         transition-all
                         duration-300
-                        ease-out
-
-                        hover:-translate-y-[2px]
-                        hover:border-[#6285AD]/40
-                        hover:bg-white
-                        hover:shadow-[0_10px_30px_rgba(98,133,173,0.14)]
-
-                        active:translate-y-0
 
                         sm:text-[13px]
                       "
                     >
-                      {/* INNER BORDER */}
-
                       <span
-                        aria-hidden="true"
-                        className="
-                          pointer-events-none
-
-                          absolute
-                          inset-[2px]
-
-                          rounded-[11px]
-
-                          border
-                          border-white/60
-                        "
-                      />
-
-                      {/* TEXT */}
-
-                      <span
-                        className="
-                          relative
-                          z-10
-
-                          flex
-                          items-center
-                          gap-2
-                        "
+                        style={{
+                          color: service.dark,
+                        }}
                       >
-                        Talk About This Service
-
-                        <ArrowUpRight
-                          size={14}
-                          strokeWidth={1.7}
-                          className="
-                            transition-transform
-                            duration-300
-
-                            group-hover/button:translate-x-0.5
-                            group-hover/button:-translate-y-0.5
-                          "
-                          style={{
-                            color: service.color,
-                          }}
-                        />
+                        Explore Service
                       </span>
+
+                      <ArrowUpRight
+                        size={14}
+                        strokeWidth={1.7}
+                        className="
+                          transition-transform
+                          duration-300
+
+                          group-hover/button:translate-x-1
+                          group-hover/button:-translate-y-0.5
+                        "
+                        style={{
+                          color: service.color,
+                        }}
+                      />
                     </Link>
                   </div>
                 </div>
@@ -1007,7 +944,7 @@ export default function SocialMediaMarketingServices() {
         </div>
 
         {/* =====================================================
-            BOTTOM CONNECTED LINE
+            BOTTOM CONVERSION CTA
         ===================================================== */}
 
         <motion.div
@@ -1025,65 +962,188 @@ export default function SocialMediaMarketingServices() {
           }}
           viewport={{
             once: true,
+            amount: 0.35,
           }}
           transition={{
             duration: reduceMotion ? 0 : 0.7,
-            delay: reduceMotion ? 0 : 0.2,
+            delay: reduceMotion ? 0 : 0.15,
+            ease,
           }}
           className="
             mx-auto
             mt-12
+            max-w-[860px]
 
-            flex
-            max-w-[700px]
-            items-center
+            border-t
+            border-[#0B2A52]/10
 
-            gap-3
+            pt-9
+            text-center
 
             sm:mt-14
+            sm:pt-10
+
             lg:mt-16
+            lg:pt-12
           "
         >
-          <span
+          <p
+            style={newYorkFont}
             className="
-              h-px
-              flex-1
+              mx-auto
+              max-w-[650px]
 
-              bg-gradient-to-r
-              from-transparent
-              to-[#B79A72]/50
-            "
-          />
+              text-[1.4rem]
+              font-normal
+              leading-[1.2]
+              tracking-[-0.03em]
 
-          <span
-            className="
-              shrink-0
+              text-[#0B2A52]
 
-              text-center
-
-              text-[8px]
-              font-semibold
-              uppercase
-              tracking-[0.18em]
-              text-[#75899F]
-
-              sm:text-[9px]
-              sm:tracking-[0.24em]
+              sm:text-[1.6rem]
+              md:text-[1.8rem]
             "
           >
-            Strategy · Create · Publish · Engage · Improve
-          </span>
+            Need help choosing the right{" "}
+            <span className="italic text-[#B79A72]">
+              social media support?
+            </span>
+          </p>
 
-          <span
+          <Link
+          href="/contact?service=social-media-marketing"
+            style={newYorkFont}
             className="
-              h-px
-              flex-1
+              group
+              relative
 
-              bg-gradient-to-l
-              from-transparent
-              to-[#B79A72]/50
+              mt-6
+
+              inline-flex
+              min-h-[46px]
+
+              items-center
+              justify-center
+
+              overflow-hidden
+
+              rounded-[16px]
+
+              border
+              border-[#6285AD]/30
+
+              bg-white/80
+
+              px-5
+              py-[11px]
+
+              text-[13px]
+              font-medium
+              tracking-[-0.01em]
+
+              text-[#0B2A52]
+
+              shadow-[0_8px_30px_rgba(11,42,82,0.08)]
+
+              backdrop-blur-[8px]
+
+              transition-all
+              duration-300
+              ease-out
+
+              hover:-translate-y-[2px]
+              hover:border-[#6285AD]/40
+              hover:bg-white
+              hover:shadow-[0_10px_35px_rgba(98,133,173,0.15)]
+
+              active:translate-y-0
+
+              sm:min-h-[48px]
+              sm:px-6
+              sm:py-3
+              sm:text-[14px]
+
+              md:text-[15px]
             "
-          />
+          >
+            <span
+              aria-hidden="true"
+              className="
+                pointer-events-none
+                absolute
+                inset-[2px]
+
+                rounded-[13px]
+
+                border
+                border-white/60
+              "
+            />
+
+            <span
+              aria-hidden="true"
+              className="
+                pointer-events-none
+                absolute
+                inset-x-4
+                top-0
+
+                h-px
+
+                bg-gradient-to-r
+                from-transparent
+                via-white
+                to-transparent
+              "
+            />
+
+            <span
+              className="
+                relative
+                z-10
+
+                flex
+                items-center
+                gap-2
+
+                whitespace-nowrap
+              "
+            >
+              Talk About Your Social Media
+
+              <ArrowUpRight
+                size={15}
+                strokeWidth={1.7}
+                className="
+                  text-[#B79A72]
+
+                  transition-transform
+                  duration-300
+
+                  group-hover:translate-x-0.5
+                  group-hover:-translate-y-0.5
+                "
+              />
+            </span>
+          </Link>
+
+          <p
+            className="
+              mx-auto
+              mt-4
+              max-w-[520px]
+
+              text-[11px]
+              leading-[1.7]
+
+              text-[#8293A5]
+
+              sm:text-[12px]
+            "
+          >
+            We&apos;ll help define the right mix of strategy, content,
+            publishing, community support and reporting for your needs.
+          </p>
         </motion.div>
       </div>
     </section>

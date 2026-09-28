@@ -330,7 +330,7 @@ export default function Hero() {
                 ================================================= */}
 
                 <Link
-                  href="/contact"
+                  href="/free-audit"
                   style={newYorkFont}
                   className="
                     group
@@ -643,7 +643,7 @@ export default function Hero() {
                     sm:text-[12px]
                   "
                 >
-                  ROI Focused
+                Outcome Focused
                 </span>
 
                 {/* DIVIDER */}

@@ -159,10 +159,14 @@ export default function Navbar() {
           inset-x-0
           top-0
           z-[100]
+
           border-b
-          border-[#0B2A52]/[0.06]
-          bg-white/90
-          backdrop-blur-xl
+          border-transparent
+
+          bg-transparent
+
+          transition-all
+          duration-300
         "
       >
         <nav

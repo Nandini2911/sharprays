@@ -385,243 +385,100 @@ export default function AboutPage() {
               lg:mt-8
             "
           >
-            {/* =================================================
-                PRIMARY BUTTON
-            ================================================== */}
-
-            <motion.a
-              href="#people"
-              whileHover={{
-                y: -2,
-              }}
-              whileTap={{
-                scale: 0.98,
-              }}
-              transition={{
-                duration: 0.25,
-                ease,
-              }}
-              className="
-                group
-                relative
-
-                inline-flex
-
-                min-h-[44px]
-
-                items-center
-                justify-center
-
-                overflow-hidden
-
-                rounded-[16px]
-
-                border
-                border-[#6285AD]/30
-
-                bg-white/80
-
-                px-5
-                py-[10px]
-
-                text-[12px]
-                font-medium
-                tracking-[-0.01em]
-
-                text-[#0B2A52]
-
-                shadow-[0_8px_30px_rgba(11,42,82,0.08)]
-
-                backdrop-blur-[8px]
-
-                transition-all
-                duration-300
-                ease-out
-
-                hover:border-[#6285AD]/40
-                hover:bg-white
-                hover:shadow-[0_10px_35px_rgba(98,133,173,0.15)]
-
-                active:translate-y-0
-
-                min-[375px]:min-h-[46px]
-                min-[375px]:px-5
-                min-[375px]:py-[11px]
-                min-[375px]:text-[13px]
-
-                sm:min-h-[48px]
-                sm:px-6
-                sm:py-3
-                sm:text-[14px]
-
-                md:text-[15px]
-              "
-            >
-              {/* STATIC INNER BORDER */}
-
-              <span
-                aria-hidden="true"
-                className="
-                  pointer-events-none
-                  absolute
-                  inset-[2px]
-
-                  rounded-[13px]
-
-                  border
-                  border-white/60
-                "
-              />
-
-              {/* TOP LIGHT */}
-
-              <span
-                aria-hidden="true"
-                className="
-                  pointer-events-none
-                  absolute
-                  inset-x-4
-                  top-0
-
-                  h-px
-
-                  bg-gradient-to-r
-                  from-transparent
-                  via-white
-                  to-transparent
-                "
-              />
-
-              <span
-                className="
-                  relative
-                  z-10
-                  whitespace-nowrap
-                  text-[#0B2A52]
-                "
-              >
-                Meet the People
-              </span>
-            </motion.a>
+           
 
             {/* =================================================
                 SECONDARY BUTTON
             ================================================== */}
 
-            <motion.a
-              href="#approach"
-              whileHover={{
-                y: -2,
-              }}
-              whileTap={{
-                scale: 0.98,
-              }}
-              transition={{
-                duration: 0.25,
-                ease,
-              }}
-              className="
-                group
-                relative
+            <motion.button
+  type="button"
+  onClick={() => {
+    document
+      .getElementById("how-we-work")
+      ?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+  }}
+  whileHover={{
+    y: -2,
+  }}
+  whileTap={{
+    scale: 0.98,
+  }}
+  transition={{
+    duration: 0.25,
+    ease,
+  }}
+  className="
+    group
+    relative
+    inline-flex
+    min-h-[44px]
+    items-center
+    justify-center
+    overflow-hidden
+    rounded-[16px]
+    border
+    border-[#6285AD]/30
+    bg-white/80
+    px-5
+    py-[10px]
+    text-[12px]
+    font-medium
+    tracking-[-0.01em]
+    text-[#0B2A52]
+    shadow-[0_8px_30px_rgba(11,42,82,0.08)]
+    backdrop-blur-[8px]
+    transition-all
+    duration-300
+    ease-out
+    hover:border-[#6285AD]/40
+    hover:bg-white
+    hover:shadow-[0_10px_35px_rgba(98,133,173,0.15)]
+    min-[375px]:min-h-[46px]
+    min-[375px]:px-5
+    min-[375px]:py-[11px]
+    min-[375px]:text-[13px]
+    sm:min-h-[48px]
+    sm:px-6
+    sm:py-3
+    sm:text-[14px]
+    md:text-[15px]
+  "
+>
+  <span
+    aria-hidden="true"
+    className="
+      pointer-events-none
+      absolute
+      inset-[2px]
+      rounded-[13px]
+      border
+      border-white/60
+    "
+  />
 
-                inline-flex
+  <span
+    aria-hidden="true"
+    className="
+      pointer-events-none
+      absolute
+      inset-x-4
+      top-0
+      h-px
+      bg-gradient-to-r
+      from-transparent
+      via-white
+      to-transparent
+    "
+  />
 
-                min-h-[44px]
-
-                items-center
-                justify-center
-
-                overflow-hidden
-
-                rounded-[16px]
-
-                border
-                border-[#6285AD]/30
-
-                bg-white/80
-
-                px-5
-                py-[10px]
-
-                text-[12px]
-                font-medium
-                tracking-[-0.01em]
-
-                text-[#0B2A52]
-
-                shadow-[0_8px_30px_rgba(11,42,82,0.08)]
-
-                backdrop-blur-[8px]
-
-                transition-all
-                duration-300
-                ease-out
-
-                hover:border-[#6285AD]/40
-                hover:bg-white
-                hover:shadow-[0_10px_35px_rgba(98,133,173,0.15)]
-
-                active:translate-y-0
-
-                min-[375px]:min-h-[46px]
-                min-[375px]:px-5
-                min-[375px]:py-[11px]
-                min-[375px]:text-[13px]
-
-                sm:min-h-[48px]
-                sm:px-6
-                sm:py-3
-                sm:text-[14px]
-
-                md:text-[15px]
-              "
-            >
-              {/* STATIC INNER BORDER */}
-
-              <span
-                aria-hidden="true"
-                className="
-                  pointer-events-none
-                  absolute
-                  inset-[2px]
-
-                  rounded-[13px]
-
-                  border
-                  border-white/60
-                "
-              />
-
-              {/* TOP LIGHT */}
-
-              <span
-                aria-hidden="true"
-                className="
-                  pointer-events-none
-                  absolute
-                  inset-x-4
-                  top-0
-
-                  h-px
-
-                  bg-gradient-to-r
-                  from-transparent
-                  via-white
-                  to-transparent
-                "
-              />
-
-              <span
-                className="
-                  relative
-                  z-10
-                  whitespace-nowrap
-                  text-[#0B2A52]
-                "
-              >
-                Our Approach
-              </span>
-            </motion.a>
+  <span className="relative z-10 whitespace-nowrap">
+   How We Turn Thinking Into Action
+  </span>
+</motion.button>
           </motion.div>
         </div>
 
