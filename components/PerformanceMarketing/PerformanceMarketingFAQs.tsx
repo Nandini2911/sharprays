@@ -359,84 +359,7 @@ export default function PerformanceMarketingFAQs() {
             </motion.h2>
           </div>
 
-          {/* RIGHT */}
-          <motion.div
-            initial={
-              reduceMotion
-                ? false
-                : {
-                    opacity: 0,
-                    x: 28,
-                  }
-            }
-            whileInView={{
-              opacity: 1,
-              x: 0,
-            }}
-            viewport={{
-              once: true,
-              amount: 0.55,
-            }}
-            transition={{
-              duration: reduceMotion ? 0 : 0.75,
-              delay: reduceMotion ? 0 : 0.12,
-              ease,
-            }}
-            className="lg:pb-1"
-          >
-            <p
-              className="
-                max-w-[500px]
-                text-[0.98rem]
-                leading-[1.75]
-                text-[#536C83]
-                sm:text-[1rem]
-                lg:ml-auto
-              "
-            >
-              Straightforward answers to the questions businesses commonly ask
-              before choosing a performance marketing agency.
-            </p>
-
-            <div
-              className="
-                mt-5
-                flex
-                items-center
-                gap-3
-                lg:justify-end
-              "
-            >
-              <span
-                className="
-                  grid
-                  h-8
-                  w-8
-                  place-items-center
-                  rounded-full
-                  border
-                  border-[#C9DCE9]
-                  bg-[#EFF6FB]
-                  text-[#0D5A93]
-                "
-              >
-                <CheckCircle2 size={14} strokeWidth={1.8} />
-              </span>
-
-              <span
-                className="
-                  text-[0.55rem]
-                  font-semibold
-                  uppercase
-                  tracking-[0.18em]
-                  text-[#73899D]
-                "
-              >
-                Clear Answers · No Agency Jargon
-              </span>
-            </div>
-          </motion.div>
-        </div>
+                  </div>
 
         {/* =====================================================
             DESKTOP INTERACTIVE FAQ
@@ -466,78 +389,7 @@ export default function PerformanceMarketingFAQs() {
               shadow-[0_18px_60px_rgba(11,42,82,0.05)]
             "
           >
-            <div
-              className="
-                flex
-                items-center
-                justify-between
-                border-b
-                border-[#E2E9EF]
-                bg-[#F8FBFD]
-                px-7
-                py-5
-              "
-            >
-              <div className="flex items-center gap-3">
-                <span
-                  className="
-                    grid
-                    h-9
-                    w-9
-                    place-items-center
-                    rounded-[12px]
-                    border
-                    border-[#C9DCE9]
-                    bg-white
-                    text-[#0D5A93]
-                  "
-                >
-                  <HelpCircle size={16} strokeWidth={1.7} />
-                </span>
-
-                <div>
-                  <p
-                    className="
-                      text-[0.5rem]
-                      font-semibold
-                      uppercase
-                      tracking-[0.17em]
-                      text-[#8B9DAC]
-                    "
-                  >
-                    Browse Questions
-                  </p>
-
-                  <p
-                    className="
-                      mt-0.5
-                      text-[0.75rem]
-                      font-medium
-                      text-[#315470]
-                    "
-                  >
-                    Select a question to explore the answer.
-                  </p>
-                </div>
-              </div>
-
-              <span
-                className="
-                  rounded-full
-                  border
-                  border-[#D3E1EA]
-                  bg-white
-                  px-3
-                  py-1.5
-                  text-[0.48rem]
-                  font-bold
-                  tracking-[0.14em]
-                  text-[#698196]
-                "
-              >
-                16 QUESTIONS
-              </span>
-            </div>
+            
 
             {faqs.map((faq, index) => {
               const active = activeIndex === index;
@@ -617,25 +469,7 @@ export default function PerformanceMarketingFAQs() {
                     "
                   />
 
-                  {/* NUMBER */}
-                  <span
-                    className={`
-                      w-8
-                      shrink-0
-                      font-serif
-                      text-[0.76rem]
-                      transition-colors
-                      duration-300
-
-                      ${
-                        active
-                          ? "text-[#B67D49]"
-                          : "text-[#A2AFBA]"
-                      }
-                    `}
-                  >
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
+              
 
                   {/* QUESTION */}
                   <span
@@ -829,16 +663,7 @@ export default function PerformanceMarketingFAQs() {
                   </div>
                 </div>
 
-                <span
-                  className="
-                    font-serif
-                    text-[1rem]
-                    text-[#879AA9]
-                  "
-                >
-                  {String(activeIndex + 1).padStart(2, "0")}
-                  <span className="text-[#BAC5CE]"> / 16</span>
-                </span>
+                
               </div>
 
               {/* ANSWER */}
@@ -878,17 +703,7 @@ export default function PerformanceMarketingFAQs() {
                       ease,
                     }}
                   >
-                    <p
-                      className="
-                        text-[0.52rem]
-                        font-semibold
-                        uppercase
-                        tracking-[0.19em]
-                        text-[#71899D]
-                      "
-                    >
-                      Question {String(activeIndex + 1).padStart(2, "0")}
-                    </p>
+                    
 
                     <h3
                       className="
@@ -986,17 +801,7 @@ export default function PerformanceMarketingFAQs() {
                   </div>
                 </div>
 
-                <span
-                  className="
-                    font-serif
-                    text-[2.8rem]
-                    italic
-                    leading-none
-                    text-[#B67D49]/65
-                  "
-                >
-                  {String(activeIndex + 1).padStart(2, "0")}
-                </span>
+              
               </div>
             </div>
           </div>

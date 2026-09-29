@@ -63,3 +63,6 @@ a {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--brand-highlight);
 }
+html {
+  scroll-behavior: smooth;
+}

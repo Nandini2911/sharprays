@@ -347,7 +347,7 @@ export default function WebsiteDevelopmentHero() {
             {/* PRIMARY CTA */}
 
             <Link
-              href="/contact"
+              href="/contact?service=website-development#contact-form"
               className="
                 group
                 relative
@@ -424,81 +424,112 @@ export default function WebsiteDevelopmentHero() {
 
             {/* SECONDARY CTA */}
 
-            <Link
-              href="#our-approach"
-              className="
-                group
-                relative
-                inline-flex
-                min-h-[44px]
-                min-w-0
-                flex-1
-                items-center
-                justify-center
-                overflow-hidden
-                rounded-[14px]
-                border
-                border-[#8DA6BE]/26
-                bg-white/60
-                px-3
-                py-2.5
-                text-[0.7rem]
-                font-medium
-                tracking-[-0.01em]
-                text-[#0B2A52]
-                shadow-[0_7px_24px_rgba(11,42,82,0.045)]
-                backdrop-blur-[8px]
-                transition-all
-                duration-300
-                ease-out
-                hover:-translate-y-[2px]
-                hover:border-[#6285AD]/38
-                hover:bg-white/90
-                hover:shadow-[0_10px_32px_rgba(98,133,173,0.11)]
-                active:translate-y-0
+        <a
+  href="#website-framework"
+  style={{
+    fontFamily: '"New York", "Bodoni Moda", Georgia, serif',
+  }}
+  className="
+    group
+    relative
 
-                sm:min-h-[48px]
-                sm:flex-none
-                sm:rounded-[16px]
-                sm:px-6
-                sm:py-3
-                sm:text-[0.86rem]
+    inline-flex
+    min-h-[44px]
+    min-w-0
+    flex-1
 
-                md:text-[0.9rem]
-              "
-            >
-              <span
-                aria-hidden="true"
-                className="
-                  pointer-events-none
-                  absolute
-                  inset-[2px]
-                  rounded-[11px]
-                  border
-                  border-white/65
-                  sm:rounded-[13px]
-                "
-              />
+    items-center
+    justify-center
 
-              <span
-                aria-hidden="true"
-                className="
-                  pointer-events-none
-                  absolute
-                  inset-x-4
-                  top-0
-                  h-px
-                  bg-gradient-to-r
-                  from-transparent
-                  via-white
-                  to-transparent
-                "
-              />
+    overflow-hidden
 
-              <span className="relative z-10 whitespace-nowrap">
-                Explore Our Approach
-              </span>
-            </Link>
+    rounded-[14px]
+
+    border
+    border-[#8DA6BE]/26
+
+    bg-white/60
+
+    px-3
+    py-2.5
+
+    text-[0.7rem]
+    font-medium
+    tracking-[-0.01em]
+    text-[#0B2A52]
+
+    shadow-[0_7px_24px_rgba(11,42,82,0.045)]
+
+    backdrop-blur-[8px]
+
+    transition-all
+    duration-300
+    ease-out
+
+    hover:-translate-y-[2px]
+    hover:border-[#6285AD]/38
+    hover:bg-white/90
+    hover:shadow-[0_10px_32px_rgba(98,133,173,0.11)]
+
+    active:translate-y-0
+
+    sm:min-h-[48px]
+    sm:flex-none
+    sm:rounded-[16px]
+    sm:px-6
+    sm:py-3
+    sm:text-[0.86rem]
+
+    md:text-[0.9rem]
+  "
+>
+  {/* INNER BORDER */}
+  <span
+    aria-hidden="true"
+    className="
+      pointer-events-none
+      absolute
+      inset-[2px]
+
+      rounded-[11px]
+
+      border
+      border-white/65
+
+      sm:rounded-[13px]
+    "
+  />
+
+  {/* TOP HIGHLIGHT */}
+  <span
+    aria-hidden="true"
+    className="
+      pointer-events-none
+      absolute
+      inset-x-4
+      top-0
+
+      h-px
+
+      bg-gradient-to-r
+      from-transparent
+      via-white
+      to-transparent
+    "
+  />
+
+  {/* TEXT */}
+  <span
+    className="
+      relative
+      z-10
+      whitespace-nowrap
+      text-[#0B2A52]
+    "
+  >
+    Explore Our Approach
+  </span>
+</a>
           </div>
 
           {/* =================================================

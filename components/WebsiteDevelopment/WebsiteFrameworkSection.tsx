@@ -648,25 +648,7 @@ export default function WebsiteFrameworkSection() {
                             gap-3
                           "
                         >
-                          <span
-                            className={`
-                              text-[0.42rem]
-                              font-semibold
-                              uppercase
-                              tracking-[0.18em]
-
-                              transition-colors
-                              duration-300
-
-                              ${
-                                active
-                                  ? "text-[#A97C52]"
-                                  : "text-[#9AA7B2]"
-                              }
-                            `}
-                          >
-                            {step.number}
-                          </span>
+                          
 
                           <span
                             className={`
@@ -796,41 +778,7 @@ export default function WebsiteFrameworkSection() {
                 >
                   {/* LARGE BACKGROUND NUMBER */}
 
-                  <motion.span
-                    initial={{
-                      opacity: 0,
-                      y: reduceMotion ? 0 : 15,
-                    }}
-                    animate={{
-                      opacity: 1,
-                      y: 0,
-                    }}
-                    transition={{
-                      duration: 0.6,
-                    }}
-                    className="
-                      pointer-events-none
-
-                      absolute
-                      right-0
-                      top-[-45px]
-
-                      select-none
-
-                      font-serif
-                      text-[8.5rem]
-
-                      xl:text-[11rem]
-                      leading-none
-                      tracking-[-0.08em]
-
-                      text-[#0B2A52]/[0.035]
-
-                      xl:text-[14rem]
-                    "
-                  >
-                    {activeStep.number}
-                  </motion.span>
+               
 
                   {/* COLOURED WASH */}
 

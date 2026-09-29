@@ -782,67 +782,8 @@ export default function PerformanceMarketingPricing() {
 
                   {/* PRICE */}
 
-                  <div
-                    className="
-                      mt-5
-
-                      border-y
-                      border-[#DCE6EE]
-
-                      py-4
-                    "
-                  >
-                    <span
-                      className="
-                        text-[7px]
-                        font-semibold
-                        uppercase
-                        tracking-[0.17em]
-                        text-[#B79A72]
-                      "
-                    >
-                      Starting From
-                    </span>
-
-                    <div
-                      className="
-                        mt-2
-
-                        flex
-                        flex-wrap
-                        items-end
-                        gap-x-2
-                        gap-y-1
-                      "
-                    >
-                      <span
-                        style={newYorkFont}
-                        className="
-                          text-[35px]
-                          font-medium
-                          leading-none
-                          tracking-[-0.045em]
-                          text-[#0B2A52]
-
-                          sm:text-[38px]
-                        "
-                      >
-                        {plan.price}
-                      </span>
-
-                      <span
-                        className="
-                          pb-1
-
-                          text-[10px]
-                          font-medium
-                          text-[#71879A]
-                        "
-                      >
-                        / month
-                      </span>
-                    </div>
-                  </div>
+                  
+                 
 
                   {/* PLATFORM SCOPE */}
 
@@ -1671,58 +1612,70 @@ export default function PerformanceMarketingPricing() {
               Custom Quote
             </p>
 
-            <Link
-              href="/contact"
-              style={newYorkFont}
-              className="
-                group
+           <Link
+  href="/contact"
+  style={{
+    ...newYorkFont,
+    color: "#FFFFFF",
+  }}
+  className="
+    group
 
-                mt-4
+    mt-4
 
-                inline-flex
-                min-h-[46px]
+    inline-flex
+    min-h-[46px]
 
-                items-center
-                justify-center
-                gap-2
+    items-center
+    justify-center
+    gap-2
 
-                rounded-[16px]
+    rounded-[16px]
 
-                border
-                border-[#0B2A52]
+    border
+    border-[#0B2A52]
 
-                bg-[#0B2A52]
+    bg-[#0B2A52]
 
-                px-5
-                py-2.5
+    px-5
+    py-2.5
 
-                text-[12px]
-                font-medium
-                text-white
+    text-[12px]
+    font-medium
+    !text-white
 
-                shadow-[0_9px_24px_rgba(11,42,82,0.14)]
+    shadow-[0_9px_24px_rgba(11,42,82,0.14)]
 
-                transition-all
-                duration-300
+    transition-all
+    duration-300
 
-                hover:-translate-y-[2px]
-                hover:bg-[#123B6A]
-              "
-            >
-              Get a Custom Proposal
+    hover:-translate-y-[2px]
+    hover:bg-[#123B6A]
+    hover:!text-white
+  "
+>
+  <span
+    style={{ color: "#FFFFFF" }}
+    className="!text-white"
+  >
+    Get a Custom Proposal
+  </span>
 
-              <ArrowUpRight
-                size={13}
-                strokeWidth={1.5}
-                className="
-                  transition-transform
-                  duration-300
+  <ArrowUpRight
+    size={13}
+    strokeWidth={1.5}
+    style={{ color: "#FFFFFF" }}
+    className="
+      !text-white
 
-                  group-hover:translate-x-0.5
-                  group-hover:-translate-y-0.5
-                "
-              />
-            </Link>
+      transition-transform
+      duration-300
+
+      group-hover:translate-x-0.5
+      group-hover:-translate-y-0.5
+    "
+  />
+</Link>
           </div>
         </motion.div>
 

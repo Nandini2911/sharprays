@@ -299,7 +299,7 @@ export default function PerformanceMarketingFinalSections() {
                 "
               >
                 <motion.a
-                  href="/contact"
+                href="/contact?service=performance-marketing&need=custom-performance-plan#contact-form"
                   whileTap={
                     reduceMotion
                       ? undefined
