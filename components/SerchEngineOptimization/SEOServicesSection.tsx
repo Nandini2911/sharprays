@@ -948,96 +948,76 @@ export default function SEOServicesSection() {
             lg:mt-14
           "
         >
-          <Link
-            href="/contact"
-            className="
-              group
-              relative
+        <Link
+  href="/contact?service=seo#contact-form"
+  className="
+    group
+    relative
+    inline-flex
+    min-h-[46px]
+    w-full
+    items-center
+    justify-center
+    overflow-hidden
+    rounded-[16px]
+    border
+    border-[#6285AD]/30
+    bg-white/80
+    px-5
+    py-[11px]
+    text-[13px]
+    font-medium
+    tracking-[-0.01em]
+    text-[#0B2A52]
+    shadow-[0_8px_30px_rgba(11,42,82,0.08)]
+    backdrop-blur-[8px]
+    transition-all
+    duration-300
+    ease-out
+    hover:-translate-y-[2px]
+    hover:border-[#6285AD]/40
+    hover:bg-white
+    hover:shadow-[0_10px_35px_rgba(98,133,173,0.15)]
+    active:translate-y-0
+    sm:min-h-[48px]
+    sm:w-auto
+    sm:px-7
+    sm:py-3
+    sm:text-[14px]
+    md:text-[15px]
+  "
+>
+  <span
+    aria-hidden="true"
+    className="
+      pointer-events-none
+      absolute
+      inset-[2px]
+      rounded-[13px]
+      border
+      border-white/60
+    "
+  />
 
-              inline-flex
-              min-h-[46px]
-              w-full
+  <span
+    aria-hidden="true"
+    className="
+      pointer-events-none
+      absolute
+      inset-x-4
+      top-0
+      h-px
+      bg-gradient-to-r
+      from-transparent
+      via-white
+      to-transparent
+    "
+  />
 
-              items-center
-              justify-center
-              overflow-hidden
-
-              rounded-[16px]
-
-              border
-              border-[#6285AD]/30
-
-              bg-white/80
-
-              px-5
-              py-[11px]
-
-              text-[13px]
-              font-medium
-              tracking-[-0.01em]
-              text-[#0B2A52]
-
-              shadow-[0_8px_30px_rgba(11,42,82,0.08)]
-
-              backdrop-blur-[8px]
-
-              transition-all
-              duration-300
-              ease-out
-
-              hover:-translate-y-[2px]
-              hover:border-[#6285AD]/40
-              hover:bg-white
-              hover:shadow-[0_10px_35px_rgba(98,133,173,0.15)]
-
-              active:translate-y-0
-
-              sm:min-h-[48px]
-              sm:w-auto
-              sm:px-7
-              sm:py-3
-              sm:text-[14px]
-
-              md:text-[15px]
-            "
-          >
-            <span
-              aria-hidden="true"
-              className="
-                pointer-events-none
-
-                absolute
-                inset-[2px]
-
-                rounded-[13px]
-
-                border
-                border-white/60
-              "
-            />
-
-            <span
-              aria-hidden="true"
-              className="
-                pointer-events-none
-
-                absolute
-                inset-x-4
-                top-0
-
-                h-px
-
-                bg-gradient-to-r
-                from-transparent
-                via-white
-                to-transparent
-              "
-            />
-
-            <span className="relative z-10 whitespace-nowrap">
-              Improve My Search Visibility
-            </span>
-          </Link>
+  <span className="relative z-10 whitespace-nowrap">
+    Improve My Search Visibility
+  </span>
+</Link>
         </motion.div>
       </div>
     </section>

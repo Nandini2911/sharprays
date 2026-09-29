@@ -48,26 +48,72 @@ const serviceQueryMap: Record<string, string> = {
   "ai-automation": "AI Automation",
 };
 
-const needQueryMap: Record<string, string> = {
-  "platform-strategy": "Platform Strategy",
-  "social-media-management": "Social Media Management",
-  "content-strategy": "Content Strategy",
-  "content-creation": "Content Creation",
-  "seo-strategy": "SEO Strategy",
-  "paid-media": "Paid Media",
-  "website-project": "Website Development",
-  "video-editing": "Video Editing",
-  "workflow-automation": "Workflow Automation",
-  "custom-plan": "Custom Plan",
-};
-
 const planQueryMap: Record<string, string> = {
   starter: "Starter Plan",
-  basic: "Basic Plan",
+  foundation: "Foundation Plan",
   growth: "Growth Plan",
-  pro: "Pro Plan",
   scale: "Scale Plan",
-  premium: "Premium Plan",
+  launch: "Launch Plan",
+  "edit-starter": "Edit Starter Plan",
+  "edit-growth": "Edit Growth Plan",
+  "edit-scale": "Edit Scale Plan",
+  "ai-starter": "AI Starter Plan",
+  "ai-growth": "AI Growth Plan",
+  "ai-scale": "AI Scale Plan",
+};
+
+const needQueryMap: Record<string, string> = {
+  // Social Media
+  "platform-strategy": "Platform Strategy",
+  "custom-social-media-plan": "Custom Social Media Plan",
+
+  // SEO
+  "seo-opportunity-review": "Free SEO Opportunity Review",
+
+  // Performance Marketing
+  "paid-media-strategy": "Paid Media Strategy",
+  "google-ads-management": "Google Ads Management",
+  "paid-social-advertising": "Paid Social Advertising",
+  "performance-creative": "Performance Creative",
+  "landing-page-optimization": "Landing Page Optimization",
+  "conversion-tracking": "Conversion Tracking",
+  retargeting: "Retargeting",
+  "campaign-optimization": "Campaign Optimization",
+  "custom-performance-plan": "Custom Performance Marketing Plan",
+
+  // Website Development
+  "website-strategy-architecture": "Website Strategy & Architecture",
+  "ux-interface-design": "UX & Interface Design",
+  "custom-website-development": "Custom Website Development",
+  "nextjs-website-development": "Next.js Website Development",
+  "responsive-website-development": "Responsive Website Development",
+  "landing-page-development": "Landing Page Development",
+  "website-redesign-redevelopment": "Website Redesign & Redevelopment",
+  "cms-content-management": "CMS & Content Management",
+  "integrations-functionality": "Integrations & Functionality",
+  "custom-web-development": "Custom Website Development Quote",
+
+  // Content Marketing
+  "content-strategy": "Content Strategy",
+  "content-plan": "Content Marketing Plan",
+  "content-question": "Content Marketing Question",
+
+  // AI Video & Editing
+  "ai-video-creation": "AI Video Creation",
+  "professional-video-editing": "Professional Video Editing",
+  "short-form-video-editing": "Short-Form Video Editing",
+  "social-media-video-editing": "Social Media Video Editing",
+  "advertising-performance-video": "Advertising & Performance Video",
+  "ai-product-concept-videos": "AI Product & Concept Videos",
+  "motion-graphics-visual-effects": "Motion Graphics & Visual Effects",
+  "video-repurposing": "Video Repurposing",
+  "captions-subtitles-text-treatment": "Captions, Subtitles & Text Treatment",
+  "ai-assisted-enhancement": "AI-Assisted Enhancement",
+  "combined-video-plan": "AI Video + Regular Editing Plan",
+
+  // AI Automation
+  "automation-for-team": "Automation for My Team",
+  "custom-automation-system": "Custom AI Automation System",
 };
 
 const problemRoutes = [
@@ -267,7 +313,8 @@ export default function ContactPage() {
   const reduceMotion = Boolean(useReducedMotion());
 
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
-  const [enquiryContext, setEnquiryContext] = useState("");
+  const [enquiryNeed, setEnquiryNeed] = useState("");
+  const [selectedPlan, setSelectedPlan] = useState("");
   const [openFaq, setOpenFaq] = useState<number | null>(0);
 
   useEffect(() => {
@@ -277,31 +324,33 @@ export default function ContactPage() {
     const needParam = params.get("need");
     const planParam = params.get("plan");
 
-    if (serviceParam) {
-      const serviceName = serviceQueryMap[serviceParam];
-
-      if (serviceName) {
-        setSelectedServices([serviceName]);
-      }
+    if (serviceParam && serviceQueryMap[serviceParam]) {
+      setSelectedServices([serviceQueryMap[serviceParam]]);
     }
 
     if (needParam && needQueryMap[needParam]) {
-      setEnquiryContext(needQueryMap[needParam]);
-    } else if (planParam && planQueryMap[planParam]) {
-      setEnquiryContext(planQueryMap[planParam]);
+      setEnquiryNeed(needQueryMap[needParam]);
+    } else {
+      setEnquiryNeed("");
     }
 
+    if (planParam && planQueryMap[planParam]) {
+      setSelectedPlan(planQueryMap[planParam]);
+    } else {
+      setSelectedPlan("");
+    }
+
+    // Service-page CTAs have clear contact intent, so take the user
+    // directly to the form while preserving the selected context.
     if (serviceParam || needParam || planParam) {
-      const timer = window.setTimeout(() => {
+      window.setTimeout(() => {
         document.getElementById("contact-form")?.scrollIntoView({
-          behavior: reduceMotion ? "auto" : "smooth",
+          behavior: "smooth",
           block: "start",
         });
       }, 250);
-
-      return () => window.clearTimeout(timer);
     }
-  }, [reduceMotion]);
+  }, []);
 
   const fadeUp = {
     hidden: {
@@ -730,7 +779,7 @@ export default function ContactPage() {
         {/* SECONDARY BUTTON */}
 
         <a
-          href="#services"
+          href="/#services"
           style={newYorkFont}
           className="
             group
@@ -1053,18 +1102,6 @@ export default function ContactPage() {
               md:p-8
             "
           >
-            <input
-              type="hidden"
-              name="selectedServices"
-              value={selectedServices.join(", ")}
-            />
-
-            <input
-              type="hidden"
-              name="enquiryContext"
-              value={enquiryContext}
-            />
-
             {/* BASIC FIELDS */}
 
             <div className="grid gap-5 md:grid-cols-2">
@@ -1212,36 +1249,6 @@ export default function ContactPage() {
                 Select one or more.
               </p>
 
-              {enquiryContext && (
-                <div
-                  className="
-                    mt-4
-                    rounded-[14px]
-                    border
-                    border-[#B79A72]/30
-                    bg-[#FBF7F1]
-                    px-4
-                    py-3
-                  "
-                >
-                  <span
-                    className="
-                      text-[0.46rem]
-                      font-semibold
-                      uppercase
-                      tracking-[0.18em]
-                      text-[#92745C]
-                    "
-                  >
-                    You&apos;re enquiring about
-                  </span>
-
-                  <p className="mt-1 font-serif text-[0.85rem] text-[#0B2A52]">
-                    {enquiryContext}
-                  </p>
-                </div>
-              )}
-
               <div
                 className="
                   mt-4
@@ -1257,7 +1264,6 @@ export default function ContactPage() {
                     <button
                       key={service}
                       type="button"
-                      aria-pressed={selected}
                       onClick={() => toggleService(service)}
                       style={newYorkFont}
                       className={`
@@ -1287,25 +1293,19 @@ export default function ContactPage() {
 
                         ${
                           selected
-                            ? "border-[#0B2A52] bg-[#0B2A52] text-white shadow-[0_10px_30px_rgba(11,42,82,0.18)]"
+                            ? "border-[#0B2A52] bg-[#0B2A52] text-white shadow-[0_10px_30px_rgba(11,42,82,0.16)]"
                             : "border-[#6285AD]/30 bg-white/80 text-[#0B2A52] hover:border-[#6285AD]/40 hover:bg-white"
                         }
                       `}
                     >
-                      <span
-                        className={`pointer-events-none absolute inset-[2px] rounded-[13px] border ${
-                          selected ? "border-white/15" : "border-white/60"
-                        }`}
-                      />
+                      <span className="pointer-events-none absolute inset-[2px] rounded-[13px] border border-white/60" />
                       <span className="pointer-events-none absolute inset-x-3 top-0 h-px bg-gradient-to-r from-transparent via-white to-transparent" />
-
                       <span className="relative z-10 flex items-center gap-2 whitespace-nowrap">
                         {selected && (
-                          <span aria-hidden="true" className="text-white">
+                          <span aria-hidden="true" className="text-[12px]">
                             ✓
                           </span>
                         )}
-
                         {service}
                       </span>
                     </button>
@@ -1313,6 +1313,38 @@ export default function ContactPage() {
                 })}
               </div>
             </div>
+
+            {/* PRE-SELECTED ENQUIRY CONTEXT */}
+            {(enquiryNeed || selectedPlan) && (
+              <div className="mt-5 rounded-[16px] border border-[#D8E3E9] bg-[#F8FAFC] px-4 py-3.5">
+                <span className="text-[0.48rem] font-semibold uppercase tracking-[0.18em] text-[#92745C]">
+                  You&apos;re enquiring about
+                </span>
+
+                <div className="mt-2 flex flex-wrap gap-2">
+                  {selectedPlan && (
+                    <span className="rounded-full border border-[#C9D8E2] bg-white px-3 py-1.5 font-serif text-[0.75rem] text-[#0B2A52]">
+                      {selectedPlan}
+                    </span>
+                  )}
+
+                  {enquiryNeed && (
+                    <span className="rounded-full border border-[#C9D8E2] bg-white px-3 py-1.5 font-serif text-[0.75rem] text-[#0B2A52]">
+                      {enquiryNeed}
+                    </span>
+                  )}
+                </div>
+              </div>
+            )}
+
+            {/* Keep pre-selected context available when the form is wired to a backend */}
+            <input
+              type="hidden"
+              name="services"
+              value={selectedServices.join(", ")}
+            />
+            <input type="hidden" name="selectedPlan" value={selectedPlan} />
+            <input type="hidden" name="enquiryNeed" value={enquiryNeed} />
 
             {/* MESSAGE */}
 

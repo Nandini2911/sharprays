@@ -918,7 +918,7 @@ export function SEOFinalCTASection() {
             className="mt-9"
           >
             <Link
-              href="/contact"
+              href="/contact?service=seo#contact-form"
               style={newYorkFont}
               className="
                 group

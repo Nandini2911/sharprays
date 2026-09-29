@@ -503,7 +503,7 @@ export default function SocialMediaMarketingHero() {
               ================================================== */}
 
               <a
-                href="#approach"
+                href="/contact?service=social-media-marketing#contact-form"
                 className="
                   group
                   relative

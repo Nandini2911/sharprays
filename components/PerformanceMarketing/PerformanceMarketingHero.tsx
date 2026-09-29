@@ -438,7 +438,8 @@ export default function PerformanceMarketingHero() {
               ================================================= */}
 
               <a
-                href="#performance-services"
+              href="/contact?service=performance-marketing&need=paid-media-strategy#contact-form"
+
                 className="
                   group
                   relative
@@ -536,100 +537,7 @@ export default function PerformanceMarketingHero() {
                   SECONDARY CTA — SAME GLASS DESIGN FAMILY
               ================================================= */}
 
-              <a
-                href="#performance-approach"
-                className="
-                  group
-                  relative
-
-                  inline-flex
-                  min-h-[42px]
-                  min-w-0
-                  flex-1
-
-                  items-center
-                  justify-center
-                  gap-1.5
-
-                  overflow-hidden
-
-                  rounded-[14px]
-
-                  border
-                  border-[#8DA6BE]/26
-
-                  bg-white/60
-
-                  px-3
-                  py-2.5
-
-                  text-[0.7rem]
-                  font-medium
-                  tracking-[-0.01em]
-                  text-[#0B2A52]
-
-                  shadow-[0_7px_24px_rgba(11,42,82,0.045)]
-
-                  backdrop-blur-[8px]
-
-                  transition-all
-                  duration-300
-                  ease-out
-
-                  hover:-translate-y-[2px]
-                  hover:border-[#6285AD]/38
-                  hover:bg-white/90
-                  hover:shadow-[0_10px_32px_rgba(98,133,173,0.11)]
-
-                  active:translate-y-0
-
-                  sm:min-h-[48px]
-                  sm:flex-none
-                  sm:rounded-[16px]
-                  sm:px-6
-                  sm:py-3
-                  sm:text-[0.88rem]
-                "
-              >
-                {/* STATIC SOFT INNER BORDER */}
-                <span
-                  aria-hidden="true"
-                  className="
-                    pointer-events-none
-                    absolute
-                    inset-[2px]
-
-                    rounded-[13px]
-
-                    border
-                    border-white/65
-                  "
-                />
-
-                {/* VERY SUBTLE INNER LIGHT */}
-                <span
-                  aria-hidden="true"
-                  className="
-                    pointer-events-none
-                    absolute
-                    inset-x-4
-                    top-0
-
-                    h-px
-
-                    bg-gradient-to-r
-                    from-transparent
-                    via-white
-                    to-transparent
-                  "
-                />
-
-                <span className="relative z-10 whitespace-nowrap">
-                  Explore Our Approach
-                </span>
-
-              
-              </a>
+            
             </motion.div>
 
             {/* =====================================================

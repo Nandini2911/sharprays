@@ -623,14 +623,11 @@ export default function SEOHeroSection() {
               "
             >
               <GlassButton
-                href="/contact"
+                href="/contact?service=seo#contact-form"
                 label="Improve My Search Visibility"
               />
 
-              <GlassButton
-                href="#seo-approach"
-                label="Explore Our SEO Approach"
-              />
+             
             </motion.div>
 
             {/* =============================================

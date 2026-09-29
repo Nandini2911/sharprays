@@ -192,10 +192,20 @@ function PlanButton({
   const isGrowth = plan.name === "Growth";
   const isScale = plan.name === "Scale";
 
+  const planHref =
+    plan.name === "Starter"
+      ? "/contact?service=performance-marketing&plan=starter#contact-form"
+      : plan.name === "Growth"
+      ? "/contact?service=performance-marketing&plan=growth#contact-form"
+      : "/contact?service=performance-marketing&plan=scale#contact-form";
+
   return (
     <Link
-      href="/contact"
-      style={newYorkFont}
+      href={planHref}
+      style={{
+        ...newYorkFont,
+        color: isGrowth ? "#FFFFFF" : "#0B2A52",
+      }}
       className={`
         group/button
         flex
@@ -252,13 +262,21 @@ function PlanButton({
         }
       `}
     >
-      <span className={isGrowth ? "!text-white" : ""}>
+      <span
+        style={{
+          color: isGrowth ? "#FFFFFF" : undefined,
+        }}
+        className={isGrowth ? "!text-white" : ""}
+      >
         {plan.cta}
       </span>
 
       <ArrowUpRight
         size={13}
         strokeWidth={1.6}
+        style={{
+          color: isGrowth ? "#FFFFFF" : undefined,
+        }}
         className={`
           transition-transform
           duration-300
@@ -266,7 +284,7 @@ function PlanButton({
           group-hover/button:translate-x-0.5
           group-hover/button:-translate-y-0.5
 
-          ${isGrowth ? "text-white" : ""}
+          ${isGrowth ? "!text-white" : ""}
         `}
       />
     </Link>

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+
 import {
   ArrowUpRight,
   BarChart3,
@@ -9,10 +10,8 @@ import {
   Search,
   Target,
 } from "lucide-react";
-import {
-  motion,
-  useReducedMotion,
-} from "framer-motion";
+
+import { motion, useReducedMotion } from "framer-motion";
 
 const newYorkFont = {
   fontFamily: '"New York", "Bodoni Moda", Georgia, serif',
@@ -27,9 +26,11 @@ const ease = [0.22, 1, 0.36, 1] as const;
 const plans = [
   {
     name: "Foundation",
-    price: "₹12,999",
+
     tagline: "Build the Right Search Foundation.",
+
     icon: Search,
+
     items: [
       "SEO Audit & Priority Action Plan",
       "Keyword & Search Intent Research",
@@ -42,17 +43,24 @@ const plans = [
       "GA4 Performance Review",
       "Monthly SEO Report",
     ],
+
     bonus: "SEO Opportunity Snapshot",
+
     bestFor:
       "Startups, local businesses and smaller websites building their organic search foundation.",
+
     cta: "Start With Foundation",
+
+    href: "/contact?service=seo&plan=foundation#contact-form",
   },
 
   {
     name: "Growth",
-    price: "₹24,999",
+
     tagline: "Turn Search Visibility Into Consistent Growth.",
+
     icon: Target,
+
     items: [
       "Everything in Foundation",
       "Advanced Keyword & Competitor Research",
@@ -66,19 +74,26 @@ const plans = [
       "2 SEO Content Briefs / Month",
       "Monthly Performance & Strategy Review",
     ],
-    bonus:
-      "Competitor & Content Opportunity Report",
+
+    bonus: "Competitor & Content Opportunity Report",
+
     bestFor:
       "Growing businesses targeting more services, keywords or locations.",
+
     cta: "Choose Growth",
+
+    href: "/contact?service=seo&plan=growth#contact-form",
+
     popular: true,
   },
 
   {
     name: "Scale",
-    price: "₹39,999",
+
     tagline: "Build a Complete Organic Growth System.",
+
     icon: BarChart3,
+
     items: [
       "Everything in Growth",
       "Up to 15 Priority Page Optimizations / Month",
@@ -97,11 +112,16 @@ const plans = [
       "Monthly Growth Strategy Session",
       "Priority Support",
     ],
+
     bonus:
       "Competitor Growth Report + 60-Minute Strategy Session",
+
     bestFor:
       "Competitive businesses, larger websites and brands building long-term organic growth.",
+
     cta: "Choose Scale",
+
+    href: "/contact?service=seo&plan=scale#contact-form",
   },
 ];
 
@@ -508,13 +528,13 @@ export default function SEOPricingSection() {
                   ${
                     plan.popular
                       ? `
-                        border-[#3976B6]/50
-                        shadow-[0_18px_45px_rgba(57,118,182,0.10)]
-                      `
+                          border-[#3976B6]/50
+                          shadow-[0_18px_45px_rgba(57,118,182,0.10)]
+                        `
                       : `
-                        border-[#D6E2EC]
-                        hover:border-[#B7CCDC]
-                      `
+                          border-[#D6E2EC]
+                          hover:border-[#B7CCDC]
+                        `
                   }
 
                   ${
@@ -536,16 +556,16 @@ export default function SEOPricingSection() {
                     ${
                       plan.popular
                         ? `
-                          bg-gradient-to-br
-                          from-[#EDF6FD]
-                          via-white
-                          to-white
-                        `
+                            bg-gradient-to-br
+                            from-[#EDF6FD]
+                            via-white
+                            to-white
+                          `
                         : `
-                          bg-gradient-to-br
-                          from-white
-                          to-[#F7FAFC]
-                        `
+                            bg-gradient-to-br
+                            from-white
+                            to-[#F7FAFC]
+                          `
                     }
                   `}
                 />
@@ -652,57 +672,6 @@ export default function SEOPricingSection() {
                   >
                     {plan.tagline}
                   </h3>
-
-                  {/* PRICE */}
-
-                  <div
-                    className="
-                      mt-5
-                      flex
-                      flex-wrap
-                      items-end
-                      gap-1.5
-                    "
-                  >
-                    <span
-                      style={newYorkFont}
-                      className="
-                        text-[34px]
-                        font-medium
-                        leading-none
-                        tracking-[-0.045em]
-                        text-[#0B2A52]
-
-                        sm:text-[38px]
-                      "
-                    >
-                      {plan.price}
-                    </span>
-
-                    <span
-                      className="
-                        pb-1
-                        text-[10px]
-                        text-[#61778D]
-                      "
-                    >
-                      / month
-                    </span>
-                  </div>
-
-                  <span
-                    className="
-                      mt-1.5
-                      block
-                      text-[7px]
-                      font-semibold
-                      uppercase
-                      tracking-[0.15em]
-                      text-[#C6A77A]
-                    "
-                  >
-                    Starting From
-                  </span>
 
                   {/* QUARTERLY SAVING */}
 
@@ -902,110 +871,111 @@ export default function SEOPricingSection() {
                     </p>
                   </div>
 
-                  {/* CTA */}
-{/* CTA */}
+                  {/* =================================================
+                      CTA
+                  ================================================= */}
 
-<div
-  className="
-    mt-auto
-    pt-6
-  "
->
-  <Link
-    href="/contact"
-    className={`
-      group/button
+                  <div
+                    className="
+                      mt-auto
+                      pt-6
+                    "
+                  >
+                    <Link
+                      href={plan.href}
+                      className={`
+                        group/button
 
-      flex
-      min-h-[48px]
-      w-full
-      items-center
-      justify-center
-      gap-2
+                        flex
+                        min-h-[48px]
+                        w-full
+                        items-center
+                        justify-center
+                        gap-2
 
-      rounded-[13px]
-      border
+                        rounded-[13px]
+                        border
 
-      px-4
-      py-3
+                        px-4
+                        py-3
 
-      text-[11.5px]
-      font-medium
+                        text-[11.5px]
+                        font-medium
 
-      transition-all
-      duration-300
+                        transition-all
+                        duration-300
 
-      ${
-        plan.name === "Growth"
-          ? `
-            border-[#0B2A52]
-            bg-[#0B2A52]
-            !text-white
+                        ${
+                          plan.name === "Growth"
+                            ? `
+                                border-[#0B2A52]
+                                bg-[#0B2A52]
+                                !text-white
 
-            shadow-[0_10px_26px_rgba(11,42,82,0.12)]
+                                shadow-[0_10px_26px_rgba(11,42,82,0.12)]
 
-            hover:-translate-y-0.5
-            hover:bg-[#123B6A]
-            hover:!text-white
-            hover:shadow-[0_14px_30px_rgba(11,42,82,0.18)]
-          `
-          : plan.name === "Scale"
-          ? `
-            border-[#C6A77A]/55
-            bg-[#FFF8EE]
-            text-[#0B2A52]
+                                hover:-translate-y-0.5
+                                hover:bg-[#123B6A]
+                                hover:!text-white
+                                hover:shadow-[0_14px_30px_rgba(11,42,82,0.18)]
+                              `
+                            : plan.name === "Scale"
+                              ? `
+                                  border-[#C6A77A]/55
+                                  bg-[#FFF8EE]
+                                  text-[#0B2A52]
 
-            hover:-translate-y-0.5
-            hover:border-[#B58D61]
-            hover:bg-[#FCF2E4]
-            hover:text-[#9A7043]
+                                  hover:-translate-y-0.5
+                                  hover:border-[#B58D61]
+                                  hover:bg-[#FCF2E4]
+                                  hover:text-[#9A7043]
 
-            hover:shadow-[0_10px_26px_rgba(181,141,97,0.12)]
-          `
-          : `
-            border-[#8FB2D3]/55
-            bg-[#F2F7FB]
-            text-[#0B2A52]
+                                  hover:shadow-[0_10px_26px_rgba(181,141,97,0.12)]
+                                `
+                              : `
+                                  border-[#8FB2D3]/55
+                                  bg-[#F2F7FB]
+                                  text-[#0B2A52]
 
-            hover:-translate-y-0.5
-            hover:border-[#6E9CC6]
-            hover:bg-[#EAF3FA]
-            hover:text-[#245C91]
+                                  hover:-translate-y-0.5
+                                  hover:border-[#6E9CC6]
+                                  hover:bg-[#EAF3FA]
+                                  hover:text-[#245C91]
 
-            hover:shadow-[0_10px_26px_rgba(78,126,171,0.10)]
-          `
-      }
-    `}
-  >
-    <span
-      className={
-        plan.name === "Growth"
-          ? "!text-white"
-          : ""
-      }
-    >
-      {plan.cta}
-    </span>
+                                  hover:shadow-[0_10px_26px_rgba(78,126,171,0.10)]
+                                `
+                        }
+                      `}
+                    >
+                      <span
+                        className={
+                          plan.name === "Growth"
+                            ? "!text-white"
+                            : ""
+                        }
+                      >
+                        {plan.cta}
+                      </span>
 
-    <ArrowUpRight
-      size={13}
-      strokeWidth={1.5}
-      className={`
-        transition-transform
-        duration-300
+                      <ArrowUpRight
+                        size={13}
+                        strokeWidth={1.5}
+                        className={`
+                          transition-transform
+                          duration-300
 
-        group-hover/button:translate-x-0.5
-        group-hover/button:-translate-y-0.5
+                          group-hover/button:translate-x-0.5
+                          group-hover/button:-translate-y-0.5
 
-        ${
-          plan.name === "Growth"
-            ? "text-white"
-            : ""
-        }
-      `}
-    />
-  </Link>
-</div>
+                          ${
+                            plan.name === "Growth"
+                              ? "text-white"
+                              : ""
+                          }
+                        `}
+                      />
+                    </Link>
+                  </div>
                 </div>
               </motion.article>
             );
@@ -1110,7 +1080,7 @@ export default function SEOPricingSection() {
           </div>
 
           <Link
-            href="/contact"
+            href="/contact?service=seo&need=seo-opportunity-review#contact-form"
             className="
               group
 
