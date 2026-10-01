@@ -328,7 +328,7 @@ export default function AiAutomationHero() {
               {/* PRIMARY */}
 
               <a
-                href="/contact"
+                href="/contact?service=ai-automation#contact-form"
                 style={newYorkFont}
                 className="
                   group
@@ -427,107 +427,7 @@ export default function AiAutomationHero() {
                 </span>
               </a>
 
-              {/* SECONDARY */}
-
-              <a
-                href="#what-we-can-automate"
-                style={newYorkFont}
-                className="
-                  group
-                  relative
-                  inline-flex
-
-                  min-h-[43px]
-                  min-w-0
-                  flex-1
-
-                  items-center
-                  justify-center
-                  overflow-hidden
-
-                  rounded-[16px]
-
-                  border
-                  border-[#6285AD]/30
-
-                  bg-white/80
-
-                  px-2
-                  py-[9px]
-
-                  text-[8.5px]
-                  font-medium
-                  tracking-[-0.01em]
-                  text-[#0B2A52]
-
-                  shadow-[0_8px_30px_rgba(11,42,82,0.08)]
-
-                  backdrop-blur-[8px]
-
-                  transition-all
-                  duration-300
-                  ease-out
-
-                  hover:-translate-y-[2px]
-                  hover:border-[#6285AD]/40
-                  hover:bg-white
-                  hover:shadow-[0_10px_35px_rgba(98,133,173,0.15)]
-
-                  active:translate-y-0
-
-                  min-[380px]:px-3
-                  min-[380px]:text-[9.5px]
-
-                  sm:min-h-[46px]
-                  sm:flex-none
-                  sm:px-5
-                  sm:py-[11px]
-                  sm:text-[13px]
-
-                  md:min-h-[48px]
-                  md:px-6
-                  md:py-3
-                  md:text-[14px]
-
-                  2xl:text-[15px]
-                "
-              >
-                <span
-                  className="
-                    pointer-events-none
-                    absolute
-                    inset-[2px]
-                    rounded-[13px]
-                    border
-                    border-white/60
-                  "
-                />
-
-                <span
-                  className="
-                    pointer-events-none
-                    absolute
-                    inset-x-4
-                    top-0
-                    h-px
-                    bg-gradient-to-r
-                    from-transparent
-                    via-white
-                    to-transparent
-                  "
-                />
-
-                <span
-                  className="
-                    relative
-                    z-10
-                    whitespace-nowrap
-                    text-[#0B2A52]
-                  "
-                >
-                  Explore What We Can Automate
-                </span>
-              </a>
+             
             </motion.div>
           </motion.div>
 

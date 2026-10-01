@@ -114,6 +114,8 @@ const needQueryMap: Record<string, string> = {
   // AI Automation
   "automation-for-team": "Automation for My Team",
   "custom-automation-system": "Custom AI Automation System",
+  "automation-question": "AI Automation Question",
+  "automation-discovery": "Automation Opportunity Discovery",
 };
 
 const problemRoutes = [
@@ -317,6 +319,12 @@ export default function ContactPage() {
   const [selectedPlan, setSelectedPlan] = useState("");
   const [openFaq, setOpenFaq] = useState<number | null>(0);
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<
+    "idle" | "success" | "error"
+  >("idle");
+  const [submitMessage, setSubmitMessage] = useState("");
+
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
 
@@ -397,8 +405,77 @@ export default function ContactPage() {
     setSelectedServices(current);
   };
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
+    if (isSubmitting) return;
+
+    if (selectedServices.length === 0) {
+      setSubmitStatus("error");
+      setSubmitMessage("Please select at least one service or choose Not Sure Yet.");
+      return;
+    }
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+
+    const payload = {
+      name: String(formData.get("name") || "").trim(),
+      email: String(formData.get("email") || "").trim(),
+      company: String(formData.get("company") || "").trim(),
+      website: String(formData.get("website") || "").trim(),
+      services: selectedServices,
+      selectedPlan,
+      enquiryNeed,
+      message: String(formData.get("message") || "").trim(),
+      budget: String(formData.get("budget") || "").trim(),
+      timeline: String(formData.get("timeline") || "").trim(),
+      source: String(formData.get("source") || "").trim(),
+      websiteConfirm: String(formData.get("websiteConfirm") || "").trim(),
+    };
+
+    setIsSubmitting(true);
+    setSubmitStatus("idle");
+    setSubmitMessage("");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const result = await response.json().catch(() => ({}));
+
+      if (!response.ok) {
+        throw new Error(
+          typeof result?.message === "string"
+            ? result.message
+            : "Something went wrong while sending your enquiry.",
+        );
+      }
+
+      setSubmitStatus("success");
+      setSubmitMessage(
+        "Thanks — your enquiry has been sent to Sharp Rays. We’ll review it and get back to you.",
+      );
+
+      form.reset();
+      setSelectedServices([]);
+      setSelectedPlan("");
+      setEnquiryNeed("");
+    } catch (error) {
+      setSubmitStatus("error");
+      setSubmitMessage(
+        error instanceof Error
+          ? error.message
+          : "We couldn’t send your enquiry. Please try again or email hello@sharprays.com.",
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -1346,6 +1423,21 @@ export default function ContactPage() {
             <input type="hidden" name="selectedPlan" value={selectedPlan} />
             <input type="hidden" name="enquiryNeed" value={enquiryNeed} />
 
+            {/* Honeypot: real users never see or fill this */}
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute -left-[9999px] h-px w-px overflow-hidden opacity-0"
+            >
+              <label htmlFor="websiteConfirm">Leave this field empty</label>
+              <input
+                id="websiteConfirm"
+                name="websiteConfirm"
+                type="text"
+                tabIndex={-1}
+                autoComplete="off"
+              />
+            </div>
+
             {/* MESSAGE */}
 
             <label className="mt-7 block">
@@ -1528,6 +1620,7 @@ export default function ContactPage() {
 
               <button
                 type="submit"
+                disabled={isSubmitting}
                 style={newYorkFont}
                 className="
                   group
@@ -1558,6 +1651,9 @@ export default function ContactPage() {
                   hover:bg-white
                   hover:shadow-[0_10px_35px_rgba(98,133,173,0.15)]
                   active:translate-y-0
+                  disabled:cursor-not-allowed
+                  disabled:opacity-60
+                  disabled:hover:translate-y-0
                   sm:w-auto
                   sm:min-h-[48px]
                   sm:px-6
@@ -1569,10 +1665,24 @@ export default function ContactPage() {
                 <span className="pointer-events-none absolute inset-[2px] rounded-[13px] border border-white/60" />
                 <span className="pointer-events-none absolute inset-x-4 top-0 h-px bg-gradient-to-r from-transparent via-white to-transparent" />
                 <span className="relative z-10 whitespace-nowrap text-[#0B2A52]">
-                  Send My Enquiry
+                  {isSubmitting ? "Sending Enquiry..." : "Send My Enquiry"}
                 </span>
               </button>
             </div>
+
+            {submitStatus !== "idle" && submitMessage && (
+              <div
+                role={submitStatus === "error" ? "alert" : "status"}
+                aria-live="polite"
+                className={`mt-4 rounded-[14px] border px-4 py-3 font-serif text-[0.78rem] leading-[1.6] ${
+                  submitStatus === "success"
+                    ? "border-[#BFD9CE] bg-[#F3FAF6] text-[#2F6D55]"
+                    : "border-[#E5C7C7] bg-[#FFF7F7] text-[#9B4A4A]"
+                }`}
+              >
+                {submitMessage}
+              </div>
+            )}
           </motion.form>
         </div>
       </section>

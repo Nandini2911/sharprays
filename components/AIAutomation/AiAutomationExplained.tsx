@@ -326,7 +326,7 @@ export default function AiAutomationExplained() {
               What Is
               <br />
 
-              <span className="text-[#B88959]">
+              <span className="text-[#C6A77A]">
                 AI Automation?
               </span>
             </h2>
@@ -372,117 +372,10 @@ export default function AiAutomationExplained() {
 
             {/* CTA */}
 
-            <motion.a
-              href="#what-we-can-automate"
-              initial={
-                reduceMotion
-                  ? false
-                  : {
-                      opacity: 0,
-                      y: 14,
-                    }
-              }
-              whileInView={{
-                opacity: 1,
-                y: 0,
-              }}
-              viewport={{
-                once: true,
-                amount: 0.6,
-              }}
-              transition={{
-                duration: reduceMotion ? 0 : 0.6,
-                delay: reduceMotion ? 0 : 0.08,
-                ease,
-              }}
-              style={newYorkFont}
-              className="
-                group
-                relative
-                mt-9
-                inline-flex
-                min-h-[46px]
-                items-center
-                justify-center
-                overflow-hidden
-
-                rounded-[16px]
-
-                border
-                border-[#6285AD]/30
-
-                bg-white/80
-
-                px-5
-                py-[11px]
-
-                text-[13px]
-                font-medium
-                tracking-[-0.01em]
-                text-[#0B2A52]
-
-                shadow-[0_8px_30px_rgba(11,42,82,0.08)]
-
-                backdrop-blur-[8px]
-
-                transition-all
-                duration-300
-                ease-out
-
-                hover:-translate-y-[2px]
-                hover:border-[#6285AD]/40
-                hover:bg-white
-                hover:shadow-[0_10px_35px_rgba(98,133,173,0.15)]
-
-                active:translate-y-0
-
-                sm:min-h-[48px]
-                sm:px-6
-                sm:py-3
-                sm:text-[14px]
-
-                md:text-[15px]
-              "
-            >
-              {/* STATIC SOFT BORDER */}
-              <span
-                className="
-                  pointer-events-none
-                  absolute
-                  inset-[2px]
-                  rounded-[13px]
-                  border
-                  border-white/60
-                "
-              />
-
-              {/* VERY SUBTLE INNER LIGHT */}
-              <span
-                className="
-                  pointer-events-none
-                  absolute
-                  inset-x-4
-                  top-0
-                  h-px
-                  bg-gradient-to-r
-                  from-transparent
-                  via-white
-                  to-transparent
-                "
-              />
+          
 
               {/* TEXT */}
-              <span
-                className="
-                  relative
-                  z-10
-                  whitespace-nowrap
-                  text-[#0B2A52]
-                "
-              >
-                Build a More Efficient Business
-              </span>
-            </motion.a>
+              
           </motion.div>
 
           {/* =================================================

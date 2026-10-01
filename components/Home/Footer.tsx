@@ -44,10 +44,7 @@ const exploreLinks = [
     label: "About",
     href: "/about",
   },
-  {
-    label: "Insights",
-    href: "/insights",
-  },
+
   {
     label: "Contact",
     href: "/contact",

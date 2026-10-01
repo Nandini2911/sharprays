@@ -52,7 +52,6 @@ export default function AiAutomationFinalCTA() {
 
     >
 
-     
       {/* =====================================================
 
           LARGE FLOW LINE
@@ -972,30 +971,45 @@ export default function AiAutomationFinalCTA() {
             {/* PRIMARY */}
 
             <Link
-              href="/contact"
+
+              href="/contact?service=ai-automation&need=automation-discovery#contact-form"
+
               style={newYorkFont}
+
               className="
+
                 group
+
                 relative
+
                 inline-flex
+
                 min-h-[46px]
+
                 items-center
+
                 justify-center
+
                 overflow-hidden
 
                 rounded-[16px]
 
                 border
+
                 border-[#6285AD]/30
 
                 bg-white/80
 
                 px-5
+
                 py-[11px]
 
                 text-[13px]
+
                 font-medium
+
                 tracking-[-0.01em]
+
                 text-[#0B2A52]
 
                 shadow-[0_8px_30px_rgba(11,42,82,0.08)]
@@ -1003,148 +1017,101 @@ export default function AiAutomationFinalCTA() {
                 backdrop-blur-[8px]
 
                 transition-all
+
                 duration-300
+
                 ease-out
 
                 hover:-translate-y-[2px]
+
                 hover:border-[#6285AD]/40
+
                 hover:bg-white
+
                 hover:shadow-[0_10px_35px_rgba(98,133,173,0.15)]
 
                 active:translate-y-0
 
                 sm:min-h-[48px]
+
                 sm:px-6
+
                 sm:py-3
+
                 sm:text-[14px]
 
                 md:text-[15px]
+
               "
+
             >
+
               <span
+
                 className="
+
                   pointer-events-none
+
                   absolute
+
                   inset-[2px]
+
                   rounded-[13px]
+
                   border
+
                   border-white/60
+
                 "
+
               />
 
               <span
+
                 className="
+
                   pointer-events-none
+
                   absolute
+
                   inset-x-4
+
                   top-0
+
                   h-px
+
                   bg-gradient-to-r
+
                   from-transparent
+
                   via-white
+
                   to-transparent
+
                 "
+
               />
 
               <span
+
                 className="
+
                   relative
+
                   z-10
+
                   whitespace-nowrap
+
                   text-[#0B2A52]
+
                 "
+
               >
+
                 Find What We Can Automate
+
               </span>
-            </Link>
 
-            {/* SECONDARY */}
-
-            <Link
-              href="/contact"
-              style={newYorkFont}
-              className="
-                group
-                relative
-                inline-flex
-                min-h-[46px]
-                items-center
-                justify-center
-                overflow-hidden
-
-                rounded-[16px]
-
-                border
-                border-[#6285AD]/30
-
-                bg-white/80
-
-                px-5
-                py-[11px]
-
-                text-[13px]
-                font-medium
-                tracking-[-0.01em]
-                text-[#0B2A52]
-
-                shadow-[0_8px_30px_rgba(11,42,82,0.08)]
-
-                backdrop-blur-[8px]
-
-                transition-all
-                duration-300
-                ease-out
-
-                hover:-translate-y-[2px]
-                hover:border-[#6285AD]/40
-                hover:bg-white
-                hover:shadow-[0_10px_35px_rgba(98,133,173,0.15)]
-
-                active:translate-y-0
-
-                sm:min-h-[48px]
-                sm:px-6
-                sm:py-3
-                sm:text-[14px]
-
-                md:text-[15px]
-              "
-            >
-              <span
-                className="
-                  pointer-events-none
-                  absolute
-                  inset-[2px]
-                  rounded-[13px]
-                  border
-                  border-white/60
-                "
-              />
-
-              <span
-                className="
-                  pointer-events-none
-                  absolute
-                  inset-x-4
-                  top-0
-                  h-px
-                  bg-gradient-to-r
-                  from-transparent
-                  via-white
-                  to-transparent
-                "
-              />
-
-              <span
-                className="
-                  relative
-                  z-10
-                  whitespace-nowrap
-                  text-[#0B2A52]
-                "
-              >
-                Talk to Sharp Rays
-              </span>
             </Link>
 
           </motion.div>
@@ -1233,45 +1200,7 @@ export default function AiAutomationFinalCTA() {
 
             />
 
-            <span
-
-              style={newYorkFont}
-
-              className="
-
-                whitespace-nowrap
-
-                text-[6px]
-
-                uppercase
-
-                tracking-[0.31em]
-
-                text-[#0B2A52]/50
-
-                sm:text-[7px]
-
-              "
-
-            >
-
-              MAP · CONNECT · AUTOMATE · IMPROVE
-
-            </span>
-
-            <span
-
-              className="
-
-                h-px
-
-                flex-1
-
-                bg-[linear-gradient(90deg,#C6A77A,transparent)]
-
-              "
-
-            />
+           
 
           </motion.div>
 
@@ -1305,37 +1234,7 @@ export default function AiAutomationFinalCTA() {
 
           >
 
-            <Sparkles
-
-              size={12}
-
-              strokeWidth={1.4}
-
-              className="text-[#B18458]"
-
-            />
-
-            <span
-
-              style={newYorkFont}
-
-              className="
-
-                text-[6px]
-
-                uppercase
-
-                tracking-[0.27em]
-
-                text-[#0B2A52]/35
-
-              "
-
-            >
-
-              LESS REPETITION · MORE USEFUL WORK
-
-            </span>
+            
 
           </div>
 

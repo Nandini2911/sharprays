@@ -311,7 +311,7 @@ export default function AiVideoEditingHero() {
               {/* PRIMARY CTA */}
 
               <Link
-                href="/contact"
+                href="/contact?service=ai-video-editing#contact-form"
                 style={newYorkFont}
                 className="
                   group
@@ -436,115 +436,7 @@ export default function AiVideoEditingHero() {
                 />
               </Link>
 
-              {/* SECONDARY CTA */}
-
-              <Link
-                href="#video-approach"
-                style={newYorkFont}
-                className="
-                  group
-                  relative
-
-                  inline-flex
-                  min-h-[43px]
-                  min-w-0
-                  flex-1
-                  items-center
-                  justify-center
-                  gap-1.5
-
-                  overflow-hidden
-
-                  rounded-[16px]
-
-                  border
-                  border-[#6285AD]/22
-
-                  bg-white/55
-
-                  px-2.5
-                  py-[9px]
-
-                  text-[10px]
-                  font-medium
-                  tracking-[-0.01em]
-
-                  text-[#0B2A52]
-
-                  shadow-[0_6px_24px_rgba(11,42,82,0.055)]
-
-                  backdrop-blur-[8px]
-
-                  transition-all
-                  duration-300
-                  ease-out
-
-                  hover:-translate-y-[2px]
-                  hover:border-[#6285AD]/40
-                  hover:bg-white
-                  hover:shadow-[0_10px_30px_rgba(98,133,173,0.12)]
-
-                  active:translate-y-0
-
-                  min-[390px]:px-3
-                  min-[390px]:text-[11px]
-
-                  sm:min-h-[46px]
-                  sm:flex-none
-                  sm:px-5
-                  sm:py-[11px]
-                  sm:text-[13px]
-
-                  md:min-h-[48px]
-                  md:px-6
-                  md:py-3
-                  md:text-[14px]
-                "
-              >
-                <span
-                  className="
-                    pointer-events-none
-                    absolute
-                    inset-[2px]
-
-                    rounded-[13px]
-
-                    border
-                    border-white/60
-                  "
-                />
-
-                <span
-                  className="
-                    relative
-                    z-10
-                    whitespace-nowrap
-                  "
-                >
-                  Explore Our Approach
-                </span>
-
-                <ArrowUpRight
-                  size={12}
-                  strokeWidth={1.8}
-                  className="
-                    relative
-                    z-10
-                    shrink-0
-
-                    text-[#B79A72]
-
-                    transition-transform
-                    duration-300
-
-                    group-hover:translate-x-0.5
-                    group-hover:-translate-y-0.5
-
-                    sm:h-[13px]
-                    sm:w-[13px]
-                  "
-                />
-              </Link>
+             
             </motion.div>
 
             {/* =====================================================
